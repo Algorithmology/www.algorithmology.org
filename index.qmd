@@ -1,0 +1,21 @@
+---
+title: Algorithmology
+toc: true
+---
+
+![](images/Algorithmology-Logo-Alternative.svg){fig-align="center"}
+
+## Introduction
+
+Regardless of the role or the company or the project in which they find
+themselves, a software engineer is always a *developing developer*. Like the
+word "developer" in the above logo, developers always have a "missing piece" of
+the "D" in their developer skills. Put in another way, all developers have a
+professional skill that they have not yet honed, new technologies that they have
+yet to explore, program features that they have not yet implemented, or
+nefarious bugs that they have not yet found and fixed! Always working to
+establish a confidence in their program's correctness, a developing developer
+aims to engineer and ship high-quality software that is designed, documented,
+tested, and maintained according to industry best practices. `code`
+
+[presentations](presentations/index.qmd)
