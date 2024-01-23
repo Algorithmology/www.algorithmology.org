@@ -22,7 +22,7 @@ format:
   html:
     mainfont: Inter
     monofont: Ubuntu Mono
-    fontsize: 1.15em
+    fontsize: 1.25em
     theme: zephyr
 
 execute:
