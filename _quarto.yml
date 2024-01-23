@@ -13,6 +13,14 @@ website:
     type: textbox
   reader-mode: false
   back-to-top-navigation: true
+  page-navigation: true
+  favicon: "icons/microscope.svg"
+  open-graph: true
+  site-url: https://www.algorithmology.org/
+  repo-url: https://github.com/Algorithmology/www.algorithmology.org
+  issue-url: https://github.com/Algorithmology/www.algorithmology.org/issues/new
+  repo-actions: [source, edit, issue]
+  repo-branch: "master"
   navbar:
     right:
       - about.qmd
