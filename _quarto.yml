@@ -1,0 +1,29 @@
+project:
+  type: website
+  preview:
+    port: 5550
+    browser: false
+    watch-inputs: true
+    navigate: false
+
+website:
+  title: "󰙔 &nbsp; Algorithmology"
+  search:
+    location: navbar
+    type: textbox
+  reader-mode: false
+  back-to-top-navigation: true
+  navbar:
+    right:
+      - about.qmd
+      - presentations/index.qmd
+
+format:
+  html:
+    mainfont: Inter
+    monofont: Ubuntu Mono
+    fontsize: 1.15em
+    theme: zephyr
+
+execute:
+  freeze: auto
