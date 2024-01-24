@@ -1,6 +1,6 @@
 ---
 title: "Characterizing the Execution Environment"
-description: "Test presentation for week one"
+description: "How can we use Python to describe the runtime environment?"
 date: "2024-01-15"
 date-format: long
 author: Gregory M. Kapfhammer
