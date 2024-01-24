@@ -15,6 +15,8 @@ format:
 
 # What are the key features of the Python programming language?
 
+::: incremental
 - Defining and evaluation expressions
 - Declaring and using variables with types
 - Creating and using collections
+:::
