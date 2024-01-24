@@ -78,9 +78,11 @@ print(n[2])
 ```
 
 ::: incremental
+::: {style="margin-top: -0.1em; font-size: 0.9em;"}
 
-- Why does the program produce this output?
 - What is the purpose of the `type` function?
+- What is the purpose of the `u[9]` notation?
 - What is the purpose of the `str` function?
 
+:::
 :::
