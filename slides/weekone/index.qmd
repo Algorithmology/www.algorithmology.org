@@ -1,6 +1,6 @@
 ---
 title: "Characterizing the Execution Environment"
-description: "How can we use Python to describe the runtime environment?"
+description: "How can we use Python packages to characterize the runtime environment used during experiments?"
 date: "2024-01-15"
 date-format: long
 author: Gregory M. Kapfhammer
