@@ -10,6 +10,7 @@ format:
     history: false
     scrollable: true
     transition: slide
+    highlight-style: gruvbox
     footer: "Algorithmology"
 ---
 
@@ -19,4 +20,38 @@ format:
 - Defining and evaluation expressions
 - Declaring and using variables with types
 - Creating and using collections
+:::
+
+# Thinking and Writing About Python Programs
+
+::: incremental
+- **Sequence**: Run operations one after another in an order
+- **Selection**: Decide which operations will execute
+- **Iteration**: Repeat an operation a specific number of times
+:::
+
+## Sequence: Run operations one after another in a specified order
+
+```python
+def detect() -> Dict[str, str]:
+    """Run all of the sub-detects."""
+    run_output: List[Dict[str, str]] = []
+    run_output = execute.execute_by_name_filter(
+        constants.project.Detect_Module, constants.project.Detect_Filter
+    )
+    return util.union_list_of_dicts(run_output)
+```
+
+::: incremental
+::: {style="margin-top: 0.5em; font-size: 0.9em;"}
+
+- Calling the `detect` function causes each line to run sequentially
+
+- Invoke `execute_by_name_filter` function with two inputs
+
+- Invoke the `union_list_of_dicts` function with one input
+
+- Return output of `union_list_of_dicts` function to caller
+
+:::
 :::
