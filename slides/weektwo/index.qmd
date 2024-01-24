@@ -60,7 +60,7 @@ def detect() -> Dict[str, str]:
 
 # Collections contain multiple values
 
-::: incremental
+::: {.fragment .fade-right}
 - Strings: `str` in Python
 - Lists: `list` in Python
 - Tuples: `tuple` in Python
