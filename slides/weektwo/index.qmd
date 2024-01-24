@@ -89,7 +89,7 @@ else:
 - Sets: `set` in Python
 :::
 
-::: {.fragment .fade-up}
+::: {.fragment .fade-up style="margin-top: -0.5em;"}
 Let's explore each of these in greater detail!
 :::
 
@@ -202,12 +202,12 @@ print(values)
 # Common operations to perform on a collection
 
 ::: {.fragment .fade-right}
-- Determine the length of a collection
-- Add an element to or remove element from a collection
-- Access an element in a collection
-- Determine if a collection contains an element
-- Iterate through all of the elements in a collection
-- Slice a collection to get a subset of its elements
+- Determine the *length* of a collection
+- *Add* an element to or *remove* element from a collection
+- *Access* an element in a collection
+- Determine if a collection *contains* an element
+- *Iterate* through all of the elements in a collection
+- *Slice* a collection to get a subset of its elements
 :::
 
 ## Sizing and slicing collections
@@ -233,7 +233,7 @@ print(b[1:])
 print(c[:2])
 ```
 
-## Iteration through a lists and tuples
+## Iterating through lists and tuples
 
 ```{python}
 mylist = [1,3,5]
