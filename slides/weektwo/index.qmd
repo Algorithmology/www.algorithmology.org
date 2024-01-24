@@ -61,7 +61,15 @@ def detect() -> Dict[str, str]:
 # Collections contain multiple values
 
 ::: incremental
-- Strings
+- Strings: `str` in Python
+- Lists: `list` in Python
+- Tuples: `tuple` in Python
+- Dictionaries: `dict` in Python
+- Sets: `set` in Python
+:::
+
+::: {.fragment .fade-up}
+Let's explore each of these in greater detail!
 :::
 
 ## Creating and using a string collection
