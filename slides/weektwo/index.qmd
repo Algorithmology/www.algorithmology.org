@@ -93,7 +93,7 @@ print(n[2])
 
 :::
 
-## Creating and using a string collection
+## Creating and using a list collection
 
 ```{python}
 numbers = [1,2,3,4,5,6]
@@ -113,5 +113,25 @@ print(numbers)
 ::: {.fragment .fade-up style="margin-top: -0.1em; font-size: 0.9em;"}
 
 What does this illustrate about the `list` type in Python?
+
+:::
+
+## Creating and using a tuple collection
+
+```{python}
+data = (1, 2, "skip a few", 99, 100)
+print(type(data))
+print(data)
+print(data[4])
+```
+
+::: {.fragment .fade-up style="margin-top: -0.1em; font-size: 0.87em;"}
+
+- What are some invalid operations on a `tuple`?
+  - `data[4] = 100`
+  - `data.append(100)`
+  - `data.remove(100)`
+  - `data.insert(100)`
+  - `data.pop(100)`
 
 :::
