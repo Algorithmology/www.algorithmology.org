@@ -1,0 +1,4 @@
+- source: project
+  netlify:
+    - id: 8a455f0e-22b8-4507-8a49-4ae60f7bae86
+      url: 'https://algorithmology.netlify.app'
