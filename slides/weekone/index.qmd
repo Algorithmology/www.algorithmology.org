@@ -1,0 +1,19 @@
+---
+title: "Characterizing the Execution Environment"
+description: "Test presentation for week one"
+date: "2024-01-15"
+date-format: long
+author: Gregory M. Kapfhammer
+format:
+  revealjs:
+    theme: default
+    history: false
+    scrollable: true
+    transition: slide
+    footer: "Algorithmology"
+---
+
+# How Can We Characterize the Execution Environment of a Program?
+
+- *Sensing* properties of a system with Python
+- *Characterizing* system performance with micro-benchmarks
