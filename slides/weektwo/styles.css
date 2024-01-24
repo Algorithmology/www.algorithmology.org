@@ -4,6 +4,11 @@
   color: #222;
 }
 
+.reveal div.sourceCode pre code {
+  margin-top: -0.05em;
+  min-height: 100% !important;
+}
+
 .reveal code {
   color: #d73a49;
   background-color: rgba(0, 0, 0, 0);
