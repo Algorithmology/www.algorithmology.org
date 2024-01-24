@@ -72,7 +72,7 @@ def detect() -> Dict[str, str]:
 Let's explore each of these in greater detail!
 :::
 
-## Creating and using a string collection
+## Creating and using a string
 
 ```{python}
 s = "Hello, "
@@ -93,7 +93,7 @@ print(n[2])
 
 :::
 
-## Creating and using a list collection
+## Creating and using a list
 
 ```{python}
 numbers = [1,2,3,4,5,6]
@@ -116,7 +116,7 @@ What does this illustrate about the `list` type in Python?
 
 :::
 
-## Creating and using a tuple collection
+## Creating and using a tuple
 
 ```{python}
 data = (1, 2, "skip a few", 99, 100)
@@ -133,5 +133,26 @@ print(data[4])
   - `data.remove(100)`
   - `data.insert(100)`
   - `data.pop(100)`
+
+:::
+
+## Creating and using a dictionary
+
+```{python}
+d = dict()
+d[5] = "five"
+d[2] = "two"
+d["pi"] = 3.1415926
+print(type(d))
+print(d)
+print(d["pi"])
+```
+
+::: {.fragment .fade-up style="margin-top: -0.1em; font-size: 0.87em;"}
+
+- Dictionaries store key-value pairs
+- The keys can be of any data type that is hashable
+- The values can be of any data type
+- It is possible to lookup a value by its key
 
 :::
