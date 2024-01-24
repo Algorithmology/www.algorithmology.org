@@ -255,3 +255,33 @@ print()
 for key in mydict.keys():
   print(key, mydict[key])
 ```
+
+## Containment checking for collections
+
+```{python}
+a = "a string"
+b = ["my", "second", "favorite", "list"]
+c = (1, "tuple")
+d = {"a": "b", "b": 2, "c": False}
+e = {1,2,3,4,4,4,4,2,2,2,1}
+print("str" in a)
+print("string" in a)
+print("my" in b)
+print("tuple" in c)
+print("a" in d)
+print("b" in d)
+print(4 in e)
+```
+
+## What are the performance trade-offs associated with checking to see if a collection contains a value?
+
+::: {.fragment .fade-right}
+
+- Questions to consider:
+  - Type of the collection?
+  - Contents of the collection?
+  - Size of the collection?
+  - How often will the collection change?
+  - How can we measure time and space overhead?
+
+:::
