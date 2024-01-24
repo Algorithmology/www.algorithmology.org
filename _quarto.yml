@@ -18,9 +18,6 @@ website:
   open-graph: true
   site-url: https://www.algorithmology.org/
   repo-url: https://github.com/Algorithmology/www.algorithmology.org
-  issue-url: https://github.com/Algorithmology/www.algorithmology.org/issues/new
-  repo-actions: [source, edit, issue]
-  repo-branch: "master"
   navbar:
     right:
       - syllabus/index.qmd
