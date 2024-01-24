@@ -44,8 +44,7 @@ def detect() -> Dict[str, str]:
     return util.union_list_of_dicts(run_output)
 ```
 
-::: incremental
-::: {style="margin-top: 0.5em; font-size: 0.9em;"}
+::: {.fragment .fade style="margin-top: 0.5em; font-size: 0.9em;"}
 
 - Calling the `detect` function causes each line to run sequentially
 
@@ -55,7 +54,6 @@ def detect() -> Dict[str, str]:
 
 - Return output of `union_list_of_dicts` function to caller
 
-:::
 :::
 
 # Collections contain multiple values
