@@ -321,7 +321,7 @@ print(4 in e)
 
 ::: {.fragment .fade-right}
 
-- Questions to consider:
+- Questions to consider when designing an experiment:
   - Type of the collection?
   - Contents of the collection?
   - Size of the collection?
