@@ -1,0 +1,20 @@
+---
+title: "Exploring the Python Programming Language"
+description: "What are some of the key features of Python and how to we measure their performance?"
+date: "2024-01-22"
+date-format: long
+author: Gregory M. Kapfhammer
+format:
+  revealjs:
+    theme: default
+    history: false
+    scrollable: true
+    transition: slide
+    footer: "Algorithmology"
+---
+
+# What are the key features of the Python programming language?
+
+- Defining and evaluation expressions
+- Declaring and using variables with types
+- Creating and using collections
