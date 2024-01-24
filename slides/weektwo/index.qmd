@@ -156,3 +156,58 @@ print(d["pi"])
 - It is possible to lookup a value by its key
 
 :::
+
+## Creating and using a set
+
+```{python}
+values = {2,1}
+print(type(values))
+values.add(3)
+values.add(2)
+values.add(2)
+values.add(2)
+print(values)
+```
+
+::: {.fragment .fade-up style="margin-top: -0.1em; font-size: 0.87em;"}
+
+- Sets do not store duplicate values
+- The data in a set must be hashable
+- The `add` function places more data in a set
+- Be careful, `{}` is an empty dictionary!
+
+:::
+
+# Common operations to perform on a collection
+
+::: {.fragment .fade-right}
+- Determine the length of a collection
+- Add an element to or remove element from a collection
+- Access an element in a collection
+- Determine if a collection contains an element
+- Iterate through all of the elements in a collection
+- Slice a collection to get a subset of its elements
+:::
+
+## Sizing and slicing collections
+
+```{python}
+a = "a string"
+b = ["my", "second", "favorite", "list"]
+c = (1, "tuple")
+d = {"a": "b", "b": 2, "c": False}
+e = {1,2,3,4,4,4,4,2,2,2,1}
+print(len(a), len(b), len(c), len(d), len(e))
+```
+
+<p class="codespacer">
+
+```{python}
+a = "a string"
+b = ["my", "second", "favorite", "list"]
+c = (1, 2,3,"tuple")
+print(a[3:7])
+print(a[1:-2])
+print(b[1:])
+print(c[:2])
+```
