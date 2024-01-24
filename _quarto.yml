@@ -23,8 +23,21 @@ website:
   repo-branch: "master"
   navbar:
     right:
-      - about.qmd
-      - presentations/index.qmd
+      - syllabus/index.qmd
+      - schedule/index.qmd
+      - slides/index.qmd
+
+  page-footer:
+    left: '<a href="https://github.com/Algorithmology/www.algorithmology.org/graphs/contributors" aria-label="Algorithmology Maintainers">{{< iconify fa copyright >}} Algorithmology</a>'
+    right:
+      - text: "{{< iconify fa github size=18px >}}"
+        href: https://github.com/Algorithmology/
+      - text: "{{< iconify fa github-square size=18px >}}"
+        href: https://github.com/Algorithmology/www.algorithmology.org/
+      - text: "{{< iconify bi discord size=19px >}}"
+        href: https://discord.gg/YHjhQaBnme
+      - text: "{{< iconify bi rss-fill size=18px >}}"
+        href: "blog/index.xml"
 
 format:
   html:
@@ -32,6 +45,7 @@ format:
     monofont: Ubuntu Mono
     fontsize: 1.25em
     theme: zephyr
+    css: css/styles.css
 
 execute:
   freeze: auto
