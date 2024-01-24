@@ -56,6 +56,29 @@ def detect() -> Dict[str, str]:
 
 :::
 
+## Selection: Decide which operations will execute with conditionals
+
+```python
+if platform.system() == "Windows":
+    total_disk = psutil.disk_usage("C:\\").total
+    used_disk = psutil.disk_usage("C:\\").used
+else:
+    total_disk = psutil.disk_usage("/").total
+    used_disk = psutil.disk_usage("/").used
+```
+
+::: {.fragment .fade style="margin-top: 0.5em; font-size: 0.925em;"}
+
+- The `psutil` module provides access to system information
+
+- The `disk_usage` function returns information about disk usage
+
+- But `disk_usage` needs different inputs for the filesystem root!
+
+- Conditional logic determines the input to `disk_usage`
+
+:::
+
 # Collections contain multiple values
 
 ::: {.fragment .fade-right}
