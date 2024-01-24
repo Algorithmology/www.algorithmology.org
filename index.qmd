@@ -4,7 +4,7 @@ layout: full
 toc: true
 ---
 
-![](images/Algorithmology-Logo-Alternative.svg){fig-align="center"}
+![](images/Algorithmology-Logo.svg){fig-align="center"}
 
 ## Introduction
 
