@@ -42,6 +42,7 @@ format:
     monofont: Ubuntu Mono
     fontsize: 1.25em
     theme: zephyr
+    highlight-style: github
     css: css/styles.css
 
 execute:
