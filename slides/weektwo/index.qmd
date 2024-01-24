@@ -79,6 +79,29 @@ else:
 
 :::
 
+## Iteration: Repeat an operation a specific number of times
+
+```python
+def union_list_of_dicts(container: List[Dict[str, str]]) -> Dict[str, str]:
+    """Union a list of dictionaries into a single dictionary."""
+    output: Dict[str, str] = {}
+    for dictionary in container:
+        output = {**output, **dictionary}
+    return output
+```
+
+::: {.fragment .fade style="margin-top: 0.5em; font-size: 0.925em;"}
+
+- `output` is a dictionary that starts out empty
+
+- `container` is a list of dictionaries
+
+- The `for` loop iterates through each dictionary in `container`
+
+- The body of the loop merges the dictionaries into `output`
+
+:::
+
 # Collections contain multiple values
 
 ::: {.fragment .fade-right}
