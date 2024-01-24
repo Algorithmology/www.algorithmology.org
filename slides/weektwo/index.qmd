@@ -10,7 +10,7 @@ format:
     history: false
     scrollable: true
     transition: slide
-    highlight-style: gruvbox
+    highlight-style: github
     footer: "Algorithmology"
 ---
 
