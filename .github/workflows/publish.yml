@@ -33,15 +33,6 @@ jobs:
         with:
           python-version: "3.11"
           cache: "pip"
-      # Install Poetry
-      - name: Install Poetry
-        uses: abatilo/actions-poetry@v2.0.0
-        with:
-          poetry-version: 1.4.0
-      # Setup the Virtual Environment
-      - name: Setup Virtual Environment
-        run: |
-          poetry install
       # Render and Publish the Site
       # Note that this uses Quarto to
       # directly publish the site, which
