@@ -40,5 +40,4 @@ jobs:
         run: |
           quarto --version
           # directly publish a version of the site to Netlify
-          quarto render
           quarto publish netlify
