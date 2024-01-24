@@ -236,6 +236,7 @@ print("Set:")
 for element in myset:
   print("  " + element)
 
+print()
 print("String:")
 for character in mystring:
   print("  " + character)
