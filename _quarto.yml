@@ -7,7 +7,7 @@ project:
     navigate: false
 
 website:
-  title: "󰙔 &nbsp; Algorithmology"
+  title: "{{< iconify uis microscope size=30px >}} &nbsp; Algorithmology"
   search:
     location: navbar
     type: textbox
