@@ -1,5 +1,6 @@
 ---
 title: "Exploring the Python Programming Language"
+echo: true
 description: "What are some of the key features of Python and how to we measure their performance?"
 date: "2024-01-22"
 date-format: long
@@ -7,6 +8,7 @@ author: Gregory M. Kapfhammer
 format:
   revealjs:
     theme: default
+    css: styles.css
     history: false
     scrollable: true
     transition: slide
@@ -54,4 +56,31 @@ def detect() -> Dict[str, str]:
 - Return output of `union_list_of_dicts` function to caller
 
 :::
+:::
+
+# Collections contain multiple values
+
+::: incremental
+- Strings
+:::
+
+## Creating and using a string collection
+
+```{python}
+s = "Hello, "
+t = "World."
+u = s + t
+print(type(u))
+print(u)
+print(u[9])
+n = str(9876)
+print(n[2])
+```
+
+::: incremental
+
+- Why does the program produce this output?
+- What is the purpose of the `type` function?
+- What is the purpose of the `str` function?
+
 :::
