@@ -6,9 +6,9 @@ name: Publish
 # Focuses on the master branch only
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 # Jobs for setup, rendering, and publishing
 # for the web site, using Python, Poetry,
