@@ -1,0 +1,36 @@
+a {
+  text-decoration: none;
+}
+
+.toc-actions {
+  text-decoration: none;
+  font-size: 0.75em;
+  color: inherit;
+  font-weight: 400;
+  line-height: 1.25em;
+}
+
+.toc-actions a {
+  color: inherit;
+  text-decoration: inherit;
+  font-size: 0.75em;
+  font-weight: 400;
+}
+
+.toc-actions a:hover {
+  color: #3459e6 !important;
+  transition:
+    text-decoration-color 300ms,
+    text-underline-offset 300ms;
+  text-decoration: underline 0.1em rgba(0, 0, 0, 1);
+  text-decoration-color: #3459e6;
+  text-underline-offset: 0.3em;
+}
+
+#quarto-margin-sidebar .toc-actions .bi:before {
+  margin-top: 0.3rem !important;
+  margin-right: 0.1rem !important;
+  font-size: 0.7rem;
+  color: #333333 !important;
+  vertical-align: top;
+}
