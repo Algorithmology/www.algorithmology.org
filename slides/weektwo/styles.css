@@ -18,3 +18,7 @@
 code span.bu {
   color: #d73a49;
 }
+
+p.codespacer {
+  height: 1px;
+}
