@@ -85,12 +85,33 @@ n = str(9876)
 print(n[2])
 ```
 
-::: incremental
-::: {style="margin-top: -0.1em; font-size: 0.9em;"}
+::: {.fragment .fade-up style="margin-top: -0.1em; font-size: 0.9em;"}
 
 - What is the purpose of the `type` function?
 - What is the purpose of the `u[9]` notation?
 - What is the purpose of the `str` function?
 
 :::
+
+## Creating and using a string collection
+
+```{python}
+numbers = [1,2,3,4,5,6]
+print(type(numbers))
+numbers.append(100)
+print("The first item is", numbers[0])
+print("The second item is", numbers[1])
+print("The last item is", numbers[-1])
+print("The second to last item is", numbers[-2])
+numbers[2] = "skip"
+numbers[3] = "a"
+numbers[4] = "few"
+numbers[-2] = 99
+print(numbers)
+```
+
+::: {.fragment .fade-up style="margin-top: -0.1em; font-size: 0.9em;"}
+
+What does this illustrate about the `list` type in Python?
+
 :::
