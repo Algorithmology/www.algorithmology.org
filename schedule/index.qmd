@@ -2,6 +2,18 @@
 title: Schedule
 layout: full
 toc: true
+listing:
+  - id: featured-weeks
+    type: table
+    fields: [date,title,description]
+    field-display-names:
+      description: "Objective"
+    contents:
+      - "week*/**/*.qmd"
+    sort:
+      - "date"
+      - "title"
+      - "description"
 ---
 
 ## Weekly Cadence
@@ -30,4 +42,9 @@ toc: true
         - *Following Week*:
           - Publish answer(s) to the course web site
           - Present answer(s) to the research question
+
+## Weekly Schedule
+
+:::{#featured-weeks}
+:::
 
