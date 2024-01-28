@@ -6,20 +6,57 @@ layout: full
 toc: true
 ---
 
-## Weekly Activities
+## Activities
 
-- {{< iconify fa6-solid people-line size=18px >}} **Monday and Wednesday**: Course Introduction
-  - Data structures and algorithms
-  - Performance evaluation techniques
-  - Software engineering best practices
+- {{< iconify fa6-solid people-line size=18px >}} **Monday and Wednesday**: Course introduction
+  - No class on Monday
+  - Introduction to algorithm engineering
+  - Overview of a course on algorithm analysis
   - Prepare for an algorithm engineering project
+- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Algorithm engineering project
+- {{< iconify game-icons team-idea size=18px >}} **Friday**: Continue the algorithm engineering project
 
-- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Algorithm Engineering Project
+## Project
 
-- {{< iconify game-icons team-idea size=18px >}} **Friday**: Algorithm All-Hands Session
+### Goal
 
-## Course Slides
+To build and use a Python program, called `systemsense`, that makes it possible
+to "sense" the characteristics of an execution platform and characterize its
+performance with microbenchmarks, thereby setting the stage for
+future algorithm engineering projects.
+
+### Steps
+
+- Use [System Sense](https://github.com/Algorithmology/algorithmology-setup-starter) as your template repository
+- Install the project's dependencies using `devenv`
+- Follow the instructions to complete the project
+- Schedule [office hours](https://www.gregorykapfhammer.com/schedule/) if you
+have questions
+
+::: {.callout-note appearance="minimal" title="Student Insights" collapse="false"}
+
+- "If a function is not fully tested, any number of bugs could come up during the
+process of running and evaluating it, muddying the performance results."
+**Mordred Boulais**
+
+- "Operating systems each store and reference their own diagnostic information in
+distinct ways. Although some operating systems and computer architectures are
+obsolete from the perspective of a developer, it is important to note that each
+operating system and processor architecture was built for a specific purpose,
+just like we as humans are made with a specific purpose." **Simon Jones**
+
+- "The way modules, files, and function were written ensured that students with
+different computers would have comparable results. This is important so that
+going forward we can accurately compare our results. Metaphorically speaking, we
+need to compare apples to apples and oranges to oranges and not apples to
+oranges." **Rebekah Rudd**
+
+:::
+
+## Slides
 
 ```{=html}
 <iframe class="slide-deck" src="../../slides/weekone/"></iframe>
 ```
+
+{{< iconify majesticons presentation-play size=18px >}} Full Screen: [Week One: Characterizing the Execution Environment](../../slides/weekone/)
