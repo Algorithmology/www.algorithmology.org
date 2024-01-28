@@ -44,8 +44,22 @@ listing:
     - Analyze and interpret the results
     - Draw conclusions and make recommendations
 - {{< iconify game-icons team-idea size=18px >}} **Friday**: Algorithm All-Hands Session
-    - **Team One**: Leveraging prior work, suggest a research question
-        - *Current Week*: Come to class with a research question
-        - *Following Week*:
-          - Publish answer(s) to the course web site
-          - Present answer(s) to the research question
+    - **Cadence**: Two weeks devoted to **task one** and then two weeks for **task two**
+    - **Task One**: Leveraging prior work, suggest a research question
+        - **Goal**: *Scientific study in algorithmology*
+        - **Current Week**: Come to class with a proposed research question
+          - Design and conduct an experiment
+          - Analyze and interpret the results
+          - Create a web-based slide deck to present the results
+        - **Following Week**:
+          - Present the slides published to the course web site
+          - Explain answer(s) to the research question
+    - **Task Two**: Leveraging prior work, release useful function(s)
+        - **Goal**: *Engineering exploration in algorithmology*
+        - **Current Week**: Come to class with a proposed function for implementation
+          - Identify useful function(s) for refinement
+          - Explain steps for improving the function(s)
+          - Create a pull request and follow it through review
+        - **Following Week**:
+          - Give an overview of the completed function(s)
+          - Give a demonstration of a command-line tool using the function(s)
