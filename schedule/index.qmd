@@ -16,7 +16,14 @@ listing:
       - "description"
 ---
 
-## Weekly Cadence
+## Weekly Schedule
+
+:::{#featured-weeks}
+:::
+
+## Additional Details
+
+### Weekly Cadence
 
 - {{< iconify fa6-solid people-line size=18px >}} **Monday and Wednesday**: Algorithm Analysis Exposition
   - Introduction to scientific, technical, and engineering topics:
@@ -42,9 +49,3 @@ listing:
         - *Following Week*:
           - Publish answer(s) to the course web site
           - Present answer(s) to the research question
-
-## Weekly Schedule
-
-:::{#featured-weeks}
-:::
-
