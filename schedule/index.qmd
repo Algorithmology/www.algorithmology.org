@@ -7,21 +7,26 @@ toc: true
 ## Weekly Cadence
 
 - {{< iconify fa6-solid people-line size=18px >}} **Monday and Wednesday**: Algorithm Analysis Exposition
-  - *Introduction to scientific, technical, and engineering topics*:
+  - Introduction to scientific, technical, and engineering topics:
     - Data structures and algorithms
     - Performance evaluation techniques
     - Software engineering best practices
     - Prepare for an algorithm engineering project
 - {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Project Development
-  - *Implement data structure(s) and algorithm(s)*
-  - *Implement a performance evaluation framework*
-  - *Design and conduct an experiment*
+  - **Week One**: Implement data structure(s) and algorithm(s)
+  - **Week One**: Implement a performance evaluation framework
+  - **Week Two**: Design and conduct an experiment
+    - Demonstrate implementation of completed system
     - Document the experimental design
     - State research question(s)
     - Define evaluation metrics
-    - Project demonstration
+    - Conduct the experiment
+    - Analyze the results
+    - Interpret the results
+    - Draw conclusions
 - {{< iconify game-icons team-idea size=18px >}} **Friday**: Algorithm All-Hands Session
-    - *Publish executive summaries to the Developer Development blog*:
-        - Publication of next SE executive summary
-        - Publication of next FB or DB executive summary
-        - Confirmation of readiness for next week's in-class discussions
+    - **Team One**: Leveraging prior work, suggest a research question
+        - *Current Week*: Come to class with a research question
+        - *Following Week*: Publish answer(s) to the course web site
+        - *Following Week*: Present answer(s) to the research question
+
