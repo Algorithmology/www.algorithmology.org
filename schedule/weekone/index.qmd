@@ -1,0 +1,25 @@
+---
+title: Equipping Algorithm Engineers
+description: "Steps for Ensuring Success in Algorithm Analysis"
+date: 2024-01-16
+layout: full
+toc: true
+---
+
+## Weekly Activities
+
+- {{< iconify fa6-solid people-line size=18px >}} **Monday and Wednesday**: Course Introduction
+  - Data structures and algorithms
+  - Performance evaluation techniques
+  - Software engineering best practices
+  - Prepare for an algorithm engineering project
+
+- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Algorithm Engineering Project
+
+- {{< iconify game-icons team-idea size=18px >}} **Friday**: Algorithm All-Hands Session
+
+## Course Slides
+
+```{=html}
+<iframe class="slide-deck" src="../../slides/weekone/"></iframe>
+```
