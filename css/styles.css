@@ -56,3 +56,7 @@ h2,
   margin-bottom: 1rem;
   font-weight: 600;
 }
+
+.quarto-listing {
+  padding-bottom: 0em;
+}
