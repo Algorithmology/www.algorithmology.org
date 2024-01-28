@@ -12,21 +12,22 @@ toc: true
     - Performance evaluation techniques
     - Software engineering best practices
     - Prepare for an algorithm engineering project
-- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Project Development
-  - **Week One**: Implement data structure(s) and algorithm(s)
-  - **Week One**: Implement a performance evaluation framework
+- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Algorithm Engineering Project
+  - **Week One**: Design, implement, test, document, and maintain:
+      - Data structure(s) and algorithm(s)
+      - Performance evaluation framework
   - **Week Two**: Design and conduct an experiment
     - Demonstrate implementation of completed system
     - Document the experimental design
-    - State research question(s)
+    - Pose research question(s)
     - Define evaluation metrics
     - Conduct the experiment
-    - Analyze the results
-    - Interpret the results
-    - Draw conclusions
+    - Analyze and interpret the results
+    - Draw conclusions and make recommendations
 - {{< iconify game-icons team-idea size=18px >}} **Friday**: Algorithm All-Hands Session
     - **Team One**: Leveraging prior work, suggest a research question
         - *Current Week*: Come to class with a research question
-        - *Following Week*: Publish answer(s) to the course web site
-        - *Following Week*: Present answer(s) to the research question
+        - *Following Week*:
+          - Publish answer(s) to the course web site
+          - Present answer(s) to the research question
 
