@@ -1,7 +1,27 @@
 ---
 title: Schedule
 layout: full
-toc: false
+toc: true
 ---
 
-## Check Back Soon!
+## Weekly Cadence
+
+- {{< iconify fa6-solid people-line size=18px >}} **Monday and Wednesday**: Algorithm Analysis Exposition
+  - *Introduction to scientific, technical, and engineering topics*:
+    - Data structures and algorithms
+    - Performance evaluation techniques
+    - Software engineering best practices
+    - Prepare for an algorithm engineering project
+- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Project Development
+  - *Implement data structure(s) and algorithm(s)*
+  - *Implement a performance evaluation framework*
+  - *Design and conduct an experiment*
+    - Document the experimental design
+    - State research question(s)
+    - Define evaluation metrics
+    - Project demonstration
+- {{< iconify game-icons team-idea size=18px >}} **Friday**: Algorithm All-Hands Session
+    - *Publish executive summaries to the Developer Development blog*:
+        - Publication of next SE executive summary
+        - Publication of next FB or DB executive summary
+        - Confirmation of readiness for next week's in-class discussions
