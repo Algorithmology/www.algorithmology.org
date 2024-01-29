@@ -4,7 +4,7 @@ description: "Steps for Ensuring Success in Algorithm Analysis"
 date: 2024-01-16
 layout: full
 toc: true
-toc-depth: 5
+toc-expand: 3
 ---
 
 ## Exploration
