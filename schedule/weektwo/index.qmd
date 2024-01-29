@@ -1,6 +1,6 @@
 ---
 title: Reviewing Python Programming
-description: "Understand the Basics of Programming in Python"
+description: "Understand Python Programming Basics"
 date: 2024-01-22
 layout: full
 toc: true
