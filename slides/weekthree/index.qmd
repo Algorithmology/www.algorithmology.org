@@ -43,6 +43,32 @@ print(isinstance(mylist, str))
 
 :::
 
+## Existing Types Available in Python
+
+```{python}
+def example_function():
+  return 0
+print(type(example_function))
+```
+
+<p class="codespacer">
+
+```{python}
+def generator_example(n):
+  for i in range(n):
+    yield i
+print(type(generator_example))
+print(type(generator_example(5)))
+```
+
+::: {.fragment .fade style="margin-top: 0.5em; font-size: 0.9em;"}
+
+- Functions and generators have their own types
+- What are the similarities and differences for these two types?
+
+:::
+
+
 ## What are the performance trade-offs associated with checking to see if a collection contains a value?
 
 ::: {.fragment .fade-right}
