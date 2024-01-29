@@ -65,7 +65,7 @@ format:
 
 :::
 
-# How Can We Characterize the Execution Environment of a Program?
+# How can we characterize the execution environment of a program?
 
 - *Sensing* properties of a system with Python
 - *Characterizing* system performance with micro-benchmarks
@@ -111,5 +111,59 @@ def get_cpu() -> Dict[str, str]:
 - Use the `inspect` package to detect the name of the function
 - Use the `platform` package to detect the CPU architecture
 - Ensure that the function works in all execution environments!
+
+:::
+
+## Detecting disk details
+
+```python
+def get_disk() -> Dict[str, str]:
+    """Return disk space usage."""
+    function_name = inspect.stack()[0][3]
+    function_name = function_name.split("_")[1]
+    if platform.system() == constants.system.Windows:
+        total_disk = psutil.disk_usage("C:\\").total
+        used_disk = psutil.disk_usage("C:\\").used
+    else:
+        total_disk = psutil.disk_usage("/").total
+        used_disk = psutil.disk_usage("/").used
+    total_disk_gb = total_disk / (1024**3)
+    used_disk_gb = used_disk / (1024**3)
+    disk = f"Using {used_disk_gb:.2f} GB of {total_disk_gb:.2f} GB"
+    return {function_name: disk}
+```
+
+::: {.fragment .fade style="margin-top: 0.5em; font-size: 0.9em;"}
+
+- Use the `psutil` package to detect disk usage details
+- Customize the function for different operating systems
+
+:::
+
+## Performing a micro-benchmark
+
+
+```python
+def time_benchmark_concatenation(
+    repeat: int = 3, number: int = 100000, size: int = 100
+) -> Dict[str, str]:
+    """Time the benchmark_concatenation function."""
+    function_name = inspect.stack()[0][3].split(_)[2]
+    performance_list = timeit.repeat(
+        "benchmark.benchmark_concatenation(size)",
+        repeat=repeat,
+        setup=f"""
+from systemsense import benchmark
+size = {size}
+        """,
+        number=number,
+    )
+    return {function_name: str(performance_list)}
+```
+
+::: {.fragment .fade style="margin-top: 0.5em; font-size: 0.9em;"}
+
+- Use `timeit` to benchmark string concatenation function
+- Call function subject to benchmarking multiple times
 
 :::
