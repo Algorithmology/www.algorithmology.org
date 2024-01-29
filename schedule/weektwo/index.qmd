@@ -9,10 +9,11 @@ toc-expand: 3
 
 ## Exploration
 
-- {{< iconify fa6-solid book-open size=18px >}} Read chapters 1 and 2 of [A First
-Course on Data Structures in
+- {{< iconify fa6-solid book-open size=18px >}} Read chapters 1 and 2 of [A
+First Course on Data Structures in
 Python](https://donsheehy.github.io/datastructures/)
-- {{< iconify fa6-brands github size=18px >}} Overview the `ds2` package in
+- {{< iconify fa6-brands github size=18px >}} Overview functions in `ds2`
+package of
 [donsheehy/datastructures](https://github.com/donsheehy/datastructures)
 
 ## Activities
