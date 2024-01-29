@@ -126,4 +126,4 @@ oranges." **Rebekah Rudd**
 <iframe class="slide-deck" src="../../slides/weekone/"></iframe>
 ```
 
-{{< iconify majesticons presentation-play size=18px >}} Full Screen: [Week One: Characterizing the Execution Environment](../../slides/weekone/)
+{{< iconify majesticons presentation-play size=18px >}} Full Screen: [Week One: Introduction to Algorithm Analysis](../../slides/weekone/)
