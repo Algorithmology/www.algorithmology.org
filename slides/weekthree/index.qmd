@@ -2,7 +2,7 @@
 title: "Object-Oriented Programming in Python"
 echo: true
 description: "What are some of the key features of Python and how do we measure their performance?"
-date: "2024-01-22"
+date: "2024-01-29"
 date-format: long
 author: Gregory M. Kapfhammer
 format:
@@ -69,7 +69,7 @@ print(type(generator_example(5)))
 :::
 
 
-## What are the performance trade-offs associated with checking to see if a collection contains a value?
+## What if we don't create objects?
 
 ::: {.fragment .fade-right}
 
