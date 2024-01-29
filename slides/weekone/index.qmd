@@ -7,9 +7,11 @@ author: Gregory M. Kapfhammer
 format:
   revealjs:
     theme: default
+    css: styles.css
     history: false
     scrollable: true
     transition: slide
+    highlight-style: github
     footer: "Algorithmology"
 ---
 
@@ -20,6 +22,19 @@ format:
 - Algorithms that process data structures
 - Experimental and theoretical analysis
 - "Algorithmology" is both *science* and *engineering*
+:::
+
+## Algorithm analysis process
+
+::: incremental
+- Design, implement, and test
+  - Data structures and algorithms
+  - Benchmark framework
+  - Data analysis tools
+- Create execution environments
+  - Repeatable and reproducible
+  - Controlled and varied
+  - Local and in the cloud
 :::
 
 # How Can We Characterize the Execution Environment of a Program?
