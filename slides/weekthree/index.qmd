@@ -265,3 +265,43 @@ class PolygonCollection:
 
 :::
 
+## Using composition in Python
+
+```{python}
+class MyLimitedList:
+    def __init__(self):
+        self._L = []
+
+    def append(self, item):
+        self._L.append(item)
+
+    def __getitem__(self, index):
+        return self._L[index]
+
+limited = MyLimitedList()
+limited.append(1)
+limited.append(10)
+limited.append(100)
+print(limited[2])
+```
+
+::: {.fragment .fade-up style="margin-top: -0.1em; font-size: 0.85em;"}
+
+- Composition means that one object *is part* of another object
+- The `MyLimitedList` class is composed of a list called `_L`
+
+:::
+
+## What are the performance trade-offs associated with using objects?
+
+::: {.fragment .fade-right}
+
+- Questions to consider when designing an experiment:
+  - Cost of calling a method?
+  - Cost of accessing an attribute?
+  - How quickly can your program process data?
+  - What is the space overhead of using objects?
+- What data structures are best for your application?
+- How do data structures influence algorithm performance?
+
+:::
