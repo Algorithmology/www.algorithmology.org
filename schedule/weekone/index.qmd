@@ -1,6 +1,6 @@
 ---
 title: Equipping Algorithm Engineers
-description: "Steps for Ensuring Success in Algorithm Analysis"
+description: "Ensure Success in Algorithm Analysis"
 date: 2024-01-16
 layout: full
 toc: true
