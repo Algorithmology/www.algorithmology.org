@@ -14,7 +14,7 @@ website:
   reader-mode: false
   back-to-top-navigation: true
   page-navigation: true
-  favicon: "icons/microscope.svg"
+  favicon: "icons/algorithmology.svg"
   open-graph: true
   site-url: https://www.algorithmology.org/
   repo-url: https://github.com/Algorithmology/www.algorithmology.org
