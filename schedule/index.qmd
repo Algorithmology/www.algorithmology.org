@@ -55,7 +55,7 @@ listing:
           - Present the slides published to the course web site
           - Explain answer(s) to the research question
     - **Task Two**: Leveraging prior work, release useful function(s)
-        - **Goal**: *Engineering exploration in algorithmology*
+        - **Goal**: *Engineering effort in algorithmology*
         - **Current Week**: Come to class with a proposed function for implementation
           - Identify useful function(s) for refinement
           - Explain steps for improving the function(s)
