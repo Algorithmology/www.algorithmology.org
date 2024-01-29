@@ -13,6 +13,15 @@ format:
     footer: "Algorithmology"
 ---
 
+# What is algorithm analysis?
+
+::: incremental
+- Data structures that organize data
+- Algorithms that process data structures
+- Experimental and theoretical analysis
+- "Algorithmology" is both *science* and *engineering*
+:::
+
 # How Can We Characterize the Execution Environment of a Program?
 
 - *Sensing* properties of a system with Python
