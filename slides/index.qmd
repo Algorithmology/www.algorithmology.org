@@ -4,8 +4,8 @@ layout: full
 toc: true
 listing:
   - id: featured-presentations
-    type: table
-    fields: [title,description]
+    type: default
+    fields: [date,title,description]
     field-display-names:
       description: "Question"
     contents:
@@ -20,7 +20,9 @@ Interesting in learning more about how to use experimental and analytical
 techniques to study algorithms and data structures? Checkout these slide decks
 to learn more! Each deck explores a specific topic in connection with chapters
 in the book [A First Course on Data Structures in
-Python](https://donsheehy.github.io/datastructures/).
+Python](https://donsheehy.github.io/datastructures/). Finally, make sure to
+review the [course schedule](../schedule/index.qmd) for more details about how
+these slides connect to various course projects.
 
 :::{#featured-presentations}
 :::
