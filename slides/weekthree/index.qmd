@@ -1,0 +1,331 @@
+---
+title: "Object-Oriented Programming in Python"
+echo: true
+description: "What are some of the key features of Python and how do we measure their performance?"
+date: "2024-01-22"
+date-format: long
+author: Gregory M. Kapfhammer
+format:
+  revealjs:
+    theme: default
+    css: styles.css
+    history: false
+    scrollable: true
+    transition: slide
+    highlight-style: github
+    footer: "Algorithmology"
+---
+
+# What are the key features of the Python programming language?
+
+::: incremental
+- Defining and evaluating expressions
+- Declaring and using variables with types
+- Creating and using collections
+:::
+
+# Thinking and writing about Python programs
+
+::: incremental
+- **Sequence**: Run operations one after another in an order
+- **Selection**: Decide which operations will execute
+- **Iteration**: Repeat an operation a specific number of times
+:::
+
+## Sequence: Run operations one after another in a specified order
+
+```python
+def detect() -> Dict[str, str]:
+    """Run all of the sub-detects."""
+    run_output: List[Dict[str, str]] = []
+    run_output = execute.execute_by_name_filter(
+        constants.project.Detect_Module, constants.project.Detect_Filter
+    )
+    return util.union_list_of_dicts(run_output)
+```
+
+::: {.fragment .fade style="margin-top: 0.5em; font-size: 0.9em;"}
+
+- Calling the `detect` function causes each line to run sequentially
+
+- Invoke `execute_by_name_filter` function with two inputs
+
+- Invoke the `union_list_of_dicts` function with one input
+
+- Return output of `union_list_of_dicts` function to caller
+
+:::
+
+## Selection: Decide which operations will execute with conditionals
+
+```python
+if platform.system() == "Windows":
+    total_disk = psutil.disk_usage("C:\\").total
+    used_disk = psutil.disk_usage("C:\\").used
+else:
+    total_disk = psutil.disk_usage("/").total
+    used_disk = psutil.disk_usage("/").used
+```
+
+::: {.fragment .fade style="margin-top: 0.5em; font-size: 0.925em;"}
+
+- The `psutil` module provides access to system information
+
+- The `disk_usage` function returns information about disk usage
+
+- But `disk_usage` needs different inputs for the filesystem root!
+
+- Conditional logic determines the input to `disk_usage`
+
+:::
+
+## Iteration: Repeat an operation a specific number of times
+
+```python
+def union_list_of_dicts(container: List[Dict[str, str]]) -> Dict[str, str]:
+    """Union a list of dictionaries into a single dictionary."""
+    output: Dict[str, str] = {}
+    for dictionary in container:
+        output = {**output, **dictionary}
+    return output
+```
+
+::: {.fragment .fade style="margin-top: 0.5em; font-size: 0.925em;"}
+
+- `output` is a dictionary that starts out empty
+
+- `container` is a list of dictionaries
+
+- The `for` loop iterates through each dictionary in `container`
+
+- The body of the loop merges the dictionaries into `output`
+
+:::
+
+# Collections contain multiple values
+
+::: {.fragment .fade-right}
+- Strings: `str` in Python
+- Lists: `list` in Python
+- Tuples: `tuple` in Python
+- Dictionaries: `dict` in Python
+- Sets: `set` in Python
+:::
+
+::: {.fragment .fade-up style="margin-top: -0.5em;"}
+Let's explore each of these in greater detail!
+:::
+
+## Creating and using a string
+
+```{python}
+s = "Hello, "
+t = "World."
+u = s + t
+print(type(u))
+print(u)
+print(u[9])
+n = str(9876)
+print(n[2])
+```
+
+::: {.fragment .fade-up style="margin-top: -0.1em; font-size: 0.9em;"}
+
+- What is the purpose of the `type` function?
+- What is the purpose of the `u[9]` notation?
+- What is the purpose of the `str` function?
+
+:::
+
+## Creating and using a list
+
+```{python}
+numbers = [1,2,3,4,5,6]
+print(type(numbers))
+numbers.append(100)
+print("The first item is", numbers[0])
+print("The second item is", numbers[1])
+print("The last item is", numbers[-1])
+print("The second to last item is", numbers[-2])
+numbers[2] = "skip"
+numbers[3] = "a"
+numbers[4] = "few"
+numbers[-2] = 99
+print(numbers)
+```
+
+::: {.fragment .fade-up style="margin-top: -0.1em; font-size: 0.9em;"}
+
+What does this illustrate about the `list` type in Python?
+
+:::
+
+## Creating and using a tuple
+
+```{python}
+data = (1, 2, "skip a few", 99, 100)
+print(type(data))
+print(data)
+print(data[4])
+```
+
+::: {.fragment .fade-up style="margin-top: -0.1em; font-size: 0.87em;"}
+
+- What are some invalid operations on a `tuple`?
+  - `data[4] = 100`
+  - `data.append(100)`
+  - `data.remove(100)`
+  - `data.insert(100)`
+  - `data.pop(100)`
+
+:::
+
+## Creating and using a dictionary
+
+```{python}
+d = dict()
+d[5] = "five"
+d[2] = "two"
+d["pi"] = 3.1415926
+print(type(d))
+print(d)
+print(d["pi"])
+```
+
+::: {.fragment .fade-up style="margin-top: -0.1em; font-size: 0.87em;"}
+
+- Dictionaries store key-value pairs
+- The keys can be of any data type that is hashable
+- The values can be of any data type
+- It is possible to lookup a value by its key
+
+:::
+
+## Creating and using a set
+
+```{python}
+values = {2,1}
+print(type(values))
+values.add(3)
+values.add(2)
+values.add(2)
+values.add(2)
+print(values)
+```
+
+::: {.fragment .fade-up style="margin-top: -0.1em; font-size: 0.87em;"}
+
+- Sets do not store duplicate values
+- The data in a set must be hashable
+- The `add` function places more data in a set
+- Be careful, `{}` is an empty dictionary!
+
+:::
+
+# Common operations to perform on a collection
+
+::: {.fragment .fade-right}
+- Determine the *length* of a collection
+- *Add* an element to or *remove* element from a collection
+- *Access* an element in a collection
+- Determine if a collection *contains* an element
+- *Iterate* through all of the elements in a collection
+- *Slice* a collection to get a subset of its elements
+:::
+
+## Sizing and slicing collections
+
+```{python}
+a = "a string"
+b = ["my", "second", "favorite", "list"]
+c = (1, "tuple")
+d = {"a": "b", "b": 2, "c": False}
+e = {1,2,3,4,4,4,4,2,2,2,1}
+print(len(a), len(b), len(c), len(d), len(e))
+```
+
+<p class="codespacer">
+
+```{python}
+a = "a string"
+b = ["my", "second", "favorite", "list"]
+c = (1, 2,3,"tuple")
+print(a[3:7])
+print(a[1:-2])
+print(b[1:])
+print(c[:2])
+```
+
+## Iterating through lists and tuples
+
+```{python}
+mylist = [1,3,5]
+mytuple = (1, 2, "skip a few", 99, 100)
+print("List:")
+for item in mylist:
+  print("  " + str(item))
+print()
+print("Tuple:")
+for item in mytuple:
+  print("  " + str(item))
+```
+
+## Iterating through sets and strings
+
+```{python}
+myset = {"a", "b", "z"}
+mystring = "abz"
+
+print("Set:")
+for element in myset:
+  print("  " + element)
+
+print()
+print("String:")
+for character in mystring:
+  print("  " + character)
+```
+
+## Iterating through a dictionary
+
+```{python}
+mydict = {"a": 96, "b": 97, "c": 98}
+for key in mydict:
+  print(key, mydict[key])
+print()
+for key, value in mydict.items():
+  print(key, value)
+print()
+for key in mydict.keys():
+  print(key, mydict[key])
+```
+
+## Containment checking for collections
+
+```{python}
+a = "a string"
+b = ["my", "second", "favorite", "list"]
+c = (1, "tuple")
+d = {"a": "b", "b": 2, "c": False}
+e = {1,2,3,4,4,4,4,2,2,2,1}
+print("str" in a)
+print("string" in a)
+print("my" in b)
+print("tuple" in c)
+print("a" in d)
+print("b" in d)
+print(4 in e)
+```
+
+## What are the performance trade-offs associated with checking to see if a collection contains a value?
+
+::: {.fragment .fade-right}
+
+- Questions to consider when designing an experiment:
+  - Type of the collection?
+  - Contents of the collection?
+  - Size of the collection?
+  - How often will the collection change?
+  - How can we measure time and space overhead?
+
+:::
