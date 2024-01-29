@@ -32,9 +32,10 @@ listing:
     - Software engineering best practices
     - Prepare for an algorithm engineering project
 - {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Algorithm Engineering Project
-  - **Week One**: Design, implement, test, document, and maintain:
+  - **Week One**: Design, implement, test, document, and maintain
       - Data structure(s) and algorithm(s)
-      - Performance evaluation framework
+      - Benchmark evaluation framework
+      - Data analysis and visualization tools
   - **Week Two**: Design and conduct an experiment
     - Demonstrate implementation of completed system
     - Document the experimental design
