@@ -17,14 +17,16 @@ of [donsheehy/datastructures](https://github.com/donsheehy/datastructures)
 
 ## Activities
 
-- {{< iconify fa6-solid people-line size=18px >}} **Monday and Wednesday**: Course introduction
-  - Review the basic building blocks of a Python program
-    - Sequence
-    - Selection
-    - Iteration
-  - Consider different ways to create collections in Python
-  - Measure the performance trade-offs of Python's collections
-- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Algorithm engineering project
+- {{< iconify fa6-solid people-line size=18px >}} **Monday and Wednesday**:
+Object-oriented programming
+  - Review the goals of object-oriented programming
+  - Review the principles of object-oriented programming
+    - Abstraction
+    - Inheritance
+    - Encapsulation
+    - Polymorphism
+  - Examine source code segments to illustrate trade-offs
+- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Continue algorithm engineering project
 - {{< iconify game-icons team-idea size=18px >}} **Friday**: Continue the algorithm engineering project
 
 ## Project
@@ -49,7 +51,7 @@ have questions
 ## Slides
 
 ```{=html}
-<iframe class="slide-deck" src="../../slides/weektwo/"></iframe>
+<iframe class="slide-deck" src="../../slides/weekthree/"></iframe>
 ```
 
-{{< iconify majesticons presentation-play size=18px >}} Full Screen: [Week Two: Exploring the Python Programming Language](../../slides/weektwo/)
+{{< iconify majesticons presentation-play size=18px >}} Full Screen: [Week Three: Object-Oriented Programming in Python](../../slides/weekthree/)
