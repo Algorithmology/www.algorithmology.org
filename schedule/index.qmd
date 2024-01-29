@@ -4,7 +4,9 @@ layout: full
 toc: true
 listing:
   - id: featured-weeks
-    type: table
+    type: default
+    sort-ui: true
+    filter-ui: true
     fields: [date,title,description]
     field-display-names:
       description: "Objective"
