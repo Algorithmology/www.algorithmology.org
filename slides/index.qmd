@@ -5,6 +5,8 @@ toc: true
 listing:
   - id: featured-presentations
     type: default
+    sort-ui: true
+    filter-ui: true
     fields: [date,title,description]
     field-display-names:
       description: "Question"
