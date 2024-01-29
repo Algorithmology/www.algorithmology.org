@@ -24,7 +24,7 @@ format:
 - Creating and using collections
 :::
 
-# Thinking and Writing About Python Programs
+# Thinking and writing about Python programs
 
 ::: incremental
 - **Sequence**: Run operations one after another in an order
