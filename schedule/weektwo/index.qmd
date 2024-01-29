@@ -25,7 +25,7 @@ package of
     - Iteration
   - Consider different ways to create collections in Python
   - Measure the performance trade-offs of Python's collections
-- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Algorithm engineering project
+- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Start algorithm engineering project
 - {{< iconify game-icons team-idea size=18px >}} **Friday**: Continue the algorithm engineering project
 
 ## Project
