@@ -1,5 +1,5 @@
 ---
-title: "Characterizing the Execution Environment"
+title: "Introduction to Algorithm Analysis"
 description: "How can we use Python packages to characterize the runtime environment used during experiments?"
 date: "2024-01-15"
 date-format: long
