@@ -37,7 +37,54 @@ format:
   - Local and in the cloud
 :::
 
+## Examples of four programs to study through benchmarks
+
+- Terminal window shell like `bash` or `zsh`
+- Terminal prompt like `powerlevel10k` or `starship`
+- Web browser like `firefox` or `chrome`
+- Text editor like `vim` or `emacs`
+
+::: {.fragment .fade style="margin-top: 0.25em; font-size: 0.9em;"}
+
+> How do we characterize the execution environment of these programs?
+> How do we compare their performance in different configurations?
+> How do we improve their performance?
+
+:::
+
+## Wow, measuring and improving the performance of any complex program is very challenging!
+
+::: {.fragment}
+
+- Differences in the execution environment
+- Difficulty in measuring the performance
+- Challenging to compare the performance
+- Hard to repeat and reproduce experiments
+- Results change as the program evolves
+- Caution needed to avoid over-optimization
+
+:::
+
 # How Can We Characterize the Execution Environment of a Program?
 
 - *Sensing* properties of a system with Python
 - *Characterizing* system performance with micro-benchmarks
+
+## Using the `systemsense` tool
+
+```{code-line-numbers="true" code-block-border="true"}
+ Usage: systemsense [OPTIONS] COMMAND [ARGS]...
+╭─ Commands ────────────────────────────────────────────────╮
+│ benchmarkinfo  Benchmark the system used for experiments. │
+│ completeinfo   Detect information about and then          │
+│                benchmark the system used for experiments. │
+│ systeminfo     Detect all relevant information about the  │
+│                system used for experiments.               │
+╰───────────────────────────────────────────────────────────╯
+```
+
+- `systeminfo`: use packages like `psutil` to collect relevant information
+about the execution environment, suitable for characterizing local and
+cloud-based systems
+- `benchmarkinfo`: use packages like `timeit` to run simple micro-benchmarks
+involving basic operations so as to characterize baseline system performance
