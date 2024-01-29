@@ -65,6 +65,37 @@ format:
 
 :::
 
+## Learn more about algorithm analysis
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+{{< iconify fa6-solid book-open >}} Read chapters 1 and 2 in "[A First Course on
+Data Structures in Python](https://donsheehy.github.io/datastructures/)"
+
+:::
+
+::: {.column width="50%"}
+
+{{< iconify fa6-brands github >}} Overview the `ds2` package in
+[donsheehy/datastructures](https://github.com/donsheehy/datastructures) book and package code
+
+:::
+
+::::
+
+::: {.fragment .fade-down style="font-size: 0.9em;"}
+
+- The FCDSP book is both "simple" and "complex"
+- Coverage of introductory topics:
+  - Python programming
+  - Software testing
+- Data structures and algorithms
+- Experimental and theoretical analysis of performance
+
+:::
+
 # How can we characterize the execution environment of a program?
 
 - *Sensing* properties of a system with Python
@@ -83,11 +114,15 @@ format:
 ╰───────────────────────────────────────────────────────────╯
 ```
 
+::: {.fragment .fade-up style="font-size: 0.9em;"}
+
 - `systeminfo`: use packages like `psutil` to collect relevant information
 about the execution environment, suitable for characterizing local and
 cloud-based systems
 - `benchmarkinfo`: use packages like `timeit` to run simple micro-benchmarks
 involving basic operations so as to characterize baseline system performance
+
+:::
 
 ## Detecting CPU details
 
