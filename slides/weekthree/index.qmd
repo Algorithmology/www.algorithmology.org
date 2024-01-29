@@ -118,3 +118,13 @@ print(u + v)
 ```
 
 :::
+
+# What are the principles of object-oriented programming?
+
+::: incremental
+- Abstraction
+- Inheritance
+- Encapsulation
+- Polymorphism
+:::
+
