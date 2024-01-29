@@ -5,7 +5,3 @@ toc: false
 ---
 
 ![](images/Algorithmology-Logo.svg){fig-align="center"}
-
-## Introduction
-
-Make sure to check out the [slides](slides/index.qmd)!
