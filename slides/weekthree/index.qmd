@@ -196,6 +196,73 @@ class Polygon:
 
 - The `Polygon` class is a *superclass* of `Triangle` and `Square`
 - The `Triangle` and `Square` classes are *subclasses* of `Polygon`
-- What is the relationship between a `Triangle` and a `Square`?
+- The `Polygon` class is a *generalization* of `Triangle` and `Square`
 
 :::
+
+## Connecting `Triangle` and `Square` to the `Polygon` Superclass
+
+
+```{python}
+class Triangle(Polygon):
+    def __init__(self, points):
+        Polygon.__init__(self, 3, points)
+
+    def __str__(self):
+        return "I’m a triangle."
+
+class Square(Polygon):
+    def __init__(self, points):
+        Polygon.__init__(self, 4, points)
+
+    def __str__(self):
+        return "I’m so square."
+```
+
+::: {.fragment .fade-up style="margin-top: 0.5em; font-size: 0.8em;"}
+
+- Forms an "is-a" relationship between:
+  - `Triangle` and `Polygon` and also `Square` and `Polygon`
+
+:::
+
+## What is duck typing? How does it work in Python?
+
+- Python is a dynamically typed language
+
+- Python uses duck typing to determine types
+
+- Remember the silly adage of "If it walks like a duck and quacks like a duck,
+  then it must be a duck"
+
+- Inheritance is not only way to create an "is-a"
+  relationship!
+
+- Yet, inheritance makes the "is-a" relationship explicit
+
+- **Let's explore an example of duck typing in Python!**
+
+## Connecting `Triangle` and `Square` to the `Polygon` Superclass
+
+
+```{python}
+class PolygonCollection:
+    def __init__(self):
+        self._triangles = []
+        self._squares = []
+
+    def add(self, polygon):
+        if polygon.sides() == 3:
+            self._triangles.append(polygon)
+        if polygon.sides() == 4:
+            self._squares.append(polygon)
+```
+
+::: {.fragment .fade-up style="margin-top: 0.5em; font-size: 0.85em;"}
+
+- The `polygon` parameter can be any object with a `sides` method
+- This is an example of parametric polymorphism in Python
+- Again, inheritance is not the only way to create an "is-a" relationship!
+
+:::
+
