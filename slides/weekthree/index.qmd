@@ -1,7 +1,7 @@
 ---
 title: "Object-Oriented Programming in Python"
 echo: true
-description: "What are some of the key features of Python and how do we measure their performance?"
+description: "What are the key features of object-oriented programming in Python?"
 date: "2024-01-29"
 date-format: long
 author: Gregory M. Kapfhammer
