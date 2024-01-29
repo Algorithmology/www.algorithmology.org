@@ -128,3 +128,74 @@ print(u + v)
 - Polymorphism
 :::
 
+## Encapsulation with `Triangle`
+
+```{python}
+class Triangle:
+    def __init__(self, points):
+        self._sides = 3
+        self._points = list(points)
+        if len(self._points) != 3:
+            raise ValueError("Wrong number of points.")
+
+    def sides(self):
+        return 3
+
+    def __str__(self):
+        return "I’m a triangle."
+```
+
+::: {.fragment .fade-right style="margin-top: 0.5em; font-size: 0.9em;"}
+
+- What state does a `Triangle` object have?
+- How can we access the state of a `Triangle` object?
+- What are the benefits of encapsulation?
+
+:::
+
+## Encapsulation with `Square`
+
+```{python}
+class Square:
+    def __init__(self, points):
+        self._sides = 4
+        self._points = list(points)
+        if len(self._points) != 4:
+            raise ValueError("Wrong number of points.")
+
+    def sides(self):
+        return 4
+
+    def __str__(self):
+        return "I’m so square."
+```
+
+::: {.fragment .fade-right style="margin-top: 0.5em; font-size: 0.9em;"}
+
+- What state does a `Square` object have?
+- How can we access the state of a `Square` object?
+- Again, what are the benefits of encapsulation?
+
+:::
+
+## Wait, what is the relationship between a `Square` and a `Triangle`?
+
+```{python}
+class Polygon:
+    def __init__(self, sides, points):
+        self._sides = sides
+        self._points = list(points)
+        if len(self._points) != self._sides:
+            raise ValueError("Wrong number of points.")
+
+    def sides(self):
+        return self._sides
+```
+
+::: {.fragment .fade-right style="margin-top: 0.5em; font-size: 0.9em;"}
+
+- The `Polygon` class is a *superclass* of `Triangle` and `Square`
+- The `Triangle` and `Square` classes are *subclasses* of `Polygon`
+- What is the relationship between a `Triangle` and a `Square`?
+
+:::
