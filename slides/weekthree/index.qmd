@@ -292,13 +292,60 @@ print(limited[2])
 
 :::
 
+# What is the expected performance overhead of a function call?
+
+::: {.fragment .fade-right}
+
+- Invocation of a function in Python has overhead
+- Function call overhead in Python is reputed to be high
+- Use the Python scripts in
+{{< iconify fa6-brands github >}} [jni/performance-tests](https://github.com/jni/performance-tests)
+
+:::
+
+## Let's measure the overhead of function calls!
+
+::: {.fade-right style="margin-top: -0.1em; font-size: 0.85em;"}
+
+```{python}
+import timeit
+n = int(1e6)
+num_exec = 1
+import f
+for func in filter(lambda f: f.startswith('loop'), sorted(dir(f))):
+    print('====== timing function:', func)
+    print(getattr(f, func).__doc__)
+    t = timeit.timeit(stmt='f.%s(n)' % func,
+                      number=num_exec, globals=globals())
+    per_loop = round(t / n * 1e9)
+    print('time: %ins.\ntheoretical max bandwidth: %.2fMB/s' %
+          (per_loop, 1000 / per_loop))
+```
+
+:::
+
+## Let's run this experiment on your laptop! What are the results?
+
+::: incremental
+
+- Clone this Github repository:
+{{< iconify fa6-brands github >}} [jni/performance-tests](https://github.com/jni/performance-tests)
+- Change into the directory called `function-calls`
+- Run the program called `timer.py` and observe the results
+- Make sure that you review the Python source code in `f.py`
+- What trends did you observe in the results?
+- What are the implications of these experimental results?
+- Share (a) your results and (b) a one-sentence summary!
+
+:::
+
 ## What are the performance trade-offs associated with using objects?
 
 ::: {.fragment .fade-right}
 
 - Questions to consider when designing an experiment:
-  - Cost of calling a method?
-  - Cost of accessing an attribute?
+  - Cost of calling a method or a function?
+  - Cost of accessing an object's attribute?
   - How quickly can your program process data?
   - What is the space overhead of using objects?
 - What data structures are best for your application?
