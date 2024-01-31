@@ -303,7 +303,7 @@ print(limited[2])
 
 :::
 
-## Let's measure the overhead of function calls!
+## Let's measure the time overhead of function calls!
 
 ::: {.fade-right style="margin-top: -0.1em; font-size: 0.85em;"}
 
