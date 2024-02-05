@@ -19,11 +19,13 @@ format:
 # Software programs must work correctly
 
 ::: incremental
+
 - **Data structures**: does each structure store data correctly?
 - **Algorithm**: does each algorithm produce the correct output?
 - **Benchmarks**: is software under study invoked correctly?
 - **Data Storage**: do the benchmarks store data correctly?
 - **Data Analysis**: does the software analyze data correctly?
+
 :::
 
 ## By running a program and checking its output software testing establishes a confidence in its correctness
@@ -131,17 +133,14 @@ class DayOfTheWeek:
 
 :::
 
+# Exploring test-driven development in Python
 
-## What are the performance trade-offs associated with using objects?
+::: incremental
 
-::: {.fragment .fade-right}
-
-- Questions to consider when designing an experiment:
-  - Cost of calling a method or a function?
-  - Cost of accessing an object's attribute?
-  - How quickly can your program process data?
-  - What is the space overhead of using objects?
-- What data structures are best for your application?
-- How do data structures influence algorithm performance?
+- **Data structures**: does each structure store data correctly?
+- **Algorithm**: does each algorithm produce the correct output?
+- **Benchmarks**: is software under study invoked correctly?
+- **Data Storage**: do the benchmarks store data correctly?
+- **Data Analysis**: does the software analyze data correctly?
 
 :::
