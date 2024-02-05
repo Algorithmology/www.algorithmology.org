@@ -10,7 +10,6 @@ website:
   title: "{{< iconify uis microscope size=30px >}} &nbsp; Algorithmology"
   search:
     location: navbar
-    type: textbox
   reader-mode: false
   back-to-top-navigation: true
   page-navigation: true
