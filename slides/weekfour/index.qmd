@@ -135,12 +135,20 @@ class DayOfTheWeek:
 
 # Exploring test-driven development in Python
 
-::: incremental
+::: {.panel-tabset}
 
-- **Data structures**: does each structure store data correctly?
-- **Algorithm**: does each algorithm produce the correct output?
-- **Benchmarks**: is software under study invoked correctly?
-- **Data Storage**: do the benchmarks store data correctly?
-- **Data Analysis**: does the software analyze data correctly?
+## Questions
+
+- Test-driven development asks you to write tests before code:
+    - How will you use a function?
+    - What are its inputs and outputs?
+    - Can you write code to make tests pass?
+
+## Practices
+
+- The TDD mantra is **Red-Green-Refactor**:
+    - **Red**: The tests fail. You haven’t written the code yet!
+    - **Green**: You get the tests to pass by changing the code.
+    - **Refactor**: You clean up the code, removing duplication.
 
 :::
