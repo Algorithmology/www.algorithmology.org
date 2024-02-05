@@ -1,0 +1,355 @@
+---
+title: "Software Testing"
+echo: true
+description: "How do you establish a confidence in the correctness of a Python program?"
+date: "2024-02-05"
+date-format: long
+author: Gregory M. Kapfhammer
+format:
+  revealjs:
+    theme: default
+    css: styles.css
+    history: false
+    scrollable: true
+    transition: slide
+    highlight-style: github
+    footer: "Algorithmology"
+---
+
+# Software programs must work correctly
+
+::: incremental
+- **Data structures**: does each structure store data correctly?
+- **Algorithm**: does each algorithm produce the correct output?
+- **Benchmarks**: is software under study invoked correctly?
+- **Data Storage**: do the benchmarks store data correctly?
+- **Data Analysis**: does the software analyze data correctly?
+:::
+
+## Type Inference in Python
+
+```{python}
+mylist = []
+print(type(mylist))
+print(isinstance(mylist, list))
+print(isinstance(mylist, str))
+```
+
+::: {.fragment .fade style="margin-top: 0.5em; font-size: 1em;"}
+
+- `mylist = []` creates an empty list
+- `type(mylist)` returns the type of the list
+- `isinstance(mylist, list)` checks if `mylist` is a list
+- Same approach works for other data types!
+
+:::
+
+## Existing types available in Python
+
+```{python}
+def example_function():
+  return 0
+print(type(example_function))
+```
+
+<p class="codespacer">
+
+```{python}
+def generator_example(n):
+  for i in range(n):
+    yield i
+print(type(generator_example))
+print(type(generator_example(5)))
+```
+
+::: {.fragment .fade style="margin-top: 0.5em; font-size: 0.9em;"}
+
+- Functions and generators have their own types
+- What are the similarities and differences for these two types?
+
+:::
+
+
+## What if we don't create objects?
+
+```{python}
+u = (3,4)
+v = (3,6)
+def add(a, b):
+  return (a[0] + b[0], a[1] + b[1])
+def subtract(a,b):
+  return (a[0] - b[0], a[1] - b[1])
+def dot(a, b):
+  return (a[0] * b[0] + a[1] * b[1])
+def norm(a):
+  return (a[0] * a[0] + a[1] * a[1]) ** 0.5
+def isvertical(a):
+  return a[0] == 0
+print(norm(u))
+print(add(u,v))
+print(u + v)
+print(isvertical(subtract(v, u)))
+```
+
+## An object-oriented alternative
+
+::: {.fragment .fade-right style="margin-top: 0.5em; font-size: 0.9em;"}
+
+```{python}
+class Vector:
+  def __init__(self, x, y):
+    try:
+      self.x = float(x)
+      self.y = float(y)
+    except ValueError:
+      self.x = 0.0
+      self.y = 0.0
+  def norm(self):
+    return (self.x ** 2 + self.y ** 2) ** 0.5
+  def __add__(self, other):
+    newx = self.x + other.x
+    newy = self.y + other.y
+    return Vector(newx, newy)
+  def __str__(self):
+    return "(%f, %f)" %(self.x, self.y)
+
+u = Vector(3,4)
+v = Vector(3,6)
+print(u + v)
+```
+
+:::
+
+# What are the principles of object-oriented programming?
+
+::: incremental
+- Abstraction
+- Inheritance
+- Encapsulation
+- Polymorphism
+:::
+
+## Encapsulation with `Triangle`
+
+```{python}
+class Triangle:
+    def __init__(self, points):
+        self._sides = 3
+        self._points = list(points)
+        if len(self._points) != 3:
+            raise ValueError("Wrong number of points.")
+
+    def sides(self):
+        return 3
+
+    def __str__(self):
+        return "I’m a triangle."
+```
+
+::: {.fragment .fade-right style="margin-top: 0.5em; font-size: 0.9em;"}
+
+- What state does a `Triangle` object have?
+- How can we access the state of a `Triangle` object?
+- What are the benefits of encapsulation?
+
+:::
+
+## Encapsulation with `Square`
+
+```{python}
+class Square:
+    def __init__(self, points):
+        self._sides = 4
+        self._points = list(points)
+        if len(self._points) != 4:
+            raise ValueError("Wrong number of points.")
+
+    def sides(self):
+        return 4
+
+    def __str__(self):
+        return "I’m so square."
+```
+
+::: {.fragment .fade-right style="margin-top: 0.5em; font-size: 0.9em;"}
+
+- What state does a `Square` object have?
+- How can we access the state of a `Square` object?
+- Again, what are the benefits of encapsulation?
+
+:::
+
+## Wait, what is the relationship between a `Square` and a `Triangle`?
+
+```{python}
+class Polygon:
+    def __init__(self, sides, points):
+        self._sides = sides
+        self._points = list(points)
+        if len(self._points) != self._sides:
+            raise ValueError("Wrong number of points.")
+
+    def sides(self):
+        return self._sides
+```
+
+::: {.fragment .fade-right style="margin-top: 0.5em; font-size: 0.9em;"}
+
+- The `Polygon` class is a *superclass* of `Triangle` and `Square`
+- The `Triangle` and `Square` classes are *subclasses* of `Polygon`
+- The `Polygon` class is a *generalization* of `Triangle` and `Square`
+
+:::
+
+## Connecting `Triangle` and `Square` to the `Polygon` Superclass
+
+
+```{python}
+class Triangle(Polygon):
+    def __init__(self, points):
+        Polygon.__init__(self, 3, points)
+
+    def __str__(self):
+        return "I’m a triangle."
+
+class Square(Polygon):
+    def __init__(self, points):
+        Polygon.__init__(self, 4, points)
+
+    def __str__(self):
+        return "I’m so square."
+```
+
+::: {.fragment .fade-up style="margin-top: 0.5em; font-size: 0.8em;"}
+
+- Forms an "is-a" relationship between:
+  - `Triangle` and `Polygon` and also `Square` and `Polygon`
+
+:::
+
+## What is duck typing? How does it work in Python?
+
+- Python is a dynamically typed language
+
+- Python uses duck typing to determine types
+
+- Remember the silly adage of "If it walks like a duck and quacks like a duck,
+  then it must be a duck"
+
+- Inheritance is not only way to create an "is-a"
+  relationship!
+
+- Yet, inheritance makes the "is-a" relationship explicit
+
+- **Let's explore an example of duck typing in Python!**
+
+## Connecting `Triangle` and `Square` to the `Polygon` Superclass
+
+```{python}
+class PolygonCollection:
+    def __init__(self):
+        self._triangles = []
+        self._squares = []
+
+    def add(self, polygon):
+        if polygon.sides() == 3:
+            self._triangles.append(polygon)
+        if polygon.sides() == 4:
+            self._squares.append(polygon)
+```
+
+::: {.fragment .fade-up style="margin-top: 0.5em; font-size: 0.85em;"}
+
+- The `polygon` parameter can be any object with a `sides` method
+- This is an example of parametric polymorphism in Python
+- Again, inheritance is not the only way to create an "is-a" relationship!
+
+:::
+
+## Using composition in Python
+
+```{python}
+class MyLimitedList:
+    def __init__(self):
+        self._L = []
+
+    def append(self, item):
+        self._L.append(item)
+
+    def __getitem__(self, index):
+        return self._L[index]
+
+limited = MyLimitedList()
+limited.append(1)
+limited.append(10)
+limited.append(100)
+print(limited[2])
+```
+
+::: {.fragment .fade-up style="margin-top: -0.1em; font-size: 0.85em;"}
+
+- Composition means that one object *is part* of another object
+- The `MyLimitedList` class is composed of a list called `_L`
+
+:::
+
+# What is the expected performance overhead of a function call?
+
+::: {.fragment .fade-right}
+
+- Invocation of a function in Python has overhead
+- Function call overhead in Python is reputed to be high
+- Use the Python scripts in
+{{< iconify fa6-brands github >}} [jni/performance-tests](https://github.com/jni/performance-tests)
+
+:::
+
+## Let's measure the time overhead of function calls!
+
+::: {.fade-right style="margin-top: -0.1em; font-size: 0.85em;"}
+
+```{python}
+import timeit
+n = int(1e6)
+num_exec = 1
+import f
+for func in filter(lambda f: f.startswith('loop'), sorted(dir(f))):
+    print('====== timing function:', func)
+    print(getattr(f, func).__doc__)
+    t = timeit.timeit(stmt='f.%s(n)' % func,
+                      number=num_exec, globals=globals())
+    per_loop = round(t / n * 1e9)
+    print('time: %ins.\ntheoretical max bandwidth: %.2fMB/s' %
+          (per_loop, 1000 / per_loop))
+```
+
+:::
+
+## Let's run this experiment on your laptop! What are the results?
+
+::: incremental
+
+- Clone this Github repository:
+{{< iconify fa6-brands github >}} [jni/performance-tests](https://github.com/jni/performance-tests)
+- Change into the directory called `function-calls`
+- Run the program called `timer.py` and observe the results
+- Make sure that you review the Python source code in `f.py`
+- What trends did you observe in the results?
+- What are the implications of these experimental results?
+- Share (a) your results and (b) a one-sentence summary!
+
+:::
+
+## What are the performance trade-offs associated with using objects?
+
+::: {.fragment .fade-right}
+
+- Questions to consider when designing an experiment:
+  - Cost of calling a method or a function?
+  - Cost of accessing an object's attribute?
+  - How quickly can your program process data?
+  - What is the space overhead of using objects?
+- What data structures are best for your application?
+- How do data structures influence algorithm performance?
+
+:::
