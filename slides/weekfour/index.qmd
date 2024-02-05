@@ -240,12 +240,17 @@ print("avg(", L2, ") -->", avg2)
 
 ## Testing often positively influences a program's object-oriented design
 
-::: {.fragment .fade style="margin-top: -0.25em; font-size: 1em;"}
+::: {.fragment .fade style="margin-top: -0.25em; font-size: 0.95em;"}
 
 - Software testing helps to refine an object-oriented design
 
 - Interplay between testing and object-oriented design:
 
     - Identify nouns (classes) and verbs (methods)
+    - Specify what should happen when you call a method
+    - Write a unit test case to encode this expected behavior
+    - Confirm that all of the test cases pass
+    - Refactor the code to improve its object-oriented design
+    - Repeatedly execute the test suite to confirm correctness
 
 :::
