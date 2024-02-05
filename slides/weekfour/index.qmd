@@ -220,3 +220,20 @@ print("avg(", L2, ") -->", avg2)
 :::
 
 :::
+
+## What should we test?
+
+::: {.fragment .fade-right style="margin-top: -0.25em; font-size: 0.9em;"}
+
+- For each function, ask yourselves the following questions:
+    - What should happen when I run this function?
+    - How do I want to use this function?
+    - What are the inputs and outputs of this function?
+    - What should be the function's inputs and outputs?
+    - What are the edge cases for this function?
+- Test the system's expected behavior, not its implementation
+- Test the public interface of the program under test
+- Transform detected defects into repeatable test cases
+- Assess the adequacy of the test suite with `coverage.py`
+
+:::
