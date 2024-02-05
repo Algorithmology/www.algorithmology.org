@@ -152,3 +152,48 @@ class DayOfTheWeek:
     - **Refactor**: You clean up the code, removing duplication.
 
 :::
+
+## How can you refactor Python code?
+
+::: {.panel-tabset}
+
+## Start
+
+```{python}
+L1 = [1, 2, 3, 4, 5]
+L2 = [6, 7, 8, 9, 10]
+avg1 = sum(L1)/len(L1)
+avg2 = sum(L2)/len(L2)
+print("avg(", L1, ") -->", avg1)
+print("avg(", L2, ") -->", avg2)
+```
+
+- This code will not work for empty lists!
+- *And*, the code is repetitive and hard to read
+- Can we refactor the program to avoid the defect?
+
+## Intermediate
+
+```{python}
+L1 = [1, 2, 3, 4, 5]
+L2 = [6, 7, 8, 9, 10]
+if len(L1) == 0:
+    avg1 = 0
+else:
+    avg1 = sum(L1) / len(L1)
+if len(L2) == 0:
+    avg2 = 0
+else:
+    avg2 = sum(L2) / len(L2)
+print("avg(", L1, ") -->", avg1)
+print("avg(", L2, ") -->", avg2)
+```
+
+## Finished
+
+- The TDD mantra is **Red-Green-Refactor**:
+    - **Red**: The tests fail. You haven’t written the code yet!
+    - **Green**: You get the tests to pass by changing the code.
+    - **Refactor**: You clean up the code, removing duplication.
+
+:::
