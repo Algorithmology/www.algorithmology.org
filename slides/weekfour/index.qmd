@@ -189,11 +189,34 @@ print("avg(", L1, ") -->", avg1)
 print("avg(", L2, ") -->", avg2)
 ```
 
+::: {.fragment .fade-right style="margin-top: -0.25em; font-size: 0.9em;"}
+
+- This avoids the defect but is repetitive and hard to read!
+
+:::
+
+
 ## Finished
 
-- The TDD mantra is **Red-Green-Refactor**:
-    - **Red**: The tests fail. You haven’t written the code yet!
-    - **Green**: You get the tests to pass by changing the code.
-    - **Refactor**: You clean up the code, removing duplication.
+```{python}
+def avg(L):
+    if len(L) == 0:
+        return 0
+    else:
+        return sum(L) / len(L)
+
+L1 = [1, 2, 3, 4, 5]
+L2 = [6, 7, 8, 9, 10]
+avg1 = avg(L1)
+avg2 = avg(L2)
+print("avg(", L1, ") -->", avg1)
+print("avg(", L2, ") -->", avg2)
+```
+
+::: {.fragment .fade-right style="margin-top: -0.25em; font-size: 0.9em;"}
+
+- The `avg` function avoids the defect and is easier to read!
+
+:::
 
 :::
