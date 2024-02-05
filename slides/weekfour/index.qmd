@@ -263,5 +263,6 @@ print("avg(", L2, ") -->", avg2)
 - Property-based testing with `hypothesis`
 - Test coverage with `coverage.py`
 - Mutation testing with `mutmut`
+- Using artificial intelligence to generate tests
 
 :::
