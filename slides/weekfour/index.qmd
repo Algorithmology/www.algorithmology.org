@@ -38,6 +38,32 @@ format:
     - Compare the output to the expected output
 
 :::
+
+## Type Inference in Python
+
+```{python}
+class Doubler:
+    def __init__(self, n):
+        self._n = 2 * n
+
+    def n(self):
+        return self._n
+
+x = Doubler(5)
+print(x.n() == 10)
+assert(x.n() == 10)
+y = Doubler(-4)
+print(y.n() == -8)
+assert(y.n() == -8)
+```
+
+::: {.fragment .fade-left style="margin-top: -0.25em; font-size: 0.9em;"}
+
+- Establishes a confidence in the correctness of the `Doubler` class
+- When testing is it better to use `print` or `assert` statements?
+
+:::
+
 ## What are the performance trade-offs associated with using objects?
 
 ::: {.fragment .fade-right}
