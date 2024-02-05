@@ -79,6 +79,30 @@ assert(y.n() == -8)
 
 :::
 
+## `unittest` for `DayOfTheWeek`
+
+```{python}
+import unittest
+from dayoftheweek import DayOfTheWeek
+
+class TestDayOfTheWeek(unittest.TestCase):
+    def test_init(self):
+        d = DayOfTheWeek('F')
+        self.assertEqual(d.name(), 'Friday')
+        d = DayOfTheWeek('Th')
+        self.assertEqual(d.name(), 'Thursday')
+
+unittest.main(argv=['ignored'], verbosity=2, exit=False)
+```
+
+::: {.fragment .fade-left style="margin-top: 0.5em; font-size: 1.0em;"}
+
+- Call `unittest.main` differently for tests outside Quarto
+- Run `test_dayoftheweek.py` in `slides/weekfour/`
+
+:::
+
+
 ## What are the performance trade-offs associated with using objects?
 
 ::: {.fragment .fade-right}
