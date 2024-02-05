@@ -22,6 +22,25 @@ def test_init():
 
 
 @pytest.mark.parametrize(
+    "abbreviation, expected",
+    [
+        ("M", "Monday"),
+        ("T", "Tuesday"),
+        ("W", "Wednesday"),
+        ("Th", "Thursday"),
+        ("F", "Friday"),
+        ("Sa", "Saturday"),
+        ("Su", "Sunday"),
+        ("X", None),
+    ],
+)
+def test_day_name(abbreviation, expected):
+    """Use parameterized testing to confirm that lookup works correctly."""
+    day = DayOfTheWeek(abbreviation)
+    assert day.name() == expected
+
+
+@pytest.mark.parametrize(
     "valid_days",
     [["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]],
 )
@@ -30,28 +49,6 @@ def test_init():
     st.text(alphabet=st.characters(whitelist_categories=["L"]), min_size=1, max_size=2)
 )
 def test_abbreviation_maps_to_name(valid_days, abbreviation):
-    """Test that the abbreviation maps to a valid day of the week."""
+    """Use property-based testing to confirm that the abbreviation maps to a valid day of the week."""
     day = DayOfTheWeek(abbreviation)
     assert day.name() in valid_days or day.name() is None
-
-
-valid_days = {"M", "T", "W", "Th", "F", "Sa", "Su"}
-
-
-@given(
-    st.one_of(
-        st.sampled_from(list(valid_days)),
-        st.text(
-            alphabet=st.characters(whitelist_categories=["L"]), min_size=1, max_size=2
-        ).filter(lambda x: x not in valid_days),
-    )
-)
-@settings(verbosity=Verbosity.verbose)
-def test_abbreviations(abbreviation):
-    """Test that the abbreviation is valid."""
-    print(abbreviation)
-    day = DayOfTheWeek(abbreviation)
-    if abbreviation in valid_days:
-        assert day.name() is not None
-    else:
-        assert day.name() is None
