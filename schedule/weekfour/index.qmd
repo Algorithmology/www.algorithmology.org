@@ -1,0 +1,53 @@
+---
+title: Software Testing
+description: "Establish Confidence in Program Correctness"
+date: 2024-02-05
+layout: full
+toc: true
+toc-expand: 3
+---
+
+## Exploration
+
+- {{< iconify fa6-solid book-open size=18px >}} Read chapter 4 of [A First
+Course on Data Structures in
+Python](https://donsheehy.github.io/datastructures/)
+- {{< iconify fa6-brands github size=18px >}} Study `test` for the `ds2` package
+of [donsheehy/datastructures](https://github.com/donsheehy/datastructures/)
+
+## Activities
+
+- {{< iconify fa6-solid people-line size=18px >}} **Monday and Wednesday**:
+Software Testing
+  - Understand why algorithm engineers must test Python programs
+  - Explore the benefits and limitations of testing
+  - Investigate different approaches to testing
+  - Examine source code segments to illustrate trade-offs
+- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Start new algorithm engineering project
+- {{< iconify game-icons team-idea size=18px >}} **Friday**: Algorithm all-hands session
+
+## Project
+
+### Goal
+
+To build and use a Python program, called `objectprocessing`, that runs
+benchmarks to the performance of storing and searching for objects stored in
+different types of collections.
+
+### Steps
+
+- Use `objectprocessing` as your template repository
+- Install the project's dependencies using `devenv`
+- Follow the instructions to complete the project:
+  - **Week 1**: Implement all of the modules in `objectprocessing`
+  - **Week 2**: Design, conduct, and document experimental results
+- Schedule [office hours](https://www.gregorykapfhammer.com/schedule/) if you
+have questions
+
+## Slides
+
+```{=html}
+<iframe class="slide-deck" src="../../slides/weekfour/"></iframe>
+```
+
+{{< iconify majesticons presentation-play size=18px >}} Full Screen: [Week Three: Object-Oriented Programming in Python](../../slides/weekthree/)
