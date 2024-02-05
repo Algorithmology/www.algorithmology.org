@@ -95,10 +95,11 @@ class TestDayOfTheWeek(unittest.TestCase):
 unittest.main(argv=['ignored'], verbosity=2, exit=False)
 ```
 
-::: {.fragment .fade-left style="margin-top: 0.5em; font-size: 1.0em;"}
+::: {.fragment .fade-left style="margin-top: 0.25em; font-size: 1.0em;"}
 
 - Call `unittest.main` differently for tests outside Quarto
 - Run `test_dayoftheweek.py` in `slides/weekfour/`
+- The `OK` output confirms that the assertions passed
 
 :::
 
