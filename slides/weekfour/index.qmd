@@ -64,6 +64,21 @@ assert(y.n() == -8)
 
 :::
 
+## Best practices for software testing
+
+::: {.fragment .fade-right}
+
+- Answer the following questions when testing:
+    - Does the program meet its specification?
+    - After changing the program, does it still work correctly?
+- Using assertion statements:
+    - `print` statements require manual checking of output
+    - `assert` statements automatically checks correctness
+- Use a testing framework like `pytest` or `unittest`
+- Assess the adequacy of the test suite with `coverage.py`
+
+:::
+
 ## What are the performance trade-offs associated with using objects?
 
 ::: {.fragment .fade-right}
