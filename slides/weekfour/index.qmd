@@ -266,3 +266,30 @@ print("avg(", L2, ") -->", avg2)
 - Using artificial intelligence to generate tests
 
 :::
+
+## Testing `DayOfTheWeek` with Pytest
+
+```python
+from daydetector.dayoftheweek import DayOfTheWeek
+
+def test_init():
+    """Test the DayOfTheWeek class."""
+    d = DayOfTheWeek("F")
+    assert d.name() == "Friday"
+    d = DayOfTheWeek("Th")
+    assert d.name() == "Thursday"
+    d = DayOfTheWeek("W")
+    assert d.name() == "Wednesday"
+    d = DayOfTheWeek("T")
+    assert d.name() == "Tuesday"
+    d = DayOfTheWeek("M")
+    assert d.name() == "Monday"
+```
+
+::: {.fragment .fade-right style="margin-top: 0.5em; font-size: 0.9em;"}
+
+- Run `poetry run pytest` in the `daydetector` directory
+
+- `pytest` will automatically discover and run the tests!
+
+:::
