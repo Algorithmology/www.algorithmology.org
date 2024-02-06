@@ -406,3 +406,18 @@ TOTAL                             6      0      0      0   100%
 - Mutation operators systematically modify the program's code
 
 :::
+
+## What are the performance trade-offs associated with software testing?
+
+::: {.fragment .fade-right style="margin-top: 0.25em; font-size: 0.95em;"}
+
+- Questions to consider when performing software testing:
+    - When should you run the test suite?
+    - How frequently should you run the test suite?
+    - How can you reduce the cost of:
+        - ... test execution?
+        - ... coverage monitoring?
+        - ... mutation testing?
+- How do you balance the costs and benefits of software testing?
+
+:::
