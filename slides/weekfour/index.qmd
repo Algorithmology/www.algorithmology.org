@@ -349,3 +349,31 @@ def test_abbreviation_maps_to_name(valid_days, abbreviation):
 parameter, thereby increasing the input diversity
 
 :::
+
+## Test coverage with `coverage.py`
+
+
+```text
+tests/test_dayoftheweek.py ..........                                                                              [100%]
+
+---------- coverage: platform linux, python 3.11.6-final-0 -----------
+Name                          Stmts   Miss Branch BrPart  Cover
+---------------------------------------------------------------
+daydetector/__init__.py           0      0      0      0   100%
+daydetector/dayoftheweek.py       6      0      0      0   100%
+---------------------------------------------------------------
+TOTAL                             6      0      0      0   100%
+
+
+10 passed in 0.21s
+```
+
+::: {.fragment .fade-left style="margin-top: 0.5em; font-size: 0.9em;"}
+
+- The test suite covers `100%` of the program's source code
+
+- Covering statements increases the likelihood of detecting defects
+
+- Do high coverage tests mean that the program is defect-free?
+
+:::
