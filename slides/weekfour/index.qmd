@@ -294,7 +294,7 @@ def test_init():
 
 :::
 
-## Parameterized Tests with  `pytest`
+## Parameterized Tests with `pytest`
 
 ```python
 @pytest.mark.parametrize(
@@ -319,5 +319,33 @@ def test_day_name(abbreviation, expected):
 ::: {.fragment .fade-right style="margin-top: 0.5em; font-size: 1.0em;"}
 
 - Express the inputs and the expected outputs in a table!
+
+:::
+
+## Property-based test case
+
+```python
+import hypothesis.strategies as st
+from hypothesis import given
+import pytest
+
+@pytest.mark.parametrize(
+    "valid_days",
+    [["Monday", "Tuesday", "Wednesday", "Thursday",
+      "Friday", "Saturday", "Sunday"]],
+)
+@given(
+    st.text(alphabet=st.characters(), min_size=1, max_size=2)
+)
+def test_abbreviation_maps_to_name(valid_days, abbreviation):
+    """Use property-based testing with Hypothesis to confirm mapping."""
+    day = DayOfTheWeek(abbreviation)
+    assert day.name() in valid_days or day.name() is None
+```
+
+::: {.fragment .fade-right style="margin-top: 0.5em; font-size: 0.9em;"}
+
+- `Hypothesis` strategies generate random character inputs for `abbreviation`
+parameter, thereby increasing the input diversity
 
 :::
