@@ -259,7 +259,7 @@ print("avg(", L2, ") -->", avg2)
 
 ::: incremental
 
-- Writing test cases with `pytest`
+- Parameterized test cases with `pytest`
 - Property-based testing with `hypothesis`
 - Test coverage with `coverage.py`
 - Mutation testing with `mutmut`
