@@ -401,7 +401,7 @@ TOTAL                             6      0      0      0   100%
 
 ::: {.fragment .fade-left style="margin-top: 0.25em; font-size: 0.9em;"}
 
-- `mutmut` changes the program to see if tests find defect
+- `mutmut` changes the program to see if tests find possible defect
 
 - Mutation operators systematically modify the program's code
 
