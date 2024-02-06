@@ -377,3 +377,32 @@ TOTAL                             6      0      0      0   100%
 - Do high coverage tests mean that the program is defect-free?
 
 :::
+
+## Mutation testing with `mutmut`
+
+```text
+--- daydetector/dayoftheweek.py
++++ daydetector/dayoftheweek.py
+@@ -7,15 +7,7 @@
+     def __init__(self, abbreviation):
+         """Create a new DayOfTheWeek object."""
+         self.abbreviation = abbreviation
+-        self.name_map = {
+-            "M": "Monday",
+-            "T": "Tuesday",
+-            "W": "Wednesday",
+-            "Th": "Thursday",
+-            "F": "Friday",
+-            "Sa": "Saturday",
+-            "Su": "Sunday",
+-        }
++        self.name_map = None
+```
+
+::: {.fragment .fade-left style="margin-top: 0.25em; font-size: 0.9em;"}
+
+- `mutmut` changes the program to see if tests find defect
+
+- Mutation operators systematically modify the program's code
+
+:::
