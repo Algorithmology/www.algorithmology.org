@@ -3,7 +3,7 @@
 from daydetector.dayoftheweek import DayOfTheWeek
 
 import hypothesis.strategies as st
-from hypothesis import given, settings, Verbosity
+from hypothesis import given
 import pytest
 
 
@@ -44,9 +44,7 @@ def test_day_name(abbreviation, expected):
     "valid_days",
     [["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]],
 )
-@given(
-    st.text(alphabet=st.characters(whitelist_categories=["L"]), min_size=1, max_size=2)
-)
+@given(st.text(alphabet=st.characters(), min_size=1, max_size=2))
 def test_abbreviation_maps_to_name(valid_days, abbreviation):
     """Use property-based testing to confirm that the abbreviation maps to a valid day of the week."""
     day = DayOfTheWeek(abbreviation)
