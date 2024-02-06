@@ -293,3 +293,31 @@ def test_init():
 - `pytest` will automatically discover and run the tests!
 
 :::
+
+## Parameterized Tests with  `pytest`
+
+```python
+@pytest.mark.parametrize(
+    "abbreviation, expected",
+    [
+        ("M", "Monday"),
+        ("T", "Tuesday"),
+        ("W", "Wednesday"),
+        ("Th", "Thursday"),
+        ("F", "Friday"),
+        ("Sa", "Saturday"),
+        ("Su", "Sunday"),
+        ("X", None),
+    ],
+)
+def test_day_name(abbreviation, expected):
+    """Use parameterized testing to confirm that lookup works correctly."""
+    day = DayOfTheWeek(abbreviation)
+    assert day.name() == expected
+```
+
+::: {.fragment .fade-right style="margin-top: 0.5em; font-size: 1.0em;"}
+
+- Express the inputs and the expected outputs in a table!
+
+:::
