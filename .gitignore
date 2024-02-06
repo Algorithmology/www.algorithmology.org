@@ -142,4 +142,6 @@ _optimize
 ### NixOS: ignore generated files in nix/ ###
 /env/
 
-/.quarto/
+### Python Tools ###
+.mutmut-cache
+/.mutmut-cache/
