@@ -345,7 +345,7 @@ def test_abbreviation_maps_to_name(valid_days, abbreviation):
 
 ::: {.fragment .fade-right style="margin-top: 0.5em; font-size: 0.9em;"}
 
-- `Hypothesis` strategies generate random character inputs for `abbreviation`
+- `Hypothesis` strategies generate random character inputs for the `abbreviation`
 parameter, thereby increasing the input diversity
 
 :::
