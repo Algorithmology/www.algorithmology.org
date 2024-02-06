@@ -44,7 +44,6 @@ def test_day_name(abbreviation, expected):
     "valid_days",
     [["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]],
 )
-@settings(verbosity=Verbosity.verbose)
 @given(
     st.text(alphabet=st.characters(whitelist_categories=["L"]), min_size=1, max_size=2)
 )
