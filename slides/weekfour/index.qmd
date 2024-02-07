@@ -244,14 +244,14 @@ print("avg(", L2, ") -->", avg2)
 
 - Software testing helps to refine an object-oriented design
 
-- Interplay between testing and object-oriented design:
+- Interplay between **testing** and **object-oriented design**:
 
-    - Identify nouns (classes) and verbs (methods)
-    - Specify what should happen when you call a method
-    - Write a unit test case to encode this expected behavior
-    - Confirm that all of the test cases pass
-    - Refactor the code to improve its object-oriented design
-    - Repeatedly execute the test suite to confirm correctness
+    - Identify **nouns** (classes) and **verbs** (methods)
+    - Specify what **should** happen when you call a method
+    - Write a unit **test case** to encode this expected behavior
+    - Confirm that all of the test cases **pass** correctly
+    - **Refactor** the code to **improve** its object-oriented design
+    - Repeatedly **run** the test suite to confirm correctness
 
 :::
 
