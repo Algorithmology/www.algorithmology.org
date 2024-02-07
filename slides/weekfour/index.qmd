@@ -407,6 +407,21 @@ TOTAL                             6      0      0      0   100%
 
 :::
 
+## Can you reproduce the software testing examples from these slides?
+
+::: {.fragment .fade-right style="margin-top: 0.25em; font-size: 0.95em;"}
+
+- Use `www.algorithmology.org/slides/weekfour/`
+- Software testing commands you can try:
+    - `poetry install`
+    - `poetry run pytest`
+    - `poetry run pytest --cov --cov-branch`
+    - `poetry run mutmut run`
+    - `poetry run mutmut show 16`
+- What does output tell you about program and/or test quality?
+
+:::
+
 ## What are the performance trade-offs associated with software testing?
 
 ::: {.fragment .fade-right style="margin-top: 0.25em; font-size: 0.95em;"}
