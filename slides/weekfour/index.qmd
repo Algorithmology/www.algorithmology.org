@@ -240,7 +240,7 @@ print("avg(", L2, ") -->", avg2)
 
 ## Testing often positively influences a program's object-oriented design
 
-::: {.fragment .fade style="margin-top: -0.25em; font-size: 0.95em;"}
+::: {.incremental style="margin-top: -0.25em; font-size: 0.95em;"}
 
 - Software testing helps to refine an object-oriented design
 
@@ -419,6 +419,16 @@ TOTAL                             6      0      0      0   100%
     - `poetry run mutmut run`
     - `poetry run mutmut show 16`
 - What does output tell you about program and/or test quality?
+
+:::
+
+## *Oh, one more thing*! Did you know that some of the test cases you see in `test_dayoftheweek.py` were written by a large language model?
+
+::: {.fragment .fade-right style="margin-top: 0.25em; font-size: 1.25em;"}
+
+- What are the **benefits** and **downsides** of using artificial intelligence (AI) to generate tests?
+
+- What are situations in which you **should** and **should not** use AI to generate tests?
 
 :::
 
