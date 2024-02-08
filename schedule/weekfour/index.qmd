@@ -50,4 +50,4 @@ have questions
 <iframe class="slide-deck" src="../../slides/weekfour/"></iframe>
 ```
 
-{{< iconify majesticons presentation-play size=18px >}} Full Screen: [Week Three: Object-Oriented Programming in Python](../../slides/weekthree/)
+{{< iconify majesticons presentation-play size=18px >}} Full Screen: [Week Four: Software Testing](../../slides/weekfour/)
