@@ -36,7 +36,7 @@ different types of collections.
 
 ### Steps
 
-- Use `objectprocessing` as your template repository
+- Use [Object Processing](https://github.com/Algorithmology/object-processing-starter) as your template repository
 - Install the project's dependencies using `devenv`
 - Follow the instructions to complete the project:
   - **Week 1**: Implement all of the modules in `objectprocessing`
