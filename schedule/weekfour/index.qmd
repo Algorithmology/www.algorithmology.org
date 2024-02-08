@@ -31,8 +31,9 @@ Software Testing
 ### Goal
 
 To build and use a Python program, called `objectprocessing`, that runs
-benchmarks to the performance of storing and searching for objects stored in
-different types of collections.
+benchmarks to study the performance of storing and searching for objects using
+three different ways for determining whether or not a search term matches the
+value in an object's attributes.
 
 ### Steps
 
