@@ -132,3 +132,29 @@ print(not duplicates([1,2,3,4]))
 - What is the performance of the `duplicates` function? Why?
 
 :::
+
+## Performance of a duplicate detector?
+
+::: {style="font-size: 0.925em;"}
+
+```{python}
+import time
+
+from typing import List
+def duplicates(input_list: List[int]):
+    n = len(input_list)
+    for i in range(n):
+        for j in range(n):
+            if i != j and input_list[i] == input_list[j]:
+                return True
+    return False
+
+for i in range(5):
+    n = 1000
+    start = time.time()
+    duplicates(list(range(n)))
+    timetaken = time.time() - start
+    print("Time taken for n = ", n, ": ", timetaken)
+```
+
+:::
