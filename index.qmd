@@ -67,6 +67,7 @@ to determine whether or not the `input_list` contains a duplicate `int` value.
 ```{python}
 from typing import List
 def duplicates(input_list: List[int]) -> bool:
+    """Determine whether or not the input list contains a duplicate value."""
     n = len(input_list)
     for i in range(n):
         for j in range(n):
@@ -85,13 +86,18 @@ print(duplicates([1,2,6,3,4,5,6,7,8]))
 print(not duplicates([1,2,3,4]))
 ```
 
+Source code that appears at an top-most region of a page is available for use in
+later sections of the document. For instance, the following code defines a new
+`timetrials` function that can be used to time the `duplicates` function in a
+doubling experiment. Wow, check it out! The output from running the following
+function i
 
 ```{python}
 from typing import Callable
 import time
 
 def timetrials(function: Callable, n: int, trials: int = 10) -> None:
-    """Time the provided function with an input of size n for trials number of times."""
+    """Time a function with an input of size n for trials number of times."""
     totaltime = 0
     for _ in range(trials):
         start = time.time()
