@@ -22,3 +22,9 @@ code span.bu {
 p.codespacer {
   height: 1px;
 }
+
+.boxed-content {
+  border: 3px solid #1c1c1c;
+  padding: 10px;
+  border-radius: 5px;
+}
