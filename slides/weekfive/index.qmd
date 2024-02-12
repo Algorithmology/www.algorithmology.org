@@ -98,7 +98,17 @@ actionable insights that support *understanding* and *prediction*
 
 :::
 
-## How would you test the `Doubler`?
+# Practical methods for measuring the running time of a program
+
+::: {.fragment .fade-right}
+
+- Implement as a Python function with inputs and outputs
+- Use the `time` module to measure running time on inputs
+- Study trade-offs associated with different implementations
+
+:::
+
+## Performance of a duplicate detector
 
 ```{python}
 from typing import List
