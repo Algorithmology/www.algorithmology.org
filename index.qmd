@@ -1,7 +1,7 @@
 ---
 title: Algorithmology
 layout: full
-toc: true 
+toc: false
 ---
 
 ![](images/Algorithmology-Logo.svg){fig-align="center"}
@@ -9,17 +9,18 @@ toc: true
 ## Welcome to an Adventure in Algorithm Analysis!
 
 In addition to ensuring that the programs they implement are correct and
-maintainable, an algorithm engineer must confirm that their code is efficient.
-The focus of this course --- called "algorithmology" for fun! --- is the study
-of algorithms, with a concentration on both their correctness and efficiency.
-Algorithmology requires the completion of tasks that leverage knowledge and
-skills in both engineering and science. For instance, an algorithm engineer
-needs to design, implement, and test data structures and algorithms and then
-correctly integrate them into a working software system. However, an algorithm
-engineer must also use the scientific method to analyze the efficiency of both
-a software system's components and the system as a whole. This course introduces
-learners to both empirical and analytical approaches to studying the efficiency
-of algorithms, data structures, and the software systems that contain them.
+maintainable, algorithm engineers must confirm that their code is efficient. The
+focus of this course --- called "algorithmology" for fun! --- is the study of
+algorithms, with a concentration on both their correctness and efficiency. The
+process of algorithmology requires the completion of tasks that leverage
+knowledge and skills in both engineering and science. For instance, an algorithm
+engineer needs to design, implement, and test data structures and algorithms and
+then correctly integrate them into a working software system. However, an
+algorithm engineer must also use the scientific method to analyze the efficiency
+of both a software system's components and the system as a whole. This course
+introduces learners to both empirical and analytical approaches to studying the
+efficiency of algorithms, data structures, and the software systems that contain
+them.
 
 ## Schedule
 
@@ -36,8 +37,7 @@ technical skills during sixteen weeks of personal growth:
 
  [Software Engineering at Google](https://abseil.io/resources/swe-book)
 
-
-## Adventure
+## Resources for an Adventure in Algorithmology
 
 Interested in getting started on a developer development adventure? Begin here:
 
@@ -56,6 +56,53 @@ learned when actively engaging with the content in **SE**, **FB**, and **DB**.
 The blog also contains reports from the design, implementation, testing,
 documentation, and deployment of two software projects. Read more to watch us
 develop as developers!
+
+## Wow, Python Source Code ... and its Output!
+
+As you browse the resources on this site you will notice that it contains both
+Python source code and the output from running code when the suite was rendered.
+For instance, here is the source code for a `duplicates` function that uses a
+double-nested `for` loop to determine whether or not the `input_list` contains
+a duplicate `int` value.
+
+```{python}
+from typing import List
+def duplicates(input_list: List[int]) -> bool:
+    n = len(input_list)
+    for i in range(n):
+        for j in range(n):
+            if i != j and input_list[i] == input_list[j]:
+                return True
+    return False
+
+# use assertions to confirm that duplicates
+# works as expected; note that assert only
+# produces output if the condition is False
+assert(duplicates([1,2,6,3,4,5,6,7,8]))
+assert(not duplicates([1,2,3,4]))
+print(duplicates([1,2,6,3,4,5,6,7,8]))
+print(not duplicates([1,2,3,4]))
+```
+
+
+```{python}
+from typing import Callable
+import time
+
+def timetrials(function: Callable, n: int, trials: int = 10):
+    """Time the function with n inputs trials times"""
+    totaltime = 0
+    for _ in range(trials):
+        start = time.time()
+        function(list(range(n)))
+        totaltime += time.time() - start
+    print("average =%10.7f for n = %d" % (totaltime/trials, n))
+
+# conduct a doubling experiment for a provided function
+for n in [50, 100, 200, 400, 800, 1600, 3200]:
+    timetrials(duplicates, n)
+```
+
 
 ::: {.callout-note appearance="minimal" title="Algorithmology Community Resources"}
 
