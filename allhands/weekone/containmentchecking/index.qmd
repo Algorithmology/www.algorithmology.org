@@ -1,0 +1,10 @@
+---
+author: [Alish Chhetri, Benedek Kaibas, Mordred Boulais, Tugi Gantulga, Dave Gormley]
+title: How does the lookup value influence the performance of search for different container types?
+page-layout: full
+categories: [post, containment checking, lists]
+date: "2024-02-16"
+date-format: long
+toc: true
+---
+
