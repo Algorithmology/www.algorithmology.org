@@ -44,7 +44,9 @@ As you browse the technical resources on this site you will notice that they
 often contain both Python source code and the output from running code. For
 instance, here is the source code for a `duplicates` function that uses a
 double-nested `for` loop to determine whether or not the `input_list` contains
-a duplicate `int` value.
+a duplicate `int` value. This source code segments shows that both
+`print(duplicates([1,2,6,3,4,5,6,7,8]))` and `print(not duplicates([1,2,3,4]))`
+yield `True` as their output! Pretty cool, huh?
 
 ```{python}
 from typing import List
