@@ -1,9 +1,64 @@
 ---
 title: Algorithmology
 layout: full
-toc: false
+toc: true 
 ---
 
 ![](images/Algorithmology-Logo.svg){fig-align="center"}
 
 ## Welcome to an Adventure in Algorithm Analysis!
+
+In addition to ensuring that the programs they implement are correct and
+maintainable, an algorithm engineer must confirm that their code is efficient.
+The focus of this course --- called "algorithmology" for fun! --- is the study
+of algorithms, with a focus on their correctness and efficiency.
+
+
+## Schedule
+
+With the goal of enabling effective developer development, this web site
+features a sixteen-week schedule filled with activities that support the
+development of your professional and technical capacities in the field of
+algorithm analysis. Although this site is best used by an on-campus learner in
+the [Department of Computer and information
+Science](https://www.cs.allegheny.edu/) at [Allegheny
+College](https://www.allegheny.edu/), the resources and projects are all
+publicly available. For instance, the following provides a list of the three
+textbooks that developing developers use to hone their professional and
+technical skills during sixteen weeks of personal growth:
+
+ [Software Engineering at Google](https://abseil.io/resources/swe-book)
+
+
+## Adventure
+
+Interested in getting started on a developer development adventure? Begin here:
+
+- The [sixteen-week course schedule](./schedule/index.qmd) offers detailed
+insights into each step that learners should take to help them to develop as
+developers, including a list of reading assignment and descriptions of various
+projects.
+
+- The [course syllabus](./syllabus/index.qmd) introduces the course and its
+learning objectives and explains how on-campus learners will be assessed by the
+course instructor.
+
+- The [developer development blog](./syllabus/index.qmd) includes executive
+summaries of all of the key professional and technical insights that students
+learned when actively engaging with the content in **SE**, **FB**, and **DB**.
+The blog also contains reports from the design, implementation, testing,
+documentation, and deployment of two software projects. Read more to watch us
+develop as developers!
+
+::: {.callout-note appearance="minimal" title="Algorithmology Community Resources"}
+
+Interested in connecting with other like-minded algorithm engineers? Please join
+the [Algorithmology Discord Server](https://discord.gg/phSQfB8bZx) and join the
+conversation! If you are an on-campus learning at Allegheny College, you may
+also join the [Allegheny College Computer Science Discord
+Server](https://discord.gg/CS2h9kXzX6). Finally, if you are an on-campus
+learner, then you may schedule a meeting with the course instructor during
+office hours by visiting the [Course Instructor's Appointment
+Scheduler](https://www.gregorykapfhammer.com/schedule/).
+
+:::
