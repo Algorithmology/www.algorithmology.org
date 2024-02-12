@@ -20,12 +20,13 @@ performance of algorithms, data structures, and systems in the `ds2` package of
 
 - {{< iconify fa6-solid people-line size=18px >}} **Monday and Wednesday**:
 Empirical Evaluation
-  - Understand why algorithm engineers must test Python programs
-  - Explore the benefits and limitations of testing
-  - Investigate different approaches to testing
-  - Examine source code segments to illustrate trade-offs
-- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Start new algorithm engineering project
-- {{< iconify game-icons team-idea size=18px >}} **Friday**: Algorithm all-hands session
+  - Understand why performance is critically important
+  - Characterize performance patterns in Python programs
+  - Use experimentation to characterize performance trade-offs
+  - Use asymptotic analysis to characterize performance
+  - Examine source code segments to illustrate key points
+- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Continue algorithm engineering project
+- {{< iconify game-icons team-idea size=18px >}} **Friday**: Presentations during algorithm all-hands session
 
 ## Project
 
