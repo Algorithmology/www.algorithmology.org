@@ -21,7 +21,7 @@ performance of algorithms, data structures, and systems in the `ds2` package of
 
 - {{< iconify fa6-solid people-line size=18px >}} **Monday and Wednesday**:
 Empirical Evaluation
-  - Understand why performance is critically important
+  - Understand why program performance is critically important
   - Characterize performance patterns in Python programs
   - Use experimentation to characterize performance trade-offs
   - Use asymptotic analysis to characterize performance
