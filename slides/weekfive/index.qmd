@@ -16,16 +16,16 @@ format:
     footer: "Algorithmology"
 ---
 
+# Programmers must write programs that are *correct*, *efficient*, and *maintainable*
+
 <!-- Note: the source code in this slide deck demonstrates that Quarto leverages
 previously defined functions in later-defined code blocks. This means that source
 code on later slides can assume existence of functions in prior slides! -->
 
-# Programmers must write programs that are *correct*, *efficient*, and *maintainable*
-
-::: incremental
+::: fragment
 
 - **Prior Focus**: is the program implemented correctly?
-- **New Focus**: does the program have acceptable performance?
+- **New Focus**: does the program have good performance?
 
 :::
 
@@ -220,5 +220,36 @@ for n in [50, 100, 200, 400, 800, 1600, 3200]:
 
 **Key observation**: properly designed experiments yield meaningful insights into
 the likely worst-case performance of a Python function
+
+:::
+
+# Can we improve the performance of duplicate detection?
+
+::: {.fragment .fade-right}
+
+- Avoid doing unnecessary computational steps
+- `duplicates` compares each pair of elements twice
+- Improve speed by only letting `j` range up to `i`
+
+:::
+
+## Improving `duplicate`'s speed
+
+```{python}
+def duplicates_restrict_range(L):
+    n = len(L)
+    for i in range(1,n):
+        for j in range(i):
+            if L[i] == L[j]:
+                return True
+    return False
+
+for n in [50, 100, 200, 400, 800, 1600, 3200]:
+    timetrials(duplicates_restrict_range, n)
+```
+
+::: {.fragment .fade-right}
+
+- Did this improve the performance? How can you tell? Why?
 
 :::
