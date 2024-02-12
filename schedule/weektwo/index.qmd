@@ -43,7 +43,7 @@ program.
 - Install the project's dependencies using `devenv`
 - Follow the instructions to complete the project:
   - **Week 1**: Implement all of the modules in `containmentchecking`
-  - **Week 2**: Design, conduct, and document experimental results
+  - **Week 2**: Design and conduct experiments and document experimental results
 - Schedule [office hours](https://www.gregorykapfhammer.com/schedule/) if you
 have questions
 
