@@ -5,3 +5,5 @@ toc: false
 ---
 
 ![](images/Algorithmology-Logo.svg){fig-align="center"}
+
+## Welcome to an Adventure in Algorithm Analysis!
