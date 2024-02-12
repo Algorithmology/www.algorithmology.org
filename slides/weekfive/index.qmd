@@ -69,7 +69,7 @@ adapts to *different inputs* and to *different computers*
 
 ::: {.columns style="margin-top: 1.25em;"}
 
-::: {.fragment .column .fade width="50%" style="margin-top: 0.25em;"}
+::: {.fragment .column .fade style="margin-top: 0.25em;"}
 
 ### Different Inputs
 
@@ -81,7 +81,7 @@ adapts to *different inputs* and to *different computers*
 
 :::
 
-::: {.fragment .column width="50%" style="margin-top: 0.25em;"}
+::: {.fragment .column style="margin-top: 0.25em;"}
 
 ### Different Computers
 
@@ -159,5 +159,29 @@ for i in range(5):
 
 - What is the strategy for calculating the elapsed time?
 - Do the results suggest that this implementation is fast? Why?
+
+:::
+
+## General-purpose function timing
+
+::: {style="font-size: 1em;"}
+
+```{python}
+from typing import Callable
+import time
+
+def timetrials(function: Callable, n: int, trials: int = 10):
+    """Time the function with n inputs trials times"""
+    totaltime = 0
+    for i in range(trials):
+        start = time.time()
+        function(list(range(n)))
+        totaltime += time.time() - start
+    print("average =%10.7f for n = %d" % (totaltime/trials, n))
+
+# conduct a doubling experiment for a provided function
+for n in [50, 100, 200, 400, 800, 1600, 3200]:
+    timetrials(duplicates, n)
+```
 
 :::
