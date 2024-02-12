@@ -164,7 +164,7 @@ for i in range(5):
 
 ## General-purpose function timing
 
-::: {style="font-size: 1em;"}
+::: {style="font-size: 0.925em;"}
 
 ```{python}
 from typing import Callable
