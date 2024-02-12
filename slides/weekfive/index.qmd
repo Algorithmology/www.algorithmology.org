@@ -38,6 +38,66 @@ format:
 
 :::
 
+## A two-week road map for exploring Python program performance
+
+::: {.fragment .fade-right style="margin-top: 0.25em; font-size: 0.95em;"}
+
+- Week 1: **Empirical Evaluation of Running Time**
+
+    - How do you conduct timing experiments to measure the performance of a
+    real Python programs?
+
+- Week 2: **Analytical Evaluation of Time Complexity**
+
+    - How do you use an instruction cost model to prove that it belongs to a
+    specific time complexity class?
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: -0.25em; font-size: 0.9em;"}
+
+**Ultimate goal**: create a nuanced description of program efficiency that
+adapts to *different inputs* and to *different computers*
+
+:::
+
+## Algorithm analysis challenges 
+
+::: {.columns style="margin-top: 1.25em;"}
+
+::: {.fragment .column .fade width="50%" style="margin-top: 0.25em;"}
+
+### Different Inputs
+
+- Varying sizes of input data
+- Different types of data
+- Degrees of sortedness
+- Degrees of duplication
+- Different data distributions
+
+:::
+
+::: {.fragment .column width="50%" style="margin-top: 0.25em;"}
+
+### Different Computers
+
+- Diverse hardware setups
+- Varying system performance
+- Diverse system building
+- Different operating systems
+- Variation in system load
+
+:::
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: -0.25em; font-size: 0.9em;"}
+
+**Ultimate goal**: experimental and analytical evaluation methods that yield
+actionable insights that support *understanding* and *prediction*
+
+:::
+
 ## How would you test the `Doubler`?
 
 ```{python}
