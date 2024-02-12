@@ -21,7 +21,7 @@ format:
 ::: incremental
 
 - **Prior Focus**: is the program implemented correctly?
-- **New Focus**: does the program have adequate performance?
+- **New Focus**: does the program have acceptable performance?
 
 :::
 
@@ -34,7 +34,7 @@ format:
 - "I don't know, I never measured its performance"
 - "It is really fast if you run it on an Apple M3 chip"
 - "Let's wait for our user's to tell us if it is fast enough"
-- "Only function is too slow --- and I think we rarely use it"
+- "One function is too slow --- and I think we rarely use it"
 
 :::
 
