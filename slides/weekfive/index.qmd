@@ -116,7 +116,7 @@ actionable insights that support *understanding* and *prediction*
 
 ```{python}
 from typing import List
-def duplicates(input_list: List[int]):
+def duplicates(input_list: List[int]) -> None:
     n = len(input_list)
     for i in range(n):
         for j in range(n):
@@ -170,7 +170,7 @@ for i in range(5):
 from typing import Callable
 import time
 
-def timetrials(function: Callable, n: int, trials: int = 10):
+def timetrials(function: Callable, n: int, trials: int = 10) -> None:
     """Time the function with n inputs trials times"""
     totaltime = 0
     for _ in range(trials):
