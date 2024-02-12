@@ -195,7 +195,6 @@ print("avg(", L2, ") -->", avg2)
 
 :::
 
-
 ## Finished
 
 ```{python}
