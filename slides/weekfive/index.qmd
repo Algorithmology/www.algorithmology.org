@@ -16,6 +16,10 @@ format:
     footer: "Algorithmology"
 ---
 
+<!-- Note: the source code in this slide deck demonstrates that Quarto leverages
+previously defined functions in later-defined code blocks. This means that source
+code on later slides can assume existence of functions in prior slides! -->
+
 # Programmers must write programs that are *correct*, *efficient*, and *maintainable*
 
 ::: incremental
@@ -135,26 +139,25 @@ print(not duplicates([1,2,3,4]))
 
 ## Performance of a duplicate detector?
 
-::: {style="font-size: 0.925em;"}
+::: {style="font-size: 1em;"}
 
 ```{python}
 from typing import List
 import time
 
-def duplicates(input_list: List[int]):
-    n = len(input_list)
-    for i in range(n):
-        for j in range(n):
-            if i != j and input_list[i] == input_list[j]:
-                return True
-    return False
-
 for i in range(5):
     n = 1000
     start = time.time()
     duplicates(list(range(n)))
-    timetaken = time.time() - start
-    print("Time taken for n = ", n, ": ", timetaken)
+    time_taken = time.time() - start
+    print("Time taken for n = {}: {:.15f} seconds".format(n, time_taken))
 ```
+
+:::
+
+::: {.fragment .fade-left style="margin-top: 0.25em; font-size: 0.9em;"}
+
+- What is the strategy for calculating the elapsed time?
+- Do the results suggest that this implementation is fast? Why?
 
 :::
