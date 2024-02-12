@@ -138,9 +138,9 @@ print(not duplicates([1,2,3,4]))
 ::: {style="font-size: 0.925em;"}
 
 ```{python}
+from typing import List
 import time
 
-from typing import List
 def duplicates(input_list: List[int]):
     n = len(input_list)
     for i in range(n):
