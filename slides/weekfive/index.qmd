@@ -185,3 +185,40 @@ for n in [50, 100, 200, 400, 800, 1600, 3200]:
 ```
 
 :::
+
+## Duplicate detecting experiment
+
+::: {.columns style="margin-top: 1.25em;"}
+
+::: {.fragment .column .fade style="margin-top: 0.25em;"}
+
+### Duplicate Function
+
+- Accepts an input list
+- `True` if duplicate found
+- `False` if no duplicates
+- `n` is the list's length
+- Double nested `for` loop
+
+:::
+
+::: {.fragment .column style="margin-top: 0.25em;"}
+
+### Timing Function
+
+- Use the `time` module
+- Calculate elapsed time
+- Consistent number format
+- Provide a function as input
+- Run a doubling experiment
+
+:::
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: -0.25em; font-size: 0.9em;"}
+
+**Key observation**: properly designed experiments yield meaningful insights into
+the likely worst-case performance of a Python function
+
+:::
