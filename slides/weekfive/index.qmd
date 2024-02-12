@@ -25,16 +25,16 @@ format:
 
 :::
 
-## By running a program and checking its output software testing establishes a confidence in its correctness
+## Programmers often ask "does your program have good performance?" Here are some common answers!
 
-::: {.fragment .fade-right}
+::: {.incremental .fade-right}
 
-- Steps during software testing:
-    - Create an input for the program
-    - Setup the program's environment
-    - Pass the input to the program
-    - Collect the output from the program
-    - Compare the output to the expected output
+- "Yes, it was fast enough on my laptop"
+- "I think it is fast enough for most users"
+- "I don't know, I never measured its performance"
+- "It is really fast if you run it on an Apple M3 chip"
+- "Let's wait for our user's to tell us if it is fast enough"
+- "Only function is too slow --- and I think we rarely use it"
 
 :::
 
