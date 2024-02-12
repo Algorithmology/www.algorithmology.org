@@ -101,25 +101,25 @@ actionable insights that support *understanding* and *prediction*
 ## How would you test the `Doubler`?
 
 ```{python}
-class Doubler:
-    def __init__(self, n):
-        self._n = 2 * n
+from typing import List
+def duplicates(input_list: List[int]):
+    n = len(input_list)
+    for i in range(n):
+        for j in range(n):
+            if i != j and input_list[i] == input_list[j]:
+                return True
+    return False
 
-    def n(self):
-        return self._n
-
-x = Doubler(5)
-print(x.n() == 10)
-assert(x.n() == 10)
-y = Doubler(-4)
-print(y.n() == -8)
-assert(y.n() == -8)
+assert(duplicates([1,2,6,3,4,5,6,7,8]))
+assert(not duplicates([1,2,3,4]))
+print(duplicates([1,2,6,3,4,5,6,7,8]))
+print(not duplicates([1,2,3,4]))
 ```
 
 ::: {.fragment .fade-left style="margin-top: -0.25em; font-size: 0.9em;"}
 
-- Establishes a confidence in the correctness of the `Doubler` class
-- When testing is it better to use `print` or `assert` statements?
+- Returns `True` if there are any duplicates and `False` otherwise
+- What is the performance of the `duplicates` function? Why?
 
 :::
 
