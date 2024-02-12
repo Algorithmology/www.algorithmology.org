@@ -44,14 +44,14 @@ value in an object's attributes.
 - Install the project's dependencies using `devenv`
 - Follow the instructions to complete the project:
   - **Week 1**: Implement all of the modules in `objectprocessing`
-  - **Week 2**: Design, conduct, and document experimental results
+  - **Week 2**: Design and conduct experiments and document experimental results
 - Schedule [office hours](https://www.gregorykapfhammer.com/schedule/) if you
 have questions
 
 ## Slides
 
 ```{=html}
-<iframe class="slide-deck" src="../../slides/weekfour/"></iframe>
+<iframe class="slide-deck" src="../../slides/weekfive/"></iframe>
 ```
 
-{{< iconify majesticons presentation-play size=18px >}} Full Screen: [Week Four: Software Testing](../../slides/weekfour/)
+{{< iconify majesticons presentation-play size=18px >}} Full Screen: [Week Five: Running Time Analysis: Experimental Evaluation](../../slides/weekfive/)
