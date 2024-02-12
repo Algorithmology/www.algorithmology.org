@@ -108,7 +108,7 @@ actionable insights that support *understanding* and *prediction*
 
 :::
 
-## Performance of a duplicate detector
+## Implementing a duplicate detector
 
 ```{python}
 from typing import List
@@ -130,35 +130,5 @@ print(not duplicates([1,2,3,4]))
 
 - Returns `True` if there are any duplicates and `False` otherwise
 - What is the performance of the `duplicates` function? Why?
-
-:::
-
-## Best practices for software testing
-
-::: {.fragment .fade-right}
-
-- Answer the following questions when testing:
-    - Does the program meet its specification?
-    - After changing the program, does it still work correctly?
-- Using assertion statements:
-    - `print` statements require manual checking of output
-    - `assert` statements automatically checks correctness
-- Use a testing framework like `pytest` or `unittest`
-- Assess the adequacy of the test suite with `coverage.py`
-
-:::
-
-## What are the performance trade-offs associated with software testing?
-
-::: {.fragment .fade-right style="margin-top: 0.25em; font-size: 0.95em;"}
-
-- Questions to consider when performing software testing:
-    - When should you run the test suite?
-    - How frequently should you run the test suite?
-    - How can you reduce the cost of:
-        - ... test execution?
-        - ... coverage monitoring?
-        - ... mutation testing?
-- How do you balance the costs and benefits of software testing?
 
 :::
