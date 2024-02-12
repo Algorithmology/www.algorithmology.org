@@ -16,15 +16,12 @@ format:
     footer: "Algorithmology"
 ---
 
-# Software programs must work correctly
+# Programmers must write programs that are *correct*, *efficient*, and *maintainable*
 
 ::: incremental
 
-- **Data structures**: does each structure store data correctly?
-- **Algorithm**: does each algorithm produce the correct output?
-- **Benchmarks**: is software under study invoked correctly?
-- **Data Storage**: do the benchmarks store data correctly?
-- **Data Analysis**: does the software analyze data correctly?
+- **Prior Focus**: is the program implemented correctly?
+- **New Focus**: does the program have adequate performance?
 
 :::
 
