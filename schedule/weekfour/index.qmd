@@ -24,7 +24,7 @@ Software Testing
   - Investigate different approaches to testing
   - Examine source code segments to illustrate trade-offs
 - {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Start new algorithm engineering project
-- {{< iconify game-icons team-idea size=18px >}} **Friday**: Algorithm all-hands session
+- {{< iconify game-icons team-idea size=18px >}} **Friday**: Project work during algorithm all-hands session
 
 ## Project
 
