@@ -22,40 +22,21 @@ introduces learners to both empirical and analytical approaches to studying the
 efficiency of algorithms, data structures, and the software systems that contain
 them.
 
-## Schedule
+## Course Overview
 
-With the goal of enabling effective developer development, this web site
+With the goal of enabling the growth of algorithm engineers, this web site
 features a sixteen-week schedule filled with activities that support the
 development of your professional and technical capacities in the field of
 algorithm analysis. Although this site is best used by an on-campus learner in
 the [Department of Computer and information
 Science](https://www.cs.allegheny.edu/) at [Allegheny
 College](https://www.allegheny.edu/), the resources and projects are all
-publicly available. For instance, the following provides a list of the three
-textbooks that developing developers use to hone their professional and
-technical skills during sixteen weeks of personal growth:
-
- [Software Engineering at Google](https://abseil.io/resources/swe-book)
-
-## Resources for an Adventure in Algorithmology
-
-Interested in getting started on a developer development adventure? Begin here:
-
-- The [sixteen-week course schedule](./schedule/index.qmd) offers detailed
-insights into each step that learners should take to help them to develop as
-developers, including a list of reading assignment and descriptions of various
-projects.
-
-- The [course syllabus](./syllabus/index.qmd) introduces the course and its
-learning objectives and explains how on-campus learners will be assessed by the
-course instructor.
-
-- The [developer development blog](./syllabus/index.qmd) includes executive
-summaries of all of the key professional and technical insights that students
-learned when actively engaging with the content in **SE**, **FB**, and **DB**.
-The blog also contains reports from the design, implementation, testing,
-documentation, and deployment of two software projects. Read more to watch us
-develop as developers!
+publicly available. For instance, this course leverages and extends the
+open-access course textbook called [A First Course on Data Structures in
+Python](https://github.com/donsheehy/datastructures). You can access all of the
+source code and technical content for this book by checking out its GitHub
+repository and following along with the [schedule](schedule/index.qmd) and the
+[slides](slides/index.qmd) for this course as provided by this site.
 
 ## Wow, Python Source Code ... and its Output!
 
@@ -90,7 +71,8 @@ Source code that appears at an top-most region of a page is available for use in
 later sections of the document. For instance, the following code defines a new
 `timetrials` function that can be used to time the `duplicates` function in a
 doubling experiment. Wow, check it out! The output from running the following
-function i
+function will produce a data table that reveals that the likely worst-case time
+complexity of `duplicates` is $O(n^2)$.
 
 ```{python}
 from typing import Callable
@@ -110,6 +92,25 @@ for n in [50, 100, 200, 400, 800, 1600, 3200]:
     timetrials(duplicates, n)
 ```
 
+## Resources for an Adventure in Algorithmology
+
+Interested in getting started on a developer development adventure? Begin here:
+
+- The [sixteen-week course schedule](./schedule/index.qmd) offers detailed
+insights into each step that learners should take to help them to develop as
+developers, including a list of reading assignment and descriptions of various
+projects.
+
+- The [course syllabus](./syllabus/index.qmd) introduces the course and its
+learning objectives and explains how on-campus learners will be assessed by the
+course instructor.
+
+- The [developer development blog](./syllabus/index.qmd) includes executive
+summaries of all of the key professional and technical insights that students
+learned when actively engaging with the content in **SE**, **FB**, and **DB**.
+The blog also contains reports from the design, implementation, testing,
+documentation, and deployment of two software projects. Read more to watch us
+develop as developers!
 
 ::: {.callout-note appearance="minimal" title="Algorithmology Community Resources"}
 
@@ -123,3 +124,5 @@ office hours by visiting the [Course Instructor's Appointment
 Scheduler](https://www.gregorykapfhammer.com/schedule/).
 
 :::
+
+
