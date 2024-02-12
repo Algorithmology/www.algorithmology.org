@@ -11,8 +11,15 @@ toc: true
 In addition to ensuring that the programs they implement are correct and
 maintainable, an algorithm engineer must confirm that their code is efficient.
 The focus of this course --- called "algorithmology" for fun! --- is the study
-of algorithms, with a focus on their correctness and efficiency.
-
+of algorithms, with a concentration on both their correctness and efficiency.
+Algorithmology requires the completion of tasks that leverage knowledge and
+skills in both engineering and science. For instance, an algorithm engineer
+needs to design, implement, and test data structures and algorithms and then
+correctly integrate them into a working software system. However, an algorithm
+engineer must also use the scientific method to analyze the efficiency of both
+a software system's components and the system as a whole. This course introduces
+learners to both empirical and analytical approaches to studying the efficiency
+of algorithms, data structures, and the software systems that contain them.
 
 ## Schedule
 
