@@ -173,7 +173,7 @@ import time
 def timetrials(function: Callable, n: int, trials: int = 10):
     """Time the function with n inputs trials times"""
     totaltime = 0
-    for i in range(trials):
+    for _ in range(trials):
         start = time.time()
         function(list(range(n)))
         totaltime += time.time() - start
