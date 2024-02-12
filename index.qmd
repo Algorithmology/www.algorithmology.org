@@ -40,7 +40,7 @@ repository and following along with the [schedule](schedule/index.qmd) and the
 
 ## Wow, Python Source Code ... and its Output!
 
-As you browse the resources on this site you will notice that it often contains
+As you browse the resources on this site you will notice that they often contains
 both Python source code and the output from running code. For instance, here is
 the source code for a `duplicates` function that uses a double-nested `for` loop
 to determine whether or not the `input_list` contains a duplicate `int` value.
