@@ -70,18 +70,18 @@ print(duplicates([1,2,6,3,4,5,6,7,8]))
 print(not duplicates([1,2,3,4]))
 ```
 
-Source code that appears at an top-most region of a page is available for use in
-later sections of the document. For instance, the following code defines a new
-`timetrials` function that can be used to time the `duplicates` function in a
-doubling experiment. Wow, check it out! The output from running the following
-function will produce a data table that reveals that the likely worst-case time
-complexity of `duplicates` is $O(n^2)$.
+Thought this site, the source code that appears in an top-most region of a page
+is available for use in later sections of the same page. For instance, the
+following code defines a new `timetrials` function that can be used to time the
+`duplicates` function in a doubling experiment. Wow, check it out! The output
+from running the following function will produce a data table that reveals that
+the likely worst-case time complexity of `duplicates` is $O(n^2)$.
 
 ```{python}
 from typing import Callable
 import time
 
-def timetrials(function: Callable, n: int, trials: int = 10) -> None:
+def timetrials(function: Callable, n: int, trials: int = 10) -> List[float]:
     """Time a function with an input of size n for trials number of times."""
     totaltime = 0
     for _ in range(trials):
@@ -89,10 +89,12 @@ def timetrials(function: Callable, n: int, trials: int = 10) -> None:
         function(list(range(n)))
         totaltime += time.time() - start
     print("Average time =%10.7f (s) for n = %d" % (totaltime/trials, n))
+    return totaltime/trials
 
 # conduct a doubling experiment for a provided function
+timings = []
 for n in [50, 100, 200, 400, 800, 1600, 3200]:
-    timetrials(duplicates, n)
+    timings.append(timetrials(duplicates, n))
 ```
 
 ## Resources for an Adventure in Algorithmology
@@ -100,20 +102,20 @@ for n in [50, 100, 200, 400, 800, 1600, 3200]:
 Interested in getting started on a developer development adventure? Begin here:
 
 - The [sixteen-week course schedule](./schedule/index.qmd) offers detailed
-insights into each step that learners should take to help them to develop as
-developers, including a list of reading assignment and descriptions of various
-projects.
+insights into each step that learners should take to help them to emerge as
+algorithm engineers, including a list of reading assignments and descriptions
+of various algorithm engineering projects.
 
 - The [course syllabus](./syllabus/index.qmd) introduces the course and its
 learning objectives and explains how on-campus learners will be assessed by the
 course instructor.
 
-- The [developer development blog](./syllabus/index.qmd) includes executive
-summaries of all of the key professional and technical insights that students
-learned when actively engaging with the content in **SE**, **FB**, and **DB**.
-The blog also contains reports from the design, implementation, testing,
-documentation, and deployment of two software projects. Read more to watch us
-develop as developers!
+- The [](./allhands/index.qmd) includes articles written by learners as they
+explore the engineering and scientific knowledge and skills in the field of
+algorithmology. While some of the articles you read report on the results from
+running experiments, others explain how to implement and use the Python source
+code that supports performance benchmarking. Read these reports to learn more
+about the analysis of algorithms!
 
 ::: {.callout-note appearance="minimal" title="Algorithmology Community Resources"}
 
@@ -127,5 +129,3 @@ office hours by visiting the [Course Instructor's Appointment
 Scheduler](https://www.gregorykapfhammer.com/schedule/).
 
 :::
-
-
