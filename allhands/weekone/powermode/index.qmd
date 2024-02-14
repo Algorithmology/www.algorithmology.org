@@ -1,0 +1,10 @@
+---
+author: [Ochirsaikhan Davaajambal, Luke Barker, Evan Nelson, Keller Liptrap, Rebekah Rudd, Chloe Bonson]
+title: How do changes in battery level and power mode influence time overhead when performing list containment checking?
+page-layout: full
+categories: [post, containment checking, lists]
+date: "2024-02-16"
+date-format: long
+toc: true
+---
+

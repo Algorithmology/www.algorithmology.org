@@ -1,0 +1,10 @@
+---
+author: [Jacob Allebach, Sabrina Rodriguez, Vital Joseph, Bergas Anargya, William Wolff]
+title: How does the amount of container duplication influence the speed of containment checking?
+page-layout: full
+categories: [post, containment checking, lists]
+date: "2024-02-16"
+date-format: long
+toc: true
+---
+

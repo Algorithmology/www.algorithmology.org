@@ -1,0 +1,10 @@
+---
+author: [Miles Franck, Aidan Dyga, Nicholas Ingerson-Meacham, Simon Jones, Pallas-Athena Cain, Jason Gyamfi]
+title: How does the amount of memory overhead of a container influence the time efficiency of containment checking?
+page-layout: full
+categories: [post, containment checking, lists]
+date: "2024-02-16"
+date-format: long
+toc: true
+---
+
