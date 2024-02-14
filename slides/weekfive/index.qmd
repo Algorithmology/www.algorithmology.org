@@ -118,7 +118,7 @@ actionable insights that support *understanding* and *prediction*
 
 ```{python}
 from typing import List
-def duplicates(input_list: List[int]) -> None:
+def duplicates(input_list: List[int]) -> bool:
     n = len(input_list)
     for i in range(n):
         for j in range(n):
@@ -238,11 +238,11 @@ the likely worst-case performance of a Python function
 ## Improving `duplicate`'s speed
 
 ```{python}
-def duplicates_restrict_range(L):
-    n = len(L)
+def duplicates_restrict_range(input_list: List[int]) -> bool:
+    n = len(input_list)
     for i in range(1,n):
         for j in range(i):
-            if L[i] == L[j]:
+            if input_list[i] == input_list[j]:
                 return True
     return False
 
@@ -259,7 +259,7 @@ for n in [50, 100, 200, 400, 800, 1600, 3200]:
 ## Refactoring `duplicate` again
 
 ```{python}
-def duplicates_any(input_list: List[int]):
+def duplicates_any(input_list: List[int]) -> bool:
     n = len(input_list)
 
     return any(input_list[i] == input_list[j]
@@ -279,7 +279,7 @@ for n in [50, 100, 200, 400, 800, 1600, 3200]:
 ## More alternatives to `duplicates`
 
 ```{python}
-def duplicates_sort(input_list: List[int]):
+def duplicates_sort(input_list: List[int]) -> bool:
     n = len(input_list)
     input_list.sort()
     for i in range(n-1):
@@ -300,7 +300,7 @@ for n in [50, 100, 200, 400, 800, 1600, 3200]:
 ## Using both `any` and `sort`
 
 ```{python}
-def duplicates_sort_any(input_list: List[int]):
+def duplicates_sort_any(input_list: List[int]) -> bool:
     n = len(input_list)
     input_list.sort()
     return any(input_list[i] == input_list[i+1] for i in range(n-1))
@@ -320,7 +320,7 @@ for n in [50, 100, 200, 400, 800, 1600, 3200]:
 ## Using `set` with a `for` loop
 
 ```{python}
-def duplicates_set_loop(input_list: List[int]):
+def duplicates_set_loop(input_list: List[int]) -> bool:
     s = set()
     for e in input_list:
         if e in s:
@@ -335,7 +335,7 @@ for n in [50, 100, 200, 400, 800, 1600, 3200]:
 ## Using `set` without a `for` loop
 
 ```{python}
-def duplicates_set(input_list: List[int]):
+def duplicates_set(input_list: List[int]) -> bool:
     return len(input_list) != len(set(input_list))
 
 for n in [50, 100, 200, 400, 800, 1600, 3200]:
