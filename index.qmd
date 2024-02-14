@@ -75,7 +75,13 @@ is available for use in later sections of the same page. For instance, the
 following code defines a new `timetrials` function that can be used to time the
 `duplicates` function in a doubling experiment. Wow, check it out! The output
 from running the following function will produce a data table that reveals that
-the likely worst-case time complexity of `duplicates` is $O(n^2)$.
+the likely worst-case time complexity of `duplicates` is $O(n^2)$. Are you
+wondering how the data shows that `duplicate` is $O(n^2)$? Well, you can use the
+data in the table to compute `0.23 / 0.05 = 4.6`, which suggests that as the
+input size doubles, the time quadruples. To learn more about this topic, you can
+use the technical content in the course to learn how to analyze the time
+complexity of algorithms --- so check out the [schedule](schedule/index.qmd) and
+the [slides](slides/index.qmd) for more details!
 
 ```{python}
 from typing import Callable
