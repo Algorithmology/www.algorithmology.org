@@ -5,6 +5,8 @@ description: "How do you use experiments to measure the performance of a Python 
 date: "2024-02-12"
 date-format: long
 author: Gregory M. Kapfhammer
+execute:
+  freeze: auto
 format:
   revealjs:
     theme: default
@@ -60,7 +62,7 @@ code on later slides can assume existence of functions in prior slides! -->
 
 ::: {.fragment .fade .boxed-content style="margin-top: -0.25em; font-size: 0.9em;"}
 
-**Ultimate goal**: create a nuanced description of program efficiency that
+**Ultimate Goal**: create a nuanced description of program efficiency that
 adapts to *different inputs* and to *different computers*
 
 :::
@@ -218,7 +220,7 @@ for n in [50, 100, 200, 400, 800, 1600, 3200]:
 
 ::: {.fragment .fade .boxed-content style="margin-top: -0.25em; font-size: 0.9em;"}
 
-**Key observation**: properly designed experiments yield meaningful insights into
+**Key Observation**: properly designed experiments yield meaningful insights into
 the likely worst-case performance of a Python function
 
 :::
@@ -345,5 +347,27 @@ for n in [50, 100, 200, 400, 800, 1600, 3200]:
 - What is the fastest approach to duplicate detection?
 - How did you know that this approach was the fastest?
 - Can you explain why this approach is the fastest?
+
+:::
+
+
+## Key insights from the duplicate detection experiments
+
+::: {.incremental style="font-size: 0.9em;"}
+
+- What did we learn from these experiments?
+
+    - Different implementations yield different performance results
+    - Time overhead increases as the input size increases
+    - `set` construction and containment check yield improvements
+    - Benefits from assuming that data is comparable or hashable
+    - Code size does not always correlate with performance
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: -0.25em; font-size: 0.9em;"}
+
+**Algorithm Engineering**: quickly implement a doubling experiment using 
+a function like `timetrials`
 
 :::
