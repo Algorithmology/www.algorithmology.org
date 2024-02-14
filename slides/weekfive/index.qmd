@@ -295,7 +295,7 @@ for n in [50, 100, 200, 400, 800, 1600, 3200]:
 
 :::
 
-## Using `any` with `sort`
+## Using both `any` and `sort`
 
 ```{python}
 def duplicates_sort_any(input_list: List[int]):
@@ -314,4 +314,3 @@ for n in [50, 100, 200, 400, 800, 1600, 3200]:
 - What is the connection between code size and efficiency?
 
 :::
-
