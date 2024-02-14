@@ -7,16 +7,12 @@ listing:
     type: default
     sort-ui: true
     filter-ui: true
-    fields: [author,date,title,description]
-    field-display-names:
-      description: "Question"
+    fields: [author,date,title]
     contents:
       - "week*/**/*.qmd"
     sort:
-      - "author"
       - "date"
       - "title"
-      - "description"
 ---
 
 Interesting in learning more about how to use experimental and analytical
