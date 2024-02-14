@@ -318,16 +318,13 @@ for n in [50, 100, 200, 400, 800, 1600, 3200]:
 ## Using `set` with a `for` loop
 
 ```{python}
-def duplicates_set_loop(L):
+def duplicates_set_loop(input_list: List[int]):
     s = set()
-    for e in L:
+    for e in input_list:
         if e in s:
             return True
         s.add(e)
     return False
-
-def duplicates_set(L):
-    return len(L) != len(set(L))
 
 for n in [50, 100, 200, 400, 800, 1600, 3200]:
     timetrials(duplicates_set_loop, n)
@@ -336,17 +333,17 @@ for n in [50, 100, 200, 400, 800, 1600, 3200]:
 ## Using `set` without a `for` loop
 
 ```{python}
-def duplicates_set_loop(L):
-    s = set()
-    for e in L:
-        if e in s:
-            return True
-        s.add(e)
-    return False
-
-def duplicates_set(L):
-    return len(L) != len(set(L))
+def duplicates_set(input_list: List[int]):
+    return len(input_list) != len(set(input_list))
 
 for n in [50, 100, 200, 400, 800, 1600, 3200]:
     timetrials(duplicates_set, n)
 ```
+
+::: {.fragment .fade-right}
+
+- What is the fastest approach to duplicate detection?
+- How did you know that this approach was the fastest?
+- Can you explain why this approach is the fastest?
+
+:::
