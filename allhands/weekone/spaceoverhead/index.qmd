@@ -8,3 +8,62 @@ date-format: long
 toc: true
 ---
 
+# Introduction
+
+TODO:
+
+## Motivation
+
+Why do I care TODO:
+
+# Method
+
+## Part One 
+
+For the first part of our experiment, we compared the runtimes of the 3 types of containers used in our `containmentcheck` program, the list, tuple, and set. We used the `sys.getsizeof()` function to find the size, in bytes, of the current container. When the container size is increased so does the number of bytes it takes up. This experiment was run at a container size of 10000,  1000000, and 100000000.
+
+The results are as follows:
+
+TODO: ADD MD DATA CHARTS
+
+Result from running on WSL2
+
+| Approach | Container Size | Maximum values | Total Time for 10 runs| Average Time for 10 runs| Size in Bytes|
+|:--------:|:--------------:|:--------------:|:-----:|:-----:|:-----:|
+|   list   |   10000   |     100000   | [0.0012522619999799645, 0.0012322780003160005, 0.0011758390010072617]  | [0.00012522619999799645, 0.00012322780003160005, 0.00011758390010072617]  | 85176  |
+|   tuple   |   10000   |     100000   | [0.0006548499986820389, 0.0006511610008601565, 0.0006510949988296488]  | [6.548499986820388e-05, 6.511610008601565e-05, 6.510949988296489e-05] | 80040  |
+|   set   |   10000  |     100000   | [0.004011396000350942, 0.0035747010006161872, 0.003517425999234547]  | [0.0004011396000350942, 0.00035747010006161874, 0.0003517425999234547]  | 85176  |
+|  list   |   1000000   |     100000    | [0.10512661299981119, 0.10005645099954563, 0.13408000599883962]  | [0.01051266129998112, 0.010005645099954562, 0.013408000599883962]  | 8448728  |
+|  tuple   |   1000000   |     100000   | [0.22520549799992295, 0.08570071100075438, 0.14284700400094152] | [0.022520549799992295, 0.008570071100075438, 0.014284700400094153]  | 8000040  |
+|  set   |   1000000   |     100000   | [1.0035714010009542, 0.5476638039999671, 0.5286222340000677]  | [0.10035714010009542, 0.054766380399996706, 0.05286222340000677]  | 8448728  |
+|   list   |   100000000   |     100000   | [11.542406832999404, 10.57156037599998, 10.508643252998809]  |[1.1542406832999403, 1.057156037599998, 1.0508643252998808]  | 835128600  |
+|   tuple    |   100000000   |     100000   |[9.33974368499912, 8.946416168999349, 8.583650802000193]  | [0.9339743684999121, 0.8946416168999349, 0.8583650802000193]  | 800000040  |
+|   set    |   100000000   |     100000   | [104.86943111599976, 87.68656122200082, 102.34969667100086] | [10.486943111599976, 8.768656122200081, 10.234969667100085]  | 835128600 |
+
+
+The following graphs show that for all three container types, there is a positive correlation between the size of the container and the amount of time it takes to process. Despite having different sizes in bytes, tuples and lists have nearly the same performance with tuples performing slightly better overall.
+
+TODO: INSERT THE SCATTER PLOTS
+
+However, this does not explain the entirety of the picture of how bytes impact runtime. To get a better understanding of the relationship we can look at the program’s overall memory usage.
+
+## Part Two 
+
+Memory usage can be difficult to measure in Python in particular. Because Python automatically allocates memory for objects behind the scenes it can be tricky to know exactly what is happening (Turner-Trauring, 2021).
+
+There are three main cases where our containers may be stored. They can be stored in either RAM, the disk (swap), or both (Turner-Trauring, 2021). As a fourth option, the program may not be even stored at all. 
+For the main three cases, the number of processes running in the background will decide where it is stored. For example, if there are a lot of browser tabs being run in the background the computer will likely switch things over to using the disk memory or swap. This is our resident memory usage. 
+
+TODO: INCLUDE PART ABOUT TRACEMALLOC
+
+# Result
+
+TODO:
+
+# References
+
+[1] Itamar Turner-Trauring, “Measuring memory usage in Python: it’s tricky!,” Python⇒Speed, Jun. 21, 2021. https://pythonspeed.com/articles/measuring-memory-python/#:~:text=In%20Python%20 (accessed Feb. 11, 2024).
+‌[2] Itamar Turner-Trauring, “Easy Python memory profiling for data scientists and scientists with Fil,” Python⇒Speed, 2023. https://pythonspeed.com/fil/ (accessed Feb. 11, 2024).
+
+
+
