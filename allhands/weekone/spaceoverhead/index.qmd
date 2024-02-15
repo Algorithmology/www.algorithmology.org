@@ -159,11 +159,11 @@ not by the same margin of the set's slower speed. This case makes it appear that
 the size in bytes did not cause as much of an impact to the program as did the
 type of the container itself.
 
-![scatter-plot-small](./images/scatter-plot-small.png) 
+![scatter-plot-small](./images/scatter-plot-small.png)
 
-![scatter-plot-medium](./images/scatter-plot-medium.png) 
+![scatter-plot-medium](./images/scatter-plot-medium.png)
 
-![scatter-plot-large](./images/scatter-plot-large.png) 
+![scatter-plot-large](./images/scatter-plot-large.png)
 
 However, this does not explain the entirety of the picture of how bytes impact
 runtime. To get a better understanding of the relationship we can look at the
@@ -197,17 +197,17 @@ index 301b1fd..ddcaf6e 100644
 +++ b/containmentcheck/containmentcheck/main.py
 @@ -1,6 +1,8 @@
  """Perform an experiment to study efficiency of containment checking for collections."""
- 
+
  import timeit
 +import tracemalloc
 +import linecache
  from typing import Any, Callable, List, Tuple, Union
- 
+
  import typer
 @@ -27,6 +29,30 @@ cli = typer.Typer()
  console = Console()
- 
- 
+
+
 +def display_top(snapshot, key_type='lineno', limit=10):
 +    snapshot = snapshot.filter_traces((
 +        tracemalloc.Filter(False, "<frozen importlib._bootstrap>"),
