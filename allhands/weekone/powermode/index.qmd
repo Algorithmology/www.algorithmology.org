@@ -19,6 +19,24 @@ toc: true
 
 ### Linux
 
+#### Battery Power Saver: 100%-50%
+
+ Container Type | Run 1               | Run 2               | Run 3              | Average 4            | Average 5           | Average 6                 |
+ :------------: | :-----------------: | :-----------------: | :----------------: | :------------------: | :-----------------: | :---------------: |
+ List           | 6.147671203999835   | 5.733897006999996   | 5.689872683999965  | 0.6147671203999835   | 0.5733897006999996  | 0.5689872683999966  |
+ Tuple          | 1.875840222000079   | 1.9724632289999136  | 2.1394873950002875 | 0.1875840222000079   | 0.19724632289999136 | 0.21394873950002874 |
+ Set            | 117.75040925899998  | 116.36598679999997  | 114.28739855599997 | 11.775040925899997   | 11.636598679999997  | 11.428739855599996   |
+
+ #### Battery Power Saver: 50%-0%
+
+ Container Type | Run 1               | Run 2               | Run 3              | Average 4            | Average 5          | Average 6                |
+ :------------: | :-----------------: | :-----------------: | :----------------: | :------------------: | :----------------: | :--------------: |
+ List           | 5.204463440000154   | 5.213794599000039   | 5.352068572000007  | 0.5204463440000154   | 0.5213794599000039 | 0.5352068572000007 |
+ Tuple          | 5.006331778999993   | 5.013705148000099   | 4.976093853000066  | 0.5006331778999993   | 0.5013705148000099 | 0.4976093853000066 |
+ Set            | 126.87905422300003  | 128.8645836879998   | 122.50003941199998 | 12.687905422300002   | 12.886458368799982 | 12.250003941199997  |
+
+ This data shows that the battery strength does indeed impact runtime. The runtime for List and Tuple were faster when the battery was lower; however the runtime for Set increased when the battery was lower. Obviously the containers are different and so this might be the reason for these differences. It is surprising that List and Tuple took longer comparatively while Set was shorter comaprtively. To understand these results because they seem contradictory further tests on data structures and types would have to take place. Further tests might include testing these sames data types with different types of data being passed in. If that test were to produce similar time results we would know that the difference in these data sets has more to do with the data structures rather than the information being passed in.
+
 
 ### Graphs
 
