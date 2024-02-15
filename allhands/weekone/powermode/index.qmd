@@ -8,3 +8,20 @@ date-format: long
 toc: true
 ---
 
+# Introduction
+
+
+# Mac M1
+
+
+# Mac M2
+
+
+# Linux
+
+
+# Graphs
+
+
+# Conclusion
+
