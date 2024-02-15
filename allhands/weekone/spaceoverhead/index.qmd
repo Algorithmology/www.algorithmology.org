@@ -10,7 +10,7 @@ toc: true
 
 # Introduction
 
-When programming in Python each object created takes up a specific amount of space on the computer which is measured in bytes. The objects themselves hold their names as well as their properties. In the `containmentcheck` program we are looking in particular at container objects that also store the values inside of them, sometimes pointer values. In this post, we will be experimenting to see how much of an impact the size of an object has on the time efficiency of the `containmentcheck` program. 
+When programming in Python each object created takes up a specific amount of space on the computer which is measured in bytes. The objects themselves hold their names as well as their properties. In the `containmentcheck` program we are looking in particular at container objects that also store the values inside of them, sometimes pointer values. In this post, we will be experimenting to see how much of an impact the size of an object has on the time efficiency of the `containmentcheck` program. Understanding the relationship between object size and program efficiency is crucial for optimizing the `containmentcheck` program's performance.
 
 ## Motivation
 
