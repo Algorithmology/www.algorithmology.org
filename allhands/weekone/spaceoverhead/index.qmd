@@ -57,6 +57,23 @@ Result from running on WSL2
 |   set    |   100000000   |     100000   | [104.86943111599976, 87.68656122200082, 102.34969667100086] | [10.486943111599976, 8.768656122200081, 10.234969667100085]  | 835128600 |
 
 
+Miles
+
+Result from running on WSL
+
+| Approach | Container size | Maximum Values | Size Run 1             | Size Run 2            | Size Run 3            | Bytes     | Average               |
+|----------|----------------|----------------|------------------------|-----------------------|-----------------------|-----------|-----------------------|
+| List     | 10000          | 100000         | 0.0010690999988582917  | l0.001138899999205023  | 0.0010308000055374578| 85176     | 0.0010796000012002576 |
+| Tuple    | 10000          | 100000         | 0.0022807999994256534  | 0.004241000002366491  | 0.002772300002106931  | 80040     | 0.003098033334633025  |
+| Set      | 10000          | 100000         | 0.01828580000437796    | 0.02045590000489028   | 0.018659900000784546  | 85176     | 0.019133866670017596  |
+| List     | 1000000        | 100000         | 0.01594910000130767    | 0.014114400000835303  | 0.014194600000337232  | 8448728   | 0.014752700000826735  |
+| Tuple    | 1000000        | 100000         | 0.017153299995698035   | 0.018026799996732734  | 0.016453299998829607  | 8000040   | 0.017211133330420125  |
+| Set      | 1000000        | 100000         | 1.2413424999976996     | 1.221128500001214     | 1.1901537999947323    | 8448728   | 1.217541599997882     |
+| List     | 100000000      | 100000         | 0.061223500000778586   | 0.030728199999430217  | 0.02701340000203345   | 835128600 | 0.03965503333408075   |
+| Tuple    | 100000000      | 100000         | 0.012589900004968513   | 0.012705400004051626  | 0.012597399996593595  | 800000040 | 0.012630900001871245  |
+| Set      | 100000000      | 100000         | 127.40746039999794     | 114.67897030000313    | 113.11876619999384    | 835128600 | 118.4017322999983     |
+
+
 The following graphs show that for all three container types, there is a positive correlation between the size of the container and the amount of time it takes to process. Despite having different sizes in bytes, tuples and lists have nearly the same performance with tuples performing slightly better overall. Lists are larger containers but from the results, their size increase does not exactly correlate to the process speed. Sets have the same byte size as lists do but provide much slower results. The following scatter plots demonstrate the time versus the bytes. As you can see, lists are slightly slower than tuples but not by the same margin of the set's slower speed. This case makes it appear that the size in bytes did not cause as much of an impact to the program as did the type of the container itself.
 
 TODO: INSERT THE SCATTER PLOTS
