@@ -11,11 +11,7 @@ toc: true
 ## Introduction
 
 
-### Mac M1
-
-
-### Mac M2
-
+### macOS
 
 ### Linux
 
