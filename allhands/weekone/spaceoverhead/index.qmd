@@ -67,19 +67,94 @@ The following graphs show that for all three container types, there is a positiv
 
 However, this does not explain the entirety of the picture of how bytes impact runtime. To get a better understanding of the relationship we can look at the program’s overall memory usage.
 
-## Part Two 
+## Part Two
 
 Memory usage can be difficult to measure in Python in particular. Because Python automatically allocates memory for objects behind the scenes it can be tricky to know exactly what is happening (Turner-Trauring, 2021).
 
 There are three main cases where our containers may be stored. They can be stored in either RAM, the disk (swap), or both (Turner-Trauring, 2021). As a fourth option, the program may not be even stored at all. 
 For the main three cases, the number of processes running in the background will decide where it is stored. For example, if there are a lot of browser tabs being run in the background the computer will likely switch things over to using the disk memory or swap. This is our resident memory usage. 
 
-TODO: INCLUDE PART ABOUT TRACEMALLOC
+### Tracemalloc
 
+The `tracemalloc` library is a tool that lets you trace the amount of memory that is allocated by a Python program. In this experiment we were able to use `tracemalloc` to get the total amount of traced memory from the program as well as the total allocated size of the program itself (“tracemalloc — Trace memory allocations”, 2024).
+
+The following chart demonstrates the increase in traced memory and allocated size. We were not able to gather results from a container size of 100000000 because it took so much memory it caused our systems to crash. The sizes were found using the `get_traced_memory()` function within the `tracemalloc` library.
+
+| Approach | Container Size | Maximum Values  | Container Size in Bytes | Traced Memory (current size and peak size of memory blocks) | Total allocated size | Container % of Allocated Size | Average Time                                                           |
+|----------|----------------|-----------------|-------------------------|-------------------------------------------------------------|----------------------|-------------------------------|------------------------------------------------------------------------|
+| list     | 10000          | 100000          | 85176                   | (478365, 494215)                                            | 472.3 KB             | 18%                           | [0.00032951530010905117, 9.121420007431879e-05, 9.334509959444404e-05] |
+| tuple    | 10000          | 100000          | 80040                   | (472056, 547288)                                            | 466.4 KiB            | 17.1%                         | [5.88577997405082e-05, 5.23020004038699e-05, 0.00028640130040002987]   |
+| set      | 10000          | 100000          | 85176                   | (478179, 1124535)                                           | 471.6 KiB            | 18%                           | [0.0003431481003644876, 0.00028521530039142816, 0.0005371351988287642] |
+| list     | 1000000        | 100000          | 8448728                 | (40440727, 40456850)                                        | 39497.4 KiB          | 21%                           | [0.008970955600671005, 0.009021504299016669, 0.010781448800116777]     |
+| tuple    | 1000000        | 100000          | 8000040                 | (39996088, 48434760)                                        | 39064.0 KiB          | 20.4%                         | [0.007188823199248873, 0.008647420699708164, 0.010213346801174339]     |
+| set      | 1000000        | 100000          | 8448728                 | (40440469, 46722864)                                        | 39497.2 KiB          | 21%                           | [0.48832026500895154, 0.6909954479924636, 0.5341905749955913]          |
+| list     | 100000000      | 100000          | 835128600               | N/A                                                         | N/A                  | N/A                           | N/A                                                                    |
+| tuple    | 100000000      | 100000          | 800000040               | N/A                                                         | N/A                  | N/A                           | N/A                                                                    |
+| set      | 100000000      | 100000          | 835128600               | N/A                                                         | N/A                  | N/A                           | N/A                                                                    |
+
+Another utility of the `tracemalloc` library is the `take_snapshot()` method. This method allows the user to see snapshots of the memory blocks that are allocated by Python itself. The snapshot will provide an output of the memory blocks traced by `tracemalloc` in order of the one that takes up the most space. This is the output from running with the 1000000 size tuple.
+
+```python
+Top 10 lines
+#1: /nix/store/5k91mg4qjylxbfvrv748smfh51ppjq0g-python3-3.11.6/lib/python3.11/random.py:344: 311.8 KiB
+    return istart + self._randbelow(width)
+#2: ../containmentcheck/containmentcheck/generate.py:30: 78.2 KiB
+    return tuple(random_list)  # or return tuple(random_list)
+#3: ../containmentcheck/.venv/lib/python3.11/site-packages/rich/_lru_cache.py:27: 7.9 KiB
+    OrderedDict.__setitem__(self, key, value)
+#4: /nix/store/5k91mg4qjylxbfvrv748smfh51ppjq0g-python3-3.11.6/lib/python3.11/re/_parser.py:615: 7.3 KiB
+    setappend((RANGE, (lo, hi)))
+#5: /nix/store/5k91mg4qjylxbfvrv748smfh51ppjq0g-python3-3.11.6/lib/python3.11/re/_parser.py:220: 5.5 KiB
+    self.width = min(lo, MAXREPEAT - 1), min(hi, MAXREPEAT)
+#6: /nix/store/5k91mg4qjylxbfvrv748smfh51ppjq0g-python3-3.11.6/lib/python3.11/re/_compiler.py:759: 5.3 KiB
+    return _sre.compile(
+#7: ../containmentcheck/.venv/lib/python3.11/site-packages/rich/cells.py:29: 4.4 KiB
+    total_size = sum(_get_size(character) for character in text)
+#8: /nix/store/5k91mg4qjylxbfvrv748smfh51ppjq0g-python3-3.11.6/lib/python3.11/re/_parser.py:701: 4.3 KiB
+    subpattern[-1] = (MAX_REPEAT, (min, max, item))
+#9: ../containmentcheck/.venv/lib/python3.11/site-packages/rich/text.py:672: 4.1 KiB
+    style_map = {index: get_style(span.style) for index, span in enumerated_spans}
+#10: /nix/store/5k91mg4qjylxbfvrv748smfh51ppjq0g-python3-3.11.6/lib/python3.11/re/_parser.py:545: 2.5 KiB
+    subpatternappend((LITERAL, _ord(this)))
+74 other: 35.2 KiB
+Total allocated size: 466.4 KiB
+```
+
+The list and set snapshots demonstrate a difference in the amount of space allocated in the second line.
+
+List Snapshot:
+
+```
+#1: /nix/store/5k91mg4qjylxbfvrv748smfh51ppjq0g-python3-3.11.6/lib/python3.11/random.py:344: 312.0 KiB
+    return istart + self._randbelow(width)
+#2: /home/palla/computer-science-202-algorithm-analysis-project-2-PCain02/containmentcheck/containmentcheck/generate.py:27: 83.1 KiB
+    random_list.append(random.randint(0, maximum))
+...
+Total allocated size: 472.3 KiB
+```
+
+Set Snapshot:
+
+```
+#1: /nix/store/5k91mg4qjylxbfvrv748smfh51ppjq0g-python3-3.11.6/lib/python3.11/random.py:344: 311.7 KiB
+    return istart + self._randbelow(width)
+#2: /home/palla/computer-science-202-algorithm-analysis-project-2-PCain02/containmentcheck/containmentcheck/generate.py:27: 83.1 KiB
+    random_list.append(random.randint(0, maximum))
+...
+Total allocated size: 471.6 KiB
+```
+
+Overall, the snapshot size of the list and the set are almost equal where as the tuple dislays less storage usage overall. This is consistent with our previous results.
+
+The snapshot can be extremely helpful because it gives us a visualization of the space overhead from each process run by the program. As we can see the top line takes up over half of the amount of space traced by `tracemalloc`. From this output we can also see that the process of creating the random integers takes up majority of the space overhead. The integers created will also create a variation in size depending on the number of bytes they take up individually.
+
+Overall, `tracemalloc` can be utilized outside of this project to visualize the amount of space parts of a program use. The amount of space overhead is consistently larger in the sets and lists than the tuple container.
 
 # Results
 
-TODO:
+TODO: Finish Results Part 1
+
+For the future of this experiment we would hope to be able to test the large container size using `tracemalloc`. This would provide us with more conclusive data about the correlation between container size and traced memory and allocated size. From the tests we were able to run there is a definite positive correlation between the size of the container and the total amount of memory used overall. The larger the container, the more storage will be allocated to the program.
 
 # Slides
 
