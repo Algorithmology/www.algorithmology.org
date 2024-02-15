@@ -20,7 +20,7 @@ the article title to be
 
 TODID: add a markdown table with the results of your runs
 
-```text
+```
 Research Question - Exceed False:
 
 | Approach | Container Size | Maximum values | Run 1 | Run 2 | Run 3 |
@@ -30,7 +30,7 @@ Research Question - Exceed False:
 |   set    |   32000000   |     50000000   | [4.208233542200469, 4.325113486899499, 4.219388079700002]  | [4.534039163700072, 4.254727539699525, 4.323300131599535]  | [4.354468914699828, 4.61627447849969, 4.5856030442999325]  |
 ```
 
-```text
+```
 Research Question - Exceed True:
 
 | Approach | Container Size | Maximum values | Run 1 | Run 2 | Run 3 |
@@ -133,6 +133,7 @@ wider Python community.
 # Tugi Gantulga
 
 exceed: True
+
 | Approach | Container Size | Maximum values | Run 1 | Run 2 | Run 3 |
 |:--------:|:--------------:|:--------------:|:-----:|:-----:|:-----:|
 |   list   |   32000000   |     50000000   | 0.1378120029999991 | 0.137148728199827 | 0.1348724689996743 |
@@ -164,6 +165,7 @@ Research Question - Exceed False:
 # David Gormley
 
 Research Question - Exceed True:
+
 | Approach | Container Size | Maximum values | Run 1 | Run 2 | Run 3 |
 |:--------:|:--------------:|:--------------:|:-----:|:-----:|:-----:|
 |   list   |   32000000   |     50000000    | [0.23659885860000146, 0.2412876928000003, 0.22330980300000078] | [0.2350454376000016, 0.23070738239999855, 0.22203850559999977] | [0.2288095411000029, 0.23059016980000138, 0.23539135700000316]
@@ -171,6 +173,7 @@ Research Question - Exceed True:
 |  set   |   32000000   |     50000000    | [4.7528270348000026, 4.4016742918000014, 4.8434405047000085] | [4.6070678571000029, 4.6804546572000002, 4.7123848471000008] | [4.8342568829000037, 4.7363691362000031, 4.6932297072000032]
 
 Research Question - Exceed False:
+
 | Approach | Container Size | Maximum values | Run 1 | Run 2 | Run 3 |
 |:--------:|:--------------:|:--------------:|:-----:|:-----:|:-----:|
 |   list   |   32000000   |     50000000    | [0.235340880199999, 0.23274638510000614, 0.2435045768000009] | [0.21867702029999236, 0.216793747600002, 0.22558234079999692] | [0.10496819950000144, 0.10377642610000067, 0.09959864300000162]
