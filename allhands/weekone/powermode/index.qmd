@@ -64,10 +64,6 @@ These results indicate that there is a negative relationship between runtime and
 
  This data shows that the battery strength does indeed impact runtime. The runtime for List and Tuple were faster when the battery was lower; however the runtime for Set increased when the battery was lower. Obviously the containers are different and so this might be the reason for these differences. It is surprising that List and Tuple took longer comparatively while Set was shorter comaprtively. To understand these results because they seem contradictory further tests on data structures and types would have to take place. Further tests might include testing these sames data types with different types of data being passed in. If that test were to produce similar time results we would know that the difference in these data sets has more to do with the data structures rather than the information being passed in.
 
-
-### Graphs
-
-
 ## Conclusion
 
 From conducting this experiment, we found out that the battery life and the power mode do have effects on the run time. When running the containment checking program with the lower battery percentage range, it took longer to run for the set, tuple, and list approach than with the higher battery percentage. It also took longer to run in different battery modes than other ones. The main takeaway from this experiment is that the battery modes/percentage does have an affect on the time overhead of running containment checking.
