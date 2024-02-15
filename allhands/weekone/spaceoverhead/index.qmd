@@ -91,6 +91,8 @@ The results are as follows:
 |   tuple    |   100000000   |     100000   |[9.33974368499912, 8.946416168999349, 8.583650802000193]  | [0.9339743684999121, 0.8946416168999349, 0.8583650802000193]  | 800000040  |
 |   set    |   100000000   |     100000   | [104.86943111599976, 87.68656122200082, 102.34969667100086] | [10.486943111599976, 8.768656122200081, 10.234969667100085]  | 835128600 |
 
+: Result from running on WSL2 Ubuntu 22.04.3 {.responsive}
+
 #### Result from running on MacOS 14.2.1 (Aidan)
 
 | Approach | Container size | Maximum Values | Size Run 1              | Size Run 2              | Size Run 3              | Bytes    |
@@ -104,6 +106,8 @@ The results are as follows:
 | List     | 100000000       | 100000          | 0.002001791959628463    | 0.0020032080356031656  | 0.001946750096976757   | 8448728  |
 | Tuple    | 100000000       | 100000          | 0.012362000066787004    | 0.012355874991044402    | 0.012424665968865156    | 8448728  |
 | Set      | 100000000       | 100000          | 0.2279775831848383      | 0.14714679215103388     | 0.21292124991305172     | 8448728  |
+
+: Result from running on MacOS 14.2.1 {.responsive}
 
 #### Result from running on WSL Ubuntu 22.04.3 (Miles)
 
@@ -119,6 +123,8 @@ The results are as follows:
 | Tuple    | 100000000      | 100000         | 0.012589900004968513   | 0.012705400004051626  | 0.012597399996593595  | 800000040 | 0.012630900001871245  |
 | Set      | 100000000      | 100000         | 127.40746039999794     | 114.67897030000313    | 113.11876619999384    | 835128600 | 118.4017322999983     |
 
+: Result from running on WSL Ubuntu 22.04.3 {.responsive}
+
 #### Result from running on MacOS 14.1.1 (Jason)
 
 | Approach | Container Size | Maximum values | Total Time for 10 runs                                                | Average Time for 10 runs                                                | Size in Bytes |
@@ -132,6 +138,8 @@ The results are as follows:
 | list     | 100000000      | 100000         | [28.448644666932523, 28.64325829106383, 28.827541667036712] | 28.639814875011023 | 835128600         |
 | tuple    | 100000000      | 100000         | [25.032159500056878, 25.540503750089556, 26.030721958028153] | 25.534461736058194 | 800000040        |
 | set      | 100000000      | 100000         | [58.32950258301571, 57.8637910829857, 55.617498707957566] | 57.27026412465299 | 835128600            |
+
+: Result from running on MacOS 14.1.1 {.responsive}
 
 #### Result from running on NixOS 22.11 (Simon)
 
@@ -147,6 +155,8 @@ The results are as follows:
 | tuple    | 100000000      | 100000         | [0.0015112060000319616, 0.0014411099999733779, 0.0014386159999730808] | [0.00015112060000319616, 0.00014411099999733779, 0.0001438615999973081] | 800000040     |
 | set      | 100000000      | 100000         | [83.146080407, 85.06266644699986, 82.90463120200002]                  | [8.3146080407, 8.506266644699986, 8.290463120200002]                    | 835128600     |
 
+: Result from running on NixOS 22.11 {.responsive}
+
 The following graphs show that for all three container types, there is a
 positive correlation between the size of the container and the amount of time it
 takes to process. Despite having different sizes in bytes, tuples and lists have
@@ -159,11 +169,11 @@ not by the same margin of the set's slower speed. This case makes it appear that
 the size in bytes did not cause as much of an impact to the program as did the
 type of the container itself.
 
-![scatter-plot-small](./images/scatter-plot-small.png)
+![scatter-plot-small](./images/scatter-plot-small.png) 
 
-![scatter-plot-medium](./images/scatter-plot-medium.png)
+![scatter-plot-medium](./images/scatter-plot-medium.png) 
 
-![scatter-plot-large](./images/scatter-plot-large.png)
+![scatter-plot-large](./images/scatter-plot-large.png) 
 
 However, this does not explain the entirety of the picture of how bytes impact
 runtime. To get a better understanding of the relationship we can look at the
@@ -197,17 +207,17 @@ index 301b1fd..ddcaf6e 100644
 +++ b/containmentcheck/containmentcheck/main.py
 @@ -1,6 +1,8 @@
  """Perform an experiment to study efficiency of containment checking for collections."""
-
+ 
  import timeit
 +import tracemalloc
 +import linecache
  from typing import Any, Callable, List, Tuple, Union
-
+ 
  import typer
 @@ -27,6 +29,30 @@ cli = typer.Typer()
  console = Console()
-
-
+ 
+ 
 +def display_top(snapshot, key_type='lineno', limit=10):
 +    snapshot = snapshot.filter_traces((
 +        tracemalloc.Filter(False, "<frozen importlib._bootstrap>"),
@@ -278,6 +288,8 @@ found using the `get_traced_memory()` function within the `tracemalloc` library.
 | list     | 100000000      | 100000          | 835128600               | N/A                                                         | N/A                  | N/A                           | N/A                                                                    |
 | tuple    | 100000000      | 100000          | 800000040               | N/A                                                         | N/A                  | N/A                           | N/A                                                                    |
 | set      | 100000000      | 100000          | 835128600               | N/A                                                         | N/A                  | N/A                           | N/A                                                                    |
+
+: tracemalloc results {.responsive}
 
 Another utility of the `tracemalloc` library is the `take_snapshot()` method.
 This method allows the user to see snapshots of the memory blocks that are
