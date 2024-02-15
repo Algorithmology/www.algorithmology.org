@@ -10,6 +10,10 @@ toc: true
 
 # Overview
 
+The research question that we decide to do is, "How will controlling the amount of duplication in a container influence the performance of containment checking?" This research question analyze how duplication of elements in a given container could affect the overhead time finding those elements. This could also involve the amount of elements inside the containment checking to maximise the accuracy of the research, as factors such as memory and algorithm complexity could affect the results. 
+
+Our team hypothesize that if a large container values is affected from a large number of duplicates, it will affect the containment checking. The independent variable is a container with duplicate values inside of the container, and searching them against the time overhead performance of containment checking. To measure the containment checking, it will be calculated against time and memory usage from the local machine. 
+
 ## Methodology / Measurements
 
 ## Data Analysis
