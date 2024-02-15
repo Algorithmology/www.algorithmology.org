@@ -10,12 +10,35 @@ toc: true
 
 # Overview
 
-The research question that we decide to do is, "How will controlling the amount of duplication in a container influence the performance of containment checking?" This research question analyze how duplication of elements in a given container could affect the overhead time finding those elements. This could also involve the amount of elements inside the containment checking to maximise the accuracy of the research, as factors such as memory and algorithm complexity could affect the results. 
+The research question that we decide to do is, "How will controlling the amount of
+duplication in a container influence the performance of containment checking?" This research
+question analyze how duplication of elements in a given container could affect the overhead
+time finding those elements. This could also involve the amount of elements inside the
+containment checking to maximise the accuracy of the research, as factors such as memory and
+algorithm complexity could affect the results. 
 
-Our team hypothesize that if a large container values is affected from a large number of duplicates, it will affect the containment checking. The independent variable is a container with duplicate values inside of the container, and searching them against the time overhead performance of containment checking. To measure the containment checking, it will be calculated against time and memory usage from the local machine. 
+Our team hypothesize that if a large container values is affected from a large number of
+duplicates, it will affect the containment checking. The independent variable is a container
+with duplicate values inside of the container, and searching them against the time overhead
+performance of containment checking. To measure the containment checking, it will be
+calculated against time and memory usage from the local machine. 
 
 ## Methodology / Measurements
 
 ## Data Analysis
+
+Involving duplicates led to a significant reduction in the average time for containment
+checking, with the total time for the experiment with duplicates being lower than the
+experiment without duplicates. This unexpected outcome challenges our hypothesis that a
+large number of duplicates negatively affects the runtime of containment checking in large
+containers. This is evident within our experimental results, for example in the first test
+it took around 0.067 seconds on average to do 10 runs in 3 benchmark trials. The total time
+for all three trials was 0.670 and 0.680 seconds. THe second test, where there were added
+duplicate numbers took about 0.0016 seconds. Efficiently eliminating duplicates,
+accomplished through the transformation of a list into a set, emerges as a valuable tactic
+to enhance the performance of containment checking. These findings demonstrate the
+significance of contemplating data preprocessing steps, including duplicate removal, when
+crafting algorithms for applications requiring frequent containment checks in extensive
+datasets. 
 
 ## Results / Conclusion
