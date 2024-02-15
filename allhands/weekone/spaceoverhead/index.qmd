@@ -76,8 +76,6 @@ size of `10000`,  `1000000`, and `100000000.`
 
 The results are as follows:
 
-TODO: ADD MD DATA CHARTS FROM EVERYONE
-
 #### Result from running on WSL2 Ubuntu 22.04.3 (Pallas)
 
 | Approach | Container Size | Maximum values | Total Time for 10 runs| Average Time for 10 runs| Size in Bytes|
@@ -241,13 +239,13 @@ Overall, `tracemalloc` can be utilized outside of this project to visualize the 
 
 # Results
 
-TODO: Finish Results Part 1
+## Part 1
+
+The first part of our experiment yielded that the tuple approach was the most memory efficient with the list and set approaches coming second. Overall, we discovered that the memory usage did not have much of an impact and that measuring time is a much better indicator for performance in this case. Despite this, we learned valuable information about the correlation between memory usage and the size of the different types of containers. In all, we can empirically conclude that tuples are the most memory effiecient of the 3 containers.
+
+## Part 2 
 
 For the future of this experiment we would hope to be able to test the large container size using `tracemalloc`. This would provide us with more conclusive data about the correlation between container size and traced memory and allocated size. From the tests we were able to run there is a definite positive correlation between the size of the container and the total amount of memory used overall. The larger the container, the more storage will be allocated to the program.
-
-# Slides
-
-TODO:
 
 # Source Code Examples
 
