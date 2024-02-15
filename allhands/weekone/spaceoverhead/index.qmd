@@ -14,7 +14,8 @@ When programming in Python each object created takes up a specific amount of spa
 
 ## Motivation
 
-As society’s programs get more complex, computer memory is becoming an increasingly more valuable resource. When programming it is important to consider how the type of objects you use will impact your program’s performance. The goal of our experiments is to look at how the size of the container impacts the amount of space a program takes up and whether or not that causes an increase or decrease in the speed of the program's runtime itself. 
+As society’s programs get more complex, computer memory is becoming an increasingly more valuable resource. When programming it is important to consider how the type of objects you use will impact your program’s performance. The goal of our experiments is to look at how the size of the container impacts the amount of space a program takes up and whether or not that causes an increase or decrease in the speed of the program's runtime itself. As a result, our experiments seek to shed light on the crucial relationship between container size and its effects on program space and runtime efficiency. This will emphasize the significance of effective memory management and careful object type consideration in programming as societal programs become more complex.
+
 
 # Method
 
