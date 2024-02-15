@@ -158,11 +158,11 @@ not by the same margin of the set's slower speed. This case makes it appear that
 the size in bytes did not cause as much of an impact to the program as did the
 type of the container itself.
 
-![scatter-plot-small](/images/scatter-plot-small.PNG) 
+![scatter-plot-small](./images/scatter-plot-small.png) 
 
-![scatter-plot-medium](/images/scatter-plot-medium.PNG) 
+![scatter-plot-medium](./images/scatter-plot-medium.png) 
 
-![scatter-plot-large](/images/scatter-plot-large.PNG) 
+![scatter-plot-large](./images/scatter-plot-large.png) 
 
 However, this does not explain the entirety of the picture of how bytes impact
 runtime. To get a better understanding of the relationship we can look at the
@@ -253,7 +253,7 @@ index 301b1fd..ddcaf6e 100644
 +    tracemalloc.stop()
 ```
 
-### Tracemalloc
+### Part Two - Tracemalloc
 
 The `tracemalloc` library is a tool that lets you trace the amount of memory
 that is allocated by a Python program. In this experiment we were able to use
@@ -356,7 +356,7 @@ consistently larger in the sets and lists than the tuple container.
 
 The first part of our experiment yielded that the tuple approach was the most memory efficient with the list and set approaches coming second. Overall, we discovered that the memory usage did not have much of an impact and that measuring time is a much better indicator for performance in this case. Despite this, we learned valuable information about the correlation between memory usage and the size of the different types of containers. In all, we can empirically conclude that tuples are the most memory effiecient of the 3 containers.
 
-## Part 2 
+## Part 2
 
 For the future of this experiment we would hope to be able to test the large
 container size using `tracemalloc`. This would provide us with more conclusive
@@ -365,10 +365,6 @@ allocated size. From the tests we were able to run there is a definite positive
 correlation between the size of the container and the total amount of memory
 used overall. The larger the container, the more storage will be allocated to
 the program.
-
-# Source Code Examples
-
-TODO: 
 
 # References
 
