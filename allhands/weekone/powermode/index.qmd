@@ -5,7 +5,7 @@ page-layout: full
 categories: [post, containment checking, lists]
 date: "2024-02-16"
 date-format: long
-toc: true
+toc: false
 ---
 
 ## Introduction
@@ -22,16 +22,12 @@ Our experiment design tested how the battery life and the different power modes 
 | Tuple     | 79%     | 0.21359667500946672 | 0.16479471251368522 | 0.1867699917173013 |
 | Set       | 79%     | 6.27369228338357    | 8.085674125002697   | 9.540377816697582  |
 
-: Battery Standard {.responsive}
-
 ### Low Power Mode: 100%-50%
 | Container | Battery | Avg1               | Avg2                | Avg3                |
 |-----------|---------|--------------------|---------------------|---------------------|
 | List      | 79%     | 0.5327608833089471 | 0.49276689169928434 | 0.6808747082948685  |
 | Tuple     | 78%     | 0.3184867999982089 | 0.34051328341010956 | 0.33640604161191734 |
 | Set       | 78%     | 12.248099775006995 | 8.210522720799782   | 7.995867279078811   |
-
-: Low Power {.responsive}
 
 ### Battery Standard: 50%-0%
 | Container | Battery | Avg1               | Avg2                | Avg3                |
@@ -40,16 +36,12 @@ Our experiment design tested how the battery life and the different power modes 
 | Tuple     | 48%     | 0.2567254637177819 | 0.24857116573929101 | 0.27850027485011734 |
 | Set       | 47%     | 7.8735638201004711 | 9.75930171236645911 | 9.79827364919374719 |
 
-: Battery Standard {.responsive}
-
 ### Low Power Mode: 50%-0%
 | Container | Battery | Avg1               | Avg2                | Avg3                |
 |-----------|---------|--------------------|---------------------|---------------------|
 | List      | 49%     | 0.3506827294759123 | 0.40076919374749441 | 0.41234592974895092 |
 | Tuple     | 48%     | 0.2998677396648183 | 0.31275829205547324 | 0.33478764888192649 |
 | Set       | 47%     | 14.869479553728451 | 12.8693757284940184 | 12.5799653409105824 |
-
-: Low Power {.responsive}
 
 These results indicate that there is a negative relationship between runtime and battery level/mode. As the battery level decreases, the time overhead to perform containment checking increases. Similarly, when low power mode is engaged, the run time also increases. With this mode engaged, the device is not running on all cylinders as a way to preserve battery life. This certainly plays a role in the expected output. Extrapolating these results could serve beneficial in examining the ratios for various increases, however, for my smaller set of data, time overhead seemed around double for most points, on average. All containers seemed to follow this trend, however, set saw the most hinderance from this, as it ran in a manner which became more impractical compared to other containers.
 
@@ -63,8 +55,6 @@ These results indicate that there is a negative relationship between runtime and
  Tuple          | 1.875840222000079   | 1.9724632289999136  | 2.1394873950002875 | 0.1875840222000079   | 0.19724632289999136 | 0.21394873950002874 |
  Set            | 117.75040925899998  | 116.36598679999997  | 114.28739855599997 | 11.775040925899997   | 11.636598679999997  | 11.428739855599996   |
 
-: Power Saver {.responsive}
-
 #### Battery Power Saver: 50%-0%
 
  Container Type | Run 1               | Run 2               | Run 3              | Average 4            | Average 5          | Average 6                |
@@ -72,8 +62,6 @@ These results indicate that there is a negative relationship between runtime and
  List           | 5.204463440000154   | 5.213794599000039   | 5.352068572000007  | 0.5204463440000154   | 0.5213794599000039 | 0.5352068572000007 |
  Tuple          | 5.006331778999993   | 5.013705148000099   | 4.976093853000066  | 0.5006331778999993   | 0.5013705148000099 | 0.4976093853000066 |
  Set            | 126.87905422300003  | 128.8645836879998   | 122.50003941199998 | 12.687905422300002   | 12.886458368799982 | 12.250003941199997  |
-
-: Power Saver {.responsive}
 
  This data shows that the battery strength does indeed impact runtime. The runtime for List and Tuple were faster when the battery was lower; however the runtime for Set increased when the battery was lower. Obviously the containers are different and so this might be the reason for these differences. It is surprising that List and Tuple took longer comparatively while Set was shorter comaprtively. To understand these results because they seem contradictory further tests on data structures and types would have to take place. Further tests might include testing these sames data types with different types of data being passed in. If that test were to produce similar time results we would know that the difference in these data sets has more to do with the data structures rather than the information being passed in.
 
