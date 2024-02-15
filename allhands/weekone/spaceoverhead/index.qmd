@@ -10,17 +10,17 @@ toc: true
 
 # Introduction
 
-When programming in Python each object created takes up a specific amount of space on the computer which is measured in bytes. The objects themselves hold their names as well as their properties. In the `containmentcheck` program we are looking in particular at container objects that also store the values inside of them, sometimes pointer values. In this post, we will be experimenting to see how much of an impact the size of an object has on the time efficiency of the `containmentcheck` program. 
+When programming in Python each object created takes up a specific amount of space on the computer which is measured in bytes. The objects themselves hold their names as well as their properties. In the `containmentcheck` program we are looking in particular at container objects that also store the values inside of them, sometimes pointer values. In this post, we will be experimenting to see how much of an impact the size of an object has on the time efficiency of the `containmentcheck` program.
 
 ## Motivation
 
-As society’s programs get more complex, computer memory is becoming an increasingly more valuable resource. When programming it is important to consider how the type of objects you use will impact your program’s performance. The goal of our experiments is to look at how the size of the container impacts the amount of space a program takes up and whether or not that causes an increase or decrease in the speed of the program's runtime itself. 
+As society’s programs get more complex, computer memory is becoming an increasingly more valuable resource. When programming it is important to consider how the type of objects you use will impact your program’s performance. The goal of our experiments is to look at how the size of the container impacts the amount of space a program takes up and whether or not that causes an increase or decrease in the speed of the program's runtime itself.
 
 # Method
 
-## Part One 
+## Part One
 
-For the first part of our experiment, we compared the runtimes of the 3 types of containers used in our `containmentcheck` program, the list, tuple, and set. We used the `sys.getsizeof()` function to find the size, in bytes, of the current container. 
+For the first part of our experiment, we compared the runtimes of the 3 types of containers used in our `containmentcheck` program, the list, tuple, and set. We used the `sys.getsizeof()` function to find the size, in bytes, of the current container.
 
 Here is an example of using the `sys.getsizeof()` function:
 TODO: check that this example code works
@@ -56,6 +56,20 @@ Result from running on WSL2
 |   tuple    |   100000000   |     100000   |[9.33974368499912, 8.946416168999349, 8.583650802000193]  | [0.9339743684999121, 0.8946416168999349, 0.8583650802000193]  | 800000040  |
 |   set    |   100000000   |     100000   | [104.86943111599976, 87.68656122200082, 102.34969667100086] | [10.486943111599976, 8.768656122200081, 10.234969667100085]  | 835128600 |
 
+Result from running on Ubuntu 22.04.3 (Nic)
+
+| Approach | Container Size | Maximum values | Total Time| Average Time | Size in Bytes|
+|:--------:|:--------------:|:--------------:|:-----:|:-----:|:-----:|
+|   list   |   10000   |     100000   | [0.001192513998830691, 0.0010130360024049878, 0.0009344440186396241]  | [0.0015412909851875156, 0.001560163014801219, 0.0015126089856494218]  | 85176  |
+|   tuple   |   10000   |     100000   | [0.0012552789994515479, 0.0014613780076615512, 0.0020841840014327317]  | [0.0012978230079170316, 0.0010125469998456538, 0.0009343690180685371]  | 85176  |
+|   set   |   10000  |     100000   | [0.0005832040042150766, 0.0005597549898084253, 0.0006302350084297359]  | [0.001104296010453254, 0.0009703560208436102, 0.0012992379779461771]  | 85176  |
+|  list   |   1000000   |     100000  | [0.0019346769840922207, 0.0017107540043070912, 0.0021160060132388026] | [0.005761000997154042, 0.006385095010045916, 0.0054839410004206]  | 800984  |
+|  tuple   |   1000000   |     100000   | [0.011105402983957902, 0.010886443982599303, 0.010710987000493333]  | [0.0035798909957520664, 0.0032940809905994684, 0.0030798889929428697]  | 800984  |
+|  set   |   1000000   |     100000   | [0.006582016008906066, 0.006725382001604885, 0.006269895995501429]  | [0.012021547998301685, 0.013929145003203303, 0.014128198003163561]  | 800984  |
+|   list   |   100000000   |     100000   | [0.010406941000837833, 0.011317726981360465, 0.010900419991230592]  | [0.002243519003968686, 0.0022710399935021996, 0.0021420849952846766]  | 89095160  |
+|   tuple    |   100000000   |     100000   | [0.0505976119893603, 0.07865747500909492, 0.057329992996528745]  | [0.04424373700749129, 0.04353678101324476, 0.044995563017437235]  | 89095160  |
+|   set    |   100000000   |     100000   | [0.025315645994851366, 0.025862612994387746, 0.02872514200862497]  | [0.017021469015162438, 0.016108676994917914, 0.01653495998471044]  | 89095160  |
+
 
 The following graphs show that for all three container types, there is a positive correlation between the size of the container and the amount of time it takes to process. Despite having different sizes in bytes, tuples and lists have nearly the same performance with tuples performing slightly better overall. Lists are larger containers but from the results, their size increase does not exactly correlate to the process speed. Sets have the same byte size as lists do but provide much slower results. The following scatter plots demonstrate the time versus the bytes. As you can see, lists are slightly slower than tuples but not by the same margin of the set's slower speed. This case makes it appear that the size in bytes did not cause as much of an impact to the program as did the type of the container itself.
 
@@ -63,12 +77,12 @@ TODO: INSERT THE SCATTER PLOTS
 
 However, this does not explain the entirety of the picture of how bytes impact runtime. To get a better understanding of the relationship we can look at the program’s overall memory usage.
 
-## Part Two 
+## Part Two
 
 Memory usage can be difficult to measure in Python in particular. Because Python automatically allocates memory for objects behind the scenes it can be tricky to know exactly what is happening (Turner-Trauring, 2021).
 
-There are three main cases where our containers may be stored. They can be stored in either RAM, the disk (swap), or both (Turner-Trauring, 2021). As a fourth option, the program may not be even stored at all. 
-For the main three cases, the number of processes running in the background will decide where it is stored. For example, if there are a lot of browser tabs being run in the background the computer will likely switch things over to using the disk memory or swap. This is our resident memory usage. 
+There are three main cases where our containers may be stored. They can be stored in either RAM, the disk (swap), or both (Turner-Trauring, 2021). As a fourth option, the program may not be even stored at all.
+For the main three cases, the number of processes running in the background will decide where it is stored. For example, if there are a lot of browser tabs being run in the background the computer will likely switch things over to using the disk memory or swap. This is our resident memory usage.
 
 TODO: INCLUDE PART ABOUT TRACEMALLOC
 
@@ -82,7 +96,7 @@ TODO:
 
 # Source Code Examples
 
-TODO: 
+TODO:
 
 # References
 
