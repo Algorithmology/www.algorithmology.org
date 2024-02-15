@@ -40,7 +40,7 @@ Time execution
 
 ## Tables/Output
 
-|Approach 1 (new)|
+|Approach 1 (new)                                                                                          |
 | Approach | Container Size | Maximum values | Exceed     | Runs | Run 1       | Run 2       | Run 3       |
 |----------|----------------|----------------|------------|------|-------------|-------------|-------------|
 | set      | 500000         | 1000000        | Disabled   | 10   | 0.000005953 | 0.000001687 | 0.000001653 |
@@ -48,7 +48,7 @@ Time execution
 | set      | 50000000       | 1000000        | Disabled   | 10   | 0.000010076 | 0.000002834 | 0.000002701 |
 | set      | 100000000      | 1000000        | Disabled   | 10   | 0.000020630 | 0.000002683 | 0.000002558 |
 
-|Approach 2 (old)|
+|Approach 2 (old)                                                                               |
 | Approach | Container Size | Maximum values | Exceed     | Runs | Run 1    | Run 2   | Run 3   |
 |----------|----------------|----------------|------------|------|----------|---------|---------|
 | set      | 500000         | 1000000        | Disabled   | 10   | 1.8100   | 1.7739  | 1.7807  |
