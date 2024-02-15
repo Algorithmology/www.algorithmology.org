@@ -69,6 +69,23 @@ Research Question - Exceed True:
 |   set    |   32000000   |     50000000   | 4.058692819999999 | 4.196636223400003 | 4.057821533100002 |
 |   set    |   32000000   |     50000000   | 4.189269330699995 | 4.304223691700008 | 4.837364498900001 |
 
+Average list value without exceed: 0.2075137657
+
+With: 0.2432879374
+
+Average tuple value without exceed: 0.3143127801
+
+With: 0.186331345
+
+Average set value without exceed: 5.639825827
+
+With: 4.370285444
+
+This data shows that the tuples and sets become more effective when the
+data is larger, as the list decreases in effectiveness. The increase in the
+efficiency of set is the most prominent, which is in line with research in the
+wider Python community.
+
 # Tugi Gantulga
 
 TODO: add a markdown table with the results of your runs
