@@ -56,6 +56,19 @@ Result from running on WSL2
 |   tuple    |   100000000   |     100000   |[9.33974368499912, 8.946416168999349, 8.583650802000193]  | [0.9339743684999121, 0.8946416168999349, 0.8583650802000193]  | 800000040  |
 |   set    |   100000000   |     100000   | [104.86943111599976, 87.68656122200082, 102.34969667100086] | [10.486943111599976, 8.768656122200081, 10.234969667100085]  | 835128600 |
 
+Result from running on NixOS 22.11 (x86_64)
+
+| Approach | Container Size | Maximum values | Total Time for 10 runs                                                | Average Time for 10 runs                                                | Size in Bytes |
+|:--------:|:--------------:|:--------------:|:---------------------------------------------------------------------:|:-----------------------------------------------------------------------:|:-------------:|
+| list     | 10000          | 100000         | [0.0008414719999336739, 0.0008432590000211349, 0.0008199860000104309] | [8.41471999933674e-05, 8.432590000211349e-05, 8.199860000104308e-05]    | 85176         |
+| tuple    | 10000          | 100000         | [0.0007369920000428465, 0.0007288279999784208, 0.0007277400000020862] | [7.369920000428465e-05, 7.288279999784208e-05, 7.277400000020862e-05]   | 80040         |
+| set      | 10000          | 100000         | [0.0039581030000590545, 0.003329724000082024, 0.003341187000046375]   | [0.00039581030000590545, 0.0003329724000082024, 0.0003341187000046375]  | 85176         |
+| list     | 1000000        | 100000         | [0.004278331000023172, 0.003928750999989461, 0.004035653999949318]    | [0.0004278331000023172, 0.0003928750999989461, 0.0004035653999949318]   | 8448728       |
+| tuple    | 1000000        | 100000         | [0.004301209999994171, 0.004104619000031562, 0.004039459999944484]    | [0.00043012099999941713, 0.0004104619000031562, 0.00040394599999444837] | 8000040       |
+| set      | 1000000        | 100000         | [0.7286783740000828, 0.7370151210000131, 0.724985429999947]           | [0.07286783740000828, 0.07370151210000131, 0.0724985429999947]          | 8448728       |
+| list     | 100000000      | 100000         | [0.007804205999946134, 0.00784077499997693, 0.00784397600000375]      | [0.0007804205999946134, 0.000784077499997693, 0.000784397600000375]     | 835128600     |
+| tuple    | 100000000      | 100000         | [0.0015112060000319616, 0.0014411099999733779, 0.0014386159999730808] | [0.00015112060000319616, 0.00014411099999733779, 0.0001438615999973081] | 800000040     |
+| set      | 100000000      | 100000         | [83.146080407, 85.06266644699986, 82.90463120200002]                  | [8.3146080407, 8.506266644699986, 8.290463120200002]                    | 835128600     |
 
 The following graphs show that for all three container types, there is a positive correlation between the size of the container and the amount of time it takes to process. Despite having different sizes in bytes, tuples and lists have nearly the same performance with tuples performing slightly better overall. Lists are larger containers but from the results, their size increase does not exactly correlate to the process speed. Sets have the same byte size as lists do but provide much slower results. The following scatter plots demonstrate the time versus the bytes. As you can see, lists are slightly slower than tuples but not by the same margin of the set's slower speed. This case makes it appear that the size in bytes did not cause as much of an impact to the program as did the type of the container itself.
 
