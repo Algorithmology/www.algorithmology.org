@@ -18,14 +18,14 @@ As society’s programs get more complex, computer memory is becoming an increas
 
 # Method
 
-## Part One 
+## Part One
 
 For the first part of our experiment, we compared the runtimes of the 3 types of
 containers used in our `containmentcheck` program, the list, tuple, and set. We
 used the `sys.getsizeof()` function to find the size, in bytes, of the current
 container.
 
-### Part One -How does `sys.getsizeof` work?
+### Part One - How does `sys.getsizeof` work?
 
 `sys.getsizeof` provides us with the size of the object in bytes. Here is an
 example of using the `sys.getsizeof()` function:
@@ -158,16 +158,101 @@ program’s overall memory usage.
 
 ## Part Two
 
-Memory usage can be difficult to measure in Python in particular. Because Python automatically allocates memory for objects behind the scenes it can be tricky to know exactly what is happening (Turner-Trauring, 2021).
+Memory usage can be difficult to measure in Python in particular. Because Python
+automatically allocates memory for objects behind the scenes it can be tricky to
+know exactly what is happening (Turner-Trauring, 2021).
 
-There are three main cases where our containers may be stored. They can be stored in either RAM, the disk (swap), or both (Turner-Trauring, 2021). As a fourth option, the program may not be even stored at all. 
-For the main three cases, the number of processes running in the background will decide where it is stored. For example, if there are a lot of browser tabs being run in the background the computer will likely switch things over to using the disk memory or swap. This is our resident memory usage. 
+There are three main cases where our containers may be stored. They can be
+stored in either RAM, the disk (swap), or both (Turner-Trauring, 2021). As a
+fourth option, the program may not be even stored at all. For the main three
+cases, the number of processes running in the background will decide where it is
+stored. For example, if there are a lot of browser tabs being run in the
+background the computer will likely switch things over to using the disk memory
+or swap. This is our resident memory usage.
+
+### Part Two - Our Specific Approach
+
+For this part of our experiment, we added a function named `display_top` which
+displays memory snapshots for lines that are memory intensive. Additionally, we
+used `tracemalloc` to trace the number of memory allocations during the
+containment checking process.
+
+```patch
+diff --git a/containmentcheck/containmentcheck/main.py b/containmentcheck/containmentcheck/main.py
+index 301b1fd..ddcaf6e 100644
+--- a/containmentcheck/containmentcheck/main.py
++++ b/containmentcheck/containmentcheck/main.py
+@@ -1,6 +1,8 @@
+ """Perform an experiment to study efficiency of containment checking for collections."""
+ 
+ import timeit
++import tracemalloc
++import linecache
+ from typing import Any, Callable, List, Tuple, Union
+ 
+ import typer
+@@ -27,6 +29,30 @@ cli = typer.Typer()
+ console = Console()
+ 
+ 
++def display_top(snapshot, key_type='lineno', limit=10):
++    snapshot = snapshot.filter_traces((
++        tracemalloc.Filter(False, "<frozen importlib._bootstrap>"),
++        tracemalloc.Filter(False, "<unknown>"),
++    ))
++    top_stats = snapshot.statistics(key_type)
++
++    print("Top %s lines" % limit)
++    for index, stat in enumerate(top_stats[:limit], 1):
++        frame = stat.traceback[0]
++        print("#%s: %s:%s: %.1f KiB"
++              % (index, frame.filename, frame.lineno, stat.size / 1024))
++        line = linecache.getline(frame.filename, frame.lineno).strip()
++        if line:
++            print('    %s' % line)
++
++    other = top_stats[limit:]
++    if other:
++        size = sum(stat.size for stat in other)
++        print("%s other: %.1f KiB" % (len(other), size / 1024))
++    total = sum(stat.size for stat in top_stats)
++    print("Total allocated size: %.1f KiB" % (total / 1024))
++
++
+ def perform_containment_check_benchmark(
+     containment_check_lambda: Union[
+         Callable[[List[Any], Any], bool], Callable[[Tuple[Any], Any], bool]
+@@ -70,6 +96,7 @@ def containmentcheck(  # noqa: PLR0913
+     number_repeats: int = typer.Option(3),
+ ) -> None:
+     """Conduct an experiment to measure the performance of containment checking."""
++    tracemalloc.start()
+     # create the starting data container and random number
+     random_container = None
+     # generate a random value that goes up to the maximum value;
+@@ -137,3 +164,8 @@ def containmentcheck(  # noqa: PLR0913
+             number_repeats,
+         )
+     console.print(f"Size of container in memory {sys.getsizeof(random_container)} bytes")
++
++    console.print(f"Total traced memory {tracemalloc.get_traced_memory()}")
++    snapshot = tracemalloc.take_snapshot()
++    display_top(snapshot)
++    tracemalloc.stop()
+```
 
 ### Tracemalloc
 
-The `tracemalloc` library is a tool that lets you trace the amount of memory that is allocated by a Python program. In this experiment we were able to use `tracemalloc` to get the total amount of traced memory from the program as well as the total allocated size of the program itself (“tracemalloc — Trace memory allocations”, 2024).
+The `tracemalloc` library is a tool that lets you trace the amount of memory
+that is allocated by a Python program. In this experiment we were able to use
+`tracemalloc` to get the total amount of traced memory from the program as well
+as the total allocated size of the program itself (“tracemalloc — Trace memory
+allocations”, 2024).
 
-The following chart demonstrates the increase in traced memory and allocated size. We were not able to gather results from a container size of 100000000 because it took so much memory it caused our systems to crash. The sizes were found using the `get_traced_memory()` function within the `tracemalloc` library.
+The following chart demonstrates the increase in traced memory and allocated
+size. We were not able to gather results from a container size of 100000000
+because it took so much memory it caused our systems to crash. The sizes were
+found using the `get_traced_memory()` function within the `tracemalloc` library.
 
 | Approach | Container Size | Maximum Values  | Container Size in Bytes | Traced Memory (current size and peak size of memory blocks) | Total allocated size | Container % of Allocated Size | Average Time                                                           |
 |----------|----------------|-----------------|-------------------------|-------------------------------------------------------------|----------------------|-------------------------------|------------------------------------------------------------------------|
@@ -181,7 +266,11 @@ The following chart demonstrates the increase in traced memory and allocated siz
 | tuple    | 100000000      | 100000          | 800000040               | N/A                                                         | N/A                  | N/A                           | N/A                                                                    |
 | set      | 100000000      | 100000          | 835128600               | N/A                                                         | N/A                  | N/A                           | N/A                                                                    |
 
-Another utility of the `tracemalloc` library is the `take_snapshot()` method. This method allows the user to see snapshots of the memory blocks that are allocated by Python itself. The snapshot will provide an output of the memory blocks traced by `tracemalloc` in order of the one that takes up the most space. This is the output from running with the 1000000 size tuple.
+Another utility of the `tracemalloc` library is the `take_snapshot()` method.
+This method allows the user to see snapshots of the memory blocks that are
+allocated by Python itself. The snapshot will provide an output of the memory
+blocks traced by `tracemalloc` in order of the one that takes up the most space.
+This is the output from running with the 1000000 size tuple.
 
 ```python
 Top 10 lines
@@ -209,7 +298,8 @@ Top 10 lines
 Total allocated size: 466.4 KiB
 ```
 
-The list and set snapshots demonstrate a difference in the amount of space allocated in the second line.
+The list and set snapshots demonstrate a difference in the amount of space
+allocated in the second line.
 
 List Snapshot:
 
@@ -233,17 +323,32 @@ Set Snapshot:
 Total allocated size: 471.6 KiB
 ```
 
-Overall, the snapshot size of the list and the set are almost equal where as the tuple dislays less storage usage overall. This is consistent with our previous results.
+Overall, the snapshot size of the list and the set are almost equal where as the
+tuple dislays less storage usage overall. This is consistent with our previous
+results.
 
-The snapshot can be extremely helpful because it gives us a visualization of the space overhead from each process run by the program. As we can see the top line takes up over half of the amount of space traced by `tracemalloc`. From this output we can also see that the process of creating the random integers takes up majority of the space overhead. The integers created will also create a variation in size depending on the number of bytes they take up individually.
+The snapshot can be extremely helpful because it gives us a visualization of the
+space overhead from each process run by the program. As we can see the top line
+takes up over half of the amount of space traced by `tracemalloc`. From this
+output we can also see that the process of creating the random integers takes up
+majority of the space overhead. The integers created will also create a
+variation in size depending on the number of bytes they take up individually.
 
-Overall, `tracemalloc` can be utilized outside of this project to visualize the amount of space parts of a program use. The amount of space overhead is consistently larger in the sets and lists than the tuple container.
+Overall, `tracemalloc` can be utilized outside of this project to visualize the
+amount of space parts of a program use. The amount of space overhead is
+consistently larger in the sets and lists than the tuple container.
 
 # Results
 
 TODO: Finish Results Part 1
 
-For the future of this experiment we would hope to be able to test the large container size using `tracemalloc`. This would provide us with more conclusive data about the correlation between container size and traced memory and allocated size. From the tests we were able to run there is a definite positive correlation between the size of the container and the total amount of memory used overall. The larger the container, the more storage will be allocated to the program.
+For the future of this experiment we would hope to be able to test the large
+container size using `tracemalloc`. This would provide us with more conclusive
+data about the correlation between container size and traced memory and
+allocated size. From the tests we were able to run there is a definite positive
+correlation between the size of the container and the total amount of memory
+used overall. The larger the container, the more storage will be allocated to
+the program.
 
 # Slides
 
