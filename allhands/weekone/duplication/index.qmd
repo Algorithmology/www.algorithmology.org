@@ -32,13 +32,22 @@ checking, with the total time for the experiment with duplicates being lower tha
 experiment without duplicates. This unexpected outcome challenges our hypothesis that a
 large number of duplicates negatively affects the runtime of containment checking in large
 containers. This is evident within our experimental results, for example in the first test
-it took around 0.067 seconds on average to do 10 runs in 3 benchmark trials. The total time
-for all three trials was 0.670 and 0.680 seconds. THe second test, where there were added
-duplicate numbers took about 0.0016 seconds. Efficiently eliminating duplicates,
-accomplished through the transformation of a list into a set, emerges as a valuable tactic
-to enhance the performance of containment checking. These findings demonstrate the
-significance of contemplating data preprocessing steps, including duplicate removal, when
-crafting algorithms for applications requiring frequent containment checks in extensive
-datasets. 
+it took around 0.000005953 seconds on average to do 10 runs in 3 benchmark trials. The
+total time for all three trials was 0.000001687 and 0.000001653 seconds. THe second test,
+where there were added duplicate numbers took about 1.8100 seconds. Efficiently eliminating
+duplicates, accomplished through the transformation of a list into a set, emerges as a
+valuable tactic to enhance the performance of containment checking. These findings
+demonstrate the significance of contemplating data preprocessing steps, including duplicate
+removal, when crafting algorithms for applications requiring frequent containment checks in
+extensive datasets. 
 
 ## Results / Conclusion
+
+In order to keep both When analyzing the run times between both the new and the old approach
+among three run times of different sizes. The new approach is significantly faster than the
+old approach as when you compare the results of each run time you see that there is a drastic
+drop in run time compared to the old time. When looking at the data above it shows that when
+running a container size of 500,000 for both the old and the new. The new approach runs three
+averages of 0.000005953, 0.000001687, 0.000001653 seconds each average running time. The old
+approach ran averages of  1.8100, 1.7739, 1.7807 seconds which shows us that the newly created
+approach was a lot more efficient and faster than the previous approach in the lab. 
