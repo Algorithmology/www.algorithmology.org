@@ -39,7 +39,7 @@ set_example = set([10, 2.0, "cat"])
 
 print("size of list_example:", sys.getsizeof(list_example))
 print("size of tuple_example:", sys.getsizeof(tuple_example))
-print("size of set_example": sys.getsizeof(set_example))
+print("size of set_example:", sys.getsizeof(set_example))
 ```
 
 ### Part One - Our specific approach
