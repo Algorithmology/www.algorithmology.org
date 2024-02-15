@@ -20,23 +20,59 @@ As society’s programs get more complex, computer memory is becoming an increas
 
 ## Part One 
 
-For the first part of our experiment, we compared the runtimes of the 3 types of containers used in our `containmentcheck` program, the list, tuple, and set. We used the `sys.getsizeof()` function to find the size, in bytes, of the current container. 
+For the first part of our experiment, we compared the runtimes of the 3 types of
+containers used in our `containmentcheck` program, the list, tuple, and set. We
+used the `sys.getsizeof()` function to find the size, in bytes, of the current
+container.
 
-Here is an example of using the `sys.getsizeof()` function:
-TODO: check that this example code works
-```{
+### Part One -How does `sys.getsizeof` work?
+
+`sys.getsizeof` provides us with the size of the object in bytes. Here is an
+example of using the `sys.getsizeof()` function:
+
+```{python}
 import sys
 
 list_example = [10, 2.0, "cat"]
 tuple_example = (10, 2.0, "cat")
 set_example = set([10, 2.0, "cat"])
 
-print(sys.getsizeof(list_example))
-print(sys.getsizeof(tuple_example))
-print(sys.getsizeof(set_example))
-}```
+print("size of list_example:", sys.getsizeof(list_example))
+print("size of tuple_example:", sys.getsizeof(tuple_example))
+print("size of set_example": sys.getsizeof(set_example))
+```
 
-As you can see in the following charts, when the container size increases, so does the number of bytes it takes up. This experiment was run at a container size of 10000,  1000000, and 100000000.
+### Part One - Our specific approach
+
+In our experimentation, we edited `main.py` of the `containmentcheck`
+project to measure the size of the random container generated in each repeat.
+The implementation is very simple:
+
+```patch
+diff --git a/containmentcheck/containmentcheck/main.py b/containmentcheck/containmentcheck/main.py
+index 5d0b347..301b1fd 100644
+--- a/containmentcheck/containmentcheck/main.py
++++ b/containmentcheck/containmentcheck/main.py
+@@ -4,6 +4,7 @@ import timeit
+ from typing import Any, Callable, List, Tuple, Union
+ 
+ import typer
++import sys
+ from rich.console import Console
+ 
+ from containmentcheck.analyze import calculate_average_values
+@@ -135,3 +136,4 @@ def containmentcheck(  # noqa: PLR0913
+             number_runs,
+             number_repeats,
+         )
++    console.print(f"Size of container in memory {sys.getsizeof(random_container)} bytes")
+```
+
+### Part One - Our results
+
+As you can see in the following charts, when the container size increases, so
+does the number of bytes it takes up. This experiment was run at a container
+size of `10000`,  `1000000`, and `100000000.`
 
 The results are as follows:
 
@@ -70,11 +106,23 @@ Result from running on NixOS 22.11 (x86_64)
 | tuple    | 100000000      | 100000         | [0.0015112060000319616, 0.0014411099999733779, 0.0014386159999730808] | [0.00015112060000319616, 0.00014411099999733779, 0.0001438615999973081] | 800000040     |
 | set      | 100000000      | 100000         | [83.146080407, 85.06266644699986, 82.90463120200002]                  | [8.3146080407, 8.506266644699986, 8.290463120200002]                    | 835128600     |
 
-The following graphs show that for all three container types, there is a positive correlation between the size of the container and the amount of time it takes to process. Despite having different sizes in bytes, tuples and lists have nearly the same performance with tuples performing slightly better overall. Lists are larger containers but from the results, their size increase does not exactly correlate to the process speed. Sets have the same byte size as lists do but provide much slower results. The following scatter plots demonstrate the time versus the bytes. As you can see, lists are slightly slower than tuples but not by the same margin of the set's slower speed. This case makes it appear that the size in bytes did not cause as much of an impact to the program as did the type of the container itself.
+The following graphs show that for all three container types, there is a
+positive correlation between the size of the container and the amount of time it
+takes to process. Despite having different sizes in bytes, tuples and lists have
+nearly the same performance with tuples performing slightly better overall.
+Lists are larger containers but from the results, their size increase does not
+exactly correlate to the process speed. Sets have the same byte size as lists do
+but provide much slower results. The following scatter plots demonstrate the
+time versus the bytes. As you can see, lists are slightly slower than tuples but
+not by the same margin of the set's slower speed. This case makes it appear that
+the size in bytes did not cause as much of an impact to the program as did the
+type of the container itself.
 
 TODO: INSERT THE SCATTER PLOTS
 
-However, this does not explain the entirety of the picture of how bytes impact runtime. To get a better understanding of the relationship we can look at the program’s overall memory usage.
+However, this does not explain the entirety of the picture of how bytes impact
+runtime. To get a better understanding of the relationship we can look at the
+program’s overall memory usage.
 
 ## Part Two 
 
