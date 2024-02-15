@@ -76,6 +76,7 @@ For the main three cases, the number of processes running in the background will
 
 TODO: INCLUDE PART ABOUT TRACEMALLOC
 
+
 # Results
 
 TODO:
@@ -92,6 +93,8 @@ TODO:
 
 [1] Itamar Turner-Trauring, “Measuring memory usage in Python: it’s tricky!,” Python⇒Speed, Jun. 21, 2021. https://pythonspeed.com/articles/measuring-memory-python/#:~:text=In%20Python%20 (accessed Feb. 11, 2024).
 ‌[2] Itamar Turner-Trauring, “Easy Python memory profiling for data scientists and scientists with Fil,” Python⇒Speed, 2023. https://pythonspeed.com/fil/ (accessed Feb. 11, 2024).
+[3]“tracemalloc — Trace memory allocations,” Python documentation, 2024. https://docs.python.org/3/library/tracemalloc.html (accessed Feb. 15, 2024).
+‌
 
 
 
