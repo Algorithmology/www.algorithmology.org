@@ -41,3 +41,4 @@ toc: true
 
 ## Use Case
 
+Comparison between hardware can be important for individuals and companies. Individuals looking to perform tasks on a laptop might be interested in how long it takes to run programs for their needs as a programmers. Companies that intend to do programming and development might look at this type of data to determine what computer they may want to get their employees. Looking at the different battery levels also allows individuals and companies to see how energy-efficient a computer is which can help with productivity. Overall determining what system will be the fastest can increase performance and productivity.
