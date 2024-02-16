@@ -8,17 +8,17 @@ date-format: long
 toc: true
 ---
 
+<!-- TODO: Many of the tables inside of this file are not readable! -->
+
 # Overview
 
 Each member of this team ran the same set of commands and recorded the output
 data from them in our standardized table. With this information, each of us then
 outline what our data means in the context of our research question, shown in
-the article title to be 
-`How does the lookup value influence the performance of search for different container types?`
+the article title to be `How does the lookup value influence the performance of
+search for different container types?`
 
-# Alish Chhetri
-
-TODID: add a markdown table with the results of your runs
+## Alish Chhetri
 
 ```
 Research Question - Exceed False:
@@ -42,23 +42,35 @@ Research Question - Exceed True:
 
 Average speeds / Results:
 
-List: The list approach had an average execution time of 0.16766456 with the exceed parameter set to false, and an average of 0.20480116 with it set to True. The difference from the parameter being set from false to true was an additional 0.0371366 seconds.
+List: The list approach had an average execution time of 0.16766456 with the
+exceed parameter set to false, and an average of 0.20480116 with it set to True.
+The difference from the parameter being set from false to true was an additional
+0.0371366 seconds.
 
-Tuple: The tuple approach had an average execution time of 0.12496041 with the exceed parameter set to false, and an average of 0.18424746 with it set to True. The difference from the parameter being set from false to true was an additional 0.05928705 seconds.
+Tuple: The tuple approach had an average execution time of 0.12496041 with the
+exceed parameter set to false, and an average of 0.18424746 with it set to True.
+The difference from the parameter being set from false to true was an additional
+0.05928705 seconds.
 
-Set: The set approach had an average execution time of 4.38012759 with the exceed parameter set to false, and an average of 4.3792422 with it set to True. The difference from the parameter being set from false to true was lower by 0.00088539 seconds.
+Set: The set approach had an average execution time of 4.38012759 with the
+exceed parameter set to false, and an average of 4.3792422 with it set to True.
+The difference from the parameter being set from false to true was lower by
+0.00088539 seconds.
 
-My data shows that the list and tuple approaches became less effective when the exceed parameter was set to True. The list approach was slower by an average of 0.
-0371366 seconds, and the tuple approach was slower by 0.05928705 seconds. Interestingly, the set approach demonstrated a negligible difference in execution time 
-between the two parameter settings, with a mere 0.00088539 seconds decrease when the exceed parameter was set to True. This suggests that the set data structure is 
-less affected by the change in parameter, maintaining consistent performance regardless of the parameter setting. However, this is heavily outweighed by the overall 
-inefficiency of this approach.
+My data shows that the list and tuple approaches became less effective when the
+exceed parameter was set to True. The list approach was slower by an average of
+0. 0371366 seconds, and the tuple approach was slower by 0.05928705 seconds.
+Interestingly, the set approach demonstrated a negligible difference in
+execution time between the two parameter settings, with a mere 0.00088539
+seconds decrease when the exceed parameter was set to True. This suggests that
+the set data structure is less affected by the change in parameter, maintaining
+consistent performance regardless of the parameter setting. However, this is
+heavily outweighed by the overall inefficiency of this approach.
 
-# Benedek Kaibas
-
-add a markdown table with the results of your runs
+## Benedek Kaibas
 
 Exceed False:
+
 ```
 | Approach | Container Size | Maximum values | Run 1 | Run 2 | Run 3 |
 |:--------:|:--------------:|:--------------:|:-----:|:-----:|:-----:|
@@ -68,9 +80,10 @@ Exceed False:
 |  tuple   |   32000000   |     50000000   | 0.3515242652000031  | 0.34278923400000185 | 0.3194816407999999  |
 |   set    |   32000000   |     50000000   | 4.640831100699996 | 4.84347626189999 | 4.4827253423 |
 |   set    |   32000000   |     50000000   | 4.742995342200003 | 4.6323492360000035 | 4.606830833700007 |
-
 ```
+
 Exceed True:
+
 ```
 | Approach | Container Size | Maximum values | Run 1 | Run 2 | Run 3 |
 |:--------:|:--------------:|:--------------:|:-----:|:-----:|:-----:|
@@ -85,15 +98,18 @@ Exceed True:
 
 Average speeds / Results:
 
-List: The list approach had an average execution time of 0.23042255 with the exceed parameter set to false, and an average of 0.23033088 with it set to True.
+- `List`: The list approach had an average execution time of 0.23042255 with the
+exceed parameter set to false, and an average of 0.23033088 with it set to True.
 
-Tuple: The tuple approach had an average execution time of 0.29930176 with the exceed parameter set to false, and an average of 0.29920176 with it set to True.
+- `Tuple`: The tuple approach had an average execution time of 0.29930176 with the
+exceed parameter set to false, and an average of 0.29920176 with it set to True.
 
-Set: The set approach had an average execution time of 4.65820135 with the exceed parameter set to false, and an average of 4.65803468 with it set to True.
+- `Set`: The set approach had an average execution time of 4.65820135 with the
+exceed parameter set to false, and an average of 4.65803468 with it set to True.
 
-# Mordred Boulais
+## Mordred Boulais
 
-Research Question - Exceed False:
+### Research Question - Exceed False:
 
 | Approach | Container Size | Maximum values | Run 1 | Run 2 | Run 3 |
 |:--------:|:--------------:|:--------------:|:-----:|:-----:|:-----:|
@@ -107,7 +123,9 @@ Research Question - Exceed False:
 |   set    |   32000000   |     50000000   | 5.743995342200003 | 5.6333492360000035 | 5.607830833700007 |
 |   set    |   32000000   |     50000000   | 5.625097753599993 | 5.646632331099999 | 5.533494240200002 |
 
-Research Question - Exceed True:
+: {.responsive}
+
+### Research Question - Exceed True:
 
 | Approach | Container Size | Maximum values | Run 1 | Run 2 | Run 3 |
 |:--------:|:--------------:|:--------------:|:-----:|:-----:|:-----:|
@@ -121,26 +139,23 @@ Research Question - Exceed True:
 |   set    |   32000000   |     50000000   | 4.058692819999999 | 4.196636223400003 | 4.057821533100002 |
 |   set    |   32000000   |     50000000   | 4.189269330699995 | 4.304223691700008 | 4.837364498900001 |
 
-Average list value without exceed: 0.2075137657
+: {.responsive}
 
-With: 0.2432879374
+- Average list value without exceed: 0.2075137657
+  - With: 0.2432879374
+- Average tuple value without exceed: 0.3143127801
+  - With: 0.186331345
+- Average set value without exceed: 5.639825827
+  - With: 4.370285444
 
-Average tuple value without exceed: 0.3143127801
-
-With: 0.186331345
-
-Average set value without exceed: 5.639825827
-
-With: 4.370285444
-
-This data shows that the tuples and sets become more effective when the
-data is larger, as the list decreases in effectiveness. The increase in the
-efficiency of set is the most prominent, which is in line with research in the
+This data shows that the `tuple`s and `set`s become more effective when the data
+is larger, as the `list` decreases in effectiveness. The increase in the
+efficiency of `set` is the most prominent, which is in line with research in the
 wider Python community.
 
-# Tugi Gantulga
+## Tugi Gantulga
 
-exceed: True
+### exceed: True
 
 | Approach | Container Size | Maximum values | Run 1 | Run 2 | Run 3 |
 |:--------:|:--------------:|:--------------:|:-----:|:-----:|:-----:|
@@ -154,9 +169,9 @@ exceed: True
 |   set    |   32000000   |     50000000   | 3.725089145799939  | 3.9667610716001946  | 3.736447576399951  |
 |   set    |   32000000   |     50000000   | 3.819155916700038  | 3.8022729406002327  | 3.8005320308999218  |
 
+: {.responsive}
 
-exceed: False
-Research Question - Exceed False:
+### exceed: False
 
 | Approach | Container Size | Maximum values | Run 1 | Run 2 | Run 3 |
 |:--------:|:--------------:|:--------------:|:-----:|:-----:|:-----:|
@@ -170,17 +185,22 @@ Research Question - Exceed False:
 |   set    |   32000000   |     50000000   | 4.661817956900268  | 4.120450581799742  | 3.867244143299831  |
 |   set    |   32000000   |     50000000   | 4.02432371290015  | 3.8211042887000075  | 4.3335996894002164  |
 
-Average speeds / Results:
+: {.responsive}
 
-List: The list approach had an average execution time of 0.14108012 with the exceed parameter set to false, and an average of 0.13566562 with it set to True.
+### Average speeds / Results:
 
-Tuple: The tuple approach had an average execution time of 0.14074638 with the exceed parameter set to false, and an average of 0.05795162 with it set to True.
+- `List`: The list approach had an average execution time of 0.14108012 with the
+exceed parameter set to false, and an average of 0.13566562 with it set to True.
 
-Set: The set approach had an average execution time of 4.33721558 with the exceed parameter set to false, and an average of 3.9197396 with it set to True.
+- `Tuple`: The tuple approach had an average execution time of 0.14074638 with the
+exceed parameter set to false, and an average of 0.05795162 with it set to True.
 
-# David Gormley
+- `Set`: The set approach had an average execution time of 4.33721558 with the
+exceed parameter set to false, and an average of 3.9197396 with it set to True.
 
-Research Question - Exceed True:
+## David Gormley
+
+### Research Question - Exceed True:
 
 | Approach | Container Size | Maximum values | Run 1 | Run 2 | Run 3 |
 |:--------:|:--------------:|:--------------:|:-----:|:-----:|:-----:|
@@ -188,7 +208,9 @@ Research Question - Exceed True:
 |  tuple   |   32000000   |     50000000    | [0.3438270348000026, 0.3126742918000014, 0.3044405047000085] | [0.3190678571000029, 0.3124546572000002, 0.3243848471000008] | [0.3352568829000037, 0.3173691362000031, 0.3652297072000032]
 |  set   |   32000000   |     50000000    | [4.7528270348000026, 4.4016742918000014, 4.8434405047000085] | [4.6070678571000029, 4.6804546572000002, 4.7123848471000008] | [4.8342568829000037, 4.7363691362000031, 4.6932297072000032]
 
-Research Question - Exceed False:
+: {.responsive}
+
+### Research Question - Exceed False:
 
 | Approach | Container Size | Maximum values | Run 1 | Run 2 | Run 3 |
 |:--------:|:--------------:|:--------------:|:-----:|:-----:|:-----:|
@@ -196,13 +218,18 @@ Research Question - Exceed False:
 |  tuple   |   32000000   |     50000000    | [0.3372568829000035, 0.3163691362000033, 0.3622297072000034] | [0.3458270348000024, 0.3116742918000017, 0.3064405047000083] | [0.3205678571000028, 0.3104546572000004, 0.3253848471000007]
 |  set  |   32000000   |     50000000    | [4.732827034800002, 4.301674291800001, 4.743440504700008] | [4.537062827100003, 4.6804546572000005, 4.6123848471000005] | [4.734256882900003, 4.636369136200003, 4.593229707200003]
 
-Average speeds / Results:
+: {.responsive}
 
-List: The list approach had an average execution time of 0.18677646 with the exceed parameter set to false, and an average of 0.23153097 with it set to True.
+### Average speeds / Results:
 
-Tuple: The tuple approach had an average execution time of 0.32624499 with the exceed parameter set to false, and an average of 0.32607832 with it set to True.
+- `List`: The list approach had an average execution time of 0.18677646 with the
+exceed parameter set to false, and an average of 0.23153097 with it set to True.
 
-Set: The set approach had an average execution time of 4.61907776 with the exceed parameter set to false, and an average of 4.69574499 with it set to True.
+- `Tuple`: The tuple approach had an average execution time of 0.32624499 with the
+exceed parameter set to false, and an average of 0.32607832 with it set to True.
+
+- `Set`: The set approach had an average execution time of 4.61907776 with the
+exceed parameter set to false, and an average of 4.69574499 with it set to True.
 
 # Team Findings
 
