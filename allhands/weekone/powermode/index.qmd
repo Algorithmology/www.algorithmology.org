@@ -22,7 +22,7 @@ with the list, tuple, and set container to give ourselves more results.
 
 ### Laptop Running macOS with an Apple M2 Silicon Chip
 
-### Battery Standard: 100%-50%
+#### Battery Standard: 100%-50%
 
 | Container | Battery | Avg1                | Avg2                | Avg3               |
 |-----------|---------|---------------------|---------------------|--------------------|
@@ -32,7 +32,8 @@ with the list, tuple, and set container to give ourselves more results.
 
 : Battery {.responsive}
 
-### Low Power Mode: 100%-50%
+#### Low Power Mode: 100%-50%
+
 | Container | Battery | Avg1               | Avg2                | Avg3                |
 |-----------|---------|--------------------|---------------------|---------------------|
 | List      | 79%     | 0.5327608833089471 | 0.49276689169928434 | 0.6808747082948685  |
@@ -41,7 +42,8 @@ with the list, tuple, and set container to give ourselves more results.
 
 : Low {.responsive}
 
-### Battery Standard: 50%-0%
+#### Battery Standard: 50%-0%
+
 | Container | Battery | Avg1               | Avg2                | Avg3                |
 |-----------|---------|--------------------|---------------------|---------------------|
 | List      | 49%     | 0.2867575827265717 | 0.32492648450573702 | 0.31956718364547821 |
@@ -50,7 +52,8 @@ with the list, tuple, and set container to give ourselves more results.
 
 : Battery {.responsive}
 
-### Low Power Mode: 50%-0%
+#### Low Power Mode: 50%-0%
+
 | Container | Battery | Avg1               | Avg2                | Avg3                |
 |-----------|---------|--------------------|---------------------|---------------------|
 | List      | 49%     | 0.3506827294759123 | 0.40076919374749441 | 0.41234592974895092 |
@@ -59,7 +62,17 @@ with the list, tuple, and set container to give ourselves more results.
 
 : Low {.responsive}
 
-These results indicate that there is a negative relationship between runtime and battery level/mode. As the battery level decreases, the time overhead to perform containment checking increases. Similarly, when low power mode is engaged, the run time also increases. With this mode engaged, the device is not running on all cylinders as a way to preserve battery life. This certainly plays a role in the expected output. Extrapolating these results could serve beneficial in examining the ratios for various increases, however, for my smaller set of data, time overhead seemed around double for most points, on average. All containers seemed to follow this trend, however, set saw the most hinderance from this, as it ran in a manner which became more impractical compared to other containers.
+These results indicate that there is a negative (or inverse) relationship
+between runtime and battery level/mode. This means that, as the battery level
+decreases, the time overhead to perform containment checking increases.
+Similarly, when low power mode is engaged, the run time also increases. With
+this mode engaged, the device is not running on all cylinders as a way to
+preserve battery life. This certainly plays a role in the expected output.
+Extrapolating these results could serve beneficial in examining the ratios for
+various increases, however, for my smaller set of data, time overhead seemed
+around double for most points, on average. All containers seemed to follow this
+trend, however, set saw the most hindrance from this, as it ran in a manner
+which became more impractical compared to other containers.
 
 ### Linux
 
