@@ -244,17 +244,30 @@ exceed parameter set to false, and an average of 4.69574499 with it set to True.
 |   set - Exceed True    |   32000000   |     50000000   | 4.40460938 |
 ```
 
-List: The list approach had an average execution time of 0.18669149 with the exceed parameter set to false, and an average of 0.20912331 with it set to True.
+- `List`: The list approach had an average execution time of 0.18669149 with the
+exceed parameter set to false, and an average of 0.20912331 with it set to True.
 
-Tuple: The tuple approach had an average execution time of 0.24111326 with the exceed parameter set to false, and an average of 0.2107621 with it set to True.
+- `Tuple`: The tuple approach had an average execution time of 0.24111326 with
+the exceed parameter set to false, and an average of 0.2107621 with it set to
+True.
 
-Set: The set approach had an average execution time of 4.72688962 with the exceed parameter set to false, and an average of 4.40460938 with it set to True.
+- `Set`: The set approach had an average execution time of 4.72688962 with the
+exceed parameter set to false, and an average of 4.40460938 with it set to True.
 
-Our team's data indicates that both the set and tuple approaches experienced a slight increase in efficiency when the exceed parameter was set to True, while the list 
-actually diminished. Specifically, the list approach had an average execution time of 0.18669149 seconds with the exceed parameter set to false, and an average of 0.
-20912331 seconds with it set to True, resulting in an increase of 0.02243182 seconds. Conversely, the tuple approach exhibited a decrease in execution time from 0.
-24111326 seconds to 0.2107621 seconds when the exceed parameter was set to True, showing an improvement of 0.03035116 seconds. Additionally, the set approach 
-demonstrated a notable improvement, with its average execution time decreasing from 4.72688962 seconds to 4.40460938 seconds when the exceed parameter was set to 
-True, indicating a decrease of 0.32228024 seconds. These findings underscore the varying impacts of the exceed parameter on different container types, suggesting that 
-careful consideration is required when selecting the appropriate data structure for specific computational tasks. It's worth noting that differences in our computers 
-could be an influencing factor in these results, highlighting the importance of conducting further analysis and experimentation for comprehensive insights.
+Our team's data indicates that both the `set` and `tuple` approaches experienced
+a slight increase in efficiency when the exceed parameter was set to `True`,
+while the list actually diminished. Specifically, the `list` approach had an
+average execution time of 0.18669149 seconds with the exceed parameter set to
+`False`, and an average of 0. 20912331 seconds with it set to `True`, resulting
+in an increase of 0.02243182 seconds. Conversely, the `tuple` approach exhibited a
+decrease in execution time from 0. 24111326 seconds to 0.2107621 seconds when
+the exceed parameter was set to `True`, showing an improvement of 0.03035116
+seconds. Additionally, the set approach demonstrated a notable improvement, with
+its average execution time decreasing from 4.72688962 seconds to 4.40460938
+seconds when the `exceed `parameter was set to `True`, indicating a decrease of
+0.32228024 seconds. These findings underscore the varying impacts of the `exceed`
+parameter on different container types, suggesting that careful consideration is
+required when selecting the appropriate data structure for specific
+computational tasks. It's worth noting that differences in our computers could
+be an influencing factor in these results, highlighting the importance of
+conducting further analysis and experimentation for comprehensive insights.
