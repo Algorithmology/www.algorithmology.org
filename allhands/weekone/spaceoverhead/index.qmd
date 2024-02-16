@@ -402,6 +402,8 @@ the program.
 
 # References
 
+<!-- TODO: these references do not correctly handle links and should be fixed -->
+
 - [1] Itamar Turner-Trauring, “Measuring memory usage in Python: it’s tricky!,”
 Python⇒Speed, Jun. 21, 2021.
 https://pythonspeed.com/articles/measuring-memory-python/#:~:text=In%20Python%20
