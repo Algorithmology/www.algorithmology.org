@@ -142,12 +142,12 @@ the exceed parameter set to `False`, and an average of 0.23033088 with it set to
 
 : {.responsive}
 
-- Average list value without exceed: 0.2075137657
-- Average list value with exceed: 0.2432879374
-- Average tuple value without exceed: 0.3143127801
-- Average list value With exceed: 0.186331345
-- Average set value without exceed: 5.639825827
-- Average set value With exceed: 4.370285444
+- Average list value without `exceed`: 0.2075137657
+- Average list value with `exceed`: 0.2432879374
+- Average tuple value without `exceed`: 0.3143127801
+- Average list value With `exceed`: 0.186331345
+- Average set value without `exceed`: 5.639825827
+- Average set value With `exceed`: 4.370285444
 
 This data shows that the `tuple`s and `set`s become more effective when the data
 is larger, as the `list` decreases in effectiveness. The increase in the
@@ -190,14 +190,14 @@ wider Python community.
 
 ### Average speeds / Results
 
-- `List`: The list approach had an average execution time of 0.14108012 with the
-exceed parameter set to false, and an average of 0.13566562 with it set to True.
+- `List`: The `List `approach had an average execution time of 0.14108012 with the
+exceed parameter set to `False`, and an average of 0.13566562 with it set to `True.`
 
-- `Tuple`: The tuple approach had an average execution time of 0.14074638 with the
-exceed parameter set to false, and an average of 0.05795162 with it set to True.
+- `Tuple`: The `Tuple` approach had an average execution time of 0.14074638 with the
+exceed parameter `Set` to `False`, and an average of 0.05795162 with it set to `True.`
 
-- `Set`: The set approach had an average execution time of 4.33721558 with the
-exceed parameter set to false, and an average of 3.9197396 with it set to True.
+- `Set`: The `Set` approach had an average execution time of 4.33721558 with the
+exceed parameter set to `False`, and an average of 3.9197396 with it set to `True.`
 
 ## David Gormley
 
