@@ -71,7 +71,7 @@ preserve battery life. This certainly plays a role in the expected output.
 Extrapolating these results could serve beneficial in examining the ratios for
 various increases, however, for my smaller set of data, time overhead seemed
 around double for most points, on average. All containers seemed to follow this
-trend, however, set saw the most hindrance from this, as it ran in a manner
+trend, however, `set` saw the most hindrance from this, as it ran in a manner
 which became more impractical compared to other containers.
 
 ### Linux
