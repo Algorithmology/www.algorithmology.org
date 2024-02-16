@@ -236,7 +236,6 @@ exceed parameter set to `False`, and an average of 4.69574499 with it set to
 
 # Team Findings
 
-```
 | Approach | Container Size | Maximum values | Average times |
 |:--------:|:--------------:|:--------------:|:-----:|
 |   list - Exceed False  |   32000000   |   50000000  | 0.18669149  |
@@ -245,7 +244,8 @@ exceed parameter set to `False`, and an average of 4.69574499 with it set to
 |  tuple - Exceed True   |   32000000   |     50000000   | 0.2107621 |
 |   set - Exceed False    |   32000000   |     50000000   | 4.72688962 |
 |   set - Exceed True    |   32000000   |     50000000   | 4.40460938 |
-```
+
+: {.responsive}
 
 - `List`: The list approach had an average execution time of 0.18669149 with the
 exceed parameter set to false, and an average of 0.20912331 with it set to True.
