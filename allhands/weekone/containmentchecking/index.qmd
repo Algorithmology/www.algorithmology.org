@@ -69,9 +69,8 @@ this is heavily outweighed by the overall inefficiency of this approach.
 
 ## Benedek Kaibas
 
-Exceed False:
+### Exceed False:
 
-```
 | Approach | Container Size | Maximum values | Run 1 | Run 2 | Run 3 |
 |:--------:|:--------------:|:--------------:|:-----:|:-----:|:-----:|
 |   list   |   32000000   |     50000000   | 0.10995153620000323  | 0.11059916910000188  | 0.11407242859999988  |
@@ -80,11 +79,11 @@ Exceed False:
 |  tuple   |   32000000   |     50000000   | 0.3515242652000031  | 0.34278923400000185 | 0.3194816407999999  |
 |   set    |   32000000   |     50000000   | 4.640831100699996 | 4.84347626189999 | 4.4827253423 |
 |   set    |   32000000   |     50000000   | 4.742995342200003 | 4.6323492360000035 | 4.606830833700007 |
-```
 
-Exceed True:
+: {.responsive}
 
-```
+### Exceed True:
+
 | Approach | Container Size | Maximum values | Run 1 | Run 2 | Run 3 |
 |:--------:|:--------------:|:--------------:|:-----:|:-----:|:-----:|
 |   list   |   32000000   |     50000000   | 0.10985153620000323  | 0.11049916910000188  | 0.11402242859999988  |
@@ -94,9 +93,9 @@ Exceed True:
 |   set    |   32000000   |     50000000   | 4.639831100699996 | 4.84347626189999 | 4.4827253423 |
 |   set    |   32000000   |     50000000   | 4.742995342200003 | 4.6323492360000035 | 4.606830833700007 |
 
-```
+: {.responsive}
 
-Average speeds / Results:
+### Average speeds / Results
 
 - `List`: The list approach had an average execution time of 0.23042255 with the
 exceed parameter set to false, and an average of 0.23033088 with it set to True.
@@ -109,7 +108,7 @@ exceed parameter set to false, and an average of 4.65803468 with it set to True.
 
 ## Mordred Boulais
 
-### Research Question - Exceed False:
+### Research Question - Exceed False
 
 | Approach | Container Size | Maximum values | Run 1 | Run 2 | Run 3 |
 |:--------:|:--------------:|:--------------:|:-----:|:-----:|:-----:|
@@ -125,7 +124,7 @@ exceed parameter set to false, and an average of 4.65803468 with it set to True.
 
 : {.responsive}
 
-### Research Question - Exceed True:
+### Research Question - Exceed True
 
 | Approach | Container Size | Maximum values | Run 1 | Run 2 | Run 3 |
 |:--------:|:--------------:|:--------------:|:-----:|:-----:|:-----:|
@@ -142,11 +141,11 @@ exceed parameter set to false, and an average of 4.65803468 with it set to True.
 : {.responsive}
 
 - Average list value without exceed: 0.2075137657
-  - With: 0.2432879374
+- Average list value with exceed: 0.2432879374
 - Average tuple value without exceed: 0.3143127801
-  - With: 0.186331345
+- Average list value With exceed: 0.186331345
 - Average set value without exceed: 5.639825827
-  - With: 4.370285444
+- Average set value With exceed: 4.370285444
 
 This data shows that the `tuple`s and `set`s become more effective when the data
 is larger, as the `list` decreases in effectiveness. The increase in the
