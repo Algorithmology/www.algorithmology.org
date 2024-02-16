@@ -10,20 +10,37 @@ toc: true
 
 # Introduction
 
-When programming in Python each object created takes up a specific amount of space on the computer which is measured in bytes. The objects themselves hold their names as well as their properties. In the `containmentcheck` program we are looking in particular at container objects that also store the values inside of them, sometimes pointer values. In this post, we will be experimenting to see how much of an impact the size of an object has on the time efficiency of the `containmentcheck` program. Understanding the relationship between object size and program efficiency is crucial for optimizing the `containmentcheck` program's performance.
+When programming in Python each object created takes up a specific amount of
+space on the computer which is measured in bytes. The objects themselves hold
+their names as well as their properties. In the `containmentcheck` program we
+are looking in particular at container objects that also store the values inside
+of them, sometimes pointer values. In this post, we will be experimenting to see
+how much of an impact the size of an object has on the time efficiency of the
+`containmentcheck` program. Understanding the relationship between object size
+and program efficiency is crucial for optimizing the `containmentcheck`
+program's performance.
 
 ## Motivation
 
-As society’s programs get more complex, computer memory is becoming an increasingly more valuable resource. When programming it is important to consider how the type of objects you use will impact your program’s performance. The goal of our experiments is to look at how the size of the container impacts the amount of space a program takes up and whether or not that causes an increase or decrease in the speed of the program's runtime itself. As a result, our experiments seek to shed light on the crucial relationship between container size and its effects on program space and runtime efficiency. This will emphasize the significance of effective memory management and careful object type consideration in programming as societal programs become more complex.
+As society’s programs get more complex, computer memory is becoming an
+increasingly more valuable resource. When programming it is important to
+consider how the type of objects you use will impact your program’s performance.
+The goal of our experiments is to look at how the size of the container impacts
+the amount of space a program takes up and whether or not that causes an
+increase or decrease in the speed of the program's runtime itself. As a result,
+our experiments seek to shed light on the crucial relationship between container
+size and its effects on program space and runtime efficiency. This will
+emphasize the significance of effective memory management and careful object
+type consideration in programming as societal programs become more complex.
 
 # Method
 
 ## Part One
 
-For the first part of our experiment, we compared the runtimes of the three types of
-containers used in our `containmentcheck` program, the list, tuple, and set. We
-used the `sys.getsizeof()` function to find the size, in bytes, of the current
-container.
+For the first part of our experiment, we compared the runtimes of the three
+types of containers used in our `containmentcheck` program, the list, tuple, and
+set. We used the `sys.getsizeof()` function to find the size, in bytes, of the
+current container.
 
 ### Part One - How does `sys.getsizeof` work?
 
@@ -76,7 +93,7 @@ size of `10000`,  `1000000`, and `100000000.`
 
 The results on our various operating systems are as follows:
 
-#### Result from running on WSL2 Ubuntu 22.04.3 (Pallas)
+#### Result from running on WSL2 Ubuntu 22.04.3 from Pallas
 
 | Approach | Container Size | Maximum values | Total Time for 10 runs| Average Time for 10 runs| Size in Bytes|
 |:--------:|:--------------:|:--------------:|:-----:|:-----:|:-----:|
@@ -92,7 +109,7 @@ The results on our various operating systems are as follows:
 
 : Result from running on WSL2 Ubuntu 22.04.3 {.responsive}
 
-#### Result from running on MacOS 14.2.1 (Aidan)
+#### Result from running on MacOS 14.2.1 Aidan
 
 | Approach | Container size | Maximum Values | Size Run 1              | Size Run 2              | Size Run 3              | Bytes    |
 |----------|-----------------|-----------------|-------------------------|-------------------------|-------------------------|----------|
@@ -124,7 +141,7 @@ The results on our various operating systems are as follows:
 
 : Result from running on WSL Ubuntu 22.04.3 {.responsive}
 
-#### Result from running on MacOS 14.1.1 (Jason)
+#### Result from running on MacOS 14.1.1 from Jason
 
 | Approach | Container Size | Maximum values | Total Time for 10 runs                                                | Average Time for 10 runs                                                | Size in Bytes |
 |:--------:|:--------------:|:--------------:|:---------------------------------------------------------------------:|:-----------------------------------------------------------------------:|:-------------:|
@@ -140,7 +157,7 @@ The results on our various operating systems are as follows:
 
 : Result from running on MacOS 14.1.1 {.responsive}
 
-#### Result from running on NixOS 22.11 (Simon)
+#### Result from running on NixOS 22.11 from Simon
 
 | Approach | Container Size | Maximum values | Total Time for 10 runs                                                | Average Time for 10 runs                                                | Size in Bytes |
 |:--------:|:--------------:|:--------------:|:---------------------------------------------------------------------:|:-----------------------------------------------------------------------:|:-------------:|
@@ -168,7 +185,8 @@ not by the same margin as the set's slower speed. This case makes it appear that
 the size in bytes did not cause as much of an impact on the program as did the
 type of the container itself.
 
-![scatter-plot-small](./images/scatter-plot-small.png) 
+![Scatter Plot With Time on the Horizontal Axis and Bytes on the Vertical Axis
+for a Small Container](./images/scatter-plot-small.png) 
 
 ![scatter-plot-medium](./images/scatter-plot-medium.png) 
 
