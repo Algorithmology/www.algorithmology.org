@@ -8,3 +8,129 @@ date-format: long
 toc: true
 ---
 
+# Overview
+
+The research question that we decide to do is, "How will controlling the amount
+of duplication in a container influence the performance of containment
+checking?" This research question analyze how duplication of elements in a given
+container could affect the overhead time finding those elements. This could also
+involve the amount of elements inside the containment checking to maximize the
+accuracy of the research, as factors such as memory and algorithm complexity
+could affect the results. 
+
+Our team hypothesized that if a large container has a significant number of
+duplicate values, it will affect the containment checking. The independent
+variable is a container with duplicate values inside of the container, and
+searching them against the time overhead performance of containment checking. To
+measure the containment checking, it will be calculated against time and memory
+usage from the local machine. 
+
+## Methodology 
+
+Before the code was edited to use duplicated values, we wanted to adjust the
+code so that when it's using the set as the container, it converts the random
+list into a set before timing its performance so that it was only timing the
+speed of the `in` operator and not including the conversion in that assessment.
+In order to do this, the line `random_container_set = set(random_container)` was
+removed from the `containment_check_set` function in `containment.py` and moved
+to `main.py` within the section of code under `elif approach.value ==
+ContainmentCheckApproach.set:`. This did greatly contribute to the speeding up
+of the containment checking with sets.
+
+The largest code adjustment made to fit this experiment specifically, however,
+was adding the capability to generate a fixed number of duplicates within the
+randomized containers. Here's the updated code for the
+`generate_random_container` function within the `generate.py` file.
+
+```python
+def generate_random_container(
+    size: int,
+    maximum: int,
+    make_tuple: bool = False,
+    num_duplicates: int = 0
+):
+    """generate a list of random values for a specific size
+    and with a number up to a specific maximum"""
+    random_list = []
+    if num_duplicates != 0:
+        duplicate = size/num_duplicates
+    else:
+        duplicate = 0
+    for i in range(size):
+        if duplicate != 0 and i % duplicate == 0:
+            random_list.append(generate_random_number(maximum, True))
+        else:
+            random_list.append(generate_random_number(maximum, False))
+    # convert the list to a tuple if this was requested
+    if make_tuple:
+        return tuple(random_list)
+    return random_list
+```
+
+This makes it so that the user can input a number of duplicates they want to
+force the generator to add to the container, and all of the duplicates are 1
+greater than the maximum, so it is guaranteed that no values other than the
+duplicates will match the duplicated value.
+
+- Independent variable: the project with the duplicate values
+- Dependent variable: time execution
+- Control variables: 
+    - Add a function within generate.py that controls the amount of duplicates within a list 
+    - Function that does the conversion
+    - Measurement of time within both functions
+
+## Measurements
+
+We implemented a Python program and used it to record execution time.
+
+## Experimental Results
+
+| Approach | Container Size | Maximum values | Exceed | Runs | Run 1       | Run 2       | Run 3       |
+|----------|----------------|----------------|--------|------|-------------|-------------|-------------|
+| set      | 500000         | 1000000        | Disabled | 10   | 0.000005953 | 0.000001687 | 0.000001653 |
+| set      | 5000000        | 1000000        | Disabled | 10   | 0.000007634 | 0.000002007 | 0.000001929 |
+| set      | 50000000       | 1000000        | Disabled | 10   | 0.000010076 | 0.000002834 | 0.000002701 |
+| set      | 100000000      | 1000000        | Disabled | 10   | 0.000020630 | 0.000002683 | 0.000002558 |
+
+: Approach 1 (new) {.striped .hover .responsive}
+
+| Approach | Container Size | Maximum values | Exceed | Runs | Run 1     | Run 2    | Run 3    |
+|----------|----------------|----------------|--------|------|-----------|----------|----------|
+| set      | 500000         | 1000000        | Disabled | 10   | 1.8100    | 1.7739   | 1.7807   |
+| set      | 5000000        | 1000000        | Disabled | 10   | 36.099    | 37.799   | 36.458   |
+| set      | 50000000       | 1000000        | Disabled | 10   | 422.0990  | 423.983  | 410.760  |
+| set      | 100000000      | 1000000        | Disabled | 10   | 831.156   | 837.759  | 835.45   |
+
+: Approach 2 (old) {.striped .hover .responsive}
+
+
+## Data Analysis
+
+Involving duplicates led to a significant reduction in the average time for
+containment checking, with the total time for the experiment with duplicates
+being lower than the experiment without duplicates. This unexpected outcome
+challenges our hypothesis that a large number of duplicates negatively affects
+the runtime of containment checking in large containers. This is evident within
+our experimental results, for example in the first test it took around
+0.000005953 seconds on average to do 10 runs in 3 benchmark trials. The total
+time for all three trials was 0.000001687 and 0.000001653 seconds. The second
+test, where there were added duplicate numbers took about 1.8100 seconds.
+Efficiently eliminating duplicates, accomplished through the transformation of a
+list into a set, emerges as a valuable tactic to enhance the performance of
+containment checking. These findings demonstrate the significance of
+contemplating data pre-processing steps, including duplicate removal, when
+crafting algorithms for applications requiring frequent containment checks in
+extensive data sets. 
+
+## Results / Conclusion
+
+In order to keep both When analyzing the run times between both the new and the
+old approach among three run times of different sizes. The new approach is
+significantly faster than the old approach as when you compare the results of
+each run time you see that there is a drastic drop in run time compared to the
+old time. When looking at the data above it shows that when running a container
+size of 500,000 for both the old and the new. The new approach runs three
+averages of 0.000005953, 0.000001687, 0.000001653 seconds each average running
+time. The old approach ran averages of  1.8100, 1.7739, 1.7807 seconds which
+shows us that the newly created approach was a lot more efficient and faster
+than the previous approach in the lab. 
