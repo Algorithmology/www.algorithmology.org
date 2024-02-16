@@ -58,14 +58,14 @@ The difference from the parameter being set from false to true was lower by
 0.00088539 seconds.
 
 This data shows that the list and tuple approaches became less effective when
-the exceed parameter was set to True. The list approach was slower by an average
-of 0.0371366 seconds, and the tuple approach was slower by 0.05928705 seconds.
-Interestingly, the set approach demonstrated a negligible difference in
-execution time between the two parameter settings, with a mere 0.00088539
-seconds decrease when the exceed parameter was set to True. This suggests that
-the set data structure is less affected by the change in parameter, maintaining
-consistent performance regardless of the parameter setting. However, this is
-heavily outweighed by the overall inefficiency of this approach.
+the exceed parameter was set to `True. `The list approach was slower by an
+average of 0.0371366 seconds, and the `tuple `approach was slower by 0.05928705
+seconds. Interestingly, the `set `approach demonstrated a negligible difference
+in execution time between the two parameter settings, with a mere 0.00088539
+seconds decrease when the exceed parameter was set to `True. `This suggests that
+the `set `data structure is less affected by the change `in `parameter,
+maintaining consistent performance regardless of the parameter setting. However,
+this is heavily outweighed by the overall inefficiency of this approach.
 
 ## Benedek Kaibas
 
