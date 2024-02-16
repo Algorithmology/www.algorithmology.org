@@ -188,9 +188,11 @@ type of the container itself.
 ![Scatter Plot With Time on the Horizontal Axis and Bytes on the Vertical Axis
 for a Small Container](./images/scatter-plot-small.png) 
 
-![scatter-plot-medium](./images/scatter-plot-medium.png) 
+![Scatter Plot With Time on the Horizontal Axis and Bytes on the Vertical Axis
+for a Medium Container](./images/scatter-plot-medium.png) 
 
-![scatter-plot-large](./images/scatter-plot-large.png) 
+![Scatter Plot With Time on the Horizontal Axis and Bytes on the Vertical Axis
+for a Large Container](./images/scatter-plot-large.png) 
 
 However, this does not explain the entirety of the picture of how bytes impact
 runtime. To get a better understanding of the relationship we can look at the
@@ -210,7 +212,7 @@ stored. For example, if there are a lot of browser tabs being run in the
 background the computer will likely switch things over to using the disk memory,
 also known as swap. This is our resident memory usage.
 
-### Part Two - Our Specific Approach
+### Part Two: Our Specific Approach
 
 For this part of our experiment, we added a function named `display_top` which
 displays memory snapshots for lines that are memory intensive. Additionally, we
@@ -281,7 +283,7 @@ index 301b1fd..ddcaf6e 100644
 +    tracemalloc.stop()
 ```
 
-### Part Two - Tracemalloc
+### Part Two: Tracemalloc
 
 The `tracemalloc` library is a tool that lets you trace the amount of memory
 that is allocated by a Python program. In this experiment we were able to use
@@ -400,10 +402,12 @@ the program.
 
 # References
 
-[1] Itamar Turner-Trauring, “Measuring memory usage in Python: it’s tricky!,” Python⇒Speed, Jun. 21, 2021. https://pythonspeed.com/articles/measuring-memory-python/#:~:text=In%20Python%20 (accessed Feb. 11, 2024).
-‌[2] Itamar Turner-Trauring, “Easy Python memory profiling for data scientists and scientists with Fil,” Python⇒Speed, 2023. https://pythonspeed.com/fil/ (accessed Feb. 11, 2024).
-[3]“tracemalloc — Trace memory allocations,” Python documentation, 2024. https://docs.python.org/3/library/tracemalloc.html (accessed Feb. 15, 2024).
-‌
-
-
-
+- [1] Itamar Turner-Trauring, “Measuring memory usage in Python: it’s tricky!,”
+Python⇒Speed, Jun. 21, 2021.
+https://pythonspeed.com/articles/measuring-memory-python/#:~:text=In%20Python%20
+(accessed Feb. 11, 2024)
+- [2] Itamar Turner-Trauring, “Easy Python memory profiling for data scientists
+and scientists with Fil,” Python⇒Speed, 2023. https://pythonspeed.com/fil/
+(accessed Feb. 11, 2024).
+- [3] “tracemalloc — Trace memory allocations,” Python documentation, 2024.
+https://docs.python.org/3/library/tracemalloc.html (accessed Feb. 15, 2024).
