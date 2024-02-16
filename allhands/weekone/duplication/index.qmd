@@ -25,6 +25,47 @@ calculated against time and memory usage from the local machine.
 
 ## Methodology 
 
+Before the code was edited to use duplicated values, we wanted to adjust the code so that when
+it's using the set as the container, it converts the random list into a set before timing its
+performance so that it was only timing the speed of the `in` operator and not including the
+conversion in that assessment. In order to do this, the line `random_container_set = set(random_container)`
+was removed from the `containment_check_set` function in `containment.py` and moved to `main.py`
+within the section of code under `elif approach.value == ContainmentCheckApproach.set:`. This
+did greatly contribute to the speeding up of the containment checking with sets.
+
+The largest code adjustment made to fit this experiment specifically, however, was adding the
+capability to generate a fixed number of duplicates within the randomized containers. Here's
+the updated code for the `generate_random_container` function within the `generate.py` file.
+
+```python3
+def generate_random_container(
+    size: int,
+    maximum: int,
+    make_tuple: bool = False,
+    num_duplicates: int = 0
+):
+    """generate a list of random values for a specific size
+    and with a number up to a specific maximum"""
+    random_list = []
+    if num_duplicates != 0:
+        duplicate = size/num_duplicates
+    else:
+        duplicate = 0
+    for i in range(size):
+        if duplicate != 0 and i % duplicate == 0:
+            random_list.append(generate_random_number(maximum, True))
+        else:
+            random_list.append(generate_random_number(maximum, False))
+    # convert the list to a tuple if this was requested
+    if make_tuple:
+        return tuple(random_list)
+    return random_list
+```
+
+This makes it so that the user can input a number of duplicates they want to force the generator
+to add to the container, and all of the duplicates are 1 greater than the maximum, so it is
+guaranteed that no values other than the duplicates will match the duplicated value.
+
 Independent variable: the project with the duplicate values
 
 Dependent variable: time execution
