@@ -18,8 +18,8 @@ involve the amount of elements inside the containment checking to maximize the
 accuracy of the research, as factors such as memory and algorithm complexity
 could affect the results. 
 
-Our team hypothesize that if a large container values is affected from a large
-number of duplicates, it will affect the containment checking. The independent
+Our team hypothesized that if a large container has a significant number of
+duplicate values, it will affect the containment checking. The independent
 variable is a container with duplicate values inside of the container, and
 searching them against the time overhead performance of containment checking. To
 measure the containment checking, it will be calculated against time and memory
@@ -95,7 +95,7 @@ We implemented a Python program and used it to record execution time.
 : Approach 1 (new) {.striped .hover .responsive}
 
 | Approach | Container Size | Maximum values | Exceed | Runs | Run 1     | Run 2    | Run 3    |
-|----------|----------------|----------------|--------|------|----------|---------|---------|
+|----------|----------------|----------------|--------|------|-----------|----------|----------|
 | set      | 500000         | 1000000        | Disabled | 10   | 1.8100    | 1.7739   | 1.7807   |
 | set      | 5000000        | 1000000        | Disabled | 10   | 36.099    | 37.799   | 36.458   |
 | set      | 50000000       | 1000000        | Disabled | 10   | 422.0990  | 423.983  | 410.760  |
