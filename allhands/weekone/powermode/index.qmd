@@ -127,9 +127,9 @@ Set            | 126.87905422300003  | 128.8645836879998   | 122.50003941199998 
  contradictory --- it would be important to run more experiments with both
  existing and new data structures and data types. Future experiments might
  include testing these same data types with different types of data being
- provided as input. If that test were to produce similar time results we would
+ provided as input. If that experiment yielded similar time results we would
  know that the difference in these data sets has more to do with the data
- structures rather than the information being passed in.
+ structures rather than the input data.
 
 ## Conclusion
 
