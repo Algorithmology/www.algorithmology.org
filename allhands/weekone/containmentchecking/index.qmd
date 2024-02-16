@@ -97,16 +97,17 @@ this is heavily outweighed by the overall inefficiency of this approach.
 
 ### Average speeds / Results
 
-- `List`: The `List `approach had an average execution time of 0.23042255 with
+- `List`: The `List` approach had an average execution time of 0.23042255 with
 the exceed parameter set to `False`, and an average of 0.23033088 with it set to
-`True.`
+`True`.
 
-- `Tuple`: The `Tuple `approach had an average execution time of 0.29930176 with the
-`exceed `parameter set to `False`, and an average of 0.29920176 with it set to `True.`
+- `Tuple`: The `Tuple` approach had an average execution time of 0.29930176 with
+the `exceed` parameter set to `False`, and an average of 0.29920176 with it set
+to `True`.
 
-- `Set`: The `Set `approach had an average execution time of 4.65820135 with the
+- `Set`: The `Set` approach had an average execution time of 4.65820135 with the
 `exceed `parameter set to `False`, and an average of 4.65803468 with it set to
-`True.`
+`True`.
 
 ## Mordred Boulais
 
@@ -190,14 +191,14 @@ wider Python community.
 
 ### Average speeds / Results
 
-- `List`: The `List `approach had an average execution time of 0.14108012 with the
-exceed parameter set to `False`, and an average of 0.13566562 with it set to `True.`
+- `List`: The `List` approach had an average execution time of 0.14108012 with the
+exceed parameter set to `False`, and an average of 0.13566562 with it set to `True`.
 
 - `Tuple`: The `Tuple` approach had an average execution time of 0.14074638 with the
-exceed parameter `Set` to `False`, and an average of 0.05795162 with it set to `True.`
+exceed parameter `Set` to `False`, and an average of 0.05795162 with it set to `True`.
 
 - `Set`: The `Set` approach had an average execution time of 4.33721558 with the
-exceed parameter set to `False`, and an average of 3.9197396 with it set to `True.`
+exceed parameter set to `False`, and an average of 3.9197396 with it set to `True`.
 
 ## David Gormley
 
@@ -223,14 +224,15 @@ exceed parameter set to `False`, and an average of 3.9197396 with it set to `Tru
 
 ### Average speeds / Results
 
-- `List`: The list approach had an average execution time of 0.18677646 with the
-exceed parameter set to false, and an average of 0.23153097 with it set to True.
+- `List`: The `List `approach had an average execution time of 0.18677646 with the
+exceed parameter set to `False`, and an average of 0.23153097 with it set to `True`.
 
-- `Tuple`: The tuple approach had an average execution time of 0.32624499 with the
-exceed parameter set to false, and an average of 0.32607832 with it set to True.
+- `Tuple`: The `Tuple `approach had an average execution time of 0.32624499 with the
+exceed parameter set to `False`, and an average of 0.32607832 with it set to `True`.
 
-- `Set`: The set approach had an average execution time of 4.61907776 with the
-exceed parameter set to false, and an average of 4.69574499 with it set to True.
+- `Set`: The `Set` approach had an average execution time of 4.61907776 with the
+exceed parameter set to `False`, and an average of 4.69574499 with it set to
+`True`.
 
 # Team Findings
 
