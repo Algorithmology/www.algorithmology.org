@@ -97,14 +97,16 @@ this is heavily outweighed by the overall inefficiency of this approach.
 
 ### Average speeds / Results
 
-- `List`: The list approach had an average execution time of 0.23042255 with the
-exceed parameter set to false, and an average of 0.23033088 with it set to True.
+- `List`: The `List `approach had an average execution time of 0.23042255 with
+the exceed parameter set to `False`, and an average of 0.23033088 with it set to
+`True.`
 
-- `Tuple`: The tuple approach had an average execution time of 0.29930176 with the
-exceed parameter set to false, and an average of 0.29920176 with it set to True.
+- `Tuple`: The `Tuple `approach had an average execution time of 0.29930176 with the
+`exceed `parameter set to `False`, and an average of 0.29920176 with it set to `True.`
 
-- `Set`: The set approach had an average execution time of 4.65820135 with the
-exceed parameter set to false, and an average of 4.65803468 with it set to True.
+- `Set`: The `Set `approach had an average execution time of 4.65820135 with the
+`exceed `parameter set to `False`, and an average of 4.65803468 with it set to
+`True.`
 
 ## Mordred Boulais
 
