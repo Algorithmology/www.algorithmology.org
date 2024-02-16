@@ -76,6 +76,8 @@ which became more impractical compared to other containers.
 
 ### Linux
 
+<!-- TODO: the header above this comment should say something about the computer -->
+
 #### Battery Performance: 100%-50%
 
 Cntainer Type | Run 1               | Run 2               | Run 3               | Average 4            | Average 5            | Average 6                  |
@@ -116,14 +118,39 @@ Set            | 126.87905422300003  | 128.8645836879998   | 122.50003941199998 
 
 : Battery {.responsive}
 
- This data shows that the battery strength does indeed impact runtime. The runtime for List and Tuple were faster when the battery was lower; however the runtime for Set increased when the battery was lower. Obviously the containers are different and so this might be the reason for these differences. It is surprising that List and Tuple took longer comparatively while Set was shorter comaprtively. To understand these results because they seem contradictory further tests on data structures and types would have to take place. Further tests might include testing these sames data types with different types of data being passed in. If that test were to produce similar time results we would know that the difference in these data sets has more to do with the data structures rather than the information being passed in.
+ This data shows that the battery strength does influence runtime. The runtime
+ for `List` and `Tuple` were faster when the battery was lower; however the
+ runtime for `Set` increased when the battery was lower. Obviously, the
+ containers are different and so this might be the reason for these differences.
+ It is surprising that `List` and `Tuple` took longer comparatively while `Set`
+ was shorter comparatively. To understand these results --- because they seem
+ contradictory --- it would be important to run more experiments with both
+ existing and new data structures and data types. Future experiments might
+ include testing these same data types with different types of data being
+ provided as input. If that test were to produce similar time results we would
+ know that the difference in these data sets has more to do with the data
+ structures rather than the information being passed in.
 
 ## Conclusion
 
-From conducting this experiment, we found out that the battery life and the power mode do have effects on the run time. When running the containment checking program with the lower battery percentage range, it took longer to run for the set, tuple, and list approach than with the higher battery percentage. It also took longer to run in different battery modes than other ones. The main takeaway from this experiment is that the battery modes/percentage does have an affect on the time overhead of running containment checking.
+From conducting this experiment, we found out that the battery life and the
+power mode do have effects on the run time. When running the containment
+checking program with the lower battery percentage range, it took longer to run
+for the set, tuple, and list approach than with the higher battery percentage.
+It also took longer to run in different battery modes than other ones. The main
+takeaway from this experiment is that the battery modes/percentage does have an
+affect on the time overhead of running containment checking.
 
 ## Use Case
 
-Comparison between hardware can be important for individuals and companies. Individuals looking to perform tasks on a laptop might be interested in how long it takes to run programs for their needs as a programmers. Companies that intend to do programming and development might look at this type of data to determine what computer they may want to get their employees. Looking at the different battery levels also allows individuals and companies to see how energy-efficient a computer is which can help with productivity. Overall determining what system will be the fastest can increase performance and productivity. Knowing what circimstances will
-create a faster run can be very important for individuals and companies. Creating the fastest environment within ones computer
-will allow the fastest runtime which will can be critical in the real world.
+Comparison between hardware can be important for individuals and companies.
+Individuals looking to perform tasks on a laptop might be interested in how long
+it takes to run programs for their needs as a programmers. Companies that intend
+to do programming and development might look at this type of data to determine
+what computer they may want to get their employees. Looking at the different
+battery levels also allows individuals and companies to see how energy-efficient
+a computer is which can help with productivity. Overall determining what system
+will be the fastest can increase performance and productivity. Knowing what
+circumstances will create a faster run can be very important for individuals and
+companies. Creating the fastest environment within ones computer will allow the
+fastest runtime which will can be critical in the real world.
