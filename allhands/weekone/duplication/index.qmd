@@ -37,7 +37,7 @@ The largest code adjustment made to fit this experiment specifically, however, w
 capability to generate a fixed number of duplicates within the randomized containers. Here's
 the updated code for the `generate_random_container` function within the `generate.py` file.
 
-```python3
+```{python3}
 def generate_random_container(
     size: int,
     maximum: int,
