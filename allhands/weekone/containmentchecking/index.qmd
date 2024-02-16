@@ -30,7 +30,7 @@ search for different container types?`
 
 : {.responsive}
 
-### Research Question - Exceed True:
+### Research Question - Exceed True
 
 | Approach | Container Size | Maximum values | Run 1 | Run 2 | Run 3 |
 |:--------:|:--------------:|:--------------:|:-----:|:-----:|:-----:|
@@ -40,7 +40,7 @@ search for different container types?`
 
 : {.responsive}
 
-### Average speeds / Results:
+### Average speeds / Results
 
 - `List`: The list approach had an average execution time of 0.16766456 with the
 exceed parameter set to false, and an average of 0.20480116 with it set to True.
@@ -69,7 +69,7 @@ this is heavily outweighed by the overall inefficiency of this approach.
 
 ## Benedek Kaibas
 
-### Exceed False:
+### Exceed False
 
 | Approach | Container Size | Maximum values | Run 1 | Run 2 | Run 3 |
 |:--------:|:--------------:|:--------------:|:-----:|:-----:|:-----:|
@@ -82,7 +82,7 @@ this is heavily outweighed by the overall inefficiency of this approach.
 
 : {.responsive}
 
-### Exceed True:
+### Exceed True
 
 | Approach | Container Size | Maximum values | Run 1 | Run 2 | Run 3 |
 |:--------:|:--------------:|:--------------:|:-----:|:-----:|:-----:|
