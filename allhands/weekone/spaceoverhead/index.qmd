@@ -8,3 +8,408 @@ date-format: long
 toc: true
 ---
 
+# Introduction
+
+When programming in Python each object created takes up a specific amount of
+space on the computer which is measured in bytes. The objects themselves hold
+their names as well as their properties. In the `containmentcheck` program we
+are looking in particular at container objects that also store the values inside
+of them, sometimes pointer values. In this post, we will be experimenting to see
+how much of an impact the size of an object has on the time efficiency of the
+`containmentcheck` program. Understanding the relationship between object size
+and program efficiency is crucial for optimizing the `containmentcheck`
+program's performance.
+
+## Motivation
+
+As society’s programs get more complex, computer memory is becoming an
+increasingly more valuable resource. When programming it is important to
+consider how the type of objects you use will impact your program’s performance.
+The goal of our experiments is to look at how the size of the container impacts
+the amount of space a program takes up and whether or not that causes an
+increase or decrease in the speed of the program's runtime itself. As a result,
+our experiments seek to shed light on the crucial relationship between container
+size and its effects on program space and runtime efficiency. This will
+emphasize the significance of effective memory management and careful object
+type consideration in programming as societal programs become more complex.
+
+# Method
+
+## Part One
+
+For the first part of our experiment, we compared the runtimes of the three
+types of containers used in our `containmentcheck` program, the list, tuple, and
+set. We used the `sys.getsizeof()` function to find the size, in bytes, of the
+current container.
+
+### Part One - How does `sys.getsizeof` work?
+
+`sys.getsizeof` provides us with the size of the object in bytes. Here is an
+example of using the `sys.getsizeof()` function:
+
+```{python}
+import sys
+
+list_example = [10, 2.0, "cat"]
+tuple_example = (10, 2.0, "cat")
+set_example = set([10, 2.0, "cat"])
+
+print("size of list_example:", sys.getsizeof(list_example))
+print("size of tuple_example:", sys.getsizeof(tuple_example))
+print("size of set_example:", sys.getsizeof(set_example))
+```
+
+### Part One - Our specific approach
+
+In our experimentation, we edited `main.py` of the `containmentcheck`
+project to measure the size of the random container generated in each repeat.
+The implementation is very simple:
+
+```patch
+diff --git a/containmentcheck/containmentcheck/main.py b/containmentcheck/containmentcheck/main.py
+index 5d0b347..301b1fd 100644
+--- a/containmentcheck/containmentcheck/main.py
++++ b/containmentcheck/containmentcheck/main.py
+@@ -4,6 +4,7 @@ import timeit
+ from typing import Any, Callable, List, Tuple, Union
+ 
+ import typer
++import sys
+ from rich.console import Console
+ 
+ from containmentcheck.analyze import calculate_average_values
+@@ -135,3 +136,4 @@ def containmentcheck(  # noqa: PLR0913
+             number_runs,
+             number_repeats,
+         )
++    console.print(f"Size of container in memory {sys.getsizeof(random_container)} bytes")
+```
+
+### Part One - Our results
+
+As you can see in the following charts, when the container size increases, so
+does the number of bytes it takes up. This experiment was run at a container
+size of `10000`,  `1000000`, and `100000000.`
+
+The results on our various operating systems are as follows:
+
+#### Result from running on WSL2 Ubuntu 22.04.3 from Pallas
+
+| Approach | Container Size | Maximum values | Total Time for 10 runs| Average Time for 10 runs| Size in Bytes|
+|:--------:|:--------------:|:--------------:|:-----:|:-----:|:-----:|
+|   list   |   10000   |     100000   | [0.0012522619999799645, 0.0012322780003160005, 0.0011758390010072617]  | [0.00012522619999799645, 0.00012322780003160005, 0.00011758390010072617]  | 85176  |
+|   tuple   |   10000   |     100000   | [0.0006548499986820389, 0.0006511610008601565, 0.0006510949988296488]  | [6.548499986820388e-05, 6.511610008601565e-05, 6.510949988296489e-05] | 80040  |
+|   set   |   10000  |     100000   | [0.004011396000350942, 0.0035747010006161872, 0.003517425999234547]  | [0.0004011396000350942, 0.00035747010006161874, 0.0003517425999234547]  | 85176  |
+|  list   |   1000000   |     100000    | [0.10512661299981119, 0.10005645099954563, 0.13408000599883962]  | [0.01051266129998112, 0.010005645099954562, 0.013408000599883962]  | 8448728  |
+|  tuple   |   1000000   |     100000   | [0.22520549799992295, 0.08570071100075438, 0.14284700400094152] | [0.022520549799992295, 0.008570071100075438, 0.014284700400094153]  | 8000040  |
+|  set   |   1000000   |     100000   | [1.0035714010009542, 0.5476638039999671, 0.5286222340000677]  | [0.10035714010009542, 0.054766380399996706, 0.05286222340000677]  | 8448728  |
+|   list   |   100000000   |     100000   | [11.542406832999404, 10.57156037599998, 10.508643252998809]  |[1.1542406832999403, 1.057156037599998, 1.0508643252998808]  | 835128600  |
+|   tuple    |   100000000   |     100000   |[9.33974368499912, 8.946416168999349, 8.583650802000193]  | [0.9339743684999121, 0.8946416168999349, 0.8583650802000193]  | 800000040  |
+|   set    |   100000000   |     100000   | [104.86943111599976, 87.68656122200082, 102.34969667100086] | [10.486943111599976, 8.768656122200081, 10.234969667100085]  | 835128600 |
+
+: Result from running on WSL2 Ubuntu 22.04.3 {.responsive}
+
+#### Result from running on MacOS 14.2.1 Aidan
+
+| Approach | Container size | Maximum Values | Size Run 1              | Size Run 2              | Size Run 3              | Bytes    |
+|----------|-----------------|-----------------|-------------------------|-------------------------|-------------------------|----------|
+| List     | 10000           | 100000          | 0.0005311670247465372   | 0.0005338748451322317   | 0.0005648748483508825   | 85176    |
+| Tuple    | 10000           | 100000          | 0.0005179578438401222   | 0.0005325418896973133   | 0.0005567921325564384   | 85176    |
+| Set      | 10000           | 100000          | 0.002123332815244794    | 0.002291332930326462    | 0.002326332964003086    | 85176    |
+| List     | 1000000         | 100000          | 0.0001364171039313078   | 0.00011320901103317738  | 0.0001188330352306366   | 800984   |
+| Tuple    | 1000000         | 100000          | 0.005138250067830086    | 0.005164583912119269    | 0.005320542026311159    | 800984   |
+| Set      | 1000000         | 100000          | 0.01960425009019673     | 0.01865149987861514     | 0.018511208007112145    | 800984   |
+| List     | 100000000       | 100000          | 0.002001791959628463    | 0.0020032080356031656  | 0.001946750096976757   | 8448728  |
+| Tuple    | 100000000       | 100000          | 0.012362000066787004    | 0.012355874991044402    | 0.012424665968865156    | 8448728  |
+| Set      | 100000000       | 100000          | 0.2279775831848383      | 0.14714679215103388     | 0.21292124991305172     | 8448728  |
+
+: Result from running on MacOS 14.2.1 {.responsive}
+
+#### Result from running on WSL Ubuntu 22.04.3 (Miles)
+
+| Approach | Container size | Maximum Values | Size Run 1             | Size Run 2            | Size Run 3            | Bytes     | Average               |
+|----------|----------------|----------------|------------------------|-----------------------|-----------------------|-----------|-----------------------|
+| List     | 10000          | 100000         | 0.0010690999988582917  | l0.001138899999205023  | 0.0010308000055374578| 85176     | 0.0010796000012002576 |
+| Tuple    | 10000          | 100000         | 0.0022807999994256534  | 0.004241000002366491  | 0.002772300002106931  | 80040     | 0.003098033334633025  |
+| Set      | 10000          | 100000         | 0.01828580000437796    | 0.02045590000489028   | 0.018659900000784546  | 85176     | 0.019133866670017596  |
+| List     | 1000000        | 100000         | 0.01594910000130767    | 0.014114400000835303  | 0.014194600000337232  | 8448728   | 0.014752700000826735  |
+| Tuple    | 1000000        | 100000         | 0.017153299995698035   | 0.018026799996732734  | 0.016453299998829607  | 8000040   | 0.017211133330420125  |
+| Set      | 1000000        | 100000         | 1.2413424999976996     | 1.221128500001214     | 1.1901537999947323    | 8448728   | 1.217541599997882     |
+| List     | 100000000      | 100000         | 0.061223500000778586   | 0.030728199999430217  | 0.02701340000203345   | 835128600 | 0.03965503333408075   |
+| Tuple    | 100000000      | 100000         | 0.012589900004968513   | 0.012705400004051626  | 0.012597399996593595  | 800000040 | 0.012630900001871245  |
+| Set      | 100000000      | 100000         | 127.40746039999794     | 114.67897030000313    | 113.11876619999384    | 835128600 | 118.4017322999983     |
+
+: Result from running on WSL Ubuntu 22.04.3 {.responsive}
+
+#### Result from running on MacOS 14.1.1 from Jason
+
+| Approach | Container Size | Maximum values | Total Time for 10 runs                                                | Average Time for 10 runs                                                | Size in Bytes |
+|:--------:|:--------------:|:--------------:|:---------------------------------------------------------------------:|:-----------------------------------------------------------------------:|:-------------:|
+| list     | 10000          | 100000         | [0.000992791960015893, 0.0009562501218169928, 0.0009508330840617418] | 0.0009666250552982092 | 85176 |
+| tuple    | 10000          | 100000         | [0.0009370420593768358, 0.0009319169912487268, 0.0009345421567559242] | 0.0009345004024604956 | 80040|
+| set      | 10000          | 100000         | [0.0037995839957147837, 0.0035581670235842466, 0.003545499872416258] | 0.003634416963905096 | 85176  |
+| list     | 1000000        | 100000         | [0.09976995806209743, 0.10469141695648432, 0.1129836670588702] | 0.10581501402581732 | 8448728       |
+| tuple    | 1000000        | 100000         | [0.0937818749807775, 0.09376545785926282, 0.09372395905666053] | 0.09375709729890029 | 8000040       |
+| set      | 1000000        | 100000         | [0.32479912508279085, 0.33607683307491243, 0.3447300421539694] | 0.3352020001038909 | 8448728        |
+| list     | 100000000      | 100000         | [28.448644666932523, 28.64325829106383, 28.827541667036712] | 28.639814875011023 | 835128600         |
+| tuple    | 100000000      | 100000         | [25.032159500056878, 25.540503750089556, 26.030721958028153] | 25.534461736058194 | 800000040        |
+| set      | 100000000      | 100000         | [58.32950258301571, 57.8637910829857, 55.617498707957566] | 57.27026412465299 | 835128600            |
+
+: Result from running on MacOS 14.1.1 {.responsive}
+
+#### Result from running on NixOS 22.11 from Simon
+
+| Approach | Container Size | Maximum values | Total Time for 10 runs                                                | Average Time for 10 runs                                                | Size in Bytes |
+|:--------:|:--------------:|:--------------:|:---------------------------------------------------------------------:|:-----------------------------------------------------------------------:|:-------------:|
+| list     | 10000          | 100000         | [0.0008414719999336739, 0.0008432590000211349, 0.0008199860000104309] | [8.41471999933674e-05, 8.432590000211349e-05, 8.199860000104308e-05]    | 85176         |
+| tuple    | 10000          | 100000         | [0.0007369920000428465, 0.0007288279999784208, 0.0007277400000020862] | [7.369920000428465e-05, 7.288279999784208e-05, 7.277400000020862e-05]   | 80040         |
+| set      | 10000          | 100000         | [0.0039581030000590545, 0.003329724000082024, 0.003341187000046375]   | [0.00039581030000590545, 0.0003329724000082024, 0.0003341187000046375]  | 85176         |
+| list     | 1000000        | 100000         | [0.004278331000023172, 0.003928750999989461, 0.004035653999949318]    | [0.0004278331000023172, 0.0003928750999989461, 0.0004035653999949318]   | 8448728       |
+| tuple    | 1000000        | 100000         | [0.004301209999994171, 0.004104619000031562, 0.004039459999944484]    | [0.00043012099999941713, 0.0004104619000031562, 0.00040394599999444837] | 8000040       |
+| set      | 1000000        | 100000         | [0.7286783740000828, 0.7370151210000131, 0.724985429999947]           | [0.07286783740000828, 0.07370151210000131, 0.0724985429999947]          | 8448728       |
+| list     | 100000000      | 100000         | [0.007804205999946134, 0.00784077499997693, 0.00784397600000375]      | [0.0007804205999946134, 0.000784077499997693, 0.000784397600000375]     | 835128600     |
+| tuple    | 100000000      | 100000         | [0.0015112060000319616, 0.0014411099999733779, 0.0014386159999730808] | [0.00015112060000319616, 0.00014411099999733779, 0.0001438615999973081] | 800000040     |
+| set      | 100000000      | 100000         | [83.146080407, 85.06266644699986, 82.90463120200002]                  | [8.3146080407, 8.506266644699986, 8.290463120200002]                    | 835128600     |
+
+: Result from running on NixOS 22.11 {.responsive}
+
+The following graphs show that for all three container types, there is a
+positive correlation between the size of the container and the amount of time it
+takes to process. Despite having different sizes in bytes, tuples and lists have
+nearly the same performance with tuples performing slightly better overall.
+Lists are larger containers but from the results, their size increase does not
+exactly correlate to the process speed. Sets have the same byte size as lists do
+but provide much slower results. The following scatter plots demonstrate the
+time versus the bytes. As you can see, lists are slightly slower than tuples but
+not by the same margin as the set's slower speed. This case makes it appear that
+the size in bytes did not cause as much of an impact on the program as did the
+type of the container itself.
+
+![Scatter Plot With Time on the Horizontal Axis and Bytes on the Vertical Axis
+for a Small Container](./images/scatter-plot-small.png) 
+
+![Scatter Plot With Time on the Horizontal Axis and Bytes on the Vertical Axis
+for a Medium Container](./images/scatter-plot-medium.png) 
+
+![Scatter Plot With Time on the Horizontal Axis and Bytes on the Vertical Axis
+for a Large Container](./images/scatter-plot-large.png) 
+
+However, this does not explain the entirety of the picture of how bytes impact
+runtime. To get a better understanding of the relationship we can look at the
+program’s overall memory usage.
+
+## Part Two
+
+Memory usage can be difficult to measure in Python in particular. Because Python
+automatically allocates memory for objects behind the scenes, it can be tricky to
+know exactly what is happening (Turner-Trauring, 2021).
+
+There are three main cases where our containers may be stored. They can be
+stored in either RAM, the disk (swap), or both (Turner-Trauring, 2021). As a
+fourth option, the program may not be even stored at all. For the main three
+cases, the number of processes running in the background will decide where it is
+stored. For example, if there are a lot of browser tabs being run in the
+background the computer will likely switch things over to using the disk memory,
+also known as swap. This is our resident memory usage.
+
+### Part Two: Our Specific Approach
+
+For this part of our experiment, we added a function named `display_top` which
+displays memory snapshots for lines that are memory intensive. Additionally, we
+used `tracemalloc` to trace the number of memory allocations during the
+containment checking process.
+
+```patch
+diff --git a/containmentcheck/containmentcheck/main.py b/containmentcheck/containmentcheck/main.py
+index 301b1fd..ddcaf6e 100644
+--- a/containmentcheck/containmentcheck/main.py
++++ b/containmentcheck/containmentcheck/main.py
+@@ -1,6 +1,8 @@
+ """Perform an experiment to study efficiency of containment checking for collections."""
+ 
+ import timeit
++import tracemalloc
++import linecache
+ from typing import Any, Callable, List, Tuple, Union
+ 
+ import typer
+@@ -27,6 +29,30 @@ cli = typer.Typer()
+ console = Console()
+ 
+ 
++def display_top(snapshot, key_type='lineno', limit=10):
++    snapshot = snapshot.filter_traces((
++        tracemalloc.Filter(False, "<frozen importlib._bootstrap>"),
++        tracemalloc.Filter(False, "<unknown>"),
++    ))
++    top_stats = snapshot.statistics(key_type)
++
++    print("Top %s lines" % limit)
++    for index, stat in enumerate(top_stats[:limit], 1):
++        frame = stat.traceback[0]
++        print("#%s: %s:%s: %.1f KiB"
++              % (index, frame.filename, frame.lineno, stat.size / 1024))
++        line = linecache.getline(frame.filename, frame.lineno).strip()
++        if line:
++            print('    %s' % line)
++
++    other = top_stats[limit:]
++    if other:
++        size = sum(stat.size for stat in other)
++        print("%s other: %.1f KiB" % (len(other), size / 1024))
++    total = sum(stat.size for stat in top_stats)
++    print("Total allocated size: %.1f KiB" % (total / 1024))
++
++
+ def perform_containment_check_benchmark(
+     containment_check_lambda: Union[
+         Callable[[List[Any], Any], bool], Callable[[Tuple[Any], Any], bool]
+@@ -70,6 +96,7 @@ def containmentcheck(  # noqa: PLR0913
+     number_repeats: int = typer.Option(3),
+ ) -> None:
+     """Conduct an experiment to measure the performance of containment checking."""
++    tracemalloc.start()
+     # create the starting data container and random number
+     random_container = None
+     # generate a random value that goes up to the maximum value;
+@@ -137,3 +164,8 @@ def containmentcheck(  # noqa: PLR0913
+             number_repeats,
+         )
+     console.print(f"Size of container in memory {sys.getsizeof(random_container)} bytes")
++
++    console.print(f"Total traced memory {tracemalloc.get_traced_memory()}")
++    snapshot = tracemalloc.take_snapshot()
++    display_top(snapshot)
++    tracemalloc.stop()
+```
+
+### Part Two: Tracemalloc
+
+The `tracemalloc` library is a tool that lets you trace the amount of memory
+that is allocated by a Python program. In this experiment we were able to use
+`tracemalloc` to get the total amount of traced memory from the program as well
+as the total allocated size of the program itself (“tracemalloc — Trace memory
+allocations”, 2024).
+
+The following chart demonstrates the increase in traced memory and allocated
+size. We were not able to gather results from a container size of 100000000
+because it took so much memory it caused our systems to crash. The sizes were
+found using the `get_traced_memory()` function within the `tracemalloc` library.
+
+| Approach | Container Size | Maximum Values  | Container Size in Bytes | Traced Memory (current size and peak size of memory blocks) | Total allocated size | Container % of Allocated Size | Average Time                                                           |
+|----------|----------------|-----------------|-------------------------|-------------------------------------------------------------|----------------------|-------------------------------|------------------------------------------------------------------------|
+| list     | 10000          | 100000          | 85176                   | (478365, 494215)                                            | 472.3 KB             | 18%                           | [0.00032951530010905117, 9.121420007431879e-05, 9.334509959444404e-05] |
+| tuple    | 10000          | 100000          | 80040                   | (472056, 547288)                                            | 466.4 KiB            | 17.1%                         | [5.88577997405082e-05, 5.23020004038699e-05, 0.00028640130040002987]   |
+| set      | 10000          | 100000          | 85176                   | (478179, 1124535)                                           | 471.6 KiB            | 18%                           | [0.0003431481003644876, 0.00028521530039142816, 0.0005371351988287642] |
+| list     | 1000000        | 100000          | 8448728                 | (40440727, 40456850)                                        | 39497.4 KiB          | 21%                           | [0.008970955600671005, 0.009021504299016669, 0.010781448800116777]     |
+| tuple    | 1000000        | 100000          | 8000040                 | (39996088, 48434760)                                        | 39064.0 KiB          | 20.4%                         | [0.007188823199248873, 0.008647420699708164, 0.010213346801174339]     |
+| set      | 1000000        | 100000          | 8448728                 | (40440469, 46722864)                                        | 39497.2 KiB          | 21%                           | [0.48832026500895154, 0.6909954479924636, 0.5341905749955913]          |
+| list     | 100000000      | 100000          | 835128600               | N/A                                                         | N/A                  | N/A                           | N/A                                                                    |
+| tuple    | 100000000      | 100000          | 800000040               | N/A                                                         | N/A                  | N/A                           | N/A                                                                    |
+| set      | 100000000      | 100000          | 835128600               | N/A                                                         | N/A                  | N/A                           | N/A                                                                    |
+
+: tracemalloc results {.responsive}
+
+Another utility of the `tracemalloc` library is the `take_snapshot()` method.
+This method allows the user to see snapshots of the memory blocks that are
+allocated by Python itself. The snapshot will provide an output of the memory
+blocks traced by `tracemalloc` in order of the one that takes up the most space.
+This is the output from running with the 1000000 size tuple.
+
+```python
+Top 10 lines
+#1: /nix/store/5k91mg4qjylxbfvrv748smfh51ppjq0g-python3-3.11.6/lib/python3.11/random.py:344: 311.8 KiB
+    return istart + self._randbelow(width)
+#2: ../containmentcheck/containmentcheck/generate.py:30: 78.2 KiB
+    return tuple(random_list)  # or return tuple(random_list)
+#3: ../containmentcheck/.venv/lib/python3.11/site-packages/rich/_lru_cache.py:27: 7.9 KiB
+    OrderedDict.__setitem__(self, key, value)
+#4: /nix/store/5k91mg4qjylxbfvrv748smfh51ppjq0g-python3-3.11.6/lib/python3.11/re/_parser.py:615: 7.3 KiB
+    setappend((RANGE, (lo, hi)))
+#5: /nix/store/5k91mg4qjylxbfvrv748smfh51ppjq0g-python3-3.11.6/lib/python3.11/re/_parser.py:220: 5.5 KiB
+    self.width = min(lo, MAXREPEAT - 1), min(hi, MAXREPEAT)
+#6: /nix/store/5k91mg4qjylxbfvrv748smfh51ppjq0g-python3-3.11.6/lib/python3.11/re/_compiler.py:759: 5.3 KiB
+    return _sre.compile(
+#7: ../containmentcheck/.venv/lib/python3.11/site-packages/rich/cells.py:29: 4.4 KiB
+    total_size = sum(_get_size(character) for character in text)
+#8: /nix/store/5k91mg4qjylxbfvrv748smfh51ppjq0g-python3-3.11.6/lib/python3.11/re/_parser.py:701: 4.3 KiB
+    subpattern[-1] = (MAX_REPEAT, (min, max, item))
+#9: ../containmentcheck/.venv/lib/python3.11/site-packages/rich/text.py:672: 4.1 KiB
+    style_map = {index: get_style(span.style) for index, span in enumerated_spans}
+#10: /nix/store/5k91mg4qjylxbfvrv748smfh51ppjq0g-python3-3.11.6/lib/python3.11/re/_parser.py:545: 2.5 KiB
+    subpatternappend((LITERAL, _ord(this)))
+74 other: 35.2 KiB
+Total allocated size: 466.4 KiB
+```
+
+The list and set snapshots demonstrate a difference in the amount of space
+allocated in the second line.
+
+List Snapshot:
+
+```
+#1: /nix/store/5k91mg4qjylxbfvrv748smfh51ppjq0g-python3-3.11.6/lib/python3.11/random.py:344: 312.0 KiB
+    return istart + self._randbelow(width)
+#2: /home/palla/computer-science-202-algorithm-analysis-project-2-PCain02/containmentcheck/containmentcheck/generate.py:27: 83.1 KiB
+    random_list.append(random.randint(0, maximum))
+...
+Total allocated size: 472.3 KiB
+```
+
+Set Snapshot:
+
+```
+#1: /nix/store/5k91mg4qjylxbfvrv748smfh51ppjq0g-python3-3.11.6/lib/python3.11/random.py:344: 311.7 KiB
+    return istart + self._randbelow(width)
+#2: /home/palla/computer-science-202-algorithm-analysis-project-2-PCain02/containmentcheck/containmentcheck/generate.py:27: 83.1 KiB
+    random_list.append(random.randint(0, maximum))
+...
+Total allocated size: 471.6 KiB
+```
+
+Overall, the snapshot size of the list and the set are almost equal whereas the
+tuple displays less storage usage overall. This is consistent with our previous
+results.
+
+The snapshot can be extremely helpful because it gives us a visualization of the
+space overhead from each process run by the program. As we can see the top line
+takes up over half of the amount of space traced by `tracemalloc`. From this
+output, we can also see that the process of creating the random integers takes up the
+majority of the space overhead. The integers created will also create a
+variation in size depending on the number of bytes they take up individually.
+
+Overall, `tracemalloc` can be utilized outside of this project to visualize the
+amount of space parts of a program use. For the `containmentcheck` program specifically, the amount of space overhead is
+consistently larger in the sets and lists than in the tuple container.
+
+# Results
+
+## Part 1
+
+The first part of our experiment yielded that the tuple approach was the most memory efficient with the list and set approaches coming second. Overall, we discovered that memory usage did not have much of an impact and that measuring time is a much better indicator of performance in this case. Despite this, we learned valuable information about the correlation between memory usage and the size of the different types of containers. In all, we can empirically conclude that tuples are the most memory-efficient of the 3 containers.
+
+## Part 2
+
+For the future of this experiment, we would hope to be able to test the large
+container size using `tracemalloc`. This would provide us with more conclusive
+data about the correlation between container size and traced memory and
+allocated size.
+
+From the tests we were able to run there is a definite positive
+correlation between the size of the container and the total amount of memory
+used overall. The larger the container, the more storage will be allocated to
+the program.
+
+# References
+
+<!-- TODO: these references do not correctly handle links and should be fixed -->
+
+- [1] Itamar Turner-Trauring, “Measuring memory usage in Python: it’s tricky!,”
+Python⇒Speed, Jun. 21, 2021.
+https://pythonspeed.com/articles/measuring-memory-python/#:~:text=In%20Python%20
+(accessed Feb. 11, 2024)
+- [2] Itamar Turner-Trauring, “Easy Python memory profiling for data scientists
+and scientists with Fil,” Python⇒Speed, 2023. https://pythonspeed.com/fil/
+(accessed Feb. 11, 2024).
+- [3] “tracemalloc — Trace memory allocations,” Python documentation, 2024.
+https://docs.python.org/3/library/tracemalloc.html (accessed Feb. 15, 2024).
