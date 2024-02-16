@@ -186,7 +186,7 @@ wider Python community.
 
 : {.responsive}
 
-### Average speeds / Results:
+### Average speeds / Results
 
 - `List`: The list approach had an average execution time of 0.14108012 with the
 exceed parameter set to false, and an average of 0.13566562 with it set to True.
@@ -199,7 +199,7 @@ exceed parameter set to false, and an average of 3.9197396 with it set to True.
 
 ## David Gormley
 
-### Research Question - Exceed True:
+### Research Question - Exceed True
 
 | Approach | Container Size | Maximum values | Run 1 | Run 2 | Run 3 |
 |:--------:|:--------------:|:--------------:|:-----:|:-----:|:-----:|
@@ -209,7 +209,7 @@ exceed parameter set to false, and an average of 3.9197396 with it set to True.
 
 : {.responsive}
 
-### Research Question - Exceed False:
+### Research Question - Exceed False
 
 | Approach | Container Size | Maximum values | Run 1 | Run 2 | Run 3 |
 |:--------:|:--------------:|:--------------:|:-----:|:-----:|:-----:|
@@ -219,7 +219,7 @@ exceed parameter set to false, and an average of 3.9197396 with it set to True.
 
 : {.responsive}
 
-### Average speeds / Results:
+### Average speeds / Results
 
 - `List`: The list approach had an average execution time of 0.18677646 with the
 exceed parameter set to false, and an average of 0.23153097 with it set to True.
