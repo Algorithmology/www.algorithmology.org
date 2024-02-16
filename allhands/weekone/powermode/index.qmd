@@ -10,9 +10,17 @@ toc: true
 
 ## Introduction
 
-Our experiment design tested how the battery life and the different power modes on different systems will affect the time overhead when doing containment checking. To complete this experiment, we tested three different systems, with the battery percent in between 0-50 for one run and 50-100 in another run. We also tested these battery percentages in different battery modes. When running the containment check program, to make sure that our results would be accurate, we made sure to keep the size of the data container and the maximum number in the container the same. For each battery percentage range we checked, we ran it with the list, tuple, and set container to give ourselves more results.
+Our experiment design tested how the battery life and the different power modes
+on different systems will affect the time overhead when doing containment
+checking. To complete this experiment, we tested three different systems, with
+the battery percent in between 0-50 for one run and 50-100 in another run. We
+also tested these battery percentages in different battery modes. When running
+the containment check program, to make sure that our results would be accurate,
+we made sure to keep the size of the data container and the maximum number in
+the container the same. For each battery percentage range we checked, we ran it
+with the list, tuple, and set container to give ourselves more results.
 
-### macOS M2
+### Laptop Running macOS with an Apple M2 Silicon Chip
 
 ### Battery Standard: 100%-50%
 
