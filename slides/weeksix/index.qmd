@@ -310,3 +310,26 @@ print(f001(9))
 | Sort                    | `L.sort()` | $n \log_2 n$ |
 
 :::
+
+## What do we know about the performance of `List` operations?
+
+::: incremental
+
+- Table reports the asymptotic cost of `List` operations
+
+- Understand which operations produce a new list
+
+- Concatenation and slicing both produce a new collection
+
+- Grasp the running time by intuition of work completed
+
+- `List` and `str` have similar performance characteristics
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: -0.25em; font-size: 0.9em;"}
+
+**Key Insight**: counting the maximum number of atomic operations for a
+function's input size yields its worst-case running time
+
+:::
