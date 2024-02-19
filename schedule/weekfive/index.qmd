@@ -1,6 +1,6 @@
 ---
-title: Running Time Analysis
-description: "Accurately Characterizing Program Performance"
+title: Runtime Analysis
+description: "Characterize Performance with Experiments"
 date: 2024-02-12
 layout: full
 toc: true
