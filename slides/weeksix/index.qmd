@@ -230,7 +230,7 @@ runtime also goes up by a factor of `10`
 
 - Wait, $\sum_{i = 1}^k i = 1 + 2 + 3 + \cdots + k = k (k + 1) / 2$
 
-## Function to sum the first `k` integers
+## Fast summing for the first `k` integers
 
 ```{python}
 def sumk_calc(k):
@@ -239,15 +239,16 @@ def sumk_calc(k):
     end = time.time()
     return total, end-start
 
-timetrials(sumk_calc, 10000)
-timetrials(sumk_calc, 100000)
-timetrials(sumk_calc, 1000000)
-timetrials(sumk_calc, 10000000)
-timetrials(sumk_calc, 100000000)
+timetrials_int(sumk_calc, 10000)
+timetrials_int(sumk_calc, 100000)
+timetrials_int(sumk_calc, 1000000)
+timetrials_int(sumk_calc, 10000000)
+timetrials_int(sumk_calc, 100000000)
 ```
 
-::: fragment
+::: {.fragment .fade style="margin-top: -0.2em; font-size: 0.9em;"}
 
 - Wow, the `sumk_calc` function is *much* faster than `sumk`!
+- Direct calculation is faster than using `for` loop!
 
 :::
