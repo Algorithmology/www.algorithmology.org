@@ -24,7 +24,7 @@ Empirical Evaluation
   - Understand why program performance is critically important
   - Characterize performance patterns in Python programs
   - Use experimentation to characterize performance trade-offs
-  - Use asymptotic analysis to characterize performance
+  - Prepare for using asymptotic analysis to characterize performance
   - Examine source code segments to illustrate key points
 - {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Continue algorithm engineering project
 - {{< iconify game-icons team-idea size=18px >}} **Friday**: Presentations during algorithm all-hands session
@@ -54,4 +54,4 @@ have questions
 <iframe class="slide-deck" src="../../slides/weekfive/"></iframe>
 ```
 
-{{< iconify majesticons presentation-play size=18px >}} Full Screen: [Week Five: Running Time Analysis: Experimental Evaluation](../../slides/weekfive/)
+{{< iconify majesticons presentation-play size=18px >}} Full Screen: [Week Five: Runtime Analysis through Experimental Evaluation](../../slides/weekfive/)
