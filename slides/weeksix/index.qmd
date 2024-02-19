@@ -175,11 +175,15 @@ print(f"ratio = {ratio:.4f}")
 ## Function to sum the first `k` integers
 
 ```{python}
-def sumk(k: int) -> int:
+import time
+from typing import Tuple
+def sumk(k: int) -> Tuple[int, float]:
+    start = time.time()
     total = 0
     for i in range(k+1):
         total = total + i
-    return total
+    end = time.time()
+    return total, (end - start)
 
 print(sumk(5))
 print(sumk(10))
@@ -188,9 +192,25 @@ print(sumk(20))
 print(sumk(25))
 ```
 
-::: {.fragment .fade style="margin-top: -0.25em; font-size: 0.9em;"}
+## Function to sum the first `k` integers
+
+```{python}
+def timetrials(func, k, trials = 10):
+    totaltime = 0
+    for i in range(trials):
+        totaltime += func(k)[1]
+    print("average =%10.7f for k = %d" % (totaltime/trials, k))
+
+timetrials(sumk, 10000)
+timetrials(sumk, 100000)
+timetrials(sumk, 1000000)
+timetrials(sumk, 10000000)
+```
+
+::: {.fragment .fade style="margin-top: -0.2em; font-size: 0.9em;"}
 
 - The `sumk` function outputs the sum of the first `k` integers
 - This function has a `for` loop that iterates `k` times
+- Ratio `0.203677/0.0220115 = 9.25` for *linear* performance
 
 :::
