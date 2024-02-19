@@ -217,6 +217,8 @@ timetrials_int(sumk, 10000000)
 
 ## What do we know about the performance of `sumk`?
 
+::: incremental
+
 - As `k` goes up by a factor of `10`, the `timetrials` function shows the `sumk`
 runtime also goes up by a factor of `10`
 
@@ -229,6 +231,8 @@ runtime also goes up by a factor of `10`
 - Relationship holds regardless of the computer used!
 
 - Wait, $\sum_{i = 1}^k i = 1 + 2 + 3 + \cdots + k = k (k + 1) / 2$
+
+:::
 
 ## Fast summing for the first `k` integers
 
