@@ -256,3 +256,23 @@ timetrials_int(sumk_calc, 100000000)
 - Direct calculation is faster than using `for` loop!
 
 :::
+
+## Modeling program running time
+
+```{python}
+def f001(k):
+    return [sum([i, i + 1] * 100) for i in range(k)]
+
+print(f001(9))
+```
+
+::: {.fragment .fade style="font-size: 0.95em;"}
+
+- Synthetic function `f001` contains many Python constructs
+- Remember, lines of code by itself does not signal performance!
+- Instead, focus on counts of the number of atomic operations
+- Contextualize the operation count based on input size
+- Faster functions require fewer atomic operations
+- Remember, as the input grows, the code slows!
+
+:::
