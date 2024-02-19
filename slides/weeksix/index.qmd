@@ -171,3 +171,26 @@ print(f"ratio = {ratio:.4f}")
 - **Running Time**: program structure to characterize performance
 
 :::
+
+## Function to sum the first `k` integers
+
+```{python}
+def sumk(k: int) -> int:
+    total = 0
+    for i in range(k+1):
+        total = total + i
+    return total
+
+print(sumk(5))
+print(sumk(10))
+print(sumk(15))
+print(sumk(20))
+print(sumk(25))
+```
+
+::: {.fragment .fade style="margin-top: -0.25em; font-size: 0.9em;"}
+
+- The `sumk` function outputs the sum of the first `k` integers
+- This function has a `for` loop that iterates `k` times
+
+:::
