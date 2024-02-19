@@ -280,7 +280,7 @@ print(f001(9))
 
 ## Wait, what is an atomic operation?
 
-::: incremental
+::: {.incremental .fade style="margin-top: -0.5em; font-size: 0.975em;"}
 
 - Atomic operations include:
     - Arithmetic and boolean operations
@@ -289,6 +289,7 @@ print(f001(9))
     - Branching (jumping to another part of the code for `if`/`for`/`while` statements)
     - Calling a function
     - Returning from a function
+- Atomic operations are roughly equivalent in required work
 
 :::
 
