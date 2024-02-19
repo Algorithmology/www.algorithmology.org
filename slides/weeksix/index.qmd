@@ -195,16 +195,16 @@ print(sumk(25))
 ## Function to sum the first `k` integers
 
 ```{python}
-def timetrials(func, k, trials = 10):
+def timetrials_int(func, k, trials = 10):
     totaltime = 0
     for _ in range(trials):
         totaltime += func(k)[1]
     print("average =%10.7f for k = %d" % (totaltime/trials, k))
 
-timetrials(sumk, 10000)
-timetrials(sumk, 100000)
-timetrials(sumk, 1000000)
-timetrials(sumk, 10000000)
+timetrials_int(sumk, 10000)
+timetrials_int(sumk, 100000)
+timetrials_int(sumk, 1000000)
+timetrials_int(sumk, 10000000)
 ```
 
 ::: {.fragment .fade style="margin-top: -0.2em; font-size: 0.9em;"}
@@ -229,3 +229,25 @@ runtime also goes up by a factor of `10`
 - Relationship holds regardless of the computer used!
 
 - Wait, $\sum_{i = 1}^k i = 1 + 2 + 3 + \cdots + k = k (k + 1) / 2$
+
+## Function to sum the first `k` integers
+
+```{python}
+def sumk_calc(k):
+    start = time.time()
+    total = (k*(k+1)//2)
+    end = time.time()
+    return total, end-start
+
+timetrials(sumk_calc, 10000)
+timetrials(sumk_calc, 100000)
+timetrials(sumk_calc, 1000000)
+timetrials(sumk_calc, 10000000)
+timetrials(sumk_calc, 100000000)
+```
+
+::: fragment
+
+- Wow, the `sumk_calc` function is *much* faster than `sumk`!
+
+:::
