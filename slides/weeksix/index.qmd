@@ -90,3 +90,28 @@ adapts to *different inputs* and to *different computers*
 actionable insights that support *understanding* and *prediction*
 
 :::
+
+## Review the "naive" duplicate detector
+
+```{python}
+from typing import List
+def duplicates(input_list: List[int]) -> bool:
+    n = len(input_list)
+    for i in range(n):
+        for j in range(n):
+            if i != j and input_list[i] == input_list[j]:
+                return True
+    return False
+
+assert(duplicates([1,2,6,3,4,5,6,7,8]))
+assert(not duplicates([1,2,3,4]))
+print(duplicates([1,2,6,3,4,5,6,7,8]))
+print(not duplicates([1,2,3,4]))
+```
+
+::: {.fragment .fade-left style="margin-top: -0.25em; font-size: 0.9em;"}
+
+- Function contains a double-nested `for` loop
+- How do we measure the performance of `duplicates`?
+
+:::
