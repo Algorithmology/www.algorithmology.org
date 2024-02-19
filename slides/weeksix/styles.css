@@ -30,3 +30,7 @@ p.codespacer {
   padding: 10px;
   border-radius: 5px;
 }
+
+:root {
+    --quarto-font-monospace: "Ubuntu Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+}
