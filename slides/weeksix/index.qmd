@@ -177,7 +177,6 @@ print(f"ratio = {ratio:.4f}")
 ## Function to sum the first `k` integers
 
 ```{python}
-import time
 from typing import Tuple
 def sumk(k: int) -> Tuple[int, float]:
     start = time.time()
@@ -213,7 +212,7 @@ timetrials_int(sumk, 10000000)
 
 - The `sumk` function outputs the sum of the first `k` integers
 - This function has a `for` loop that iterates `k` times
-- Ratio `0.203677/0.0220115 = 9.25` for *linear* performance
+- Ratio `0.203677/0.0220115 = 9.25` reveals *linear* performance
 
 :::
 
