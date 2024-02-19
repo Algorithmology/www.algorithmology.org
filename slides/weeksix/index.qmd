@@ -15,6 +15,7 @@ format:
     scrollable: true
     transition: slide
     highlight-style: github
+    html-math-method: mathjax
     footer: "Algorithmology"
 ---
 
@@ -215,7 +216,7 @@ timetrials_int(sumk, 10000000)
 
 :::
 
-## What do we know about the performance of `sumk`?
+## What do we know about the performance of the `sumk` function?
 
 ::: incremental
 
@@ -224,11 +225,11 @@ runtime also goes up by a factor of `10`
 
 - `sumk` has to do about `k` additions and assignments
 
-- Or, the runtime of `sumk` is proportional to `k`
+- Or, the runtime of `sumk` is **proportional to** `k`
 
-- Find what runtime is proportional too, not the exact time
+- Find what runtime is proportional to, **not** the **exact time**
 
-- Relationship holds regardless of the computer used!
+- Relationship **should hold** regardless of the computer used!
 
 - Wait, $\sum_{i = 1}^k i = 1 + 2 + 3 + \cdots + k = k (k + 1) / 2$
 
