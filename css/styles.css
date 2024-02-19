@@ -1,3 +1,11 @@
+/* Google Fonts {{{ */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Ubuntu+Mono&display=swap");
+
+/* }}} */
+
+/* Styled Components {{{ */
+
 a {
   text-decoration: none;
 }
@@ -95,3 +103,5 @@ h2,
 .quarto-title .quarto-categories .quarto-category:hover {
   color: #3459e6 !important;
 }
+
+/* }}} */
