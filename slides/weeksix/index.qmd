@@ -293,7 +293,7 @@ print(f001(9))
 
 ## Atomic operations for `list` functions
 
-::: {.fragment .fade style="margin-top: -0.7em; font-size: 0.7em;"}
+::: {.fragment .fade style="margin-top: -0.5em; font-size: 0.725em;"}
 
 | Operation Name          | Code      | Cost |
 |-------------------------|-----------|:------:|
