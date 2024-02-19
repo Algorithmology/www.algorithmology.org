@@ -197,7 +197,7 @@ print(sumk(25))
 ```{python}
 def timetrials(func, k, trials = 10):
     totaltime = 0
-    for i in range(trials):
+    for _ in range(trials):
         totaltime += func(k)[1]
     print("average =%10.7f for k = %d" % (totaltime/trials, k))
 
@@ -214,3 +214,18 @@ timetrials(sumk, 10000000)
 - Ratio `0.203677/0.0220115 = 9.25` for *linear* performance
 
 :::
+
+## What do we know about the performance of `sumk`?
+
+- As `k` goes up by a factor of `10`, the `timetrials` function shows the `sumk`
+runtime also goes up by a factor of `10`
+
+- `sumk` has to do about `k` additions and assignments
+
+- Or, the runtime of `sumk` is proportional to `k`
+
+- Find what runtime is proportional too, not the exact time
+
+- Relationship holds regardless of the computer used!
+
+- Wait, $\sum_{i = 1}^k i = 1 + 2 + 3 + \cdots + k = k (k + 1) / 2$
