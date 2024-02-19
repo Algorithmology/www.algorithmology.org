@@ -276,3 +276,37 @@ print(f001(9))
 - Remember, as the input grows, the code slows!
 
 :::
+
+## What is an atomic operation?
+
+::: incremental
+
+- Atomic operations include:
+    - Arithmetic and boolean operations
+    - Variable assignment
+    - Accessing the value of a variable from its name
+    - Branching (jumping to another part of the code for `if`/`for`/`while` statements)
+    - Calling a function
+    - Returning from a function
+
+:::
+
+## Atomic operations for `list` functions
+
+::: {.fragment .fade style="margin-top: -0.7em; font-size: 0.7em;"}
+
+| Operation Name          | Code      | Cost |
+|-------------------------|-----------|:------:|
+| index access            | `L[i]` | $1$ |
+| index assignment        | `L[i] = newvalue` |	$1$ |
+| Append                  | `L.append(newitem)`	| $1$ |
+| Pop (from end of list)  | `L.pop()` | $1$ |
+| Pop (from index `i`)    | `L.pop(i)`	| $n - i$ |
+| Insert at index `i`     | `insert(i, newitem)` |	$n-i$ |
+| Del an item (at index `i`) | `del(item)` |	$n - i$ |
+| Membership testing      | `item in L` | $n$ |
+| Slice                   | `L[a:b]` | $b-a$
+| Concatenate two lists   | `L1 + L2` | $n_1 + n_2$ |
+| Sort                    | `L.sort()` | $n \log_2 n$ |
+
+:::
