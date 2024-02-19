@@ -11,6 +11,7 @@ format:
   revealjs:
     theme: default
     css: styles.css
+    monofont: Ubuntu Mono
     history: false
     scrollable: true
     transition: slide
