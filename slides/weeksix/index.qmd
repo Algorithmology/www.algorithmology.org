@@ -280,7 +280,7 @@ print(f001(9))
 
 ## Wait, what is an atomic operation?
 
-::: {.incremental .fade style="margin-top: -0.5em; font-size: 0.975em;"}
+::: {.incremental .fade style="margin-top: -0.25em; font-size: 0.975em;"}
 
 - Atomic operations include:
     - Arithmetic and boolean operations
