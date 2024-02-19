@@ -35,7 +35,7 @@ code on later slides can assume existence of functions in prior slides! -->
 
 ::: {.fragment .fade-right style="margin-top: 0.25em; font-size: 0.95em;"}
 
-- Week 1: **Empirical Evaluation of Running Time**
+- Week 1: **Empirical Evaluation of Runtime**
 
     - How do you conduct timing experiments to measure the performance of a
     real Python programs?
