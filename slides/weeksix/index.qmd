@@ -115,3 +115,27 @@ print(not duplicates([1,2,3,4]))
 - How do we measure the performance of `duplicates`?
 
 :::
+
+## Review the `timetrials` function
+
+::: {style="font-size: 0.925em;"}
+
+```{python}
+from typing import Callable
+import time
+
+def timetrials(function: Callable, n: int, trials: int = 10) -> None:
+    """Time the function with n inputs trials times"""
+    totaltime = 0
+    for _ in range(trials):
+        start = time.time()
+        function(list(range(n)))
+        totaltime += time.time() - start
+    print("average =%10.7f for n = %d" % (totaltime/trials, n))
+
+# conduct a doubling experiment for a provided function
+for n in [50, 100, 200, 400, 800, 1600, 3200]:
+    timetrials(duplicates, n)
+```
+
+:::
