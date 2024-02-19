@@ -32,5 +32,8 @@ p.codespacer {
 }
 
 :root {
-    --quarto-font-monospace: "Ubuntu Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+  --quarto-font-monospace: "Ubuntu Mono", SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace !important;
+  --r-code-font: "Ubuntu Mono", SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace !important;
 }
