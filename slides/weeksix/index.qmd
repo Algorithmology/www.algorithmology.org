@@ -303,7 +303,7 @@ print(f001(9))
 | Pop (from end of list)  | `L.pop()` | $1$ |
 | Pop (from index `i`)    | `L.pop(i)`	| $n - i$ |
 | Insert at index `i`     | `insert(i, newitem)` |	$n-i$ |
-| Del an item (at index `i`) | `del(item)` |	$n - i$ |
+| Delete an item (at index `i`) | `del(item)` |	$n - i$ |
 | Membership testing      | `item in L` | $n$ |
 | Slice                   | `L[a:b]` | $b-a$
 | Concatenate two lists   | `L1 + L2` | $n_1 + n_2$ |
