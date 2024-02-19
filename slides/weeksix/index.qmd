@@ -162,3 +162,12 @@ print(f"ratio = {ratio:.4f}")
 - What would a ratio of about `2` or `8` reveal about performance?
 
 :::
+
+# Connection between the empirical and the analytical evaluation of algorithm performance
+
+::: {.fragment .fade style="margin-top: -0.05em; font-size: 0.95em;"}
+
+- **Runtime**: conduct experiments to evaluate performance
+- **Running Time**: program structure to characterize performance
+
+:::
