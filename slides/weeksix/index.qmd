@@ -139,3 +139,26 @@ for n in [50, 100, 200, 400, 800, 1600, 3200]:
 ```
 
 :::
+
+## Performance of `duplicates`
+
+```{python}
+# calculate a doubling ratio
+# for the last two performance
+# values when run on the
+# instructor computer; note
+# that this will vary from
+# the displayed values slightly
+ratio = (0.2225006 / 0.0541614)
+print(f"ratio = {ratio:.4f}")
+```
+
+::: {.fragment .fade style="margin-top: -0.25em; font-size: 0.9em;"}
+
+- Repeatedly double the size of the input when running experiments
+- A doubling ratio is the current time divided by the prior time
+- A ratio of approximately `4` reveals a quadrupling of performance
+- Offers experimental evidence that performance is *quadratic*!
+- What would a ratio of about `2` or `8` reveal about performance?
+
+:::
