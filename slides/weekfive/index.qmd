@@ -1,5 +1,5 @@
 ---
-title: "Running Time Analysis: Experimental Evaluation"
+title: "Runtime Analysis through Experimental Evaluation"
 echo: true
 description: "How do you use experiments to measure the performance of a Python program?"
 date: "2024-02-12"
