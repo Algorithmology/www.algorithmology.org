@@ -377,11 +377,16 @@ to a fixed-size backing array
 
 ::: incremental
 
-- The `dict` operations have a constant cost
-
-- A dictionary is fast due to its use of hash functions that map "hashable" data
-to a backing array
-
-- Is this too good to be true? Well, yes, if not designed correctly!
+- Can you explain these cost functions for `set` operations?
 
 :::
+
+# Asymptotic analysis and the order of growth
+
+- Predict **order of growth** of time as the input size grows
+
+    - **Sublinear**: time grows slower than linearly with input size
+    - **Linear**: time grows linearly with input size
+    - **Quadratic**: time grows quadratically with input size
+    - **Cubic**: time grows cubically with input size
+    - **Exponential**: time grows exponentially with input size
