@@ -487,3 +487,21 @@ def f002(L):
 - Report the running time as $O(n)$
 - Classify this as a linear-time algorithm
 - Worst-case performance similar to all linear algorithms!
+
+## `f003`: A quadratic-time algorithm
+
+```python
+def f003(L):
+    x = 0   # 1
+    for i in L:   # loop n times
+        for j in L:   # loop n times
+            x += i*j  # 3 two arithmetic operations and assignment
+    return x # 1
+```
+
+- Assume the input is a list of length $n$
+- Count the cost of each line of code
+- Total cost is $3n^2+2$ in the worst case
+- Report the running time as $O(n^2)$
+- Classify this as a quadratic-time algorithm
+- Worst-case performance similar to all quadratic algorithms!
