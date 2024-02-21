@@ -415,3 +415,29 @@ to a fixed-size backing array
 characterize the relationship between input size and running time
 
 :::
+
+## Focus on the worst-case running time!
+
+- Different inputs of the same size may have different:
+    - **runtimes** in actual software implementations
+    - **running time** according to the performance models
+- Worst-case running time will characterize performance
+- Describe running time as a function of the input size:
+    - Slow programs have fast-growing functions
+    - Fast programs have slow-growing functions
+- Count number of atomic operations for the input size
+
+## Exploring the Big-O notation
+
+- Running time on an input of size $n$ might be $5n^2 + 3n + 2$
+- The dominant term is $n^2$ and the running time is $O(n^2)$
+- Wait, that is some new notation! What does it mean?
+- Formal definition of the big-O notation:
+
+::: {.fragment .fade .boxed-content style="margin-top: 0em; font-size: 1.2em;"}
+
+Given (non-decreasing) functions $f$ and $g$, we say $f(n) = O(g(n))$ if there
+exist constants $c$ and $n_0$ such that for all $n>n_0$ we have $f(n) \le
+cg(n)$.
+
+:::
