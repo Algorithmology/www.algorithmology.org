@@ -383,6 +383,8 @@ to a fixed-size backing array
 
 # Asymptotic analysis and the order of growth
 
+::: incremental
+
 - Predict **order of growth** of time as the input size grows
 
     - **Sublinear**: time grows slower than linearly with input size
@@ -390,3 +392,26 @@ to a fixed-size backing array
     - **Quadratic**: time grows quadratically with input size
     - **Cubic**: time grows cubically with input size
     - **Exponential**: time grows exponentially with input size
+
+:::
+
+## What is the size of the input?
+
+- For a container, the **size** is the number of elements
+
+- Otherwise, it is the **number of bits** needed to encode
+
+- Or, if a word is `64` bits, we could use the **number of words**
+
+- Assume that an `int` or a `float` fits into constant bit depth
+
+- Yet, note that Python supports **arbitrary precision** integers
+
+- Our model is useful even though it is note entirely accurate
+
+::: {.fragment .fade .boxed-content style="margin-top: -0.25em; font-size: 0.9em;"}
+
+**Key Insight**: as the input size grows, the code slows! Models help to
+characterize the relationship between input size and running time
+
+:::
