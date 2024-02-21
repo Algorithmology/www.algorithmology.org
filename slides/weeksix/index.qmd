@@ -349,12 +349,12 @@ function's input size yields its worst-case running time
 
 :::
 
-::: {.incremental .fade style="margin-top: -0.2em; font-size: 0.925em;"}
+::: {.incremental .fade style="margin-top: -0.1em; font-size: 0.925em;"}
 
 - The `dict` operations have a constant cost for all input sizes
 
 - A dictionary is fast due to its use of hash functions that map "hashable" data
-to a backing array
+to a fixed-size backing array
 
 - Is this too good to be true? Well, yes, if not designed correctly!
 
