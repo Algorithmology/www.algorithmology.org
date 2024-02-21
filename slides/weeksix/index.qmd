@@ -481,12 +481,16 @@ def f002(L):
     return newlist  # 1 return
 ```
 
+::: fragment
+
 - Assume the input is a list of length $n$
 - Count the cost of each line of code
-- Total cost is $2n+3$ in the worst case (i.e., all items are even)
+- Total cost is $2n+3$ in worst case (i.e., all items are even)
 - Report the running time as $O(n)$
 - Classify this as a linear-time algorithm
 - Worst-case performance similar to all linear algorithms!
+
+:::
 
 ## `f003`: A quadratic-time algorithm
 
@@ -499,12 +503,16 @@ def f003(L):
     return x # 1
 ```
 
+::: fragment
+
 - Assume the input is a list of length $n$
 - Count the cost of each line of code
 - Total cost is $3n^2+2$ in the worst case
 - Report the running time as $O(n^2)$
 - Classify this as a quadratic-time algorithm
 - Worst-case performance similar to all quadratic algorithms!
+
+:::
 
 ## `f004`: A quadratic-time algorithm
 
