@@ -517,7 +517,12 @@ def f004(L):
     return x # 1
 ```
 
+::: {.fragment .fade style="margin-top: 0.1em; font-size: 1em;"}
+
 - Assume the input is a list of length $n$
 - Count the cost of each line of code
-- Total cost is $3n^2+2$ in the worst case
+- Initialization and `return` cost $2$ operations
+- Inner loop iterations change based on outer loop value
 - $2 + \sum_{i=1}^{n-1}5i = 2 + 5\sum_{i=1}^{n-1}i = 2 + \frac{5n(n-1)}{2} = O(n^2)$
+
+:::
