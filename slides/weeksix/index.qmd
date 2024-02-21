@@ -469,3 +469,21 @@ function that characterizes it!
 - **Polynomial Functions**, $O(n^k)$ for some constant $k$.
 - **Exponential Functions**, $O(2^n)$ (this is different from $2^{O(n)}$)
 - **Factorial Functions**, $O(n!)$
+
+## `f002`: A linear-time algorithm
+
+```python
+def f002(L):    
+    newlist = []  # 2 creating a new list and variable assignment
+    for i in L:   # loops n times
+        if i % 2 == 0:  # 1
+            newlist.append(i) # 1 (append is constant time on lists)
+    return newlist  # 1 return
+```
+
+- Assume the input is a list of length $n$
+- Count the cost of each line of code
+- Total cost is $2n+3$ in the worst case (i.e., all items are even)
+- Report the running time as $O(n)$
+- Classify this as a linear-time algorithm
+- Worst-case performance similar to all linear algorithms!
