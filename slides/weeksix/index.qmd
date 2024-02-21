@@ -319,11 +319,11 @@ print(f001(9))
 
 - Table reports the asymptotic cost of `List` operations
 
-- Understand which operations produce a new list
+- Partly driven by which operations produce a new list
 
 - Concatenation and slicing both produce a new collection
 
-- Grasp the running time by intuition of work completed
+- Grasp the running time by intuiting the work completed
 
 - `List` and `str` have similar performance characteristics
 
@@ -333,5 +333,55 @@ print(f001(9))
 
 **Key Insight**: counting the maximum number of atomic operations for a
 function's input size yields its worst-case running time
+
+:::
+
+## Atomic operations for `dict` functions
+
+::: fragment
+
+| Operation Name            | Code      | Cost |
+|---------------------------|-----------|:------:|
+| Get item                  | `D[key]` | $1$ |
+| Set item                  | `D[key] = value` | $1$ |
+| (key) membership testing  | `key in D` | $1$ |
+| Delete an item by its key | `del D[key]` | $1$ |
+
+:::
+
+::: {.incremental .fade style="margin-top: -0.2em; font-size: 0.925em;"}
+
+- The `dict` operations have a constant cost for all input sizes
+
+- A dictionary is fast due to its use of hash functions that map "hashable" data
+to a backing array
+
+- Is this too good to be true? Well, yes, if not designed correctly!
+
+:::
+
+## Atomic operations for `set` functions
+
+::: fragment
+
+| Operation Name            | Code      | Cost |
+|---------------------------|-----------|:------:|
+| Add a new item            | `A.add(newitem)` | $1$ |
+| Delete an item            | `A.delete(item)` | $1$ |
+| Union                     | `A | B`   | $n_A + n_B$ |
+| Intersection              | `A & B`   | $\min\{n_A, n_B\}$ |
+| Set differences           | `A - B`   | $n_A$ |
+| Symmetric Difference      | `A ^ B`   | $n_A + n_B$ |
+
+:::
+
+::: incremental
+
+- The `dict` operations have a constant cost
+
+- A dictionary is fast due to its use of hash functions that map "hashable" data
+to a backing array
+
+- Is this too good to be true? Well, yes, if not designed correctly!
 
 :::
