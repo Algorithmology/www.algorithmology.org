@@ -375,7 +375,7 @@ to a fixed-size backing array
 
 :::
 
-::: incremental
+::: {.incremental style="margin-top: 0.25em;"}
 
 - Can you explain these cost functions for `set` operations?
 
@@ -419,12 +419,12 @@ characterize the relationship between input size and running time
 ## Focus on the worst-case running time!
 
 - Different inputs of the same size may have different:
-    - **runtimes** in actual software implementations
-    - **running time** according to the performance models
+    - **Runtimes** in actual software implementations
+    - **Running time** according to the performance models
 - Worst-case running time will characterize performance
 - Describe running time as a function of the input size:
-    - Slow programs have fast-growing functions
-    - Fast programs have slow-growing functions
+    - **Slow programs** have fast-growing functions
+    - **Fast programs** have slow-growing functions
 - Count number of atomic operations for the input size
 
 ## Exploring the big-O notation
@@ -434,7 +434,7 @@ characterize the relationship between input size and running time
 - Wait, that is some new notation! What does it mean?
 - Formal definition of the big-O notation:
 
-::: {.fragment .fade .boxed-content style="margin-top: 0em; font-size: 1.2em;"}
+::: {.fragment .fade .boxed-content style="margin-top: 0.2em; font-size: 1.2em;"}
 
 Given (non-decreasing) functions $f$ and $g$, we say $f(n) = O(g(n))$ if there
 exist constants $c$ and $n_0$ such that for all $n>n_0$ we have $f(n) \le
@@ -451,11 +451,21 @@ big-O
 - The big-O tells us what will eventually be true *when the input is
 sufficiently large*, which is the worst-case scenario
 
-::: {.fragment .fade .boxed-content style="margin-top: -0.1em; font-size: 1.0em;"}
+::: {.fragment .fade .boxed-content style="margin-top: -0.2em; font-size: 1.0em;"}
 
 **Notation Confusion**: be careful because the definition of big-O refers to a
-"function" --- this is *not* a Python function but rather a mathematical
+"function" --- this is *not* a Python function but **rather** a mathematical
 function that characterizes it!
 
 :::
 
+## Functions with big-O Notation
+
+- **Constant Functions**, $O(1)$
+- **Logarithmic Functions**, $O(\log n)$
+- **Linear Functions**, $O(n)$
+- **n Log n**, $O(n\log n)$
+- **Quadratic Functions**, $O(n^2)$
+- **Polynomial Functions**, $O(n^k)$ for some constant $k$.
+- **Exponential Functions**, $O(2^n)$ (this is different from $2^{O(n)}$)
+- **Factorial Functions**, $O(n!)$
