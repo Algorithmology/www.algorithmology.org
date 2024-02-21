@@ -505,3 +505,19 @@ def f003(L):
 - Report the running time as $O(n^2)$
 - Classify this as a quadratic-time algorithm
 - Worst-case performance similar to all quadratic algorithms!
+
+## `f004`: A quadratic-time algorithm
+
+```python
+def f004(L):
+    x = 0 # 1
+    for j in range(1,len(L))  # loops n-1 times
+        for i in range(j) # loops j times
+            x += L[i] * L[j] # 5 two list accesses, two arithmetic operations and assignment
+    return x # 1
+```
+
+- Assume the input is a list of length $n$
+- Count the cost of each line of code
+- Total cost is $3n^2+2$ in the worst case
+- $2 + \sum_{i=1}^{n-1}5i = 2 + 5\sum_{i=1}^{n-1}i = 2 + \frac{5n(n-1)}{2} = O(n^2)$
