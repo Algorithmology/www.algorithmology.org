@@ -32,8 +32,8 @@ Analytical Evaluation
 
 ### Goal
 
-To build and use a Python program, called `filesorter`, that runs
-benchmarks to study the performance of sorting different types of data.
+To build and use a Python program, called `filesorter`, that runs benchmarks to
+study the performance of sorting different types of data stored in a CSV file.
 
 ### Steps
 

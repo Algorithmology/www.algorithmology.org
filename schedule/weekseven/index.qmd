@@ -35,8 +35,8 @@ Stacks, Queues, and Deques
 
 ### Goal
 
-To build and use a Python program, called `filesorter`, that runs
-benchmarks to study the performance of sorting different types of data.
+To build and use a Python program, called `filesorter`, that runs benchmarks to
+study the performance of sorting different types of data stored in a CSV file.
 
 ### Steps
 
@@ -52,7 +52,7 @@ have questions
 ## Slides
 
 ```{=html}
-<iframe class="slide-deck" src="../../slides/weeksix/"></iframe>
+<iframe class="slide-deck" src="../../slides/weekseven/"></iframe>
 ```
 
-{{< iconify majesticons presentation-play size=18px >}} Full Screen: [Week Six: Running Time Analysis through Theoretical Evaluation](../../slides/weeksix/)
+{{< iconify majesticons presentation-play size=18px >}} Full Screen: [Week Seven: ](../../slides/weekseven/)
