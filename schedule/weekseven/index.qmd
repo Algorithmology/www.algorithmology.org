@@ -17,7 +17,7 @@ Python](https://donsheehy.github.io/datastructures/)
 [donsheehy/datastructures](https://github.com/donsheehy/datastructures/). Can
 you write your own tests cases for these abstract data types? Can you use these
 abstract data types in your own program?
-- Note that, along with chapter 8, chapter 7 will also be the focus next week
+- Note that, along with chapter 8, chapter 7 will again be the focus for next week
 
 ## Activities
 
