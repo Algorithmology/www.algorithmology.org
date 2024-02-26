@@ -41,7 +41,6 @@ study the performance of sorting different types of data stored in a CSV file.
 ### Steps
 
 - Use [File Sorting](https://github.com/Algorithmology/file-sorting-starter) as your template repository
-- Use  as your template repository
 - Install the project's dependencies using `devenv`
 - Follow the instructions to complete the project:
   - **Week 1**: Implement all of the modules in `filesorter`
