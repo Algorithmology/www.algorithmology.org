@@ -1,0 +1,365 @@
+---
+title: "Implementing Stacks, Queues, and Deques"
+echo: true
+description: "How do you use proofs to measure the performance of a Python program?"
+date: "2024-02-26"
+date-format: long
+author: Gregory M. Kapfhammer
+execute:
+  freeze: auto
+format:
+  revealjs:
+    theme: default
+    css: styles.css
+    monofont: Ubuntu Mono
+    history: false
+    scrollable: true
+    transition: slide
+    highlight-style: github
+    html-math-method: mathjax
+    footer: "Algorithmology"
+---
+
+# What is an abstract data type? How to compare it to a data structure?
+
+::: fragment
+
+- **Abstract Data Type (ADT)**: the interface of a data structure
+- **Concrete Data Structure (CDS)**: the implementation of ADT
+- ADT is *independent* of implementation concerns in the CDS
+
+:::
+
+## Understanding the connection between and ADT and a CDS {transition="convex"}
+
+::: {.fragment .fade-right style="margin-top: -0.1em; font-size: 0.95em;"}
+
+- **Abstract data type**
+
+    - What is the *data* to be stored or represented?
+    - What are the *processes* that manipulate the data?
+    - Avoids specifying how the data is stored or manipulated
+
+- **Concrete data structure**
+
+    - Delivered as a class in a Python program
+    - Implements and efficient version of data type
+    - Specifies how the data is stored and manipulated
+
+:::
+
+## An ADT and its CDS are the basic building blocks of programs!
+
+- **Stack**: ADT for a last-in, first-out (LIFO) list
+- **Queue**: ADT for a first-in, first-out (FIFO) list
+- **Deque**: ADT for a flexible, double-ended queue
+- Each data structure has **trade-offs** in its:
+  - Features
+  - Time overhead
+  - Space overhead
+
+# Specifying and implementing the `Stack` abstract data type
+
+- Data storage and access according to the **LIFO discipline**
+- Implemented in a object-oriented fashion using composition
+- Balances the need for **flexibility** and **efficiency**
+- Be careful! Poor implementations can be inefficient!
+
+## `Stack` abstract data type
+
+::: {.fragment .fade .boxed-content style="margin-top: -0.25em; font-size: 0.9em;"}
+
+- **push** - add a new item to the stack
+- **pop** - remove and return the next item in `LIFO` order
+- **peek** - return the next item in `LIFO` order
+- **size** - returns the number of items in the stack
+- **isempty** - return `True` if storing no items or return `False`
+
+:::
+
+::: {.fragment .fade style="margin-top: -0.1em; font-size: 0.9em;"}
+
+- Implementation details:
+    - The `Stack` wraps a `list` in a Python class
+    - Use the name of the `Stack` to give implementation clues
+    - Let's explore the first implementation called `ListStack`!
+
+:::
+
+## `ListStack` implements the `Stack` ADT {transition="convex"}
+
+```{python}
+class ListStack:
+    def __init__(self):
+        self._L = []
+
+    def push(self, item):
+        self._L.append(item)
+
+    def pop(self):
+        return self._L.pop()
+
+    def peek(self):
+        return self._L[-1]
+
+    def __len__(self):
+        return len(self._L)
+
+    def isempty(self):
+        return len(self) == 0
+```
+
+::: {.fragment .fade-left style="margin-top: 0.1em; font-size: 0.9em;"}
+
+- The `ListStack` uses a `list` called `_L` to store data items
+
+:::
+
+## Using the `ListStack`
+
+```{python}
+def manipulate_stack():
+    stack = ListStack()
+    stack.push('umbrella')
+    stack.push('backpack')
+    stack.push('sandals')
+    print("Stack contents after push operations: ", [item for item in stack._L])
+    stack.pop()
+    print("Stack contents after pop operation: ", [item for item in stack._L])
+
+manipulate_stack()
+```
+
+::: fragment
+
+- The `manipulate_stack` function creates a `ListStack`
+- Function illustrates the `LIFO` behavior of the `ListStack`
+- It breaks encapsulation of `ListStack` by accessing `_L`
+
+:::
+
+## Inefficient implementation of `Stack` {transition="convex"}
+
+```{python}
+class InefficientListStack(ListStack):    
+    def push(self, item):
+        self._L.insert(0, item)
+
+    def pop(self):
+        return self._L.pop(0)
+
+    def peek(self):
+        return self._L[0]
+```
+
+::: {.fragment .fade-left style="margin-top: 0.1em; font-size: 0.9em;"}
+
+- Inserting a new item moves all other items
+- The `insert` call in `push` takes $O(n)$ time
+- Removing an item moves all other items
+- The `pop` call in `push` takes $O(n)$ time
+- Wow, this stack has two linear operations!
+
+:::
+
+## Using the `InefficientListStack`
+
+```{python}
+def manipulate_stack():
+    stack = InefficientListStack()
+    stack.push('umbrella')
+    stack.push('backpack')
+    stack.push('sandals')
+    print("Stack contents after push operations: ", [item for item in stack._L])
+    stack.pop()
+    print("Stack contents after pop operation: ", [item for item in stack._L])
+
+manipulate_stack()
+```
+
+::: fragment
+
+- Function creates an `InefficientListStack` instance
+- Same behavior as the `ListStack` but with inefficiency
+- When would the inefficiency become a problem?
+
+:::
+
+# Specifying and implementing the `Queue` abstract data type
+
+- Data storage and access according to the **FIFO discipline**
+- Implemented in a object-oriented fashion using composition
+- Adds new behaviors not found in the `Stack` ADT
+- Illustrates the trade-off between time and space overhead
+
+## `Queue` abstract data type
+
+::: {.fragment .fade .boxed-content style="margin-top: -0.25em; font-size: 0.9em;"}
+
+- **enqueue(item)** - add a new item to the queue
+- **dequeue()** - remove and return the next item in FIFO order
+- **peek()** - return (without removing) the next item in FIFO order
+- **__len__** - return the number of items in the queue
+- **isempty()** - return `True` if storing no items or return `False`
+
+:::
+
+::: {.fragment .fade style="margin-top: -0.1em; font-size: 0.9em;"}
+
+- Implementation details:
+    - The `Queue` abstract data type wraps a `list` in a Python class
+    - Use the name of the `Queue` to give implementation clues
+    - Let's explore the first implementation called `ListQueueSimple`!
+
+:::
+
+## `ListQueueSimple` implements `Queue` {transition="convex"}
+
+```{python}
+class ListQueueSimple:
+    def __init__(self):
+        self._L = []
+
+    def enqueue(self, item):
+        self._L.append(item)
+
+    def dequeue(self):
+        return self._L.pop(0)
+
+    def peek(self):
+        return self._L[0]
+
+    def __len__(self):
+        return len(self._L)
+
+    def isempty(self):
+        return len(self) == 0
+```
+
+::: {.fragment .fade-left style="margin-top: 0.1em; font-size: 0.9em;"}
+
+- The `ListQueueSimple` uses a `list` called `_L` to store data items
+
+:::
+
+## Using the `ListQueueSimple`
+
+```{python}
+def manipulate_queue():
+    queue = ListQueueSimple()
+    queue.enqueue('umbrella')
+    queue.enqueue('backpack')
+    queue.enqueue('sandals')
+    print("Queue contents after enqueue operations: ", [item for item in queue._L])
+    queue.dequeue()
+    print("Queue contents after dequeue operation: ", [item for item in queue._L])
+
+manipulate_queue()
+```
+
+::: fragment
+
+- Function creates a `ListQueueSimple` instance
+- Can you see how this is different than the `ListStack`?
+- Differences between the `FIFO` and `LIFO` disciplines?
+
+:::
+
+## Wait! This `Queue` implementation is inefficient because it calls `pop(0)`!
+
+::: incremental
+
+- Calling `pop(0)` takes $O(n)$ time due to the item shifting
+
+- Either approach is inefficient for a `Queue` implementation
+
+- Can we make the `Queue` implementation more efficient?
+
+    - Do not delete the items when removed from `Queue`
+    - Ignore each item when it is removed from `Queue`
+    - Keep an index to the head of the `Queue`
+    - Accept that this will increase the space overhead ?!?!
+
+:::
+
+## `ListQueueFakeDelete` uses an index {transition="convex"}
+
+::: {.fade-right style="margin-top: -0.1em; font-size: 0.85em;"}
+
+```{python}
+class ListQueueFakeDelete:
+    def __init__(self):
+        self._head = 0
+        self._L = []
+
+    def enqueue(self, item):
+        self._L.append(item)
+
+    def peek(self):
+      return self._L[self._head]
+
+    def dequeue(self):
+        item = self.peek()
+        self._head += 1
+        return item
+
+    def __len__(self):
+        return len(self._L) - self._head
+
+    def isempty(self):
+        return len(self) == 0
+```
+
+:::
+
+::: {.fragment .fade-left style="margin-top: 0.2em; font-size: 0.9em;"}
+
+- `ListQueueFakeDelete` increments the `_head` index on `dequeue`
+
+:::
+
+## Using the `ListQueueFakeDelete`
+
+```{python}
+def manipulate_queue():
+    queue = ListQueueFakeDelete()
+    queue.enqueue('umbrella')
+    queue.enqueue('backpack')
+    queue.enqueue('sandals')
+    print("Queue contents after enqueue operations: ", [item for item in queue._L])
+    queue.dequeue()
+    print("Queue contents after dequeue operation: ", [item for item in queue._L])
+
+manipulate_queue()
+```
+
+::: fragment
+
+- Function creates a `ListQueueFakeDelete` instance
+- Output is not same as using the `ListQueueSimple`
+- Wait, is output *actually* different from `ListQueueSimple`'s?
+
+:::
+
+## Revised `ListQueueFakeDelete`
+
+```{python}
+class ListQueue(ListQueueFakeDelete):
+    def dequeue(self):
+        item = self._L[self._head]
+        self._head += 1
+        if self._head > len(self._L)//2:
+            self._L = self._L[self._head:]
+            self._head = 0
+        return item
+```
+
+::: fragment
+
+- Define a subclass of the `ListQueueFakeDelete`
+- Provide a new implementation of the `dequeue` method
+- Periodically "compact" the list to reduce space overhead
+- Uses the same strategy as the `list.pop()` in Python
+- What is the trade-off between time and space overhead?
+
+:::
