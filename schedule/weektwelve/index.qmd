@@ -1,0 +1,57 @@
+---
+title: Searching and Sorting
+description: "Learn How to Efficiently Process Data"
+date: 2024-03-25
+layout: full
+toc: true
+toc-expand: 3
+---
+
+## Exploration
+
+- {{< iconify fa6-solid book-open size=18px >}} Read chapters 11 through 14 in
+[A First Course on Data Structures in
+Python](https://donsheehy.github.io/datastructures/)
+- {{< iconify fa6-brands github size=18px >}} Explore algorithms that perform
+searching and sorting in the `ds2` package of
+[donsheehy/datastructures](https://github.com/donsheehy/datastructures/). Can
+you add debugging statements to trace how these algorithms work? Can you prove
+the worst-case time complexity of these algorithms?
+- {{< iconify fa6-solid book size=18px >}} Review chapters to confirm that you
+understand the worst-case time complexities
+
+## Activities
+
+- {{< iconify fa6-solid people-line size=18px >}} **Monday and Wednesday**:
+Searching and Sorting
+  - Explore how to implement searching and sorting algorithms Python
+  - Apply a new algorithmic paradigm called dynamic programming
+  - Learn more about `mergesort` and `quickselect` algorithms
+  - Examine Python source code segments to illustrate key points
+- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Start new algorithm engineering project
+- {{< iconify game-icons team-idea size=18px >}} **Friday**: Continue discussion of technical content
+
+## Project
+
+### Goal
+
+To build and use a Python program, called `lcsfinder`, that runs benchmarks to
+study the performance of finding the longest common sub-sequence of data values
+
+### Steps
+
+- Use `lcsfinder` as your template repository
+- Install the project's dependencies using `devenv`
+- Follow the instructions to complete the project:
+  - **Week 1**: Implement all of the modules in `listconcatenator`
+  - **Week 2**: Design and conduct experiments and document experimental results
+- Schedule [office hours](https://www.gregorykapfhammer.com/schedule/) if you
+have questions
+
+## Slides
+
+```{=html}
+<iframe class="slide-deck" src="../../slides/weekeleven/"></iframe>
+```
+
+{{< iconify majesticons presentation-play size=18px >}} Full Screen: [Week Eleven: Searching and Sorting](../../slides/weekeleven/)
