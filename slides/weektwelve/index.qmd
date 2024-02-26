@@ -1,0 +1,21 @@
+---
+title: "Hash Tables"
+echo: true
+description: "How do you effectively map data to a backing list?"
+date: "2024-04-01"
+date-format: long
+author: Gregory M. Kapfhammer
+execute:
+  freeze: auto
+format:
+  revealjs:
+    theme: default
+    css: styles.css
+    monofont: Ubuntu Mono
+    history: false
+    scrollable: true
+    transition: slide
+    highlight-style: github
+    html-math-method: mathjax
+    footer: "Algorithmology"
+---
