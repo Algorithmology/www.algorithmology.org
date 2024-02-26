@@ -30,7 +30,7 @@ format:
 
 :::
 
-## Understanding the connection between and ADT and a CDS
+## Understanding the connection between and ADT and a CDS {transition="convex"}
 
 ::: {.fragment .fade-right style="margin-top: -0.1em; font-size: 0.95em;"}
 
@@ -47,3 +47,13 @@ format:
     - Specifies how the data is stored and manipulated
 
 :::
+
+## An ADT and its CDS are the basic building blocks of programs!
+
+- **Stack**: ADT for a last-in, first-out (LIFO) list
+- **Queue**: ADT for a first-in, first-out (FIFO) list
+- **Deque**: ADT for a flexible, double-ended queue
+- Each data structure has **trade-offs** in its:
+  - Features
+  - Time overhead
+  - Space overhead
