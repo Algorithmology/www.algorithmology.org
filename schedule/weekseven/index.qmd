@@ -1,6 +1,6 @@
 ---
 title: Stacks, Queues, and Deques
-description: "Explore Examples of Basic Abstract Data Types"
+description: "Explore Basic Abstract Data Types"
 date: 2024-02-24
 layout: full
 toc: true
