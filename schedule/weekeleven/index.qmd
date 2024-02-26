@@ -29,7 +29,7 @@ Searching and Sorting
   - Learn more about `mergesort` and `quickselect` algorithms
   - Examine Python source code segments to illustrate key points
 - {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Start new algorithm engineering project
-- {{< iconify game-icons team-idea size=18px >}} **Friday**: Continue discussion of technical content
+- {{< iconify game-icons team-idea size=18px >}} **Friday**: Start new algorithm all-hands project
 
 ## Project
 
