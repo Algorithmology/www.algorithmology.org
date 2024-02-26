@@ -24,7 +24,7 @@ structure.
 ## Activities
 
 - {{< iconify fa6-solid people-line size=18px >}} **Monday and Wednesday**:
-Searching and Sorting
+Hash Tables
   - Explore how to implement hashing functions that map numbers to list indices
   - Investigate trade-offs with bucket size, hashing function, and re-hashing
   - Examine Python source code segments to illustrate key points
