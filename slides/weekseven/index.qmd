@@ -212,3 +212,45 @@ manipulate_stack()
     - Let's explore the first implementation called `ListQueueSimple`!
 
 :::
+
+## `ListStack` implements the `Stack` ADT {transition="convex"}
+
+```{python}
+class ListQueueSimple:
+    def __init__(self):
+        self._L = []
+
+    def enqueue(self, item):
+        self._L.append(item)
+
+    def dequeue(self):
+        return self._L.pop(0)
+
+    def peek(self):
+        return self._L[0]
+
+    def __len__(self):
+        return len(self._L)
+
+    def isempty(self):
+        return len(self) == 0
+```
+
+::: {.fragment .fade-left style="margin-top: 0.1em; font-size: 0.9em;"}
+
+- The `ListQueueSimple` uses a `list` called `_L` to store data items
+
+:::
+
+## Wait! This `Queue` implementation is inefficient because it calls `pop(0)`!
+
+- Calling `pop(0)` takes $O(n)$ time due to the item shifting
+
+- Either approach is inefficient for a `Queue` implementation
+
+- Can we make the `Queue` implementation more efficient?
+
+    - Do not delete the items when removed from `Queue`
+    - Ignore each item when it is removed from `Queue`
+    - Keep an index to the head of the `Queue`
+    - Accept that this will increase the space overhead ?!?!
