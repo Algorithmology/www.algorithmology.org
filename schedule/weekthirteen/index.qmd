@@ -56,4 +56,5 @@ have questions
 <iframe class="slide-deck" src="../../slides/weekthirteen/"></iframe>
 ```
 
-{{< iconify majesticons presentation-play size=18px >}} Full Screen: [Week Twelve: Hash Tables](../../slides/weekthirteen/)
+{{< iconify majesticons presentation-play size=18px >}} Full Screen: [Week
+Thirteen: Hierarchical Data Structures](../../slides/weekthirteen/)
