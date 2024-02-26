@@ -1,0 +1,57 @@
+---
+title: Linked Lists
+description: "Investigate List-Based Abstract Data Types"
+date: 2024-03-11
+layout: full
+toc: true
+toc-expand: 3
+---
+
+## Exploration
+
+- {{< iconify fa6-solid book-open size=18px >}} Read chapters 6 and 7 in [A
+First Course on Data Structures in
+Python](https://donsheehy.github.io/datastructures/)
+- {{< iconify fa6-brands github size=18px >}} Try out the implementations of
+`Stack`, `Queue`, and `Deque` in the `ds2` package of
+[donsheehy/datastructures](https://github.com/donsheehy/datastructures/). Can
+you write your own tests cases for these abstract data types? Can you use these
+abstract data types in your own program?
+- {{< iconify fa6-solid book size=18px >}} Note that, along with chapter 8,
+chapter 7 will again be the focus for next week
+
+## Activities
+
+- {{< iconify fa6-solid people-line size=18px >}} **Monday and Wednesday**:
+Linked Lists and Doubly Linked Lists
+  - Deepen understanding of an abstract data type (ADT)
+  - Understand implementation trade-offs for list-based structures
+  - Use asymptotic analysis to characterize performance of an ADT
+  - Examine Python source code segments to illustrate key points
+- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Mid-term executable examination
+- {{< iconify game-icons team-idea size=18px >}} **Friday**: Start new algorithm all-hands project
+
+## Project
+
+### Goal
+
+To build and use a Python program, called `listconcatenator`, that runs benchmarks to
+study the performance of combining data into different types of `list`s
+
+### Steps
+
+- Use `listconcatenator` as your template repository
+- Install the project's dependencies using `devenv`
+- Follow the instructions to complete the project:
+  - **Week 1**: Implement all of the modules in `listconcatenator`
+  - **Week 2**: Design and conduct experiments and document experimental results
+- Schedule [office hours](https://www.gregorykapfhammer.com/schedule/) if you
+have questions
+
+## Slides
+
+```{=html}
+<iframe class="slide-deck" src="../../slides/weeknine/"></iframe>
+```
+
+{{< iconify majesticons presentation-play size=18px >}} Full Screen: [Week Nine: Implementing List-Based Structures](../../slides/weeknine/)
