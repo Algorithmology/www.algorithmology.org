@@ -27,7 +27,7 @@ Dynamic Programming
   - Investigate a new algorithmic paradigm called dynamic programming
   - Learn more about the longest common sub-sequence problem
   - Examine Python source code segments to illustrate key points
-- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Continue algorithm engineering project
+- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Start new algorithm engineering project
 - {{< iconify game-icons team-idea size=18px >}} **Friday**: Report on the algorithm all-hands project
 
 ## Project
