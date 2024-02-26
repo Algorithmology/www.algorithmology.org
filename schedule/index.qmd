@@ -30,9 +30,36 @@ listing:
 - **Module One**: 
   - **Topic**: Algorithm Analysis Foundations
   - **Weeks**: One through six
-  - **Chapters**: One through five in [A First
-Course on Data Structures in
-Python](https://donsheehy.github.io/datastructures/)
+  - **Chapters**: One through five in [A First Course on Data Structures in Python](https://donsheehy.github.io/datastructures/)
+- **Module Two**:
+  - **Topic**: Algorithmic Building Blocks
+  - **Weeks**: Seven through eleven
+  - **Chapters**: Six through fourteen in [A First Course on Data Structures in Python](https://donsheehy.github.io/datastructures/)
+- **Module Three**:
+  - **Topic**: Advanced Data Structures
+  - **Weeks**: Twelve through sixteen
+  - **Chapters**: Fifteen through twenty-one in [A First Course on Data Structures in Python](https://donsheehy.github.io/datastructures/)
+
+### Schedule Details
+
+#### Week-by-Week
+
+- **Start Semester**: Week One
+- **Spring Break**: Week Eight
+- **Midterm Exam**: Week Nine
+- **Final Exam**: Week Sixteen
+
+#### Important Dates
+
+- **Midterm Executable Examination**
+    - **Date**: March 7, 2024
+    - **Time**: 2:30 -- 4:30 PM
+    - **Location**: Alden 109
+- **Final Executable Examination**
+    - **Examination Code**: A
+    - **Date**: May 2, 2024
+    - **Time**: 9:00 AM -- 12:00 Noon
+    - **Location**: Alden 109
 
 ### Weekly Cadence
 
