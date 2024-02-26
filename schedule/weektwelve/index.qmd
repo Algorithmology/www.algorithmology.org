@@ -28,7 +28,7 @@ Searching and Sorting
   - Explore how to implement hashing functions that map numbers to list indices
   - Investigate trade-offs with bucket size, hashing function, and re-hashing
   - Examine Python source code segments to illustrate key points
-- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Continue
+- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Start new
 algorithm engineering project
 - {{< iconify game-icons team-idea size=18px >}} **Friday**: Report on results
 from algorithm all-hands project
