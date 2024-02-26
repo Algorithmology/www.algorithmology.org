@@ -70,8 +70,8 @@ format:
 ::: {.fragment .fade .boxed-content style="margin-top: -0.25em; font-size: 0.9em;"}
 
 - **push** - add a new item to the stack
-- **pop** - remove and return the next item in LIFO order
-- **peek** - return the next item in LIFO order
+- **pop** - remove and return the next item in `LIFO` order
+- **peek** - return the next item in `LIFO` order
 - **size** - returns the number of items in the stack
 - **isempty** - return `True` if storing no items or return `False`
 
@@ -86,7 +86,7 @@ format:
 
 :::
 
-## `ListStack` implements the `Stack` ADT
+## `ListStack` implements the `Stack` ADT {transition="convex"}
 
 ```{python}
 class ListStack:
@@ -115,3 +115,49 @@ class ListStack:
 
 :::
 
+## Using the `ListStack`
+
+```{python}
+def manipulate_stack():
+    stack = ListStack()
+    stack.push('umbrella')
+    stack.push('backpack')
+    stack.push('sandals')
+    print("Stack contents after push operations: ", [item for item in stack._L])
+    stack.pop()
+    print("Stack contents after pop operation: ", [item for item in stack._L])
+
+manipulate_stack()
+```
+
+::: fragment
+
+- The `manipulate_stack` function creates a `ListStack`
+- Function illustrates the `LIFO` behavior of the `ListStack`
+- It breaks encapsulation of `ListStack` by accessing `_L`
+
+:::
+
+## Inefficient implementation of `Stack` {transition="convex"}
+
+```{python}
+class InefficientStack(ListStack):    
+    def push(self, item):
+        self._L.insert(0, item)
+
+    def pop(self):
+        return self._L.pop(0)
+
+    def peek(self):
+        return self._L[0]
+```
+
+::: {.fragment .fade-left style="margin-top: 0.1em; font-size: 0.9em;"}
+
+- Inserting a new item moves all other items
+- The `insert` call in `push` takes $O(n)$ time
+- Removing an item moves all other items
+- The `pop` call in `push` takes $O(n)$ time
+- Wow, this stack has two linear operations!
+
+:::
