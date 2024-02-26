@@ -1,5 +1,5 @@
 ---
-title: Linked Lists
+title: Linked and Doubly Linked Lists
 description: "Investigate List-Based Abstract Data Types"
 date: 2024-03-11
 layout: full
