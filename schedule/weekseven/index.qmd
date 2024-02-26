@@ -29,7 +29,7 @@ Stacks, Queues, and Deques
   - Enhance an ADT implementation with useful exception handling
   - Examine Python source code segments to illustrate key points
 - {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Continue algorithm engineering project
-- {{< iconify game-icons team-idea size=18px >}} **Friday**: Start new algorithm all-hands project
+- {{< iconify game-icons team-idea size=18px >}} **Friday**: Planning for next algorithm all-hands project
 
 ## Project
 
