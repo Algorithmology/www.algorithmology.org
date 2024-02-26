@@ -313,3 +313,26 @@ class ListQueueFakeDelete:
 - `ListQueueFakeDelete` increments the `_head` index on `dequeue`
 
 :::
+
+## Using the `ListQueueFakeDelete`
+
+```{python}
+def manipulate_queue():
+    queue = ListQueueFakeDelete()
+    queue.enqueue('umbrella')
+    queue.enqueue('backpack')
+    queue.enqueue('sandals')
+    print("Queue contents after enqueue operations: ", [item for item in queue._L])
+    queue.dequeue()
+    print("Queue contents after dequeue operation: ", [item for item in queue._L])
+
+manipulate_queue()
+```
+
+::: fragment
+
+- Function creates a `ListQueueFakeDelete` instance
+- Output is not same as using the `ListQueueSimple`
+- Wait, is output actually different from `ListQueueSimple`'s?
+
+:::
