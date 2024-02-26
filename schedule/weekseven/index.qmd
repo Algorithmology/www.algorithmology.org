@@ -54,4 +54,4 @@ have questions
 <iframe class="slide-deck" src="../../slides/weekseven/"></iframe>
 ```
 
-{{< iconify majesticons presentation-play size=18px >}} Full Screen: [Week Seven: ](../../slides/weekseven/)
+{{< iconify majesticons presentation-play size=18px >}} Full Screen: [Week Seven: Implementing Stack, Queues, and Deques](../../slides/weekseven/)
