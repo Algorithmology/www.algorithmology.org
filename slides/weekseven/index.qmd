@@ -336,3 +336,26 @@ manipulate_queue()
 - Wait, is output actually different from `ListQueueSimple`'s?
 
 :::
+
+## Revised `ListQueueFakeDelete`
+
+```{python}
+class ListQueue(ListQueueFakeDelete):
+    def dequeue(self):
+        item = self._L[self._head]
+        self._head += 1
+        if self._head > len(self._L)//2:
+            self._L = self._L[self._head:]
+            self._head = 0
+        return item
+```
+
+::: fragment
+
+- Define a subclass of the `ListQueueFakeDelete`
+- Provide a new implementation of the `dequeue` method
+- Periodically "compact" the list to reduce space overhead
+- Uses the same strategy as the `list.pop()` in Python
+- What is the trade-off between time and space overhead?
+
+:::
