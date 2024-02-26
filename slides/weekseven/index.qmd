@@ -267,6 +267,8 @@ manipulate_queue()
 
 ## Wait! This `Queue` implementation is inefficient because it calls `pop(0)`!
 
+::: incremental
+
 - Calling `pop(0)` takes $O(n)$ time due to the item shifting
 
 - Either approach is inefficient for a `Queue` implementation
@@ -277,6 +279,8 @@ manipulate_queue()
     - Ignore each item when it is removed from `Queue`
     - Keep an index to the head of the `Queue`
     - Accept that this will increase the space overhead ?!?!
+
+:::
 
 ## `ListQueueFakeDelete` uses an index {transition="convex"}
 
@@ -333,7 +337,7 @@ manipulate_queue()
 
 - Function creates a `ListQueueFakeDelete` instance
 - Output is not same as using the `ListQueueSimple`
-- Wait, is output actually different from `ListQueueSimple`'s?
+- Wait, is output *actually* different from `ListQueueSimple`'s?
 
 :::
 
