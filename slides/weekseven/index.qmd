@@ -57,3 +57,22 @@ format:
   - Features
   - Time overhead
   - Space overhead
+
+# Specifying and implementing the `Stack` abstract data type
+
+- Data storage and access according to the **LIFO discipline**
+- Implemented in a object-oriented fashion using composition
+- Balances the need for **flexibility** and **efficiency**
+- Be careful! Poor implementations can be inefficient!
+
+## `Stack` abstract data type
+
+::: {.fragment .fade .boxed-content style="margin-top: -0.25em; font-size: 0.9em;"}
+
+- **push** - add a new item to the stack
+- **pop** - remove and return the next item in LIFO order
+- **peek** - return the next item in LIFO order
+- **size** - returns the number of items in the stack
+- **isempty** - return `True` if storing no items or return `False`
+
+:::
