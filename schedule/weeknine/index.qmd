@@ -9,11 +9,11 @@ toc-expand: 3
 
 ## Exploration
 
-- {{< iconify fa6-solid book-open size=18px >}} Read chapters 6 and 7 in [A
+- {{< iconify fa6-solid book-open size=18px >}} Read chapters 7 and 8 in [A
 First Course on Data Structures in
 Python](https://donsheehy.github.io/datastructures/)
 - {{< iconify fa6-brands github size=18px >}} Try out the implementations of
-`Stack`, `Queue`, and `Deque` in the `ds2` package of
+`OrderedList` in the `ds2` package of
 [donsheehy/datastructures](https://github.com/donsheehy/datastructures/). Can
 you write your own tests cases for these abstract data types? Can you use these
 abstract data types in your own program?
