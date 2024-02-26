@@ -1,0 +1,59 @@
+---
+title: Hierarchical Data Structures
+description: "Learn How Create and Navigate Tree-Based Data"
+date: 2024-04-01
+layout: full
+toc: true
+toc-expand: 3
+---
+
+## Exploration
+
+- {{< iconify fa6-solid book-open size=18px >}} Read chapter 15 in [A First
+Course on Data Structures in
+Python](https://donsheehy.github.io/datastructures/)
+- {{< iconify fa6-brands github size=18px >}} Explore hash table implementations
+in the `ds2` package of
+[donsheehy/datastructures](https://github.com/donsheehy/datastructures/). Can
+you conduct an experiment to evaluate different approaches to mapping? Which
+approach has the best object-oriented design?
+- {{< iconify fa6-solid book size=18px >}} Review previous chapters to
+contextualize how the data structures like `ListMapping` use the `list` data
+structure.
+
+## Activities
+
+- {{< iconify fa6-solid people-line size=18px >}} **Monday and Wednesday**:
+Hierarchical Data Structures
+  - Explore how to implement the `Tree` data structure
+  - Learn how to calculate characteristics of a tree like height and depth
+  - Learn how to traverse a tree in different ways like pre-order and post-order 
+- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Continue
+algorithm engineering project
+- {{< iconify game-icons team-idea size=18px >}} **Friday**: Report on results
+from algorithm all-hands project
+
+## Project
+
+### Goal
+
+To build and use a Python program, called `lcsfinder`, that runs benchmarks to
+study the performance of finding the longest common sub-sequence of data values
+
+### Steps
+
+- Use `lcsfinder` as your template repository
+- Install the project's dependencies using `devenv`
+- Follow the instructions to complete the project:
+  - **Week 1**: Implement all of the modules in `lcsfinder`
+  - **Week 2**: Design and conduct experiments and document experimental results
+- Schedule [office hours](https://www.gregorykapfhammer.com/schedule/) if you
+have questions
+
+## Slides
+
+```{=html}
+<iframe class="slide-deck" src="../../slides/weekthirteen/"></iframe>
+```
+
+{{< iconify majesticons presentation-play size=18px >}} Full Screen: [Week Twelve: Hash Tables](../../slides/weekthirteen/)
