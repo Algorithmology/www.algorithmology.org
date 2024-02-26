@@ -2,7 +2,7 @@
 title: "Searching and Sorting"
 echo: true
 description: "How do you efficiently process data?"
-date: "2024-03-18"
+date: "2024-03-25"
 date-format: long
 author: Gregory M. Kapfhammer
 execute:
