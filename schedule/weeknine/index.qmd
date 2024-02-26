@@ -35,18 +35,12 @@ Linked Lists and Doubly Linked Lists
 
 ### Goal
 
-To build and use a Python program, called `listconcatenator`, that runs benchmarks to
-study the performance of combining data into different types of `list`s
-
-### Steps
-
-- Use `listconcatenator` as your template repository
-- Install the project's dependencies using `devenv`
-- Follow the instructions to complete the project:
-  - **Week 1**: Implement all of the modules in `listconcatenator`
-  - **Week 2**: Design and conduct experiments and document experimental results
-- Schedule [office hours](https://www.gregorykapfhammer.com/schedule/) if you
-have questions
+Complete an executable examination for the mid-term exam that covers the content
+in Chapters one through five of [A First Course on Data Structures in
+Python](https://donsheehy.github.io/datastructures/). In the following week you
+will receive an additional assignment that invites you to write a retrospective
+of one of the Python functions that you implemented as part of the executable
+examination.
 
 ## Slides
 
