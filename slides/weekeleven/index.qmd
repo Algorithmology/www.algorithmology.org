@@ -1,0 +1,21 @@
+---
+title: "Searching and Sorting"
+echo: true
+description: "How do you efficiently process data?"
+date: "2024-03-18"
+date-format: long
+author: Gregory M. Kapfhammer
+execute:
+  freeze: auto
+format:
+  revealjs:
+    theme: default
+    css: styles.css
+    monofont: Ubuntu Mono
+    history: false
+    scrollable: true
+    transition: slide
+    highlight-style: github
+    html-math-method: mathjax
+    footer: "Algorithmology"
+---
