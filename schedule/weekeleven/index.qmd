@@ -28,19 +28,19 @@ Searching and Sorting
   - Apply a new algorithmic paradigm called dynamic programming
   - Learn more about `mergesort` and `quickselect` algorithms
   - Examine Python source code segments to illustrate key points
-- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Start new algorithm engineering project
+- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Continue algorithm engineering project
 - {{< iconify game-icons team-idea size=18px >}} **Friday**: Start new algorithm all-hands project
 
 ## Project
 
 ### Goal
 
-To build and use a Python program, called `lcsfinder`, that runs benchmarks to
-study the performance of finding the longest common sub-sequence of data values
+To build and use a Python program, called `listconcatenator`, that runs benchmarks to
+study the performance of combining data into different types of `list`s
 
 ### Steps
 
-- Use `lcsfinder` as your template repository
+- Use `listconcatenator` as your template repository
 - Install the project's dependencies using `devenv`
 - Follow the instructions to complete the project:
   - **Week 1**: Implement all of the modules in `listconcatenator`
