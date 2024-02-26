@@ -1,0 +1,56 @@
+---
+title: Stacks, Queues, and Deques
+description: "Explore Abstract Data Types"
+date: 2024-02-24
+layout: full
+toc: true
+toc-expand: 3
+---
+
+## Exploration
+
+- {{< iconify fa6-solid book-open size=18px >}} Read chapters 6 and 7 in A
+First Course on Data Structures in
+Python](https://donsheehy.github.io/datastructures/)
+- {{< iconify fa6-brands github size=18px >}} Try out the implementations of
+`Stack`, `Queue`, and `Deque` in the `ds2` package of
+[donsheehy/datastructures](https://github.com/donsheehy/datastructures/). Can
+you write your own tests cases for these abstract data types? Can you use these
+abstract data types in your own program?
+- Note that, along with chapter 8, chapter 7 will also be the focus next week
+
+## Activities
+
+- {{< iconify fa6-solid people-line size=18px >}} **Monday and Wednesday**:
+Analytical Evaluation
+  - Further understand why program performance is critically important
+  - Characterize performance patterns in Python programs
+  - Use asymptotic analysis to characterize performance
+  - Examine source code segments to illustrate key points
+- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Start new algorithm engineering project
+- {{< iconify game-icons team-idea size=18px >}} **Friday**: Start new algorithm all-hands project
+
+## Project
+
+### Goal
+
+To build and use a Python program, called `filesorting`, that runs
+benchmarks to study the performance of sorting different types of data.
+
+### Steps
+
+- Use `filesorting` as your template repository
+- Install the project's dependencies using `devenv`
+- Follow the instructions to complete the project:
+  - **Week 1**: Implement all of the modules in `filesorting`
+  - **Week 2**: Design and conduct experiments and document experimental results
+- Schedule [office hours](https://www.gregorykapfhammer.com/schedule/) if you
+have questions
+
+## Slides
+
+```{=html}
+<iframe class="slide-deck" src="../../slides/weeksix/"></iframe>
+```
+
+{{< iconify majesticons presentation-play size=18px >}} Full Screen: [Week Six: Running Time Analysis through Theoretical Evaluation](../../slides/weeksix/)
