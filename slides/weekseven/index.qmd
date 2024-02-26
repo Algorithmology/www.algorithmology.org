@@ -141,7 +141,7 @@ manipulate_stack()
 ## Inefficient implementation of `Stack` {transition="convex"}
 
 ```{python}
-class InefficientStack(ListStack):    
+class InefficientListStack(ListStack):    
     def push(self, item):
         self._L.insert(0, item)
 
@@ -159,5 +159,28 @@ class InefficientStack(ListStack):
 - Removing an item moves all other items
 - The `pop` call in `push` takes $O(n)$ time
 - Wow, this stack has two linear operations!
+
+:::
+
+## Using the `InefficientListStack`
+
+```{python}
+def manipulate_stack():
+    stack = InefficientListStack()
+    stack.push('umbrella')
+    stack.push('backpack')
+    stack.push('sandals')
+    print("Stack contents after push operations: ", [item for item in stack._L])
+    stack.pop()
+    print("Stack contents after pop operation: ", [item for item in stack._L])
+
+manipulate_stack()
+```
+
+::: fragment
+
+- Function creates an `InefficientListStack` instance
+- Same behavior as the `ListStack` but with inefficiency
+- When would the inefficiency become a problem?
 
 :::
