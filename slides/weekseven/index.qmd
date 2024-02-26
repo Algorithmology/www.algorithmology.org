@@ -184,3 +184,31 @@ manipulate_stack()
 - When would the inefficiency become a problem?
 
 :::
+
+# Specifying and implementing the `Queue` abstract data type
+
+- Data storage and access according to the **FIFO discipline**
+- Implemented in a object-oriented fashion using composition
+- Adds new behaviors not found in the `Stack` ADT
+- Illustrates the trade-off between time and space overhead
+
+## `Queue` abstract data type
+
+::: {.fragment .fade .boxed-content style="margin-top: -0.25em; font-size: 0.9em;"}
+
+- **enqueue(item)** - add a new item to the queue
+- **dequeue()** - remove and return the next item in FIFO order
+- **peek()** - return (without removing) the next item in FIFO order
+- **__len__** - return the number of items in the queue
+- **isempty()** - return `True` if storing no items or return `False`
+
+:::
+
+::: {.fragment .fade style="margin-top: -0.1em; font-size: 0.9em;"}
+
+- Implementation details:
+    - The `Queue` abstract data type wraps a `list` in a Python class
+    - Use the name of the `Queue` to give implementation clues
+    - Let's explore the first implementation called `ListQueueSimple`!
+
+:::
