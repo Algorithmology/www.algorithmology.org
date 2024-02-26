@@ -213,7 +213,7 @@ manipulate_stack()
 
 :::
 
-## `ListStack` implements the `Stack` ADT {transition="convex"}
+## `ListQueueSimple` implements `Queue` {transition="convex"}
 
 ```{python}
 class ListQueueSimple:
@@ -277,3 +277,39 @@ manipulate_queue()
     - Ignore each item when it is removed from `Queue`
     - Keep an index to the head of the `Queue`
     - Accept that this will increase the space overhead ?!?!
+
+## `ListQueueFakeDelete` uses an index {transition="convex"}
+
+::: {.fade-right style="margin-top: -0.1em; font-size: 0.85em;"}
+
+```{python}
+class ListQueueFakeDelete:
+    def __init__(self):
+        self._head = 0
+        self._L = []
+
+    def enqueue(self, item):
+        self._L.append(item)
+
+    def peek(self):
+      return self._L[self._head]
+
+    def dequeue(self):
+        item = self.peek()
+        self._head += 1
+        return item
+
+    def __len__(self):
+        return len(self._L) - self._head
+
+    def isempty(self):
+        return len(self) == 0
+```
+
+:::
+
+::: {.fragment .fade-left style="margin-top: 0.2em; font-size: 0.9em;"}
+
+- `ListQueueFakeDelete` increments the `_head` index on `dequeue`
+
+:::
