@@ -1,0 +1,49 @@
+---
+title: "Implementing Stacks, Queues, and Deques"
+echo: true
+description: "How do you use proofs to measure the performance of a Python program?"
+date: "2024-02-26"
+date-format: long
+author: Gregory M. Kapfhammer
+execute:
+  freeze: auto
+format:
+  revealjs:
+    theme: default
+    css: styles.css
+    monofont: Ubuntu Mono
+    history: false
+    scrollable: true
+    transition: slide
+    highlight-style: github
+    html-math-method: mathjax
+    footer: "Algorithmology"
+---
+
+# What is an abstract data type? How to compare it to a data structure?
+
+::: fragment
+
+- **Abstract Data Type (ADT)**: the interface of a data structure
+- **Concrete Data Structure (CDS)**: the implementation of ADT
+- ADT is *independent* of implementation concerns in the CDS
+
+:::
+
+## Understanding the connection between and ADT and a CDS
+
+::: {.fragment .fade-right style="margin-top: -0.1em; font-size: 0.95em;"}
+
+- **Abstract data type**
+
+    - What is the *data* to be stored or represented?
+    - What are the *processes* that manipulate the data?
+    - Avoids specifying how the data is stored or manipulated
+
+- **Concrete data structure**
+
+    - Delivered as a class in a Python program
+    - Implements and efficient version of data type
+    - Specifies how the data is stored and manipulated
+
+:::
