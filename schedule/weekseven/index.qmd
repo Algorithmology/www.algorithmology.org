@@ -1,6 +1,6 @@
 ---
 title: Stacks, Queues, and Deques
-description: "Explore Abstract Data Types"
+description: "Explore Basic Examples of Abstract Data Types"
 date: 2024-02-24
 layout: full
 toc: true
@@ -22,12 +22,13 @@ abstract data types in your own program?
 ## Activities
 
 - {{< iconify fa6-solid people-line size=18px >}} **Monday and Wednesday**:
-Analytical Evaluation
-  - Further understand why program performance is critically important
-  - Characterize performance patterns in Python programs
-  - Use asymptotic analysis to characterize performance
-  - Examine source code segments to illustrate key points
-- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Start new algorithm engineering project
+Stacks, Queues, and Deques
+  - Explore the concept of an abstract data type (ADT)
+  - Understand implementation trade-offs for stacks, queues, and deques
+  - Use asymptotic analysis to characterize performance of an ADT
+  - Enhance an ADT implementation with useful exception handling
+  - Examine Python source code segments to illustrate key points
+- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Continue algorithm engineering project
 - {{< iconify game-icons team-idea size=18px >}} **Friday**: Start new algorithm all-hands project
 
 ## Project
