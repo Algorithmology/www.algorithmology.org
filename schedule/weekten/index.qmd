@@ -1,0 +1,56 @@
+---
+title: Dynamic Programming
+description: "Explore an Innovative Algorithmic Paradigm"
+date: 2024-03-18
+layout: full
+toc: true
+toc-expand: 3
+---
+
+## Exploration
+
+- {{< iconify fa6-solid book-open size=18px >}} Read chapters 9 and 10 in [A
+First Course on Data Structures in
+Python](https://donsheehy.github.io/datastructures/)
+- {{< iconify fa6-brands github size=18px >}} Explore algorithms that use recursion and dynamic
+programming in the `ds2` package of
+[donsheehy/datastructures](https://github.com/donsheehy/datastructures/). Can
+you add debugging statements to trace how these algorithms work?
+- {{< iconify fa6-solid book size=18px >}} Read chapter 9 for a review of
+recursion and how it works in the Python language
+
+## Activities
+
+- {{< iconify fa6-solid people-line size=18px >}} **Monday and Wednesday**:
+Dynamic Programming
+  - Explore how to implement recursive functions in Python
+  - Investigate a new algorithmic paradigm called dynamic programming
+  - Learn more about the longest common sub-sequence problem
+  - Examine Python source code segments to illustrate key points
+- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Continue algorithm engineering project
+- {{< iconify game-icons team-idea size=18px >}} **Friday**: Planning for next algorithm all-hands project
+
+## Project
+
+### Goal
+
+To build and use a Python program, called `listconcatenator`, that runs benchmarks to
+study the performance of combining data into different types of `list`s
+
+### Steps
+
+- Use `listconcatenator` as your template repository
+- Install the project's dependencies using `devenv`
+- Follow the instructions to complete the project:
+  - **Week 1**: Implement all of the modules in `listconcatenator`
+  - **Week 2**: Design and conduct experiments and document experimental results
+- Schedule [office hours](https://www.gregorykapfhammer.com/schedule/) if you
+have questions
+
+## Slides
+
+```{=html}
+<iframe class="slide-deck" src="../../slides/weekten/"></iframe>
+```
+
+{{< iconify majesticons presentation-play size=18px >}} Full Screen: [Week Ten: Dynamic Programming](../../slides/weekten/)
