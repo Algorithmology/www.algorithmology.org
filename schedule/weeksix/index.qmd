@@ -32,15 +32,16 @@ Analytical Evaluation
 
 ### Goal
 
-To build and use a Python program, called `filesorting`, that runs
+To build and use a Python program, called `filesorter`, that runs
 benchmarks to study the performance of sorting different types of data.
 
 ### Steps
 
-- Use `filesorting` as your template repository
+- Use [File Sorting](https://github.com/Algorithmology/file-sorting-starter) as your template repository
+- Use  as your template repository
 - Install the project's dependencies using `devenv`
 - Follow the instructions to complete the project:
-  - **Week 1**: Implement all of the modules in `filesorting`
+  - **Week 1**: Implement all of the modules in `filesorter`
   - **Week 2**: Design and conduct experiments and document experimental results
 - Schedule [office hours](https://www.gregorykapfhammer.com/schedule/) if you
 have questions
