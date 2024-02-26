@@ -25,6 +25,15 @@ listing:
 
 ## Additional Details
 
+### High-Level Overview
+
+- **Module One**: 
+  - **Topic**: Algorithm Analysis Foundations
+  - **Weeks**: One through six
+  - **Chapters**: One through five in [A First
+Course on Data Structures in
+Python](https://donsheehy.github.io/datastructures/)
+
 ### Weekly Cadence
 
 - {{< iconify fa6-solid people-line size=18px >}} **Monday and Wednesday**: Algorithm Analysis Exposition
