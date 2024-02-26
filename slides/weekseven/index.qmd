@@ -242,6 +242,29 @@ class ListQueueSimple:
 
 :::
 
+## Using the `ListQueueSimple`
+
+```{python}
+def manipulate_queue():
+    queue = ListQueueSimple()
+    queue.enqueue('umbrella')
+    queue.enqueue('backpack')
+    queue.enqueue('sandals')
+    print("Queue contents after enqueue operations: ", [item for item in queue._L])
+    queue.dequeue()
+    print("Queue contents after dequeue operation: ", [item for item in queue._L])
+
+manipulate_queue()
+```
+
+::: fragment
+
+- Function creates a `ListQueueSimple` instance
+- Can you see how this is different than the `ListStack`?
+- Differences between the `FIFO` and `LIFO` disciplines?
+
+:::
+
 ## Wait! This `Queue` implementation is inefficient because it calls `pop(0)`!
 
 - Calling `pop(0)` takes $O(n)$ time due to the item shifting
