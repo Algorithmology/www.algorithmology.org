@@ -24,7 +24,7 @@ Analytical Evaluation
   - Further understand why program performance is critically important
   - Characterize performance patterns in Python programs
   - Use asymptotic analysis to characterize performance
-  - Examine source code segments to illustrate key points
+  - Examine Python source code segments to illustrate key points
 - {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Start new algorithm engineering project
 - {{< iconify game-icons team-idea size=18px >}} **Friday**: Review complexity class diagrams
 
