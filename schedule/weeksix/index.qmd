@@ -15,7 +15,7 @@ Python](https://donsheehy.github.io/datastructures/)
 - {{< iconify fa6-brands github size=18px >}} Experimentally evaluate
 performance of algorithms, data structures, and systems in the `ds2` package of
 [donsheehy/datastructures](https://github.com/donsheehy/datastructures/)
-- Note that next week we will cover a new chapter of the book!
+- {{< iconify fa6-solid book size=18px >}} Note that next week we will cover a new chapter of the book!
 
 ## Activities
 
