@@ -1,0 +1,21 @@
+---
+title: "Priority Queues"
+echo: true
+description: "How do you support priority-oriented data access?"
+date: "2024-04-08"
+date-format: long
+author: Gregory M. Kapfhammer
+execute:
+  freeze: auto
+format:
+  revealjs:
+    theme: default
+    css: styles.css
+    monofont: Ubuntu Mono
+    history: false
+    scrollable: true
+    transition: slide
+    highlight-style: github
+    html-math-method: mathjax
+    footer: "Algorithmology"
+---
