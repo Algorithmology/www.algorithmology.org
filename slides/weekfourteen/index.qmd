@@ -2,7 +2,7 @@
 title: "Priority Queues"
 echo: true
 description: "How do you support priority-oriented data access?"
-date: "2024-04-08"
+date: "2024-04-15"
 date-format: long
 author: Gregory M. Kapfhammer
 execute:

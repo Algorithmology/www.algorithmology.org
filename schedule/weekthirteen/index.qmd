@@ -1,7 +1,7 @@
 ---
 title: Hierarchical Data Structures
 description: "Learn How Create and Navigate Tree-Based Data"
-date: 2024-04-01
+date: 2024-04-08
 layout: full
 toc: true
 toc-expand: 3
