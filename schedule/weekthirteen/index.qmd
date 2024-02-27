@@ -28,6 +28,7 @@ Hierarchical Data Structures
   - Explore how to implement the `Tree` data structure
   - Learn how to calculate characteristics of a tree like height and depth
   - Learn how to traverse a tree in different ways like pre-order and post-order 
+  - Examine Python source code segments to illustrate key points
 - {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Continue
 algorithm engineering project
 - {{< iconify game-icons team-idea size=18px >}} **Friday**: Report on results
