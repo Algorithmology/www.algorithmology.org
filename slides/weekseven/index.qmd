@@ -368,6 +368,22 @@ class ListQueue(ListQueueFakeDelete):
 
 :::
 
+## Time complexity of `dequeue`
+
+::: incremental
+
+- Worst-case time complexity of the `dequeue` function is $O(n)$
+- Inefficient line: `self._L = self._L[self._head:]` 
+- "List slicing" in a list index has a linear time complexity
+- Understanding the performance of the `dequeue` function:
+    - All of the other operations are $O(1)$
+    - The worst-case scenario that involves list slicing only occurs when
+    `self._head > len(self._L)//2`
+    - On average, the cost per item is constant because the list modification
+    is **infrequent** and **demand-driven**!
+
+:::
+
 # Dealing with errors in the `Stack` and `Queue` implementations
 
 ::: fragment
