@@ -1,7 +1,7 @@
 ---
 title: "Recursion and Dynamic Programming"
 echo: true
-description: "How do you design and implement linked-based data structures in Python?"
+description: "How do you efficiently repeat operations?"
 date: "2024-03-18"
 date-format: long
 author: Gregory M. Kapfhammer
