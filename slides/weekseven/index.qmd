@@ -367,3 +367,39 @@ class ListQueue(ListQueueFakeDelete):
 - What is the trade-off between time and space overhead?
 
 :::
+
+# Dealing with errors in the `Stack` and `Queue` implementations
+
+::: fragment
+
+- A Python method can `raise` an `Exception` to signal an error
+- An `Exception` can be "caught" or it can lead to a crash
+- Handle cases when use of the data structure is incorrect
+- **Goal**: make the data structure implementations more robust
+
+:::
+
+## `Stack` with exception handling
+
+```{python}
+class RobustStack(ListStack):
+    def pop(self):
+        try:
+            return self._L.pop()
+        except IndexError:
+            raise RuntimeError("pop from empty stack")
+
+s = RobustStack()
+s.push(5)
+s.pop()
+# uncomment the next line to see a crash!
+# s.pop()
+```
+
+::: {.fragment .fade style="margin-top: -0.1em; font-size: 0.9em;"}
+
+- Avoids a crash when `pop` is called on an empty stack
+- This `pop` method can raise an `IndexError` on empty stack
+- Use a `try` and `except` block to catch the `IndexError`
+
+:::
