@@ -430,3 +430,32 @@ s.pop()
     - Let's explore the first implementation called `ListDeque`!
 
 :::
+
+## Implementation of `ListDeque`
+
+```{python}
+class ListDeque:
+    def __init__(self):
+        self._L = []
+
+    def addfirst(self, item):
+        self._L.insert(0, item)
+
+    def addlast(self, item):
+        self._L.append(item)
+
+    def removefirst(self):
+        return self._L.pop(0)
+
+    def removelast(self):
+        return self._L.pop()
+
+    def __len__(self):
+        return len(self._L)
+```
+
+::: {.fragment .fade style="margin-top: 0.25em; font-size: 0.9em;"}
+
+- Modification methods have a postfix label of `first` or `last`
+
+:::
