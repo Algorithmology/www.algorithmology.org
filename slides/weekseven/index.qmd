@@ -403,3 +403,30 @@ s.pop()
 - Use a `try` and `except` block to catch the `IndexError`
 
 :::
+
+# Specifying and implementing the `Deque` abstract data type
+
+- A **double-ended queue** is more flexible than the `Queue`
+- **Add** or **remove** items from the front and back of the `Queue`
+- Wow, it **combines** the `Stack` and `Queue` ADTs!
+
+## `Deque` abstract data type
+
+::: {.fragment .fade .boxed-content style="margin-top: -0.25em; font-size: 0.9em;"}
+
+- **addfirst(item)** - add `item` to the front of the deque
+- **addlast(item)** - add `item` to the end of the deque
+- **removefirst(item)** - remove and return the first item in the deque
+- **removelast(item)** - remove and return the last item in the deque
+- **len** - return the number of items in the deque
+
+:::
+
+::: {.fragment .fade style="margin-top: -0.1em; font-size: 0.9em;"}
+
+- Implementation details:
+    - The `Deque` wraps a `list` in a Python class
+    - Use the name of the `Deque` to give implementation clues
+    - Let's explore the first implementation called `ListDeque`!
+
+:::
