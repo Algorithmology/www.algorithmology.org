@@ -459,3 +459,19 @@ class ListDeque:
 - Modification methods have a postfix label of `first` or `last`
 
 :::
+
+## Limitations of `ListDeque`
+
+- What is the performance of this implementation?
+    - Inserting and popping at index $0$ takes $O(n)$ time
+    - Due to the sequential storage of lists in memory
+    - Changes at the list's beginning require shifting all items
+    - Shifting occurs when making room or filling gaps
+- Need a new approach to avoid this fundamental overhead!
+
+::: {.fragment .fade .boxed-content style="margin-top: -0.25em; font-size: 0.9em;"}
+
+**Key question**: Can we preserve the features of the `Deque` while avoiding
+the linear time complexity of `addfirst` and `removefirst`?
+
+:::
