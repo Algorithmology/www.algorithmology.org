@@ -52,7 +52,7 @@ listing:
 #### Important Dates
 
 - **Midterm Executable Examination**
-    - **Date**: March 7, 2024
+    - **Date**: March 14, 2024
     - **Time**: 2:30 -- 4:30 PM
     - **Location**: Alden 109
 - **Final Executable Examination**
