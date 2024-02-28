@@ -1,0 +1,58 @@
+---
+title: Graph Structures
+description: "Create a Data Structure for Linked Data"
+date: 2024-04-22
+layout: full
+toc: true
+toc-expand: 3
+---
+
+## Exploration
+
+- {{< iconify fa6-solid book-open size=18px >}} Read chapters 20 and 21 in [A
+First Course on Data Structures in
+Python](https://donsheehy.github.io/datastructures/)
+- {{< iconify fa6-brands github size=18px >}} Explore directed and un-directed
+graph implementations in the `ds2` package of
+[donsheehy/datastructures](https://github.com/donsheehy/datastructures/).
+- {{< iconify fa6-solid book size=18px >}} Review previous chapters to see how
+the data structures like `List` and `Tree` support the behavior of this data
+structure.
+
+## Activities
+
+- {{< iconify fa6-solid people-line size=18px >}} **Monday and Wednesday**:
+Priority Queues
+  - Explore how to implement the `PriorityQueue` data structure
+  - Understand how the `List` and `Tree` support implementing the `PriorityQueue`
+  - Explore how the `Heap` can be used to implement the `PriorityQueue`
+  - Examine Python source code segments to illustrate key points
+- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Continue an 
+algorithm engineering project
+- {{< iconify game-icons team-idea size=18px >}} **Friday**: Finish an algorithm all-hands project
+
+## Project
+
+### Goal
+
+To build and use a Python program, called `treesearcher`, that runs benchmarks to
+study the performance of finding data values in a hierarchical data structure.
+
+### Steps
+
+- Use `treesearcher` as your template repository
+- Install the project's dependencies using `devenv`
+- Follow the instructions to complete the project:
+  - **Week 1**: Implement all of the modules in `treesearcher`
+  - **Week 2**: Design and conduct experiments and document experimental results
+- Schedule [office hours](https://www.gregorykapfhammer.com/schedule/) if you
+have questions
+
+## Slides
+
+```{=html}
+<iframe class="slide-deck" src="../../slides/weekfifteen/"></iframe>
+```
+
+{{< iconify majesticons presentation-play size=18px >}} Full Screen: [Week
+Fifteen: Graph Structures](../../slides/weekfifteen/)
