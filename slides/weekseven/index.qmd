@@ -384,7 +384,7 @@ class ListQueue(ListQueueFakeDelete):
 
 :::
 
-# Dealing with errors in the `Stack` and `Queue` implementations
+# Error handling in the `Stack` and `Queue` implementations
 
 ::: fragment
 
