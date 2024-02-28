@@ -408,7 +408,7 @@ class RobustStack(ListStack):
 s = RobustStack()
 s.push(5)
 s.pop()
-# uncomment the next line to see a crash!
+# un-comment the next line to see a crash!
 # s.pop()
 ```
 
