@@ -9,17 +9,15 @@ toc-expand: 3
 
 ## Exploration
 
-- {{< iconify fa6-solid book-open size=18px >}} Read chapter 15 in [A First
-Course on Data Structures in
+- {{< iconify fa6-solid book-open size=18px >}} Read chapter 16 through 18 in
+[A First Course on Data Structures in
 Python](https://donsheehy.github.io/datastructures/)
-- {{< iconify fa6-brands github size=18px >}} Explore hash table implementations
-in the `ds2` package of
-[donsheehy/datastructures](https://github.com/donsheehy/datastructures/). Can
-you conduct an experiment to evaluate different approaches to mapping? Which
-approach has the best object-oriented design?
-- {{< iconify fa6-solid book size=18px >}} Review previous chapters to
-contextualize how the data structures like `ListMapping` use the `list` data
-structure.
+- {{< iconify fa6-brands github size=18px >}} Explore tree implementations in
+the `ds2` package of
+[donsheehy/datastructures](https://github.com/donsheehy/datastructures/).
+- {{< iconify fa6-solid book size=18px >}} Review previous chapters to see how
+data structures like the `LinkedList` influence the design and implementation
+of this data structure.
 
 ## Activities
 
