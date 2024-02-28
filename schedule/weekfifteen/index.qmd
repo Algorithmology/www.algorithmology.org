@@ -23,9 +23,8 @@ structure.
 
 - {{< iconify fa6-solid people-line size=18px >}} **Monday and Wednesday**:
 Priority Queues
-  - Explore how to implement the `PriorityQueue` data structure
-  - Understand how the `List` and `Tree` support implementing the `PriorityQueue`
-  - Explore how the `Heap` can be used to implement the `PriorityQueue`
+  - Explore how to implement the `Graph` and `Digraph` data structures
+  - Understand the adjacency list and adjacency matrix representations
   - Examine Python source code segments to illustrate key points
 - {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Continue an 
 algorithm engineering project
