@@ -43,7 +43,7 @@ format:
 - **Concrete data structure**
 
     - Delivered as a class in a Python program
-    - Implements and efficient version of data type
+    - Implements an efficient version of data type
     - Specifies how the data is stored and manipulated
 
 :::
