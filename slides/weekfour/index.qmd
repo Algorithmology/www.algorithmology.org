@@ -8,7 +8,6 @@ author: Gregory M. Kapfhammer
 format:
   revealjs:
     theme: default
-    # css: styles.css
     css: ../css/styles.css
     history: false
     scrollable: true
