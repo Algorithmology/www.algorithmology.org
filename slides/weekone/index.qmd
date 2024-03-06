@@ -211,8 +211,8 @@ size = {size}
   - Test all aspects of the system to ensure correctness
   - Make a benchmark framework to measure performance
 - **Algorithm Evaluation**:
-  - Cost of calling a method or a function?
-  - Cost of accessing an object's attribute?
-  - Cost of accessing an object's attribute?
+  - Design experiments to answer research questions
+  - Conduct experiments and collect data
+  - Analyze and visualize data to draw conclusions
 
 :::
