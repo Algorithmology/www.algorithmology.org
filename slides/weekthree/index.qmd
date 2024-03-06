@@ -8,7 +8,8 @@ author: Gregory M. Kapfhammer
 format:
   revealjs:
     theme: default
-    css: styles.css
+    # css: styles.css
+    css: ../css/styles.css
     history: false
     scrollable: true
     transition: slide
@@ -34,12 +35,14 @@ print(isinstance(mylist, list))
 print(isinstance(mylist, str))
 ```
 
-::: {.fragment .fade style="margin-top: 0.5em; font-size: 1em;"}
+::: {.fragment .fade style="margin-top: 0.0em; font-size: 0.9em;"}
 
-- `mylist = []` creates an empty list
-- `type(mylist)` returns the type of the list
-- `isinstance(mylist, list)` checks if `mylist` is a list
-- Same approach works for other data types!
+- Key insights about this source code:
+    - `mylist = []` creates an empty list
+    - `type(mylist)` returns the type of the list
+    - `isinstance` returns `True` or `False` for provided type
+    - `isinstance(mylist, list)` checks if `mylist` is a list
+    - Same approach works for other data types!
 
 :::
 
@@ -63,8 +66,9 @@ print(type(generator_example(5)))
 
 ::: {.fragment .fade style="margin-top: 0.5em; font-size: 0.9em;"}
 
-- Functions and generators have their own types
+- `type` shows that functions and generators have their own types
 - What are the similarities and differences for these two types?
+- How do `return` and `yield` influence a function's behavior?
 
 :::
 
@@ -303,22 +307,41 @@ print(limited[2])
 
 :::
 
-## Let's measure the time overhead of function calls!
+## Time overhead of function calls
 
-::: {.fade-right style="margin-top: -0.1em; font-size: 0.85em;"}
+::: {.fade-right style="margin-top: 0.0em;"}
 
 ```{python}
-import timeit
+import timeit, f
 n = int(1e6)
 num_exec = 1
-import f
 for func in filter(lambda f: f.startswith('loop'), sorted(dir(f))):
-    print('====== timing function:', func)
+    print('====== Timing function called:', func)
     print(getattr(f, func).__doc__)
     t = timeit.timeit(stmt='f.%s(n)' % func,
                       number=num_exec, globals=globals())
     per_loop = round(t / n * 1e9)
-    print('time: %ins.\ntheoretical max bandwidth: %.2fMB/s' %
+    print('Time: %ins, Theoretical max bandwidth: %.2fMB/s' %
+          (per_loop, 1000 / per_loop))
+```
+
+:::
+
+## More timings for function calls
+
+::: {.fade-right style="margin-top: 0.0em;"}
+
+```{python}
+import timeit, g
+n = int(1e6)
+num_exec = 1
+for func in filter(lambda g: g.startswith('loop'), sorted(dir(g))):
+    print('====== Timing function called:', func)
+    print(getattr(g, func).__doc__)
+    t = timeit.timeit(stmt='g.%s(n)' % func,
+                      number=num_exec, globals=globals())
+    per_loop = round(t / n * 1e9)
+    print('Time: %ins, Theoretical max bandwidth: %.2fMB/s' %
           (per_loop, 1000 / per_loop))
 ```
 
@@ -332,8 +355,8 @@ for func in filter(lambda f: f.startswith('loop'), sorted(dir(f))):
 {{< iconify fa6-brands github >}} [jni/performance-tests](https://github.com/jni/performance-tests)
 - Change into the directory called `function-calls`
 - Run the program called `timer.py` and observe the results
-- Make sure that you review the Python source code in `f.py`
-- What trends did you observe in the results?
+- Make sure that you review the Python code in `f.py` and `g.py`
+- What trends did you observe in the performance results?
 - What are the implications of these experimental results?
 - Share (a) your results and (b) a one-sentence summary!
 
