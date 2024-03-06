@@ -11,13 +11,6 @@ def loop_3_g(n):
         g()
 
 
-def loop_4_g_twice(n):
-    """Run loop with empty function taking args, twice per loop, n times."""
-    for i in range(n):
-        g()
-        g()
-
-
 def loop_5_g_arg(n):
     """Run loop with empty function passing an arg, n times."""
     for i in range(n):
