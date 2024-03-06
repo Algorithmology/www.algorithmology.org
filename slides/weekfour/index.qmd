@@ -348,7 +348,7 @@ def test_abbreviation_maps_to_name(valid_days, abbreviation):
     assert day.name() in valid_days or day.name() is None
 ```
 
-::: {.fragment .fade-right style="margin-top: 0.5em; font-size: 0.9em;"}
+::: {.fragment .fade-right style="margin-top: 0.0em; font-size: 0.875em;"}
 
 - `Hypothesis` strategies generate random character inputs for the `abbreviation`
 parameter, thereby increasing the input diversity
@@ -404,7 +404,7 @@ TOTAL                             6      0      0      0   100%
 +        self.name_map = None
 ```
 
-::: {.fragment .fade-left style="margin-top: 0.25em; font-size: 0.9em;"}
+::: {.fragment .fade-left style="margin-top: 0.2em; font-size: 0.8em;"}
 
 - `mutmut` changes the program to see if tests find possible defect
 
