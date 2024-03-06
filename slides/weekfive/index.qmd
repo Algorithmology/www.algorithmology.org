@@ -10,7 +10,7 @@ execute:
 format:
   revealjs:
     theme: default
-    css: styles.css
+    css: ../css/styles.css
     history: false
     scrollable: true
     transition: slide
@@ -111,6 +111,7 @@ actionable insights that support *understanding* and *prediction*
 - Implement as a Python function with inputs and outputs
 - Use the `time` module to measure running time on inputs
 - Study trade-offs associated with different implementations
+- Run function with different inputs & execution environments
 
 :::
 
@@ -157,7 +158,7 @@ for i in range(5):
 
 :::
 
-::: {.fragment .fade-left style="margin-top: 0.25em; font-size: 0.9em;"}
+::: {.fragment .fade-left style="margin-top: 0.25em; font-size: 0.975em;"}
 
 - What is the strategy for calculating the elapsed time?
 - Do the results suggest that this implementation is fast? Why?
@@ -227,7 +228,7 @@ the likely worst-case performance of a Python function
 
 # Can we improve the performance of duplicate detection?
 
-::: {.fragment .fade-right}
+::: {.fragment .fade-right style="font-size: 1.1em;"}
 
 - Avoid doing unnecessary computational steps
 - `duplicates` compares each pair of elements twice
@@ -374,5 +375,19 @@ for n in [50, 100, 200, 400, 800, 1600, 3200]:
 
 **Algorithm Engineering Skill**: quickly implement a doubling experiment using
 a function like `timetrials` and compare results
+
+:::
+
+## How to empirically measure the running time of a Python program
+
+::: {.fragment .fade-right}
+
+- Implement as a Python function with inputs and outputs:
+    - Function use enables testing with `pytest`
+    - Using a function also makes experiments easier
+- Study performance trade-offs of different implementations:
+    - Use the `time` module to measure running time on inputs
+    - Provide different inputs to function during benchmarking
+    - Run the benchmarks in different execution environments
 
 :::
