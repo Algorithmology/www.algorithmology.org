@@ -297,10 +297,8 @@ manipulate_queue()
 
 ## `ListQueueFakeDelete` uses an index {transition="convex"}
 
-::: {.fade-right style="margin-top: -0.1em; font-size: 0.85em;"}
-
 ```{python}
-class ListQueueFakeDelete:
+class ListQueueFakeDelete: 
     def __init__(self):
         self._head = 0
         self._L = []
@@ -322,14 +320,6 @@ class ListQueueFakeDelete:
     def isempty(self):
         return len(self) == 0
 ```
-
-:::
-
-::: {.fragment .fade-left style="margin-top: 0.2em; font-size: 0.9em;"}
-
-- `ListQueueFakeDelete` increments the `_head` index on `dequeue`
-
-:::
 
 ## Using the `ListQueueFakeDelete`
 
