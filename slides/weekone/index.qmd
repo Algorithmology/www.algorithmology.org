@@ -37,7 +37,7 @@ format:
   - Local and in the cloud
 :::
 
-## Examples of four programs to study through benchmarks
+## Examples of four programs to study through performance benchmarks
 
 - Terminal window shell like `bash` or `zsh`
 - Terminal prompt like `powerlevel10k` or `starship`
@@ -103,22 +103,22 @@ Data Structures in Python](https://donsheehy.github.io/datastructures/)"
 
 ## Using the `systemsense` tool
 
-```{code-line-numbers="true" code-block-border="true"}
- Usage: systemsense [OPTIONS] COMMAND [ARGS]...
-╭─ Commands ────────────────────────────────────────────────╮
-│ benchmarkinfo  Benchmark the system used for experiments. │
-│ completeinfo   Detect information about and then          │
-│                benchmark the system used for experiments. │
-│ systeminfo     Detect all relevant information about the  │
-│                system used for experiments.               │
-╰───────────────────────────────────────────────────────────╯
+::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
+
+```{.text  code-line-numbers="false"}
+Commands
+benchmarkinfo: Benchmark the system used for experiments.
+completeinfo: Detect information about and then benchmark the system used for experiments.
+systeminfo: Detect all relevant information about the system used for experiments.
 ```
 
-::: {.fragment .fade-up style="font-size: 0.9em;"}
+:::
+
+::: {.fragment .fade-up style="font-size: 1.1em;"}
 
 - `systeminfo`: use packages like `psutil` to collect relevant information
-about the execution environment, suitable for characterizing local and
-cloud-based systems
+about the execution environment, suitable for characterizing and comparing
+local and cloud-based systems
 - `benchmarkinfo`: use packages like `timeit` to run simple micro-benchmarks
 involving basic operations so as to characterize baseline system performance
 
@@ -199,5 +199,20 @@ size = {size}
 
 - Use `timeit` to benchmark string concatenation function
 - Call function subject to benchmarking multiple times
+
+:::
+
+## Overall goals of "algorithmology"
+
+::: {.fragment .fade-right}
+
+- **Algorithm Engineering**:
+  - Design and implement algorithm and data structure
+  - Test all aspects of the system to ensure correctness
+  - Make a benchmark framework to measure performance
+- **Algorithm Evaluation**:
+  - Cost of calling a method or a function?
+  - Cost of accessing an object's attribute?
+  - Cost of accessing an object's attribute?
 
 :::
