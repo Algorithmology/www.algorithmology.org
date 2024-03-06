@@ -8,7 +8,6 @@ author: Gregory M. Kapfhammer
 format:
   revealjs:
     theme: default
-    # css: styles.css
     css: ../css/styles.css
     history: false
     scrollable: true
@@ -331,5 +330,43 @@ print(4 in e)
   - Size of the collection?
   - How often will the collection change?
   - How can we measure time and space overhead?
+
+:::
+
+## Key features of Python
+
+::: fragment
+
+### Defining and evaluating expressions
+
+```{python}
+expression = 5 + 3 * 2
+print(expression)
+```
+
+:::
+
+::: fragment
+
+### Declaring and using variables with types
+
+```{python}
+integer_variable = 10
+float_variable = 20.5
+string_variable = "Hello, World!"
+print(integer_variable, float_variable, string_variable)
+```
+
+:::
+
+::: fragment
+
+### Creating and using collections
+
+```{python}
+list_collection = [1, 2, 3, 4, 5]
+print(list_collection)
+
+```
 
 :::
