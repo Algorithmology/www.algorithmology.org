@@ -364,14 +364,15 @@ for func in filter(lambda g: g.startswith('loop'), sorted(dir(g))):
 
 ## What are the performance trade-offs associated with using objects?
 
-::: {.fragment .fade-right}
+::: {.fragment .fade-right style="font-size: 0.95em;"}
 
-- Questions to consider when designing an experiment:
+- Questions to consider when **designing an experiment**:
   - Cost of calling a method or a function?
   - Cost of accessing an object's attribute?
   - How quickly can your program process data?
   - What is the space overhead of using objects?
-- What data structures are best for your application?
-- How do data structures influence algorithm performance?
+- Questions to consider when **building a program**:
+    - What data structures are best for your application?
+    - How do data structures influence algorithm performance?
 
 :::
