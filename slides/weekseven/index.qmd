@@ -448,6 +448,8 @@ s.pop()
 
 ## Implementation of `ListDeque`
 
+::: {.fragment .fade-right style="margin-top: -0.125em;"}
+
 ```{python}
 class ListDeque:
     def __init__(self):
@@ -469,7 +471,9 @@ class ListDeque:
         return len(self._L)
 ```
 
-::: {.fragment .fade style="margin-top: 0.25em; font-size: 0.9em;"}
+:::
+
+::: {.fragment .fade style="margin-top: 0.0em; font-size: 0.85em;"}
 
 - Modification methods have a postfix label of `first` or `last`
 
