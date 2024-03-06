@@ -196,10 +196,11 @@ print(d["pi"])
 
 ::: {.fragment .fade-up style="margin-top: -0.1em; font-size: 0.87em;"}
 
-- Dictionaries store key-value pairs
-- The keys can be of any data type that is hashable
-- The values can be of any data type
-- It is possible to lookup a value by its key
+- The `dict` function creates an empty dictionary called `d`
+- Dictionaries store key-value pairs like `{5: 'five'}` and `{2: 'two'}`
+- The keys can be of any data type that is hashable like `int`
+- The values can be of any data type like `str` and `float`
+- It is possible to lookup a value by its key as in `d["pi"]`
 
 :::
 
@@ -220,6 +221,7 @@ print(values)
 - Sets do not store duplicate values
 - The data in a set must be hashable
 - The `add` function places more data in a set
+- Repeated calls of `add` with `2` do not change the set
 - Be careful, `{}` is an empty dictionary!
 
 :::
