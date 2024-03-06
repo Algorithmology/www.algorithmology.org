@@ -44,11 +44,11 @@ format:
 - Web browser like `firefox` or `chrome`
 - Text editor like `vim` or `emacs`
 
-::: {.fragment .fade style="margin-top: 0.25em; font-size: 0.9em;"}
+::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
 
-> How do we characterize the execution environment of these programs?
-> How do we compare their performance in different configurations?
-> How do we improve their performance?
+*...* How do we *characterize* the execution environment of these programs? *...* How
+do we *compare* their performance in different configurations? *...* How do we
+*improve* their performance? *...*
 
 :::
 
