@@ -7,7 +7,7 @@ author: Gregory M. Kapfhammer
 format:
   revealjs:
     theme: default
-    css: styles.css
+    css: ../css/styles.css
     history: false
     scrollable: true
     transition: slide
@@ -52,7 +52,7 @@ format:
 
 :::
 
-## Wow, measuring and improving the performance of any complex program is very challenging!
+## Wow, measuring and improving the performance of any complex program is very challenging! Why is that?
 
 ::: {.fragment}
 
