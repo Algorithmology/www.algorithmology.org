@@ -10,7 +10,7 @@ execute:
 format:
   revealjs:
     theme: default
-    css: styles.css
+    css: ../css/styles.css
     monofont: Ubuntu Mono
     history: false
     scrollable: true
@@ -38,7 +38,7 @@ format:
 
     - What is the *data* to be stored or represented?
     - What are the *processes* that manipulate the data?
-    - Avoids specifying how the data is stored or manipulated
+    - Avoids specifying *how* the data is stored or manipulated
 
 - **Concrete data structure**
 
@@ -54,7 +54,8 @@ format:
 - **Queue**: ADT for a first-in, first-out (FIFO) list
 - **Deque**: ADT for a flexible, double-ended queue
 - Each data structure has **trade-offs** in its:
-  - Features
+  - Implementation ease
+  - Feature and use
   - Time overhead
   - Space overhead
 
@@ -88,6 +89,8 @@ format:
 
 ## `ListStack` implements the `Stack` ADT {transition="convex"}
 
+::: {.fragment .fade-right style="margin-top: -0.125em;"}
+
 ```{python}
 class ListStack:
     def __init__(self):
@@ -109,7 +112,9 @@ class ListStack:
         return len(self) == 0
 ```
 
-::: {.fragment .fade-left style="margin-top: 0.1em; font-size: 0.9em;"}
+:::
+
+::: {.fragment .fade-left style="margin-top: 0.1em; font-size: 0.8em;"}
 
 - The `ListStack` uses a `list` called `_L` to store data items
 
@@ -219,6 +224,8 @@ manipulate_stack()
 
 ## `ListQueueSimple` implements `Queue` {transition="convex"}
 
+::: {.fragment .fade-right style="margin-top: -0.125em;"}
+
 ```{python}
 class ListQueueSimple:
     def __init__(self):
@@ -240,7 +247,9 @@ class ListQueueSimple:
         return len(self) == 0
 ```
 
-::: {.fragment .fade-left style="margin-top: 0.1em; font-size: 0.9em;"}
+:::
+
+::: {.fragment .fade-left style="margin-top: 0.1em; font-size: 0.85em;"}
 
 - The `ListQueueSimple` uses a `list` called `_L` to store data items
 
@@ -277,12 +286,12 @@ manipulate_queue()
 
 - Either approach is inefficient for a `Queue` implementation
 
-- Can we make the `Queue` implementation more efficient?
+- Making the `Queue` implementation more efficient:
 
     - Do not delete the items when removed from `Queue`
     - Ignore each item when it is removed from `Queue`
     - Keep an index to the head of the `Queue`
-    - Accept that this will increase the space overhead ?!?!
+    - Will this increase the space overhead or delete data ?!?!
 
 :::
 
