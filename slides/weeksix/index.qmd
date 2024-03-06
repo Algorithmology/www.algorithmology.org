@@ -10,8 +10,7 @@ execute:
 format:
   revealjs:
     theme: default
-    css: styles.css
-    monofont: Ubuntu Mono
+    css: ../css/styles.css
     history: false
     scrollable: true
     transition: slide
@@ -454,7 +453,7 @@ sufficiently large*, which is the worst-case scenario
 ::: {.fragment .fade .boxed-content style="margin-top: -0.2em; font-size: 1.0em;"}
 
 **Notation Confusion**: be careful because the definition of big-O refers to a
-"function" --- this is *not* a Python function but **rather** a mathematical
+"function" --- this is *not* a Python function but *rather* a mathematical
 function that characterizes it!
 
 :::
@@ -521,7 +520,7 @@ def f004(L):
     x = 0 # 1
     for j in range(1,len(L))  # loops n-1 times
         for i in range(j) # loops j times
-            x += L[i] * L[j] # 5 two list accesses, two arithmetic operations and assignment
+            x += L[i] * L[j] # 5 operations in total
     return x # 1
 ```
 
