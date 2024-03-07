@@ -17,8 +17,10 @@ Python](https://donsheehy.github.io/datastructures/)
 [donsheehy/datastructures](https://github.com/donsheehy/datastructures/). Can
 you write your own tests cases for these abstract data types? Can you use these
 abstract data types in your own program?
-- {{< iconify fa6-solid book size=18px >}} Note that, along with chapter 8,
-chapter 7 will again be the focus for next week
+- {{< iconify fa6-solid book size=18px >}} Note that chapter 7 was also the
+focus of last week
+- {{< iconify fa6-solid robot size=18px >}} Design, implement, and test your own
+efficient implementation of the `Deque` using the `DoubleLinkedList`!
 
 ## Activities
 
@@ -29,7 +31,8 @@ Linked Lists and Doubly Linked Lists
   - Use asymptotic analysis to characterize performance of an ADT
   - Examine Python source code segments to illustrate key points
 - {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Mid-term executable examination
-- {{< iconify game-icons team-idea size=18px >}} **Friday**: Start new algorithm all-hands project
+- {{< iconify game-icons team-idea size=18px >}} **Friday**: Algorithm
+analysis from mid-term examination
 
 ## Project
 
