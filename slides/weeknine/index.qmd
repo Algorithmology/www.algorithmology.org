@@ -34,3 +34,65 @@ class ListNode:
         self.data = data
         self.link = link
 ```
+
+## Implementing a `LinkedList`
+
+```{python}
+class LinkedList:
+    def __init__(self):
+        self._head = None
+
+    def addfirst(self, item):
+        self._head = ListNode(item, self._head)
+
+    def removefirst(self):
+        item = self._head.data
+        self._head = self._head.link
+        return item
+```
+
+::: {.fragment style="margin-top: 0.5em"}
+
+- A `LinkedList` contains an instance of `ListNode` in `_head`
+- `addfirst` creates a new `ListNode` and updates `_head`
+- `removefirst` updates `_head` and returns the data
+
+:::
+
+## Making a `Queue` with a `LinkedList`
+
+```{python}
+#| code-line-numbers: "|1-6|8-15|17-20|22-31|"
+class LinkedList:
+    def __init__(self):
+        self._head = None
+
+    def addfirst(self, item):
+        self._head = ListNode(item, self._head)
+
+    def addlast(self, item):
+        if self._head is None:
+            self.addfirst(item)
+        else:
+            currentnode = self._head
+            while currentnode.link is not None:
+                currentnode = currentnode.link
+            currentnode.link = ListNode(item)
+
+    def removefirst(self):
+        item = self._head.data
+        self._head = self._head.link
+        return item
+
+    def removelast(self):
+        if self._head.link is None:
+            return self.removefirst()
+        else:
+            currentnode = self._head
+            while currentnode.link.link is not None:
+                currentnode = currentnode.link
+            item = currentnode.link.data
+            currentnode.link = None
+            return item
+
+```
