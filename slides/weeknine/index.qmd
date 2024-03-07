@@ -643,6 +643,28 @@ while n is not None:
 - A `Deque`, or a double-ended queue, will contain an instance of the
 `DoublyLinkedList` as was done previously
 - Enables efficient addition and removal at both `Deque` ends
-- All methods in this `Deque` are $O(1)$ operations!
+- Hooray, all methods in this `Deque` are $O(1)$ operations!
+
+:::
+
+## Insights about the design and implementation of data structures
+
+::: {.fragment style="font-size: 0.9em; margin-top: -0.25em"}
+
+### {{< iconify fa6-solid archway >}} Design Considerations
+
+- One structure can be used to build another
+- A structure's design can influence its performance
+- Fundamental limitations arise with certain designs
+
+:::
+
+::: {.fragment style="font-size: 0.9em; margin-top: -0.25em"}
+
+### {{< iconify fa6-solid robot >}} Implementation Trade-offs
+
+- Refactoring can improve a structure's implementation
+- Assumptions about modification influence performance
+- Overloading operator built-ins enhances convenience
 
 :::
