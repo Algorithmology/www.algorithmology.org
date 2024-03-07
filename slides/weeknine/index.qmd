@@ -569,3 +569,80 @@ def manipulate_doubly_linked_list():
 
 manipulate_doubly_linked_list()
 ```
+
+## How do we join together structures like `List` or `DoublyLinkedList`?
+
+```{python}
+A = [1,2,3]
+B = [4,5,6]
+C = A + B
+print(A)
+print(B)
+print(C)
+```
+
+::: incremental
+
+- The line `C = A + B` concatenates the two lists together
+- Python's implementation of `+` creates a new list
+- Takes time proportional length of `C` without modifying `A` or `B`
+
+:::
+
+## If modification of `DoublyLinkedList` permitted, efficient concatenation!
+
+```python
+def __iadd__(self, other):
+    if other._head is not None:
+        if self._head is None:
+            self._head = other._head
+        else:
+            self._tail.link = other._head
+            other._head.prev = self._tail
+        self._tail = other._tail
+        self._length = self._length + other._length
+        other.__init__()
+    return self
+```
+
+::: fragment
+
+- The internal `__iadd__` method is called when `+=` is used
+- The `other` `DoublyLinkedList` is concatenated to `self`
+
+:::
+
+## Concatenation for `DoubleLinkedList`
+
+```python
+L = DoublyLinkedList()
+[L.addlast(i) for i in range(11)]
+B = DoublyLinkedList()
+[B.addlast(i+11) for i in range(10)]
+
+L += B
+
+n = L._head
+while n is not None:
+    print(n.data, end = ' ')
+    n = n.link
+```
+
+::: incremental
+
+- The `DoublyLinkedList` `L` is concatenated with `B`
+- Using `+=` calls the `__iadd__` method in `DoublyLinkedList`
+- The `B` list is drained of values when it is the `other` parameter
+
+:::
+
+# How can we now implement a `Deque` with a `DoublyLinkedList`?
+
+::: fragment
+
+- A `Deque`, or a double-ended queue, will contain an instance of the
+`DoublyLinkedList` as was done previously
+- Enables efficient addition and removal at both `Deque` ends
+- All methods in this `Deque` are $O(1)$ operations!
+
+:::
