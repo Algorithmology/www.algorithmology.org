@@ -41,3 +41,49 @@ print(sumk(4))
 print(sumk(5))
 ```
 
+::: fragment
+
+- The `sumk` function calls itself with a smaller value of `k`
+- The base case stops the recursion when `k` is equal to `0`
+
+:::
+
+## Termination of recursive functions
+
+::: fragment
+
+- **How to ensure that a recursive function stops running?**
+
+  - Base case stops the recursion by returning fixed value
+  - Recursive case reduces the input towards the base case
+  - Recursive calls are made of smaller sub-problems
+
+- **What happens if the base case is not reached?**
+  - The recursive function will enter an infinite recursion
+  - Python limits adding recursive functions to call stack 
+  - The program will ultimately raise the `RecursionError`
+
+:::
+
+## The call stack and recursion
+
+```{python}
+def sumsquarek(k):
+    if k == 0:
+        return 0
+    else:
+        return k ** 2 + sumsquarek(k - 1)
+
+print(sumsquarek(1))  # Output: 1
+print(sumsquarek(2))  # Output: 5
+print(sumsquarek(3))  # Output: 14
+print(sumsquarek(4))  # Output: 30
+print(sumsquarek(5))  # Output: 55
+```
+
+::: {.fragment style="font-size: 0.9em; margin-top: -0.25em"}
+
+- The `sumsquarek` function calls itself with a smaller value of `k`
+- The base case stops the recursion when `k` is equal to `0`
+
+:::
