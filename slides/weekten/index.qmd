@@ -205,3 +205,64 @@ print("GCD of 19 and 515 is", gcd(515, 19))
 - Depending on inputs, one approach may be more efficient
 
 :::
+
+# What is dynamic programming?
+
+::: fragment
+
+- Solve a problem using solutions to sub-problems
+- Often starts with an inefficient recursive algorithm
+- Memoization stores the results of expensive function calls
+- Tabulation stores the results of a bottom-up computation
+
+:::
+
+## Defective Greedy Change-Making
+
+```{python}
+def greedyMC(coinvalueList, change):
+    coinvalueList.sort()
+    coinvalueList.reverse()
+    numcoins = 0
+    for c in coinvalueList:
+        numcoins += change // c
+        change = change % c
+    return numcoins
+
+print(greedyMC([1, 5, 10, 25], 63))
+print(greedyMC([1, 21, 25], 63))    # Incorrect, should be 3
+print(greedyMC([1, 5, 21, 25], 63)) # Incorrect, should be 3
+```
+
+::: fragment
+
+- What is the minimum number of coins to make change for `63` cents? This
+`greedyMC` only works for canonical coin systems!
+
+:::
+
+## Slow Recursive Change-Making
+
+```python
+def recMC(coinValueList, change):
+   minCoins = change
+   if change in coinValueList:
+     return 1
+   else:
+      for i in [c for c in coinValueList if c <= change]:
+         numCoins = 1 + recMC(coinValueList,change-i)
+         if numCoins < minCoins:
+            minCoins = numCoins
+   return minCoins
+
+print(recMC([1, 5, 10, 25], 63))
+print(recMC([1, 21, 25], 63))
+print(recMC([1, 5, 21, 25], 63))
+```
+
+::: fragment
+
+- The `recMC` function calls itself with a smaller value of `change`
+- Works correctly --- but is very slow for certain input values!
+
+:::
