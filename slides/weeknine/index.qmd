@@ -291,7 +291,7 @@ class LinkedQueue:
 
 ```{python }
 #| code-line-numbers: "|1-5|7-18|20-25|27-41|"
-class LinkedList:
+class LinkedListPrime:
     def __init__(self):
         self._head = None
         self._tail = None
@@ -334,3 +334,53 @@ class LinkedList:
         return self._length
 ```
 
+## How do methods influence size?
+
+::: {.fragment style="font-size: 0.9em"}
+
+#### {{< iconify fa6-solid bolt >}} `__init__`
+
+- Initializes the size to zero
+- `self._length = 0` is a $O(1)$ operation
+
+:::
+
+::: {.fragment style="font-size: 0.9em"}
+
+#### {{< iconify fa6-solid circle-plus >}} `addfirst` and `addlast`
+
+- Both methods increment the size by one
+- `self._length += 1` is a $O(1)$ operation
+
+:::
+
+::: {.fragment style="font-size: 0.9em"}
+
+#### {{< iconify fa6-solid circle-minus >}} `remove` and `removelast`
+
+- Both methods decrement the size by one
+- `self._length -= 1` is a $O(1)$ operation
+
+:::
+
+## Using improved `LinkedList`
+
+```{python}
+LL = LinkedListPrime()
+LL.addfirst(3)
+LL.addfirst(5)
+print(LL.removefirst() == 5)
+LL.addlast(9)
+LL.addlast(13)
+print(LL.removefirst() == 3)
+print(LL.removefirst() == 9)
+print(LL.removelast() == 13)
+print(len(LL) == 0)
+```
+
+::: {.fragment style="font-size: 0.9em"}
+
+- `LinkedList` with features equivalent to `LinkedListNew`
+- Represents an improved building block for a `Queue`
+
+:::
