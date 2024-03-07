@@ -132,3 +132,54 @@ A == B
 - Recursion is elegant but can lead to unexpected errors!
 
 :::
+
+## Iterative and recursive Fibonacci
+
+```{python}
+def fibonacci_recursive(k):
+    if k in [0,1]: return k
+    return fibonacci_recursive(k-1) + fibonacci_recursive(k-2)
+
+print([fibonacci_recursive(i) for i in range(10)])
+```
+
+<p class="codespacer">
+
+```{python}
+def fibonacci_iterative(k):
+    a, b = 0,1
+    for i in range(k):
+        a, b = b, a + b
+    return a
+
+print([fibonacci_iterative(i) for i in range(10)])
+```
+
+::: {.fragment style="font-size: 1em; margin-top: -0.2em"}
+
+- Both approaches compute the Fibonacci sequence. Which one do you think is
+faster? Why do you think that is the case?
+
+:::
+
+## Recursive greatest common divisor
+
+```{python}
+def gcd(a, b):
+    if a == b:
+        return a
+    if a > b:
+        a, b = b, a
+    return gcd(a, b - a)
+
+print("GCD of 12 and 513 is", gcd(12, 513))
+print("GCD of 19 and 513 is", gcd(19, 513))
+print("GCD of 19 and 515 is", gcd(515 ,19))
+```
+
+::: {.fragment style="font-size: 1em; margin-top: 0.25em"}
+
+- Computes the greatest common divisor of two numbers
+- Too many recursive calls when `b` is much larger than `a`!
+
+:::
