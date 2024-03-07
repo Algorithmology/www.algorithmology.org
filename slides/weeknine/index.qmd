@@ -94,5 +94,67 @@ class LinkedList:
             item = currentnode.link.data
             currentnode.link = None
             return item
-
 ```
+
+## Using the `LinkedList`
+
+```{python}
+LL = LinkedList()
+LL.addfirst(3)
+LL.addfirst(5)
+print(LL.removefirst() == 5)
+LL.addlast(9)
+LL.addlast(13)
+print(LL.removefirst() == 3)
+print(LL.removefirst() == 9)
+print(LL.removelast() == 13)
+```
+
+::: {.fragment style="font-size: 0.9em"}
+
+- This `LinkedList` can be used to build a `Queue`
+- However, two of these methods have `while` loops!
+- This means it is not always better than the `ListQueue`
+
+:::
+
+## Concerns about this `LinkedList`?
+
+::: {.panel-tabset}
+
+### {{< iconify fa6-solid circle-exclamation >}} `addlast`
+
+```python
+def addlast(self, item):
+    if self._head is None:
+        self.addfirst(item)
+    else:
+        currentnode = self._head
+        while currentnode.link is not None:
+            currentnode = currentnode.link
+        currentnode.link = ListNode(item)
+```
+
+- The `while currentnode.link is not None` is not efficient
+- Access to the final node requires traversing the entire list
+- This is a $O(n)$ (or linear-time) operation!
+
+### {{< iconify fa6-solid circle-exclamation >}} `removelast`
+
+```python
+def removelast(self):
+    if self._head.link is None:
+        return self.removefirst()
+    else:
+        currentnode = self._head
+        while currentnode.link.link is not None:
+            currentnode = currentnode.link
+        item = currentnode.link.data
+        currentnode.link = None
+        return item
+```
+
+- `while currentnode.link.link is not None` not efficient
+- `removelast` traverses all nodes to find second-to-last one
+
+:::
