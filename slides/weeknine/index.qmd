@@ -612,7 +612,7 @@ def __iadd__(self, other):
 
 :::
 
-## Concatenation for `DoubleLinkedList`
+## Concatenation for `DoublyLinkedList`
 
 ```python
 L = DoublyLinkedList()
