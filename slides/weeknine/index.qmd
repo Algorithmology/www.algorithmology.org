@@ -260,3 +260,77 @@ def removelast(self):
 - `removelast` still traverses all nodes to perform a removal!
 
 :::
+
+## `LinkedQueue` with a `LinkedList`
+
+```{python}
+#| code-line-numbers: "|1-3|5-14|16-20|"
+class LinkedQueue:
+    def __init__(self):
+        self._L = LinkedListNew()
+
+    def enqueue(self, item):
+        self._L.addlast(item)
+
+    def dequeue(self):
+        return self._L.removefirst()
+
+    def peek(self):
+        item = self._L.removefirst()
+        self._L.addfirst(item)
+        return item
+
+    def __len__(self):
+        return len(self._L)
+
+    def isempty(self):
+        return len(self) == 0
+```
+
+## Tracking the size of a `LinkedList`
+
+```{python }
+#| code-line-numbers: "|1-5|7-18|20-25|27-41|"
+class LinkedList:
+    def __init__(self):
+        self._head = None
+        self._tail = None
+        self._length = 0
+
+    def addfirst(self, item):
+        self._head = ListNode(item, self._head)
+        if self._tail is None: self._tail = self._head
+        self._length += 1
+
+    def addlast(self, item):
+        if self._head is None:
+            self.addfirst(item)
+        else:
+            self._tail.link = ListNode(item)
+            self._tail = self._tail.link
+            self._length += 1
+
+    def removefirst(self):
+        item = self._head.data
+        self._head = self._head.link
+        if self._head is None: self._tail = None
+        self._length -= 1
+        return item
+
+    def removelast(self):
+        if self._head is self._tail:
+            return self.removefirst()
+        else:
+            currentnode = self._head
+            while currentnode.link is not self._tail:
+                currentnode = currentnode.link
+            item = self._tail.data
+            self._tail = currentnode
+            self._tail.link = None
+            self._length -= 1
+            return item
+
+    def __len__(self):
+        return self._length
+```
+
