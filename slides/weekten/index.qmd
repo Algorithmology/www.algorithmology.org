@@ -174,12 +174,34 @@ def gcd(a, b):
 
 print("GCD of 12 and 513 is", gcd(12, 513))
 print("GCD of 19 and 513 is", gcd(19, 513))
-print("GCD of 19 and 515 is", gcd(515 ,19))
+print("GCD of 19 and 515 is", gcd(515, 19))
 ```
 
 ::: {.fragment style="font-size: 1em; margin-top: 0.25em"}
 
 - Computes the greatest common divisor of two numbers
 - Too many recursive calls when `b` is much larger than `a`!
+
+:::
+
+## Revising the recursive `gcd`
+
+```{python}
+def gcd(a, b):
+    if a > b:
+        a, b = b, a
+    if a == 0:
+        return b
+    return gcd(a, b % a)
+
+print("GCD of 12 and 513 is", gcd(12, 513))
+print("GCD of 19 and 513 is", gcd(19, 513))
+print("GCD of 19 and 515 is", gcd(515, 19))
+```
+
+::: {.fragment style="font-size: 1em; margin-top: 0.25em"}
+
+- Both approach compute the same sequence of values
+- Depending on inputs, one approach may be more efficient
 
 :::
