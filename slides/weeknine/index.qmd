@@ -477,3 +477,23 @@ class DoublyLinkedList:
     def __len__(self):
         return self._length
 ```
+
+## Wait, code redundancy suggests an opportunity to refactor the source code in `addfirst` and `addlast`!
+
+```python
+def _addbetween(self, item, before, after):
+    node = ListNode(item, before, after)
+    if after is self._head:
+        self._head = node
+    if before is self._tail:
+        self._tail = node
+    self._length += 1
+```
+
+::: incremental
+
+- Define an internal method called `_addbetween`
+- The `addfirst` and `addlast` methods call `_addbetween`
+- Importantly, this method is an efficient $O(1)$ operation!
+
+:::
