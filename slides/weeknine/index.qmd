@@ -408,7 +408,7 @@ def manipulate_queue():
 manipulate_queue()
 ```
 
-::: {.fragment style="font-size: 0.95em"}
+::: {.fragment style="font-size: 1.0em"}
 
 - Functionally equivalent to the `ListQueue`
 - The `LinkedQueue` uses `display` to reveal the contents
