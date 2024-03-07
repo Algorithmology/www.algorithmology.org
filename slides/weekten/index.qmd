@@ -10,8 +10,7 @@ execute:
 format:
   revealjs:
     theme: default
-    css: styles.css
-    monofont: Ubuntu Mono
+    css: ../css/styles.css
     history: false
     scrollable: true
     transition: slide
@@ -19,3 +18,10 @@ format:
     html-math-method: mathjax
     footer: "Algorithmology"
 ---
+
+# Recursion means a "reference to self"!
+
+- Implementation of recursion in Python language
+- Mental model for how to think about recursive functions
+- Use of recursion as a problem solving technique
+- Analysis of the running time of recursive functions
