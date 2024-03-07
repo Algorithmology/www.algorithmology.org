@@ -10,12 +10,27 @@ execute:
 format:
   revealjs:
     theme: default
-    css: styles.css
-    monofont: Ubuntu Mono
+    css: ../css/styles.css
     history: false
     scrollable: true
     transition: slide
     highlight-style: github
     html-math-method: mathjax
     footer: "Algorithmology"
+    mermaid:
+      theme: default
 ---
+
+# What is a linked list?
+
+- Stores a sequential collection of elements
+- Uses individual nodes to store data values
+- Each node has a reference to the next node
+- The first node is called the **head** and the last is the **tail**
+
+```{python}
+class ListNode:
+    def __init__(self, data, link = None):
+        self.data = data
+        self.link = link
+```
