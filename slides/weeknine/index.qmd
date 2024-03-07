@@ -261,32 +261,6 @@ def removelast(self):
 
 :::
 
-## `LinkedQueue` with a `LinkedList`
-
-```{python}
-#| code-line-numbers: "|1-3|5-14|16-20|"
-class LinkedQueue:
-    def __init__(self):
-        self._L = LinkedListNew()
-
-    def enqueue(self, item):
-        self._L.addlast(item)
-
-    def dequeue(self):
-        return self._L.removefirst()
-
-    def peek(self):
-        item = self._L.removefirst()
-        self._L.addfirst(item)
-        return item
-
-    def __len__(self):
-        return len(self._L)
-
-    def isempty(self):
-        return len(self) == 0
-```
-
 ## Tracking the size of a `LinkedList`
 
 ```{python }
@@ -356,7 +330,7 @@ class LinkedListPrime:
 
 ::: {.fragment style="font-size: 0.9em"}
 
-#### {{< iconify fa6-solid circle-minus >}} `remove` and `removelast`
+#### {{< iconify fa6-solid circle-minus >}} `removefirst` and `removelast`
 
 - Both methods decrement the size by one
 - `self._length -= 1` is a $O(1)$ operation
@@ -380,7 +354,63 @@ print(len(LL) == 0)
 
 ::: {.fragment style="font-size: 0.9em"}
 
-- `LinkedList` with features equivalent to `LinkedListNew`
+- `LinkedListPrime` has features equivalent to `LinkedListNew`
 - Represents an improved building block for a `Queue`
+
+:::
+
+## `LinkedQueue` with a `LinkedList`
+
+```{python}
+#| code-line-numbers: "|1-3|5-14|16-20|22-26|"
+class LinkedQueue:
+    def __init__(self):
+        self._L = LinkedListPrime()
+
+    def enqueue(self, item):
+        self._L.addlast(item)
+
+    def dequeue(self):
+        return self._L.removefirst()
+
+    def peek(self):
+        item = self._L.removefirst()
+        self._L.addfirst(item)
+        return item
+
+    def display(self):
+        current = self._L._head
+        while current is not None:
+            print(current.data, end=" ")
+            current = current.link
+
+    def __len__(self):
+        return len(self._L)
+
+    def isempty(self):
+        return len(self) == 0
+```
+
+## Using the `LinkedQueue`
+
+```{python}
+def manipulate_queue():
+    queue = LinkedQueue()
+    queue.enqueue('umbrella')
+    queue.enqueue('backpack')
+    queue.enqueue('sandals')
+    print("Queue contents after enqueue operations:", end=" ")
+    queue.display()
+    queue.dequeue()
+    print("\nQueue contents after dequeue operation:", end=" ")
+    queue.display()
+
+manipulate_queue()
+```
+
+::: {.fragment style="font-size: 0.95em"}
+
+- Functionally equivalent to the `ListQueue`
+- The `LinkedQueue` uses `display` to reveal the contents
 
 :::
