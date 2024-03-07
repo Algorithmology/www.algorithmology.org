@@ -87,3 +87,48 @@ print(sumsquarek(5))  # Output: 55
 - The base case stops the recursion when `k` is equal to `0`
 
 :::
+
+## `RecursionError` with functions
+
+```python
+def a(k):
+    if k == 0: return 0
+    return b(k)
+
+def b(k):
+    return c(k)
+
+def c(k):
+    return a(k-1)
+
+a(340)
+```
+
+::: {.fragment style="font-size: 1em; margin-top: 0.25em"}
+
+- This program will raise a `RecursionError` in Python
+- Interestingly, it does not contain a recursive function!
+- Error signals that Python reached limit of call stack
+
+:::
+
+## `RecursionError` with `list`s
+
+```python
+A = [2]
+B = [2]
+A.append(A)
+B.append(B)
+A == B
+```
+
+::: {.fragment style="font-size: 1em; margin-top: 0.25em"}
+
+- `list.__eq__` method that compares two lists for `==` use
+- The first elements of `A` and `B` are equal
+- The second elements of `A` and `B` are actually lists
+- This causes another call to the `list.__eq__` method
+- Ultimately, this leads to a `RecursionError` in Python
+- Recursion is elegant but can lead to unexpected errors!
+
+:::
