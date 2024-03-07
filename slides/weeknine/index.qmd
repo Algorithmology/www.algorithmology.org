@@ -414,3 +414,34 @@ manipulate_queue()
 - The `LinkedQueue` uses `display` to reveal the contents
 
 :::
+
+# To achieve performance improvements, we need a doubly linked list!
+
+- Stores a sequential collection of elements
+- Uses individual nodes to store data values
+- Each node has a reference to the next and previous node
+- Enable list traversal in forward and backward directions
+
+## Using the `LinkedQueue`
+
+```{python}
+class ListNode:
+    def __init__(self, data, prev = None, link = None):
+        self.data = data
+        self.prev = prev
+        self.link = link
+        if prev is not None:
+            self.prev.link = self
+        if link is not None:
+            self.link.prev = self
+```
+
+::: {.fragment style="font-size: 0.9em"}
+
+- `self.data` stores the data value inside of the `ListNode`
+- `self.prev` stores a reference to the previous `ListNode`
+- `self.link` stores a reference to the next `ListNode`
+- **Key invariant** for the `ListNode`: for any two nodes `a` and `b`, it must be
+true that `b == a.link` if and only if `a = b.prev`
+
+:::
