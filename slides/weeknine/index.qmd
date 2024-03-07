@@ -501,7 +501,7 @@ def _addbetween(self, item, before, after):
 ## Refactoring the `DoublyLinkedList`
 
 ```{python}
-#| code-line-numbers: "|2-8|10-22|24-41|"
+#| code-line-numbers: "|2-8|10-22|24-41|43-47|"
 class DoublyLinkedList:
     def __init__(self):
         self._head = None
@@ -543,4 +543,29 @@ class DoublyLinkedList:
 
     def removelast(self):
         return self._remove(self._tail)
+
+    def display(self):
+        current = self._head
+        while current is not None:
+            print(current.data)
+            current = current.next
+```
+
+## Using the `DoublyLinkedList`
+
+```{python}
+def manipulate_doubly_linked_list():
+    DLL = DoublyLinkedList()
+    print(len(DLL))
+    DLL.addfirst(3)
+    DLL.addfirst(5)
+    print(DLL.removefirst() == 5)
+    DLL.addlast(9)
+    DLL.addlast(13)
+    print(DLL.removefirst() == 3)
+    print(DLL.removefirst() == 9)
+    print(DLL.removefirst() == 13)
+    print(len(DLL))
+
+manipulate_doubly_linked_list()
 ```
