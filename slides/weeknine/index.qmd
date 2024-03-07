@@ -422,7 +422,7 @@ manipulate_queue()
 - Each node has a reference to the next and previous node
 - Enable list traversal in forward and backward directions
 
-## Using the `LinkedQueue`
+## Creating a new `ListNode`
 
 ```{python}
 class ListNode:
@@ -445,3 +445,35 @@ class ListNode:
 true that `b == a.link` if and only if `a = b.prev`
 
 :::
+
+## Attempting the `DoublyLinkedList`
+
+```{python}
+#| code-line-numbers: "|1-5|7-14|16-23|25-26|"
+class DoublyLinkedList:
+    def __init__(self):
+        self._head = None
+        self._tail = None
+        self._length = 0
+
+    def addfirst(self, item):
+        if len(self) == 0:
+            self._head = self._tail = ListNode(item, None, None)
+        else:
+            newnode = ListNode(item, None, self._head)
+            self._head.prev = newnode
+            self._head = newnode
+        self._length += 1
+
+    def addlast(self, item):
+        if len(self) == 0:
+            self._head = self._tail = ListNode(item, None, None)
+        else:
+            newnode = ListNode(item, self._tail, None)
+            self._tail.link = newnode
+            self._tail = newnode
+        self._length += 1
+
+    def __len__(self):
+        return self._length
+```
