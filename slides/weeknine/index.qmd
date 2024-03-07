@@ -244,18 +244,19 @@ def addlast(self, item):
 
 ```python
 def removelast(self):
-    if self._head.link is None:
+    if self._head is self._tail:
         return self.removefirst()
     else:
         currentnode = self._head
-        while currentnode.link.link is not None:
+        while currentnode.link is not self._tail:
             currentnode = currentnode.link
-        item = currentnode.link.data
-        currentnode.link = None
+        item = self._tail.data
+        self._tail = currentnode
+        self._tail.link = None
         return item
 ```
 
-- `while currentnode.link.link is not None` not efficient
-- `removelast` still traverses all nodes to perform a removal
+- `while currentnode.link is not self._tail` not efficient
+- `removelast` still traverses all nodes to perform a removal!
 
 :::
