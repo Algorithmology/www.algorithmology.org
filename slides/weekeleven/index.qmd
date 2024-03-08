@@ -50,3 +50,28 @@ print(binary_search([2, 4, 6, 8, 10], 5))  # Output: False
 - Returns `True` if the `item` is found, `False` otherwise
 
 :::
+
+## Improved `binary_search`
+
+```{python}
+def fast_binary_search(L, item, left = 0, right = None):
+    if right is None: right = len(L)
+    if right - left == 0: return False
+    if right - left == 1: return L[left] == item
+    median = (right + left) // 2
+    if item < L[median]:
+        return fast_binary_search(L, item, left, median)
+    else:
+        return fast_binary_search(L, item, median, right)
+
+print(binary_search([1, 2, 3, 4, 5], 3))   # Output: True
+print(binary_search([2, 4, 6, 8, 10], 5))  # Output: False
+```
+
+::: {.fragment style="font-size: 0.85em; margin-top: -0.2em"}
+
+- Use of list slicing in `binary_search` slows it down!
+- Function call tree has length at most $O(\log n)$
+- Example of both **linear** and **tail** recursion
+
+:::
