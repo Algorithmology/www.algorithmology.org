@@ -19,3 +19,10 @@ format:
     html-math-method: mathjax
     footer: "Algorithmology"
 ---
+
+# What are purposes of searching and sorting?
+
+- Searching finds a specific item in a collection
+- Sorting orders the items in a collection
+- Recursive and iterative algorithms are possible
+- Basic building blocks of many algorithms
