@@ -447,3 +447,53 @@ print(f"LCS length is {lcs_len}")
 - `lcs_calculate` function is $O(m \times n)$ --- but does not return the LCS!
 
 :::
+
+## Algorithmic problem solving
+
+::: {.columns}
+
+::: {.column style="font-size: 0.85em;"}
+
+::: fragment
+
+### Recursion
+
+#### Implementation
+
+- Problem solved by recursion
+- Function calls itself
+- Reduces problem size
+
+#### Performance
+
+- Risk of stack overflow
+- Can be inefficient
+- Optimized by memoization
+
+:::
+
+:::
+
+::: {.column style="font-size: 0.85em;"}
+
+::: fragment
+
+### Dynamic Programming
+
+#### Implementation
+
+- Solves complex problems
+- Stores subproblem results
+- Uses table to store results
+
+#### Performance
+
+- Efficient for subproblem repeats
+- Polynomial time complexity
+- Space complexity concerns
+
+:::
+
+:::
+
+:::
