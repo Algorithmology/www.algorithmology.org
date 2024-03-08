@@ -25,3 +25,28 @@ format:
 - Sorting orders the items in a collection
 - Recursive and iterative algorithms are possible
 - Basic building blocks of many algorithms
+
+## Recursive `binary_search`
+
+```{python}
+def binary_search(L, item):
+    if len(L) == 0: return False
+    median = len(L) // 2
+    if item == L[median]:
+        return True
+    elif item < L[median]:
+        return binary_search(L[:median], item)
+    else:
+        return binary_search(L[median + 1:], item)
+
+print(binary_search([1, 2, 3, 4, 5], 3))   # Output: True
+print(binary_search([2, 4, 6, 8, 10], 5))  # Output: False
+```
+
+::: {.fragment style="font-size: 0.85em; margin-top: -0.2em"}
+
+- Searches for a single `item` in a sorted list `L`
+- Recursively calls itself with a smaller list
+- Returns `True` if the `item` is found, `False` otherwise
+
+:::
