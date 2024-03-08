@@ -319,7 +319,7 @@ print(dpMakeChange([1,5,10,21,25], 63))
 
 ::: {.fragment style="font-size: .9em; margin-top: 0.1em"}
 
-#### {{< iconify fa6-solid gears >}} Key strategy in `dpMakeChange` function?
+#### {{< iconify fa6-solid gears >}} Key strategy in the `dpMakeChange` function
 
 - Avoid recursive calls and memoization dictionary
 - Starting with small values, build up the dictionary
@@ -329,7 +329,7 @@ print(dpMakeChange([1,5,10,21,25], 63))
 
 ::: {.fragment style="font-size: .9em; margin-top: .1em"}
 
-#### {{< iconify fa6-solid bolt >}} Implementation details of `dpMakeChange` function?
+#### {{< iconify fa6-solid bolt >}} Implementation details of the `dpMakeChange` function
 
 - Use a list accessed by an integer index
 - Determine the next best step by trying each coin
