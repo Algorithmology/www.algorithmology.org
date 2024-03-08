@@ -10,8 +10,7 @@ execute:
 format:
   revealjs:
     theme: default
-    css: styles.css
-    monofont: Ubuntu Mono
+    css: ../css/styles.css
     history: false
     scrollable: true
     transition: slide
