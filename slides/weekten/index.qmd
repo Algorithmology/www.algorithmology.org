@@ -339,19 +339,27 @@ print(dpMakeChange([1,5,10,21,25], 63))
 
 ::: {.column style="font-size: 0.9em;"}
 
-- {{< iconify fa6-solid arrow-down-wide-short >}} **Recursion:**
-    - Works top down
-    - Start with largest problem
-    - Breaks down to smaller problems
+- {{< iconify fa6-solid arrow-down-wide-short >}} **Recursion**
+
+  - Works top down
+  - Start with largest problem
+  - Breaks to smaller problem
 
 :::
 
 ::: {.column style="font-size: 0.9em;"}
 
-- {{< iconify fa6-solid arrow-up-wide-short >}} **Dynamic Programming:**
+- {{< iconify fa6-solid arrow-up-wide-short >}} **Dynamic Programming**
     - Works bottom up
     - Starts with smallest problem
     - Builds up to larger problem
 
 :::
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.1em; font-size: 0.9em;"}
+
+Both algorithmic strategies can compute correct answer! Compare by
+**experimentally studying runtime** and **analyzing running time**.
+
 :::
