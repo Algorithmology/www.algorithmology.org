@@ -18,6 +18,8 @@ programming in the `ds2` package of
 you add debugging statements to trace how these algorithms work?
 - {{< iconify fa6-solid book size=18px >}} Read chapter 9 for a review of
 recursion and how it works in the Python language
+- {{< iconify fa6-solid robot size=18px >}} Design, implement, and test your own
+efficient implementation of the `lcs` function!
 
 ## Activities
 
