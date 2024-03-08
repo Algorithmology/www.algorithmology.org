@@ -182,7 +182,7 @@ print("GCD of 19 and 513 is", gcd(19, 513))
 print("GCD of 19 and 515 is", gcd(515, 19))
 ```
 
-::: {.fragment style="font-size: 1em; margin-top: 0.25em"}
+::: {.fragment style="font-size: 1.05em; margin-top: 0.25em"}
 
 - Computes the greatest common divisor of two numbers
 - Too many recursive calls when `b` is much larger than `a`!
@@ -386,10 +386,45 @@ lcs_len = len(lcs_str)
 print(f"LCS length is {lcs_len} and LCS contents are {lcs_str}")
 ```
 
-## Working
+::: {.fragment style="font-size: 0.875em; margin-top: -0.1em"}
+
+- Code runs practically forever on moderate-sized inputs
+- No matches in long strings yield depth-`n` binary call tree
+- Wow, this means that there are $2^n$ recursive calls!
+
+:::
+
+## LCS with dynamic programming
 
 ```{python}
-def lcs(X, Y):
+def lcs_dynamic(X, Y):
+    t = {}
+    for i in range(len(X)+1): t[(i,0)] = ""
+    for j in range(len(Y)+1): t[(0,j)] = ""
+
+    for i, x in enumerate(X):
+        for j, y in enumerate(Y):
+            if x == y:
+                t[(i+1,j+1)] = t[(i, j)] + x
+            else:
+                t[(i+1,j+1)] = max([t[(i, j+1)], t[(i+1, j)]], key = len)
+    return t[(len(X), len(Y))]
+
+lcs_str = lcs_dynamic('ABCBDAB', 'BDCAB')
+lcs_len = len(lcs_str)
+print(f"LCS length is {lcs_len} and LCS contents are {lcs_str}")
+```
+
+::: {.fragment style="font-size: 0.875em; margin-top: -0.1em"}
+
+- Total running time is $O(k \times (m \times n))$ where $k$ is output length
+
+:::
+
+## Only calculating the length of LCS
+
+```{python}
+def lcs_calculate(X, Y):
     m = len(X)
     n = len(Y)
     L = [[0] * (n + 1) for i in range(m + 1)]
@@ -401,9 +436,14 @@ def lcs(X, Y):
                 L[i][j] = L[i - 1][j - 1] + 1
             else:
                 L[i][j] = max(L[i - 1][j], L[i][j - 1])
-
     return L[m][n]
+
+lcs_len = lcs_calculate('ABCBDAB', 'BDCAB')
+print(f"LCS length is {lcs_len}")
 ```
 
-You can use this function to find the length of the longest common subsequence between two strings. For example, `lcs('ABCBDAB', 'BDCAB')` would return `4`, which is the length of the longest common subsequence ('BCAB').
+::: {.fragment style="font-size: 0.875em; margin-top: -0.1em"}
 
+- `lcs_calculate` function is $O(m \times n)$ --- but does not return the LCS!
+
+:::
