@@ -289,3 +289,62 @@ knownresults = {}
 print(f"{memoMC([1, 5, 10, 21, 25], 63, knownresults)} coins needed.", end=" ")
 print(f"Wow, computed {len(knownresults)} intermediate results!", end=" ")
 ```
+
+## Using dynamic programming
+
+```python
+def dpMakeChange(coinValueList, change):
+    minCoins = [None]*(change + 1)  # <1>
+    for cents in range(change+1):   # <2>
+        minCoins[cents] = cents     # <3>
+        for c in coinValueList:     # <4>
+            if cents >= c:          # <4>
+                minCoins[cents] = min(minCoins[cents], minCoins[cents - c] + 1) # <4>
+    return minCoins[change]         # <5>
+
+print(dpMakeChange([1,5,10,21,25], 63))
+```
+1. Create a list to store the answers to the sub-problems
+2. For values from `0` to `change`, compute min number of coins
+3. Assume at first that all `1` coins are used in solution
+4. Determine if different coins can better make change
+5. Return the element of the table with best solution
+
+## Dynamic programming
+
+::: {.fragment style="font-size: .9em; margin-top: 0.1em"}
+
+#### {{< iconify fa6-solid gears >}} Key strategy in `dpMakeChange` function?
+
+- Avoid recursive calls and memoization dictionary
+- Starting with small values, build up the dictionary
+- This is the essence of dynamic programming!
+
+:::
+
+::: {.fragment style="font-size: .9em; margin-top: .1em"}
+
+#### {{< iconify fa6-solid bolt >}} Implementation details of `dpMakeChange` function?
+
+- Use a list accessed by an integer index
+- Determine the next best step by trying each coin
+- Subtract coin value from current value
+- Check list for number of coins needed for remaining change
+
+:::
+
+## What are the similarities and differences between memoization and dynamic programming?
+
+::: {.fragment style="font-size: .8em; margin-top: -0.1em"}
+
+- {{< iconify fa6-solid arrow-down-wide-short >}} **Recursion:**
+    - Works top down
+    - Start with the largest problem
+    - Breaks down to smaller problems
+
+- {{< iconify fa6-solid arrow-up-wide-short >}} **Dynamic Programming:**
+    - Works bottom up
+    - Starts with the smallest problem
+    - Builds up to the largest problem
+
+:::
