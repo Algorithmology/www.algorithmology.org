@@ -100,3 +100,14 @@ print(iterative_binary_search([2, 4, 6, 8, 10], 5))  # Output: False
 - Example of both **linear** and **tail** recursion
 
 :::
+
+# Let's explore several sorting algorithms!
+
+::: fragment
+
+- Quadratic time sorting algorithms are easy to implement
+- Mergesort and quicksort are efficient yet harder to build
+- Python contains its own sorting algorithm called `timsort`
+- The divide and conquer paradigm is useful for sorting
+
+:::
