@@ -52,13 +52,18 @@ print(sumk(5))
 
 ::: fragment
 
-- **How to ensure that a recursive function stops running?**
+{{< iconify fa6-solid gears >}} **How to ensure that a recursive function stops running?**
 
   - Base case stops the recursion by returning fixed value
   - Recursive case reduces the input towards the base case
   - Recursive calls are made of smaller sub-problems
 
-- **What happens if the base case is not reached?**
+:::
+
+::: {.fragment style="font-size: 1em; margin-top: -0.25em"}
+
+{{< iconify fa6-solid gears >}} **What happens if the base case is not reached?**
+
   - The recursive function will enter an infinite recursion
   - Python limits adding recursive functions to call stack 
   - The program will ultimately raise the `RecursionError`
