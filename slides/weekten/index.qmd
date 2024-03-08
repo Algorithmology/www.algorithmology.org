@@ -368,3 +368,42 @@ Both algorithmic strategies can compute correct answer! Compare by
 **experimentally studying runtime** and **analyzing running time**.
 
 :::
+
+## Longest common subsequence
+
+```{python}
+def lcs_recursive(X, Y):
+    if X == "" or Y == "":
+        return ""
+    if X[-1] == Y[-1]:
+        return lcs_recursive(X[:-1], Y[:-1]) + X[-1]
+    else:
+        return max([lcs_recursive(X[:-1], Y),
+                    lcs_recursive(X, Y[:-1])], key = len)
+
+lcs_str = lcs_recursive('ABCBDAB', 'BDCAB')
+lcs_len = len(lcs_str)
+print(f"LCS length is {lcs_len} and LCS contents are {lcs_str}")
+```
+
+## Working
+
+```{python}
+def lcs(X, Y):
+    m = len(X)
+    n = len(Y)
+    L = [[0] * (n + 1) for i in range(m + 1)]
+    for i in range(m + 1):
+        for j in range(n + 1):
+            if i == 0 or j == 0:
+                L[i][j] = 0
+            elif X[i - 1] == Y[j - 1]:
+                L[i][j] = L[i - 1][j - 1] + 1
+            else:
+                L[i][j] = max(L[i - 1][j], L[i][j - 1])
+
+    return L[m][n]
+```
+
+You can use this function to find the length of the longest common subsequence between two strings. For example, `lcs('ABCBDAB', 'BDCAB')` would return `4`, which is the length of the longest common subsequence ('BCAB').
+
