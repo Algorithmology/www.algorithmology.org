@@ -335,16 +335,23 @@ print(dpMakeChange([1,5,10,21,25], 63))
 
 ## What are the similarities and differences between memoization and dynamic programming?
 
-::: {.fragment style="font-size: .8em; margin-top: -0.1em"}
+::: {.columns}
+
+::: {.column style="font-size: 0.9em;"}
 
 - {{< iconify fa6-solid arrow-down-wide-short >}} **Recursion:**
     - Works top down
-    - Start with the largest problem
+    - Start with largest problem
     - Breaks down to smaller problems
+
+:::
+
+::: {.column style="font-size: 0.9em;"}
 
 - {{< iconify fa6-solid arrow-up-wide-short >}} **Dynamic Programming:**
     - Works bottom up
-    - Starts with the smallest problem
-    - Builds up to the largest problem
+    - Starts with smallest problem
+    - Builds up to larger problem
 
+:::
 :::
