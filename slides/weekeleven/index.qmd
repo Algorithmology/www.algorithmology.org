@@ -271,3 +271,20 @@ print(data)
 - Yet, the `insertionsort` function still has a time complexity of $O(n^2)$
 
 :::
+
+## Sorting in Python
+
+```{python}
+X = [3,1,5]
+Y = sorted(X)
+print(X, Y)
+
+X.sort()
+print(X)
+```
+
+- Python has two main functions to sort a list
+
+- They are called `sort()` and `sorted()`.  The difference is that the former
+sorts the list and the latter returns a new list that is sorted.  Consider the
+following simple demonstration.
