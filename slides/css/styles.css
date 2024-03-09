@@ -37,6 +37,12 @@ p.tightspacer {
   border-radius: 5px;
 }
 
+.tight-boxed-content {
+  border: 3px solid #1c1c1c;
+  padding: -2px;
+  border-radius: 5px;
+}
+
 :root {
   --quarto-font-monospace: "Ubuntu Mono", SFMono-Regular, Menlo, Monaco,
     Consolas, "Liberation Mono", "Courier New", monospace !important;
