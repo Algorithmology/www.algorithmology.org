@@ -266,7 +266,7 @@ print(data)
 
 - **Key invariant**: after $i$ runs the last $i$ elements are in sorted order
 
-- May go faster if the list is already sorted (or almost already sorted)
+- May be faster if the list is already sorted (or almost already sorted)
 
 - Yet, the `insertionsort` function still has a time complexity of $O(n^2)$
 
