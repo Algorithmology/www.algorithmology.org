@@ -468,7 +468,7 @@ print(selection_one, selection_three, selection_five, "for", data)
 
 ::: {.fragment style="font-size: 0.8em; margin-top: -0.5em"}
 
-- **Binary Search**
+- {{< iconify fa6-solid users-viewfinder >}} **Binary Search**
     - Recursive step takes constant time
     - Makes a single recursive call on smaller list
     - **Time complexity**: $O(\log n)$
@@ -477,7 +477,7 @@ print(selection_one, selection_three, selection_five, "for", data)
 
 ::: {.fragment style="font-size: 0.8em; margin-top: -0.5em"}
 
-- **Sorting Algorithms**
+- {{< iconify fa6-solid arrow-down-a-z >}} **Sorting Algorithms**
     - Running time is linear plus recursive call cost
     - Total length of shorter lists is $O(n)$
     - **Time complexity**: Recursion depth of $O(\log n)$ means $O(n \times \log n)$
@@ -486,7 +486,7 @@ print(selection_one, selection_three, selection_five, "for", data)
 
 ::: {.fragment style="font-size: 0.8em; margin-top: -0.5em"}
 
-- **Quick Selection**
+- {{< iconify fa6-solid arrows-to-circle >}} **Quick Selection**
     - Running time is linear plus the cost of one recursive call
     - **Time complexity**: $O(n)$
 
