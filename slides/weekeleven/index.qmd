@@ -230,7 +230,6 @@ def selectionsort(L):
             if L[index] > L[max_index]:
                 max_index = index
         L[n-i-1], L[max_index] = L[max_index], L[n-i-1]
-    
 
 data = [30, 100000,54,26,93,17,77,31,44,55,20]
 selectionsort(data)
@@ -239,8 +238,36 @@ print(data)
 
 ::: {.fragment style="font-size: 0.875em; margin-top: 0.2em"}
 
-- **Key invariant**: after $i$ runs the last $i$ elements are in final position
+- **Key invariant**: after $i$ runs the largest $i$ elements are in final position
+
+- Find maximum element and swap it with last unsorted element
 
 - Yet, the `selectionsort` function still has a time complexity of $O(n^2)$
+
+:::
+
+## Implementing insertion sort {transition="convex"}
+
+```{python}
+def insertionsort(L):
+    n = len(L)
+    for i in range(n):
+        j = n - i - 1
+        while j < n - 1 and L[j]>L[j+1]:
+            L[j], L[j+1] = L[j+1], L[j]
+            j+=1
+
+data = [30, 100000,54,26,93,17,77,31,44,55,20]
+insertionsort(data)
+print(data)
+```
+
+::: {.fragment style="font-size: 0.875em; margin-top: 0.2em"}
+
+- **Key invariant**: after $i$ runs the last $i$ elements are in sorted order
+
+- May go faster if the list is already sorted (or almost already sorted)
+
+- Yet, the `insertionsort` function still has a time complexity of $O(n^2)$
 
 :::
