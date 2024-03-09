@@ -97,7 +97,7 @@ print(iterative_binary_search([2, 4, 6, 8, 10], 5))  # Output: False
 
 - Tail recursion can normally be replaced with iteration
 - This function also has worst-case time complexity of $O(\log n)$
-- Example of both **linear** and **tail** recursion
+- Effectively divides the input space in half with each iteration
 
 :::
 
@@ -189,5 +189,57 @@ print(data)
 
 - Use a double `for` loop to order all of the elements in `L`
 - The `bubblesort` function has a time complexity of $O(n^2)$
+
+:::
+
+## Stopping early with bubble sort
+
+```{python}
+def bubblesort_stopearly(L):
+    keepgoing = True
+    while keepgoing:
+        keepgoing = False
+        for i in range(len(L)-1):
+            if L[i]>L[i+1]:
+                L[i], L[i+1] = L[i+1], L[i]
+                keepgoing = True
+
+data = [30, 100000,54,26,93,17,77,31,44,55,20]
+bubblesort_stopearly(data)
+print(data)
+```
+
+::: {.fragment style="font-size: 0.875em; margin-top: 0.2em"}
+
+- Use a `while` loop containing a `for` loop to order elements in `L`
+
+- Although it may consume less time for some lists, the `bubblesort_stopearly`
+function still has a time complexity of $O(n^2)$
+
+:::
+
+## Implementing selection sort
+
+```{python}
+def selectionsort(L):
+    n = len(L)
+    for i in range(n-1):
+        max_index=0        
+        for index in range(n - i):
+            if L[index] > L[max_index]:
+                max_index = index
+        L[n-i-1], L[max_index] = L[max_index], L[n-i-1]
+    
+
+data = [30, 100000,54,26,93,17,77,31,44,55,20]
+selectionsort(data)
+print(data)
+```
+
+::: {.fragment style="font-size: 0.875em; margin-top: 0.2em"}
+
+- **Key invariant**: after $i$ runs the last $i$ elements are in final position
+
+- Yet, the `selectionsort` function still has a time complexity of $O(n^2)$!
 
 :::
