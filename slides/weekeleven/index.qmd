@@ -219,7 +219,7 @@ function still has a time complexity of $O(n^2)$
 
 :::
 
-## Implementing selection sort
+## Implementing selection sort {transition="convex"}
 
 ```{python}
 def selectionsort(L):
@@ -241,6 +241,6 @@ print(data)
 
 - **Key invariant**: after $i$ runs the last $i$ elements are in final position
 
-- Yet, the `selectionsort` function still has a time complexity of $O(n^2)$!
+- Yet, the `selectionsort` function still has a time complexity of $O(n^2)$
 
 :::
