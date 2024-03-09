@@ -142,3 +142,28 @@ print(B, "is sorted:", issorted(B))
 - Use a single `for` loop to compare adjacent elements in `L`
 
 :::
+
+## All-pairs `issorted` function
+
+```{python}
+def issorted_allpairs(L):
+    for i in range(len(L)-1):
+        for j in range(i+1, len(L)):
+            if L[j] < L[i]:
+              return False
+    return True
+
+A = [1,2,3,4,5]
+print(A, "is sorted:", issorted_allpairs(A))
+
+B = [1,4,5,7,2]
+print(B, "is sorted:", issorted_allpairs(B))
+```
+
+::: {.fragment style="font-size: 0.85em; margin-top: -0.2em"}
+
+- Use a double `for` loop to compare all pairs of elements in `L`
+- The `issorted_allpairs` function has a time complexity of $O(n^2)$
+- The `issorted` function has a time complexity of $O(n)$
+
+:::
