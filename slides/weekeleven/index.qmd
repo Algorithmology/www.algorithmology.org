@@ -288,6 +288,7 @@ print(X)
 
 - Two main functions to sort a list: `sort()` and `sorted()`
 
-- `sort` orders the list and `sorted` returns a new list that is sorted
+- `sort` orders the list and `sorted` returns a new list that is sorted. This
+leads to a situation where there is something that is not needed with some.
 
 :::
