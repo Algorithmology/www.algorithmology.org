@@ -281,13 +281,14 @@ print("X:", X)
 print("Y:", Y)
 
 X.sort()
-print(X)
+print("X:", X)
+print("Y:", Y)
 ```
 
 ::: fragment
 
 - Two main functions to sort a list: `sort()` and `sorted()`
-
-- `sort` orders the list and `sorted` returns a new list that is sorted.
+- `sort` orders list and `sorted` returns a new list that is sorted
+- Note that calling `sorted` does not change the contents of `X`
 
 :::
