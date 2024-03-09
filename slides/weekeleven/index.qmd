@@ -277,7 +277,8 @@ print(data)
 ```{python}
 X = [3,1,5]
 Y = sorted(X)
-print(X, Y)
+print("X:", X)
+print("Y:", Y)
 
 X.sort()
 print(X)
@@ -285,7 +286,7 @@ print(X)
 
 ::: fragment
 
-- Python has two main functions to sort a list: `sort()` and `sorted()`
+- Two main functions to sort a list: `sort()` and `sorted()`
 
 - `sort` orders the list and `sorted` returns a new list that is sorted.
 
