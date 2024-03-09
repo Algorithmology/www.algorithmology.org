@@ -178,7 +178,7 @@ def bubblesort(L):
             if L[i]>L[i+1]:
                 L[i], L[i+1] = L[i+1], L[i]
 
-data = [30, 100000,54,26,93,17,77,31,44,55,20]
+data = [30,100000,54,26,93,17,77,31,44,55,20]
 print("Is the data sorted?", issorted(data))
 print(data)
 bubblesort(data)
@@ -205,7 +205,7 @@ def bubblesort_stopearly(L):
                 L[i], L[i+1] = L[i+1], L[i]
                 keepgoing = True
 
-data = [30, 100000,54,26,93,17,77,31,44,55,20]
+data = [30,100000,54,26,93,17,77,31,44,55,20]
 bubblesort_stopearly(data)
 print(data)
 ```
@@ -231,7 +231,7 @@ def selectionsort(L):
                 max_index = index
         L[n-i-1], L[max_index] = L[max_index], L[n-i-1]
 
-data = [30, 100000,54,26,93,17,77,31,44,55,20]
+data = [30,100000,54,26,93,17,77,31,44,55,20]
 selectionsort(data)
 print(data)
 ```
@@ -257,7 +257,7 @@ def insertionsort(L):
             L[j], L[j+1] = L[j+1], L[j]
             j+=1
 
-data = [30, 100000,54,26,93,17,77,31,44,55,20]
+data = [30,100000,54,26,93,17,77,31,44,55,20]
 insertionsort(data)
 print(data)
 ```
@@ -329,7 +329,7 @@ def merge(A, B, L):
             j = j + 1
     L[i+j:] = A[i:] + B[j:]
 
-data = [30, 100000,54,26,93,17,77,31,44,55,20]
+data = [30,100000,54,26,93,17,77,31,44,55,20]
 mergesort(data)
 print(data)
 ```
@@ -365,7 +365,7 @@ def partition(L, left, right):
         pivot = i
     return pivot
 
-data = [30, 100000,54,26,93,17,77,31,44,55,20]
+data = [30,100000,54,26,93,17,77,31,44,55,20]
 quicksort(data)
 print(data)
 ```
@@ -415,3 +415,51 @@ print(data)
   - In-place sorting means it does not require additional space
 
 :::
+
+## Recursive quick selection
+
+```{python}
+#| code-line-numbers: "|1-2|4-11|13-18|"
+def quickselect(L, k):
+    return _quickselect(L, k, 0, len(L))
+
+def _quickselect(L, k, left, right):
+    pivot = partition(L, left, right)
+    if k <= pivot:
+        return _quickselect(L, k, left, pivot)
+    elif k == pivot + 1:
+        return L[pivot]
+    else:
+        return _quickselect(L, k, pivot + 1, right)
+
+data = [30,100000,54,26,93,17,77,31,44,55,20]
+selection_one = quickselect(data, 1)
+selection_three = quickselect(data, 3)
+selection_five = quickselect(data, 5)
+quicksort(data)
+print(selection_one, selection_three, selection_five, "for", data)
+```
+
+## Iterative quick selection
+
+```{python}
+#| code-line-numbers: "|1-11|13-18|"
+def quickselect(L, k):
+    left, right = 0, len(L)
+    while left < right:
+        pivot = partition(L, left, right)
+        if k <= pivot:
+            right = pivot
+        elif k == pivot + 1:
+            return L[pivot]
+        else:
+            left = pivot + 1
+    return L[left]
+
+data = [30,100000,54,26,93,17,77,31,44,55,20]
+selection_one = quickselect(data, 1)
+selection_three = quickselect(data, 3)
+selection_five = quickselect(data, 5)
+quicksort(data)
+print(selection_one, selection_three, selection_five, "for", data)
+```
