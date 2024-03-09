@@ -298,6 +298,7 @@ manipulate_queue()
 ## `ListQueueFakeDelete` uses an index {transition="convex"}
 
 ```{python}
+#| code-line-numbers: "|2-4|6-15|17-21|"
 class ListQueueFakeDelete: 
     def __init__(self):
         self._head = 0
