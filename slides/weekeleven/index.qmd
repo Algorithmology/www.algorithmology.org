@@ -292,3 +292,14 @@ print("Y:", Y)
 - Note that calling `sorted` does not change the contents of `X`
 
 :::
+
+# Let's design and implement some faster sorting algorithms!
+
+::: fragment
+
+- {{< iconify fa6-solid robot >}} **Divide and conquer** algorithms:
+    - Step 1: **divide** the problem into 2 or more pieces
+    - Step 2: **conquer** the problem by solving the pieces
+    - Step 3: **combine** the solutions on the parts into a solution
+
+:::
