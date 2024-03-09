@@ -112,7 +112,7 @@ print(iterative_binary_search([2, 4, 6, 8, 10], 5))  # Output: False
 
 :::
 
-## Quadratic-time sorting
+## Detecting a sorted list
 
 ```{python}
 def issorted(L):
@@ -130,9 +130,13 @@ print(B, "is sorted:", issorted(B))
 
 <p class="tightspacer"></p>
 
+::: fragment
+
 #### {{< iconify fa6-solid bolt >}} How do we know if a list is sorted?
 
-::: {.fragment style="font-size: 0.85em; margin-top: -0.4em"}
+:::
+
+::: {.fragment style="font-size: 0.85em; margin-top: -0.2em"}
 
 - Confirm that adjacent elements are in the correct order
 - Use a single `for` loop to compare adjacent elements in `L`
