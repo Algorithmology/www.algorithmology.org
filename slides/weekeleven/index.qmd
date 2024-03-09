@@ -283,8 +283,10 @@ X.sort()
 print(X)
 ```
 
-- Python has two main functions to sort a list
+::: fragment
 
-- They are called `sort()` and `sorted()`.  The difference is that the former
-sorts the list and the latter returns a new list that is sorted.  Consider the
-following simple demonstration.
+- Python has two main functions to sort a list: `sort()` and `sorted()`
+
+- `sort` orders the list and `sorted` returns a new list that is sorted.
+
+:::
