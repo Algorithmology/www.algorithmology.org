@@ -111,3 +111,30 @@ print(iterative_binary_search([2, 4, 6, 8, 10], 5))  # Output: False
 - The divide and conquer paradigm is useful for sorting
 
 :::
+
+## Quadratic-time sorting
+
+```{python}
+def issorted(L):
+    for i in range(len(L)-1):
+        if L[i]>L[i+1]:
+            return False
+    return True
+
+A = [1,2,3,4,5]
+print(A, "is sorted:", issorted(A))
+
+B = [1,4,5,7,2]
+print(B, "is sorted:", issorted(B))
+```
+
+<p class="tightspacer"></p>
+
+#### {{< iconify fa6-solid bolt >}} How do we know if a list is sorted?
+
+::: {.fragment style="font-size: 0.85em; margin-top: -0.4em"}
+
+- Confirm that adjacent elements are in the correct order
+- Use a single `for` loop to compare adjacent elements in `L`
+
+:::
