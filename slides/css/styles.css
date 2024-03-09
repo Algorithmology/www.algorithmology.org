@@ -27,6 +27,10 @@ p.codespacer {
   height: 1px;
 }
 
+p.tightspacer {
+  height: 0.5px;
+}
+
 .boxed-content {
   border: 3px solid #1c1c1c;
   padding: 10px;
