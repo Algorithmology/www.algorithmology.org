@@ -221,7 +221,7 @@ scientific and engineering aspects of algorithm analysis, as outlined in the
 study* in the field of algorithm analysis, students will complete and present a
 team-based project in which they propose and then answer a research question
 about the performance of a Python program. When completing an *engineering
-effort* in the field of algorithm analysis, students will complete and present a
+effort* in the field of algorithm analysis, students will build and present a
 team-based project in which they design, implement, document, release, and
 maintain a software tool that supports the rigorous evaluation of the
 performance of a Python program.
