@@ -233,8 +233,8 @@ assessment policies:
 ##### Assignment Submission
 
 All assignments will have a stated due date shared through GitHub, GitHub
-Classroom, and/or the [Developer Development Discord
-Server](https://discord.gg/aNfn8DNEMx). All reflections on and documentation of
+Classroom, and/or the [Algorithmology
+Discord](https://discord.gg/YHjhQaBnme). All reflections on and documentation of
 professional development, technical development, and project development should
 be committed to private GitHub repositories. In contrast, the publication of the
 professional précis that a student writes each week should be published to their
@@ -297,7 +297,7 @@ Students who are struggling to understand the knowledge and skills developed in
 any of the course sessions are encouraged to seek assistance from the course
 instructor and/or the student technical leaders. Students should, within the
 bounds of the Honor Code, ask and answer questions on the [Developer Development
-Discord Server](https://discord.gg/aNfn8DNEMx); please request assistance from
+Discord Server](https://discord.gg/YHjhQaBnme); please request assistance from
 the instructor and student technical leaders first through public Discord
 channels before sending an email. Students who need the course instructor's
 assistance are invited to schedule a meeting through the [course instructor's
@@ -312,8 +312,8 @@ leaders](https://www.cs.allegheny.edu/teaching/technicalleaders/).
 This course will primarily use GitHub and Discord for all course communication.
 We will use GitHub for the sharing of both source code and course projects and
 for reporting issues in those materials. We will use two distinct Discord
-servers for all course discussions. The [Developer Development Discord
-Server](https://discord.gg/aNfn8DNEMx) provides a way for members of the
+servers for all course discussions. The [Algorithmology Discord
+Server](https://discord.gg/YHjhQaBnme) provides a way for members of the
 developer development community to use text and video to chat with each other
 and will be the main forum for discussing the professional and technical content
 in software engineering. The [Allegheny College Computer Science Discord
@@ -324,8 +324,8 @@ must be in a GitHub repository.
 
 #### Using Email
 
-Although we will primarily use the [Developer Development Discord
-Server](https://discord.gg/aNfn8DNEMx) for class communication, the course
+Although we will primarily use the [Algorithmology Discord
+Server](https://discord.gg/YHjhQaBnme) for class communication, the course
 instructor will sometimes use email to send announcements about important
 matters such as changes in the schedule. It is your responsibility to check your
 email at least once a day and to ensure that you can reliably send and receive
