@@ -159,8 +159,8 @@ Data Structures in Python](https://donsheehy.github.io/datastructures/)
 package code
 
 Extensive details about the content that the course covers in the textbook are
-available in the [Course Schedule](../schedule/index.qmd) and the [Course
-Slides](../slides/index.qmd).
+available in the [course schedule](../schedule/index.qmd) and the [course
+slides](../slides/index.qmd).
 
 ### Course Policies
 
@@ -168,8 +168,8 @@ Slides](../slides/index.qmd).
 
 The grade that a student receives in this class will be based on the following
 categories. All of these percentages are approximate and, if the need to do so
-presents itself, the course instructor may change the assigned percentages
-during the academic semester.
+presents itself, the course instructor may, for instance, change the assigned
+percentages during the academic semester.
 
 | Category                 | Percentage |
 |--------------------------|------------|
@@ -182,8 +182,8 @@ during the academic semester.
 These assessment categories have the following definitions:
 
 - **Class Participation**: Students are expected to regularly attend and
-actively participate in all class and laboratory sessions. After either an
-unexcused absence or a late attendance to either a class or a laboratory
+actively participate in all of the class and laboratory sessions. After either
+an unexcused absence or a late attendance to either a class or a laboratory
 session, a student's weekly class participation grade will be reduced. Students
 who need to miss class or attend class late for an excused reason should
 communicate their situation to the instructor in a timely fashion. After one
@@ -191,14 +191,14 @@ warning per week, a student's weekly class participation grade will be reduced
 if they are observed undertaking non-course-related activities like viewing
 email, social media, or other content not about algorithm analysis. 
 
-- **Midterm Examinations**: The two midterm examinations are online cumulative
+- **Midterm Examination**: The midterm examinations are online cumulative
 assessments covering all prior material from the course sessions, as outlined on
 the [course schedule](../schedule/index.qmd). Unless prior arrangements are made
 with the instructor, all students should use their computer to take these tests
 on the scheduled date and to complete it in the stated location while taking no
 more than the required amount of time. Each midterm is an executable examination
-that a student will complete through the use of GitHub, VS Code, and the
-Python programming tools installed on their laptops.
+that a student will complete through the use of GitHub, VS Code, and the Python
+programming tools installed on their laptops.
 
 - **Final Examination**: The final examination is an online cumulative
 assessment covering all of the material during all of the course sessions, as
