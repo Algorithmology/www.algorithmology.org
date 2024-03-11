@@ -201,18 +201,19 @@ stated location while taking no more than the required amount of time. The
 midterm is an executable examination that students will complete through the use
 of GitHub, VS Code, and the Python programming tools installed on their laptops.
 Following the completion of the midterm examination during a laboratory session,
-students will collaboratively complete and present an analytical and empirical
-evaluation of the performance of one component of their executable examination.
+students will, during algorithm all-hands sessions, collaboratively complete and
+present an analytical and empirical evaluation of the performance of one
+component of their examination.
 
-- **Final Examination**: The final examination is an online cumulative
-assessment covering all of the material during all of the course sessions, as
-outlined on the [course schedule](../schedule/index.qmd). Unless prior
-arrangements are made with the course instructor, all students should use their
-computer to take the final examination on the scheduled date and to complete it
-in the stated location while taking no more than the required amount of time.
-The cumulative final is an executable examination that a student will complete
-through the use of GitHub, VS Code, and the Python programming tools installed
-on their laptops.
+- **Final Examination**: The final examination is an online, executable,
+cumulative assessment covering all of the material during all of the course
+sessions, as outlined on the [course schedule](../schedule/index.qmd). Unless
+prior arrangements are made with the course instructor, all students should use
+their computer to take the final examination on the scheduled date and to
+complete it in the stated location while taking no more than the required amount
+of time. The cumulative final is an executable examination that a student will
+complete through the use of GitHub, VS Code, and the Python programming tools
+installed on their laptops.
 
 - **Algorithm All-Hands**: These projects enable students to explore both the
 scientific and engineering aspects of algorithm analysis, as outlined in the
