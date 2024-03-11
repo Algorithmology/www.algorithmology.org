@@ -191,14 +191,14 @@ warning per week, a student's weekly class participation grade will be reduced
 if they are observed undertaking non-course-related activities like viewing
 email, social media, or other content not about algorithm analysis. 
 
-- **Midterm Examination**: The midterm examinations are online cumulative
-assessments covering all prior material from the course sessions, as outlined on
-the [course schedule](../schedule/index.qmd). Unless prior arrangements are made
-with the instructor, all students should use their computer to take these tests
-on the scheduled date and to complete it in the stated location while taking no
-more than the required amount of time. Each midterm is an executable examination
-that a student will complete through the use of GitHub, VS Code, and the Python
-programming tools installed on their laptops.
+- **Midterm Examination**: The midterm examination is an online, executable, and
+cumulative assessments covering all prior material from the course sessions, as
+outlined on the [course schedule](../schedule/index.qmd). Unless prior
+arrangements are made with the instructor, all students should use their
+computer to take these tests on the scheduled date and to complete it in the
+stated location while taking no more than the required amount of time. The
+midterm is an executable examination that students will complete through the use
+of GitHub, VS Code, and the Python programming tools installed on their laptops.
 
 - **Final Examination**: The final examination is an online cumulative
 assessment covering all of the material during all of the course sessions, as
