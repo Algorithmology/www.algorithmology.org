@@ -305,7 +305,7 @@ appointment scheduler](https://www.gregorykapfhammer.com/schedule/) and come to
 the meeting with all of the details needed to discuss their question. Students
 can find out the office hour schedule for student technical leaders by viewing
 the list of [student technical
-leaders](https://www.cs.allegheny.edu/teaching/technicalleaders/).
+leaders](https://www.cis.allegheny.edu/teaching/technicalleaders/).
 
 #### Using GitHub and Discord
 
@@ -319,8 +319,8 @@ and will be the main forum for discussing the professional and technical content
 in software engineering. The [Allegheny College Computer Science Discord
 Server](https://discord.gg/CS2h9kXzX6) will be the main forum for Department of
 Computer Science announcements. Any content that a student wants the instructor
-to assess (e.g., a professional précis or a contribution to a course project)
-must be in a GitHub repository.
+to assess (e.g., the work for an algorithm engineering project) must be in a
+GitHub repository.
 
 #### Using Email
 
