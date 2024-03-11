@@ -296,7 +296,7 @@ and executive summaries, available on this site.
 Students who are struggling to understand the knowledge and skills developed in
 any of the course sessions are encouraged to seek assistance from the course
 instructor and/or the student technical leaders. Students should, within the
-bounds of the Honor Code, ask and answer questions on the [Developer Development
+bounds of the Honor Code, ask and answer questions on the [Algorithmology
 Discord Server](https://discord.gg/YHjhQaBnme); please request assistance from
 the instructor and student technical leaders first through public Discord
 channels before sending an email. Students who need the course instructor's
