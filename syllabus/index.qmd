@@ -145,7 +145,7 @@ through the use of a computer program.
 
   - Enables the attainment of **CS-1**.
 
-The learning objectives for Computer Science 202 enable to attainment of the CS
+The learning objectives for Computer Science 202 enable the attainment of the CS
 program learning objectives that in turn support the attainment of the College's
 learning objectives.
 
