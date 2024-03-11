@@ -41,21 +41,31 @@ that, by necessity, the meeting before yours may sometimes run late.
 
 ### Course Description
 
-A human-centric study of the principles used during the engineering of
-high-quality software systems. In addition to examining the human behaviors and
-social processes undergirding software development methodologies, students
-participate in teams tasked with designing, developing, and delivering a
-significant software application for a customer. During a weekly laboratory
-session, students use state-of-the-art software engineering, management, and
-communication tools to complete projects, reporting on their results through
-both written documents and oral presentations. Students are invited to use their
-own departmentally approved laptop in this course; a limited number of laptops
-are available for use during class and lab sessions.
+A study of fundamental methods for designing and implementing algorithms and
+analyzing their efficiency. While developing expertise in select models of
+computation and the key mathematical and experimental approaches to studying
+algorithm efficiency, students investigate different types of algorithms through
+hands-on activities that often require teamwork. Students also learn how to
+determine whether a problem can be efficiently solved by an algorithm that is
+implemented as a computer program. During a weekly laboratory session students
+use state-of-the-art technology to complete projects, reporting on their results
+through both written documents and oral presentations. Students are invited to
+use their own departmentally approved laptop in this course; a limited number of
+laptops are available for use during class and lab sessions.
 
 - **Prerequisite**: CMPSC 101
-- **Distribution Requirements**: SB, SP
+- **Distribution Requirements**: QR, SP
 
 ::: {.callout-note appearance="minimal" title="Explaining the Distribution Requirements" collapse="false"}
+
+- **Quantitative Reasoning (QR)**: Quantitative Reasoning is the ability to
+understand, investigate, communicate, and contextualize numerical, symbolic, and
+graphical information towards the exploration of natural, physical, behavioral,
+or social phenomena.
+
+- **Learning Outcome**: Students who successfully complete this requirement will
+demonstrate an understanding of how to interpret numeric data and/or their
+graphical or symbolic representations.
 
 - **Scientific Process and Knowledge (SP)**: Courses involving Scientific
 Process and Knowledge aim to convey an understanding of what is known or can be
@@ -66,16 +76,6 @@ citizens who can engage productively in problem solving.
 - **Learning Outcome**: Students who successfully complete this requirement will
 demonstrate an understanding of the nature, approaches, and domain of scientific
 inquiry.
-
-- **Social Behavior and Institutions (SB)**: The study of Social Behavior and
-Institutions encompasses a broad range of disciplines that use a variety of
-methodologies to describe, explain, or predict human behavior, social processes,
-and institutional structures as they interact with their environments.
-
-- **Learning Outcome**: Students who successfully complete this requirement will
-demonstrate an understanding of at least one methodology used to describe,
-explain, or predict human behavior at the level of the individual, small group,
-institution, organization, community, or population.
 
 :::
 
