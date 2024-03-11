@@ -257,7 +257,7 @@ def removelast(self):
 ```
 
 - `while currentnode.link is not self._tail` not efficient
-- `removelast` still traverses many nodes to perform a removal!
+- `removelast` still traverses nodes to perform a removal!
 
 :::
 
@@ -410,7 +410,7 @@ manipulate_queue()
 
 ::: {.fragment style="font-size: 1.0em"}
 
-- Functionally equivalent to the `ListQueue`
+- `LinkedQueue` is functionally equivalent to the `ListQueue`
 - The `LinkedQueue` uses `display` to reveal the contents
 
 :::
