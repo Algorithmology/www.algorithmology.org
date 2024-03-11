@@ -151,12 +151,12 @@ learning objectives.
 
 ### Course Textbooks
 
-- {{< iconify fa6-solid book-open >}} [A First Course on
+- {{< iconify fa6-solid book-open >}} Online textbook called [A First Course on
 Data Structures in Python](https://donsheehy.github.io/datastructures/)
 
-- {{< iconify fa6-brands github >}} The `ds2` package in
-[donsheehy/datastructures](https://github.com/donsheehy/datastructures) book and
-package code
+- {{< iconify fa6-brands github >}} The `ds2` package in the 
+[donsheehy/datastructures](https://github.com/donsheehy/datastructures)  GitHub
+repository
 
 Extensive details about the content that the course covers in the textbook are
 available in the [course schedule](../schedule/index.qmd) and the [course
