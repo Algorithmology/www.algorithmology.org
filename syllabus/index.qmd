@@ -39,23 +39,6 @@ that, by necessity, the meeting before yours may sometimes run late.
 
 :::
 
-::: {.callout-note appearance="minimal" title="Active Learning"}
-
-With the goal of ensuring that every student develops as a developer, active
-learning plays a central role in the Software Engineering course. This means
-that you will be actively publishing your insights through blog post articles,
-in accordance with advice from well-known software engineers like [Addy
-Osmani](https://addyosmani.com/), who recently published a blog post entitled
-["Write about what you learn. It pushes you to understand topics
-better."](https://addyosmani.com/blog/write-learn/) You will also be called on
-to actively lead and participate in class discussions every week. One key task
-that you will complete every week involves running, writing about, and
-implementing program source code and publishing program documentation. Aligned
-with the course goals, you will complete out-of-class programming and writing in
-preparation for in-class discussions.
-
-:::
-
 ### Course Description
 
 A human-centric study of the principles used during the engineering of
@@ -171,6 +154,23 @@ distribution requirements.
 Students who develop both **professionally** and **technically** are effectively
 undertaking the task of **developer development**, which is both the theme and
 goal of this web site's content!
+
+:::
+
+::: {.callout-note appearance="minimal" title="Active Learning"}
+
+With the goal of ensuring that every student develops as a developer, active
+learning plays a central role in the Software Engineering course. This means
+that you will be actively publishing your insights through blog post articles,
+in accordance with advice from well-known software engineers like [Addy
+Osmani](https://addyosmani.com/), who recently published a blog post entitled
+["Write about what you learn. It pushes you to understand topics
+better."](https://addyosmani.com/blog/write-learn/) You will also be called on
+to actively lead and participate in class discussions every week. One key task
+that you will complete every week involves running, writing about, and
+implementing program source code and publishing program documentation. Aligned
+with the course goals, you will complete out-of-class programming and writing in
+preparation for in-class discussions.
 
 :::
 
