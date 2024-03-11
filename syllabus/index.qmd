@@ -17,10 +17,11 @@ for more information!
 
 ### Instructor Appointments
 
-- **Monday**: 10:00 -- 11:00 AM, 2:00 PM -- 3:30 PM
-- **Tuesday**: 4:30 PM -- 5:00 PM
-- **Wednesday**: 4:30 PM -- 5:00 PM
-- **Thursday**: 1:30 PM -- 3:00 PM
+- **Monday**: 11:00 AM -- 12:00 noon
+- **Tuesday**: 1:30 PM -- 2:30 PM
+- **Wednesday**: 10:00 AM -- 12:00 noon
+- **Wednesday**: 2:00 PM -- 3:00 PM
+- **Friday**: 2:30 PM -- 3:30 PM
 
 All instructor appointments are 15-minute time slots and take place in Alden Hall,
 Room 108.
@@ -37,27 +38,6 @@ Calendar. Please arrive ten minutes in advance for your meeting and be aware
 that, by necessity, the meeting before yours may sometimes run late.
 
 :::
-
-### Schedule Overview
-
-- **Discussion, Writing, and Programming Sessions**
-  - *Developing Professional Skills*: Monday, 9:00 AM -- 9:50 AM, Alden 109
-    - SE Book: [Software Engineering at Google](https://abseil.io/resources/swe-book)
-    - First half of class: Discuss executive summaries for chapters read last week
-    - Second half of class: Publish a professional précis for next week's chapters
-  - *Developing Technical Skills*: Wednesday, 9:00 AM -- 9:50 AM, Alden 109
-    - FB Book: [Fuzzing Book](https://www.fuzzingbook.org/)
-    - DB Book: [Debugging Book](https://www.debuggingbook.org/)
-    - First half of class: Discuss executive summaries for chapters read last week
-    - Second half of class: Publish a professional précis for next week's chapters
-  - *Developing as Developers*: Friday, 9:00 AM -- 9:50 AM, Alden 109
-      - Review the professional précis documents written by team members
-      - Create an executive summary for the week's professional skills
-      - Create an executive summary for the week's technical skills
-      - Publish the executive summaries to the Developer Development web site
-      - Confirm our team's readiness for next week's in-class discussions
-      - When needed, implement and demonstrate software engineering project
-- **Collaborative Software Engineering**: Tuesday, 2:30 PM -- 4:20 PM, Alden 109
 
 ::: {.callout-note appearance="minimal" title="Active Learning"}
 
