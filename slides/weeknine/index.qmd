@@ -215,7 +215,7 @@ print(LL.removelast() == 13)
 ::: {.fragment style="font-size: 0.9em"}
 
 - This `LinkedList` can be used to build a `Queue`
-- However, two of these methods have `while` loops!
+- However, one of these methods still has a `while` loop!
 - This means it is not always better than the `ListQueue`
 
 :::
@@ -257,7 +257,7 @@ def removelast(self):
 ```
 
 - `while currentnode.link is not self._tail` not efficient
-- `removelast` still traverses all nodes to perform a removal!
+- `removelast` still traverses many nodes to perform a removal!
 
 :::
 
