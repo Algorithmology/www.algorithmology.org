@@ -97,7 +97,7 @@ and to analyze and solve problems.
 Computer Science 202 at Allegheny College is a core course in the Computer
 Science major. Graduates with the Computer Science major, who all take the
 Computer Science 202 course, must demonstrate their attainment of these learning
-objectives for the Computer Science major:
+objectives:
 
 - **CS-1**: Demonstrate and be able to communicate the knowledge of data types,
 algorithms, and mathematical principles behind discrete objects.
@@ -145,9 +145,9 @@ through the use of a computer program.
 
   - Enables the attainment of **CS-1**.
 
-As indicated above, the learning objectives for Computer Science 202 enable to
-attainment of the CS program learning objectives that in turn support the
-attainment of the College's learning objectives.
+The learning objectives for Computer Science 202 enable to attainment of the CS
+program learning objectives that in turn support the attainment of the College's
+learning objectives.
 
 ### Course Textbooks
 
