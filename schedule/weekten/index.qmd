@@ -30,7 +30,7 @@ Dynamic Programming
   - Learn more about the longest common sub-sequence problem
   - Examine Python source code segments to illustrate key points
 - {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Start new algorithm engineering project
-- {{< iconify game-icons team-idea size=18px >}} **Friday**:  Start a new algorithm all-hands project
+- {{< iconify game-icons team-idea size=18px >}} **Friday**: Present results from an algorithm all-hands project
 
 ## Project
 
