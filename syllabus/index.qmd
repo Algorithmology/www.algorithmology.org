@@ -303,17 +303,17 @@ leaders](https://www.cis.allegheny.edu/teaching/technicalleaders/).
 #### Using GitHub and Discord
 
 This course will primarily use GitHub and Discord for all course communication.
-We will use GitHub for the sharing of both source code and course projects and
-for reporting issues in those materials. We will use two distinct Discord
-servers for all course discussions. The [Algorithmology Discord
-Server](https://discord.gg/YHjhQaBnme) provides a way for members of the
-developer development community to use text and video to chat with each other
-and will be the main forum for discussing the professional and technical content
-in software engineering. The [Allegheny College Computer Science Discord
-Server](https://discord.gg/CS2h9kXzX6) will be the main forum for Department of
-Computer Science announcements. Finally, any content that a student wants the
-instructor to assess (e.g., the work for an algorithm engineering project) must
-be in a GitHub repository.
+We will use GitHub for the sharing of both source code and documentation for
+course projects and for reporting issues in those materials. We will use two
+distinct Discord servers for all course discussions. The [Algorithmology
+Discord Server](https://discord.gg/YHjhQaBnme) provides a way for members of
+the developer development community to use text and video to chat with each
+other and will be the main forum for discussing the professional and technical
+content in software engineering. The [Allegheny College Computer Science
+Discord Server](https://discord.gg/CS2h9kXzX6) will be the main forum for
+Department of Computer Science announcements. Finally, any content that a
+student wants the instructor to assess (e.g., the work for an algorithm
+engineering project) must be in a GitHub repository.
 
 #### Using Email
 
