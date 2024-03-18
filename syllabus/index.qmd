@@ -245,8 +245,9 @@ accepted after the deadline.
 Using a report that the instructor shares with you through your GitHub
 repositories devoted to work in the field of algorithm analysis, you will
 privately receive a grade for and feedback on your course projects. Your grade
-will be a function of whether or not you completed work that fulfills the
-project's specification and submitted it by the deadline to the stated platform.
+will be a function of whether or not you (a) completed work that fulfills the
+project's specification and (b) submitted it by the deadline to the stated
+platform.
 
 ##### Algorithmology Tokens
 
