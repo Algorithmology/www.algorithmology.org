@@ -15,3 +15,21 @@ def find_average_value(matrix: List[List[int]]) -> Union[float, None]:
     """Find the average value in the provided matrix."""
     ...
 ```
+
+# Rebekah Rudd
+
+```python
+def find_average_value(matrix: List[List[int]]) -> Union[float, None]:
+    """Find the average value in the provided matrix."""
+    # check to see if matrix is populated
+    if not matrix:
+        return None
+    # create an empty list
+    total_numbers = []
+    # iterate through matrix and extract all the numbers to find the min
+    for number_list in matrix:
+        for number in number_list:
+            total_numbers.append(number)
+    # return the minimum value within the total_numbers list using min()
+    return sum(total_numbers) / len(total_numbers)
+```
