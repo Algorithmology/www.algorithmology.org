@@ -1,0 +1,17 @@
+---
+author: [Sabrina Rodriguez, Evan Nelson, Jason Gymafi, Rebekah Rudd, Simon Jones]
+title: How can we validate the calculated time complexity of an averaging function?
+page-layout: full
+categories: [post, average, matrix]
+date: "2024-03-22"
+date-format: long
+toc: true
+---
+
+# Introduction
+
+```python
+def find_average_value(matrix: List[List[int]]) -> Union[float, None]:
+    """Find the average value in the provided matrix."""
+    ...
+```
