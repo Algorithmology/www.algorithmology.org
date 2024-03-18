@@ -1,0 +1,9 @@
+---
+author: [Keller Liptrap, Alish Chhetri, Ochirsaikhan Davaajambal, Tugi Gantulga, Miles Franck, Nicholas Ingerson-Meacham]
+title: Investigating the efficiency of using string prefixes to detect duplicate genes
+page-layout: full
+categories: [post, objects, lists]
+date: "2024-03-22"
+date-format: long
+toc: true
+---
