@@ -95,9 +95,9 @@ experiences of others.
 and to analyze and solve problems.
 
 Computer Science 202 at Allegheny College is a core course in the Computer
-Science major. Graduates with the Computer Science major, who all take the
-Computer Science 202 course, must demonstrate their attainment of these learning
-objectives:
+Science major. Graduates with the Computer Science major --- who all take the
+Computer Science 202 course --- must demonstrate their attainment of these
+learning objectives:
 
 - **CS-1**: Demonstrate and be able to communicate the knowledge of data types,
 algorithms, and mathematical principles behind discrete objects.
@@ -192,18 +192,18 @@ student's weekly class participation grade will be reduced if they are observed
 undertaking non-course-related activities like viewing email, social media, or
 other content not about algorithm analysis. 
 
-- **Midterm Examination**: The midterm examination is an online, executable, and
-cumulative assessment covering all prior material from the course sessions, as
-outlined on the [course schedule](../schedule/index.qmd). Unless prior
+- **Midterm Examination**: The midterm examination is an online, executable,
+and cumulative assessment covering all prior material from the course sessions,
+as outlined on the [course schedule](../schedule/index.qmd). Unless prior
 arrangements are made with the instructor, all students should use their
 computer to take these tests on the scheduled date and to complete it in the
 stated location while taking no more than the required amount of time. The
-midterm is an executable examination that students will complete through the use
-of GitHub, VS Code, and the Python programming tools installed on their laptops.
-Following the completion of the midterm examination during a laboratory session,
-students will, during algorithm all-hands sessions, collaboratively complete and
-present an analytical and empirical evaluation of the performance of one
-component of their examination.
+midterm is an executable examination that students will complete through the
+use of GitHub, VS Code, and the Python programming tools installed on their
+laptops. Following the completion of the midterm examination during a
+laboratory session, students will, during algorithm all-hands sessions,
+collaboratively complete and present an analytical and empirical evaluation of
+the performance of one component of their executable examination.
 
 - **Final Examination**: The final examination is an online, executable,
 cumulative assessment covering all of the material during all of the course
