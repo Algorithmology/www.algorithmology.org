@@ -53,3 +53,16 @@ def find_average_value(matrix: List[List[int]]) -> Union[float, None]:
     num_elements = sum(len(row) for row in matrix)
     return total_sum / num_elements
 ```
+
+# Simon Jones Solution
+
+```python
+def find_average_value(matrix: List[List[int]]) -> Union[float, None]:
+    """Find the average value in the provided matrix."""
+    if not isinstance(matrix, list) or len(matrix) == 0:
+        return None
+    matrix_flatmapped: List[int] = []
+    for listy in matrix:
+        matrix_flatmapped = matrix_flatmapped + listy
+    return sum(matrix_flatmapped) / len(matrix_flatmapped)
+```
