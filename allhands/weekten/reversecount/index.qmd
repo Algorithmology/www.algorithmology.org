@@ -1,8 +1,8 @@
 ---
 author: [Benedek Kaibas, Chloe Bonson, David Gormley, Mordred Boulais, William Wolff, Luke Barker]
-title: Investigating the efficiency of computing the average value in an integer matrix
+title: Investigating the efficiency of computing counting and reversing a string 
 page-layout: full
-categories: [post, integers, lists]
+categories: [post, dictionaries, strings]
 date: "2024-03-22"
 date-format: long
 toc: true
