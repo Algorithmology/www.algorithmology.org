@@ -29,13 +29,13 @@ Room 108.
 ::: {.callout-note appearance="minimal" title="Scheduling Appointments"}
 
 To schedule a meeting with the course instructor during office hours, please
-visit the [Course Instructor's Appointment
+visit the [Instructor's Appointment
 Scheduler](https://www.gregorykapfhammer.com/schedule/). You can schedule an
 appointment by clicking a suitable box in Google Calendar's Appointment
 Scheduler and then reserving an open time slot. The details about your chosen
-appointment will appear in both your Google Calendar and the instructor's Google
-Calendar. Please arrive ten minutes in advance for your meeting and be aware
-that, by necessity, the meeting before yours may sometimes run late.
+appointment will appear in both your Google Calendar and the instructor's
+Google Calendar. Please arrive ten minutes in advance for your meeting and be
+aware that, by necessity, the meeting before yours may run late.
 
 :::
 
