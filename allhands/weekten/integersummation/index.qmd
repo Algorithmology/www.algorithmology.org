@@ -7,3 +7,52 @@ date: "2024-03-22"
 date-format: long
 toc: true
 ---
+
+# Introduction
+
+## Function Explaination
+
+## Difference Between the Two Versions
+
+## Motivation
+
+# Method
+
+# Results
+
+## Data Outputs from Timing and Benchmarks
+
+## Runtime Analysis
+
+### Running Time Analysis 
+
+#### Function 1:
+
+```
+    |def sum_stop_int1(stop: int) -> int:
+    |   """All of the numbers up to and including the provided stop value."""
+   1|   if stop < 0:
+    |       return 0
+ n^2|   return sum(range(stop + 1))
+```
+
+Function 1 has a worst-case time complexity of O(n2). That means that this function has a quadratic order of growth and that time grows quadratically with input size.
+
+#### Function 2:
+
+```
+    |def sum_stop_int(stop: int) -> int:
+    |    """Calculate the sum of integers up to a given stop value."""
+    |    # Check if stop value is less than 0
+   1|    if stop < 0:
+    |       return 0
+    |    # Calculate the sum using the formula for the sum of an arithmetic series
+   1|    return (stop * (stop + 1)) // 2
+```
+
+Function 2 has a worst-case time complexity of O(1). This means that it has a sublinear order of growth and is constant. 
+
+Overall, Function 2 has a better running time than Function 1 because its worst-case time complexity does not grow at the speed that Function 1 does. The performance of Function 1 will take more time as the input size increases whereas Function 2 will perform more or less the same regardless of the input.
+
+
+# References
