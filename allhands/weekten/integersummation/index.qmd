@@ -50,7 +50,7 @@ print("Execution times: ", ", ".join(f"{time:.9f}" for time in execution_timesF1
 print("Average execution time: ", f"{sum(execution_timesF11) / len(execution_timesF11):.9f}")
 ```
 
-# Results
+## Results
 
 ## Data Outputs from Timing and Benchmarks
 
