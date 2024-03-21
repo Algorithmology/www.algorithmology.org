@@ -25,7 +25,29 @@ Please note that all of the work that you complete for this assignment should be
 ### Alish
 
 ```python
-TODO: add code here
+def compare_gene_prefix_alish(gene: Gene, other_gene: Gene) -> bool:
+    """Compare the prefix of the gene name with the prefix of another gene name."""
+    # TODID: extract the prefix from the gene name
+    # TODID: compare the prefix to the prefix of the other gene name
+    # TODID: return a boolean value that indicates whether or not the prefixes are equal
+    # TODID: refer to the function specification for more details about this function
+    return (
+        gene.gene_name[: gene.gene_name_prefix]
+        == other_gene.gene_name[: other_gene.gene_name_prefix]
+    )
+
+
+def detect_duplicates_gene_alish(data: List[Gene]) -> bool:
+    """Detect whether or not there are duplicate values in a list of Gene values."""
+    # TODID: provide an implementation of this function that can determine
+    # whether or not the provided list of Gene values contains duplicates
+    if not data:
+        return False
+    for i in range(len(data)):
+        for j in range(i + 1, len(data)):
+            if compare_gene_prefix_alish(data[i], data[j]):
+                return True
+    return False
 ```
 
 TODO: Write paragraph that explains your code and provides a time complexity in big O notation
