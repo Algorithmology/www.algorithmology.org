@@ -50,18 +50,29 @@ print(
 
 # Include the output of running the two code blocks here, with any analysis you would like to provide
 
-# first output:
 """
+first output:
+
 Performance time in seconds:
  [5.699926987290382e-06, 2.900022082030773e-06, 2.7999049052596092e-06, 2.700020559132099e-06, 2.700020559132099e-06]
-"""
-# second output:
-"""
+
+second output:
+
 Performance time in seconds:
  [5.599926225841045e-06, 2.900022082030773e-06, 2.800021320581436e-06, 2.900022082030773e-06, 2.6999041438102722e-06]
-"""
-# third output:
-"""
+
+third output:
+
 Performance time in seconds:
  [7.4999406933784485e-06, 4.00003045797348e-06, 4.699919372797012e-06, 4.400033503770828e-06, 4.200031980872154e-06]
+
+fourth output:
+
+Performance time in seconds:
+[7.79994297772646e-06, 3.100023604929447e-06, 2.900022082030773e-06, 2.700020559132099e-06, 2.7999049052596092e-06]
+
+fifth output:
+
+Performance time in seconds:
+[6.299931555986404e-06, 3.00002284348011e-06, 2.800021320581436e-06, 2.800021320581436e-06, 2.6999041438102722e-06]
 """
