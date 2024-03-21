@@ -7,3 +7,16 @@ date: "2024-03-22"
 date-format: long
 toc: true
 ---
+
+## Luke's Implementation 
+
+The len() function and the str slicing both have a worst case time complexity of O(n) so that would make the total worst case time complexity of the function be O(n). This means that the function grows at a linear rate based on the size of the input and the time it takes to execute the function.
+
+```python
+def reverse_count(data: str) -> Dict[str, Dict[str, Any]]:
+    """Reverse the content of the provided string and return it in a mapping."""
+    count = str(len(data))
+    reversed_data = str(data[::-1])
+    result = {data: {"count": count, "reversed": reversed_data}}
+    return result
+```
