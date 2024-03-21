@@ -8,16 +8,47 @@ date-format: long
 toc: true
 ---
 
-```python
+## Will's Implementation
+
+```{python}
 def reverse_count(data: str):
     """Reverse the content of the provided string and return it in a mapping."""
     string = ""
-    count = {}
+    count = 0
     output = {}
     for letter in data:
         string = letter + string
-        count["letter"] += 1
-    count[letter] = string
+        count = len(string)
     output[data] = count
+    output["reversed_string"] = string
     return output
 ```
+
+```{python}
+import timeit
+import functools
+
+# Rough draft of potential analysis script.
+performance_list = []
+for i in timeit.repeat(
+  stmt=functools.partial(reverse_count, "checking!"),
+    number=10,
+  ):
+    performance_list.append(i)
+print(
+  f"Performance time in seconds:\n {performance_list}"
+)
+```
+
+# Output
+
+From Will's implementation:
+
+Performance time in seconds:
+[7.916998583823442e-06, 5.457986844703555e-06, 5.333000444807112e-06, 5.207999492995441e-06, 5.250010872259736e-06]
+
+# Analysis/Conclusion
+
+The time complexity of the reverse_count function is O(n), where n is the length of the input string.
+The code above shows that there is a linear growth in relation to the input size and the run time. In
+relation to that the run time shows that this code is the slowest and not the most efficient.
