@@ -90,26 +90,51 @@ for n_1 in [2 ** i for i in range(num_trials_per_n)]:
         experimental_results_simon.append([n_1, n_2, delta_t_simon])
         experimental_results_evan.append([n_1, n_2, delta_t_evan])
 
-print("Rebekah results")
+
+def average_doubling_ratio(l: List[float]) -> float:
+    """Get doubling ratio for given list of floats"""
+    doubling_ratios = []
+    print(l)
+    for i in range(num_trials_per_n - 1):
+        doubling_ratios.append(l[i+1] / l[i])
+    return sum(doubling_ratios) / len(doubling_ratios)
+
+def print_doubling_ratios(results):
+    for i in range(int(len(results) / num_trials_per_n)):
+        print("Holding n_1 constant:")
+        print(average_doubling_ratio([item[2] for item in results[i*num_trials_per_n:(i+1)*num_trials_per_n]]))
+    for i in range(num_trials_per_n):
+        print("Holding n_2 constant:")
+        list_to_compute = []
+        for j in range(int(len(results) / num_trials_per_n)):
+            list_to_compute.append(results[i + j])
+        print(average_doubling_ratio([item[2] for item in list_to_compute]))
+
+print("----- Rebekah results ------")
+print_doubling_ratios(experimental_results_rebekah)
 for i in range(len(experimental_results_rebekah)):
     print(" ".join([str(item) for item in experimental_results_rebekah[i]]))
 
 print()
-print("Sabrina results")
+print("----- Sabrina results ------")
+print_doubling_ratios(experimental_results_sabrina)
 for i in range(len(experimental_results_sabrina)):
     print(" ".join([str(item) for item in experimental_results_sabrina[i]]))
 
 print()
-print("Jason results")
+print("----- Jason results ------")
+print_doubling_ratios(experimental_results_jason)
 for i in range(len(experimental_results_jason)):
     print(" ".join([str(item) for item in experimental_results_jason[i]]))
 
 print()
-print("Simon results")
+print("----- Simon results ------")
+print_doubling_ratios(experimental_results_simon)
 for i in range(len(experimental_results_simon)):
     print(" ".join([str(item) for item in experimental_results_simon[i]]))
 
 print()
-print("Evan results")
+print("----- Evan results ------")
+print_doubling_ratios(experimental_results_evan)
 for i in range(len(experimental_results_evan)):
     print(" ".join([str(item) for item in experimental_results_evan[i]]))
