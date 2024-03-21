@@ -49,8 +49,24 @@ TODO: Write paragraph that explains your code and provides a time complexity in 
 ### Tugi
 
 ```python
-TODO: Add code here
+def detect_duplicates_gene(data):
+    """Detect whether or not there are duplicate values in a list of Gene values."""
+    gene_map = {}
+
+    for gene_object in data:
+        if gene_object.gene_name_prefix in gene_map:
+            return True
+        else:
+            gene_map[gene_object.gene_name_prefix] = 1
+
+    return False
 ```
+
+O(N) due to one for loop when iterating the data.
+RunTime: x seconds.
+
+This code above utilizes a hashmap and counts the number of the genes it finds. If there is more than one found, then 
+it will immediately give True!
 
 TODO: Write paragraph that explains your code and provides a time complexity in big O notation
 
