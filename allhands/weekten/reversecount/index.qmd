@@ -76,3 +76,31 @@ fifth output:
 Performance time in seconds:
 [6.299931555986404e-06, 3.00002284348011e-06, 2.800021320581436e-06, 2.800021320581436e-06, 2.6999041438102722e-06]
 """
+
+# The code for getting the average of the outputs
+
+```
+class AverageOutput:
+    def __init__(self):
+        self.output = []
+
+    def storing_output(self):
+        first_output = [5.699926987290382e-06, 2.900022082030773e-06, 2.7999049052596092e-06, 2.700020559132099e-06, 2.700020559132099e-06]
+        second_output = [5.599926225841045e-06, 2.900022082030773e-06, 2.800021320581436e-06, 2.900022082030773e-06, 2.6999041438102722e-06]
+        third_output = [7.4999406933784485e-06, 4.00003045797348e-06, 4.699919372797012e-06, 4.400033503770828e-06, 4.200031980872154e-06]
+        fourth_output = [7.79994297772646e-06, 3.100023604929447e-06, 2.900022082030773e-06, 2.700020559132099e-06, 2.7999049052596092e-06]
+        fifth_output = [6.299931555986404e-06, 3.00002284348011e-06, 2.800021320581436e-06, 2.800021320581436e-06, 2.6999041438102722e-06]
+
+        self.outputs = first_output + second_output + third_output + fourth_output + fifth_output
+        return sum(self.outputs)
+    
+    def get_average(self):
+        return sum(self.outputs) / len(self.outputs) if self.outputs else 0
+```
+
+# The output of the function including the average performance time
+
+"""
+Total: 9.539956226944923e-05
+Average: 3.8159824907779695e-06
+"""
