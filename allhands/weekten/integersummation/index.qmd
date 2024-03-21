@@ -131,7 +131,7 @@ From the results of running the second version of sum_stop_int_2, it could be se
   2n|   return sum(range(stop + 1))
 ```
 
-Function 1 has a worst-case time complexity of O(n). The sum and range functions are performed sequentially and are not nested so instead of multiplying we only add the n's together making 2n. When calculating big O the constants are dropped so we are left with n, hence our worst-case time complexity is O(n). That means that this function has a linear order of growth and that time grows quadratically with input size.
+Function 1 has a worst-case time complexity of O(n). The sum and range functions are performed sequentially and are not nested so instead of multiplying we only add the n's together making 2n. When calculating big O the constants are dropped so we are left with n, hence the worst-case time complexity is O(n). That means that this function has a linear order of growth and that time grows quadratically with input size.
 
 ### Function 2:
 
@@ -145,9 +145,13 @@ Function 1 has a worst-case time complexity of O(n). The sum and range functions
    1|    return (stop * (stop + 1)) // 2
 ```
 
-Function 2 has a worst-case time complexity of O(1). This means that it has a sublinear order of growth and is constant. 
+Function 2 has a worst-case time complexity of O(1). This means that it has a sublinear order of growth and is constant. There is no iteration present and this version only contains atomic operations with a cost of 1 hence there is a constant worst-case time complexity.
 
 Overall, Function 2 has a better running time than Function 1 because its worst-case time complexity does not grow at the speed that Function 1 does. The performance of Function 1 will take more time as the input size increases whereas Function 2 will perform more or less the same regardless of the input.
+
+# Conclusion 
+
+From the results of the runtime and running time of these two functions, we can conclude that the second method is faster. The doubling experiment shows that the second method can handle very large input sizes at the same rate of handling very small ones leading us to believe it has a better performance overall. The doubling experiment also shows that the first method grows linearly in run time as the input size increases which is a worse performance. Overall, we would recommend whenever you are doing integer computation to only use operations with a cost of 1 if at all possible.
 
 # References
 
