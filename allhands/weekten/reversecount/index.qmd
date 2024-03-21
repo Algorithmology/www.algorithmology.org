@@ -45,6 +45,19 @@ def time_analyzer(
   )
 ```
 
+```{python}
+def reverse_str(data: str) -> str:
+    """Reverse the content of the provided string."""
+    reverse = ""
+    for i in range(len(data)):
+        reverse += data[-(i + 1)]
+    return reverse
+
+def reverse_count(data: str) -> Dict:
+    """Reverse the content of the provided string and return it in a mapping."""
+    return {data: {"count": str(len(data)), "reversed": reverse_str(data)}}
+```
+
 # Instructions
 
 With that said, you are expected to collaboratively build your team's
