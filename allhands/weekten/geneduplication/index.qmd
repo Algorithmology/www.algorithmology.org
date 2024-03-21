@@ -72,10 +72,21 @@ TODO: Write paragraph that explains your code and provides a time complexity in 
 ### Keller
 
 ```python
-TODO: Add code here
+def detect_duplicates_gene(data: List[Gene]) -> bool:
+    """Detect whether or not there are duplicate values in a list of Gene values."""
+    if not data:
+        return False
+
+    seen_prefixes = set()
+    for gene in data:
+        gene_prefix = gene.gene_name[: gene.gene_name_prefix]
+        if gene_prefix in seen_prefixes:
+            return True
+        seen_prefixes.add(gene_prefix)
+    return False
 ```
 
-TODO: Write paragraph that explains your code and provides a time complexity in big O notation
+This function will loop through each gene in the data set using one for loop which makes this function's time complexity `O(n)`. This function first determines whether data is present or not using an if statement that will return `False` if no data is present. The `seen_prefixes` keeps track of the prefixes of the gene names that have been seen so far. The for loop looks at each gene in the data and gets its prefix. This prefix will be added to the set. If a prefix that has been previously added to the set is the same as a prefix that is being added to the set then it will return `True` indicating that there is a duplicate. If no prefixs are duplicates then the data will be looped through and return `False` indicating there are no duplicates in the data.
 
 ### Tugi
 
