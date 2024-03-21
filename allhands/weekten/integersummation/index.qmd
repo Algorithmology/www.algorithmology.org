@@ -18,11 +18,35 @@ When creating functions that involve integer computation it is important to cons
 
 The function `sum_stop_int` is meant to calculate the sum of all numbers up to the given `stop` value. If the function is given a negative value, it will return 0 as an indicator that the value is invalid. Otherwise, the function will return the sum of every integer value from 0 to the `stop` value inclusively.
 
-## Difference between two versions of algorithms
+## Function One
+
+```python
+def sum_stop_int_1(stop: int) -> int:
+   """All of the numbers up to and including the provided stop value."""
+   if stop < 0:
+       return 0
+   return sum(range(stop + 1))
+```
+
+## Function Two
+
+```python
+def sum_stop_int_2(stop: int) -> int:
+   """Calculate the sum of integers up to a given stop value."""
+   if stop < 0:
+       return 0
+   return (stop * (stop + 1)) // 2
+```
+
+## Difference between the Two Versions
 
 Both functions take in an integer, "stop", and return an integer. Inside both functions, there's a conditional check to handle the case where the stop is less than 0. There is a difference in the return statements, the first function uses the sum and range functions to return the sum of `range(stop + 1)` which indicates the sequence from 0 up to the stop value. The second function directly computes the sum using the formula for the sum of an arithmetic series: `(n * (n + 1)) // 2`, where n is the stop value. 
 
 * An arithmetic series is the sum of a sequence in which each term is computed from the previous one by adding or subtracting a constant.
+
+# Method
+
+The `timeit` package is used to time these two functions. This package allows us to create and display the results of a doubling experiment conducted on both versions of the function. The outputs were used to compare the performance of these two functions.
 
 ## Try It On Your Own
 
@@ -58,11 +82,11 @@ print("Execution times: ", ", ".join(f"{time:.9f}" for time in execution_timesF1
 print("Average execution time: ", f"{sum(execution_timesF11) / len(execution_timesF11):.9f}")
 ```
 
-## Results
+# Results
 
-### Data Outputs from Timing and Benchmarks
+## Data Outputs from Timing and Benchmarks
 
-#### Function 1:
+### Function 1:
 | Function       | Stop Value (int) | Run 1 Total Time (s) | Run 2 Total Time (s) | Run 3 Total Time (s) | Average Time (s) |
 | -------------- | ---------------- | -------------------- | -------------------- | -------------------- | ---------------- |
 | sum_stop_int_1 | 1000000          | 0.027711             | 0.027467             | 0.027587             | 0.027588         |
@@ -73,7 +97,7 @@ print("Average execution time: ", f"{sum(execution_timesF11) / len(execution_tim
 
 : Result from running on MacOS 14.2.1 {.responsive}
 
-#### Function 2:
+### Function 2:
 
 | Function       | Stop Value (int) | Run 1 Total Time (s) | Run 2 Total Time (s) | Run 3 Total Time (s) | Average Time (s) |
 | -------------- | ---------------- | -------------------- | -------------------- | -------------------- | ---------------- |
@@ -85,7 +109,7 @@ print("Average execution time: ", f"{sum(execution_timesF11) / len(execution_tim
 
 : Result from running on MacOS 14.2.1 {.responsive}
 
-### Runtime Analysis
+## Runtime Analysis
 
 ![Picture1](./images/Screenshot%202024-03-19%20at%2011.37.28%20PM.png)
 
@@ -95,9 +119,9 @@ From the results of running the first version of sum_stop_int_1, it could be see
 
 From the results of running the second version of sum_stop_int_2, it could be seen that the trend is a logarithmic trendline, whereas the input increases, the time will decrease but the rate of time will decrease as the input increases.
 
-### Running Time Analysis 
+## Running Time Analysis 
 
-#### Function 1:
+### Function 1:
 
 ```
     |def sum_stop_int1(stop: int) -> int:
@@ -109,7 +133,7 @@ From the results of running the second version of sum_stop_int_2, it could be se
 
 Function 1 has a worst-case time complexity of O(n). The sum and range functions are performed sequentially and are not nested so instead of multiplying we only add the n's together making 2n. When calculating big O the constants are dropped so we are left with n, hence our worst-case time complexity is O(n). That means that this function has a linear order of growth and that time grows quadratically with input size.
 
-#### Function 2:
+### Function 2:
 
 ```
     |def sum_stop_int(stop: int) -> int:
