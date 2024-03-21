@@ -3,17 +3,6 @@
 from typing import List, Union
 import time
 
-# Rebekah Solution 
-def rebekah_find_average_value(matrix: List[List[int]]) -> Union[float, None]:
-    """Find the average value in the provided matrix."""
-    if not matrix:
-        return None
-    total_numbers = []
-    for number_list in matrix:
-        for number in number_list:
-            total_numbers.append(number)
-    return sum(total_numbers) / len(total_numbers)
-
 # Sabrina Solution
 def sabrina_find_average_value(matrix: List[List[int]]) -> Union[float, None]:
     """Find the average value in the provided matrix."""
