@@ -1,5 +1,5 @@
 ---
-author: [Jacob Allebach, Vital Joseph, Pallas-Athena Cain, Aidan Dyga]
+author: [Jacob Allebach, Vital Joseph, Pallas-Athena Cain, Aidan Dyga, Bergas Anargya]
 title: Investigating the efficiency of integer summation
 page-layout: full
 categories: [post, integers, iteration]
@@ -12,13 +12,21 @@ toc: true
 
 ## Motivation
 
-## Function Explaination
+When creating functions that involve interger computation it is important to consider different implementations that result in the same integer output. Different implimentations may result in different run times. In this we investigate two different implimentations of the `sum_stop_int` function and how the changes in code impact the performance.
 
-## Method
+## Function Explanation
+
+The function `sum_stop_int` is meant to calculate the sum of all numbers up to the given `stop` value. If the function is given a negative value, it will return 0 as an indicator that the value is invalid. Otherwise, the function will return the sum of every integer value from 0 to the `stop` value inclusively.
+
+## Difference between two version of algorithms
+
+Both functions take in an integer, "stop", and return an integer. Inside both functions, there's a conditional check to handle the case where stop is less than 0. There is a difference in the return statements, the first function uses the sum and range functions to return the sum of range(stop + 1) which indicates the sequence from 0 up to the stop value. The second function directly computes the sum using the formula for the sum of an arithmetic series: (n * (n + 1)) // 2, where n is the stop value. 
+
+* An arithmetic series is the sum of a sequence in which each term is computed from the previous one by adding or subtracting a constant.
 
 ## Try It On Your Own
 
-```python
+```{python}
 """Tests the sum_stop_int function."""
 
 import timeit
@@ -66,6 +74,7 @@ print("Average execution time: ", f"{sum(execution_timesF11) / len(execution_tim
 : Result from running on MacOS 14.2.1 {.responsive}
 
 #### Function 2:
+
 | Function       | Stop Value (int) | Run 1 Total Time (s) | Run 2 Total Time (s) | Run 3 Total Time (s) | Average Time (s) |
 | -------------- | ---------------- | -------------------- | -------------------- | -------------------- | ---------------- |
 | sum_stop_int_2 | 1000000          | 0.000002084          | 0.000000459          | 0.000000458          | 0.000001         |
@@ -78,6 +87,14 @@ print("Average execution time: ", f"{sum(execution_timesF11) / len(execution_tim
 
 ### Runtime Analysis
 
+![Picture1](./Screenshot%202024-03-19%20at%2011.37.28%20PM.png)
+
+From the results of running the first version of sum_stop_int_1, it could be seen that the trend is a linear trendline, where as the input of the function constantly increases, the average time of the runtime also constantly increases at the same rate. This could be summed up that the worst-case complexity is an O(n).
+
+![Picture2](./Screenshot%202024-03-21%20at%203.38.52%20PM.png)
+
+From the results of running the second version of sum_stop_int_2, it could be seen that the trend is a logarithmic trendline, where as the input increases, the time will decrease but the rate of time will decrease as the input will increase.
+
 ### Running Time Analysis 
 
 #### Function 1:
@@ -87,10 +104,10 @@ print("Average execution time: ", f"{sum(execution_timesF11) / len(execution_tim
     |   """All of the numbers up to and including the provided stop value."""
    1|   if stop < 0:
     |       return 0
- n^2|   return sum(range(stop + 1))
+  2n|   return sum(range(stop + 1))
 ```
 
-Function 1 has a worst-case time complexity of O(n2). That means that this function has a quadratic order of growth and that time grows quadratically with input size.
+Function 1 has a worst-case time complexity of O(n). The sum and range functions are performed sequentially and are not nested so instead of multiplying we only add the n's together making 2n. When calculating big O the constants are dropped so we are left with n, hence our worst-case time complexity is O(n). That means that this function has a linear order of growth and that time grows quadratically with input size.
 
 #### Function 2:
 
@@ -112,3 +129,4 @@ Overall, Function 2 has a better running time than Function 1 because its worst-
 
 1. GitHub Copilot
 2. Professor Kapfhammer
+
