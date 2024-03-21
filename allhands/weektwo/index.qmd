@@ -107,6 +107,11 @@ $$
 O\Bigg(n_1 + 2n_1n_2 + \frac{1}{2}n_2(n_1^3 + n_1^2)\Bigg)
 $$
 
+To compare the two results, we created a doubling experiment that doubles both
+$n_1$ and $n_2$ up to $10$ times. We took two measurements, one with $n_1$ held
+constant, and the other with $n_2$ held constant to analyze how accurate our
+estimate for time complexity would be.
+
 Upon comparing these two results, we find that the theoretical result differs
 subtly from the experimental result. The experimental time complexity, when
 $n_1$ is held constant, varies exponentially with $n_2$, as $n_2$ approaches
