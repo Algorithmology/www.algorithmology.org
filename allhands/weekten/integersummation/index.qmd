@@ -26,9 +26,9 @@ toc: true
 
 ![Picture1](./Screenshot%202024-03-19%20at%2011.37.28%20PM.png)
 
-From the results of running the first version of sum_stop_int_1, it could be seen that the trend is a linear trendline, where as the input of the function constantly increases, the average time of the runtime also constantly increases at the same rate. This could be summed up that the worst-case complexity is an O(2n).
+From the results of running the first version of sum_stop_int_1, it could be seen that the trend is a linear trendline, where as the input of the function constantly increases, the average time of the runtime also constantly increases at the same rate. This could be summed up that the worst-case complexity is an O(n).
 
-![Picture2](Screenshot%202024-03-19%20at%2011.37.56%20PM.png)
+
 
 From the results of running the second version of sum_stop_int_2, it could be seen that the trend is relatively similar, where as the input increases, the time will decrease but the rate of time will decrease at a slower rate. 
 
