@@ -126,3 +126,7 @@ Function 2 has a worst-case time complexity of O(1). This means that it has a su
 Overall, Function 2 has a better running time than Function 1 because its worst-case time complexity does not grow at the speed that Function 1 does. The performance of Function 1 will take more time as the input size increases whereas Function 2 will perform more or less the same regardless of the input.
 
 # References
+
+1. GitHub Copilot
+2. Professor Kapfhammer
+
