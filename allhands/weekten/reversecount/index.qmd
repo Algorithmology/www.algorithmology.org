@@ -16,7 +16,7 @@ functions implemented by team members.
 
 # Code
 
-```python
+```{python}
 import timeit
 import functools
 import typer
