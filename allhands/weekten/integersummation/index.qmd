@@ -60,7 +60,7 @@ print("Average execution time: ", f"{sum(execution_timesF11) / len(execution_tim
 
 ## Results
 
-###Data Outputs from Timing and Benchmarks
+### Data Outputs from Timing and Benchmarks
 
 #### Function 1:
 | Function       | Stop Value (int) | Run 1 Total Time (s) | Run 2 Total Time (s) | Run 3 Total Time (s) | Average Time (s) |
@@ -74,6 +74,7 @@ print("Average execution time: ", f"{sum(execution_timesF11) / len(execution_tim
 : Result from running on MacOS 14.2.1 {.responsive}
 
 #### Function 2:
+
 | Function       | Stop Value (int) | Run 1 Total Time (s) | Run 2 Total Time (s) | Run 3 Total Time (s) | Average Time (s) |
 | -------------- | ---------------- | -------------------- | -------------------- | -------------------- | ---------------- |
 | sum_stop_int_2 | 1000000          | 0.000002084          | 0.000000459          | 0.000000458          | 0.000001         |
