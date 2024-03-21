@@ -90,17 +90,26 @@ for n_1 in [2 ** i for i in range(num_trials_per_n)]:
         experimental_results_simon.append([n_1, n_2, delta_t_simon])
         experimental_results_evan.append([n_1, n_2, delta_t_evan])
 
+print("Rebekah results")
 for i in range(len(experimental_results_rebekah)):
     print(" ".join([str(item) for item in experimental_results_rebekah[i]]))
 
+print()
+print("Sabrina results")
 for i in range(len(experimental_results_sabrina)):
     print(" ".join([str(item) for item in experimental_results_sabrina[i]]))
 
+print()
+print("Jason results")
 for i in range(len(experimental_results_jason)):
     print(" ".join([str(item) for item in experimental_results_jason[i]]))
 
+print()
+print("Simon results")
 for i in range(len(experimental_results_simon)):
     print(" ".join([str(item) for item in experimental_results_simon[i]]))
 
+print()
+print("Evan results")
 for i in range(len(experimental_results_evan)):
     print(" ".join([str(item) for item in experimental_results_evan[i]]))
