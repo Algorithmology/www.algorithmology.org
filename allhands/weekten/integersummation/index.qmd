@@ -14,7 +14,11 @@ toc: true
 
 ## Function Explaination
 
-## Method
+## Difference between two version of algorithms
+
+Both functions take in an integer, "stop", and return an integer. Inside both functions, there's a conditional check to handle the case where stop is less than 0. There is a difference in the return statements, the first function uses the sum and range functions to return the sum of range(stop + 1) which indicates the sequence from 0 up to the stop value. The second function directly computes the sum using the formula for the sum of an arithmetic series: (n * (n + 1)) // 2, where n is the stop value. 
+
+* An arithmetic series is the sum of a sequence in which each term is computed from the previous one by adding or subtracting a constant.
 
 ## Try It On Your Own
 
