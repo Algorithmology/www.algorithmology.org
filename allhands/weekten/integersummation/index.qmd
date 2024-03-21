@@ -12,6 +12,8 @@ toc: true
 
 ## Motivation
 
+When creating functions that involve interger computation it is important to consider different implementations that result in the same integer output. Different implimentations may result in different run times. In this we investigate two different implimentations of the `sum_stop_int` function and how the changes in code impact the performance.
+
 ## Function Explaination
 
 ## Difference between two version of algorithms
@@ -22,7 +24,7 @@ Both functions take in an integer, "stop", and return an integer. Inside both fu
 
 ## Try It On Your Own
 
-```python
+```{python}
 """Tests the sum_stop_int function."""
 
 import timeit
@@ -56,7 +58,7 @@ print("Average execution time: ", f"{sum(execution_timesF11) / len(execution_tim
 
 ## Results
 
-## Data Outputs from Timing and Benchmarks
+### Data Outputs from Timing and Benchmarks
 
 #### Function 1:
 | Function       | Stop Value (int) | Run 1 Total Time (s) | Run 2 Total Time (s) | Run 3 Total Time (s) | Average Time (s) |
