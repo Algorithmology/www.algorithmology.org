@@ -7,3 +7,17 @@ date: "2024-03-22"
 date-format: long
 toc: true
 ---
+
+```python
+def reverse_count(data: str):
+    """Reverse the content of the provided string and return it in a mapping."""
+    string = ""
+    count = {}
+    output = {}
+    for letter in data:
+        string = letter + string
+        count["letter"] += 1
+    count[letter] = string
+    output[data] = count
+    return output
+```
