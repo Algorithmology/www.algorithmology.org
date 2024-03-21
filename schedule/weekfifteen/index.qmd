@@ -26,9 +26,10 @@ Priority Queues
   - Explore how to implement the `Graph` and `Digraph` data structures
   - Understand the adjacency list and adjacency matrix representations
   - Examine Python source code segments to illustrate key points
-- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Continue an 
+- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Continue an
 algorithm engineering project
-- {{< iconify game-icons team-idea size=18px >}} **Friday**: Finish an algorithm all-hands project
+- {{< iconify game-icons team-idea size=18px >}} **Friday**: Recap all of the
+algorithm all-hands projects
 
 ## Project
 
