@@ -13,7 +13,6 @@ toc: true
 An analysis of the running time and run time of the assorted `reverse_count`
 functions implemented by team members.
 
-
 # Code
 
 ```{python}
@@ -47,22 +46,11 @@ print(
 )
 ```
 
-# Instructions
+# Output
 
-With that said, you are expected to collaboratively build your team's
-benchmarking framework that will correctly collect performance results about
-the function that each team member implemented. Again, all team members are
-expected to contribute to their team's software for running a performance
-benchmark to calculate runtimes! Then, you will each independently run the
-benchmarking framework so that you can report results about the performance of
-the aforementioned functions.
+From Mordred's implementation:
 
-Each team member must also independently perform a running time analysis of
-their own functions and report the results of their work in the form of a proof
-sketch and then the worst-case time complexity of the function that they
-implemented. Each team member should then reflect on whether or not their
-runtime analysis aligns with their running time analysis.
-
-Finally, your team will work together to see who implemented the fastest
-function, publish your results to the course web site, and present your results
-during the class session next week!
+```text
+Performance time in seconds:
+ [3.950000018448918e-05, 2.3999999939405825e-05, 2.390000008745119e-05, 2.3800000235496555e-05, 2.3799999780749204e-05]
+```
