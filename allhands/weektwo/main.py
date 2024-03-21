@@ -84,11 +84,11 @@ for n_1 in [2 ** i for i in range(num_trials_per_n)]:
         delta_t_evan = timeit.timeit(lambda: find_average_value_evan(matrix), number=10)
 
         # append experimental results to running list
-        experimental_results_rebekah.append(delta_t_rebekah)
-        experimental_results_sabrina.append(delta_t_sabrina)
-        experimental_results_jason.append(delta_t_jason)
-        experimental_results_simon.append(delta_t_simon)
-        experimental_results_evan.append(delta_t_evan)
+        experimental_results_rebekah.append([n_1, n_2, delta_t_rebekah])
+        experimental_results_sabrina.append([n_1, n_2, delta_t_sabrina])
+        experimental_results_jason.append([n_1, n_2, delta_t_jason])
+        experimental_results_simon.append([n_1, n_2, delta_t_simon])
+        experimental_results_evan.append([n_1, n_2, delta_t_evan])
 
 for i in range(len(experimental_results_rebekah)):
     if i % num_trials_per_n == 0:
