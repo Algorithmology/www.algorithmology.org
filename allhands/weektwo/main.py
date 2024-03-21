@@ -65,7 +65,11 @@ def find_average_value_evan(matrix: List[List[int]]) -> Union[float, None]:
     average = sum(flattened_matrix) / len(flattened_matrix)
     return average
 
-experimental_results = []
+experimental_results_rebekah = []
+experimental_results_sabrina = []
+experimental_results_jason = []
+experimental_results_simon = []
+experimental_results_evan = []
 
 num_trials_per_n = 10
 
@@ -73,17 +77,35 @@ for n_1 in [2 ** i for i in range(num_trials_per_n)]:
     for n_2 in [2 ** i for i in range(num_trials_per_n)]:
         # create matrix of size n_1 x n_2
         matrix = [[j for j in range(n_2)] for i in range(n_1)]
-        find_average_value_rebekah()
-        find_average_value_sabrina()
-        find_average_value_jason()
-        find_average_value_simon()
-        find_average_value_evan()
-        delta_t = timeit.timeit(lambda: find_average_value(matrix), number=10)
+        delta_t_rebekah = timeit.timeit(lambda: find_average_value_rebekah(matrix), number=10)
+        delta_t_sabrina = timeit.timeit(lambda: find_average_value_sabrina(matrix), number=10)
+        delta_t_jason = timeit.timeit(lambda: find_average_value_jason(matrix), number=10)
+        delta_t_simon = timeit.timeit(lambda: find_average_value_simon(matrix), number=10)
+        delta_t_evan = timeit.timeit(lambda: find_average_value_evan(matrix), number=10)
 
         # append experimental results to running list
-        experimental_results.append([n_1, n_2, delta_t])
+        experimental_results_rebekah.append(delta_t_rebekah)
+        experimental_results_sabrina.append(delta_t_sabrina)
+        experimental_results_jason.append(delta_t_jason)
+        experimental_results_simon.append(delta_t_simon)
+        experimental_results_evan.append(delta_t_evan)
 
-for i in range(len(experimental_results)):
+for i in range(len(experimental_results_rebekah)):
     if i % num_trials_per_n == 0:
-        print()
-    print(" ".join([str(item) for item in experimental_results[i]]))
+        print(" ".join([str(item) for item in experimental_results_rebekah[i]]))
+
+for i in range(len(experimental_results_sabrina)):
+    if i % num_trials_per_n == 0:
+        print(" ".join([str(item) for item in experimental_results_sabrina[i]]))
+
+for i in range(len(experimental_results_jason)):
+    if i % num_trials_per_n == 0:
+        print(" ".join([str(item) for item in experimental_results_jason[i]]))
+
+for i in range(len(experimental_results_simon)):
+    if i % num_trials_per_n == 0:
+        print(" ".join([str(item) for item in experimental_results_simon[i]]))
+
+for i in range(len(experimental_results_evan)):
+    if i % num_trials_per_n == 0:
+        print(" ".join([str(item) for item in experimental_results_evan[i]]))
