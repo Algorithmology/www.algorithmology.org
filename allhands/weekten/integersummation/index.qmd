@@ -1,5 +1,5 @@
 ---
-author: [Jacob Allebach, Vital Joseph, Pallas-Athena Cain, Aidan Dyga]
+author: [Jacob Allebach, Vital Joseph, Pallas-Athena Cain, Aidan Dyga, Bergas Anargya]
 title: Investigating the efficiency of integer summation
 page-layout: full
 categories: [post, integers, iteration]
@@ -85,6 +85,14 @@ print("Average execution time: ", f"{sum(execution_timesF11) / len(execution_tim
 : Result from running on MacOS 14.2.1 {.responsive}
 
 ### Runtime Analysis
+
+![Picture1](./Screenshot%202024-03-19%20at%2011.37.28%20PM.png)
+
+From the results of running the first version of sum_stop_int_1, it could be seen that the trend is a linear trendline, where as the input of the function constantly increases, the average time of the runtime also constantly increases at the same rate. This could be summed up that the worst-case complexity is an O(n).
+
+![Picture2](./Screenshot%202024-03-21%20at%203.38.52%20PM.png)
+
+From the results of running the second version of sum_stop_int_2, it could be seen that the trend is a logarithmic trendline, where as the input increases, the time will decrease but the rate of time will decrease as the input will increase.
 
 ### Running Time Analysis 
 
