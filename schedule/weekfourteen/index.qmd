@@ -31,7 +31,7 @@ Priority Queues
   - Examine Python source code segments to illustrate key points
 - {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Start a new 
 algorithm engineering project
-- {{< iconify game-icons team-idea size=18px >}} **Friday**: Begin a new algorithm all-hands project
+- {{< iconify game-icons team-idea size=18px >}} **Friday**: Report on an algorithm all-hands project
 
 ## Project
 

@@ -29,13 +29,13 @@ Room 108.
 ::: {.callout-note appearance="minimal" title="Scheduling Appointments"}
 
 To schedule a meeting with the course instructor during office hours, please
-visit the [Course Instructor's Appointment
+visit the [Instructor's Appointment
 Scheduler](https://www.gregorykapfhammer.com/schedule/). You can schedule an
 appointment by clicking a suitable box in Google Calendar's Appointment
 Scheduler and then reserving an open time slot. The details about your chosen
-appointment will appear in both your Google Calendar and the instructor's Google
-Calendar. Please arrive ten minutes in advance for your meeting and be aware
-that, by necessity, the meeting before yours may sometimes run late.
+appointment will appear in both your Google Calendar and the instructor's
+Google Calendar. Please arrive ten minutes in advance for your meeting and be
+aware that, by necessity, the meeting before yours may run late.
 
 :::
 
@@ -95,9 +95,9 @@ experiences of others.
 and to analyze and solve problems.
 
 Computer Science 202 at Allegheny College is a core course in the Computer
-Science major. Graduates with the Computer Science major, who all take the
-Computer Science 202 course, must demonstrate their attainment of these learning
-objectives:
+Science major. Graduates with the Computer Science major --- who all take the
+Computer Science 202 course --- must demonstrate their attainment of these
+learning objectives:
 
 - **CS-1**: Demonstrate and be able to communicate the knowledge of data types,
 algorithms, and mathematical principles behind discrete objects.
@@ -192,18 +192,18 @@ student's weekly class participation grade will be reduced if they are observed
 undertaking non-course-related activities like viewing email, social media, or
 other content not about algorithm analysis. 
 
-- **Midterm Examination**: The midterm examination is an online, executable, and
-cumulative assessment covering all prior material from the course sessions, as
-outlined on the [course schedule](../schedule/index.qmd). Unless prior
+- **Midterm Examination**: The midterm examination is an online, executable,
+and cumulative assessment covering all prior material from the course sessions,
+as outlined on the [course schedule](../schedule/index.qmd). Unless prior
 arrangements are made with the instructor, all students should use their
 computer to take these tests on the scheduled date and to complete it in the
 stated location while taking no more than the required amount of time. The
-midterm is an executable examination that students will complete through the use
-of GitHub, VS Code, and the Python programming tools installed on their laptops.
-Following the completion of the midterm examination during a laboratory session,
-students will, during algorithm all-hands sessions, collaboratively complete and
-present an analytical and empirical evaluation of the performance of one
-component of their examination.
+midterm is an executable examination that students will complete through the
+use of GitHub, VS Code, and the Python programming tools installed on their
+laptops. Following the completion of the midterm examination during a
+laboratory session, students will, during algorithm all-hands sessions,
+collaboratively complete and present an analytical and empirical evaluation of
+the performance of one component of their executable examination.
 
 - **Final Examination**: The final examination is an online, executable,
 cumulative assessment covering all of the material during all of the course
@@ -236,17 +236,18 @@ assessment policies:
 All assignments will have a stated due date shared through GitHub, GitHub
 Classroom, and/or the [Algorithmology Discord](https://discord.gg/YHjhQaBnme).
 No credit will be awarded for any course work that you submit to the incorrect
-GitHub repository or web site. Unless special arrangements are made with the
-instructor to address extenuating circumstances, no work will be accepted after
-the deadline.
+GitHub repository or web site. Unless special advance arrangements are made
+with the instructor to address extenuating circumstances, no work will be
+accepted after the deadline.
 
 ##### Assignment Evaluation
 
 Using a report that the instructor shares with you through your GitHub
 repositories devoted to work in the field of algorithm analysis, you will
 privately receive a grade for and feedback on your course projects. Your grade
-will be a function of whether or not you completed work that fulfills the
-project's specification and submitted it by the deadline to the stated platform.
+will be a function of whether or not you (a) completed work that fulfills the
+project's specification and (b) submitted it by the deadline to the stated
+platform.
 
 ##### Algorithmology Tokens
 
@@ -302,17 +303,17 @@ leaders](https://www.cis.allegheny.edu/teaching/technicalleaders/).
 #### Using GitHub and Discord
 
 This course will primarily use GitHub and Discord for all course communication.
-We will use GitHub for the sharing of both source code and course projects and
-for reporting issues in those materials. We will use two distinct Discord
-servers for all course discussions. The [Algorithmology Discord
-Server](https://discord.gg/YHjhQaBnme) provides a way for members of the
-developer development community to use text and video to chat with each other
-and will be the main forum for discussing the professional and technical content
-in software engineering. The [Allegheny College Computer Science Discord
-Server](https://discord.gg/CS2h9kXzX6) will be the main forum for Department of
-Computer Science announcements. Finally, any content that a student wants the
-instructor to assess (e.g., the work for an algorithm engineering project) must
-be in a GitHub repository.
+We will use GitHub for the sharing of both source code and documentation for
+course projects and for reporting issues in those materials. We will use two
+distinct Discord servers for all course discussions. The [Algorithmology
+Discord Server](https://discord.gg/YHjhQaBnme) provides a way for members of
+the developer development community to use text and video to chat with each
+other and will be the main forum for discussing the professional and technical
+content in software engineering. The [Allegheny College Computer Science
+Discord Server](https://discord.gg/CS2h9kXzX6) will be the main forum for
+Department of Computer Science announcements. Finally, any content that a
+student wants the instructor to assess (e.g., the work for an algorithm
+engineering project) must be in a GitHub repository.
 
 #### Using Email
 
@@ -355,14 +356,14 @@ automatically generated by a software tool.
 This means that every student must work as an effective algorithm engineer by
 documenting the sources for their work and verifying the correctness,
 maintainability, and long-term reliability of all source code and documentation
-that they submit. As such, students who uses software tools to create content
+that they submit. As such, students who use software tools to create content
 are responsible for citing their sources and demonstrating their understanding
 of it during the in-person assessments. Moreover, all students in the class are
-responsible for all of the source code and documentation submitted to the GitHub
-repository that hosts the course projects, including any tool-generated software
-artifacts. This means that every student should be able to answer questions,
-during either an in-person or online discussion, about any technical or
-professional content, including that which was automatically generated by a
+responsible for all of the source code and documentation submitted to the
+GitHub repository that hosts the course projects, including any tool-generated
+software artifacts. This means that every student should be able to answer
+questions, during either an in-person or online discussion, about any technical
+or professional content, including that which was automatically generated by a
 software tool.
 
 Students who are effective algorithm engineers also pledge to abide by the [ACM
@@ -387,8 +388,10 @@ In reference to software, Frederick P. Brooks, Jr. wrote in chapter one of *The
 Mythical Man Month* that "the magic of myth and legend has come true in our
 time." Software is a pervasive aspect of our society that changes how we think
 and act. High quality and efficient software also has the potential to
-positively influence the lives of many people. At the start of this class, I
-invite you to join together in an adventure in algorithm analysis!
+positively influence the lives of many people. Let's embark on this journey of
+discovery and innovation, harnessing the power of algorithms to efficiently
+solve complex problems with software. At the start of this class, I invite you
+to join together in an adventure in algorithm analysis!
 
 ::: {.callout-note appearance="minimal" title="External Learners"}
 
@@ -396,7 +399,7 @@ This syllabus is for learners who enrolled in a for-credit Algorithm Analysis
 course in the [Department of Computer and information
 Science](https://www.cis.allegheny.edu/) at [Allegheny
 College](https://www.allegheny.edu/). Even though external learners are not
-bound by the rules in this syllabus, they can rely on the
+bound by this syllabus, they can rely on the
 [Algorithmology](https://github.com/TeamDevDev/www.developerdevelopment.com/graphs/contributors)
 team and the members of the [Algorithmology
 Discord](https://discord.gg/YHjhQaBnme).

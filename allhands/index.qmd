@@ -11,17 +11,20 @@ listing:
     contents:
       - "week*/**/*.qmd"
     sort:
-      - "date"
+      - "date desc"
       - "title"
 ---
 
 Interesting in learning more about how to use experimental and analytical
-techniques to study algorithms and data structures? Checkout these slide decks
-to learn more! Each deck explores a specific topic in connection with chapters
-in the book [A First Course on Data Structures in
-Python](https://donsheehy.github.io/datastructures/). Finally, make sure to
-review the [course schedule](../schedule/index.qmd) for more details about how
-these slides connect to various course projects.
+techniques to study algorithms and data structures? To learn more, checkout
+these articles from the [Algorithm All-Hands projects](../syllabus/index.qmd)
+in which a team of learners explores the efficiency of a software system
+implemented in Python! Each article reports details about the efficiency of
+specific algorithms and data structures in connection to chapters in the book
+[A First Course on Data Structures in
+Python](https://donsheehy.github.io/datastructures/). Make sure to review the
+[course schedule](../schedule/index.qmd) for more details about how these
+algorithm all-hands reports connect other course components. 
 
 :::{#featured-posts}
 :::

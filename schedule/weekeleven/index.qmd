@@ -26,10 +26,10 @@ understand the worst-case time complexities
 Searching and Sorting
   - Explore how to implement searching and sorting algorithms Python
   - Apply a new algorithmic paradigm called dynamic programming
-  - Learn more about `mergesort` and `quickselect` algorithms
+  - Learn more about the `mergesort` and `quickselect` algorithms
   - Examine Python source code segments to illustrate key points
 - {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Continue algorithm engineering project
-- {{< iconify game-icons team-idea size=18px >}} **Friday**: Continue the algorithm all-hands project
+- {{< iconify game-icons team-idea size=18px >}} **Friday**: Start new algorithm all-hands project
 
 ## Project
 

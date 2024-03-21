@@ -1,0 +1,9 @@
+---
+author: [Jacob Allebach, Vital Joseph, Pallas-Athena Cain, Aidan Dyga]
+title: Investigating the efficiency of integer summation
+page-layout: full
+categories: [post, integers, iteration]
+date: "2024-03-22"
+date-format: long
+toc: true
+---
