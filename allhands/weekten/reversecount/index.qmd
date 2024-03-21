@@ -8,7 +8,7 @@ date-format: long
 toc: true
 ---
 
-## Luke's Implementation
+# Code 
 
 The len() function and the str slicing both have a worst case time complexity of
 O(n) so that would make the total worst case time complexity of the function be
@@ -16,14 +16,34 @@ O(n). This means that the function grows at a linear rate based on the size of
 the input and the time it takes to execute the function.
 
 ```{python}
+# Luke's implementation of the function reverse_count
+
 def reverse_count(data: str) -> Dict[str, Dict[str, Any]]:
     """Reverse the content of the provided string and return it in a mapping."""
     count = str(len(data))
     reversed_data = str(data[::-1])
     result = {data: {"count": count, "reversed": reversed_data}}
     return result
+
 ```
-# Output
+
+```{python}
+import timeit
+import functools
+
+# Rough draft of potential analysis script.
+performance_list = []
+for i in timeit.repeat(
+  stmt=functools.partial(reverse_count, "checking!"),
+    number=10,
+  ):
+    performance_list.append(i)
+print(
+  f"Performance time in seconds:\n {performance_list}"
+)
+```
+
+# Data
 
 Luke's Implementation:
 
@@ -31,3 +51,4 @@ Luke's Implementation:
 Performance time in seconds:
  [9.806000008438787e-06, 6.161999976939114e-06, 5.86999999541149e-06, 8.645999997725085e-06, 5.89299997955095e-06]
 ```
+
