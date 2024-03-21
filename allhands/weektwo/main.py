@@ -1,3 +1,5 @@
+import timeit
+from typing import List, Union
 
 ## Rebekah Rudd Solution
 
