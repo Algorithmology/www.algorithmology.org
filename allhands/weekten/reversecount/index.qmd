@@ -48,3 +48,9 @@ print(
 From Chloe's implementation:
 
 Performance time in seconds:[6.667338311672211e-06, 2.2919848561286926e-06, 2.1248124539852142e-06, 2.125278115272522e-06, 2.00001522898674e-06]
+
+# Analysis/Conclusion
+
+Based on the output above, the running time exhibits a worst case time complexity of O(n), otherwise described as a linear progression. This means that there is a linear relationship between the runtime of the function and the input size.
+
+The runtime of the function implementation above is displayed in the Ouput section. The average of the 5 output values is 3.0418857932090757e-06. Comapring the running time to the runtime results, it is indicated that as the string input `data` is increased, there will be a constant rate of growth. Graphically, this would be visualized with time on the x axis and input size on the y axis; the curve would be a straight line with a positive slope.
