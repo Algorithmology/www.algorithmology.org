@@ -1,5 +1,5 @@
 ---
-author: [Jacob Allebach, Vital Joseph, Pallas-Athena Cain, Aidan Dyga]
+author: [Jacob Allebach, Vital Joseph, Pallas-Athena Cain, Aidan Dyga, Bergas Anargya]
 title: Investigating the efficiency of integer summation
 page-layout: full
 categories: [post, integers, iteration]
@@ -30,7 +30,7 @@ From the results of running the first version of sum_stop_int_1, it could be see
 
 ![Picture2](./Screenshot%202024-03-21%20at%203.38.52%20PM.png)
 
-From the results of running the second version of sum_stop_int_2, it could be seen that the trend is a polynomial trendline, where as the input increases, the time will decrease until it reaches the lowest optimum input, which is around 11250000. As it reaches this point, the time will increase as the input also increases. 
+From the results of running the second version of sum_stop_int_2, it could be seen that the trend is a logarithmic trendline, where as the input increases, the time will decrease but the rate of time will decrease as the input will increase.
 
 ### Running Time Analysis 
 
