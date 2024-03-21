@@ -8,12 +8,25 @@ date-format: long
 toc: true
 ---
 
+
+# Overview
+
+An analysis of the running time and run time of the assorted `reverse_count`
+functions implemented by team members.
+
 # Code 
 
-The len() function and the str slicing both have a worst case time complexity of
-O(n) so that would make the total worst case time complexity of the function be
-O(n). This means that the function grows at a linear rate based on the size of
-the input and the time it takes to execute the function.
+```{python}
+# David's implementation of the function reverse_count
+
+def reverse_count(data: str) -> Dict[str, Dict[str, str]]:
+    """Reverse the content of the provided string and return it in a mapping."""
+    count = str(len(data))
+    reversed = data[::-1]
+    result = {data: {"count": count, "reversed": reversed}}
+    return result
+```
+
 
 ```{python}
 # Luke's implementation of the function reverse_count
@@ -25,7 +38,6 @@ def reverse_count(data: str) -> Dict[str, Dict[str, Any]]:
     result = {data: {"count": count, "reversed": reversed_data}}
     return result
 
-```
 
 ```{python}
 import timeit
@@ -45,10 +57,29 @@ print(
 
 # Data
 
+David's Implementation:
+```text
+Performance time in seconds:
+First Run: [1.09350003185682e-05, 8.03500006441027e-06, 7.890994311310351e-06, 7.889997505117208e-06, 7.848000677768141e-06]
+Second Run: [1.1811032891273499e-05, 8.044764399528503e-06, 7.875263690948486e-06, 7.834285497665405e-06, 7.856637239456177e-06]
+Third Run: [1.1026859283447266e-05, 8.003786206245422e-06, 7.811933755874634e-06, 7.797032594680786e-06, 7.810071110725403e-06]
+Fourth Run: [1.1337921023368835e-05, 8.210539817810059e-06, 8.05780291557312e-06, 8.035451173782349e-06, 8.061528205871582e-06]
+Fifth Run: [1.1313000868540257e-05, 8.074996003415436e-06, 7.907001418061554e-06, 7.907998224254698e-06, 7.911003194749355e-06]
+Average: [1.1184569075043328e-05, 8.073418497881355e-06, 7.908197097374817e-06, 7.953013119930274e-06, 7.948352562959439e-06]
+```
+
 Luke's Implementation:
 
 ```text
 Performance time in seconds:
  [9.806000008438787e-06, 6.161999976939114e-06, 5.86999999541149e-06, 8.645999997725085e-06, 5.89299997955095e-06]
 ```
+
+# Analysis
+
+For Luke's implementation
+The len() function and the str slicing both have a worst case time complexity of
+O(n) so that would make the total worst case time complexity of the function be
+O(n). This means that the function grows at a linear rate based on the size of
+the input and the time it takes to execute the function.
 
