@@ -17,7 +17,7 @@ functions implemented by team members.
 
 # Modify this to include your code in place of mine - I'll clean up merge conflicts later.
 
-```{python}
+```python
 # Benedek's implementation of the function reverse_count
 
 def reverse_str(data: str) -> str:
@@ -30,7 +30,7 @@ def reverse_count(data: str) -> dict:
     return {data: {"count": str(len(data)), "reversed": data[::-1]}}
 ```
 
-```{python}
+```python
 import timeit
 import functools
 
@@ -79,7 +79,7 @@ Performance time in seconds:
 
 # The code for getting the average of the outputs
 
-```
+```python
 class AverageOutput:
     def __init__(self):
         self.output = []
