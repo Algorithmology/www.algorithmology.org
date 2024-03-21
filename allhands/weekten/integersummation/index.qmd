@@ -58,7 +58,7 @@ print("Average execution time: ", f"{sum(execution_timesF11) / len(execution_tim
 
 ## Results
 
-### Data Outputs from Timing and Benchmarks
+###Data Outputs from Timing and Benchmarks
 
 #### Function 1:
 | Function       | Stop Value (int) | Run 1 Total Time (s) | Run 2 Total Time (s) | Run 3 Total Time (s) | Average Time (s) |
@@ -93,10 +93,10 @@ print("Average execution time: ", f"{sum(execution_timesF11) / len(execution_tim
     |   """All of the numbers up to and including the provided stop value."""
    1|   if stop < 0:
     |       return 0
- n^2|   return sum(range(stop + 1))
+  2n|   return sum(range(stop + 1))
 ```
 
-Function 1 has a worst-case time complexity of O(n2). That means that this function has a quadratic order of growth and that time grows quadratically with input size.
+Function 1 has a worst-case time complexity of O(n). The sum and range functions are performed sequentially and are not nested so instead of multiplying we only add the n's together making 2n. When calculating big O the constants are dropped so we are left with n, hence our worst-case time complexity is O(n). That means that this function has a linear order of growth and that time grows quadratically with input size.
 
 #### Function 2:
 
