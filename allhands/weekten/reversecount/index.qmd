@@ -7,7 +7,6 @@ date: "2024-03-22"
 date-format: long
 toc: true
 ---
-
 ### Function Implementation
 ```{python}
 def reverse_count(data: str) -> dict:
