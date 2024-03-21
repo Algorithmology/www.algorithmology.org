@@ -7,13 +7,44 @@ date: "2024-03-22"
 date-format: long
 toc: true
 ---
-### Function Implementation
+
+# Overview
+
+An analysis of the running time and run time of the assorted `reverse_count`
+functions implemented by team members.
+
+# Code 
+
+# TODO: Modify this to include your code in place of mine - I'll clean up merge conflicts later.
+
 ```{python}
+# Chloe's implementation of the function reverse_count
+
+### Function Implementation
 def reverse_count(data: str) -> dict:
     """Reverse the content of the provided string and return it in a mapping."""
     reverse = data[::-1]
     return {data: {"count": str(len(data)), "reversed": reverse}}
 ```
 
-### Running Time
-Linear Worst-Case Time Complexity - O(n)
+```{python}
+import timeit
+import functools
+
+# Rough draft of potential analysis script.
+performance_list = []
+for i in timeit.repeat(
+  stmt=functools.partial(reverse_count, "checking!"),
+    number=10,
+  ):
+    performance_list.append(i)
+print(
+  f"Performance time in seconds:\n {performance_list}"
+)
+```
+
+# Output
+
+From Chloe's implementation:
+
+Performance time in seconds:[6.667338311672211e-06, 2.2919848561286926e-06, 2.1248124539852142e-06, 2.125278115272522e-06, 2.00001522898674e-06]
