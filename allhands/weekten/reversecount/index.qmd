@@ -20,3 +20,11 @@ def reverse_count(data: str) -> Dict[str, Dict[str, Any]]:
     result = {data: {"count": count, "reversed": reversed_data}}
     return result
 ```
+# Output
+
+Luke's Implementation:
+
+```text
+Performance time in seconds:
+ [9.806000008438787e-06, 6.161999976939114e-06, 5.86999999541149e-06, 8.645999997725085e-06, 5.89299997955095e-06]
+```
