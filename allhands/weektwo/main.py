@@ -91,21 +91,16 @@ for n_1 in [2 ** i for i in range(num_trials_per_n)]:
         experimental_results_evan.append([n_1, n_2, delta_t_evan])
 
 for i in range(len(experimental_results_rebekah)):
-    if i % num_trials_per_n == 0:
-        print(" ".join([str(item) for item in experimental_results_rebekah[i]]))
+    print(" ".join([str(item) for item in experimental_results_rebekah[i]]))
 
 for i in range(len(experimental_results_sabrina)):
-    if i % num_trials_per_n == 0:
-        print(" ".join([str(item) for item in experimental_results_sabrina[i]]))
+    print(" ".join([str(item) for item in experimental_results_sabrina[i]]))
 
 for i in range(len(experimental_results_jason)):
-    if i % num_trials_per_n == 0:
-        print(" ".join([str(item) for item in experimental_results_jason[i]]))
+    print(" ".join([str(item) for item in experimental_results_jason[i]]))
 
 for i in range(len(experimental_results_simon)):
-    if i % num_trials_per_n == 0:
-        print(" ".join([str(item) for item in experimental_results_simon[i]]))
+    print(" ".join([str(item) for item in experimental_results_simon[i]]))
 
 for i in range(len(experimental_results_evan)):
-    if i % num_trials_per_n == 0:
-        print(" ".join([str(item) for item in experimental_results_evan[i]]))
+    print(" ".join([str(item) for item in experimental_results_evan[i]]))
