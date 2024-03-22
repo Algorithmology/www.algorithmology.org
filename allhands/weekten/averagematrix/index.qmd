@@ -1,9 +1,0 @@
----
-author: [Sabrina Rodriguez, Jason Gyamfi, Simon Jones, Evan Nelson, Rebekah Rudd]
-title: Investigating the efficiency of computing the average value in an integer matrix
-page-layout: full
-categories: [post, integers, lists]
-date: "2024-03-22"
-date-format: long
-toc: true
----
