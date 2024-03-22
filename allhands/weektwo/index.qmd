@@ -358,7 +358,7 @@ increasing in linearity upon passing $n_1 \approx 250$.
 
 # Results
 
-Simon's proposal is the worst-case scenario among the other solutions offered. By iterating through each row of the matrix to concatenate all the rows into a flat list, Simon's method involves calculating the length and sum of this flattened list in order to determine the average.
+Simon's proposal is the worst-case scenario among the other solutions offered. By iterating through each row of the matrix to concatenate all the rows into a flat list, Simon's method involves calculating the length and sum of this flattened list in order to determine the average. This is the worst-case scenario because of the repeated concatenation operation, which is known to be inefficient because it can cause a large overhead as the size of the input increases by creating a new list and copying the old elements into it along with the new ones.
 
 # Future Works
 
