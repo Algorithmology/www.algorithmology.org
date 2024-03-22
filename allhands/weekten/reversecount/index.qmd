@@ -15,6 +15,15 @@ functions implemented by team members.
 
 # Code 
 
+```{python}
+# Chloe's implementation of the function reverse_count
+
+### Function Implementation
+def reverse_count(data: str) -> dict:
+    """Reverse the content of the provided string and return it in a mapping."""
+    reverse = data[::-1]
+    return {data: {"count": str(len(data)), "reversed": reverse}}
+```
 
 ```{python}
 # David's implementation of the function reverse_count
@@ -39,7 +48,7 @@ def reverse_count(data: str) -> Dict[str, Dict[str, Any]]:
     return result
 ```
 
-```python
+```{python}
 # Benedek's implementation of the function reverse_count
 
 def reverse_count(data: str) -> dict:
@@ -47,13 +56,12 @@ def reverse_count(data: str) -> dict:
     return {data: {"count": str(len(data)), "reversed": data[::-1]}}
 ```
 
-```python
 
 ```{python}
+# Completes the performance analysis
 import timeit
 import functools
 
-# Rough draft of potential analysis script.
 performance_list = []
 for i in timeit.repeat(
   stmt=functools.partial(reverse_count, "checking!"),
@@ -65,7 +73,13 @@ print(
 )
 ```
 
-# Data
+# Data Output
+
+## Chloe's implementation:
+
+```text
+Performance time in seconds:[6.667338311672211e-06, 2.2919848561286926e-06, 2.1248124539852142e-06, 2.125278115272522e-06, 2.00001522898674e-06]
+```
 
 ## Benedek's Implementation
 
@@ -152,4 +166,11 @@ O(n) so that would make the total worst case time complexity of the function be
 O(n). This means that the function grows at a linear rate based on the size of
 the input and the time it takes to execute the function.
 
+From Chloe's implementation:
+
+Based on the output above, the running time exhibits a worst case time complexity of O(n), otherwise described as a linear progression. This means that there is a linear relationship between the runtime of the function and the input size. I considred the costs of slicing the str (`reverse = data[::-1]`) and creating the dictionary with the len function involved (`data: {"count": str(len(data)), "reversed": reverse}`) O(n). Leading to the total WCTC being the same.
+
+The runtime of the function implementation above is displayed in the Ouput section. The average of the 5 output values is 3.0418857932090757e-06. Comapring the running time to the runtime results, it is indicated that as the string input `data` is increased, there will be a linear rate of growth. Graphically, this would be visualized with time on the x axis and input size on the y axis; the curve would be a straight line with a positive slope.
+
+Comparing the theoretical running time value and the empirical runtime results, indicate what I would expect. The growth is linear, however, the slope of the curve is rather flat and the values increase in small increments. This could be attributed to the speed of my laptop. Since mine runs rather fast, I would need to increase the input size drastically to see larger increases in runtime. However, I ran the function in a separate script and outputted the results to many decimal places and noticed a linear development is present. 
 
