@@ -21,6 +21,9 @@ def find_average_value(matrix: List[List[int]]) -> Union[float, None]:
 ```
 Below are our samples on how we approached this problem:
 
+<!-- TODO: Some of the functions do not have type annotations. Other functions do -->
+<!-- not have type annotations that agree. -->
+
 ## Rebekah Rudd Solution
 
 ```python
@@ -104,7 +107,12 @@ $$
 O\Bigg(n_1 + 2n_1n_2 + \frac{1}{2}n_2(n_1^3 + n_1^2)\Bigg)
 $$
 
-The reason for which is explained in the following code. The time complexity of each code snippet is denoted with a comment above it.
+The reason for which is explained in the following code. The time complexity of
+each code snippet is denoted with a comment above it.
+
+<!-- TODO: It is not clear that all of these time complexities are correct. For -->
+<!-- instance, why is the return statement n^2? More justification and clarification -->
+<!-- is needed to explain why these time complexities are correct. -->
 
 ```python
 def find_average_value(matrix: List[List[int]]) -> Union[float, None]:
