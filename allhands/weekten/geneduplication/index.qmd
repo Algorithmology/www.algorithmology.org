@@ -49,14 +49,14 @@ of genes has the same prefix, it indicates a potential duplicate, and the
 function returns `True`. If no duplicates are found after comparing all pairs,
 it returns `False`.
 
-The time complexity of detect_duplicates_gene_alish heavily depends on the time
-complexity of compare_gene_prefix_alish. In the worst-case scenario,
-compare_gene_prefix_alish compares the prefixes of every pair of genes in the
+The time complexity of `detect_duplicates_gene_alish` heavily depends on the
+time complexity of `compare_gene_prefix_alish`. In the worst-case scenario,
+`compare_gene_prefix_alish` compares the prefixes of every pair of genes in the
 list, resulting in a nested loop structure. With the introduction of a new
-understanding of the time complexity for compare_gene_prefix_alish being O(m),
-where m is the length of the prefix, the overall time complexity of
-detect_duplicates_gene_alish becomes O(n^3), where n represents the number of
-genes in the input list.
+understanding of the time complexity for `compare_gene_prefix_alish` being
+$O(m)$, where $m$ is the length of the prefix, the overall time complexity of
+`detect_duplicates_gene_alish` becomes $O(n^3)$, where $n$ represents the
+number of genes in the input list.
 
 ### Miles
 
