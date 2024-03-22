@@ -17,14 +17,16 @@ listing:
 
 Interesting in learning more about how to use experimental and analytical
 techniques to study algorithms and data structures? To learn more, checkout
-these articles from the [Algorithm All-Hands projects](../syllabus/index.qmd)
-in which a team of learners explores the efficiency of a software system
+these articles from the [Algorithm All-Hands projects](../syllabus/index.qmd) in
+which a team of learners explores the efficiency of a software system
 implemented in Python! Each article reports details about the efficiency of
-specific algorithms and data structures in connection to chapters in the book
-[A First Course on Data Structures in
+specific algorithms and data structures in connection to chapters in the book [A
+First Course on Data Structures in
 Python](https://donsheehy.github.io/datastructures/). Make sure to review the
 [course schedule](../schedule/index.qmd) for more details about how these
-algorithm all-hands reports connect other course components. 
+algorithm all-hands reports connect other course components. While these reports
+are not guaranteed to be correct, they should show the growth of a learner as
+they develop their knowledge and skills in the field of algorithm engineering.
 
 :::{#featured-posts}
 :::
