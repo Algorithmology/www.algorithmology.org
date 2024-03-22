@@ -85,9 +85,12 @@ def detect_duplicates_gene_miles(data: list) -> bool:
         return False
 ```
 
-When looking at my code, I assumed that it would have a time complexity of at least O(n^2) because it has two for loops. The results from the benchmark framework show that it took 4.05999890062958e-05 seconds. Based off of the results I believe my analytical evaluation was correct. My implementation
-of the problem was one of the slowest out of my group, that's because I used two for loops in my function while the others used 1 or non.
-
+When looking at my code, I assumed that it would have a time complexity of at
+least $O(n^2)$ because it has two for loops. The results from the benchmark
+framework show that it took $4.05999890062958e-05$ seconds. Based off of the
+results I believe my analytical evaluation was correct. My implementation of
+the problem was one of the slowest out of my group, that's because I used two
+`for` loops in my function while the others used $1$ or none.
 
 ### Keller
 
