@@ -24,10 +24,9 @@ specific algorithms and data structures in connection to chapters in the book [A
 First Course on Data Structures in
 Python](https://donsheehy.github.io/datastructures/). Make sure to review the
 [course schedule](../schedule/index.qmd) for more details about how these
-algorithm all-hands reports connect other course components. While the analysis
-in these reports is not guaranteed to be correct, each report should show the
-growth of a learner as they develop their knowledge and skills in the field of
-algorithm engineering.
+algorithm all-hands reports connect other course components. While these reports
+are not guaranteed to be correct, they should show the growth of a learner as
+they develop their knowledge and skills in the field of algorithm engineering.
 
 :::{#featured-posts}
 :::
