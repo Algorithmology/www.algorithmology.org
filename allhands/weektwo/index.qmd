@@ -10,10 +10,9 @@ toc: true
 
 # Introduction
 
-The purpose of this project is to develop a benchmarking system that will allow us to
-calculate the fastest running time execution amongst various solution to one function. Below
-is a sample of the function we had to solve:
-
+The purpose of this project is to develop a benchmarking system that will allow
+us to calculate the fastest running time execution among various solution to
+one function. Below is a sample of the function we had to solve:
 
 ```python
 def find_average_value(matrix: List[List[int]]) -> Union[float, None]:
