@@ -1,5 +1,5 @@
 ---
-author: [Keller Liptrap, Alish Chhetri, Ochirsaikhan Davaajambal, Tugi Gantulga, Miles Franck, Nicholas Ingerson-Meacham]
+author: [Keller Liptrap, Alish Chhetri, Tugi Gantulga, Miles Franck]
 title: Investigating the efficiency of using string prefixes to detect duplicate genes
 page-layout: full
 categories: [post, objects, lists]
@@ -8,25 +8,9 @@ date-format: long
 toc: true
 ---
 
-## What we have to do
+<!-- TODO: There was no introduction for this article -->
 
-This algorithm all-hands assignment invites you to complete the following steps:
-
-Meet in your assigned groups to discuss your assigned function from the mid-term examination.
-Share and present to the other members of your team the source code that you implemented.
-Discuss with your team members the likely runtimes and running times of your implementations.
-Specify, design, and implement a benchmarking framework that supports the experimental evaluation of the functions that you and your team members implemented as a part of the mid-term examination.
-Write and publish on the course web site a blog post that explains (a) the runtime results from your experimental study with the benchmarking framework that you implemented and 
-(b) the running time results from an analytical evaluation that you independently conducted. Your blog post should clearly articulate
- (a) whether or not the experimental and analytical results for your function are in alignment with each other,
-  (b) what is most likely to be the realistic runtime and true running time of your function, and
-   (c) why you judge that your function has this runtime and running time, 
-   (d) which function from among those implemented by your team members is the fastest, and 
-   (e) why this single implementation proved to be the fastest among all of the solutions.
-Present your findings to the entire class during the following week of the academic semester during the follow-on algorithm all-hands session.
-Please note that all of the work that you complete for this assignment should be published to the course web site. Your team must create and contribute to a pull request on the course web site's GitHub repository and ensure that your work is reviewed, revised, and published in advance of the Friday class session next week.
-
-## Please provide a paragraph that explains your code and provides a time complexity in big O notation
+## Explaining the source code
 
 ### Alish
 
@@ -138,29 +122,24 @@ RunTime: x seconds.
 This code above utilizes a hashmap and counts the number of the genes it finds. If there is more than one found, then 
 it will immediately give True!
 
-TODO: Write paragraph that explains your code and provides a time complexity in big O notation
-
-### Ochirsaikhan
-
-```python
-TODO: Add code here
-```
-
-TODO: Write paragraph that explains your code and provides a time complexity in big O notation
-
-### Nic
-
-```python
-TODO: add code here
-```
-
-TODO: Write paragraph that explains your code and provides a time complexity in big O notation
-
 ### Team Four
 
-The following code block contains implementations of various functions to detect duplicate values within gene objects. To empirically validate their efficiency, the code utilizes the timeit module. Specifically, lambda functions are employed to repeatedly execute each detection function with a shared dataset, thereby measuring their execution time. This empirical analysis serves to validate their performance against theoretical time complexities and offers valuable insights into their efficiency.
+The following code block contains implementations of various functions to
+detect duplicate values within gene objects. To empirically validate their
+efficiency, the code utilizes the timeit module. Specifically, lambda functions
+are employed to repeatedly execute each detection function with a shared
+data set, thereby measuring their execution time. This empirical analysis serves
+to validate their performance against theoretical time complexities and offers
+valuable insights into their efficiency.
 
-By observing how the execution times align with the expected theoretical complexities, we gain a deeper understanding of algorithmic efficiency. This process aids in discerning which approaches are more effective and scalable, thereby facilitating the selection of optimal algorithms for various problem scenarios. Additionally, these measured execution times provide practical feedback on the scalability and efficiency of the algorithms. Such experimentation fosters an enhanced comprehension of algorithmic complexity and informs the design of more efficient solutions across diverse problem domains.
+By observing how the execution times align with the expected theoretical
+complexities, we gain a deeper understanding of algorithmic efficiency. This
+process aids in discerning which approaches are more effective and scalable,
+thereby facilitating the selection of optimal algorithms for various problem
+scenarios. Additionally, these measured execution times provide practical
+feedback on the scalability and efficiency of the algorithms. Such
+experimentation fosters an enhanced comprehension of algorithmic complexity and
+informs the design of more efficient solutions across diverse problem domains.
 
 ```python
 """Team Four: Algorithm Analysis for Question 4 of the Midterm Examination."""
@@ -234,10 +213,10 @@ class Gene:
 
 def compare_gene_prefix_alish(gene: Gene, other_gene: Gene) -> bool:
     """Compare the prefix of the gene name with the prefix of another gene name."""
-    # TODID: extract the prefix from the gene name
-    # TODID: compare the prefix to the prefix of the other gene name
-    # TODID: return a boolean value that indicates whether or not the prefixes are equal
-    # TODID: refer to the function specification for more details about this function
+    # extract the prefix from the gene name
+    # compare the prefix to the prefix of the other gene name
+    # return a boolean value that indicates whether or not the prefixes are equal
+    # refer to the function specification for more details about this function
     return (
         gene.gene_name[: gene.gene_name_prefix]
         == other_gene.gene_name[: other_gene.gene_name_prefix]
@@ -246,7 +225,7 @@ def compare_gene_prefix_alish(gene: Gene, other_gene: Gene) -> bool:
 
 def detect_duplicates_gene_alish(data: List[Gene]) -> bool:
     """Detect whether or not there are duplicate values in a list of Gene values."""
-    # TODID: provide an implementation of this function that can determine
+    # provide an implementation of this function that can determine
     # whether or not the provided list of Gene values contains duplicates
     if not data:
         return False
@@ -366,7 +345,16 @@ for result in sorted_results:
 # }}}
 ```
 
-After multiple runs of the experiment, Tugi and Nic consistently emerged as the fastest performers, with Keller occasionally shifting between second and third place. Meanwhile, Ochirsaikhan, Miles, and Alish showed varying performance, typically falling in the fourth, fifth, and sixth positions. Notably, Tugi demonstrated remarkably short execution times, closely followed by Nic, indicating the efficiency of their algorithms. Keller exhibited commendable performance, albeit slightly slower. Conversely, Ochirsaikhan, Miles, and Alish consistently showed longer execution times. These findings offer valuable insights into the efficiency and scalability of the detection algorithms, guiding potential optimizations for future implementations.
+After multiple runs of the experiment, Tugi and Nic consistently emerged as the
+fastest performers, with Keller occasionally shifting between second and third
+place. Meanwhile, Ochirsaikhan, Miles, and Alish showed varying performance,
+typically falling in the fourth, fifth, and sixth positions. Notably, Tugi
+demonstrated remarkably short execution times, closely followed by Nic,
+indicating the efficiency of their algorithms. Keller exhibited commendable
+performance, albeit slightly slower. Conversely, Ochirsaikhan, Miles, and Alish
+consistently showed longer execution times. These findings offer valuable
+insights into the efficiency and scalability of the detection algorithms,
+guiding potential optimizations for future implementations.
 
 Example of the output:
 
