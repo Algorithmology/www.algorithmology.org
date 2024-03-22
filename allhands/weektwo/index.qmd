@@ -10,8 +10,8 @@ toc: true
 
 # Introduction
 
-The purpose of this project is to develop a benchmarking system that will allow us to 
-calculate the fastest running time execution amongst various solution to one function. Below 
+The purpose of this project is to develop a benchmarking system that will allow us to
+calculate the fastest running time execution amongst various solution to one function. Below
 is a sample of the function we had to solve:
 
 
@@ -20,7 +20,7 @@ def find_average_value(matrix: List[List[int]]) -> Union[float, None]:
     """Find the average value in the provided matrix."""
     ...
 ```
-Below are our samples on how we approached this problem: 
+Below are our samples on how we approached this problem:
 
 ## Rebekah Rudd Solution
 
