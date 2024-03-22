@@ -8,6 +8,8 @@ date-format: long
 toc: true
 ---
 
+<!-- NOTE: I deleted the names all all students who had TODO markers with no content -->
+
 <!-- TODO: There was no introduction for this article -->
 
 ## Explaining the source code
@@ -85,6 +87,8 @@ def detect_duplicates_gene_miles(data: list) -> bool:
         return False
 ```
 
+<!-- TODO: Can you revise this to avoid "at least" when talking about time complexity? -->
+
 When looking at my code, I assumed that it would have a time complexity of at
 least $O(n^2)$ because it has two for loops. The results from the benchmark
 framework show that it took $4.05999890062958e-05$ seconds. Based off of the
@@ -93,6 +97,8 @@ the problem was one of the slowest out of my group, that's because I used two
 `for` loops in my function while the others used $1$ or none.
 
 ### Keller
+
+<!-- NOTE: Many thanks to Keller for using correct source code in Markdown! -->
 
 ```python
 def detect_duplicates_gene(data: List[Gene]) -> bool:
@@ -109,7 +115,17 @@ def detect_duplicates_gene(data: List[Gene]) -> bool:
     return False
 ```
 
-This function will loop through each gene in the data set using one for loop which makes this function's time complexity `O(n)`. This function first determines whether data is present or not using an if statement that will return `False` if no data is present. The `seen_prefixes` keeps track of the prefixes of the gene names that have been seen so far. The for loop looks at each gene in the data and gets its prefix. This prefix will be added to the set. If a prefix that has been previously added to the set is the same as a prefix that is being added to the set then it will return `True` indicating that there is a duplicate. If no prefixs are duplicates then the data will be looped through and return `False` indicating there are no duplicates in the data.
+This function will loop through each gene in the data set using one for loop
+which makes this function's time complexity `O(n)`. This function first
+determines whether data is present or not using an if statement that will
+return `False` if no data is present. The `seen_prefixes` keeps track of the
+prefixes of the gene names that have been seen so far. The for loop looks at
+each gene in the data and gets its prefix. This prefix will be added to the
+set. If a prefix that has been previously added to the set is the same as a
+prefix that is being added to the set then it will return `True` indicating
+that there is a duplicate. If no prefixes are duplicates then the data will be
+looped through and return `False` indicating there are no duplicates in the
+data.
 
 ### Tugi
 
