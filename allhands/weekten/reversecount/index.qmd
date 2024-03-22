@@ -1,6 +1,6 @@
 ---
 author: [Benedek Kaibas, Chloe Bonson, David Gormley, Mordred Boulais, William Wolff, Luke Barker]
-title: Investigating the efficiency of computing counting and reversing a string 
+title: Investigating the efficiency of computing counting and reversing a string
 page-layout: full
 categories: [post, dictionaries, strings]
 date: "2024-03-22"
@@ -8,9 +8,15 @@ date-format: long
 toc: true
 ---
 
-## Will's Implementation
+# Overview
+
+An analysis of the running time and run time of the assorted `reverse_count`
+functions implemented by team members.
+
+# Code
 
 ```{python}
+# Will's Implementation
 def reverse_count(data: str):
     """Reverse the content of the provided string and return it in a mapping."""
     string = ""
@@ -25,10 +31,67 @@ def reverse_count(data: str):
 ```
 
 ```{python}
+# Mordred's implementation of the function reverse_count
+
+def reverse_str(data: str) -> str:
+    """Reverse the content of the provided string."""
+    reverse = ""
+    for i in range(len(data)):
+        reverse += data[-(i + 1)]
+    return reverse
+
+def reverse_count(data: str) -> dict:
+    """Reverse the content of the provided string and return it in a mapping."""
+    return {data: {"count": str(len(data)), "reversed": reverse_str(data)}}
+```
+
+```{python}
+# Chloe's implementation of the function reverse_count
+
+### Function Implementation
+def reverse_count(data: str) -> dict:
+    """Reverse the content of the provided string and return it in a mapping."""
+    reverse = data[::-1]
+    return {data: {"count": str(len(data)), "reversed": reverse}}
+```
+
+```{python}
+# David's implementation of the function reverse_count
+
+def reverse_count(data: str) -> Dict[str, Dict[str, str]]:
+    """Reverse the content of the provided string and return it in a mapping."""
+    count = str(len(data))
+    reversed = data[::-1]
+    result = {data: {"count": count, "reversed": reversed}}
+    return result
+```
+
+
+```{python}
+# Luke's implementation of the function reverse_count
+
+def reverse_count(data: str) -> Dict[str, Dict[str, Any]]:
+    """Reverse the content of the provided string and return it in a mapping."""
+    count = str(len(data))
+    reversed_data = str(data[::-1])
+    result = {data: {"count": count, "reversed": reversed_data}}
+    return result
+```
+
+```{python}
+# Benedek's implementation of the function reverse_count
+
+def reverse_count(data: str) -> dict:
+    """Reverse the content of the provided string and return it in a mapping."""
+    return {data: {"count": str(len(data)), "reversed": data[::-1]}}
+```
+
+
+```{python}
+# Completes the performance analysis
 import timeit
 import functools
 
-# Rough draft of potential analysis script.
 performance_list = []
 for i in timeit.repeat(
   stmt=functools.partial(reverse_count, "checking!"),
@@ -40,14 +103,122 @@ print(
 )
 ```
 
-# Output
+# Data Output
 
-From Will's implementation:
+## Will's implementation:
 
+```text
 Performance time in seconds:
 [7.916998583823442e-06, 5.457986844703555e-06, 5.333000444807112e-06, 5.207999492995441e-06, 5.250010872259736e-06]
+```
 
-# Analysis/Conclusion
+## Mordred's implementation:
+
+```text
+Performance time in seconds:
+ [3.950000018448918e-05, 2.3999999939405825e-05, 2.390000008745119e-05, 2.3800000235496555e-05, 2.3799999780749204e-05]
+```
+
+## Chloe's implementation:
+
+```text
+Performance time in seconds:[6.667338311672211e-06, 2.2919848561286926e-06, 2.1248124539852142e-06, 2.125278115272522e-06, 2.00001522898674e-06]
+```
+
+## Benedek's Implementation
+
+```text
+first output:
+
+Performance time in seconds:
+ [5.699926987290382e-06, 2.900022082030773e-06, 2.7999049052596092e-06, 2.700020559132099e-06, 2.700020559132099e-06]
+
+second output:
+
+Performance time in seconds:
+ [5.599926225841045e-06, 2.900022082030773e-06, 2.800021320581436e-06, 2.900022082030773e-06, 2.6999041438102722e-06]
+
+third output:
+
+Performance time in seconds:
+ [7.4999406933784485e-06, 4.00003045797348e-06, 4.699919372797012e-06, 4.400033503770828e-06, 4.200031980872154e-06]
+
+fourth output:
+
+Performance time in seconds:
+[7.79994297772646e-06, 3.100023604929447e-06, 2.900022082030773e-06, 2.700020559132099e-06, 2.7999049052596092e-06]
+
+fifth output:
+
+Performance time in seconds:
+[6.299931555986404e-06, 3.00002284348011e-06, 2.800021320581436e-06, 2.800021320581436e-06, 2.6999041438102722e-06]
+```
+
+### The code for getting the average of the outputs
+
+```python
+class AverageOutput:
+    def __init__(self):
+        self.output = []
+
+    def storing_output(self):
+        first_output = [5.699926987290382e-06, 2.900022082030773e-06, 2.7999049052596092e-06, 2.700020559132099e-06, 2.700020559132099e-06]
+        second_output = [5.599926225841045e-06, 2.900022082030773e-06, 2.800021320581436e-06, 2.900022082030773e-06, 2.6999041438102722e-06]
+        third_output = [7.4999406933784485e-06, 4.00003045797348e-06, 4.699919372797012e-06, 4.400033503770828e-06, 4.200031980872154e-06]
+        fourth_output = [7.79994297772646e-06, 3.100023604929447e-06, 2.900022082030773e-06, 2.700020559132099e-06, 2.7999049052596092e-06]
+        fifth_output = [6.299931555986404e-06, 3.00002284348011e-06, 2.800021320581436e-06, 2.800021320581436e-06, 2.6999041438102722e-06]
+
+        self.outputs = first_output + second_output + third_output + fourth_output + fifth_output
+        return sum(self.outputs)
+    
+    def get_average(self):
+        return sum(self.outputs) / len(self.outputs) if self.outputs else 0
+```
+
+### The output of the function including the average performance time
+
+```text
+Total: 9.539956226944923e-05
+Average: 3.8159824907779695e-06
+```
+
+## David's Implementation:
+
+```text
+Performance time in seconds:
+First Run: [1.09350003185682e-05, 8.03500006441027e-06, 7.890994311310351e-06, 7.889997505117208e-06, 7.848000677768141e-06]
+Second Run: [1.1811032891273499e-05, 8.044764399528503e-06, 7.875263690948486e-06, 7.834285497665405e-06, 7.856637239456177e-06]
+Third Run: [1.1026859283447266e-05, 8.003786206245422e-06, 7.811933755874634e-06, 7.797032594680786e-06, 7.810071110725403e-06]
+Fourth Run: [1.1337921023368835e-05, 8.210539817810059e-06, 8.05780291557312e-06, 8.035451173782349e-06, 8.061528205871582e-06]
+Fifth Run: [1.1313000868540257e-05, 8.074996003415436e-06, 7.907001418061554e-06, 7.907998224254698e-06, 7.911003194749355e-06]
+Average: [1.1184569075043328e-05, 8.073418497881355e-06, 7.908197097374817e-06, 7.953013119930274e-06, 7.948352562959439e-06]
+```
+
+## Luke's Implementation:
+
+```text
+Performance time in seconds:
+ [9.806000008438787e-06, 6.161999976939114e-06, 5.86999999541149e-06, 8.645999997725085e-06, 5.89299997955095e-06]
+```
+
+# Analysis
+
+## Luke
+
+The len() function and the str slicing both have a worst case time complexity of
+O(n) so that would make the total worst case time complexity of the function be
+O(n). This means that the function grows at a linear rate based on the size of
+the input and the time it takes to execute the function.
+
+## Chloe
+
+Based on the output above, the running time exhibits a worst case time complexity of O(n), otherwise described as a linear progression. This means that there is a linear relationship between the runtime of the function and the input size. I considred the costs of slicing the str (`reverse = data[::-1]`) and creating the dictionary with the len function involved (`data: {"count": str(len(data)), "reversed": reverse}`) O(n). Leading to the total WCTC being the same.
+
+The runtime of the function implementation above is displayed in the Ouput section. The average of the 5 output values is 3.0418857932090757e-06. Comapring the running time to the runtime results, it is indicated that as the string input `data` is increased, there will be a linear rate of growth. Graphically, this would be visualized with time on the x axis and input size on the y axis; the curve would be a straight line with a positive slope.
+
+Comparing the theoretical running time value and the empirical runtime results, indicate what I would expect. The growth is linear, however, the slope of the curve is rather flat and the values increase in small increments. This could be attributed to the speed of my laptop. Since mine runs rather fast, I would need to increase the input size drastically to see larger increases in runtime. However, I ran the function in a separate script and outputted the results to many decimal places and noticed a linear development is present. 
+
+## Will
 
 The time complexity of the reverse_count function is O(n), where n is the length of the input string.
 The code above shows that there is a linear growth in relation to the input size and the run time. In
