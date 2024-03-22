@@ -411,6 +411,14 @@ list concatenation. It is more space and time efficient due to this direct
 computation, which reduces the number of operations needed to compute the
 average and eliminates the need for additional space for a flattened list.
 
+Additionally, examining the calculated doubling ratios offers further insights into the scalability of each solution. For Jason's solution, the average doubling 
+ratio for holding n_1 constant is approximately 1.52, indicating an increase in runtime as the input size doubles. Similarly, for holding n_2 constant, 
+Jason's solution shows an average doubling ratio of about 1.09, suggesting a slightly better scalability concerning the second dimension of the matrix. On the 
+other hand, Simon's solution demonstrates an average doubling ratio of around 1.84 when holding n_1 constant and 1.20 when holding n_2 constant. These findings 
+suggest that Simon's solution experiences a more significant increase in runtime with larger input sizes compared to Jason's solution, particularly noticeable 
+when scaling along the first dimension of the matrix. Analyzing these doubling ratios provides valuable insights into the performance characteristics of each 
+approach, aiding in the selection of the most suitable solution for specific application scenarios
+
 # Future Works
 
 One aspect that could be considered for future works is creating a function that
