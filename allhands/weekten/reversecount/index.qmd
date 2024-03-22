@@ -8,6 +8,8 @@ date-format: long
 toc: true
 ---
 
+<!-- TODO: The type annotations in these functions do not align. -->
+
 # Overview
 
 An analysis of the running time and run time of the assorted `reverse_count`
@@ -154,6 +156,9 @@ print(
 )
 ```
 
+<!-- TODO: It is not clear how these were computed since this is not the output
+from actually running the Python source code in Quarto. -->
+
 # Data Output
 
 ## Will's implementation
@@ -207,6 +212,8 @@ Performance time in seconds:
 
 ### The code for getting the average of the outputs
 
+<!-- TODO: Why are there these hard-coded values inside of lists? -->
+
 ```python
 class AverageOutput:
     def __init__(self):
@@ -225,6 +232,8 @@ class AverageOutput:
     def get_average(self):
         return sum(self.outputs) / len(self.outputs) if self.outputs else 0
 ```
+
+<!-- TODO: These numbers are very hard to interpret as they are written -->
 
 ### The output of the function including the average performance time
 
@@ -254,7 +263,11 @@ Performance time in seconds:
 
 # Analysis
 
+<!-- TODO: There is no analysis from Mordred? -->
+
 ## Luke
+
+<!-- TODO: Do you have evidence to support these claims? -->
 
 The `len()` function and the `str` slicing both have a worst-case time
 complexity of $O(n)$ so that would make the total worst case time complexity of
@@ -279,6 +292,8 @@ Graphically, this would be visualized with time on the horizontal axis and
 input size on the vertical axis; the curve would be a straight line with a
 positive slope.
 
+<!-- TODO: What evidence do you have that your laptop run's "very fast"? -->
+
 Comparing the theoretical running time value and the empirical runtime results,
 indicate what I would expect. The growth is linear, however, the slope of the
 curve is rather flat and the values increase in small increments. This could be
@@ -288,6 +303,8 @@ However, I ran the function in a separate script and outputted the results to
 many decimal places and noticed a linear development is present. 
 
 ## Will
+
+<!-- TODO: The analysis of this function is incomplete and not supported -->
 
 The time complexity of the `reverse_count` function is $O(n)$, where $n$ is the
 length of the input string. The code above shows that there is a linear growth
