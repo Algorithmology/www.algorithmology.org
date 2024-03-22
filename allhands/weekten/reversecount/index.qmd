@@ -17,6 +17,7 @@ functions implemented by team members.
 
 ```{python}
 # Will's Implementation
+
 def will_reverse_count(data: str):
     """Reverse the content of the provided string and return it in a mapping."""
     string = ""
@@ -155,21 +156,21 @@ print(
 
 # Data Output
 
-## Will's implementation:
+## Will's implementation
 
 ```text
 Performance time in seconds:
 [7.916998583823442e-06, 5.457986844703555e-06, 5.333000444807112e-06, 5.207999492995441e-06, 5.250010872259736e-06]
 ```
 
-## Mordred's implementation:
+## Mordred's implementation
 
 ```text
 Performance time in seconds:
  [3.950000018448918e-05, 2.3999999939405825e-05, 2.390000008745119e-05, 2.3800000235496555e-05, 2.3799999780749204e-05]
 ```
 
-## Chloe's implementation:
+## Chloe's implementation
 
 ```text
 Performance time in seconds:[6.667338311672211e-06, 2.2919848561286926e-06, 2.1248124539852142e-06, 2.125278115272522e-06, 2.00001522898674e-06]
@@ -262,11 +263,28 @@ the input and the time it takes to execute the function.
 
 ## Chloe
 
-Based on the output above, the running time exhibits a worst case time complexity of O(n), otherwise described as a linear progression. This means that there is a linear relationship between the runtime of the function and the input size. I considred the costs of slicing the str (`reverse = data[::-1]`) and creating the dictionary with the len function involved (`data: {"count": str(len(data)), "reversed": reverse}`) O(n). Leading to the total WCTC being the same.
+Based on the output above, the running time exhibits a worst case time
+complexity of O(n), otherwise described as a linear progression. This means
+that there is a linear relationship between the runtime of the function and the
+input size. I considered the costs of slicing the str (`reverse = data[::-1]`)
+and creating the dictionary with the len function involved (`data: {"count":
+str(len(data)), "reversed": reverse}`) O(n). Leading to the total worst-case
+time complexity being the same.
 
-The runtime of the function implementation above is displayed in the Ouput section. The average of the 5 output values is 3.0418857932090757e-06. Comapring the running time to the runtime results, it is indicated that as the string input `data` is increased, there will be a linear rate of growth. Graphically, this would be visualized with time on the x axis and input size on the y axis; the curve would be a straight line with a positive slope.
+The runtime of the function implementation above is displayed in the Output
+section. The average of the 5 output values is 3.0418857932090757e-06.
+Comparing the running time to the runtime results, it is indicated that as the
+string input `data` is increased, there will be a linear rate of growth.
+Graphically, this would be visualized with time on the x axis and input size on
+the y axis; the curve would be a straight line with a positive slope.
 
-Comparing the theoretical running time value and the empirical runtime results, indicate what I would expect. The growth is linear, however, the slope of the curve is rather flat and the values increase in small increments. This could be attributed to the speed of my laptop. Since mine runs rather fast, I would need to increase the input size drastically to see larger increases in runtime. However, I ran the function in a separate script and outputted the results to many decimal places and noticed a linear development is present. 
+Comparing the theoretical running time value and the empirical runtime results,
+indicate what I would expect. The growth is linear, however, the slope of the
+curve is rather flat and the values increase in small increments. This could be
+attributed to the speed of my laptop. Since mine runs rather fast, I would need
+to increase the input size drastically to see larger increases in runtime.
+However, I ran the function in a separate script and outputted the results to
+many decimal places and noticed a linear development is present. 
 
 ## Will
 
