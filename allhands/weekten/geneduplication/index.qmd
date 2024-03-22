@@ -31,10 +31,41 @@ Please note that all of the work that you complete for this assignment should be
 ### Alish
 
 ```python
-TODO: add code here
+def compare_gene_prefix_alish(gene: Gene, other_gene: Gene) -> bool:
+    """Compare the prefix of the gene name with the prefix of another gene name."""
+    # TODID: extract the prefix from the gene name
+    # TODID: compare the prefix to the prefix of the other gene name
+    # TODID: return a boolean value that indicates whether or not the prefixes are equal
+    # TODID: refer to the function specification for more details about this function
+    return (
+        gene.gene_name[: gene.gene_name_prefix]
+        == other_gene.gene_name[: other_gene.gene_name_prefix]
+    )
+
+
+def detect_duplicates_gene_alish(data: List[Gene]) -> bool:
+    """Detect whether or not there are duplicate values in a list of Gene values."""
+    # TODID: provide an implementation of this function that can determine
+    # whether or not the provided list of Gene values contains duplicates
+    if not data:
+        return False
+    for i in range(len(data)):
+        for j in range(i + 1, len(data)):
+            if compare_gene_prefix_alish(data[i], data[j]):
+                return True
+    return False
 ```
 
 TODO: Write paragraph that explains your code and provides a time complexity in big O notation
+
+The function detect_duplicates_gene_alish is designed to determine whether there are duplicate gene names in a given list of Gene objects. It achieves this by 
+iterating through the list and comparing each gene's prefix with every other gene's prefix using the compare_gene_prefix_alish function. If a pair of genes has the 
+same prefix, it indicates a potential duplicate, and the function returns True. If no duplicates are found after comparing all pairs, it returns False.
+
+The time complexity of detect_duplicates_gene_alish heavily depends on the time complexity of compare_gene_prefix_alish. In the worst-case scenario, 
+compare_gene_prefix_alish compares the prefixes of every pair of genes in the list, resulting in a nested loop structure. With the introduction of a new understanding 
+of the time complexity for compare_gene_prefix_alish being O(m), where m is the length of the prefix, the overall time complexity of detect_duplicates_gene_alish 
+becomes O(n^3), where n represents the number of genes in the input list.
 
 ### Miles
 
@@ -70,16 +101,43 @@ of the problem was one of the slowest out of my group, that's because I used two
 ### Keller
 
 ```python
-TODO: Add code here
+def detect_duplicates_gene(data: List[Gene]) -> bool:
+    """Detect whether or not there are duplicate values in a list of Gene values."""
+    if not data:
+        return False
+
+    seen_prefixes = set()
+    for gene in data:
+        gene_prefix = gene.gene_name[: gene.gene_name_prefix]
+        if gene_prefix in seen_prefixes:
+            return True
+        seen_prefixes.add(gene_prefix)
+    return False
 ```
 
-TODO: Write paragraph that explains your code and provides a time complexity in big O notation
+This function will loop through each gene in the data set using one for loop which makes this function's time complexity `O(n)`. This function first determines whether data is present or not using an if statement that will return `False` if no data is present. The `seen_prefixes` keeps track of the prefixes of the gene names that have been seen so far. The for loop looks at each gene in the data and gets its prefix. This prefix will be added to the set. If a prefix that has been previously added to the set is the same as a prefix that is being added to the set then it will return `True` indicating that there is a duplicate. If no prefixs are duplicates then the data will be looped through and return `False` indicating there are no duplicates in the data.
 
 ### Tugi
 
 ```python
-TODO: Add code here
+def detect_duplicates_gene(data):
+    """Detect whether or not there are duplicate values in a list of Gene values."""
+    gene_map = {}
+
+    for gene_object in data:
+        if gene_object.gene_name_prefix in gene_map:
+            return True
+        else:
+            gene_map[gene_object.gene_name_prefix] = 1
+
+    return False
 ```
+
+O(N) due to one for loop when iterating the data.
+RunTime: x seconds.
+
+This code above utilizes a hashmap and counts the number of the genes it finds. If there is more than one found, then 
+it will immediately give True!
 
 TODO: Write paragraph that explains your code and provides a time complexity in big O notation
 
@@ -98,3 +156,226 @@ TODO: add code here
 ```
 
 TODO: Write paragraph that explains your code and provides a time complexity in big O notation
+
+### Team Four
+
+The following code block contains implementations of various functions to detect duplicate values within gene objects. To empirically validate their efficiency, the code utilizes the timeit module. Specifically, lambda functions are employed to repeatedly execute each detection function with a shared dataset, thereby measuring their execution time. This empirical analysis serves to validate their performance against theoretical time complexities and offers valuable insights into their efficiency.
+
+By observing how the execution times align with the expected theoretical complexities, we gain a deeper understanding of algorithmic efficiency. This process aids in discerning which approaches are more effective and scalable, thereby facilitating the selection of optimal algorithms for various problem scenarios. Additionally, these measured execution times provide practical feedback on the scalability and efficiency of the algorithms. Such experimentation fosters an enhanced comprehension of algorithmic complexity and informs the design of more efficient solutions across diverse problem domains.
+
+```python
+"""Team Four: Algorithm Analysis for Question 4 of the Midterm Examination."""
+
+import timeit
+
+from typing import List
+
+# Part (a) {{{
+
+def detect_duplicates_int_nic(data: List[int]) -> bool:
+    """Detect whether or not there are duplicate values in a list of integer values."""
+    # If matrix is empty, then there are no duplicate values
+    if len(data) == 0:
+        return False
+    # Initialize a list of seen values
+    seen_values = []
+    # Check if each value is in the list of seen values
+    for value in data:
+        # If it is, then return True
+        if value in seen_values:
+            return True
+        # If not, add it to the list of seen values
+        seen_values.append(value)
+    # If there are no duplicates, return False
+    return False
+
+
+def detect_duplicates_int_alish(data: str) -> bool:
+    """Detect whether or not there are duplicate values in a list of integer values."""
+    return len(set(data)) != len(data)
+
+
+def detect_duplicates_int_miles(data: list) -> bool:
+    """Detect whether or not there are duplicate values in a list of integer values."""
+    if len(data) == 0:
+        return False
+
+    n = len(data)
+    for i in range(1, n):
+        for j in range(i):
+            if data[i] == data[j]:
+                return False  # changed to false
+    return False
+
+
+# }}}
+
+# Part (b) {{{
+
+
+def detect_duplicates_str(data: List[str]) -> bool:
+    """Detect whether or not there are duplicate values in a list of string values."""
+    return len(set(data)) != len(data)
+
+
+# }}}
+
+# Part (c) {{{
+
+
+class Gene:
+    """Represent a gene with a name, prefix amount, and a flexible description."""
+
+    def __init__(self, gene_name: str, gene_prefix: int, gene_description: str) -> None:
+        """Initialize a gene with an agreed-on name and a flexible description."""
+        self.gene_name = gene_name
+        self.gene_name_prefix = gene_prefix
+        self.gene_description = gene_description
+
+
+def compare_gene_prefix_alish(gene: Gene, other_gene: Gene) -> bool:
+    """Compare the prefix of the gene name with the prefix of another gene name."""
+    # TODID: extract the prefix from the gene name
+    # TODID: compare the prefix to the prefix of the other gene name
+    # TODID: return a boolean value that indicates whether or not the prefixes are equal
+    # TODID: refer to the function specification for more details about this function
+    return (
+        gene.gene_name[: gene.gene_name_prefix]
+        == other_gene.gene_name[: other_gene.gene_name_prefix]
+    )
+
+
+def detect_duplicates_gene_alish(data: List[Gene]) -> bool:
+    """Detect whether or not there are duplicate values in a list of Gene values."""
+    # TODID: provide an implementation of this function that can determine
+    # whether or not the provided list of Gene values contains duplicates
+    if not data:
+        return False
+    for i in range(len(data)):
+        for j in range(i + 1, len(data)):
+            if compare_gene_prefix_alish(data[i], data[j]):
+                return True
+    return False
+
+
+def detect_duplicates_gene_keller(data: List[Gene]) -> bool:
+    """Detect whether or not there are duplicate values in a list of Gene values."""
+    if not data:
+        return False
+
+    seen_prefixes = set()
+    for gene in data:
+        gene_prefix = gene.gene_name[: gene.gene_name_prefix]
+        if gene_prefix in seen_prefixes:
+            return True
+        seen_prefixes.add(gene_prefix)
+    return False
+
+
+def detect_duplicates_gene_miles(data: list) -> bool:
+    """Detect whether or not there are duplicate values in a list of Gene values."""
+    # provide an implementation of this function that can determine
+    # whether or not the provided list of Gene values contains duplicates
+    boolean = detect_duplicates_int_miles(data)
+    if boolean:
+        return True
+    else:
+        return False
+
+
+def compare_gene_prefix_ochirsaikhan(gene: Gene, other_gene: Gene) -> bool:
+    """Compare the prefix of the gene name with the prefix of another gene name."""
+    # extract the prefix from the gene name
+    prefix = gene.gene_name[: gene.gene_name_prefix]
+    other_prefix = other_gene.gene_name[: other_gene.gene_name_prefix]
+    # compare the prefix to the prefix of the other gene name
+    if prefix == other_prefix:
+        return True
+    # return a boolean value that indicates whether or not the prefixes are equal
+    # refer to the function specification for more details about this function
+    return False
+
+
+def detect_duplicates_gene_ochirsaikhan(data: List[Gene]) -> bool:
+    """Detect whether or not there are duplicate values in a list of Gene values."""
+    # provide an implementation of this function that can determine
+    # whether or not the provided list of Gene values contains duplicates
+    if data:
+        for i in range(len(data) - 1):
+            curr_gene = data[i]
+            next_gene = data[i + 1]
+            if compare_gene_prefix_ochirsaikhan(curr_gene, next_gene):
+                return True
+    return False
+
+
+def detect_duplicates_gene_tugi(data: List[Gene]) -> bool:
+    """Detect whether or not there are duplicate values in a list of Gene values."""
+    # : provide an implementation of this function that can determine
+    # whether or not the provided list of Gene values contains duplicates
+
+    map = {}
+
+    for gene_object in data:
+        if gene_object.gene_name_prefix not in map:
+            map[gene_object.gene_name_prefix] = 1
+        else:
+            return True
+
+    return False
+
+
+def detect_duplicates_gene_nic(data: List[Gene]) -> bool:
+    """Detect whether or not there are duplicate values in a list of Gene values."""
+    # Create a list of prefixes
+    prefixes = []
+    for gene in data:
+        prefixes.append(gene.gene_name_prefix)
+    # Return result of checking for duplicate values
+    return detect_duplicates_int_nic(prefixes)
+
+
+# All Hands {{{
+
+# The following section contains code that will execute functions from the team's
+# four members and return a value representing the time it took the program to execute.
+# This investigation aims to understand the complexity of our programs better and grasp
+# what makes an algorithm more efficient, even if they share the same complexity.
+
+input_gene_data = [
+    Gene("AADACL3", 5, "Arylacetamide deacetylase-like 3"),
+    Gene("FPGT02", 4, "Fucose-1-phosphate guanylyltransferase"),
+    Gene("AADACL4", 5, "Arylacetamide deacetylase-like 4"),
+    Gene("AADACL3", 5, "Arylacetamide deacetylase-like 3"),
+    Gene("AADACL4", 5, "Arylacetamide deacetylase-like 4"),
+]
+
+timing_results = [
+    ("detect_duplicates_gene_alish", timeit.timeit(lambda: detect_duplicates_gene_alish(input_gene_data), number=10)),
+    ("detect_duplicates_gene_keller", timeit.timeit(lambda: detect_duplicates_gene_keller(input_gene_data), number=10)),
+    ("detect_duplicates_gene_miles", timeit.timeit(lambda: detect_duplicates_gene_miles(input_gene_data), number=10)),
+    ("detect_duplicates_gene_ochirsaikhan", timeit.timeit(lambda: detect_duplicates_gene_ochirsaikhan(input_gene_data), number=10)),
+    ("detect_duplicates_gene_tugi", timeit.timeit(lambda: detect_duplicates_gene_tugi(input_gene_data), number=10)),
+    ("detect_duplicates_gene_nic", timeit.timeit(lambda: detect_duplicates_gene_nic(input_gene_data), number=10))
+]
+
+sorted_results = sorted(timing_results, key=lambda x: x[1])
+
+for result in sorted_results:
+    print(f"Timing {result[0]}: {result[1]}")
+
+# }}}
+```
+
+After multiple runs of the experiment, Tugi and Nic consistently emerged as the fastest performers, with Keller occasionally shifting between second and third place. Meanwhile, Ochirsaikhan, Miles, and Alish showed varying performance, typically falling in the fourth, fifth, and sixth positions. Notably, Tugi demonstrated remarkably short execution times, closely followed by Nic, indicating the efficiency of their algorithms. Keller exhibited commendable performance, albeit slightly slower. Conversely, Ochirsaikhan, Miles, and Alish consistently showed longer execution times. These findings offer valuable insights into the efficiency and scalability of the detection algorithms, guiding potential optimizations for future implementations.
+
+Example of the output:
+
+```text
+Timing detect_duplicates_gene_tugi: 5.300999873725232e-06
+Timing detect_duplicates_gene_nic: 8.33000012789853e-06
+Timing detect_duplicates_gene_keller: 9.926000529958401e-06
+Timing detect_duplicates_gene_ochirsaikhan: 1.4033000297786202e-05
+Timing detect_duplicates_gene_miles: 1.4749999536434188e-05
+Timing detect_duplicates_gene_alish: 1.749400053085992e-05
+```
