@@ -16,7 +16,13 @@ Meet in your assigned groups to discuss your assigned function from the mid-term
 Share and present to the other members of your team the source code that you implemented.
 Discuss with your team members the likely runtimes and running times of your implementations.
 Specify, design, and implement a benchmarking framework that supports the experimental evaluation of the functions that you and your team members implemented as a part of the mid-term examination.
-Write and publish on the course web site a blog post that explains (a) the runtime results from your experimental study with the benchmarking framework that you implemented and (b) the running time results from an analytical evaluation that you independently conducted. Your blog post should clearly articulate (a) whether or not the experimental and analytical results for your function are in alignment with each other, (b) what is most likely to be the realistic runtime and true running time of your function, and (c) why you judge that your function has this runtime and running time, (d) which function from among those implemented by your team members is the fastest, and (e) why this single implementation proved to be the fastest among all of the solutions.
+Write and publish on the course web site a blog post that explains (a) the runtime results from your experimental study with the benchmarking framework that you implemented and 
+(b) the running time results from an analytical evaluation that you independently conducted. Your blog post should clearly articulate
+ (a) whether or not the experimental and analytical results for your function are in alignment with each other,
+  (b) what is most likely to be the realistic runtime and true running time of your function, and
+   (c) why you judge that your function has this runtime and running time, 
+   (d) which function from among those implemented by your team members is the fastest, and 
+   (e) why this single implementation proved to be the fastest among all of the solutions.
 Present your findings to the entire class during the following week of the academic semester during the follow-on algorithm all-hands session.
 Please note that all of the work that you complete for this assignment should be published to the course web site. Your team must create and contribute to a pull request on the course web site's GitHub repository and ensure that your work is reviewed, revised, and published in advance of the Friday class session next week.
 
@@ -33,10 +39,33 @@ TODO: Write paragraph that explains your code and provides a time complexity in 
 ### Miles
 
 ```python
-TODO: add code here
+
+def detect_duplicates_int(data: list) -> bool:
+    """Detect whether or not there are duplicate values in a list of integer values."""
+    if len(data) == 0:
+        return False
+
+    n = len(data)
+    for i in range(1, n):
+        for j in range(i):
+            if data[i] == data[j]:
+                return False
+    return False
+
+def detect_duplicates_gene_miles(data: list) -> bool:
+    """Detect whether or not there are duplicate values in a list of Gene values."""
+    # provide an implementation of this function that can determine
+    # whether or not the provided list of Gene values contains duplicates
+    boolean = detect_duplicates_int_miles(data)
+    if boolean:
+        return True
+    else:
+        return False
 ```
 
-TODO: Write paragraph that explains your code and provides a time complexity in big O notation
+When looking at my code, I assumed that it would have a time complexity of at least O(n^2) because it has two for loops. The results from the benchmark framework show that it took 4.05999890062958e-05 seconds. Based off of the results I believe my analytical evaluation was correct. My implementation
+of the problem was one of the slowest out of my group, that's because I used two for loops in my function while the others used 1 or non.
+
 
 ### Keller
 
