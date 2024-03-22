@@ -142,7 +142,7 @@ Upon comparing these two results, we find that the theoretical result differs
 subtly from the experimental result. The experimental time complexity, when
 $n_1$ is held constant, varies exponentially with $n_2$, as $n_2$ approaches
 $300$, which goes against the theoretical time complexity for which $O$ would
-vary lienarly if $n_1$ were held constant.
+vary linearly if $n_1$ were held constant.
 
 When we hold $n_2$ constant, however, Simon's estimated runtime complexity is
 coupled closely with the experimental runtime complexity, with both runtimes
@@ -404,11 +404,11 @@ the new ones.
 Jason's solution represents the best-case situation. Jason's method iterates
 through each row just once, adding up the elements and their counts using a
 generator expression, and then computes the total sum and the count of elements
-in the matrix directly. Jason's approach is more effective since it computes the
-total and count in a single pass through the matrix, avoiding the expense of
-list concatenation. It is more space and time efficient due to this direct
-computation, which reduces the number of operations needed to compute the
-average and eliminates the need for additional space for a flattened list.
+in the matrix directly. Jason's approach is more effective since it computes
+the `total` and `count` in a single pass through the matrix, avoiding the
+expense of list concatenation. It is more space and time efficient due to this
+direct computation, which reduces the number of operations needed to compute
+the average and eliminates the need for additional space for a flattened list.
 
 Additionally, examining the calculated doubling ratios offers further insights
 into the scalability of each solution. For Jason's solution, the average
