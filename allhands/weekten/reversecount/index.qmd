@@ -13,7 +13,22 @@ toc: true
 An analysis of the running time and run time of the assorted `reverse_count`
 functions implemented by team members.
 
-# Code 
+# Code
+
+```{python}
+# Mordred's implementation of the function reverse_count
+
+def reverse_str(data: str) -> str:
+    """Reverse the content of the provided string."""
+    reverse = ""
+    for i in range(len(data)):
+        reverse += data[-(i + 1)]
+    return reverse
+
+def reverse_count(data: str) -> dict:
+    """Reverse the content of the provided string and return it in a mapping."""
+    return {data: {"count": str(len(data)), "reversed": reverse_str(data)}}
+```
 
 ```{python}
 # Chloe's implementation of the function reverse_count
@@ -74,6 +89,13 @@ print(
 ```
 
 # Data Output
+
+## Mordred's implementation:
+
+```text
+Performance time in seconds:
+ [3.950000018448918e-05, 2.3999999939405825e-05, 2.390000008745119e-05, 2.3800000235496555e-05, 2.3799999780749204e-05]
+```
 
 ## Chloe's implementation:
 
