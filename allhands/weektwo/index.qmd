@@ -356,13 +356,13 @@ increasing in linearity upon passing $n_1 \approx 250$.
 # Data Analysis
 
 Our solutions all involve flattening the matrix and calculating the average,
-resulting in linear time complexities of O(n), where n represents the total
-number of elements in the matrix. However, Simon Jones' solution stands out with
-a more complex estimated time complexity of O(n_1 + 2n_1n_2 + 0.5n_2(n_1^3 +
-n_1^2)), where n_1 is the number of rows and n_2 is the average length of the
-rows. Despite its complexity estimation, Simon's solution demonstrates a
-discrepancy between the estimated and experimental time complexities, suggesting
-a need for refinement.
+resulting in linear time complexities of $O(n)$, where n represents the total
+number of elements in the matrix. However, Simon Jones' solution stands out
+with a more complex estimated time complexity of $O(n_1 + 2n_1n_2 +
+0.5n_2(n_1^3 + n_1^2))$, where $n_1$ is the number of rows and $n_2$ is the
+average length of the rows. Despite its complexity estimation, Simon's solution
+demonstrates a discrepancy between the estimated and experimental time
+complexities, suggesting a need for refinement.
 
 The `main.py` script conducts an experimental analysis of various solutions that
 is executed multiple times with matrices of varying sizes, and the execution
@@ -410,29 +410,37 @@ list concatenation. It is more space and time efficient due to this direct
 computation, which reduces the number of operations needed to compute the
 average and eliminates the need for additional space for a flattened list.
 
-Additionally, examining the calculated doubling ratios offers further insights into the scalability of each solution. For Jason's solution, the average doubling 
-ratio for holding n_1 constant is approximately 1.52, indicating an increase in runtime as the input size doubles. Similarly, for holding n_2 constant, 
-Jason's solution shows an average doubling ratio of about 1.09, suggesting a slightly better scalability concerning the second dimension of the matrix. On the 
-other hand, Simon's solution demonstrates an average doubling ratio of around 1.84 when holding n_1 constant and 1.20 when holding n_2 constant. These findings 
-suggest that Simon's solution experiences a more significant increase in runtime with larger input sizes compared to Jason's solution, particularly noticeable 
-when scaling along the first dimension of the matrix. Analyzing these doubling ratios provides valuable insights into the performance characteristics of each 
-approach, aiding in the selection of the most suitable solution for specific application scenarios
+Additionally, examining the calculated doubling ratios offers further insights
+into the scalability of each solution. For Jason's solution, the average
+doubling ratio for holding $n_1$ constant is approximately $1.52$, indicating
+an increase in runtime as the input size doubles. Similarly, for holding $n_2$
+constant, Jason's solution shows an average doubling ratio of about $1.09$,
+suggesting a slightly better scalability concerning the second dimension of the
+matrix. On the other hand, Simon's solution demonstrates an average doubling
+ratio of around $1.84$ when holding $n_1$ constant and $1.20$ when holding
+$n_2$ constant. These findings suggest that Simon's solution experiences a more
+significant increase in runtime with larger input sizes compared to Jason's
+solution, particularly noticeable when scaling along the first dimension of the
+matrix. Analyzing these doubling ratios provides valuable insights into the
+performance characteristics of each approach, aiding in the selection of the
+most suitable solution for specific application scenarios
 
-# Future Works
+# Future Work
 
-One aspect that could be considered for future works is creating a function that
+One aspect that could be considered for future work is creating a function that
 would create, test, and store empirical results. For this project, we ran and
-recorded results for our own individual functions. We wrote code that would call
-the functions and then print the function’s run time results in the terminal and
-we did this for every person’s average function. However, rather than writing
-the code for each individual function, further action could be taken to make
-that process more generalized. For example, the goal would be to call the
-generalized testing function and then that function would create inputs and
-record the run time results for any Python function. This would make running
-these empirical tests for created functions more convenient. It would also help
-to standardize the process. Some challenges in creating a function that would
-generalize the testing process might include accounting for different types of
-functions and different types of parameters. For this all-hands project
-generating inputs for 1c was complicated because our input was a List of Lists;
-it was not a simple integer or string. Creating this generalized function that
-would run the empirical testing for us could be one step moving forward. 
+recorded results for our own individual functions. We wrote code that would
+call the functions and then print the function’s run time results in the
+terminal and we did this for every person’s average function. However, rather
+than writing the code for each individual function, further action could be
+taken to make that process more generalized. For example, the goal would be to
+call the generalized testing function and then that function would create
+inputs and record the run time results for any Python function. This would make
+running these empirical tests for created functions more convenient. It would
+also help to standardize the process. Some challenges in creating a function
+that would generalize the testing process might include accounting for
+different types of functions and different types of parameters. For this
+all-hands project generating inputs for this function was complicated because
+our input was a `List` of `List`s; it was not a simple `Integer` or `String`.
+Creating this generalized function that would run the empirical testing for us
+could be one step moving forward. 
