@@ -56,7 +56,6 @@ def detect_duplicates_gene_alish(data: List[Gene]) -> bool:
     return False
 ```
 
-TODO: Write paragraph that explains your code and provides a time complexity in big O notation
 
 The function detect_duplicates_gene_alish is designed to determine whether there are duplicate gene names in a given list of Gene objects. It achieves this by 
 iterating through the list and comparing each gene's prefix with every other gene's prefix using the compare_gene_prefix_alish function. If a pair of genes has the 
