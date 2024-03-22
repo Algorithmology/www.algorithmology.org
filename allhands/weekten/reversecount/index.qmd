@@ -16,6 +16,21 @@ functions implemented by team members.
 # Code
 
 ```{python}
+# Will's Implementation
+def reverse_count(data: str):
+    """Reverse the content of the provided string and return it in a mapping."""
+    string = ""
+    count = 0
+    output = {}
+    for letter in data:
+        string = letter + string
+        count = len(string)
+    output[data] = count
+    output["reversed_string"] = string
+    return output
+```
+
+```{python}
 # Mordred's implementation of the function reverse_count
 
 def reverse_str(data: str) -> str:
@@ -89,6 +104,13 @@ print(
 ```
 
 # Data Output
+
+## Will's implementation:
+
+```text
+Performance time in seconds:
+[7.916998583823442e-06, 5.457986844703555e-06, 5.333000444807112e-06, 5.207999492995441e-06, 5.250010872259736e-06]
+```
 
 ## Mordred's implementation:
 
@@ -181,14 +203,14 @@ Performance time in seconds:
 
 # Analysis
 
-From Luke's implementation:
+## Luke
 
 The len() function and the str slicing both have a worst case time complexity of
 O(n) so that would make the total worst case time complexity of the function be
 O(n). This means that the function grows at a linear rate based on the size of
 the input and the time it takes to execute the function.
 
-From Chloe's implementation:
+## Chloe
 
 Based on the output above, the running time exhibits a worst case time complexity of O(n), otherwise described as a linear progression. This means that there is a linear relationship between the runtime of the function and the input size. I considred the costs of slicing the str (`reverse = data[::-1]`) and creating the dictionary with the len function involved (`data: {"count": str(len(data)), "reversed": reverse}`) O(n). Leading to the total WCTC being the same.
 
@@ -196,3 +218,8 @@ The runtime of the function implementation above is displayed in the Ouput secti
 
 Comparing the theoretical running time value and the empirical runtime results, indicate what I would expect. The growth is linear, however, the slope of the curve is rather flat and the values increase in small increments. This could be attributed to the speed of my laptop. Since mine runs rather fast, I would need to increase the input size drastically to see larger increases in runtime. However, I ran the function in a separate script and outputted the results to many decimal places and noticed a linear development is present. 
 
+## Will
+
+The time complexity of the reverse_count function is O(n), where n is the length of the input string.
+The code above shows that there is a linear growth in relation to the input size and the run time. In
+relation to that the run time shows that this code is the slowest and not the most efficient.
