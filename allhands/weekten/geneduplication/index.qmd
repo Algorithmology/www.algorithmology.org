@@ -376,6 +376,9 @@ for result in sorted_results:
 <!-- TODO: This data does not result from systematically increasing the size -->
 <!-- of the input and thus does not suitably shed light on the worst-case time complexities. -->
 
+<!-- TODO: This paragraph refers to "Keller" but it should refer to the function that -->
+<!-- was implemented by Keller --- unless you were actually racing each other! -->
+
 After multiple runs of the experiment, Tugi and Nic consistently emerged as the
 fastest performers, with Keller occasionally shifting between second and third
 place. Meanwhile, Ochirsaikhan, Miles, and Alish showed varying performance,
