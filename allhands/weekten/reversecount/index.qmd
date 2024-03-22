@@ -266,10 +266,10 @@ based on the size of the input and the time it takes to execute the function.
 Based on the output above, the running time exhibits a worst case time
 complexity of $O(n)$, otherwise described as a linear progression. This means
 that there is a linear relationship between the runtime of the function and the
-input size. I considered the costs of slicing the str (`reverse = data[::-1]`)
-and creating the dictionary with the len function involved (`data: {"count":
-str(len(data)), "reversed": reverse}`) $O(n)$. This suggests the total
-worst-case time complexity being the same.
+input size. I considered the costs of slicing the `str` (i.e., `reverse =
+data[::-1]`) and creating the dictionary with the len function involved (i.e.,
+`data: {"count": str(len(data)), "reversed": reverse}`) as $O(n)$. This
+suggests the total worst-case time complexity being the same.
 
 The runtime of the function implementation above is displayed in the Output
 section. The average of the $5$ output values is $3.0418857932090757e-06$.
