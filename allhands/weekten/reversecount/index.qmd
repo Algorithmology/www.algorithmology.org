@@ -273,3 +273,12 @@ Comparing the theoretical running time value and the empirical runtime results, 
 The time complexity of the reverse_count function is O(n), where n is the length of the input string.
 The code above shows that there is a linear growth in relation to the input size and the run time. In
 relation to that the run time shows that this code is the slowest and not the most efficient.
+
+# Conclusion
+
+Despite the variety of implementations used, all had a worst-case time
+complexity of O(n). This shows in practice, where the differences
+between the methods were negligible, typically a difference of less than
+-05 in the scientific notation. As such, the O(n) assumed from the
+implementations holds true, and the methods do not have one being clearly more
+efficient than the others.
