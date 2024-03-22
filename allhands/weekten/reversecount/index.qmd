@@ -17,7 +17,7 @@ functions implemented by team members.
 
 ```{python}
 # Will's Implementation
-def reverse_count(data: str):
+def will_reverse_count(data: str):
     """Reverse the content of the provided string and return it in a mapping."""
     string = ""
     count = 0
@@ -40,7 +40,7 @@ def reverse_str(data: str) -> str:
         reverse += data[-(i + 1)]
     return reverse
 
-def reverse_count(data: str) -> dict:
+def mordred_reverse_count(data: str) -> dict:
     """Reverse the content of the provided string and return it in a mapping."""
     return {data: {"count": str(len(data)), "reversed": reverse_str(data)}}
 ```
@@ -49,7 +49,7 @@ def reverse_count(data: str) -> dict:
 # Chloe's implementation of the function reverse_count
 
 ### Function Implementation
-def reverse_count(data: str) -> dict:
+def chloe_reverse_count(data: str) -> dict:
     """Reverse the content of the provided string and return it in a mapping."""
     reverse = data[::-1]
     return {data: {"count": str(len(data)), "reversed": reverse}}
@@ -58,7 +58,7 @@ def reverse_count(data: str) -> dict:
 ```{python}
 # David's implementation of the function reverse_count
 
-def reverse_count(data: str) -> Dict[str, Dict[str, str]]:
+def david_reverse_count(data: str) -> dict[str, dict[str, str]]:
     """Reverse the content of the provided string and return it in a mapping."""
     count = str(len(data))
     reversed = data[::-1]
@@ -70,7 +70,7 @@ def reverse_count(data: str) -> Dict[str, Dict[str, str]]:
 ```{python}
 # Luke's implementation of the function reverse_count
 
-def reverse_count(data: str) -> Dict[str, Dict[str, Any]]:
+def luke_reverse_count(data: str) -> dict[str, dict[str]]:
     """Reverse the content of the provided string and return it in a mapping."""
     count = str(len(data))
     reversed_data = str(data[::-1])
@@ -81,7 +81,7 @@ def reverse_count(data: str) -> Dict[str, Dict[str, Any]]:
 ```{python}
 # Benedek's implementation of the function reverse_count
 
-def reverse_count(data: str) -> dict:
+def benedek_reverse_count(data: str) -> dict:
     """Reverse the content of the provided string and return it in a mapping."""
     return {data: {"count": str(len(data)), "reversed": data[::-1]}}
 ```
@@ -94,12 +94,62 @@ import functools
 
 performance_list = []
 for i in timeit.repeat(
-  stmt=functools.partial(reverse_count, "checking!"),
+  stmt=functools.partial(will_reverse_count, "checking!"),
     number=10,
   ):
     performance_list.append(i)
 print(
-  f"Performance time in seconds:\n {performance_list}"
+  f"Performance time in seconds for Will's implementation:\n {performance_list}"
+)
+
+performance_list = []
+for i in timeit.repeat(
+  stmt=functools.partial(mordred_reverse_count, "checking!"),
+    number=10,
+  ):
+    performance_list.append(i)
+print(
+  f"Performance time in seconds for Mordred's implementation:\n {performance_list}"
+)
+
+performance_list = []
+for i in timeit.repeat(
+  stmt=functools.partial(chloe_reverse_count, "checking!"),
+    number=10,
+  ):
+    performance_list.append(i)
+print(
+  f"Performance time in seconds for Chloe's implementation:\n {performance_list}"
+)
+
+performance_list = []
+for i in timeit.repeat(
+  stmt=functools.partial(david_reverse_count, "checking!"),
+    number=10,
+  ):
+    performance_list.append(i)
+print(
+  f"Performance time in seconds for David's implementation:\n {performance_list}"
+)
+
+performance_list = []
+for i in timeit.repeat(
+  stmt=functools.partial(luke_reverse_count, "checking!"),
+    number=10,
+  ):
+    performance_list.append(i)
+print(
+  f"Performance time in seconds for Luke's implementation:\n {performance_list}"
+)
+
+performance_list = []
+for i in timeit.repeat(
+  stmt=functools.partial(benedek_reverse_count, "checking!"),
+    number=10,
+  ):
+    performance_list.append(i)
+print(
+  f"Performance time in seconds for Benedek's implementation:\n {performance_list}"
 )
 ```
 
