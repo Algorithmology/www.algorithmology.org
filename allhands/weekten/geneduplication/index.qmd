@@ -143,11 +143,12 @@ def detect_duplicates_gene(data):
     return False
 ```
 
-O(N) due to one for loop when iterating the data.
-RunTime: x seconds.
+<!-- TODO: This analysis is not sufficient -->
 
-This code above utilizes a hashmap and counts the number of the genes it finds. If there is more than one found, then 
-it will immediately give True!
+I think that my function is $O(n)$ due to the use of one `for` loop when
+iterating the data. This code above utilizes a dictionary and counts the number
+of the genes it finds. If there is more than one found, then it will
+immediately give `True`!
 
 ### Team Four
 
@@ -371,6 +372,9 @@ for result in sorted_results:
 
 # }}}
 ```
+
+<!-- TODO: This data does not result from systematically increasing the size -->
+<!-- of the input and thus does not suitably shed light on the worst-case time complexities. -->
 
 After multiple runs of the experiment, Tugi and Nic consistently emerged as the
 fastest performers, with Keller occasionally shifting between second and third
