@@ -275,8 +275,9 @@ The runtime of the function implementation above is displayed in the Output
 section. The average of the $5$ output values is $3.0418857932090757e-06$.
 Comparing the running time to the runtime results, it is indicated that as the
 string input `data` is increased, there will be a linear rate of growth.
-Graphically, this would be visualized with time on the x axis and input size on
-the y axis; the curve would be a straight line with a positive slope.
+Graphically, this would be visualized with time on the horizontal axis and
+input size on the vertical axis; the curve would be a straight line with a
+positive slope.
 
 Comparing the theoretical running time value and the empirical runtime results,
 indicate what I would expect. The growth is linear, however, the slope of the
