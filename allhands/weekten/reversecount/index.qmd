@@ -8,13 +8,13 @@ date-format: long
 toc: true
 ---
 
-
 # Overview
 
 An analysis of the running time and run time of the assorted `reverse_count`
 functions implemented by team members.
 
 # Code 
+
 
 ```{python}
 # David's implementation of the function reverse_count
@@ -37,7 +37,17 @@ def reverse_count(data: str) -> Dict[str, Dict[str, Any]]:
     reversed_data = str(data[::-1])
     result = {data: {"count": count, "reversed": reversed_data}}
     return result
+```
 
+```python
+# Benedek's implementation of the function reverse_count
+
+def reverse_count(data: str) -> dict:
+    """Reverse the content of the provided string and return it in a mapping."""
+    return {data: {"count": str(len(data)), "reversed": data[::-1]}}
+```
+
+```python
 
 ```{python}
 import timeit
@@ -57,7 +67,65 @@ print(
 
 # Data
 
-David's Implementation:
+## Benedek's Implementation
+
+```text
+first output:
+
+Performance time in seconds:
+ [5.699926987290382e-06, 2.900022082030773e-06, 2.7999049052596092e-06, 2.700020559132099e-06, 2.700020559132099e-06]
+
+second output:
+
+Performance time in seconds:
+ [5.599926225841045e-06, 2.900022082030773e-06, 2.800021320581436e-06, 2.900022082030773e-06, 2.6999041438102722e-06]
+
+third output:
+
+Performance time in seconds:
+ [7.4999406933784485e-06, 4.00003045797348e-06, 4.699919372797012e-06, 4.400033503770828e-06, 4.200031980872154e-06]
+
+fourth output:
+
+Performance time in seconds:
+[7.79994297772646e-06, 3.100023604929447e-06, 2.900022082030773e-06, 2.700020559132099e-06, 2.7999049052596092e-06]
+
+fifth output:
+
+Performance time in seconds:
+[6.299931555986404e-06, 3.00002284348011e-06, 2.800021320581436e-06, 2.800021320581436e-06, 2.6999041438102722e-06]
+```
+
+### The code for getting the average of the outputs
+
+```python
+class AverageOutput:
+    def __init__(self):
+        self.output = []
+
+    def storing_output(self):
+        first_output = [5.699926987290382e-06, 2.900022082030773e-06, 2.7999049052596092e-06, 2.700020559132099e-06, 2.700020559132099e-06]
+        second_output = [5.599926225841045e-06, 2.900022082030773e-06, 2.800021320581436e-06, 2.900022082030773e-06, 2.6999041438102722e-06]
+        third_output = [7.4999406933784485e-06, 4.00003045797348e-06, 4.699919372797012e-06, 4.400033503770828e-06, 4.200031980872154e-06]
+        fourth_output = [7.79994297772646e-06, 3.100023604929447e-06, 2.900022082030773e-06, 2.700020559132099e-06, 2.7999049052596092e-06]
+        fifth_output = [6.299931555986404e-06, 3.00002284348011e-06, 2.800021320581436e-06, 2.800021320581436e-06, 2.6999041438102722e-06]
+
+        self.outputs = first_output + second_output + third_output + fourth_output + fifth_output
+        return sum(self.outputs)
+    
+    def get_average(self):
+        return sum(self.outputs) / len(self.outputs) if self.outputs else 0
+```
+
+### The output of the function including the average performance time
+
+```text
+Total: 9.539956226944923e-05
+Average: 3.8159824907779695e-06
+```
+
+## David's Implementation:
+
 ```text
 Performance time in seconds:
 First Run: [1.09350003185682e-05, 8.03500006441027e-06, 7.890994311310351e-06, 7.889997505117208e-06, 7.848000677768141e-06]
@@ -68,7 +136,7 @@ Fifth Run: [1.1313000868540257e-05, 8.074996003415436e-06, 7.907001418061554e-06
 Average: [1.1184569075043328e-05, 8.073418497881355e-06, 7.908197097374817e-06, 7.953013119930274e-06, 7.948352562959439e-06]
 ```
 
-Luke's Implementation:
+## Luke's Implementation:
 
 ```text
 Performance time in seconds:
@@ -77,9 +145,11 @@ Performance time in seconds:
 
 # Analysis
 
-For Luke's implementation
+From Luke's implementation:
+
 The len() function and the str slicing both have a worst case time complexity of
 O(n) so that would make the total worst case time complexity of the function be
 O(n). This means that the function grows at a linear rate based on the size of
 the input and the time it takes to execute the function.
+
 
