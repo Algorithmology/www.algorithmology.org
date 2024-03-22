@@ -418,6 +418,10 @@ expense of list concatenation. It is more space and time efficient due to this
 direct computation, which reduces the number of operations needed to compute
 the average and eliminates the need for additional space for a flattened list.
 
+<!-- TODO: Do these actually confirm the worst-case time complexities or not? -->
+
+<!-- TODO: When this content states "an increase", what kind is it? -->
+
 Additionally, examining the calculated doubling ratios offers further insights
 into the scalability of each solution. For Jason's solution, the average
 doubling ratio for holding $n_1$ constant is approximately $1.52$, indicating
