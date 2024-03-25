@@ -365,7 +365,7 @@ pledge:
 Students who create the source code and documentation for their algorithm
 engineering and algorithm all-hands projects should ensure the implementation of
 a high-quality final product. While students are permitted to use a wide variety
-of software engineering tools, such as integrated development environments,
+of algorithm engineering tools, such as integrated development environments,
 testing frameworks, automated debuggers, and code generators (e.g., systems that
 leverage large language models like GitHub Copilot) and documentation sites such
 as StackOverflow, they must take responsibility for all of the source code and
