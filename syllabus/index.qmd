@@ -329,9 +329,9 @@ distinct Discord servers for all course discussions. The [Algorithmology
 Discord Server](https://discord.gg/YHjhQaBnme) provides a way for members of
 the developer development community to use text and video to chat with each
 other and will be the main forum for discussing the professional and technical
-content in software engineering. The [Allegheny College Computer Science
-Discord Server](https://discord.gg/CS2h9kXzX6) will be the main forum for
-Department of Computer Science announcements. Finally, any content that a
+content in the field of algorithm analysis. The [Allegheny College Computer
+Science Discord Server](https://discord.gg/CS2h9kXzX6) will be the main forum
+for Department of Computer Science announcements. Finally, any content that a
 student wants the instructor to assess (e.g., the work for an algorithm
 engineering project) must be in a GitHub repository.
 
