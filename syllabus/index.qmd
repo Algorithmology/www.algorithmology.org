@@ -232,10 +232,12 @@ in the [course schedule](../schedule/index.qmd). During the completion of this
 two-week project, students will design and implement a software system suitable
 for conducting experiments and then use it answer research questions that
 connect to previously discussed scientific content, as outlined in the [course
-schedule](../schedule/index.qmd). After completing the implementation of the
-software used for benchmarking, students will propose and formally state
-research questions and then discuss them with the course instructor during a
-laboratory session.
+schedule](../schedule/index.qmd). After implementing the benchmarking system,
+students will propose and formally state research questions and then discuss
+them with the course instructor during a laboratory session. Finally, students
+will conduct experiments to answer these research questions, collect data,
+analyze the results, and write a report that explains the results in the
+context of the implemented system.
 
 #### Assessment Policies
 
