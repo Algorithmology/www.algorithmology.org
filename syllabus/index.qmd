@@ -226,6 +226,17 @@ team-based project in which they design, implement, document, release, and
 maintain a software tool that supports the rigorous evaluation of the
 performance of a Python program.
 
+- **Algorithm Engineering Projects**: These projects enable students to explore
+both the scientific and engineering aspects of algorithm analysis, as outlined
+in the [course schedule](../schedule/index.qmd). During the completion of this
+two-week project, students will design and implement a software system suitable
+for conducting experiments and then use it answer research questions that
+connect to previously discussed scientific content, as outlined in the [course
+schedule](../schedule/index.qmd). After completing the implementation of the
+software used for benchmarking, students will propose and formally state
+research questions and then discuss them with the course instructor during a
+laboratory session.
+
 #### Assessment Policies
 
 Unless exempted by the instructor, students must abide by the following
