@@ -211,12 +211,15 @@ to complete the examination.
 - **Final Examination**: The final examination is an online, executable,
 cumulative assessment covering all of the material during all of the course
 sessions, as outlined on the [course schedule](../schedule/index.qmd). Unless
-prior arrangements are made with the course instructor, all students should use
-their computer to take the final examination on the scheduled date and to
-complete it in the stated location while taking no more than the required amount
-of time. The cumulative final is an executable examination that a student will
-complete through the use of GitHub, VS Code, and the Python programming tools
-installed on their laptops.
+prior arrangements are made with the instructor, all students should use their
+computer to take the final examination on the scheduled date and to complete it
+in the stated location while taking no more than the required amount of time.
+The cumulative final is an executable examination that a student will complete
+through the use of GitHub, VS Code, and the Python programming tools installed
+on their laptops. Students may use external sources, including artificial
+intelligence coding assistants, during the completion of the final examination
+provided that they cite these sources and explain how they used them to complete
+the examination.
 
 - **Algorithm All-Hands**: These projects enable students to explore both the
 scientific and engineering aspects of algorithm analysis, as outlined in the
