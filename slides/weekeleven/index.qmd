@@ -370,7 +370,7 @@ quicksort(data)
 print(data)
 ```
 
-## Deep dive into `quickSort`
+## Deep dive into `quicksort`
 
 ::: {.fragment style="font-size: 0.85em; margin-top: -0.2em"}
 
