@@ -116,3 +116,19 @@ print(mapget(m, 4) == 'four')
 {{< iconify game-icons team-idea >}} **Can you suggest ways to improve this implementation?**
 
 :::
+
+## What is our ultimate goal for the interface to a hash table?
+
+```{python}
+d = {'key1': 'value1', 'key2': 'value2'}
+for k in d:
+    print(k)
+
+for v in d.values():
+    print(v)
+
+for k, v in d.items():
+    print(k, v)
+
+print(d)
+```
