@@ -98,3 +98,21 @@ assert(mapget(m, 4) == 'four')
 print(mapget(m, 1) == 'one')
 print(mapget(m, 4) == 'four')
 ```
+
+## What can we learn from the implementation of `Entry` and the `mapput` and `mapget` functions?
+
+::: incremental
+
+- Offers a new API for accessing data stored in a `list`
+- Uses the `Entry` class to store key-value pairs
+- Provides the `mapput` function to add key-value pairs
+- Uses the `mapget` function to retrieve values
+- Yet, **no efficiency gains** and **not a suitable design**!
+
+:::
+
+::: {.fragment .fade style="margin-top: -0.15em;"}
+
+{{< iconify game-icons team-idea >}} **Can you suggest ways to improve this implementation?**
+
+:::
