@@ -19,3 +19,82 @@ format:
     html-math-method: mathjax
     footer: "Algorithmology"
 ---
+
+# Efficient way to find data in a collection?
+
+- Sort the items in a collection
+- Use binary search to find an item
+- Amortize the cost of sorting
+- Operate on collections are static
+
+{{< iconify game-icons team-idea >}} **Wait, what are the limitations of this approach?**
+
+# What are mappings and hash table structures?
+
+- A **mapping** is an association between two sets of items
+- A mapping **associates** a value to a key
+- This association is called a **key-value pair**
+- Key are unique, so there is only **one value per key**
+
+{{< iconify game-icons team-idea >}} **Why do dictionary operations only take constant time?**
+
+## Mapping abstract data type
+
+::: {.fragment .fade .boxed-content style="margin-top: 0em; font-size: 0.95em;"}
+
+- **`get(k)`** - return the value associate to the key `k`. Usually an error
+(`KeyError`) is raised if the given key is not present.
+
+- **`put(k,v)`** - Add the key-value pair `(k,v)` to the mapping.
+
+:::
+
+::: {.fragment .fade style="margin-top: 0.25em; font-size: 0.90em;"}
+
+- Implemented as `__getitem__` and `__setitem__` in Python
+- Complete implementation is sophisticated and nuanced
+- Small mistakes can lead to performance problems
+- Start with a simple implementation and iteratively improve it
+
+:::
+
+::: {.fragment .fade}
+
+{{< iconify game-icons team-idea >}} **Can you sketch an efficient dictionary implementation?**
+
+:::
+
+## Preliminary hash table
+
+```{python}
+class Entry:
+    def __init__(self, key, value):
+        self.key = key
+        self.value = value
+
+    def __str__(self):
+        return str(self.key) + " : " + str(self.value)
+
+def mapput(L, key, value):
+    for e in L:
+        if e.key == key:
+            e.value = value
+            return
+    L.append(Entry(key, value))
+
+def mapget(L, key):
+    for e in L:
+        if e.key == key:
+            return e.value
+    raise KeyError
+
+m = []
+mapput(m, 4, 'five')
+mapput(m, 1, 'one')
+mapput(m, 13, 'thirteen')
+mapput(m, 4, 'four')
+assert(mapget(m, 1) == 'one')
+assert(mapget(m, 4) == 'four')
+print(mapget(m, 1) == 'one')
+print(mapget(m, 4) == 'four')
+```
