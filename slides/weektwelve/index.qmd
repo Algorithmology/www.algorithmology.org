@@ -156,3 +156,18 @@ print(d)
 - `__str__` - return a string representation of the mapping
 
 :::
+
+## Be careful! Don't assume details about hash table behavior!
+
+- 🎉 Remember, `dict` is a **non-sequential collection**
+- 🎲 The order of items in a `dict` is unpredictable
+- 🔄 Order can change between two iterations of same `dict`
+- 📝 Now `dict` items are in a fixed order since using a `list`
+- 🚀 Moving items around a `list` improves running times!
+
+::: {.fragment .fade style="margin-top: 0.05em;"}
+
+{{< iconify game-icons team-idea >}} **Implementing a performant dictionary is
+surprisingly challenging! What strategies can we use for assessment?**
+
+:::
