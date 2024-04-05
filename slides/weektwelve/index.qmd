@@ -290,7 +290,7 @@ class HashMappingSimple:
 ::: {.fragment .boxed-content .fade style="margin-top: 0.0em; font-size: 0.80em;"}
 
 **Key**: Use more buckets as the number of entries increases! This approach only
-increases the hash table's space overhead a demand-driven fashion.
+increases the hash table's space overhead in a demand-driven fashion.
 
 :::
 
@@ -366,3 +366,29 @@ class HashMapping:
 {{< iconify game-icons team-idea >}} **What is a drawback of this `HashMap` implementation?**
 
 :::
+
+## Rehashing with the `_double` method
+
+```python
+def _double(self):
+    oldbuckets = self._buckets # <1>
+    self._size *= 2            # <2>
+    self._buckets = [ListMapping() for i in range(self._size)] # <3>
+    for bucket in oldbuckets:  # <4>
+        for key, value in bucket.items():
+            m = self._bucket(key) # <5>
+            m[key] = value
+
+```
+1. Save references to the old buckets
+2. Double the size of the `HashMap`
+3. Create the new list of buckets
+4. Add in all of the old entries
+5. Identify new bucket for each key-value pair
+
+::: {.fragment .fade style="margin-top: 0.85em; font-size: 0.95em;"}
+
+{{< iconify game-icons team-idea >}} **What is the worst-case time complexity of  `_double`?**
+
+:::
+
