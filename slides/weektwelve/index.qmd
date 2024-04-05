@@ -256,7 +256,7 @@ implement a method called `__hash__` for this purpose. Let's try it!
 class HashMappingSimple:
     def __init__(self):
         self._size = 100
-        self._buckets = [ListMapping() for i in range(self._size)]
+        self._buckets = [ListMapping() for _ in range(self._size)]
 
     def put(self, key, value):
         m = self._bucket(key)
