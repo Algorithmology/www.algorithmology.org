@@ -175,7 +175,7 @@ surprisingly challenging! What strategies can we use for assessment?**
 ## List-based hash table implementation
 
 ```{python}
-class ListMapping:
+class ListMappingSimple:
     def __init__(self):
         self._entries = []
 
@@ -256,7 +256,7 @@ implement a method called `__hash__` for this purpose. Let's try it!
 class HashMappingSimple:
     def __init__(self):
         self._size = 100
-        self._buckets = [ListMapping() for _ in range(self._size)]
+        self._buckets = [ListMappingSimple() for _ in range(self._size)]
 
     def put(self, key, value):
         m = self._bucket(key)
@@ -297,10 +297,10 @@ increases the hash table's space overhead in a demand-driven fashion.
 ## `HashMap` with dynamic bucket count
 
 ```{python}
-class HashMapping:
+class HashMappingPrime:
     def __init__(self, size = 2):
         self._size = size
-        self._buckets = [ListMapping() for i in range(self._size)]
+        self._buckets = [ListMappingSimple() for _ in range(self._size)]
         self._length = 0
 
     def put(self, key, value):
@@ -329,7 +329,7 @@ class HashMapping:
     def _double(self):
         oldbuckets = self._buckets
         self._size *= 2
-        self._buckets = [ListMapping() for i in range(self._size)]
+        self._buckets = [ListMappingSimple() for _ in range(self._size)]
         for bucket in oldbuckets:
             for key, value in bucket.items():
                 m = self._bucket(key)
@@ -492,7 +492,7 @@ Notation `ListMapping(Mapping)` creates an inheritance hierarchy
 class HashMapping(Mapping):
     def __init__(self, size = 100):
         self._size = size
-        self._buckets = [ListMapping() for i in range(self._size)]
+        self._buckets = [ListMapping() for _ in range(self._size)]
         self._length = 0
 
     def _entryiter(self):
