@@ -530,3 +530,53 @@ class HashMapping(Mapping):
 Wow, this implementation is more concise and easier to understand!
 
 :::
+
+## Hash table data structure
+
+::: {.columns}
+
+::: {.column style="font-size: 0.875em;"}
+
+::: fragment
+
+### `ListMapping`
+
+#### Implementation
+
+- Good design
+- Easy to understand
+- List of key-value pairs
+
+#### Performance
+
+- Can be inefficient
+- Limits memory usage
+- Does not match `dict`
+
+:::
+
+:::
+
+::: {.column style="font-size: 0.875em;"}
+
+::: fragment
+
+### `HashMapping`
+
+#### Implementation
+
+- Good design
+- Challenging to build
+- Use the `ListMapping`
+
+#### Performance
+
+- Improved efficiency
+- Amortizes costs
+- Increases memory usage
+
+:::
+
+:::
+
+:::
