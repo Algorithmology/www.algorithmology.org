@@ -277,3 +277,92 @@ class HashMappingSimple:
 - **Warning**! If two keys hash to the same index, it is a **collision**!
 
 :::
+
+## Bucket count for `HashMappingSimple`?
+
+- Picking `100` buckets is arbitrary used for illustration!
+- There is a trade-off between the number of buckets and:
+  - Time overhead
+  - Space overhead
+  - Number of collisions
+- Strategies for picking the number of buckets?
+
+::: {.fragment .boxed-content .fade style="margin-top: 0.0em; font-size: 0.80em;"}
+
+**Key**: Use more buckets as the number of entries increases! This approach only
+increases the hash table's space overhead a demand-driven fashion.
+
+:::
+
+## `HashMap` with dynamic bucket count
+
+```{python}
+class HashMapping:
+    def __init__(self, size = 2):
+        self._size = size
+        self._buckets = [ListMapping() for i in range(self._size)]
+        self._length = 0
+
+    def put(self, key, value):
+        m = self._bucket(key)
+        if key not in m:
+            self._length += 1
+        m[key] = value
+        if self._length > self._size:
+            self._double()
+
+    def get(self, key):
+        m = self._bucket(key)
+        return m[key]
+
+    def remove(self, key):
+        m = self._bucket(key)
+        m.remove(key)
+
+    def __contains__(self, key):
+        m = self._bucket(key)
+        return key in m
+
+    def _bucket(self, key):
+        return self._buckets[hash(key) % self._size]
+
+    def _double(self):
+        oldbuckets = self._buckets
+        self._size *= 2
+        self._buckets = [ListMapping() for i in range(self._size)]
+        for bucket in oldbuckets:
+            for key, value in bucket.items():
+                m = self._bucket(key)
+                m[key] = value
+
+    def __len__(self):
+        return self._length
+
+    def __iter__(self):
+        for b in self._buckets:
+            for k in b:
+                yield k
+
+    def values(self):
+        for b in self._buckets:
+            for v in b.values():
+                yield v
+
+    def items(self):
+        for b in self._buckets:
+            for k, v in b.items():
+                yield k, v
+
+    def __str__(self):
+        itemlist = [str(e) for b in self._buckets for e in b._entries]
+        return "{" + ", ".join(itemlist) + "}"
+
+    __getitem__ = get
+    __setitem__ = put
+```
+
+::: {.fragment .fade style="margin-top: 0.75em; font-size: 0.90em;"}
+
+{{< iconify game-icons team-idea >}} **What is a drawback of this `HashMap` implementation?**
+
+:::
