@@ -249,3 +249,31 @@ A **hash function** takes a key and returns an integer. Most classes in Python
 implement a method called `__hash__` for this purpose. Let's try it!
 
 :::
+
+## A `HashMap` containing many `ListMap`s
+
+```{python}
+class HashMappingSimple:
+    def __init__(self):
+        self._size = 100
+        self._buckets = [ListMapping() for i in range(self._size)]
+
+    def put(self, key, value):
+        m = self._bucket(key)
+        m[key] = value
+
+    def get(self, key):
+        m = self._bucket(key)
+        return m[key]
+
+    def _bucket(self, key):
+        return self._buckets[hash(key) % self._size]
+```
+
+::: {.fragment .fade style="margin-top: 0.0em; font-size: 0.80em;"}
+
+- The `100` instances of `ListMapping` are called **buckets**
+- The `hash` function maps keys to a bucket in the `HashMap`
+- **Warning**! If two keys hash to the same index, it is a **collision**!
+
+:::
