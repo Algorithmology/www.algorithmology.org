@@ -171,3 +171,81 @@ print(d)
 surprisingly challenging! What strategies can we use for assessment?**
 
 :::
+
+## List-based hash table implementation
+
+```{python}
+class ListMapping:
+    def __init__(self):
+        self._entries = []
+
+    def put(self, key, value):
+        e = self._entry(key)
+        if e is not None:
+            e.value = value
+        else:
+            self._entries.append(Entry(key, value))
+
+    def get(self, key):
+        e = self._entry(key)
+        if e is not None:
+            return e.value
+        else:
+            raise KeyError
+
+    def remove(self, key):
+        e = self._entry(key)
+        if e is not None:
+            self._entries.remove(e)
+
+    def _entry(self, key):
+        for e in self._entries:
+            if e.key == key:
+                return e
+        return None
+
+    def __str__(self):
+        return "{" + ", ".join(str(e) for e in self._entries) + "}"
+
+    def __len__(self):
+        return len(self._entries)
+
+    def __contains__(self, key):    
+        if self._entry(key) is None:
+            return False
+        else:
+            return True
+
+    def __iter__(self):
+      return (e.key for e in self._entries)
+
+    def values(self):
+        return (e.value for e in self._entries)
+
+    def items(self):
+        return ((e.key, e.value) for e in self._entries)
+
+    __getitem__ = get
+    __setitem__ = put
+```
+
+::: {.fragment .fade style="margin-top: 0.75em; font-size: 0.90em;"}
+
+{{< iconify game-icons team-idea >}} **What is the key drawback of this implementation?**
+
+:::
+
+# The `ListMapping` class is not efficient! Ideas?
+
+- Goal is to get near constant-time access to data like `dict`
+
+- Right now more than one method has $O(n)$ running time!
+
+- **Idea**: Use a hash function to map keys to indices for values
+
+::: {.fragment .fade-up .boxed-content style="margin-top: 0em; font-size: 0.80em;"}
+
+A **hash function** takes a key and returns an integer. Most classes in Python
+implement a method called `__hash__` for this purpose. Let's try it!
+
+:::
