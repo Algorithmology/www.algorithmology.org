@@ -309,3 +309,47 @@ class Tree:
   - The tree has root `1` with children `2` and `3`
 
 :::
+
+## Revising the `printtree` function
+
+```{python}
+def printtree(T):
+    print(T.data)
+    for child in T.children:
+        printtree(child)
+
+T = Tree(['a', ['b', ['c', ['d']]],['e',['f'], ['g']]])
+printtree(T)
+```
+
+::: {.fragment .fade-right style="font-size: 0.90em;"}
+
+- The `printtree` function now accepts a `Tree` instance
+- Recursively prints the data stored in the tree nodes
+- Intuitively, this performs a traversal of the tree
+
+:::
+
+## Visualizing the hierarchy of a `Tree`
+
+```python
+def __str__(self, level = 0):
+    treestring = "  " * level + str(self.data)
+    for child in self.children:
+        treestring += "\n" + child.__str__(level + 1)
+    return treestring
+```
+
+<p class="codespacer">
+
+```{python}
+T = Tree(['a', ['b', ['c', ['d']]],['e',['f'], ['g']]])
+print(str(T))
+```
+
+::: {.fragment .fade-right style="font-size: 0.90em;"}
+
+- The `__str__` method now accepts an optional `level` parameter
+- Uses indentation to represent the hierarchy of the tree
+
+:::
