@@ -232,4 +232,52 @@ print(T_simple)
 print(T_complex)
 ```
 
+## Main methods in a `Tree` API
 
+::: {.fragment .fade-up .boxed-content style="margin-top: 0em; font-size: 0.80em;"}
+
+- `__init__(L)`: Initialize a new tree given a list of lists.
+
+- `height()`: Return the height of the tree.
+
+- `__str__()`: Return a string representing the entire tree.
+
+- `__eq__(other)`: Return `True` if the tree is equal to `other`.
+
+- `__contains__(k)`: Return `True` if and only if the tree contains the data
+`k` either at the root or at one of its descendants.  Return `False` otherwise.
+
+:::
+
+::: incremental
+
+- Leverage the same list of list as used for the primitive tree
+- Methods that make trees easier to use (e.g., `__contains__`)
+- The `height` method gives maximal depth of the tree
+
+:::
+
+## Traversal methods in a `Tree` API
+
+::: {.fragment .fade-up .boxed-content style="margin-top: 0em; font-size: 0.80em;"}
+
+- `preorder()`: Return an iterator over the data in the tree that yields values
+according to the **pre-order** traversal of the tree.
+
+- `postorder()`: Return an iterator over the data in the tree that yields
+values according to the **post-order** traversal of the tree.
+
+- `layerorder()`: Return an iterator over the data in the tree that yields
+values according to the **layer-order** traversal of the tree.
+
+- `__iter__()`: An alias for the default traversal, preorder.
+
+:::
+
+::: incremental
+
+- Traversal methods offer different ways to "visit" nodes
+- Different traversal methods visit nodes in different orders
+- The `__iter__` method allows for iteration over the tree
+
+:::
