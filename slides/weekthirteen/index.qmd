@@ -57,7 +57,7 @@ printtree(T)
 
 :::
 
-## Using an Iterator with a Primitive Tree
+## Using an Iterator with a primitive tree
 
 ```{python}
 def printtree(T):
@@ -66,12 +66,12 @@ def printtree(T):
     for child in iterator:
         printtree(child)
 
-
 T = ['c', ['a', ['p'], ['n'], ['t']], ['o', ['n']]]
+print(T)
 printtree(T)
 ```
 
-::: {.incremental style="margin-top: -0.5em"}
+::: {.incremental style="margin-top: -0.5em; font-size: 0.90em"}
 
 - Use an iterator to traverse the tree
 - Simplifies the code and makes it more readable
