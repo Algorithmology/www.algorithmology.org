@@ -80,11 +80,17 @@ printtree(T)
 
 ## Let's make with a complete implementation of the `Tree`!
 
+::: fragment
+
 - Create a complete tree class to illustrate concept
 - Tree will take as input a list of lists of `int` values
 - Each individual value will be a single node
 - The nesting of the lists will represent tree depth
 - The `Tree` will leverage the previously created `Queue`
+
+:::
+
+::: fragment
 
 ```python
 # create two trees using the "list of lists" approach
@@ -93,6 +99,8 @@ T_complex = Tree([1, [2, [3], [4]], [5],[6],[7,[8],[9], [10,[11]]]])
 print(T_simple)
 print(T_complex)
 ```
+
+:::
 
 ## Revisiting the Queue
 
