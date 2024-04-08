@@ -22,20 +22,69 @@ format:
 
 # Why do we need tree data structures?
 
+::: incremental
+
 - Natural representation of hierarchical relationships
 - Useful way to track the execution of a program
 - Efficient representation of recursive data
 - Best representation for data stored in file system
 
+:::
+
+::: {.fragment .fade}
+
 {{< iconify game-icons team-idea >}} **What are examples of data we can store in a tree?**
 
-## Let's start with a complete implementation of the tree!
+:::
+
+## Traversing a Primitive Tree
+
+```{python}
+def printtree(T):
+    print(T[0])
+    for child in range(1, len(T)):
+        printtree(T[child])
+
+T = ['c', ['a', ['p'], ['n'], ['t']], ['o', ['n']]]
+print(T)
+printtree(T)
+```
+
+::: {.incremental style="margin-top: -0.5em"}
+
+- Represent the tree through a list of nested lists
+- Use a recursive function to traverse the tree
+
+:::
+
+## Using an Iterator with a Primitive Tree
+
+```{python}
+def printtree(T):
+    iterator = iter(T)
+    print(next(iterator))
+    for child in iterator:
+        printtree(child)
+
+
+T = ['c', ['a', ['p'], ['n'], ['t']], ['o', ['n']]]
+printtree(T)
+```
+
+::: {.incremental style="margin-top: -0.5em"}
+
+- Use an iterator to traverse the tree
+- Simplifies the code and makes it more readable
+
+:::
+
+## Let's make with a complete implementation of the `Tree`!
 
 - Create a complete tree class to illustrate concept
 - Tree will take as input a list of lists of `int` values
 - Each individual value will be a single node
 - The nesting of the lists will represent tree depth
-- The `Tree` will build on the `Queue` class
+- The `Tree` will leverage the previously created `Queue`
 
 ```python
 # create two trees using the "list of lists" approach
@@ -183,34 +232,4 @@ print(T_simple)
 print(T_complex)
 ```
 
-## Traversing and Printing a Tree
 
-```{python}
-def printtree(T):
-    print(T[0])
-    for child in range(1, len(T)):
-        printtree(T[child])
-
-
-T = ['c', ['a', ['p'], ['n'], ['t']], ['o', ['n']]]
-printtree(T)
-```
-
-- Print the starting node and then traverse the children
-- Continue this process until all nodes were displayed
-
-## Using an Iterator in Tree Traversal
-
-```{python}
-def printtree(T):
-    iterator = iter(T)
-    print(next(iterator))
-    for child in iterator:
-        printtree(child)
-
-T = ['c', ['a', ['p'], ['n'], ['t']], ['o', ['n']]]
-printtree(T)
-```
-
-- Print the starting node and then traverse the children
-- Continue this process until all nodes were displayed
