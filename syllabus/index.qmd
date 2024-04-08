@@ -182,15 +182,16 @@ percentages during the academic semester.
 These assessment categories have the following definitions:
 
 - **Class Participation**: Students are expected to regularly attend and
-actively participate in all of the class and laboratory sessions, as outlined on
-the [course schedule](../schedule/index.qmd). After either an unexcused absence
-or a late attendance to either a class or a laboratory session, a student's
-weekly class participation grade will be reduced. Students who need to miss
-class or attend class late for an excused reason should communicate their
-situation to the instructor in a timely fashion. After one warning per week, a
-student's weekly class participation grade will be reduced if they are observed
-undertaking non-course-related activities like viewing email, social media, or
-other content not about algorithm analysis. 
+actively participate in all of the class and laboratory sessions, as outlined
+on the [course schedule](../schedule/index.qmd). After either an unexcused
+absence or a late attendance to either a class or a laboratory session, a
+student's weekly class participation grade will be reduced. Students who need
+to miss class or attend class late for an excused reason should communicate
+their situation to the course instructor in a timely fashion. A student's
+weekly class participation grade will be reduced if they are frequently
+observed, during either class or laboratory sessions, undertaking
+non-course-related activities like viewing email, social media, or other
+content not about algorithm analysis. 
 
 - **Midterm Examination**: The midterm examination is an online, executable, and
 cumulative assessment covering all prior material from the course sessions, as
@@ -230,7 +231,11 @@ research question about the performance of a Python program. When completing an
 *engineering effort* in the field of algorithm analysis, students will build
 and present a team-based project in which they design, implement, document,
 release, and maintain software tools that support the rigorous evaluation of
-the performance (e.g., time or space overhead) of a Python program.
+the performance (e.g., time or space overhead) of a Python program. Students
+may use external sources, including artificial intelligence coding assistants,
+during the completion of an algorithm all-hands project provided that they cite
+these sources and explain how they used them to complete their part(s) of an
+algorithm all-hands project.
 
 - **Algorithm Engineering Projects**: These projects enable students to explore
 both the scientific and engineering aspects of algorithm analysis, as outlined
@@ -243,7 +248,11 @@ students will propose and formally state research questions and then discuss
 them with the course instructor during a laboratory session. Finally, students
 will conduct experiments to answer these research questions, collect data,
 analyze the results, and write a report that explains the results in the
-context of the implemented system.
+context of the implemented system. Students may use external sources, including
+artificial intelligence coding assistants, during the completion of an
+algorithm all-hands project provided that they cite these sources and explain
+how they used them to complete the various components of an algorithm
+engineering project.
 
 #### Assessment Policies
 
@@ -273,10 +282,10 @@ platform.
 Students may "spend" up to five algorithmology "tokens" that they may use to
 either (i) secure 48 hours of additional time to complete an assigned task or
 (ii) request a reassessment of an already graded project after revising it
-according to feedback from the instructor. For instance, a student may choose to
-spend a token by asking the instructor to reevaluate one of the algorithm
-engineering projects. Outside of these five tokens, the instructor will not
-consider any additional requests for deadline extensions or assignment
+according to feedback from the instructor. For instance, a student may choose
+to spend a token by asking the instructor to reevaluate one of the algorithm
+engineering projects. Outside of the use of these five tokens, the instructor
+will not consider any additional requests for deadline extensions or assignment
 reassessment.
 
 ##### Course Attendance
@@ -292,16 +301,17 @@ should not attend any in-person course sessions.
 In order to minimize confusion and maximize learning, students must invest time
 to prepare for the class sessions that focus on professional development,
 technical development, and project development. Although the course instructor
-and the student technical leaders will always be available to serve as guide for
-individual students, teams of students, and the entire class, it is expected
-that students will volunteer to lead and actively contribute to all class
-sessions. Only those students who have prepared for class by reading and running
-the assigned material will be able to effectively participate in these class
-discussions. To help students remain organized and to effectively prepare for
-classes, the instructor will maintain a list of [course
-slides](../slides/index.qmd) and a [course schedule](../schedule/index.qmd) with
-reading assignments and other important information about the course (e.g.,
-references to the algorithm engineering projects).
+and the student technical leaders will always be available to serve as guide
+for individual students, teams of students, and the entire class, it is
+expected that students will volunteer to lead and actively contribute to all
+class sessions. Only those students who have prepared for class by reading and
+running the assigned material will be able to effectively participate in these
+class discussions. To help students remain organized and to effectively prepare
+for classes, the instructor will maintain a list of [course
+slides](../slides/index.qmd) and a [course schedule](../schedule/index.qmd)
+with reading assignments, programming suggestions, and other important
+information about the course (e.g., references to the algorithm engineering
+projects).
 
 #### Seeking Assistance
 
