@@ -242,7 +242,7 @@ print(T_complex)
 
 ## Main methods in a `Tree` API
 
-::: {.fragment .fade-up .boxed-content style="margin-top: 0em; font-size: 0.80em;"}
+::: {.fragment .fade-right .boxed-content style="margin-top: 0em; font-size: 0.80em;"}
 
 - `__init__(L)`: Initialize a new tree given a list of lists.
 
@@ -267,7 +267,7 @@ print(T_complex)
 
 ## Traversal methods in a `Tree` API
 
-::: {.fragment .fade-up .boxed-content style="margin-top: 0em; font-size: 0.80em;"}
+::: {.fragment .fade-right .boxed-content style="margin-top: 0em; font-size: 0.80em;"}
 
 - `preorder()`: Return an iterator over the data in the tree that yields values
 according to the **pre-order** traversal of the tree.
