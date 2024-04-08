@@ -281,3 +281,31 @@ values according to the **layer-order** traversal of the tree.
 - The `__iter__` method allows for iteration over the tree
 
 :::
+
+# Okay, let's explore the implementation details of the `Tree` class!
+
+- Recursive constructor to build the tree structure
+- "Double underscore" methods for Pythonic operations
+- Traversal methods to access the data in the `Tree` instance
+
+## Understanding the `Tree` constructor
+
+```python
+class Tree:
+    def __init__(self, L):
+        iterator = iter(L)
+        self.data = next(iterator)
+        self.children = [Tree(c) for c in iterator]
+```
+
+::: {.fragment .fade-up style="font-size: 0.90em;"}
+
+- The constructor uses an iterator to access the data
+- The `data` attribute stores the current node's value
+- The `children` attribute stores the children of current node
+- Uses a list comprehension to create the children
+- Accepts as input the *list of list* representation of the tree
+  - Example: `[1, [2], [3, [4]]]`
+  - The tree has root `1` with children `2` and `3`
+
+:::
