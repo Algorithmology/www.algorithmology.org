@@ -156,7 +156,11 @@ class ListQueue(ListQueueFakeDelete):
         return item
 ```
 
+::: incremental
+
 - Use this data structure to support certain tree traversals
+
+:::
 
 ## Creating a Tree
 
@@ -229,7 +233,11 @@ class Tree:
         return (node.data for node in self._layerorder())
 ```
 
+::: incremental
+
 - Offers a complete implementation along with traversals
+
+:::
 
 ## Instantiating and Displaying a Tree
 
@@ -292,9 +300,13 @@ values according to the **layer-order** traversal of the tree.
 
 # Okay, let's explore the implementation details of the `Tree` class!
 
+::: incremental
+
 - Recursive constructor to build the tree structure
 - "Double underscore" methods for Pythonic operations
 - Traversal methods to access the data in the `Tree` instance
+
+:::
 
 ## Understanding the `Tree` constructor
 
@@ -359,5 +371,16 @@ print(str(T))
 
 - The `__str__` method now accepts an optional `level` parameter
 - Uses indentation to represent the hierarchy of the tree
+
+:::
+
+# Alternative methods for systematically visiting the nodes of a `Tree`?
+
+::: fragment
+
+- **Pre-order**: visit a node followed by its children
+- **Post-order**: visit a node's children before the node
+- **Layer-order**: visit nodes on a level by level basis
+- Make sure to review all remaining source code in the `Tree`!
 
 :::
