@@ -410,3 +410,41 @@ for node in T.preorder():
 - Use `yield` to generate nodes according to pre-order approach
 
 :::
+
+## Post-order traversal of a `Tree`
+
+```python
+def _postorder(self):
+    node, childiter = self, iter(self.children)
+    stack = [(node, childiter)]
+    while stack:
+        node, childiter = stack[-1]
+        try:
+            child = next(childiter)
+            stack.append((child, iter(child.children)))
+        except StopIteration:
+            yield node
+            stack.pop()                 
+
+def postorder(self):
+    return (node.data for node in self._postorder())
+```
+
+::: {.fragment style="font-size: 0.90em;"}
+
+- Use a `stack` structure to store nodes during traversal
+- The public method calls the internal `_postorder` method
+- Remember, method visits the children before the node itself!
+
+:::
+
+## Running the post-order traversal
+
+```{python}
+T = Tree(['a', ['b', ['c', ['d']]],['e',['f'], ['g']]])
+for node in T.postorder():
+    print(node)
+print()
+for node in T.preorder():
+    print(node)
+```
