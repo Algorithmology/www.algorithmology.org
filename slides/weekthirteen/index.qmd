@@ -380,7 +380,33 @@ print(str(T))
 
 - **Pre-order**: visit a node followed by its children
 - **Post-order**: visit a node's children before the node
-- **Layer-order**: visit nodes on a level by level basis
+- **Layer-order**: visit all nodes on a level-by-level basis
 - Make sure to review all remaining source code in the `Tree`!
+
+:::
+
+## Pre-order traversal of a `Tree`
+
+```python
+def preorder(self):
+    yield self.data
+    for child in self.children:
+        for data in child.preorder():
+            yield data
+
+__iter__ = preorder
+```
+
+<p class="codespacer">
+
+```{python}
+T = Tree(['a', ['b', ['c', ['d']]],['e',['f'], ['g']]])
+for node in T.preorder():
+    print(node)
+```
+
+::: {.fragment style="font-size: 0.90em;"}
+
+- Use `yield` to generate nodes according to pre-order approach
 
 :::
