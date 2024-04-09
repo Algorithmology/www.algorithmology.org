@@ -218,7 +218,7 @@ class Tree:
 
     def _layerorder(self):
         node, childiter = self, iter(self.children)
-        queue = Queue()
+        queue = ListQueue()
         queue.enqueue((node, childiter))
         while queue:
             node, childiter = queue.peek()
@@ -443,6 +443,45 @@ def postorder(self):
 ```{python}
 T = Tree(['a', ['b', ['c', ['d']]],['e',['f'], ['g']]])
 for node in T.postorder():
+    print(node)
+print()
+for node in T.preorder():
+    print(node)
+```
+
+## Layer-order traversal of a `Tree`
+
+```python
+def _layerorder(self):
+    node, childiter = self, iter(self.children)
+    queue = ListQueue()
+    queue.enqueue((node, childiter))
+    while queue:
+        node, childiter = queue.peek()
+        try:
+            child = next(childiter)
+            queue.enqueue((child, iter(child.children)))
+        except StopIteration:
+            yield node
+            queue.dequeue()                 
+
+def layerorder(self):
+    return (node.data for node in self._layerorder())
+```
+
+::: {.fragment style="font-size: 0.90em;"}
+
+- Use a `ListQueue` structure to store nodes during traversal
+- The public method calls the internal `_layerorder` method
+- Remember, method visits the children at each level of tree!
+
+:::
+
+## Running the layer-order traversal
+
+```{python}
+T = Tree(['a', ['b', ['c', ['d']]],['e',['f'], ['g']]])
+for node in T.layerorder():
     print(node)
 print()
 for node in T.preorder():
