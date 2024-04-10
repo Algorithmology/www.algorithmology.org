@@ -488,6 +488,12 @@ for node in T.preorder():
     print(node)
 ```
 
+# Can we build a tree that supports fast and predictable searching?
+
+- **Binary tree**: each node in the tree has a most two children
+- **Binary search tree**: left subtree less than right subtree
+- Ready? Let's combine aspects of a mapping with a tree!
+
 ## Defining a `BSTNode` class
 
 ```{python}
@@ -664,7 +670,7 @@ class BSTMapping(Mapping):
         self.remove(key)
 ```
 
-## Creating an instance of `BSTMapping`
+## Create an instance of `BSTMapping`
 
 ```{python}
 T_one = BSTMapping()
