@@ -444,7 +444,7 @@ print(f"LCS length is {lcs_len}")
 
 ::: {.fragment style="font-size: 0.875em; margin-top: -0.1em"}
 
-- `lcs_calculate` function is $O(m \times n)$ --- but does not return the LCS!
+- `lcs_calculate` function is $O(m \times n)$, but does not return the LCS!
 
 :::
 
