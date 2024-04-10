@@ -490,7 +490,7 @@ for node in T.preorder():
 
 # Can we build a tree that supports fast and predictable searching?
 
-- **Binary tree**: each node in the tree has a most two children
+- **Binary tree**: each node in the tree has at most two children
 - **Binary search tree**: left subtree less than right subtree
 - Ready? Let's combine aspects of a mapping with a tree!
 
@@ -585,6 +585,12 @@ class BSTNode:
         return self
 ```
 
+::: incremental
+
+- Most of the logic for the binary search tree is in `BSTNode`
+
+:::
+
 ## Defining the `Mapping` interface
 
 ```{python}
@@ -628,6 +634,12 @@ class Mapping:
         return "{" + ", ".join(str(e) for e in self._entryiter()) + "}"
 ```
 
+::: incremental
+
+- Re-introduce the `Mapping` interface for the binary search tree
+
+:::
+
 ## Defining the `BSTMapping` class
 
 ```{python}
@@ -669,6 +681,12 @@ class BSTMapping(Mapping):
     def __delitem__(self, key):
         self.remove(key)
 ```
+
+::: incremental
+
+- Methods for adding and remove data and calculating floor
+
+:::
 
 ## Create an instance of `BSTMapping`
 
