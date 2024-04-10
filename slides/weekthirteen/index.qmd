@@ -494,6 +494,30 @@ for node in T.preorder():
 - **Binary search tree**: left subtree less than right subtree
 - Ready? Let's combine aspects of a mapping with a tree!
 
+## Data type for a tree-based mapping
+
+::: {.fragment .fade .boxed-content style="margin-top: 0em; font-size: 0.95em;"}
+
+- `get(k)`: Return the value associate to the key `k`.  An error (`KeyError`)
+is raised if the given key is not present.
+
+- `put(k,v)`: Add the key-value pair `(k,v)` to the mapping.
+
+- `floor(k)`: Return a tuple `(k,v)` that is the key-value pair in the mapping
+with the largest key that is less than or equal to `k`.  If there is no such
+tuple, it returns `(None, None)`.
+
+- `remove(k)` - Remove the key-value pair with key `k` from the ordered
+mapping.  Raise `KeyError` if the given key not present.
+
+:::
+
+::: {.fragment .fade style="margin-top: 0.5em; font-size: 0.90em;"}
+
+- Aim to provide the same interface as the dictionary!
+
+:::
+
 ## Defining a `BSTNode` class
 
 ```{python}
