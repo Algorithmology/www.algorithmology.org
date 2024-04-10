@@ -823,48 +823,44 @@ methods are more predictably efficient.
 
 ::: {.columns}
 
-::: {.column style="font-size: 0.875em;"}
+::: {.column style="font-size: 0.975em;"}
 
 ::: fragment
 
-### `ListMapping`
+### `Tree`
 
 #### Implementation
 
-- Good design
+- General purpose
 - Easy to understand
-- List of key-value pairs
-
-#### Performance
-
-- Can be inefficient
-- Limits memory usage
-- Does not match `dict`
+- Supports traversal
 
 :::
 
 :::
 
-::: {.column style="font-size: 0.875em;"}
+::: {.column style="font-size: 0.975em;"}
 
 ::: fragment
 
-### `HashMapping`
+### `BSTMapping`
 
 #### Implementation
 
-- Good design
+- Customized for search
 - Challenging to build
-- Use the `ListMapping`
-
-#### Performance
-
-- Improved efficiency
-- Amortizes costs
-- Increases memory usage
+- Implements a mapping
 
 :::
 
 :::
+
+:::
+
+::: {.fragment .boxed-content style="margin-top: 0.5em; font-size: 0.95em;"}
+
+These hierarchical data structures demonstrate the combination of data
+structures to achieve a goal! For instance, the `Tree` uses a `Stack` and a `Queue`
+while the `BSTMapping` is a dictionary.
 
 :::
