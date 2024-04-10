@@ -498,8 +498,8 @@ for node in T.preorder():
 
 ::: {.fragment .fade .boxed-content style="margin-top: 0em; font-size: 0.95em;"}
 
-- `get(k)`: Return the value associate to the key `k`.  An error (`KeyError`)
-is raised if the given key is not present.
+- `get(k)`: Return the value associated to the key `k`. Raise the `KeyError` if
+the given key `k` is not present.
 
 - `put(k,v)`: Add the key-value pair `(k,v)` to the mapping.
 
@@ -816,5 +816,55 @@ methods are more predictably efficient.
 - Balancing the tree must preserve the BST property!
 
 - Refer to chapter 19 for more details about tree rotations
+
+:::
+
+## Tree data structure
+
+::: {.columns}
+
+::: {.column style="font-size: 0.875em;"}
+
+::: fragment
+
+### `ListMapping`
+
+#### Implementation
+
+- Good design
+- Easy to understand
+- List of key-value pairs
+
+#### Performance
+
+- Can be inefficient
+- Limits memory usage
+- Does not match `dict`
+
+:::
+
+:::
+
+::: {.column style="font-size: 0.875em;"}
+
+::: fragment
+
+### `HashMapping`
+
+#### Implementation
+
+- Good design
+- Challenging to build
+- Use the `ListMapping`
+
+#### Performance
+
+- Improved efficiency
+- Amortizes costs
+- Increases memory usage
+
+:::
+
+:::
 
 :::
