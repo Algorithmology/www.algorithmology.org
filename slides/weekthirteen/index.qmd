@@ -708,7 +708,7 @@ class BSTMapping(Mapping):
 
 ::: incremental
 
-- Methods for adding and remove data and calculating floor
+- Methods for adding and remove data and calculating `floor`
 
 :::
 
@@ -768,3 +768,53 @@ print(floor_t_two)
 
 print(T_two)
 ```
+
+## Removing data from a `BSTMapping`
+
+```python
+def remove(self, key):
+    if key == self.key:
+        if self.left is None: return self.right
+        if self.right is None: return self.left
+        self._swapwith(self.left.maxnode())
+        self.left = self.left.remove(key)
+    elif key < self.key and self.left:
+        self.left = self.left.remove(key)
+    elif key > self.key and self.right:
+        self.right = self.right.remove(key)
+    else: raise KeyError
+    self._updatelength()
+    return self
+```
+
+::: fragment
+
+- Perform a recursive binary search to find the node
+- Once key is found, remove it and adjust the tree
+- Total running time in linear in height of the tree
+
+:::
+
+## Balanced binary search trees
+
+- A BST with $n$ nodes can have height $O(n)$
+
+- This means that removal may not always be efficient!
+
+- Can we make a binary search tree more balanced?
+
+::: {.fragment .fade .boxed-content style="margin-top: 0em; font-size: 0.95em;"}
+
+We will say that a BST with $n$ nodes is **balanced** if the height of the tree
+is at most some constant times $\log n$. A balanced tree will better ensure
+methods are more predictably efficient. 
+
+:::
+
+::: fragment
+
+- Balancing the tree must preserve the BST property!
+
+- Refer to chapter 19 for more details about tree rotations
+
+:::
