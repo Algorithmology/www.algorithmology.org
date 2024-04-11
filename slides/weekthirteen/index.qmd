@@ -19,3 +19,848 @@ format:
     html-math-method: mathjax
     footer: "Algorithmology"
 ---
+
+# Why do we need tree data structures?
+
+::: incremental
+
+- Natural representation of hierarchical relationships
+- Useful way to track the execution of a program
+- Efficient representation of recursive data
+- Best representation for data stored in file system
+
+:::
+
+::: {.fragment .fade}
+
+{{< iconify game-icons team-idea >}} **What are examples of data we can store in a tree?**
+
+:::
+
+## Traversing a Primitive Tree
+
+```{python}
+def printtree(T):
+    print(T[0])
+    for child in range(1, len(T)):
+        printtree(T[child])
+
+T = ['c', ['a', ['p'], ['n'], ['t']], ['o', ['n']]]
+print(T)
+printtree(T)
+```
+
+::: {.incremental style="margin-top: -0.5em"}
+
+- Represent the tree through a list of nested lists
+- Use a recursive function to traverse the tree
+
+:::
+
+## Using an Iterator with a primitive tree
+
+```{python}
+def printtree_iterator(T):
+    iterator = iter(T)
+    print(next(iterator))
+    for child in iterator:
+        printtree_iterator(child)
+
+T = ['c', ['a', ['p'], ['n'], ['t']], ['o', ['n']]]
+print(T)
+printtree_iterator(T)
+```
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.90em"}
+
+- Use an iterator to traverse the tree
+- Simplifies the code and makes it more readable
+
+:::
+
+## Let's make with a complete implementation of the `Tree`!
+
+::: fragment
+
+- Create a complete tree class to illustrate concept
+- Tree will take as input a list of lists of `int` values
+- Each individual value will be a single node
+- The nesting of the lists will represent tree depth
+- The `Tree` will leverage the previously created `Queue`
+
+:::
+
+::: fragment
+
+```python
+# create two trees using the "list of lists" approach
+T_simple = Tree([1, [2], [3, [4]]])
+T_complex = Tree([1, [2, [3], [4]], [5],[6],[7,[8],[9], [10,[11]]]])
+print(T_simple)
+print(T_complex)
+```
+
+:::
+
+## Revisiting the Queue
+
+```{python}
+class ListQueueSimple:
+    def __init__(self):
+        self._L = []
+
+    def enqueue(self, item):
+        self._L.append(item)
+
+    def dequeue(self):
+        return self._L.pop(0)
+
+    def peek(self):
+        return self._L[0]
+
+    def __len__(self):
+        return len(self._L)
+
+    def isempty(self):
+        return len(self) == 0
+
+class ListQueueFakeDelete:
+    def __init__(self):
+        self._head = 0
+        self._L = []
+
+    def enqueue(self, item):
+        self._L.append(item)
+
+    def peek(self):
+      return self._L[self._head]
+
+    def dequeue(self):
+        item = self.peek()
+        self._head += 1
+        return item
+
+    def __len__(self):
+        return len(self._L) - self._head
+
+    def isempty(self):
+        return len(self) == 0
+
+class ListQueue(ListQueueFakeDelete):
+    def dequeue(self):
+        item = self._L[self._head]
+        self._head += 1
+        if self._head > len(self._L)//2:
+            self._L = self._L[self._head:]
+            self._head = 0
+        return item
+```
+
+::: incremental
+
+- Use this data structure to support certain tree traversals
+
+:::
+
+## Creating a Tree
+
+```{python}
+class Tree:
+    def __init__(self, L):
+        iterator = iter(L)
+        self.data = next(iterator)
+        self.children = [Tree(c) for c in iterator]
+
+    def _listwithlevels(self, level, trees):
+        trees.append("  " * level + str(self.data))
+        for child in self.children:
+            child._listwithlevels(level + 1, trees)
+
+    def __str__(self):
+        trees = []
+        self._listwithlevels(0, trees)
+        return "\n".join(trees)
+
+    def __eq__(self, other):
+        return self.data == other.data and self.children == other.children
+
+    def height(self):
+        if len(self.children) == 0:
+            return 0
+        else:
+            return 1 + max(child.height() for child in self.children)
+
+    def __contains__(self, k):
+        return self.data == k or any(k in ch for ch in self.children)
+
+    def preorder(self):
+        yield self.data
+        for child in self.children:
+            for data in child.preorder():
+                yield data
+
+    __iter__ = preorder
+
+    def _postorder(self):
+        node, childiter = self, iter(self.children)
+        stack = [(node, childiter)]
+        while stack:
+            node, childiter = stack[-1]
+            try:
+                child = next(childiter)
+                stack.append((child, iter(child.children)))
+            except StopIteration:
+                yield node
+                stack.pop()                 
+
+    def postorder(self):
+        return (node.data for node in self._postorder())
+
+    def _layerorder(self):
+        node, childiter = self, iter(self.children)
+        queue = ListQueue()
+        queue.enqueue((node, childiter))
+        while queue:
+            node, childiter = queue.peek()
+            try:
+                child = next(childiter)
+                queue.enqueue((child, iter(child.children)))
+            except StopIteration:
+                yield node
+                queue.dequeue()                 
+
+    def layerorder(self):
+        return (node.data for node in self._layerorder())
+```
+
+::: incremental
+
+- Offers a complete implementation along with traversals
+
+:::
+
+## Instantiating and Displaying a Tree
+
+```{python}
+T_simple = Tree([1, [2], [3, [4]]])
+T_complex = Tree([1, [2, [3], [4]], [5],[6],[7,[8],[9], [10,[11]]]])
+print(T_simple)
+print(T_complex)
+```
+
+## Main methods in a `Tree` API
+
+::: {.fragment .fade-left .boxed-content style="margin-top: 0em; font-size: 0.80em;"}
+
+- `__init__(L)`: Initialize a new tree given a list of lists.
+
+- `height()`: Return the height of the tree.
+
+- `__str__()`: Return a string representing the entire tree.
+
+- `__eq__(other)`: Return `True` if the tree is equal to `other`.
+
+- `__contains__(k)`: Return `True` if and only if the tree contains the data
+`k` either at the root or at one of its descendants.  Return `False` otherwise.
+
+:::
+
+::: incremental
+
+- Leverage the same list of list as used for the primitive tree
+- Methods that make trees easier to use (e.g., `__contains__`)
+- The `height` method gives maximal depth of the tree
+
+:::
+
+## Traversal methods in a `Tree` API
+
+::: {.fragment .fade-left .boxed-content style="margin-top: 0em; font-size: 0.80em;"}
+
+- `preorder()`: Return an iterator over the data in the tree that yields values
+according to the **pre-order** traversal of the tree.
+
+- `postorder()`: Return an iterator over the data in the tree that yields
+values according to the **post-order** traversal of the tree.
+
+- `layerorder()`: Return an iterator over the data in the tree that yields
+values according to the **layer-order** traversal of the tree.
+
+- `__iter__()`: An alias for the default traversal, preorder.
+
+:::
+
+::: incremental
+
+- Traversal methods offer different ways to "visit" nodes
+- Different traversal methods visit nodes in different orders
+- The `__iter__` method allows for iteration over the tree
+
+:::
+
+# Okay, let's explore the implementation details of the `Tree` class!
+
+::: incremental
+
+- Recursive constructor to build the tree structure
+- "Double underscore" methods for Pythonic operations
+- Traversal methods to access the data in the `Tree` instance
+
+:::
+
+## Understanding the `Tree` constructor
+
+```python
+class Tree:
+    def __init__(self, L):
+        iterator = iter(L)
+        self.data = next(iterator)
+        self.children = [Tree(c) for c in iterator]
+```
+
+::: {.fragment .fade-up style="font-size: 0.90em;"}
+
+- The constructor uses an iterator to access the data
+- The `data` attribute stores the current node's value
+- The `children` attribute stores the children of current node
+- Uses a list comprehension to create the children
+- Accepts as input the *list of list* representation of the tree
+  - Example: `[1, [2], [3, [4]]]`
+  - The tree has root `1` with children `2` and `3`
+
+:::
+
+## Revising the `printtree` function
+
+```{python}
+def printtree(T):
+    print(T.data)
+    for child in T.children:
+        printtree(child)
+
+T = Tree(['a', ['b', ['c', ['d']]],['e',['f'], ['g']]])
+printtree(T)
+```
+
+::: {.fragment .fade-right style="font-size: 0.90em;"}
+
+- The `printtree` function now accepts a `Tree` instance
+- Recursively prints the data stored in the tree nodes
+- Intuitively, this performs a traversal of the tree
+
+:::
+
+## Visualizing the hierarchy of a `Tree`
+
+```python
+def __str__(self, level = 0):
+    treestring = "  " * level + str(self.data)
+    for child in self.children:
+        treestring += "\n" + child.__str__(level + 1)
+    return treestring
+```
+
+<p class="codespacer">
+
+```{python}
+T = Tree(['a', ['b', ['c', ['d']]],['e',['f'], ['g']]])
+print(str(T))
+```
+
+::: {.fragment .fade-right style="font-size: 0.90em;"}
+
+- The `__str__` method now accepts an optional `level` parameter
+- Uses indentation to represent the hierarchy of the tree
+
+:::
+
+# Alternative methods for systematically visiting the nodes of a `Tree`?
+
+::: fragment
+
+- **Pre-order**: visit a node followed by its children
+- **Post-order**: visit a node's children before the node
+- **Layer-order**: visit all nodes on a level-by-level basis
+- Make sure to review all remaining source code in the `Tree`!
+
+:::
+
+## Pre-order traversal of a `Tree`
+
+```python
+def preorder(self):
+    yield self.data
+    for child in self.children:
+        for data in child.preorder():
+            yield data
+
+__iter__ = preorder
+```
+
+<p class="codespacer">
+
+```{python}
+T = Tree(['a', ['b', ['c', ['d']]],['e',['f'], ['g']]])
+for node in T.preorder():
+    print(node)
+```
+
+::: {.fragment style="font-size: 0.90em;"}
+
+- Use `yield` to generate nodes according to pre-order approach
+
+:::
+
+## Post-order traversal of a `Tree`
+
+```python
+def _postorder(self):
+    node, childiter = self, iter(self.children)
+    stack = [(node, childiter)]
+    while stack:
+        node, childiter = stack[-1]
+        try:
+            child = next(childiter)
+            stack.append((child, iter(child.children)))
+        except StopIteration:
+            yield node
+            stack.pop()                 
+
+def postorder(self):
+    return (node.data for node in self._postorder())
+```
+
+::: {.fragment style="font-size: 0.90em;"}
+
+- Use a `stack` structure to store nodes during traversal
+- The public method calls the internal `_postorder` method
+- Remember, method visits the children before the node itself!
+
+:::
+
+## Running the post-order traversal
+
+```{python}
+T = Tree(['a', ['b', ['c', ['d']]],['e',['f'], ['g']]])
+for node in T.postorder():
+    print(node)
+print()
+for node in T.preorder():
+    print(node)
+```
+
+## Layer-order traversal of a `Tree`
+
+```python
+def _layerorder(self):
+    node, childiter = self, iter(self.children)
+    queue = ListQueue()
+    queue.enqueue((node, childiter))
+    while queue:
+        node, childiter = queue.peek()
+        try:
+            child = next(childiter)
+            queue.enqueue((child, iter(child.children)))
+        except StopIteration:
+            yield node
+            queue.dequeue()                 
+
+def layerorder(self):
+    return (node.data for node in self._layerorder())
+```
+
+::: {.fragment style="font-size: 0.90em;"}
+
+- Use a `ListQueue` structure to store nodes during traversal
+- The public method calls the internal `_layerorder` method
+- Remember, method visits the children at each level of tree!
+
+:::
+
+## Running the layer-order traversal
+
+```{python}
+T = Tree(['a', ['b', ['c', ['d']]],['e',['f'], ['g']]])
+for node in T.layerorder():
+    print(node)
+print()
+for node in T.preorder():
+    print(node)
+```
+
+# Can we build a tree that supports fast and predictable searching?
+
+- **Binary tree**: each node in the tree has at most two children
+- **Binary search tree**: left subtree less than right subtree
+- Ready? Let's combine aspects of a mapping with a tree!
+
+## Data type for a tree-based mapping
+
+::: {.fragment .fade .boxed-content style="margin-top: 0em; font-size: 0.95em;"}
+
+- `get(k)`: Return the value associated to the key `k`. Raise the `KeyError` if
+the given key `k` is not present.
+
+- `put(k,v)`: Add the key-value pair `(k,v)` to the mapping.
+
+- `floor(k)`: Return a tuple `(k,v)` that is the key-value pair in the mapping
+with the largest key that is less than or equal to `k`.  If there is no such
+tuple, it returns `(None, None)`.
+
+- `remove(k)` - Remove the key-value pair with key `k` from the ordered
+mapping.  Raise `KeyError` if the given key not present.
+
+:::
+
+::: {.fragment .fade style="margin-top: 0.5em; font-size: 0.90em;"}
+
+- Aim to provide the same interface as the dictionary!
+
+:::
+
+## Defining a `BSTNode` class
+
+```{python}
+class BSTNode:
+    def __init__(self, key, value):
+        self.key = key
+        self.value = value
+        self.left = None
+        self.right = None
+        self._length = 1
+
+    def __len__(self):
+        return self._length
+
+    def __str__(self):
+        return str(self.key) + " : " + str(self.value)
+
+    def get(self, key):
+        if key == self.key:
+            return self
+        elif key < self.key and self.left:
+            return self.left.get(key)
+        elif key > self.key and self.right:
+            return self.right.get(key)
+        else:
+            raise KeyError
+
+    def put(self, key, value):
+        if key == self.key:
+            self.value = value
+        elif key < self.key:
+            if self.left:
+                self.left.put(key, value)
+            else:
+                self.left = BSTNode(key, value)
+        elif key > self.key:
+            if self.right:
+                self.right.put(key, value)
+            else:
+                self.right = BSTNode(key, value)
+        self._updatelength()
+
+    def _updatelength(self):
+        len_left = len(self.left) if self.left else 0
+        len_right = len(self.right) if self.right else 0
+        self._length = 1 + len_left + len_right
+
+    def floor(self, key):
+        if key == self.key:
+            return self
+        elif key < self.key:
+            if self.left is not None:
+                return self.left.floor(key)
+            else:
+                return None
+        elif key > self.key:
+            if self.right is not None:
+                floor = self.right.floor(key)
+                return floor if floor is not None else self
+            else:
+                return self
+
+    def __iter__(self):
+        if self.left is not None:
+            yield from self.left
+        yield self
+        if self.right is not None:
+            yield from self.right
+
+    def _swapwith(self, other):
+        self.key, other.key = other.key, self.key
+        self.value, other.value = other.value, self.value
+
+    def maxnode(self):
+        return self.right.maxnode() if self.right else self
+
+    def remove(self, key):
+        if key == self.key:
+            if self.left is None: return self.right
+            if self.right is None: return self.left
+            self._swapwith(self.left.maxnode())
+            self.left = self.left.remove(key)
+        elif key < self.key and self.left:
+            self.left = self.left.remove(key)
+        elif key > self.key and self.right:
+            self.right = self.right.remove(key)
+        else: raise KeyError
+        self._updatelength()
+        return self
+```
+
+::: incremental
+
+- Most of the logic for the binary search tree is in `BSTNode`
+
+:::
+
+## Defining the `Mapping` interface
+
+```{python}
+class Mapping:
+
+    def get(self, key):
+        raise NotImplementedError
+
+    def put(self, key, value):
+        raise NotImplementedError
+
+    def __len__(self):
+        raise NotImplementedError
+
+    def _entryiter(self):
+        raise NotImplementedError   
+
+    def __iter__(self):
+      return (e.key for e in self._entryiter())
+
+    def values(self):
+        return (e.value for e in self._entryiter())
+
+    def items(self):
+        return ((e.key, e.value) for e in self._entryiter())
+
+    def __contains__(self, key):
+        try:
+            self.get(key)
+        except KeyError:
+            return False
+        return True
+
+    def __getitem__(self, key):
+        return self.get(key)
+
+    def __setitem__(self, key, value):
+        self.put(key, value)
+
+    def __str__(self):
+        return "{" + ", ".join(str(e) for e in self._entryiter()) + "}"
+```
+
+::: incremental
+
+- Re-introduce the `Mapping` interface for the binary search tree
+
+:::
+
+## Defining the `BSTMapping` class
+
+```{python}
+class BSTMapping(Mapping):
+    def __init__(self):
+        self._root = None
+
+    def get(self, key):
+        if self._root:
+            return self._root.get(key).value
+        raise KeyError
+
+    def put(self, key, value):
+        if self._root:
+            self.root = self._root.put(key, value)
+        else:
+            self._root = BSTNode(key, value)
+
+    def __len__(self):
+        return len(self._root) if self._root is not None else 0
+
+    def _entryiter(self):
+        if self._root:
+            yield from self._root
+
+    def floor(self, key):
+        if self._root:
+            floornode = self._root.floor(key)
+            if floornode is not None:
+                return floornode.key, floornode.value
+        return None, None
+
+    def remove(self, key):
+        if self._root:
+            self._root = self._root.remove(key)
+        else:
+            raise KeyError
+
+    def __delitem__(self, key):
+        self.remove(key)
+```
+
+::: incremental
+
+- Methods for adding and remove data and calculating `floor`
+
+:::
+
+## Create an instance of `BSTMapping`
+
+```{python}
+T_one = BSTMapping()
+for i in [3,1,0,2,5,4,6]:
+    T_one[i] = None
+
+for node in iter(T_one):
+    print(node)
+```
+
+::: fragment
+
+- Wow, you can use a `BSTMapping` exactly like a `dict`!
+- For illustrative purposes, we only store `None` values
+- What happens if we add data in a different order?
+
+:::
+
+## Make another instance of `BSTMapping`
+
+```{python}
+T_two = BSTMapping()
+for i in [1,3,0,2,4,5,6]:
+    T_two[i] = None
+
+for node in iter(T_two):
+    print(node)
+```
+
+::: fragment
+
+- Adding data in a different order yields same output!
+- The `iter` function performs an **in-order** traversal
+- Data output in sorted order according to key values
+
+:::
+
+## Use the `floor` method of `BSTMapping`
+
+```{python}
+T_two = BSTMapping()
+for i in [1,3,0,2,4,5,6]:
+    T_two[i] = None
+
+floor_t_two = T_two.floor(1)
+print(floor_t_two)
+floor_t_two = T_two.floor(3)
+print(floor_t_two)
+floor_t_two = T_two.floor(100)
+print(floor_t_two)
+floor_t_two = T_two.floor(-100)
+print(floor_t_two)
+
+print(T_two)
+```
+
+## Removing data from a `BSTMapping`
+
+```python
+def remove(self, key):
+    if key == self.key:
+        if self.left is None: return self.right
+        if self.right is None: return self.left
+        self._swapwith(self.left.maxnode())
+        self.left = self.left.remove(key)
+    elif key < self.key and self.left:
+        self.left = self.left.remove(key)
+    elif key > self.key and self.right:
+        self.right = self.right.remove(key)
+    else: raise KeyError
+    self._updatelength()
+    return self
+```
+
+::: fragment
+
+- Perform a recursive binary search to find the node
+- Once key is found, remove it and adjust the tree
+- Total running time in linear in height of the tree
+
+:::
+
+## Balanced binary search trees
+
+- A BST with $n$ nodes can have height $O(n)$
+
+- This means that removal may not always be efficient!
+
+- Can we make a binary search tree more balanced?
+
+::: {.fragment .fade .boxed-content style="margin-top: 0em; font-size: 0.95em;"}
+
+We will say that a BST with $n$ nodes is **balanced** if the height of the tree
+is at most some constant times $\log n$. A balanced tree will better ensure
+methods are more predictably efficient. 
+
+:::
+
+::: fragment
+
+- Balancing the tree must preserve the BST property!
+
+- Refer to chapter 19 for more details about tree rotations
+
+:::
+
+## Tree data structure
+
+::: {.columns}
+
+::: {.column style="font-size: 0.975em;"}
+
+::: fragment
+
+### `Tree`
+
+#### Implementation
+
+- General purpose
+- Easy to understand
+- Supports traversal
+
+:::
+
+:::
+
+::: {.column style="font-size: 0.975em;"}
+
+::: fragment
+
+### `BSTMapping`
+
+#### Implementation
+
+- Customized for search
+- Challenging to build
+- Implements a mapping
+
+:::
+
+:::
+
+:::
+
+::: {.fragment .boxed-content style="margin-top: 0.5em; font-size: 0.95em;"}
+
+These hierarchical data structures demonstrate the combination of data
+structures to achieve a goal! For instance, the `Tree` uses a `Stack` and a `Queue`
+while the `BSTMapping` is a dictionary.
+
+:::

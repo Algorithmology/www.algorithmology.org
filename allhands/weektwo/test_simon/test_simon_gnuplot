@@ -1,0 +1,39 @@
+set terminal dumb 150 100
+
+set xlabel "n2"
+set ylabel "Average Runtime"
+
+set multiplot layout 2,1
+set rmargin 30
+set key at screen 1, graph 1
+
+plot "test_simon_results_n1_constant_theoretical.txt" \
+  using 2:3 \
+  with linespoints \
+  title "Theoretical Runtime Complexity for find_average_value"
+
+plot "test_simon_results_n1_constant_experimental.txt" \
+  using 2:3 \
+  with linespoints \
+  title "Experimental Runtime Complexity for find_average_value"
+
+unset multiplot
+
+set xlabel "n1"
+set ylabel "Average Runtime"
+
+set multiplot layout 2,1
+set rmargin 30
+set key at screen 1, graph 1
+
+plot "test_simon_results_n2_constant_theoretical.txt" \
+  using 1:3 \
+  with linespoints \
+  title "Theoretical Runtime Complexity for find_average_value"
+
+plot "test_simon_results_n2_constant_experimental.txt" \
+  using 1:3 \
+  with linespoints \
+  title "Experimental Runtime Complexity for find_average_value"
+
+unset multiplot

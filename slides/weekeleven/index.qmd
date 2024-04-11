@@ -370,7 +370,7 @@ quicksort(data)
 print(data)
 ```
 
-## Deep dive into `quickSort`
+## Deep dive into `quicksort`
 
 ::: {.fragment style="font-size: 0.85em; margin-top: -0.2em"}
 
@@ -409,7 +409,7 @@ print(data)
 
 ::: {.fragment .tight-boxed-content style="font-size: 0.85em; margin-top: 0.4em"}
 
-- `quickSort`:
+- `quicksort`:
   - Not a stable sort and thus relative order not preserved
   - Worst-case time complexity is $O(n^2)$, but often faster in practice
   - In-place sorting means it does not require additional space

@@ -182,49 +182,77 @@ percentages during the academic semester.
 These assessment categories have the following definitions:
 
 - **Class Participation**: Students are expected to regularly attend and
-actively participate in all of the class and laboratory sessions, as outlined on
-the [course schedule](../schedule/index.qmd). After either an unexcused absence
-or a late attendance to either a class or a laboratory session, a student's
-weekly class participation grade will be reduced. Students who need to miss
-class or attend class late for an excused reason should communicate their
-situation to the instructor in a timely fashion. After one warning per week, a
-student's weekly class participation grade will be reduced if they are observed
-undertaking non-course-related activities like viewing email, social media, or
-other content not about algorithm analysis. 
+actively participate in all of the class and laboratory sessions, as outlined
+on the [course schedule](../schedule/index.qmd). After either an unexcused
+absence or a late attendance to either a class or a laboratory session, a
+student's weekly class participation grade will be reduced. Students who need
+to miss class or attend class late for an excused reason should communicate
+their situation to the course instructor in a timely fashion. A student's
+weekly class participation grade will be reduced if they are frequently
+observed, during either class or laboratory sessions, undertaking
+non-course-related activities like viewing email, social media, or other
+content not about algorithm analysis. 
 
-- **Midterm Examination**: The midterm examination is an online, executable,
-and cumulative assessment covering all prior material from the course sessions,
-as outlined on the [course schedule](../schedule/index.qmd). Unless prior
+- **Midterm Examination**: The midterm examination is an online, executable, and
+cumulative assessment covering all prior material from the course sessions, as
+outlined on the [course schedule](../schedule/index.qmd). Unless prior
 arrangements are made with the instructor, all students should use their
 computer to take these tests on the scheduled date and to complete it in the
 stated location while taking no more than the required amount of time. The
-midterm is an executable examination that students will complete through the
-use of GitHub, VS Code, and the Python programming tools installed on their
-laptops. Following the completion of the midterm examination during a
-laboratory session, students will, during algorithm all-hands sessions,
-collaboratively complete and present an analytical and empirical evaluation of
-the performance of one component of their executable examination.
+midterm is an executable examination that students will complete through the use
+of GitHub, VS Code, and the Python programming tools installed on their laptops.
+Following the completion of the midterm examination during a laboratory session,
+students will, during algorithm all-hands sessions, collaboratively complete and
+present an analytical and empirical evaluation of the performance of one
+component of their examination. Students may use external sources, including
+artificial intelligence coding assistants, during the completion of the midterm
+examination provided that they cite these sources and explain how they used them
+to complete the examination.
 
 - **Final Examination**: The final examination is an online, executable,
 cumulative assessment covering all of the material during all of the course
 sessions, as outlined on the [course schedule](../schedule/index.qmd). Unless
-prior arrangements are made with the course instructor, all students should use
-their computer to take the final examination on the scheduled date and to
-complete it in the stated location while taking no more than the required amount
-of time. The cumulative final is an executable examination that a student will
-complete through the use of GitHub, VS Code, and the Python programming tools
-installed on their laptops.
+prior arrangements are made with the instructor, all students should use their
+computer to take the final examination on the scheduled date and to complete it
+in the stated location while taking no more than the required amount of time.
+The cumulative final is an executable examination that a student will complete
+through the use of GitHub, VS Code, and the Python programming tools installed
+on their laptops. Students may use external sources, including artificial
+intelligence coding assistants, during the completion of the final examination
+provided that they cite these sources and explain how they used them to complete
+the examination.
 
 - **Algorithm All-Hands**: These projects enable students to explore both the
 scientific and engineering aspects of algorithm analysis, as outlined in the
-[course schedule](../schedule/index.qmd). During the completion of a *scientific
-study* in the field of algorithm analysis, students will complete and present a
-team-based project in which they propose and then answer a research question
-about the performance of a Python program. When completing an *engineering
-effort* in the field of algorithm analysis, students will build and present a
-team-based project in which they design, implement, document, release, and
-maintain a software tool that supports the rigorous evaluation of the
-performance of a Python program.
+[course schedule](../schedule/index.qmd). During the completion of a
+*scientific study* in the field of algorithm analysis, students will complete
+and present a team-based project in which they propose and then answer a
+research question about the performance of a Python program. When completing an
+*engineering effort* in the field of algorithm analysis, students will build
+and present a team-based project in which they design, implement, document,
+release, and maintain software tools that support the rigorous evaluation of
+the performance (e.g., time or space overhead) of a Python program. Students
+may use external sources, including artificial intelligence coding assistants,
+during the completion of an algorithm all-hands project provided that they cite
+these sources and explain how they used them to complete their part(s) of an
+algorithm all-hands project.
+
+- **Algorithm Engineering Projects**: These projects enable students to explore
+both the scientific and engineering aspects of algorithm analysis, as outlined
+in the [course schedule](../schedule/index.qmd). During the completion of this
+two-week project, students will design and implement a software system suitable
+for conducting experiments and then use it answer research questions that
+connect to previously discussed scientific content, as outlined in the [course
+schedule](../schedule/index.qmd). After implementing the benchmarking system,
+students will propose and formally state research questions and then discuss
+them with the course instructor during a laboratory session. Finally, students
+will conduct experiments to answer these research questions, collect data,
+analyze the results, and write a report that explains the results in the
+context of the implemented system. Students may use external sources, including
+artificial intelligence coding assistants, during the completion of an
+algorithm all-hands project provided that they cite these sources and explain
+how they used them to complete the various components of an algorithm
+engineering project.
 
 #### Assessment Policies
 
@@ -254,10 +282,10 @@ platform.
 Students may "spend" up to five algorithmology "tokens" that they may use to
 either (i) secure 48 hours of additional time to complete an assigned task or
 (ii) request a reassessment of an already graded project after revising it
-according to feedback from the instructor. For instance, a student may choose to
-spend a token by asking the instructor to reevaluate one of the algorithm
-engineering projects. Outside of these five tokens, the instructor will not
-consider any additional requests for deadline extensions or assignment
+according to feedback from the instructor. For instance, a student may choose
+to spend a token by asking the instructor to reevaluate one of the algorithm
+engineering projects. Outside of the use of these five tokens, the instructor
+will not consider any additional requests for deadline extensions or assignment
 reassessment.
 
 ##### Course Attendance
@@ -273,32 +301,34 @@ should not attend any in-person course sessions.
 In order to minimize confusion and maximize learning, students must invest time
 to prepare for the class sessions that focus on professional development,
 technical development, and project development. Although the course instructor
-and the student technical leaders will always be available to serve as guide for
-individual students, teams of students, and the entire class, it is expected
-that students will volunteer to lead and actively contribute to all class
-sessions. Only those students who have prepared for class by reading and running
-the assigned material will be able to effectively participate in these class
-discussions. To help students remain organized and to effectively prepare for
-classes, the instructor will maintain a list of [course
-slides](../slides/index.qmd) and a [course schedule](../schedule/index.qmd) with
-reading assignments and other important information about the course (e.g.,
-references to the algorithm engineering projects).
+and the student technical leaders will always be available to serve as guide
+for individual students, teams of students, and the entire class, it is
+expected that students will volunteer to lead and actively contribute to all
+class sessions. Only those students who have prepared for class by reading and
+running the assigned material will be able to effectively participate in these
+class discussions. To help students remain organized and to effectively prepare
+for classes, the instructor will maintain a list of [course
+slides](../slides/index.qmd) and a [course schedule](../schedule/index.qmd)
+with reading assignments, programming suggestions, and other important
+information about the course (e.g., references to the algorithm engineering
+projects).
 
 #### Seeking Assistance
 
 Students who are struggling to understand the knowledge and skills developed in
-any of the course sessions are encouraged to seek assistance from the course
-instructor and/or the student technical leaders. Students should, within the
-bounds of the Honor Code, ask and answer questions on the [Algorithmology
-Discord Server](https://discord.gg/YHjhQaBnme); please request assistance from
-the instructor and student technical leaders first through public Discord
-channels before sending an email. Students who need the course instructor's
-assistance are invited to schedule a meeting through the [course instructor's
-appointment scheduler](https://www.gregorykapfhammer.com/schedule/) and come to
-the meeting with all of the details needed to discuss their question. Students
-can find out the office hour schedule for student technical leaders by viewing
-the list of [student technical
-leaders](https://www.cis.allegheny.edu/teaching/technicalleaders/).
+this course are encouraged to seek assistance from the course instructor and/or
+the student technical leaders. Students should, within the bounds of the Honor
+Code, ask and answer questions on the [Algorithmology Discord
+Server](https://discord.gg/YHjhQaBnme); please request assistance from the
+instructor and student technical leaders first through public Discord channels
+before sending an email or a direct message. Students who need more assistance
+are invited to schedule a meeting through the [instructor's appointment
+scheduler](https://www.gregorykapfhammer.com/schedule/) and come to the meeting
+with details about their question. Students can see the office hour schedule
+for student technical leaders by viewing the list of [student technical
+leaders](https://www.cis.allegheny.edu/teaching/technicalleaders/) and by
+monitoring announcements in the [Allegheny College Computer Science Discord
+Server](https://discord.gg/CS2h9kXzX6).
 
 #### Using GitHub and Discord
 
@@ -309,9 +339,9 @@ distinct Discord servers for all course discussions. The [Algorithmology
 Discord Server](https://discord.gg/YHjhQaBnme) provides a way for members of
 the developer development community to use text and video to chat with each
 other and will be the main forum for discussing the professional and technical
-content in software engineering. The [Allegheny College Computer Science
-Discord Server](https://discord.gg/CS2h9kXzX6) will be the main forum for
-Department of Computer Science announcements. Finally, any content that a
+content in the field of algorithm analysis. The [Allegheny College Computer
+Science Discord Server](https://discord.gg/CS2h9kXzX6) will be the main forum
+for Department of Computer Science announcements. Finally, any content that a
 student wants the instructor to assess (e.g., the work for an algorithm
 engineering project) must be in a GitHub repository.
 
@@ -346,7 +376,7 @@ pledge:
 Students who create the source code and documentation for their algorithm
 engineering and algorithm all-hands projects should ensure the implementation of
 a high-quality final product. While students are permitted to use a wide variety
-of software engineering tools, such as integrated development environments,
+of algorithm engineering tools, such as integrated development environments,
 testing frameworks, automated debuggers, and code generators (e.g., systems that
 leverage large language models like GitHub Copilot) and documentation sites such
 as StackOverflow, they must take responsibility for all of the source code and
@@ -356,15 +386,14 @@ automatically generated by a software tool.
 This means that every student must work as an effective algorithm engineer by
 documenting the sources for their work and verifying the correctness,
 maintainability, and long-term reliability of all source code and documentation
-that they submit. As such, students who use software tools to create content
-are responsible for citing their sources and demonstrating their understanding
-of it during the in-person assessments. Moreover, all students in the class are
-responsible for all of the source code and documentation submitted to the
-GitHub repository that hosts the course projects, including any tool-generated
-software artifacts. This means that every student should be able to answer
-questions, during either an in-person or online discussion, about any technical
-or professional content, including that which was automatically generated by a
-software tool.
+that they submit. As such, students who use software tools to create content are
+responsible for citing their sources and demonstrating their understanding of it
+as a part of any follow-on assessment. Moreover, all students in the class are
+responsible for all of the source code and documentation submitted to the GitHub
+repository that hosts the course projects, including any tool-generated software
+artifacts. This means that every student should be able to answer questions,
+during either an in-person or online discussion, about any algorithm engineering
+content, including that which was automatically generated by a software tool.
 
 Students who are effective algorithm engineers also pledge to abide by the [ACM
 Code of Ethics and Professional Conduct](https://www.acm.org/code-of-ethics).

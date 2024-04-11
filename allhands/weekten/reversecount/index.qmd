@@ -1,12 +1,14 @@
 ---
 author: [Benedek Kaibas, Chloe Bonson, David Gormley, Mordred Boulais, William Wolff, Luke Barker]
-title: Investigating the efficiency of computing counting and reversing a string
+title: Investigating the efficiency of counting and reversing a string
 page-layout: full
 categories: [post, dictionaries, strings]
 date: "2024-03-22"
 date-format: long
 toc: true
 ---
+
+<!-- TODO: The type annotations in these functions do not align. -->
 
 # Overview
 
@@ -17,6 +19,7 @@ functions implemented by team members.
 
 ```{python}
 # Will's Implementation
+
 def will_reverse_count(data: str):
     """Reverse the content of the provided string and return it in a mapping."""
     string = ""
@@ -153,23 +156,26 @@ print(
 )
 ```
 
+<!-- TODO: It is not clear how these were computed since this is not the output
+from actually running the Python source code in Quarto. -->
+
 # Data Output
 
-## Will's implementation:
+## Will's implementation
 
 ```text
 Performance time in seconds:
 [7.916998583823442e-06, 5.457986844703555e-06, 5.333000444807112e-06, 5.207999492995441e-06, 5.250010872259736e-06]
 ```
 
-## Mordred's implementation:
+## Mordred's implementation
 
 ```text
 Performance time in seconds:
  [3.950000018448918e-05, 2.3999999939405825e-05, 2.390000008745119e-05, 2.3800000235496555e-05, 2.3799999780749204e-05]
 ```
 
-## Chloe's implementation:
+## Chloe's implementation
 
 ```text
 Performance time in seconds:[6.667338311672211e-06, 2.2919848561286926e-06, 2.1248124539852142e-06, 2.125278115272522e-06, 2.00001522898674e-06]
@@ -206,6 +212,8 @@ Performance time in seconds:
 
 ### The code for getting the average of the outputs
 
+<!-- TODO: Why are there these hard-coded values inside of lists? -->
+
 ```python
 class AverageOutput:
     def __init__(self):
@@ -225,6 +233,8 @@ class AverageOutput:
         return sum(self.outputs) / len(self.outputs) if self.outputs else 0
 ```
 
+<!-- TODO: These numbers are very hard to interpret as they are written -->
+
 ### The output of the function including the average performance time
 
 ```text
@@ -232,7 +242,7 @@ Total: 9.539956226944923e-05
 Average: 3.8159824907779695e-06
 ```
 
-## David's Implementation:
+## David's Implementation
 
 ```text
 Performance time in seconds:
@@ -244,7 +254,7 @@ Fifth Run: [1.1313000868540257e-05, 8.074996003415436e-06, 7.907001418061554e-06
 Average: [1.1184569075043328e-05, 8.073418497881355e-06, 7.908197097374817e-06, 7.953013119930274e-06, 7.948352562959439e-06]
 ```
 
-## Luke's Implementation:
+## Luke's Implementation
 
 ```text
 Performance time in seconds:
@@ -253,32 +263,59 @@ Performance time in seconds:
 
 # Analysis
 
+<!-- TODO: There is no analysis from Mordred? -->
+
 ## Luke
 
-The len() function and the str slicing both have a worst case time complexity of
-O(n) so that would make the total worst case time complexity of the function be
-O(n). This means that the function grows at a linear rate based on the size of
-the input and the time it takes to execute the function.
+<!-- TODO: Do you have evidence to support these claims? -->
+
+The `len()` function and the `str` slicing both have a worst-case time
+complexity of $O(n)$ so that would make the total worst case time complexity of
+the function be $O(n)$. This means that the function grows at a linear rate
+based on the size of the input and the time it takes to execute the function.
 
 ## Chloe
 
-Based on the output above, the running time exhibits a worst case time complexity of O(n), otherwise described as a linear progression. This means that there is a linear relationship between the runtime of the function and the input size. I considred the costs of slicing the str (`reverse = data[::-1]`) and creating the dictionary with the len function involved (`data: {"count": str(len(data)), "reversed": reverse}`) O(n). Leading to the total WCTC being the same.
+Based on the output above, the running time exhibits a worst case time
+complexity of $O(n)$, otherwise described as a linear progression. This means
+that there is a linear relationship between the runtime of the function and the
+input size. I considered the costs of slicing the `str` (i.e., `reverse =
+data[::-1]`) and creating the dictionary with the len function involved (i.e.,
+`data: {"count": str(len(data)), "reversed": reverse}`) as $O(n)$. This
+suggests the total worst-case time complexity being the same.
 
-The runtime of the function implementation above is displayed in the Ouput section. The average of the 5 output values is 3.0418857932090757e-06. Comapring the running time to the runtime results, it is indicated that as the string input `data` is increased, there will be a linear rate of growth. Graphically, this would be visualized with time on the x axis and input size on the y axis; the curve would be a straight line with a positive slope.
+The runtime of the function implementation above is displayed in the Output
+section. The average of the $5$ output values is $3.0418857932090757e-06$.
+Comparing the running time to the runtime results, it is indicated that as the
+string input `data` is increased, there will be a linear rate of growth.
+Graphically, this would be visualized with time on the horizontal axis and
+input size on the vertical axis; the curve would be a straight line with a
+positive slope.
 
-Comparing the theoretical running time value and the empirical runtime results, indicate what I would expect. The growth is linear, however, the slope of the curve is rather flat and the values increase in small increments. This could be attributed to the speed of my laptop. Since mine runs rather fast, I would need to increase the input size drastically to see larger increases in runtime. However, I ran the function in a separate script and outputted the results to many decimal places and noticed a linear development is present. 
+<!-- TODO: What evidence do you have that your laptop run's "very fast"? -->
+
+Comparing the theoretical running time value and the empirical runtime results,
+indicate what I would expect. The growth is linear, however, the slope of the
+curve is rather flat and the values increase in small increments. This could be
+attributed to the speed of my laptop. Since mine runs rather fast, I would need
+to increase the input size drastically to see larger increases in runtime.
+However, I ran the function in a separate script and outputted the results to
+many decimal places and noticed a linear development is present. 
 
 ## Will
 
-The time complexity of the reverse_count function is O(n), where n is the length of the input string.
-The code above shows that there is a linear growth in relation to the input size and the run time. In
-relation to that the run time shows that this code is the slowest and not the most efficient.
+<!-- TODO: The analysis of this function is incomplete and not supported -->
+
+The time complexity of the `reverse_count` function is $O(n)$, where $n$ is the
+length of the input string. The code above shows that there is a linear growth
+in relation to the input size and the run time. In relation to that the run
+time shows that this code is the slowest and not the most efficient.
 
 # Conclusion
 
 Despite the variety of implementations used, all had a worst-case time
-complexity of O(n). This shows in practice, where the differences
-between the methods were negligible, typically a difference of less than
--05 in the scientific notation. As such, the O(n) assumed from the
-implementations holds true, and the methods do not have one being clearly more
-efficient than the others.
+complexity of $O(n)$. This shows that, in practice, where the differences
+between the methods were negligible, typically a difference of less than $-05$
+in the scientific notation. As such, the $O(n)$ assumed from the
+implementations holds true and thus the methods do not have one being clearly
+more efficient than the others.

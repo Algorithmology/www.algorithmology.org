@@ -1,0 +1,458 @@
+---
+author: [Sabrina Rodriguez, Evan Nelson, Jason Gymafi, Rebekah Rudd, Simon Jones]
+title: How can we validate the calculated time complexity of an averaging function?
+page-layout: full
+categories: [post, average, matrix]
+date: "2024-03-22"
+date-format: long
+toc: true
+---
+
+# Introduction
+
+The purpose of this project is to develop a benchmarking system that will allow
+us to calculate the fastest running time execution among various solution to
+one function. Below is a sample of the function we had to solve:
+
+```python
+def find_average_value(matrix: List[List[int]]) -> Union[float, None]:
+    """Find the average value in the provided matrix."""
+    ...
+```
+Below are our samples on how we approached this problem:
+
+<!-- TODO: Some of the functions do not have type annotations. Other functions do -->
+<!-- not have type annotations that agree. -->
+
+## Rebekah Rudd Solution
+
+```python
+def find_average_value(matrix: List[List[int]]) -> Union[float, None]:
+    """Find the average value in the provided matrix."""
+    # check to see if matrix is populated
+    if not matrix:
+        return None
+    # create an empty list
+    total_numbers = []
+    # iterate through matrix and extract all the numbers to find the min
+    for number_list in matrix:
+        for number in number_list:
+            total_numbers.append(number)
+    # return the minimum value within the total_numbers list using min()
+    return sum(total_numbers) / len(total_numbers)
+```
+
+## Sabrina Rodriguez Solution
+
+```python
+def find_average_value(matrix: List[List[int]]) -> Union[float, None]:
+    """Find the average value in the provided matrix."""
+    if not matrix or not all(
+        isinstance(row, list) and all(isinstance(val, int) for val in row)
+        for row in matrix
+    ):
+        return None
+    total_sum = sum(sum(row) for row in matrix)
+    num_elements = sum(len(row) for row in matrix)
+    return total_sum / num_elements
+```
+## Jason Gyamfi Solution
+
+```python
+def find_average_value(matrix):
+    """Find the average value in the provided matrix."""
+    if not matrix:
+        return None
+    total = sum(sum(row) for row in matrix)
+    count = sum(len(row) for row in matrix)
+    return total / count
+```
+
+## Simon Jones Solution
+
+```python
+def find_average_value(matrix: List[List[int]]) -> Union[float, None]:
+    """Find the average value in the provided matrix."""
+    if not isinstance(matrix, list) or len(matrix) == 0:
+        return None
+    matrix_flatmapped: List[int] = []
+    for listy in matrix:
+        matrix_flatmapped = matrix_flatmapped + listy
+    return sum(matrix_flatmapped) / len(matrix_flatmapped)
+```
+
+## Evan Nelson Solution
+
+```python
+def find_average_value(matrix: List[List[int]]) -> Union[float, None]:
+    """Find the average value in the provided matrix."""
+    if (
+        not matrix
+        or not all(isinstance(row, list) for row in matrix)
+        or any(not row for row in matrix)
+    ):
+        return None
+    flattened_matrix = [element for row in matrix for element in row]
+    average = sum(flattened_matrix) / len(flattened_matrix)
+    return average
+```
+
+# Estimated Runtime Complexity
+
+## Simon Jones Solution
+
+The estimated runtime complexity of Simon's solution was calculated to be
+
+$$
+O\Bigg(n_1 + 2n_1n_2 + \frac{1}{2}n_2(n_1^3 + n_1^2)\Bigg)
+$$
+
+The reason for which is explained in the following code. The time complexity of
+each code snippet is denoted with a comment above it.
+
+<!-- TODO: It is not clear that all of these time complexities are correct. For -->
+<!-- instance, why is the return statement n^2? More justification and clarification -->
+<!-- is needed to explain why these time complexities are correct. -->
+
+```python
+def find_average_value(matrix: List[List[int]]) -> Union[float, None]:
+    """Find the average value in the provided matrix."""
+    # O(n_1)
+    if not isinstance(matrix, list) or len(matrix) == 0:
+        return None
+    matrix_flatmapped: List[int] = []
+    # O(n_1)
+    for listy in matrix:
+        # O(i * n_2 + n_2)
+        matrix_flatmapped = matrix_flatmapped + listy
+    # O(2 * n_1 * n_2)
+    return sum(matrix_flatmapped) / len(matrix_flatmapped)
+```
+
+Calculating the time complexity of this gets us the following:
+
+$$
+O\Bigg(n_1 + 2n_1 n_2 + n_1\Bigg(\sum_{i=0}^{n-1}in_2 + n_2\Bigg)\Bigg)
+$$
+
+Which can be simplified to our final expression:
+
+$$
+O\Bigg(n_1 + 2n_1n_2 + \frac{1}{2}n_2(n_1^3 + n_1^2)\Bigg)
+$$
+
+To compare the two results, we created a doubling experiment that doubles both
+$n_1$ and $n_2$ up to $10$ times. We took two measurements, one with $n_1$ held
+constant, and the other with $n_2$ held constant to analyze how accurate our
+estimate for time complexity would be.
+
+Upon comparing these two results, we find that the theoretical result differs
+subtly from the experimental result. The experimental time complexity, when
+$n_1$ is held constant, varies exponentially with $n_2$, as $n_2$ approaches
+$300$, which goes against the theoretical time complexity for which $O$ would
+vary linearly if $n_1$ were held constant.
+
+When we hold $n_2$ constant, however, Simon's estimated runtime complexity is
+coupled closely with the experimental runtime complexity, with both runtimes
+increasing in linearity upon passing $n_1 \approx 250$.
+
+```txt
+
+                                                      Holding n1 constant                                                                                 
+     1600 +------------------------------------------------------------------------------------------------------------+                              
+          |                 +                 +                  +                 +    Theoretical Runtime Complexity |
+          |                                                                                           *A               |                              
+          |                                                                                         **                 |                              
+          |                                                                                       **                   |                              
+          |                                                                                     **                     |                              
+     1400 |-+                                                                                 **                     +-|                              
+          |                                                                                ***                         |                              
+          |                                                                              **                            |                              
+          |                                                                            **                              |                              
+          |                                                                          **                                |                              
+     1200 |-+                                                                      **                                +-|                              
+          |                                                                     ***                                    |                              
+          |                                                                   **                                       |                              
+          |                                                                 **                                         |                              
+          |                                                               **                                           |                              
+          |                                                             **                                             |                              
+     1000 |-+                                                         **                                             +-|                              
+          |                                                        ***                                                 |                              
+          |                                                      **                                                    |                              
+          |                                                    **                                                      |                              
+          |                                                  **                                                        |                              
+      800 |-+                                              **                                                        +-|                              
+          |                                             *A*                                                            |                              
+          |                                           **                                                               |                              
+          |                                         **                                                                 |                              
+          |                                       **                                                                   |                              
+          |                                     **                                                                     |                              
+      600 |-+                                ***                                                                     +-|                              
+          |                                **                                                                          |                              
+          |                              **                                                                            |                              
+          |                            **                                                                              |                              
+          |                          **                                                                                |                              
+          |                        **                                                                                  |                              
+      400 |-+                    A*                                                                                  +-|                              
+          |                    **                                                                                      |                              
+          |                  **                                                                                        |                              
+          |                **                                                                                          |                              
+          |              **                                                                                            |                              
+      200 |-+          **                                                                                            +-|                              
+          |          *A                                                                                                |                              
+          |       ***                                                                                                  |                              
+          |     A*                                                                                                     |                              
+          |   **                                                                                                       |                              
+          |A*A              +                 +                  +                 +                 +                 |                              
+        0 +------------------------------------------------------------------------------------------------------------+                              
+          0                100               200                300               400               500               600                             
+                                                               n2                                                                                     
+
+                                                      Holding n1 constant                                                                                 
+                                                                                                                                                      
+     0.00014 +---------------------------------------------------------------------------------------------------------+                              
+             |                 +                +                 +                 +  Experimental Runtime Complexity |
+             |                                                                                                         |                              
+             |                                                                                                         |                              
+             |                                                                                                         |                              
+             |                                                                                                         |                              
+             |                                                                                        *A               |                              
+     0.00012 |-+                                                                                    **               +-|                              
+             |                                                                                    **                   |                              
+             |                                                                                  **                     |                              
+             |                                                                               ***                       |                              
+             |                                                                             **                          |                              
+             |                                                                           **                            |                              
+      0.0001 |-+                                                                       **                            +-|                              
+             |                                                                      ***                                |                              
+             |                                                                    **                                   |                              
+             |                                                                  **                                     |                              
+             |                                                                **                                       |                              
+             |                                                             ***                                         |                              
+             |                                                           **                                            |                              
+       8e-05 |-+                                                       **                                            +-|                              
+             |                                                       **                                                |                              
+             |                                                    ***                                                  |                              
+             |                                                  **                                                     |                              
+             |                                                **                                                       |                              
+             |                                              **                                                         |                              
+       6e-05 |-+                                         *A*                                                         +-|                              
+             |                                        ***                                                              |                              
+             |                                      **                                                                 |                              
+             |                                   ***                                                                   |                              
+             |                                ***                                                                      |                              
+             |                             ***                                                                         |                              
+             |                           **                                                                            |                              
+       4e-05 |-+                      ***                                                                            +-|                              
+             |                     *A*                                                                                 |                              
+             |                  ***                                                                                    |                              
+             |               ***                                                                                       |                              
+             |            ***                                                                                          |                              
+             |         *A*                                                                                             |                              
+       2e-05 |-+     **                                                                                              +-|                              
+             |    *A*                                                                                                  |                              
+             |A*A*                                                                                                     |                              
+             |A                                                                                                        |                              
+             |                                                                                                         |                              
+             |                                                                                                         |                              
+             |                 +                +                 +                 +                +                 |                              
+           0 +---------------------------------------------------------------------------------------------------------+                              
+             0                100              200               300               400              500               600                             
+                                                                 n2                                                                                   
+                                                                                                                                                      
+                                                      Holding n2 constant                                                                                 
+     7e+07 +-----------------------------------------------------------------------------------------------------------+                              
+           |                 +                 +                 +                 +    Theoretical Runtime Complexity |
+           |                                                                                           A               |                              
+           |                                                                                          *                |                              
+           |                                                                                        **                 |                              
+           |                                                                                       *                   |                              
+     6e+07 |-+                                                                                    *                  +-|                              
+           |                                                                                     *                     |                              
+           |                                                                                    *                      |                              
+           |                                                                                  **                       |                              
+           |                                                                                 *                         |                              
+           |                                                                                *                          |                              
+           |                                                                               *                           |                              
+     5e+07 |-+                                                                            *                          +-|                              
+           |                                                                            **                             |                              
+           |                                                                           *                               |                              
+           |                                                                          *                                |                              
+           |                                                                         *                                 |                              
+           |                                                                        *                                  |                              
+     4e+07 |-+                                                                    **                                 +-|                              
+           |                                                                     *                                     |                              
+           |                                                                    *                                      |                              
+           |                                                                   *                                       |                              
+           |                                                                 **                                        |                              
+           |                                                                *                                          |                              
+           |                                                               *                                           |                              
+     3e+07 |-+                                                            *                                          +-|                              
+           |                                                             *                                             |                              
+           |                                                           **                                              |                              
+           |                                                          *                                                |                              
+           |                                                         *                                                 |                              
+           |                                                        *                                                  |                              
+     2e+07 |-+                                                     *                                                 +-|                              
+           |                                                     **                                                    |                              
+           |                                                    *                                                      |                              
+           |                                                   *                                                       |                              
+           |                                                  *                                                        |                              
+           |                                                 *                                                         |                              
+           |                                               **                                                          |                              
+     1e+07 |-+                                            *                                                          +-|                              
+           |                                           **A                                                             |                              
+           |                                     ******                                                                |                              
+           |                               ******                                                                      |                              
+           |                         ******                                                                            |                              
+           |                 *****A**          +                 +                 +                 +                 |                              
+         0 +-----------------------------------------------------------------------------------------------------------+                              
+           0                100               200               300               400               500               600                             
+                                                                n1                                                                                    
+
+                                                      Holding n2 constant                                                                                 
+     0.008 +-----------------------------------------------------------------------------------------------------------+                              
+           |                 +                 +                 +                 +   Experimental Runtime Complexity |
+           |                                                                                                           |                              
+           |                                                                                           A               |                              
+           |                                                                                         **                |                              
+           |                                                                                        *                  |                              
+     0.007 |-+                                                                                    **                 +-|                              
+           |                                                                                     *                     |                              
+           |                                                                                    *                      |                              
+           |                                                                                  **                       |                              
+           |                                                                                 *                         |                              
+     0.006 |-+                                                                             **                        +-|                              
+           |                                                                              *                            |                              
+           |                                                                            **                             |                              
+           |                                                                           *                               |                              
+           |                                                                          *                                |                              
+           |                                                                        **                                 |                              
+     0.005 |-+                                                                     *                                 +-|                              
+           |                                                                     **                                    |                              
+           |                                                                    *                                      |                              
+           |                                                                  **                                       |                              
+           |                                                                 *                                         |                              
+           |                                                               **                                          |                              
+     0.004 |-+                                                            *                                          +-|                              
+           |                                                             *                                             |                              
+           |                                                           **                                              |                              
+           |                                                          *                                                |                              
+           |                                                        **                                                 |                              
+           |                                                       *                                                   |                              
+     0.003 |-+                                                   **                                                  +-|                              
+           |                                                    *                                                      |                              
+           |                                                   *                                                       |                              
+           |                                                 **                                                        |                              
+           |                                                *                                                          |                              
+     0.002 |-+                                            **                                                         +-|                              
+           |                                            *A                                                             |                              
+           |                                         ***                                                               |                              
+           |                                      ***                                                                  |                              
+           |                                   ***                                                                     |                              
+           |                                 **                                                                        |                              
+     0.001 |-+                            ***                                                                        +-|                              
+           |                           ***                                                                             |                              
+           |                        ***                                                                                |                              
+           |                    **A*                                                                                   |                              
+           |              ******                                                                                       |                              
+           |        ***A**   +                 +                 +                 +                 +                 |                              
+         0 +-----------------------------------------------------------------------------------------------------------+                              
+           0                100               200               300               400               500               600                             
+```
+
+# Data Analysis
+
+Our solutions all involve flattening the matrix and calculating the average,
+resulting in linear time complexities of $O(n)$, where n represents the total
+number of elements in the matrix. However, Simon Jones' solution stands out
+with a more complex estimated time complexity of $O(n_1 + 2n_1n_2 +
+0.5n_2(n_1^3 + n_1^2))$, where $n_1$ is the number of rows and $n_2$ is the
+average length of the rows. Despite its complexity estimation, Simon's solution
+demonstrates a discrepancy between the estimated and experimental time
+complexities, suggesting a need for refinement.
+
+The `main.py` script conducts an experimental analysis of various solutions that
+is executed multiple times with matrices of varying sizes, and the execution
+times are recorded for analysis. The script iterates over different sizes of
+matrices and measures the execution time for each solution. The experimental
+results are stored in lists for each solution, and the doubling ratio is
+calculated to analyze the scalability of each solution. The
+`average_doubling_ratio` function calculates the average doubling ratio for a
+given list of execution times, while the `print_doubling_ratios` function prints
+the doubling ratios for each solution. Ultimately, the script displays both the
+experimental findings and the doubling ratios for each solution. This
+functionality enables a direct comparison of solution performance and the
+exploration of their scalability attributes through doubling ratio analysis.
+This is showcased through the graphs demonstrated above which depict the runtime
+complexities of various solutions for matrix operations while holding either
+`n1` or `n2` constant. In the first set of graphs, when `n1` is held constant,
+all solutions demonstrate an increasing trend in runtime as `n2` grows. As `n2`
+increases, the experimental runtime complexities generally follow the
+theoretical expectations with some variations. The second set of graphs, with
+`n2` held constant, illustrates a similar trend with increasing runtime
+complexities as `n1` expands. Again, the theoretical runtime complexity serves
+as a benchmark. Here, the experimental complexities closely align with the
+theoretical expectations, showcasing the scalability of the solutions. Overall,
+these analyses provide valuable insights into the performance and scalability
+characteristics of the implemented matrix operations across different solution
+methodologies.
+
+# Results
+
+Simon's proposal is the worst-case scenario among the other solutions offered.
+By iterating through each row of the matrix to concatenate all the rows into a
+flat list, Simon's method involves calculating the length and sum of this
+flattened list in order to determine the average. This is the worst-case
+scenario because of the repeated concatenation operation, which is known to be
+inefficient because it can cause a large overhead as the size of the input
+increases by creating a new list and copying the old elements into it along with
+the new ones.
+
+Jason's solution represents the best-case situation. Jason's method iterates
+through each row just once, adding up the elements and their counts using a
+generator expression, and then computes the total sum and the count of elements
+in the matrix directly. Jason's approach is more effective since it computes
+the `total` and `count` in a single pass through the matrix, avoiding the
+expense of list concatenation. It is more space and time efficient due to this
+direct computation, which reduces the number of operations needed to compute
+the average and eliminates the need for additional space for a flattened list.
+
+<!-- TODO: Do these actually confirm the worst-case time complexities or not? -->
+
+<!-- TODO: When this content states "an increase", what kind is it? -->
+
+Additionally, examining the calculated doubling ratios offers further insights
+into the scalability of each solution. For Jason's solution, the average
+doubling ratio for holding $n_1$ constant is approximately $1.52$, indicating
+an increase in runtime as the input size doubles. Similarly, for holding $n_2$
+constant, Jason's solution shows an average doubling ratio of about $1.09$,
+suggesting a slightly better scalability concerning the second dimension of the
+matrix. On the other hand, Simon's solution demonstrates an average doubling
+ratio of around $1.84$ when holding $n_1$ constant and $1.20$ when holding
+$n_2$ constant. These findings suggest that Simon's solution experiences a more
+significant increase in runtime with larger input sizes compared to Jason's
+solution, particularly noticeable when scaling along the first dimension of the
+matrix. Analyzing these doubling ratios provides valuable insights into the
+performance characteristics of each approach, aiding in the selection of the
+most suitable solution for specific application scenarios
+
+# Future Work
+
+One aspect that could be considered for future work is creating a function that
+would create, test, and store empirical results. For this project, we ran and
+recorded results for our own individual functions. We wrote code that would
+call the functions and then print the function’s run time results in the
+terminal and we did this for every person’s average function. However, rather
+than writing the code for each individual function, further action could be
+taken to make that process more generalized. For example, the goal would be to
+call the generalized testing function and then that function would create
+inputs and record the run time results for any Python function. This would make
+running these empirical tests for created functions more convenient. It would
+also help to standardize the process. Some challenges in creating a function
+that would generalize the testing process might include accounting for
+different types of functions and different types of parameters. For this
+all-hands project generating inputs for this function was complicated because
+our input was a `List` of `List`s; it was not a simple `Integer` or `String`.
+Creating this generalized function that would run the empirical testing for us
+could be one step moving forward. 

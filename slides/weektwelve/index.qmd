@@ -19,3 +19,564 @@ format:
     html-math-method: mathjax
     footer: "Algorithmology"
 ---
+
+# Efficient way to find data in a collection?
+
+- Sort the items in a collection
+- Use binary search to find an item
+- Amortize the cost of sorting
+- Operate on collections are static
+
+{{< iconify game-icons team-idea >}} **Wait, what are the limitations of this approach?**
+
+# What are mappings and hash table structures?
+
+- A **mapping** is an association between two sets of items
+- A mapping **associates** a value to a key
+- This association is called a **key-value pair**
+- Key are unique, so there is only **one value per key**
+
+{{< iconify game-icons team-idea >}} **Why do dictionary operations only take constant time?**
+
+## Mapping abstract data type
+
+::: {.fragment .fade .boxed-content style="margin-top: 0em; font-size: 0.95em;"}
+
+- **`get(k)`** - return the value associate to the key `k`; Usually an error
+(`KeyError`) is raised if the given key is not present
+
+- **`put(k,v)`** - Add the key-value pair `(k,v)` to the mapping
+
+:::
+
+::: {.fragment .fade style="margin-top: 0.25em; font-size: 0.90em;"}
+
+- Implemented as `__getitem__` and `__setitem__` in Python
+- Complete implementation is sophisticated and nuanced
+- Small mistakes can lead to performance problems
+- Start with a simple implementation and iteratively improve it
+
+:::
+
+::: {.fragment .fade}
+
+{{< iconify game-icons team-idea >}} **Can you sketch an efficient dictionary implementation?**
+
+:::
+
+## Preliminary hash table
+
+```{python}
+class Entry:
+    def __init__(self, key, value):
+        self.key = key
+        self.value = value
+
+    def __str__(self):
+        return str(self.key) + " : " + str(self.value)
+
+def mapput(L, key, value):
+    for e in L:
+        if e.key == key:
+            e.value = value
+            return
+    L.append(Entry(key, value))
+
+def mapget(L, key):
+    for e in L:
+        if e.key == key:
+            return e.value
+    raise KeyError
+
+m = []
+mapput(m, 4, 'five')
+mapput(m, 1, 'one')
+mapput(m, 13, 'thirteen')
+mapput(m, 4, 'four')
+assert(mapget(m, 1) == 'one')
+assert(mapget(m, 4) == 'four')
+print(mapget(m, 1) == 'one')
+print(mapget(m, 4) == 'four')
+```
+
+## What can we learn from the implementation of `Entry` and the `mapput` and `mapget` functions?
+
+::: incremental
+
+- Offers a new API for accessing data stored in a `list`
+- Uses the `Entry` class to store key-value pairs
+- Provides the `mapput` function to add key-value pairs
+- Uses the `mapget` function to retrieve values
+- Yet, **no efficiency gains** and **not a suitable interface**!
+
+:::
+
+::: {.fragment .fade style="margin-top: -0.15em;"}
+
+{{< iconify game-icons team-idea >}} **Can you suggest ways to improve this implementation?**
+
+:::
+
+## What is our ultimate goal for the interface to a hash table?
+
+```{python}
+d = {'key1': 'value1', 'key2': 'value2'}
+for k in d:
+    print(k)
+
+for v in d.values():
+    print(v)
+
+for k, v in d.items():
+    print(k, v)
+
+print(d)
+```
+
+## Complete API for a hash table
+
+::: {.fragment .fade-up .boxed-content style="margin-top: 0em; font-size: 0.80em;"}
+
+- `__getitem__(k)` - return the value associate to the key `k`; usually an error (`KeyError`) is raised if the given key is not present
+
+- `__setitem__(k, v)` - Add the key-value pair `(k,v)` to the mapping
+
+- `remove(k)` - Remove the entry with key `k` if it exists
+
+- `__len__` - return the number of keys in the dictionary
+
+- `__contains__(k)` - return true if the mapping contains a pair with key `k`
+
+- `__iter__` - return an iterator over the keys in the dictionary
+
+- `values` - return an iterator over the values in the dictionary
+
+- `items` - return an iterator over the key-value pairs (as tuples)
+
+- `__str__` - return a string representation of the mapping
+
+:::
+
+## Be careful! Don't assume details about hash table behavior!
+
+- 🎉 Remember, `dict` is a non-sequential collection
+- 🎲 The order of items in a `dict` is unpredictable
+- 🔄 Order can change between two iterations of same `dict`
+- 📝 Now `dict` items are in a fixed order since using a `list`
+- 🚀 Moving items around a `list` improves running times!
+
+::: {.fragment .fade style="margin-top: 0.05em;"}
+
+{{< iconify game-icons team-idea >}} **Implementing a performant dictionary is
+surprisingly challenging! What strategies can we use for assessment?**
+
+:::
+
+## List-based hash table implementation
+
+```{python}
+class ListMappingSimple:
+    def __init__(self):
+        self._entries = []
+
+    def put(self, key, value):
+        e = self._entry(key)
+        if e is not None:
+            e.value = value
+        else:
+            self._entries.append(Entry(key, value))
+
+    def get(self, key):
+        e = self._entry(key)
+        if e is not None:
+            return e.value
+        else:
+            raise KeyError
+
+    def remove(self, key):
+        e = self._entry(key)
+        if e is not None:
+            self._entries.remove(e)
+
+    def _entry(self, key):
+        for e in self._entries:
+            if e.key == key:
+                return e
+        return None
+
+    def __str__(self):
+        return "{" + ", ".join(str(e) for e in self._entries) + "}"
+
+    def __len__(self):
+        return len(self._entries)
+
+    def __contains__(self, key):    
+        if self._entry(key) is None:
+            return False
+        else:
+            return True
+
+    def __iter__(self):
+      return (e.key for e in self._entries)
+
+    def values(self):
+        return (e.value for e in self._entries)
+
+    def items(self):
+        return ((e.key, e.value) for e in self._entries)
+
+    __getitem__ = get
+    __setitem__ = put
+```
+
+::: {.fragment .fade style="margin-top: 0.75em; font-size: 0.90em;"}
+
+{{< iconify game-icons team-idea >}} **What is the key drawback of this implementation?**
+
+:::
+
+# The `ListMapping` class is not efficient! Ideas?
+
+- Goal is to get near constant-time access to data like `dict`
+
+- Right now more than one method has $O(n)$ running time!
+
+- **Idea**: Use a hash function to map keys to indices for values
+
+::: {.fragment .fade-up .boxed-content style="margin-top: 0em; font-size: 0.80em;"}
+
+A **hash function** takes a key and returns an integer. Most classes in Python
+implement a method called `__hash__` for this purpose. Let's try it!
+
+:::
+
+## A `HashMap` containing many `ListMap`s
+
+```{python}
+class HashMappingSimple:
+    def __init__(self):
+        self._size = 100
+        self._buckets = [ListMappingSimple() for _ in range(self._size)]
+
+    def put(self, key, value):
+        m = self._bucket(key)
+        m[key] = value
+
+    def get(self, key):
+        m = self._bucket(key)
+        return m[key]
+
+    def _bucket(self, key):
+        return self._buckets[hash(key) % self._size]
+```
+
+::: {.fragment .fade style="margin-top: 0.0em; font-size: 0.80em;"}
+
+- The `100` instances of `ListMapping` are called **buckets**
+- The `hash` function maps keys to a bucket in the `HashMap`
+- **Warning**! If two keys hash to the same index, it is a **collision**!
+
+:::
+
+## Bucket count for `HashMappingSimple`?
+
+- Picking `100` buckets is arbitrary used for illustration!
+- There is a trade-off between the number of buckets and:
+  - Time overhead
+  - Space overhead
+  - Number of collisions
+- Strategies for picking the number of buckets?
+
+::: {.fragment .boxed-content .fade style="margin-top: 0.0em; font-size: 0.80em;"}
+
+**Key**: Use more buckets as the number of entries increases! This approach only
+increases the hash table's space overhead in a demand-driven fashion.
+
+:::
+
+## `HashMap` with dynamic bucket count
+
+```{python}
+class HashMappingPrime:
+    def __init__(self, size = 2):
+        self._size = size
+        self._buckets = [ListMappingSimple() for _ in range(self._size)]
+        self._length = 0
+
+    def put(self, key, value):
+        m = self._bucket(key)
+        if key not in m:
+            self._length += 1
+        m[key] = value
+        if self._length > self._size:
+            self._double()
+
+    def get(self, key):
+        m = self._bucket(key)
+        return m[key]
+
+    def remove(self, key):
+        m = self._bucket(key)
+        m.remove(key)
+
+    def __contains__(self, key):
+        m = self._bucket(key)
+        return key in m
+
+    def _bucket(self, key):
+        return self._buckets[hash(key) % self._size]
+
+    def _double(self):
+        oldbuckets = self._buckets
+        self._size *= 2
+        self._buckets = [ListMappingSimple() for _ in range(self._size)]
+        for bucket in oldbuckets:
+            for key, value in bucket.items():
+                m = self._bucket(key)
+                m[key] = value
+
+    def __len__(self):
+        return self._length
+
+    def __iter__(self):
+        for b in self._buckets:
+            for k in b:
+                yield k
+
+    def values(self):
+        for b in self._buckets:
+            for v in b.values():
+                yield v
+
+    def items(self):
+        for b in self._buckets:
+            for k, v in b.items():
+                yield k, v
+
+    def __str__(self):
+        itemlist = [str(e) for b in self._buckets for e in b._entries]
+        return "{" + ", ".join(itemlist) + "}"
+
+    __getitem__ = get
+    __setitem__ = put
+```
+
+::: {.fragment .fade style="margin-top: 0.75em; font-size: 0.90em;"}
+
+{{< iconify game-icons team-idea >}} **What is a drawback of this `HashMap` implementation?**
+
+:::
+
+## Rehashing with the `_double` method
+
+```python
+def _double(self):
+    oldbuckets = self._buckets # <1>
+    self._size *= 2            # <2>
+    self._buckets = [ListMapping() for i in range(self._size)] # <3>
+    for bucket in oldbuckets:  # <4>
+        for key, value in bucket.items():
+            m = self._bucket(key) # <5>
+            m[key] = value
+
+```
+1. Save references to the old buckets
+2. Double the size of the `HashMap`
+3. Create the new list of buckets
+4. Add in all of the old entries
+5. Identify new bucket for each key-value pair
+
+::: {.fragment .fade style="margin-top: 0.85em; font-size: 0.95em;"}
+
+{{< iconify game-icons team-idea >}} **What is the worst-case time complexity of  `_double`?**
+
+:::
+
+# Improving the object-oriented design of `ListMapping` and `HashMapping`
+
+- The data structures share methods in common
+- Factoring out a superclass can reduce code duplication
+
+## Creating a common superclass
+
+```{python}
+class Mapping:
+
+    def get(self, key):
+        raise NotImplementedError
+
+    def put(self, key, value):
+        raise NotImplementedError
+
+    def __len__(self):
+        raise NotImplementedError
+
+    def _entryiter(self):
+        raise NotImplementedError   
+
+    def __iter__(self):
+      return (e.key for e in self._entryiter())
+
+    def values(self):
+        return (e.value for e in self._entryiter())
+
+    def items(self):
+        return ((e.key, e.value) for e in self._entryiter())
+
+    def __contains__(self, key):
+        try:
+            self.get(key)
+        except KeyError:
+            return False
+        return True
+
+    def __getitem__(self, key):
+        return self.get(key)
+
+    def __setitem__(self, key, value):
+        self.put(key, value)
+
+    def __str__(self):
+        return "{" + ", ".join(str(e) for e in self._entryiter()) + "}"
+```
+
+::: {.fragment .fade style="margin-top: 0.85em; font-size: 0.85em;"}
+
+Raise `NotImplementedError` if a subclass does not implement a method
+
+:::
+
+## Refactor the `ListMapping`
+
+```{python}
+class ListMapping(Mapping):
+    def __init__(self):
+        self._entries = []
+
+    def put(self, key, value):
+        e = self._entry(key)
+        if e is not None:
+            e.value = value
+        else:
+            self._entries.append(Entry(key, value))
+
+    def get(self, key):
+        e = self._entry(key)
+        if e is not None:
+            return e.value
+        else:
+            raise KeyError
+
+    def _entry(self, key):
+        for e in self._entries:
+            if e.key == key:
+                return e
+        return None
+
+    def _entryiter(self):
+        return iter(self._entries)
+
+    def __len__(self):
+        return len(self._entries)
+```
+
+::: {.fragment .fade style="margin-top: 0.85em; font-size: 0.85em;"}
+
+Notation `ListMapping(Mapping)` creates an inheritance hierarchy
+
+:::
+
+## Refactor the `HashMapping`
+
+```{python}
+class HashMapping(Mapping):
+    def __init__(self, size = 100):
+        self._size = size
+        self._buckets = [ListMapping() for _ in range(self._size)]
+        self._length = 0
+
+    def _entryiter(self):
+        return (e for bucket in self._buckets for e in bucket._entryiter())
+
+    def get(self, key):
+        bucket = self._bucket(key)
+        return bucket[key]
+
+    def put(self, key, value):
+        bucket = self._bucket(key)
+        if key not in bucket:
+            self._length += 1
+        bucket[key] = value
+        if self._length > self._size:
+            self._double()
+
+    def __len__(self):
+        return self._length
+
+    def _bucket(self, key):
+        return self._buckets[hash(key) % self._size]
+
+    def _double(self):
+        oldbuckets = self._buckets
+        self.__init__(self._size * 2)
+        for bucket in oldbuckets:
+            for key, value in bucket.items():
+                self[key] = value
+
+```
+
+::: {.fragment .fade style="margin-top: 0.85em; font-size: 0.85em;"}
+
+Wow, this implementation is more concise and easier to understand!
+
+:::
+
+## Hash table data structure
+
+::: {.columns}
+
+::: {.column style="font-size: 0.875em;"}
+
+::: fragment
+
+### `ListMapping`
+
+#### Implementation
+
+- Good design
+- Easy to understand
+- List of key-value pairs
+
+#### Performance
+
+- Can be inefficient
+- Limits memory usage
+- Does not match `dict`
+
+:::
+
+:::
+
+::: {.column style="font-size: 0.875em;"}
+
+::: fragment
+
+### `HashMapping`
+
+#### Implementation
+
+- Good design
+- Challenging to build
+- Use the `ListMapping`
+
+#### Performance
+
+- Improved efficiency
+- Amortizes costs
+- Increases memory usage
+
+:::
+
+:::
+
+:::
