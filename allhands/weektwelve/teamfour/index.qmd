@@ -19,6 +19,63 @@ Project can be found here: <https://github.com/boulais01/all-hands-sorting-analy
 
 # Project Code
 
+This project allows for the user to input a **file name**, **function name**,
+**data type**, **start size**, and **number of runs**. If the user does not
+supply any arguments, the running time of six sample algorithms are tested and
+reported. An example of the default program being run is in the following code
+block:
+
+```txt
+$ de
+
+Benchmarking Tool for Sorting Algorithms
+
+Estimated time complexity for tests/benchmarkable_functions.py -> bubble_sort: O(n²)
+Estimated time complexity for tests/benchmarkable_functions.py -> bubble_sort_str: O(n²)
+Estimated time complexity for tests/benchmarkable_functions.py -> selection_sort: O(n²)
+Estimated time complexity for tests/benchmarkable_functions.py -> insertion_sort: O(n²)
+Estimated time complexity for tests/benchmarkable_functions.py -> heap_sort: O(n)
+Estimated time complexity for tests/benchmarkable_functions.py -> quick_sort: O(n log(n))
+Estimated time complexity for tests/benchmarkable_functions.py -> merge_sort: O(n log(n))
+```
+
+It is worth noting that there is sometimes variance in the results, so multiple
+runs may produce slight variations.
+
+## Dynamically Loading Python Files
+
+In order for `de` to dynamically load Python files, we make use of python's
+`compile` and `exec` functions:
+
+```python
+with open(filename, 'r') as file:
+    code = compile(file.read(), filename, 'exec')
+    namespace = {}
+    exec(code, namespace)
+
+if funcname not in namespace:
+    raise AttributeError(f"Function '{funcname}' not found in '{filename}'")
+if not callable(namespace[funcname]):
+    raise BalueError(f"'{funcname}' was not found to be a function.")
+```
+
+This code loads the symbols from `filename` into the AST, making the `funcname`
+available under the current namespace. The function's parameters are then
+counted to determine if the function only needs a list as input or if it needs a
+list and the list length.
+
+## Generating Input Data
+
+FIXME
+
+## Benchmarking Sorting Algorithms
+
+FIXME
+
+## Analyzing Benchmark Results
+
+FIXME
+
 # Doubling Ratios
 
 # Conclusion
