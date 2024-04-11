@@ -1,0 +1,19 @@
+---
+author: []
+title: Doubling Experiment with O(n) Analysis
+page-layout: full
+categories: [post, doubling, sorting]
+date: "2024-04-12"
+date-format: long
+toc: true
+---
+
+# Overview
+
+# Project Purpose
+
+# Project Code
+
+# Doubling Ratios
+
+# Conclusion
