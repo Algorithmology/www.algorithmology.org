@@ -193,7 +193,33 @@ Number of doubles to execute: 5
 ```
 
 ## Bubble Sort
-    The expected worst case time complexity of bubble sort is O(n^2), which is confirmed by the results. The curve is parabolic, indicating a              logarithmic growth rate.
+
+    The expected worst case time complexity of bubble sort is O(n^2), which is confirmed by the results. The curve is parabolic, indicating a logarithmic growth rate.
+
+## Insertion
+
+    The expected worst case time complexity of insertion sort is O(n^2), which is also confirmed via the results. This curve is also parabolic, however, the growth is not as large as bubble sort.
+
+## Merge Sort
+
+    The expected worst case time complexity of merge sort is O(nlogn). The graph indicates this as it indicates near linear slope, but is not perfectly so. This is a growth rate improvement from the quadratic results above.
+
+## Quick Sort
+
+    The expected worst case time complexity of quick sort is O(n^2). The graph may be misleading because it appears to be a flatter curve, however, the data points indicate quadratic, just a much faster quadratic growth rate than the other algorithms.
+    
+## Tim Sort
+
+## Selection
+
+## Heap Sort
+
+## Shell Sort
+
+## Radix Sort
+
+## Bucket Sort
+
 
 # Conclusion
 
