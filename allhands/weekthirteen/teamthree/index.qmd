@@ -1,5 +1,5 @@
 ---
-author: [Pallas-Athena Cain]
+author: [Alish Chhetri]
 title: Comparative analysis of sorting algorithms
 page-layout: full
 categories: [post, sorting, lists]
