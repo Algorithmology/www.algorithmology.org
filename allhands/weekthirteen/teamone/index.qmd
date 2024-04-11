@@ -3,7 +3,7 @@ author: [Aidan Dyga]
 title: A comparative analysis of sorting algorithms using doubling experiments
 page-layout: full
 categories: [post, sorting, lists]
-date: "2024-03-12"
+date: "2024-04-12"
 date-format: long
 toc: true
 ---
