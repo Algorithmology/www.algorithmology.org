@@ -20,7 +20,7 @@ Our tool used different sorting algorithms that sorts the input list given as th
 
 ## Example Sorting Algorithms
 
-```
+```python
 from typing import List
 
 def bubble_sort(arr: List[int]) -> List[int]:
@@ -42,7 +42,7 @@ def bubble_sort(arr: List[int]) -> List[int]:
 
 The next sorting algorithm is the selection sort. It first checks for the length of the list, then iterates over each element of the list using an outer for loop. This outer loop initializes a condition `min_idx` where it is initialized to i. This is to check for the index of the minimum element found so far. Within the inner loop, it iterates through the list searching for the minimum element from the unsorted portion of the list. If found, the minimum element is updated to that given element. The outer loop continues to iterate until the sorted element is correctly positioned in the list.
 
-```
+```python
 def selection_sort(arr: List[int]) -> List[int]:
     """Sort a list using the selection sort algorithm."""
     n = len(arr)
@@ -57,7 +57,7 @@ def selection_sort(arr: List[int]) -> List[int]:
 
 The next sorting algorithm is the insertion sort. This algorithm iterates over the indices of the list starting from the 2nd position of the list. The current element arr[i] is selected as the key to be inserted into the correct position. Under the while loop, the function compares the key with each element in the sorted part of the list, starting from the last element. If the element is greater than the key, the element moves one position to the right, and that spot will be inserted by the key. The variable j will decrementally reduce its value to continue comparing the key with the previous element in the sorted part of the list. If the correct position is found for the key, it will be inserted into the correct position until all elements in the unsorted part of the list will be inserted into their correct position.
 
-```
+```python
 def insertion_sort(arr: List[int]) -> List[int]:
     """Sort a list using the insertion sort algorithm."""
     for i in range(1, len(arr)):
@@ -72,7 +72,7 @@ def insertion_sort(arr: List[int]) -> List[int]:
 
 Next algorithm is the merge sort. This algorithm checks whether the number of elements inside the list is greater than 1. Then it creates an if condition to figure out the middle index of the list using the integer division // to split into 2 halves. The first half contains the elements from the beginning up to middle value, and the second half contains the elements from middle value to the end of the value. It will keep recursively call the function merge_sort on the left half and the right half until each sublist contains only one element, which is the base case for the recursion. After the recursive calls return and all the sublist are individual, it will merge the sorted halves back together into a single sorted list. This is done using the 3 pointers i, j, and k where it iterates through both the left and right halves of the list. If there are elements that have not been sorted, it will be appended to the end of the merged list using 2 additional while loops.
 
-```
+```python
 def merge_sort(arr: List[int]) -> List[int]:
     """Sort a list using the merge sort algorithm."""
     if len(arr) > 1:
@@ -103,7 +103,7 @@ def merge_sort(arr: List[int]) -> List[int]:
 
 Another sorting algorithm is the quick sort algorithm. It starts with whether the length of the function is greater than one. If so, it selects a pivot element or the middle element of the list. Then, it splits into 3 sublists, `left`, `middle`, and `right`. The `left` sublist has elements less than the middle element, the `middle` sublist has elements equal to the middle element, and the `right` sublist has elements greater than the middle element. The function recursively calls the `quick_sort` on the `left` and `right` sublists to sort them. Finally, it returns the to the final sorted list by concatenating them together.
 
-```
+```python
 def quick_sort(arr: List[int]) -> List[int]:
     """Sort a list using the quick sort algorithm."""
     if len(arr) <= 1:
@@ -117,7 +117,7 @@ def quick_sort(arr: List[int]) -> List[int]:
 
 The final sorting algorithm is the `python_sort` algorithm. This uses the built-in function `sorted` to sort the list out in ascending order. 
 
-```
+```python
 def python_sort(arr: List[int]) -> List[int]:
     """Sort a list using Python's built-in sort."""
     return sorted(arr)
@@ -128,7 +128,7 @@ def python_sort(arr: List[int]) -> List[int]:
 The `double_ratio` function is designed to analyze the growth in execution times of an algorithm by calculating the ratio of execution times between two consecutive test runs, where the input size typically doubles. This ratio provides insights into the algorithm's time complexity, helping to infer how execution time scales with increasing input sizes. The function accepts a list of execution times and computes the ratio of the last two values. It includes checks to ensure there are at least two execution times and that division by zero is avoided. Based on the computed ratio, the function prints a message indicating the likely time complexity of the algorithm, ranging from constant time (if the ratio is less than 1) to potentially quadratic or worse (if the ratio is 4 or higher). This function is useful in performance testing, allowing developers to gauge and optimize the efficiency of their algorithms based on empirical data.
 
 
-```
+```python
 def double_ratio(execution_times: List[float]) -> float: 
     """Calculate the doubling ratio from the last two execution times in a list"""
     # Ensure there are at least two execution times to calculate a ratio
@@ -166,7 +166,7 @@ def double_ratio(execution_times: List[float]) -> float:
 
 The `doublingfunction` in Python is designed to empirically evaluate the performance of a sorting algorithm by applying it to lists of integers that progressively double in size. This method, known as a "doubling experiment," helps analyze how the execution time of an algorithm scales with increasing input sizes. The function operates by importing the specified sorting algorithm from a given file and then executing it multiple times. Each execution uses a randomly generated list of integers, starting from a specified size and doubling in each subsequent run, up to a predefined number of runs. It measures the execution time for each run, stores these times along with the algorithm's name, and outputs this data for further analysis. Additionally, it calculates and prints the execution times in real-time, providing insights into the algorithm’s performance dynamics.
 
-```
+```python
 def doublingfunction(
     starting_size: int,
     runs: int,
@@ -208,5 +208,7 @@ def doublingfunction(
     return results_list
 ```
 # Commands and Output
+
+# Data Tables and Graphs
 
 # Conclusion
