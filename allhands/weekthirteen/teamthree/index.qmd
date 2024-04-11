@@ -1,5 +1,5 @@
 ---
-author: [Alish Chhetri]
+author: [Alish Chhetri, Jacob Allebach, Chloe Bonson, Vital Joseph, Luke Barker]
 title: Comparative analysis of sorting algorithms
 page-layout: full
 categories: [post, sorting, lists]
@@ -8,4 +8,166 @@ date-format: long
 toc: true
 ---
 
-<!-- TODO: Please add to the above author list the names of the other team members -->
+# Overview
+
+TODO
+
+# Code
+
+The `execute_function` function takes three parameters: file, function_name, 
+and 
+arg. The file parameter represents the path to the file containing Python code. 
+The function_name parameter specifies the name of the function to be called 
+from the code within the file, and the arg parameter is the argument to be 
+passed to the specified function. This was the part of our system that allowed us to call specifed functions from a desired file to test a sorting algorithm.
+
+```python
+def execute_function(file, function_name, arg):
+    with open(file) as f:
+        exec(f.read(), globals())
+        return globals().get(function_name, lambda _: None)(arg)
+```
+
+The `run_sorting_algorithm` function takes the name of a sorting algorithm and 
+a list of integers as input. It profiles the sorting algorithm using the timeit 
+package, which measures execution times. The function returns a tuple 
+containing the minimum, maximum, and average execution times of the sorting 
+algorithm.
+
+The `run_sorting_algorithm_experiment_campaign` function orchestrates the 
+entire experiment campaign. It takes the name of a sorting algorithm, a 
+starting size for the lists to be sorted, and the number of times the list size 
+should be doubled for experimentation. It iteratively generates random lists of 
+increasing sizes, runs the sorting algorithm on each list using 
+`run_sorting_algorithm`, and records the performance data in a table. Finally, 
+it returns a list of lists, where each inner list represents a row of the data 
+table containing the list size and corresponding performance metrics.
+
+```python
+"""Conduct doubling experiments for provided algorithms that perform list sorting."""
+
+from timeit import repeat
+from typing import Any, List, Tuple
+
+from allhands import generate
+
+
+def run_sorting_algorithm(
+    algorithm: str, array: List[int]
+) -> Tuple[str, str, str]:
+    """Run a sorting algorithm and profile it with the timeit package."""
+    setup_code = f"from allhands.sorting import {algorithm}"
+    stmt = f"{algorithm}({array})"
+    times = repeat(setup=setup_code, stmt=stmt, repeat=3, number=10)
+    return (min(times)), max(times), (sum(times) / len(times))
+
+
+def run_sorting_algorithm_experiment_campaign(
+    algorithm: str,
+    starting_size: int,
+    number_doubles: int,
+) -> List[List[Any]]:
+    """Run an entire sorting algorithm experiment campaign."""
+    data_table = []
+    while number_doubles > 0:
+        random_list = generate.generate_random_container(starting_size)
+        performance_data = run_sorting_algorithm(algorithm, random_list)
+        data_table_row = [
+            starting_size,
+            performance_data[0],
+            performance_data[1],
+            performance_data[2],
+        ]
+        data_table.append(data_table_row)
+        number_doubles = number_doubles - 1
+        starting_size = starting_size * 2
+    return data_table
+```
+
+The `allhands` function accepts parameters to customize its sorting algorithm 
+evaluation process. `starting_size` defines the initial size of the data 
+container, while `number_doubles` determines how many times the size should 
+double during the experiment. The `file` parameter specifies the file path 
+containing sorting algorithm functions, with a default value of "./allhands/
+sorting.py". Lastly, `function_name` indicates the sorting algorithm to 
+evaluate, 
+with "bubble_sort" as the default choice. These parameters offer users 
+flexibility in configuring the experiment according to their specific needs and 
+preferences. Additional, the allhands function also includes functionality to 
+visualize the performance data. After conducting the experiments, the function 
+generates a chart illustrating the execution times of the sorting algorithm 
+across different input sizes. This chart is displayed directly in the CLI, 
+providing users with a visual representation of the algorithm's performance 
+under varying data sizes. 
+
+```python
+def allhands(
+    starting_size: int = typer.Option(100),
+    number_doubles: int = typer.Option(5),
+    file: str = typer.Option("./allhands/sorting.py"),
+    function_name: str = typer.Option("bubble_sort"),
+) -> None:
+    """Conduct a doubling experiment to measure the performance of list sorting for various algorithms."""
+    console.print(
+        "\n🔬 Tool Support for Evaluating the Performance of Sorting Algorithms\n"
+    )
+    console.print(f"Starting size of the data container: {starting_size}\n")
+    console.print(f"Number of doubles to execute: {number_doubles}\n")
+    console.print("📈 Here are the results from running the experiment!\n")
+
+    all_results = []
+
+    for i in range(number_doubles):
+        size = starting_size * (2**i)
+        data_to_sort = generate.generate_random_container(size)
+        performance_data = benchmark.run_sorting_algorithm(
+            function_name, data_to_sort
+        )
+        max_time = max(performance_data)
+        max_times = [float(max_time)]
+
+        execute_function(file, function_name, data_to_sort)
+
+        all_results.append(max_times)
+
+    header = ["Input Size", function_name]
+    data = [
+        [starting_size * (2**i), results[0]]
+        for i, results in enumerate(all_results)
+    ]
+
+    table = tabulate(
+        data, headers=header, tablefmt="fancy_grid", floatfmt=".5f"
+    )
+    console.print(table)
+
+    # plot
+    fig = make_subplots(rows=1, cols=1)
+
+    trace = go.Scatter(
+        x=[starting_size * (2**i) for i in range(number_doubles)],
+        y=[results[0] for results in all_results],
+        mode="lines+markers",
+        name=function_name,
+    )
+    fig.add_trace(trace)
+
+    fig.update_layout(
+        title=f"Evaluating the Performance of {function_name}",
+        xaxis_title="Input Size",
+        yaxis_title="Execution Time (s)",
+        showlegend=True,
+        margin=dict(l=20, r=20, t=60, b=20),
+        title_x=0.5,
+    )
+
+    fig.show()
+```
+
+# Analysis (includes charts and graphs)
+
+TODO
+
+# Conclusion
+
+TODO
