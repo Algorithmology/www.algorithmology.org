@@ -1,0 +1,11 @@
+---
+author: [Aidan Dyga]
+title: A comparative analysis of sorting algorithms using doubling experiments
+page-layout: full
+categories: [post, sorting, lists]
+date: "2024-04-12"
+date-format: long
+toc: true
+---
+
+<!-- TODO: Please add to the above author list the names of the other team members -->
