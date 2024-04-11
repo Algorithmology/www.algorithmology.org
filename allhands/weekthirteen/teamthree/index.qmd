@@ -192,34 +192,47 @@ Number of doubles to execute: 5
 ╘══════════════╧══════════╧═════════════╧═════════╧═════════╧═════════╧═════════════╧═════════╧═════════╧═════════╧══════════╛
 ```
 
-## Bubble Sort
+- Bubble Sort
 
     The expected worst case time complexity of bubble sort is O(n^2), which is confirmed by the results. The curve is parabolic, indicating a logarithmic growth rate.
 
-## Insertion
+- Insertion
 
     The expected worst case time complexity of insertion sort is O(n^2), which is also confirmed via the results. This curve is also parabolic, however, the growth is not as large as bubble sort.
 
-## Merge Sort
+- Merge Sort
 
     The expected worst case time complexity of merge sort is O(nlogn). The graph indicates this as it indicates near linear slope, but is not perfectly so. This is a growth rate improvement from the quadratic results above.
 
-## Quick Sort
+- Quick Sort
 
     The expected worst case time complexity of quick sort is O(n^2). The graph may be misleading because it appears to be a flatter curve, however, the data points indicate quadratic, just a much faster quadratic growth rate than the other algorithms.
-    
-## Tim Sort
 
-## Selection
+- Tim Sort
 
-## Heap Sort
+    The expected worst case time complexity of tim sort is O(nlogn). The curve follows a similar growth rate to insertion sort, however, it performs slightly better as the max execution time is lower.
 
-## Shell Sort
+- Selection
 
-## Radix Sort
+    The expected worst case time complexity of selection sort is O(n^2). The curve maps this out as it follows a similar trajectory to the other parabolic algorithms, just at a faster overall execution time.
 
-## Bucket Sort
+- Heap Sort
 
+    The expected worst case time complexity of heap sort is O(nlogn). The heap sort curve follows this as it is a more efficient curve in terms of returns to scale than the parabolic ones, being closer to linear but not quite as quick. 
+
+- Shell Sort
+
+    The expected worst case time complexity of shell sort is O(n^2). This has the same notes as quick sort, where the curve is quadratic, however, at such a small execution time for the given inputs that it is more shallow. The data points still follow the quadratic growth rate, though.
+
+- Radix Sort
+
+    The expected worst case time complexity of radix sort is O(nk). This curve appears similar to that of heap sort or other O(nlogn) algorithms, however, it displays a linear rate ate which the execution time grows with input. It is slightly more efficient than the logarithmic approaches.
+
+- Bucket Sort
+
+    The expected worst case time complexity of bucket sort is O(n^2). This curve seems to display a parabolic growth rate for input size and execution time, confirming the O(n^2) notation.
+
+The best of the sorting algorithms in terms of long-terms growth rate efficiency seems to be quick sort, while the worst performance was shown by bubble sort. 
 
 # Conclusion
 
