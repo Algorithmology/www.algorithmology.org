@@ -17,6 +17,44 @@ Project can be found here: <https://github.com/boulais01/all-hands-sorting-analy
 
 # Project Purpose
 
+`poetry run de --filename tests/benchmarkable_functions.py --funcname bubble_sort`
+
+```text
+Benchmarking Tool for Sorting Algorithms
+
+Filepath: tests/benchmarkable_functions.py Function: bubble_sort Data to sort: 
+ints Number of runs: 5
+  Minimum execution time: 0.0010673040 seconds for run 1 with size 100 Maximum 
+execution time: 0.2696081410 seconds for run 5 with size 1600  Average 
+execution time: 0.0721370716 seconds  across runs 1 through 5  Average doubling
+ratio: 3.9996190149  across runs 1 through 5 
+Estimated time complexity for tests/benchmarkable_functions.py -> bubble_sort: 
+O(n²)
+```
+
+`poetry run de`
+
+```text
+Benchmarking Tool for Sorting Algorithms
+
+Estimated time complexity for tests/benchmarkable_functions.py -> bubble_sort: 
+O(n²)
+Estimated time complexity for tests/benchmarkable_functions.py -> 
+bubble_sort_str: O(n²)
+Estimated time complexity for tests/benchmarkable_functions.py -> 
+selection_sort: O(n²)
+Estimated time complexity for tests/benchmarkable_functions.py -> 
+insertion_sort: O(n²)
+Estimated time complexity for tests/benchmarkable_functions.py -> heap_sort: 
+O(n log(n))
+Estimated time complexity for tests/benchmarkable_functions.py -> quick_sort: 
+O(n log(n))
+Estimated time complexity for tests/benchmarkable_functions.py -> merge_sort: 
+O(n log(n))
+```
+
+Our program has commands to show the user both the empirical analysis and the theoretical analysis.
+
 # Project Code
 
 # Doubling Ratios
