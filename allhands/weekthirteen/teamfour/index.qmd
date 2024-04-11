@@ -1,0 +1,119 @@
+---
+author: [Mordred Boulais, Rebekah Rudd]
+title: Doubling Experiment with O(n) Analysis
+page-layout: full
+categories: [post, doubling, sorting]
+date: "2024-04-12"
+date-format: long
+toc: true
+---
+
+# Overview
+
+This article goes over the tool created by Team Four of the Algorithm Analysis
+class, which analyzes the worst-case time complexity of a sorting function.
+
+Project can be found here: <https://github.com/boulais01/all-hands-sorting-analysis-4/tree/main>
+
+# Project Purpose
+
+`poetry run de --filename tests/benchmarkable_functions.py --funcname bubble_sort`
+
+```text
+Benchmarking Tool for Sorting Algorithms
+
+Filepath: tests/benchmarkable_functions.py Function: bubble_sort Data to sort: 
+ints Number of runs: 5
+  Minimum execution time: 0.0010673040 seconds for run 1 with size 100 Maximum 
+execution time: 0.2696081410 seconds for run 5 with size 1600  Average 
+execution time: 0.0721370716 seconds  across runs 1 through 5  Average doubling
+ratio: 3.9996190149  across runs 1 through 5 
+Estimated time complexity for tests/benchmarkable_functions.py -> bubble_sort: 
+O(n²)
+```
+
+`poetry run de`
+
+```text
+Benchmarking Tool for Sorting Algorithms
+
+Estimated time complexity for tests/benchmarkable_functions.py -> bubble_sort: 
+O(n²)
+Estimated time complexity for tests/benchmarkable_functions.py -> 
+bubble_sort_str: O(n²)
+Estimated time complexity for tests/benchmarkable_functions.py -> 
+selection_sort: O(n²)
+Estimated time complexity for tests/benchmarkable_functions.py -> 
+insertion_sort: O(n²)
+Estimated time complexity for tests/benchmarkable_functions.py -> heap_sort: 
+O(n log(n))
+Estimated time complexity for tests/benchmarkable_functions.py -> quick_sort: 
+O(n log(n))
+Estimated time complexity for tests/benchmarkable_functions.py -> merge_sort: 
+O(n log(n))
+```
+
+Our program has commands to show the user both the empirical analysis and the theoretical analysis.
+
+# Project Code
+
+This project allows for the user to input a **file name**, **function name**,
+**data type**, **start size**, and **number of runs**. If the user does not
+supply any arguments, the running time of six sample algorithms are tested and
+reported. An example of the default program being run is in the following code
+block:
+
+```txt
+$ de
+
+Benchmarking Tool for Sorting Algorithms
+
+Estimated time complexity for tests/benchmarkable_functions.py -> bubble_sort: O(n²)
+Estimated time complexity for tests/benchmarkable_functions.py -> bubble_sort_str: O(n²)
+Estimated time complexity for tests/benchmarkable_functions.py -> selection_sort: O(n²)
+Estimated time complexity for tests/benchmarkable_functions.py -> insertion_sort: O(n²)
+Estimated time complexity for tests/benchmarkable_functions.py -> heap_sort: O(n)
+Estimated time complexity for tests/benchmarkable_functions.py -> quick_sort: O(n log(n))
+Estimated time complexity for tests/benchmarkable_functions.py -> merge_sort: O(n log(n))
+```
+
+It is worth noting that there is sometimes variance in the results, so multiple
+runs may produce slight variations.
+
+## Dynamically Loading Python Files
+
+In order for `de` to dynamically load Python files, we make use of python's
+`compile` and `exec` functions:
+
+```python
+with open(filename, 'r') as file:
+    code = compile(file.read(), filename, 'exec')
+    namespace = {}
+    exec(code, namespace)
+
+if funcname not in namespace:
+    raise AttributeError(f"Function '{funcname}' not found in '{filename}'")
+if not callable(namespace[funcname]):
+    raise BalueError(f"'{funcname}' was not found to be a function.")
+```
+
+This code loads the symbols from `filename` into the AST, making the `funcname`
+available under the current namespace. The function's parameters are then
+counted to determine if the function only needs a list as input or if it needs a
+list and the list length.
+
+## Generating Input Data
+
+FIXME
+
+## Benchmarking Sorting Algorithms
+
+FIXME
+
+## Analyzing Benchmark Results
+
+FIXME
+
+# Doubling Ratios
+
+# Conclusion
