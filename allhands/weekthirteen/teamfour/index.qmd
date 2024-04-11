@@ -86,6 +86,8 @@ In order for `de` to dynamically load Python files, we make use of python's
 `compile` and `exec` functions:
 
 ```python
+# path.py
+# ...
 with open(filename, 'r') as file:
     code = compile(file.read(), filename, 'exec')
     namespace = {}
@@ -95,6 +97,7 @@ if funcname not in namespace:
     raise AttributeError(f"Function '{funcname}' not found in '{filename}'")
 if not callable(namespace[funcname]):
     raise BalueError(f"'{funcname}' was not found to be a function.")
+# ...
 ```
 
 This code loads the symbols from `filename` into the AST, making the `funcname`
@@ -104,15 +107,54 @@ list and the list length.
 
 ## Generating Input Data
 
-FIXME
+`de` has the ability to generate random input data for `ints`, `floats`, and
+`strings`. In general, each generation procedure creates a list of a specified
+size with randomly-populated input data.
 
 ## Benchmarking Sorting Algorithms
 
-FIXME
+To benchmark the sorting algorithms, `de` exercises the use of a doubling
+experiment to double the size of input data for each run. Each run uses the
+`time.perf_counter` method to measure the execution time of running functions,
+as seen in the following code:
+
+```python
+# benchmark.py
+# ...
+start = time.perf_counter()
+funcname(list_one)
+stop = time.perf_counter()
+times_list.append((i + 1, size, stop - start))
+# ...
+```
+
+In this case, `funcname` is a `Callable`. After timing the function's execution,
+we append its result to the list of data, which is used to analyze results.
 
 ## Analyzing Benchmark Results
 
-FIXME
+To analyze the benchmarking results, we calculate the average doubling ratio
+between runs. This is done in the following code:
+
+```python
+def compute_average_doubling_ratio(times_list: List[Tuple[int, int, float]]) -> float:
+    times = [item[2] for item in times_list]
+    # iterate through times, calculating doubling ratios between runs
+    doubling_ratios = [times[i+1] / times[i] for i in range(len(times) - 1)]
+    # calculate average doubling ratio
+    return sum(doubling_ratios) / len(doubling_ratios)
+```
+
+By calculating the average ratio between execution times in our doubling
+experiment, we can develop an approximation of the worst-case time complexity of
+the sorting algorithms we are testing.
+
+After computing the average doubling ratio, we make a conjecture of the
+worst-case time complexity based on the doubling ratio, as seen in the following
+image:
+
+![The doubling ratios and their respective time complexities (left). Time
+complexities compared graphically (right).](images/time-complexities.png)
 
 # Doubling Ratios
 
