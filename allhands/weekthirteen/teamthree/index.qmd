@@ -192,6 +192,8 @@ Number of doubles to execute: 5
 ╘══════════════╧══════════╧═════════════╧═════════╧═════════╧═════════╧═════════════╧═════════╧═════════╧═════════╧══════════╛
 ```
 
+![Growth Rates Plot](images/plot.png)
+
 - Bubble Sort
 
     The expected worst case time complexity of bubble sort is O(n^2), which is confirmed by the results. The curve is parabolic, indicating a logarithmic growth rate.
