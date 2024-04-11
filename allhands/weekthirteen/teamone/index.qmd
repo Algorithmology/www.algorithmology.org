@@ -8,4 +8,4 @@ date-format: long
 toc: true
 ---
 
-<!-- TODO: Please add the other names of the members of this team -->
+<!-- TODO: Please add to the above author list the names of the other team members -->
