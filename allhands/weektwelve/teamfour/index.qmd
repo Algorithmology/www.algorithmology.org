@@ -1,5 +1,5 @@
 ---
-author: []
+author: [Rebekah Rudd, ]
 title: Doubling Experiment with O(n) Analysis
 page-layout: full
 categories: [post, doubling, sorting]
