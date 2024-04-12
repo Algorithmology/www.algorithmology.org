@@ -192,10 +192,10 @@ complexities compared graphically (right).](images/time-complexities.png)
 
 # Doubling Ratios
 
-As established in prior sections, the tool discussed here presents the estimated
-worst-case time compexities of the sorting functions passed in. The above
-section outlines the calculation of the doubling ratio in particular, which is
-the primary value in calculating the worst-case time complexity.
+As established in prior sections, the tool discussed here presents the
+estimated worst-case time complexities of the sorting functions passed in. The
+above section outlines the calculation of the doubling ratio in particular,
+which is the primary value in calculating the worst-case time complexity.
 
 The tool uses six values to describe the worst case time complexity, which are
 as follows:
@@ -238,8 +238,8 @@ def estimate_time_complexity(average_doubling_ratio: float) -> enumerations.Time
 This function, `estimate_time_complexity`, takes in the average doubling ratio
 calculated from the benchmarking data, and assesses where it falls in these
 ranges to determine if it is equivalent to that of one of the time complexity
-defaults defined previously, and if not, returns the enum representing that it
-is outside the tool's scope of comprehension. 
+defaults defined previously, and if not, returns the `enum` representing that
+it is outside the tool's scope of comprehension. 
 
 Thus, by examining the ratio of the increase in time, the tool can estimate
 which, if any, known base case of worst-case time complexity the sorting
