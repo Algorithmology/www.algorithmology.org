@@ -238,4 +238,4 @@ The best of the sorting algorithms in terms of long-term growth rate efficiency 
 
 # Conclusion
 
-TODO
+From the analysis of the plotted data, we can see that the most algorithms that have a quadratic growth rate, such as bubble, insertion, selection, and bucket sort have a significantly longer runtime as data scales up. On the other hand the more linearithmec algorithms such as radix, heap, tim, and merge produce faster runtimes. The only execeptions are both the quick sort and shell sort algorithms, these algorithms data points follow the quadratic growth rate but appear more shallow because of how small the execution times are comparetively to the other algorithms. Overall, we can conclude that the quick sort algorithm stands out as one of the most efficient sorting algorithms while the shell sort and tim sort algorithms are not far behind, you can see these three algorithms become more clearly faster as data scales up. 
