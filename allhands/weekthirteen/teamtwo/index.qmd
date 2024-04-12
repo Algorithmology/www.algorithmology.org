@@ -112,7 +112,19 @@ def insertion_sort(arr: List[int]) -> List[int]:
     return arr
 ```
 
-The next algorithm is the merge sort. This algorithm checks whether the number of elements inside the list is greater than 1. Then it creates an `if` condition to figure out the middle index of the list using the integer division `//` to split into 2 halves. The first half contains the elements from the beginning up to middle value, and the second half contains the elements from middle value to the end of the value. It will keep recursively call the function `merge_sort` on the left half and the right half until each sublist contains only one element, which is the base case for the recursion. After the recursive calls return and all the sublist are individual, it will merge the sorted halves back together into a single sorted list. This is done using the 3 pointers `i`, `j`, and `k` where it iterates through both the left and right halves of the list. If there are elements that have not been sorted, it will be appended to the end of the merged list using 2 additional `while` loops.
+The next algorithm is the merge sort. This algorithm checks whether the number
+of elements inside the list is greater than 1. Then it creates an `if` condition
+to figure out the middle index of the list using the integer division `//` to
+split into 2 halves. The first half contains the elements from the beginning up
+to middle value, and the second half contains the elements from middle value to
+the end of the value. It will keep recursively call the function `merge_sort` on
+the left half and the right half until each sub-list contains only one element,
+which is the base case for the recursion. After the recursive calls return and
+all the sub-list are individual, it will merge the sorted halves back together
+into a single sorted list. This is done using the 3 pointers `i`, `j`, and `k`
+where it iterates through both the left and right halves of the list. If there
+are elements that have not been sorted, it will be appended to the end of the
+merged list using 2 additional `while` loops.
 
 ```python
 def merge_sort(arr: List[int]) -> List[int]:
@@ -143,7 +155,15 @@ def merge_sort(arr: List[int]) -> List[int]:
     return arr
 ```
 
-Another sorting algorithm is the quick sort algorithm. It starts with whether the length of the function is greater than one. If so, it selects a pivot element or the middle element of the list. Then, it splits into 3 sublists, `left`, `middle`, and `right`. The `left` sublist has elements less than the middle element, the `middle` sublist has elements equal to the middle element, and the `right` sublist has elements greater than the middle element. The function recursively calls the `quick_sort` on the `left` and `right` sublists to sort them. Finally, it returns the to the final sorted list by concatenating them together.
+Another sorting algorithm is the quick sort algorithm. It starts with whether
+the length of the function is greater than one. If so, it selects a pivot
+element or the middle element of the list. Then, it splits into 3 sub-lists,
+`left`, `middle`, and `right`. The `left` sub-list has elements less than the
+middle element, the `middle` sub-list has elements equal to the middle element,
+and the `right` sub-list has elements greater than the middle element. The
+function recursively calls the `quick_sort` on the `left` and `right` sub-lists
+to sort them. Finally, it returns the to the final sorted list by concatenating
+them together.
 
 ```python
 def quick_sort(arr: List[int]) -> List[int]:
@@ -157,7 +177,8 @@ def quick_sort(arr: List[int]) -> List[int]:
     return quick_sort(left) + middle + quick_sort(right)
 ```
 
-The final sorting algorithm is the `python_sort` algorithm. This uses the built-in function `sorted` to sort the list out in ascending order. 
+The final sorting algorithm is the `python_sort` algorithm. This uses the
+built-in function `sorted` to sort the list out in ascending order. 
 
 ```python
 def python_sort(arr: List[int]) -> List[int]:
@@ -167,7 +188,18 @@ def python_sort(arr: List[int]) -> List[int]:
 
 ## `doublingfunction`
 
-The `doublingfunction` in Python is designed to empirically evaluate the performance of a sorting algorithm by applying it to lists of integers that progressively double in size. This method, known as a "doubling experiment," helps analyze how the execution time of an algorithm scales with increasing input sizes. The function operates by importing the specified sorting algorithm from a given file and then executing it multiple times. Each execution uses a randomly generated list of integers, starting from a specified size and doubling in each subsequent run, up to a predefined number of runs. It measures the execution time for each run, stores these times along with the algorithm's name, and outputs this data for further analysis. Additionally, it calculates and prints the execution times in real-time, providing insights into the algorithm’s performance dynamics.
+The `doublingfunction` in Python is designed to empirically evaluate the
+performance of a sorting algorithm by applying it to lists of integers that
+progressively double in size. This method, known as a "doubling experiment,"
+helps analyze how the execution time of an algorithm scales with increasing
+input sizes. The function operates by importing the specified sorting algorithm
+from a given file and then executing it multiple times. Each execution uses a
+randomly generated list of integers, starting from a specified size and doubling
+in each subsequent run, up to a predefined number of runs. It measures the
+execution time for each run, stores these times along with the algorithm's name,
+and outputs this data for further analysis. Additionally, it calculates and
+prints the execution times in real-time, providing insights into the algorithm’s
+performance dynamics.
 
 ```python
 def doublingfunction(
@@ -209,7 +241,23 @@ def doublingfunction(
 
 ## `Doubling_ratio`
 
-The `double_ratio` function is designed to analyze the growth in execution times of an algorithm by calculating the ratio of execution times between two consecutive test runs, where the input size typically doubles. This ratio provides insights into the algorithm's time complexity, helping to infer how execution time scales with increasing input sizes. The function accepts a list of execution times and computes the ratio of the last two values. It includes checks to ensure there are at least two execution times and that division by zero is avoided. Based on the computed ratio, the function prints a message indicating the likely time complexity of the algorithm, ranging from constant time (if the ratio is less than 1) to potentially quadratic or worse (if the ratio is 4 or higher). This function is useful in performance testing, allowing developers to gauge and optimize the efficiency of their algorithms based on empirical data. The output is determined specifically on the ratio created by dividing the last output by the second to last output to get the highest possible chance of accuracy. As the input size grows the program becomes more accurate because the background processes on the computer impact the output less.
+The `double_ratio` function is designed to analyze the growth in execution times
+of an algorithm by calculating the ratio of execution times between two
+consecutive test runs, where the input size typically doubles. This ratio
+provides insights into the algorithm's time complexity, helping to infer how
+execution time scales with increasing input sizes. The function accepts a list
+of execution times and computes the ratio of the last two values. It includes
+checks to ensure there are at least two execution times and that division by
+zero is avoided. Based on the computed ratio, the function prints a message
+indicating the likely time complexity of the algorithm, ranging from constant
+time (if the ratio is less than 1) to potentially quadratic or worse (if the
+ratio is 4 or higher). This function is useful in performance testing, allowing
+developers to gauge and optimize the efficiency of their algorithms based on
+empirical data. The output is determined specifically on the ratio created by
+dividing the last output by the second to last output to get the highest
+possible chance of accuracy. As the input size grows the program becomes more
+accurate because the background processes on the computer impact the output
+less.
 
 
 ```python
@@ -271,7 +319,10 @@ def double_ratio(execution_times: List[float]) -> float:
 ```
 # Command Layout 
 
-To make the program work while in the `doubling` folder, use the command `poetry run doubling --starting-size {Desired starting size for lists} --runs {Desired number of runs} --file_path {filepath or name} --sorting-algorithm {Name of desired sorting algorithm function}`
+To make the program work while in the `doubling` folder, use the command `poetry
+run doubling --starting-size {Desired starting size for lists} --runs {Desired
+number of runs} --file_path {filepath or name} --sorting-algorithm {Name of
+desired sorting algorithm function}`
 
 Some example program commands are as follows:
 
@@ -284,7 +335,8 @@ Some example program commands are as follows:
 
 # Example Output Explained
 
-Command: `poetry run doubling --starting-size 1000 --runs 5 --file_path    sortingfunctions.py--sorting-algorithm selection_sort`
+Command: `poetry run doubling --starting-size 1000 --runs 5 --file_path
+sortingfunctions.py--sorting-algorithm selection_sort`
 
 ```text
 Starting size: 1000
@@ -302,11 +354,22 @@ The ratio was 4.527812126157641 which rounds to 5 which means that the worst-cas
 ```
 
 
-The output provides a detailed analysis of the performance of the selection sort algorithm on lists of increasing sizes. It begins by stating that the sorting algorithm used is selection sort and specifies the file path as "sortingfunctions.py." The analysis starts with a list size of 1000 and conducts five runs for each time doubling the list size, recording the time taken for each run. The execution times increase as the list size grows: from 0.0236270428 seconds for size 1000 to 5.2572724819 seconds for size 16000.
+The output provides a detailed analysis of the performance of the selection sort
+algorithm on lists of increasing sizes. It begins by stating that the sorting
+algorithm used is selection sort and specifies the file path as
+`sortingfunctions.py.` The analysis starts with a list size of 1000 and conducts
+five runs for each time doubling the list size, recording the time taken for
+each run. The execution times increase as the list size grows: from 0.0236270428
+seconds for size 1000 to 5.2572724819 seconds for size 16000.
 
-Following the execution times, the output transitions to a worst-case time complexity analysis using the `double_ratio` function. It calculates a doubling ratio of 4.527812126157641 by dividing the execution time of the 5th run by the execution time of the 4th run, which rounds to 5. This ratio suggests a likely worst-case time complexity of quadratic, O(n^2) or worse for the selection sort algorithm.
+Following the execution times, the output transitions to a worst-case time
+complexity analysis using the `double_ratio` function. It calculates a doubling
+ratio of 4.527812126157641 by dividing the execution time of the 5th run by the
+execution time of the 4th run, which rounds to 5. This ratio suggests a likely
+worst-case time complexity of quadratic, O(n^2) or worse for the selection sort
+algorithm.
 
-## Algothim Output Compared
+## Algorithm Output Compared
 
 ### Bubble Sort input:
 
