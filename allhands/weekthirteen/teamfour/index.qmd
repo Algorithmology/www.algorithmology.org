@@ -17,6 +17,8 @@ Project can be found here: <https://github.com/boulais01/all-hands-sorting-analy
 
 # Project Purpose
 
+Bellow the is output from running different commands in a (linux) terminal. The commands are explained in depth bellow the sections of terminal output. 
+
 `poetry run de --filename tests/benchmarkable_functions.py --funcname bubble_sort`
 
 ```text
@@ -24,7 +26,7 @@ Benchmarking Tool for Sorting Algorithms
 
 Filepath: tests/benchmarkable_functions.py Function: bubble_sort Data to sort: 
 ints Number of runs: 5
-  Minimum execution time: 0.0010673040 seconds for run 1 with size 100 Maximum 
+Minimum execution time: 0.0010673040 seconds for run 1 with size 100 Maximum 
 execution time: 0.2696081410 seconds for run 5 with size 1600  Average 
 execution time: 0.0721370716 seconds  across runs 1 through 5  Average doubling
 ratio: 3.9996190149  across runs 1 through 5 
@@ -53,7 +55,11 @@ Estimated time complexity for tests/benchmarkable_functions.py -> merge_sort:
 O(n log(n))
 ```
 
-Our program has commands to show the user both the empirical analysis and the theoretical analysis.
+Our program has commands to show the user both the empirical analysis and the theoretical analysis of running the six functions in the `benchmakarble_functions.py` file.
+
+`poetry run de --filename tests/benchmarkable_functions.py --funcname bubble_sort` is the command that returns empirical results. This command performs a doubling experiment similar to that of Algorithm Analysis Project 4. However, one difference is that our tool will only print the minimum, maximum, and average run times. For this example this command calls the file `benchmakarble_functions.py` which contains six different sorting functions. We have tested the different functions and have recorded the expected Big O notation based on analysis of the code. Therefore, as we test our emipical results, they should confirm the expected Big O notation. The last element of the command line is the function name, which determines what function in the file will run. This command  shows the running time/empirical results of running different functions in a certain file which for this example is the function `bubble_sort` in the file `benchmakarble_functions.py`. This baseline file, is just a basline. We are using it to test our program, and it is expected that a user will create their own file to pass ink through the command line call.
+
+In addition to showing the user empirical results, our product also gives the user options to display the run time results from running all the commands in `benchmakarble_functions.py`. The computer calculates the possible Big O notation based on the empirical results. However, a point to note is that this means the Big O notation is not always completely accurate. Sometimes the empirical results change when, for example, different factors of the computer's environment change. Then the ratio will not exactly represent the expected ratio for certain Big O notations, though it will be very close. The command to show the empirical results is `poetry run de`. This command will run all the function in the `benchmakarble_functions.py` file and in the terminal prints the possible Big O notation for each function. Our product gives the user multiple options in the output and result they would like to see and analyze.
 
 # Project Code
 
