@@ -17,7 +17,8 @@ Project can be found here: <https://github.com/boulais01/all-hands-sorting-analy
 
 # Project Purpose
 
-Bellow the is output from running different commands in a (linux) terminal. The commands are explained in depth bellow the sections of terminal output. 
+Bellow the is output from running different commands in a (linux) terminal.
+The commands are explained in depth bellow the sections of terminal output. 
 
 `poetry run de --filename tests/benchmarkable_functions.py --funcname bubble_sort`
 
@@ -55,11 +56,38 @@ Estimated time complexity for tests/benchmarkable_functions.py -> merge_sort:
 O(n log(n))
 ```
 
-Our program has commands to show the user both the empirical analysis and the theoretical analysis of running the six functions in the `benchmakarble_functions.py` file.
+Our program has commands to show the user both the empirical analysis and the
+theoretical analysis of running the six functions in the
+`benchmakarble_functions.py` file.
 
-`poetry run de --filename tests/benchmarkable_functions.py --funcname bubble_sort` is the command that returns empirical results. This command performs a doubling experiment similar to that of Algorithm Analysis Project 4. However, one difference is that our tool will only print the minimum, maximum, and average run times. For this example this command calls the file `benchmakarble_functions.py` which contains six different sorting functions. We have tested the different functions and have recorded the expected Big O notation based on analysis of the code. Therefore, as we test our emipical results, they should confirm the expected Big O notation. The last element of the command line is the function name, which determines what function in the file will run. This command  shows the running time/empirical results of running different functions in a certain file which for this example is the function `bubble_sort` in the file `benchmakarble_functions.py`. This baseline file, is just a basline. We are using it to test our program, and it is expected that a user will create their own file to pass ink through the command line call.
+`poetry run de --filename tests/benchmarkable_functions.py --funcname bubble_sort`
+is the command that returns empirical results. This command performs a doubling
+experiment similar to that of Algorithm Analysis Project 4. However, one
+difference is that our tool will only print the minimum, maximum, and average
+run times. For this example this command calls the file
+`benchmakarble_functions.py` which contains six different sorting functions. We
+have tested the different functions and have recorded the expected Big O
+notation based on analysis of the code. Therefore, as we test our emipical
+results, they should confirm the expected Big O notation. The last element of
+the command line is the function name, which determines what function in the
+file will run. This command  shows the running time/empirical results of running
+different functions in a certain file which for this example is the function
+`bubble_sort` in the file `benchmakarble_functions.py`. This baseline file, is
+just a basline. We are using it to test our program, and it is expected that a
+user will create their own file to pass ink through the command line call.
 
-In addition to showing the user empirical results, our product also gives the user options to display the run time results from running all the commands in `benchmakarble_functions.py`. The computer calculates the possible Big O notation based on the empirical results. However, a point to note is that this means the Big O notation is not always completely accurate. Sometimes the empirical results change when, for example, different factors of the computer's environment change. Then the ratio will not exactly represent the expected ratio for certain Big O notations, though it will be very close. The command to show the empirical results is `poetry run de`. This command will run all the function in the `benchmakarble_functions.py` file and in the terminal prints the possible Big O notation for each function. Our product gives the user multiple options in the output and result they would like to see and analyze.
+In addition to showing the user empirical results, our product also gives the
+user options to display the run time results from running all the commands in
+`benchmakarble_functions.py`. The computer calculates the possible Big O
+notation based on the empirical results. However, a point to note is that this
+means the Big O notation is not always completely accurate. Sometimes the
+empirical results change when, for example, different factors of the computer's
+environment change. Then the ratio will not exactly represent the expected ratio
+for certain Big O notations, though it will be very close. The command to show
+the empirical results is `poetry run de`. This command will run all the function
+in the `benchmakarble_functions.py` file and in the terminal prints the possible
+Big O notation for each function. Our product gives the user multiple options in
+the output and result they would like to see and analyze.
 
 # Project Code
 
@@ -163,6 +191,59 @@ image:
 complexities compared graphically (right).](images/time-complexities.png)
 
 # Doubling Ratios
+
+As established in prior sections, the tool discussed here presents the estimated
+worst-case time compexities of the sorting functions passed in. The above
+section outlines the calculation of the doubling ratio in particular, which is
+the primary value in calculating the worst-case time complexity.
+
+The tool uses six values to describe the worst case time complexity, which are
+as follows:
+
+```python
+constant = "1"
+linear = "n"
+quadratic = "n²"
+logarithmic = "log(n)"
+linearithmic = "n log(n)"
+notsure = "not sure"
+```
+
+These are common worst-case time complexities, with an option for if the
+doubling ratio is not one of these accounted for. They are shown using O(n)
+notation, and are those that are included in the output after the doubling ratio
+is run and processed.
+
+Below is an example of the code which processes the doubling ratios.
+
+```python
+def estimate_time_complexity(average_doubling_ratio: float) -> enumerations.TimeComplexity:
+    """Estimate the time complexity given the average doubling ratio."""
+    average_doubling_ratio_rounded = round(average_doubling_ratio)
+    if average_doubling_ratio >= 1.75 and average_doubling_ratio <= 2.25:
+        return enumerations.TimeComplexity.linear
+    elif average_doubling_ratio > 2.25 and average_doubling_ratio < 3.75:
+        return enumerations.TimeComplexity.linearithmic
+    elif average_doubling_ratio >= 3.75 and average_doubling_ratio_rounded <= 4.25:
+        return enumerations.TimeComplexity.quadratic
+    elif average_doubling_ratio > 1.25 and average_doubling_ratio < 1.75:
+        return enumerations.TimeComplexity.logarithmic
+    elif average_doubling_ratio_rounded == 1:
+        return enumerations.TimeComplexity.constant
+    # indicate that it does not match any of our predefined values
+    else:
+        return enumerations.TimeComplexity.notsure
+```
+
+This function, `estimate_time_complexity`, takes in the average doubling ratio
+calculated from the benchmarking data, and assesses where it falls in these
+ranges to determine if it is equivalent to that of one of the time complexity
+defaults defined previously, and if not, returns the enum representing that it
+is outside the tool's scope of comprehension. 
+
+Thus, by examining the ratio of the increase in time, the tool can estimate
+which, if any, known base case of worst-case time complexity the sorting
+function has.
 
 # Conclusion
 
