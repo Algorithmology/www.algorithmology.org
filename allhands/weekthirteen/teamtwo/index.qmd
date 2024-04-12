@@ -1,7 +1,5 @@
 ---
-author: [Pallas-Athena Cain, Benedek Kaibas, Bergas Anargya, 
-Jason Gyamfi, Miles Franck, 
-Tuguldurnemekh Gantulga]
+author: [Pallas-Athena Cain, Benedek Kaibas, Bergas Anargya, Jason Gyamfi, Miles Franck, Tuguldurnemekh Gantulga]
 title: Simple sorting algorithm doubling experiment with worst-case time complexity analysis
 page-layout: full
 categories: [post, sorting, lists]
