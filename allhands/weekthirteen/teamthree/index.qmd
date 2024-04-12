@@ -14,7 +14,21 @@ toc: true
 
 # Overview
 
-TODO
+This Algorithm All-Hands project had us create an application that performs benchmarking
+experiments on various sorting functions it's given. It takes in the path to a python
+file, the name of a function within that file, and parameters for running a doubling experiment
+to benchmark the given function. A command for executing the program would look something
+like this:
+
+`poetry run allhands --starting-size 100 --number-doubles 5 --file ./allhands/sorting.py --function-name quick_sort`
+
+After running the program, it prints out the data collected from the benchmarking such
+as the size and time of each run. It even produces a graph to visualize the doubling experiment
+more clearly.
+
+In addition to creating this application, we used the finished version to benchmark and
+analyze various sorting functions to see which performed the best as well as compare
+those results to the time complexity of each algorithm.
 
 # Code
 
