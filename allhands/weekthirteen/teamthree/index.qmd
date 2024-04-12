@@ -8,6 +8,10 @@ date-format: long
 toc: true
 ---
 
+# Our Repository
+
+[Team 3 All Hands](https://github.com/Jacob-Allebach/Algorithm-All-Hands-On-3-Team-3/tree/main)
+
 # Overview
 
 TODO
