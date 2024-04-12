@@ -16,13 +16,20 @@ toc: true
 
 # Introduction
 
-Our tool is designed to perform a doubling experiment on multiple sorting algorithms. The doubling experiment is a tool used to analyze the time complexity of algorithms by studying how their execution times scale with increasing input sizes. The core functionality of our tool is to take a set of sorting algorithms and input sizes, and then measure the execution times of these algorithms as the input sizes are doubled. This allows us to see the time complexity of the sorting algorithms.
+Our tool is designed to perform a doubling experiment on sorting algorithms. The doubling experiment is used to analyze the time complexity of algorithms by studying how their execution times scale with increasing input sizes. The core functionality of our tool is to take a set of sorting algorithms and input sizes, and then measure the execution times of these algorithms as the input sizes are doubled. This allows us to see the time complexity of the sorting algorithms.
+
+## Motivation 
+
+The tool implemented here is meant to create a simple way to test the worst-case time complexity of a given sorting algorithm. The tests can be customized by starting with the size of the list and the number of runs.
 
 # Functionality
 
+The following sorting algorithms are the examples used to test this program. Hypothetically, any sorting algorthim can be tested using our doubling experiment if added to the files. Here is an overview of the sorting algorithms we tested and included.
+
+## Sorting Algorithms
+
 Our tool used different sorting algorithms that sorts the input list given as the input size doubles. The first sorting algorithm is the bubble sort algorithm. It starts by calculating the length of the input list using the `len` function. Then, the outer loop iterates over each element of the list. From the outer loop, it creates another inner loop and checks whether the given element is greater than the next element. If so, a swap is needed to change its position. 
 
-## Example Sorting Algorithms
 
 ```python
 from typing import List
@@ -44,7 +51,7 @@ def bubble_sort(arr: List[int]) -> List[int]:
     return arr
 ```
 
-The next sorting algorithm is the selection sort. It first checks for the length of the list, then iterates over each element of the list using an outer for loop. This outer loop initializes a condition `min_idx` where it is initialized to i. This is to check for the index of the minimum element found so far. Within the inner loop, it iterates through the list searching for the minimum element from the unsorted portion of the list. If found, the minimum element is updated to that given element. The outer loop continues to iterate until the sorted element is correctly positioned in the list.
+The next sorting algorithm is the selection sort. It first checks for the length of the list, then iterates over each element of the list using an outer for loop. This outer loop initializes a condition `min_idx` where it is initialized to `i`. This is to check for the index of the minimum element found so far. Within the inner loop, it iterates through the list searching for the minimum element from the unsorted portion of the list. If found, the minimum element is updated to that given element. The outer loop continues to iterate until the sorted element is correctly positioned in the list.
 
 ```python
 def selection_sort(arr: List[int]) -> List[int]:
@@ -59,7 +66,7 @@ def selection_sort(arr: List[int]) -> List[int]:
     return arr
 ```
 
-The next sorting algorithm is the insertion sort. This algorithm iterates over the indices of the list starting from the 2nd position of the list. The current element arr[i] is selected as the key to be inserted into the correct position. Under the while loop, the function compares the key with each element in the sorted part of the list, starting from the last element. If the element is greater than the key, the element moves one position to the right, and that spot will be inserted by the key. The variable j will decrementally reduce its value to continue comparing the key with the previous element in the sorted part of the list. If the correct position is found for the key, it will be inserted into the correct position until all elements in the unsorted part of the list will be inserted into their correct position.
+The next sorting algorithm is the insertion sort. This algorithm iterates over the indices of the list starting from the 2nd position of the list. The current element `arr[i]` is selected as the key to be inserted into the correct position. Under the `while` loop, the function compares the key with each element in the sorted part of the list, starting from the last element. If the element is greater than the key, the element moves one position to the right, and that spot will be inserted by the key. The variable `j` will decrementally reduce its value to continue comparing the key with the previous element in the sorted part of the list. If the correct position is found for the key, it will be inserted into the correct position until all elements in the unsorted part of the list will be inserted into their correct position.
 
 ```python
 def insertion_sort(arr: List[int]) -> List[int]:
@@ -74,7 +81,7 @@ def insertion_sort(arr: List[int]) -> List[int]:
     return arr
 ```
 
-Next algorithm is the merge sort. This algorithm checks whether the number of elements inside the list is greater than 1. Then it creates an if condition to figure out the middle index of the list using the integer division // to split into 2 halves. The first half contains the elements from the beginning up to middle value, and the second half contains the elements from middle value to the end of the value. It will keep recursively call the function merge_sort on the left half and the right half until each sublist contains only one element, which is the base case for the recursion. After the recursive calls return and all the sublist are individual, it will merge the sorted halves back together into a single sorted list. This is done using the 3 pointers i, j, and k where it iterates through both the left and right halves of the list. If there are elements that have not been sorted, it will be appended to the end of the merged list using 2 additional while loops.
+The next algorithm is the merge sort. This algorithm checks whether the number of elements inside the list is greater than 1. Then it creates an `if` condition to figure out the middle index of the list using the integer division `//` to split into 2 halves. The first half contains the elements from the beginning up to middle value, and the second half contains the elements from middle value to the end of the value. It will keep recursively call the function `merge_sort` on the left half and the right half until each sublist contains only one element, which is the base case for the recursion. After the recursive calls return and all the sublist are individual, it will merge the sorted halves back together into a single sorted list. This is done using the 3 pointers `i`, `j`, and `k` where it iterates through both the left and right halves of the list. If there are elements that have not been sorted, it will be appended to the end of the merged list using 2 additional `while` loops.
 
 ```python
 def merge_sort(arr: List[int]) -> List[int]:
@@ -150,12 +157,8 @@ def doublingfunction(
     for _ in range(1, runs + 1):
         # makes container
         generated_list = generate.generate_random_container_int(starting_size, benchmarkvalues.min_size)
-        # gets the list from the called function
-        # list_result = functioncall.find_function_in_file(file_path, function_name)
-        # Checks the list for strings
-        # string_check = functioncall.check_for_str(list_result)
         start_time = time.time()
-        # takes a sorting algo and a list and sorts it.
+        # takes a sorting algorithm and a list and sorts it.
         sorted_result = selected_function(generated_list)
         end_time = time.time()
         execution_time = end_time - start_time
@@ -175,45 +178,69 @@ def doublingfunction(
 
 ## `Doubling_ratio`
 
-The `double_ratio` function is designed to analyze the growth in execution times of an algorithm by calculating the ratio of execution times between two consecutive test runs, where the input size typically doubles. This ratio provides insights into the algorithm's time complexity, helping to infer how execution time scales with increasing input sizes. The function accepts a list of execution times and computes the ratio of the last two values. It includes checks to ensure there are at least two execution times and that division by zero is avoided. Based on the computed ratio, the function prints a message indicating the likely time complexity of the algorithm, ranging from constant time (if the ratio is less than 1) to potentially quadratic or worse (if the ratio is 4 or higher). This function is useful in performance testing, allowing developers to gauge and optimize the efficiency of their algorithms based on empirical data.
+The `double_ratio` function is designed to analyze the growth in execution times of an algorithm by calculating the ratio of execution times between two consecutive test runs, where the input size typically doubles. This ratio provides insights into the algorithm's time complexity, helping to infer how execution time scales with increasing input sizes. The function accepts a list of execution times and computes the ratio of the last two values. It includes checks to ensure there are at least two execution times and that division by zero is avoided. Based on the computed ratio, the function prints a message indicating the likely time complexity of the algorithm, ranging from constant time (if the ratio is less than 1) to potentially quadratic or worse (if the ratio is 4 or higher). This function is useful in performance testing, allowing developers to gauge and optimize the efficiency of their algorithms based on empirical data. The output is determined specifically on the ratio created by dividing the last output by the second to last output to get the highest possible chance of accuracy. As the input size grows the program becomes more accurate because the background processes on the computer impact the output less.
 
 
 ```python
-def double_ratio(execution_times: List[float]) -> float: 
+def double_ratio(execution_times: List[float]) -> float:
     """Calculate the doubling ratio from the last two execution times in a list"""
     # Ensure there are at least two execution times to calculate a ratio
+    print()
     print("Behold the worst-case time complexity analysis!")
-    if float(execution_times[-1]) == 0.0  or float(execution_times[-2]) == 0.0:
+    if float(execution_times[-1]) == 0.0 or float(execution_times[-2]) == 0.0:
         print("We can not divide by zero! Results are inconclusive!")
         return 0.0
     if len(execution_times) > 2:
-        print("We will try our best with the info we do have though! However we reccommend you rerun for more accurate results.")
         n = float(execution_times[-1]) / float(execution_times[-2])
-        n_rounded = round(float(execution_times[-1]) / float(execution_times[-2])) 
+        n_rounded = round(
+            float(execution_times[-1]) / float(execution_times[-2])
+        )
         if n < 1:
-            print(f"The ratio was {n} which rounds to {n_rounded} which means that the worst-case time complexity is Constant or better!")
-        elif 1<n<2 and n_rounded != 2:
-            print(f"The ratio was {n} which rounds to {n_rounded} which means that the worst-case time complexity is likely logarithmic!")
+            print(
+                f"The ratio was {n} which rounds to {n_rounded} which means that the worst-case time complexity is Constant or better!"
+            )
             return n
-        elif 1<n<2 and n_rounded == 2:
-            print(f"The ratio was {n} which rounds to {n_rounded} which means that the worst-case time complexity is likely linear!")
+        elif 1 < n < 2 and n_rounded != 2:
+            print(
+                f"The ratio was {n} which rounds to {n_rounded} which means that the worst-case time complexity is likely logarithmic!"
+            )
             return n
-        elif n>2 and n_rounded == 2:
-            print(f"The ratio was {n} which rounds to {n_rounded} which means that the worst-case time complexity is likely linear!")
+        elif 1 < n < 2 and n_rounded == 2:
+            print(
+                f"The ratio was {n} which rounds to {n_rounded} which means that the worst-case time complexity is likely linear!"
+            )
             return n
-        elif 4>n>2 and n_rounded != 4:
-            print(f"The ratio was {n} which rounds to {n_rounded} which means that the worst-case time complexity is likely linearithmic or worse!")
+        elif n > 2 and n_rounded == 2:
+            print(
+                f"The ratio was {n} which rounds to {n_rounded} which means that the worst-case time complexity is likely linear!"
+            )
             return n
-        elif n>4 or n_rounded == 4:
-            print(f"The ratio was {n} which rounds to {n_rounded} which means that the worst-case time complexity is likely quadratic or worse!")
+        elif 4 > n > 2 and n_rounded != 4:
+            print(
+                f"The ratio was {n} which rounds to {n_rounded} which means that the worst-case time complexity is likely linearithmic or worse!"
+            )
+            return n
+        elif n > 4 or n_rounded == 4:
+            print(
+                f"The ratio was {n} which rounds to {n_rounded} which means that the worst-case time complexity is likely quadratic or worse!"
+            )
             return n
         else:
-            print(f"The ratio was {n} which rounds to {n_rounded}. This is indicative of some other growth pattern. Try again with more runs to get more details!")
+            print(
+                f"The ratio was {n} which rounds to {n_rounded}. This is indicative of some other growth pattern. Try again with more runs to get more details!"
+            )
             return n
+    # Calculate the doubling ratio from the last two execution times and round it
+    else: 
+        print("You did not have enough runs to come up with a result! Try running again with more runs.")
+    print(
+        "If these aren't the expected results, try increasing the input sizes."
+    )
+    return 0.0
 ```
 # Command Layout 
 
-To make the program work while in the `doubling` folder, use the command `poetry run doubling --starting-size {Desired starting size for lists} --runs {Desired number of runs} --file_path {filepath or name} --sorting-algorithm {Name of desired sorting algorithm function}
+To make the program work while in the `doubling` folder, use the command `poetry run doubling --starting-size {Desired starting size for lists} --runs {Desired number of runs} --file_path {filepath or name} --sorting-algorithm {Name of desired sorting algorithm function}`
 
 Some example program commands are as follows:
 
@@ -334,15 +361,14 @@ Starting size: 1000
 Number of runs: 5
 File Path: sortingfunctions.py
 Sorting algorithm: quick_sort
-Run  1 of  5 for quick_sort operation with a list size of 1000 took 0.0000000000 seconds   
-Run  2 of  5 for quick_sort operation with a list size of 2000 took 0.0019052029 seconds   
-Run  3 of  5 for quick_sort operation with a list size of 4000 took 0.0020380020 seconds
-Run  4 of  5 for quick_sort operation with a list size of 8000 took 0.0094642639 seconds
-Run  5 of  5 for quick_sort operation with a list size of 16000 took 0.0125412941 seconds
+Run  1 of  5 for quick_sort operation with a list size of 1000 took 0.0009956360 seconds   
+Run  2 of  5 for quick_sort operation with a list size of 2000 took 0.0020067692 seconds   
+Run  3 of  5 for quick_sort operation with a list size of 4000 took 0.0030019283 seconds   
+Run  4 of  5 for quick_sort operation with a list size of 8000 took 0.0070052147 seconds
+Run  5 of  5 for quick_sort operation with a list size of 16000 took 0.0100560188 seconds
 
 Behold the worst-case time complexity analysis!
-The ratio was 1.3251209189842805 which rounds to 1 which means that the worst-case time complexity is 
-likely logarithmic!
+The ratio was 1.435504730787557 which rounds to 1 which means that the worst-case time complexity is likely logarithmic!
 ```
 
 ### Python Sort input:
@@ -367,9 +393,31 @@ The ratio was 5.38004842125 which rounds to 5. This is indicative of some other 
 
 ### Comparison Graph
 
-![Selection Sort Graph](../teamtwo/images/selection_sort_graph.png)
+![Performance Graph](../teamtwo/images/performance_graph.png)
 
+### Fastest Algorithm
+
+From the algorithms tested and graphed the built in Python sort appears to be the fastest. This may be because the built in sort function changes based on the situation and adapts to the size of the lists and its values a lot better than the other sorting algorithms. The built in python sort is a lot more complex then the ones built in the `sortingfunctions.py` file.
+
+## Run Time and Running Time Analysis
+
+Based on the findings our run time and running time analysis seem to be fairly accurate and support eachother. When the doubling ratio is close to 1 we know that the big-O is likely constant or O(1). If the ratio is between 1 and 2 the worst-case time complexity is likely logarithmic. If it closer to 2 then it likely linear or O(n). If it is between 2 and 4 it is likely linearithmic. Finally, if the doubling ratio is close to 4 it is likely quadratic or worse. 
+
+Our findings found that the worst-case time complexities were as follows:
+
+- bubble sort is likely quadratic or worse
+- selection sort is likely quadratic or worse
+- insertion sort is likely quadratic or worse
+- merge sort is likely logarithmic or worse
+- quick sort is likely logarithmic or worse
+- python sort varied so much it is other
+
+Our runtime outputs varied at times but this is likely do to the backprocesses on the PC they were ran on. In general, the outputs support these conclusions.
+
+Run time can vary though and it is important to remember that empirical results are not always able to accurately show as an example of the worst-case time complexity of an algorithm.
 
 # Conclusion
 
 The Doubling Experiment Tool is useful for analyzing sorting algorithm performance. It accepts a Python file with sorting routines in it, runs doubling experiments with larger input sizes, logs the execution duration, and calculates the doubling ratio. This ratio sheds light on the scalability of the algorithm by assisting in the inference of its time complexity. The tool divides time complexity into standard categories, such as logarithmic, constant, linear, linearithmic, and quadratic. In general, it helps in research and software development by helping to optimize algorithms and make intelligent decisions.
+
+In conclusion, for sorting large lists, it's more efficient to implement sorting algorithms with a time complexity of O(log n), just like merge sort and quick sort, or just using the sorting function that is built in Python programming language. Algorithms with a time complexity of O(n^2), like Selection Sort and Insertion Sort, are less efficient for larger list sizes. It is also important to mention that at low input sizes tasks running in the background can affect the result or different computers will do different results as well since the configuration is not the same for every one of them. In our analysis we tried to run the experiments in the same situation every time we ran the code.
