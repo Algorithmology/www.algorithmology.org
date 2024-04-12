@@ -1,5 +1,5 @@
 ---
-author: [Mordred Boulais, Rebekah Rudd, William Wolff]
+author: [Mordred Boulais, Rebekah Rudd, William Wolff, Simon Jones]
 title: Doubling Experiment with O(n) Analysis
 page-layout: full
 categories: [post, doubling, sorting]
