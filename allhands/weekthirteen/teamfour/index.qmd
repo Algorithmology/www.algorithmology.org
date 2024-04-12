@@ -1,5 +1,5 @@
 ---
-author: [Mordred Boulais, Rebekah Rudd]
+author: [Mordred Boulais, Rebekah Rudd, William Wolff]
 title: Doubling Experiment with O(n) Analysis
 page-layout: full
 categories: [post, doubling, sorting]
@@ -159,3 +159,9 @@ complexities compared graphically (right).](images/time-complexities.png)
 # Doubling Ratios
 
 # Conclusion
+
+The code gives us a clear understanding of what is the worst-case time complexity
+for each function in the code. The creation of this leads to a clear understanding
+of the code of finding a path and reading a generated input and processing the
+data and displaying the worst case time complexity. The analysis of the code allows
+us to be able to calculate the average.
