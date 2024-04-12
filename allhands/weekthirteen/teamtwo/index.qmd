@@ -14,20 +14,36 @@ toc: true
 
 # Introduction
 
-Our tool is designed to perform a doubling experiment on sorting algorithms. The doubling experiment is used to analyze the time complexity of algorithms by studying how their execution times scale with increasing input sizes. The core functionality of our tool is to take a set of sorting algorithms and input sizes, and then measure the execution times of these algorithms as the input sizes are doubled. This allows us to see the time complexity of the sorting algorithms.
+Our tool is designed to perform a doubling experiment on sorting algorithms. The
+doubling experiment is used to analyze the time complexity of algorithms by
+studying how their execution times scale with increasing input sizes. The core
+functionality of our tool is to take a set of sorting algorithms and input
+sizes, and then measure the execution times of these algorithms as the input
+sizes are doubled. This allows us to see the time complexity of the sorting
+algorithms.
 
 ## Motivation 
 
-The tool implemented here is meant to create a simple way to test the worst-case time complexity of a given sorting algorithm. The tests can be customized by starting with the size of the list and the number of runs.
+The tool implemented here is meant to create a simple way to test the worst-case
+time complexity of a given sorting algorithm. The tests can be customized by
+starting with the size of the list and the number of runs.
 
 # Functionality
 
-The following sorting algorithms are the examples used to test this program. Hypothetically, any sorting algorthim can be tested using our doubling experiment if added to the files. Here is an overview of the sorting algorithms we tested and included.
+The following sorting algorithms are the examples used to test this program.
+Hypothetically, any sorting algorithm can be tested using our doubling
+experiment if added to the files. Here is an overview of the sorting algorithms
+we tested and included.
 
 ## Sorting Algorithms
 
-Our tool used different sorting algorithms that sorts the input list given as the input size doubles. The first sorting algorithm is the bubble sort algorithm. It starts by calculating the length of the input list using the `len` function. Then, the outer loop iterates over each element of the list. From the outer loop, it creates another inner loop and checks whether the given element is greater than the next element. If so, a swap is needed to change its position. 
-
+Our tool used different sorting algorithms that sorts the input list given as
+the input size doubles. The first sorting algorithm is the bubble sort
+algorithm. It starts by calculating the length of the input list using the `len`
+function. Then, the outer loop iterates over each element of the list. From the
+outer loop, it creates another inner loop and checks whether the given element
+is greater than the next element. If so, a swap is needed to change its
+position. 
 
 ```python
 from typing import List
@@ -49,7 +65,14 @@ def bubble_sort(arr: List[int]) -> List[int]:
     return arr
 ```
 
-The next sorting algorithm is the selection sort. It first checks for the length of the list, then iterates over each element of the list using an outer for loop. This outer loop initializes a condition `min_idx` where it is initialized to `i`. This is to check for the index of the minimum element found so far. Within the inner loop, it iterates through the list searching for the minimum element from the unsorted portion of the list. If found, the minimum element is updated to that given element. The outer loop continues to iterate until the sorted element is correctly positioned in the list.
+The next sorting algorithm is the selection sort. It first checks for the length
+of the list, then iterates over each element of the list using an outer for
+loop. This outer loop initializes a condition `min_idx` where it is initialized
+to `i`. This is to check for the index of the minimum element found so far.
+Within the inner loop, it iterates through the list searching for the minimum
+element from the unsorted portion of the list. If found, the minimum element is
+updated to that given element. The outer loop continues to iterate until the
+sorted element is correctly positioned in the list.
 
 ```python
 def selection_sort(arr: List[int]) -> List[int]:
@@ -64,7 +87,17 @@ def selection_sort(arr: List[int]) -> List[int]:
     return arr
 ```
 
-The next sorting algorithm is the insertion sort. This algorithm iterates over the indices of the list starting from the 2nd position of the list. The current element `arr[i]` is selected as the key to be inserted into the correct position. Under the `while` loop, the function compares the key with each element in the sorted part of the list, starting from the last element. If the element is greater than the key, the element moves one position to the right, and that spot will be inserted by the key. The variable `j` will decrementally reduce its value to continue comparing the key with the previous element in the sorted part of the list. If the correct position is found for the key, it will be inserted into the correct position until all elements in the unsorted part of the list will be inserted into their correct position.
+The next sorting algorithm is the insertion sort. This algorithm iterates over
+the indices of the list starting from the 2nd position of the list. The current
+element `arr[i]` is selected as the key to be inserted into the correct
+position. Under the `while` loop, the function compares the key with each
+element in the sorted part of the list, starting from the last element. If the
+element is greater than the key, the element moves one position to the right,
+and that spot will be inserted by the key. The variable `j` will reduce its
+value to continue comparing the key with the previous element in the sorted part
+of the list. If the correct position is found for the key, it will be inserted
+into the correct position until all elements in the unsorted part of the list
+will be inserted into their correct position.
 
 ```python
 def insertion_sort(arr: List[int]) -> List[int]:
