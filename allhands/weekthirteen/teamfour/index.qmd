@@ -164,4 +164,7 @@ The code gives us a clear understanding of what is the worst-case time complexit
 for each function in the code. The creation of this leads to a clear understanding
 of the code of finding a path and reading a generated input and processing the
 data and displaying the worst case time complexity. The analysis of the code allows
-us to be able to calculate the average.
+us to be able to calculate the average and furthermore examine roughly the worst-case
+time complexity. Each component of the code reads and understands the next as it 
+processes the function and gives results showing how the code has it's worst case
+time complexities as well as what the worst case time complexity is.
