@@ -10,11 +10,18 @@ toc: true
 
 # Sorty-Sort Overview
 
-Sorty-Sort is an algorithm analysis tool designed to provide insights into the time complexity of sorting algorithms. By utilizing a doubling
-experiment methodology, Sorty-Sort predicts the big O time complexity of various sorting algorithms. This tool allows users to
-benchmark Python files containing sorting algorithms and analyze their performance for different input sizes. Through a series of experiments,
-Sorty-Sort provides an estimation of the time complexity, aiding developers in understanding the efficiency of their algorithms. For each experiment run, it records the execution time and doubling ratio, which measures how the time changes as the dataset size doubles. It
-presents the experiment results to the user, including the average doubling ratio and predicted time complexity of the algorithm, aiding in understanding its efficiency and scalability.
+Sorty-Sort is an algorithm analysis tool designed to provide insights into the
+time complexity of sorting algorithms. By utilizing a doubling experiment
+methodology, Sorty-Sort predicts the big O time complexity of various sorting
+algorithms. This tool allows users to benchmark Python files containing sorting
+algorithms and analyze their performance for different input sizes. Through a
+series of experiments, Sorty-Sort provides an estimation of the time complexity,
+aiding developers in understanding the efficiency of their algorithms. For each
+experiment run, it records the execution time and doubling ratio, which measures
+how the time changes as the data set size doubles. It presents the experiment
+results to the user, including the average doubling ratio and predicted time
+complexity of the algorithm, aiding in understanding its efficiency and
+scalability.
 
 ## Use the following commands to run the tool
 
@@ -32,15 +39,28 @@ Type of data to use (int,str): int
 Start size of list of data: 1
 ```
 
-When prompted by the Algorithm Analysis Tool, the user needs to type in the following information: the filename of the Python script containing the sorting algorithm they want to benchmark. For example, if they want to benchmark the TimSort algorithm, they would type `timsort.py`. The user needs to specify the type of data they want to use for benchmarking. They can choose between integers (`int`) or strings (`str`). They should also input the starting size of the dataset. This indicates the initial number of elements in the list of data to be sorted by the algorithm. For instance, if they enter `1`, it means the initial dataset will contain only one element.
+When prompted by the Algorithm Analysis Tool, the user needs to type in the
+following information: the `filename` of the Python script containing the sorting
+algorithm they want to benchmark. For example, if they want to benchmark the
+`TimSort` algorithm, they would type `timsort.py`. The user needs to specify the
+type of data they want to use for benchmarking. They can choose between integers
+(`int`) or strings (`str`). They should also input the starting size of the
+data set. This indicates the initial number of elements in the list of data to be
+sorted by the algorithm. For instance, if they enter `1`, it means the initial
+data set will contain only one element.
 
 ### Sorting Algorithms and Output for Each
 
-#### Timsort
+#### Tim Sort
 
-TimSort is a hybrid sorting algorithm, derived from merge sort and insertion sort. It was implemented by a guy named Tim in 2002. The algorithm is pretty complex, and it was designed to perform well on many kinds of real world data. The main idea behind TimSort is to exploit the existing order in the data to minimize the number of comparisons and swaps.
+`TimSort` is a hybrid sorting algorithm, derived from merge sort and insertion
+sort. It was implemented by a guy named Tim in 2002. The algorithm is pretty
+complex, and it was designed to perform well on many kinds of real world data.
+The main idea behind `TimSort` is to exploit the existing order in the data to
+minimize the number of comparisons and swaps.
 
-TimSort has a best case time complexity of O(n), with the same average and worst case time complexity of O(n*log(n)).
+TimSort has a best case time complexity of $O(n)$, with the same average and worst
+case time complexity of $O(n*log(n))$.
 
 **Benchmark results for `timsort` using integers:**
 
@@ -89,8 +109,10 @@ def quicksort(L):
     _quicksort(L, 0, len(L))
 ```
 
-In this implementation of the algorithm, the `quicksort` function serves as a wrapper function to start the sorting process. It calls the
-`_quicksort` function, passing the list `L`, the leftmost index (`0`), and the rightmost index (`len(L)`).
+In this implementation of the algorithm, the `quicksort` function serves as a
+wrapper function to start the sorting process. It calls the `_quicksort`
+function, passing the list `L`, the leftmost index (`0`), and the rightmost
+index (`len(L)`).
 
 ```python
 def _quicksort(L, left, right):
@@ -100,8 +122,9 @@ def _quicksort(L, left, right):
         _quicksort(L, mid + 1, right)
 ```
 
-The `_quicksort` function performs the recursive sorting process. It checks if the sublist has more than one element and, if so, calls the
-`partition` function to partition the sublist into smaller sublists.
+The `_quicksort` function performs the recursive sorting process. It checks if
+the sub-list has more than one element and, if so, calls the `partition`
+function to partition the sub-list into smaller sub-lists.
 
 ```python
 def partition(L, left, right):
@@ -121,12 +144,16 @@ def partition(L, left, right):
     return pivot
 ```
 
-The `partition` function selects a random pivot element within the sublist and places it at the end. Then, it initializes two pointers, `i`
-and `j`, at the beginning and end of the sublist, respectively. The function then iterates through the sublist, swapping elements to ensure
-that all elements less than the pivot are on the left side and all elements greater than or equal to the pivot are on the right side. Finally,
-it places the pivot in its correct location within the sublist and returns its index.
+The `partition` function selects a random pivot element within the sub-list and
+places it at the end. Then, it initializes two pointers, `i` and `j`, at the
+beginning and end of the sub-list, respectively. The function then iterates
+through the sub-list, swapping elements to ensure that all elements less than
+the pivot are on the left side and all elements greater than or equal to the
+pivot are on the right side. Finally, it places the pivot in its correct
+location within the sub-list and returns its index.
 
-The quicksort algorithm is not the most efficient sorting algorithm we benchmarked, as its worst-case time complexity is *O(n^2)*.
+The quicksort algorithm is not the most efficient sorting algorithm we
+benchmarked, as its worst-case time complexity is $O(n^2)$.
 
 **Benchmark results for `quicksort` using integers:**
 
@@ -199,7 +226,12 @@ def mergesort(arr):
     return arr
 ```
 
-The `mergesort` algorithm begins by recursively dividing the input array into smaller sublists until each subarray contains only one element.Then it merges those sublists in a sorted fashion. During the merging phase, it compares elements from the left and right sublists and selects the smaller one to place in the original list. This continues until all of the elements are merged back into a single sorted list.
+The `mergesort` algorithm begins by recursively dividing the input array into
+smaller sub-lists until each sub-array contains only one element.Then it merges
+those sub-lists in a sorted fashion. During the merging phase, it compares
+elements from the left and right sub-lists and selects the smaller one to place
+in the original list. This continues until all of the elements are merged back
+into a single sorted list.
 
 **Benchmark results for `mergesort` using integers:**
 
@@ -266,9 +298,16 @@ def bubble_sort_recursive(arr):
     return [arr[0]] + bubble_sort_recursive(arr[1:])
 ```
 
-The bubblesort method consists of two functions `bubblesort(arr)` and `bubble_sort_recursive(arr)`. `bubblesort(arr)` sorts the input array by
-repeatedly comparing neighboring elements and swapping them if they're out of order, continuing until the array is sorted. Whereas
-`bubble_sort_recursive(arr)` creates a recursive version of bubble sort. It checks elements near each other and swaps them if necessary, then calls itself with the remaining unsorted part of the array until the whole array is sorted. The quadratic time complexity is mainly due to the nested loops in the function. This sorting algorithm iterates through the input array multiple times, comparing elements and swapping them if they are in the wrong order.
+The bubblesort method consists of two functions `bubblesort(arr)` and
+`bubble_sort_recursive(arr)`. `bubblesort(arr)` sorts the input array by
+repeatedly comparing neighboring elements and swapping them if they're out of
+order, continuing until the array is sorted. Whereas
+`bubble_sort_recursive(arr)` creates a recursive version of bubble sort. It
+checks elements near each other and swaps them if necessary, then calls itself
+with the remaining unsorted part of the array until the whole array is sorted.
+The quadratic time complexity is mainly due to the nested loops in the function.
+This sorting algorithm iterates through the input array multiple times,
+comparing elements and swapping them if they are in the wrong order.
 
 ```
 Welcome to your Algorithm Analysis Tool!
@@ -288,12 +327,14 @@ Predicted Time Complexity: Quadratic
 Memory Usage: 9828.00 MB
 ```
 
-The average doubling ratio suggests the algorithm's time complexity, which in this case indicates a quadratic relationship between the input
-size and the time taken. Additionally, memory usage is reported as 9828.00 MB. In the doubling experiment, as the size of the input list
-doubles, the execution time quadruples. This is consistent with quadratic time complexity, as the average doubling ratio of approximately 2.
-56.
+The average doubling ratio suggests the algorithm's time complexity, which in
+this case indicates a quadratic relationship between the input size and the time
+taken. Additionally, memory usage is reported as 9828.00 MB. In the doubling
+experiment, as the size of the input list doubles, the execution time
+quadruples. This is consistent with quadratic time complexity, as the average
+doubling ratio of approximately 2. 56.
 
-#### Selectionsort
+#### Selection Sort
 
 ```python
 def selection_sort(arr):
@@ -306,11 +347,15 @@ def selection_sort(arr):
        arr[i], arr[min_index] = arr[min_index], arr[i]
 ```
 
-Selection sorting is a method of sorting values within an array using two sublists that are unsorted and sorted lists. Initially, the sorted
-list is empty and the unsorted list is the array the function starts with. Based on the implementation of selection sortit will loop through
-the starting array or the unsorted list with value take the smallest values or the largest value and place it into the sorted sublist. This
-loop happens until the unsorted list is empty and the sorted list is complete in descending or ascending order of values.  The worst-case time
-complexity of selection sorting is O(n^2) due to two nested for loops.
+Selection sorting is a method of sorting values within an array using two
+sub-lists that are unsorted and sorted lists. Initially, the sorted list is
+empty and the unsorted list is the array the function starts with. Based on the
+implementation of selection `sortit` will loop through the starting array or the
+unsorted list with value take the smallest values or the largest value and place
+it into the sorted sub-list. This loop happens until the unsorted list is empty
+and the sorted list is complete in descending or ascending order of values.  The
+worst-case time complexity of selection sorting is O(n^2) due to two nested for
+loops.
 
 | Array Size | Time Taken (seconds) | Doubling Ratio |
 |------------|----------------------|----------------|
@@ -320,20 +365,30 @@ complexity of selection sorting is O(n^2) due to two nested for loops.
 | 8000       | 1.733939             | 3.90           |
 | 16000      | 6.894565             | 3.98           |
 
-Overall selection sort was fastest when the array size was 1000 and the slowest when the array size was 16000. The average time taken for the
-function to run was 1.84 seconds. The doubling ratio was around 3.9 for each of the array sizes. This means that each time the array doubled
-it would take roughly 4 times as long to sort the array.
+Overall selection sort was fastest when the array size was 1000 and the slowest
+when the array size was 16000. The average time taken for the function to run
+was 1.84 seconds. The doubling ratio was around 3.9 for each of the array sizes.
+This means that each time the array doubled it would take roughly 4 times as
+long to sort the array.
 
 ### Conclusion
 
-Through the experiments conducted with Sorty-Sort, we observed the time complexity and execution characteristics of different sorting
-algorithms, including TimSort, Quicksort, Mergesort, Bubblesort, and Selectionsort. The analysis revealed that algorithms such as timsort and
-mergesort exhibit superior performance with lower time complexity, particularly for larger datasets, while algorithms like bubblesort and
-selectionsort demonstrate higher time complexity, making them less efficient for larger inputs. Understanding the time complexity and
-execution behavior of sorting algorithms is essential for developers to make informed decisions when selecting algorithms for specific use
-cases.
+Through the experiments conducted with Sorty-Sort, we observed the time
+complexity and execution characteristics of different sorting algorithms,
+including `TimSort`, `Quicksort`, `Mergesort`, `Bubblesort`, and
+`Selectionsort`. The analysis revealed that algorithms such as `timsort` and
+mergesort exhibit superior performance with lower time complexity, particularly
+for larger data sets, while algorithms like bubblesort and `selectionsort`
+demonstrate higher time complexity, making them less efficient for larger
+inputs. Understanding the time complexity and execution behavior of sorting
+algorithms is essential for developers to make informed decisions when selecting
+algorithms for specific use cases.
 
 ### What Could We Improve?
 
-After reflecting on this algorithm all-hands project, we could definitely make some improvements given more time. Having AI predict the time complexity would be one of the major improvements we would implement. We would also consider displaying a graph of the doubling ratios so that users could better visualize the time complexity. In all, we are very proud of our project but still think that additional modifications can be made.
-
+After reflecting on this algorithm all-hands project, we could definitely make
+some improvements given more time. Having AI predict the time complexity would
+be one of the major improvements we would implement. We would also consider
+displaying a graph of the doubling ratios so that users could better visualize
+the time complexity. In all, we are very proud of our project but still think
+that additional modifications can be made.
