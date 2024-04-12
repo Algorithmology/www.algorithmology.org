@@ -67,13 +67,13 @@ difference is that our tool will only print the minimum, maximum, and average
 run times. For this example this command calls the file
 `benchmakarble_functions.py` which contains six different sorting functions. We
 have tested the different functions and have recorded the expected Big O
-notation based on analysis of the code. Therefore, as we test our emipical
+notation based on analysis of the code. Therefore, as we test our empirical
 results, they should confirm the expected Big O notation. The last element of
 the command line is the function name, which determines what function in the
 file will run. This command  shows the running time/empirical results of running
 different functions in a certain file which for this example is the function
 `bubble_sort` in the file `benchmakarble_functions.py`. This baseline file, is
-just a basline. We are using it to test our program, and it is expected that a
+just a baseline. We are using it to test our program, and it is expected that a
 user will create their own file to pass ink through the command line call.
 
 In addition to showing the user empirical results, our product also gives the
