@@ -491,11 +491,20 @@ The ratio was 5.38004842125 which rounds to 5. This is indicative of some other 
 
 ### Fastest Algorithm
 
-From the algorithms tested and graphed the built-in Python sort appears to be the fastest. This may be because the built-in sort function changes based on the situation and adapts to the size of the lists and their values a lot better than the other sorting algorithms. The built-in python sort is a lot more complex then the ones built in the `sortingfunctions.py` file.
+From the algorithms tested and graphed the built-in Python sort appears to be
+the fastest. This may be because the built-in sort function changes based on the
+situation and adapts to the size of the lists and their values a lot better than
+the other sorting algorithms. The built-in python sort is a lot more complex
+then the ones built in the `sortingfunctions.py` file.
 
 ## Run Time and Running Time Analysis
 
-Based on the findings our run time and running time analysis seem to be fairly accurate and support each other. When the doubling ratio is close to 1 we know that the big-O is likely constant or O(1). If the ratio is between 1 and 2 the worst-case time complexity is likely logarithmic. If it is closer to 2 then it is likely linear or O(n). If it is between 2 and 4 it is likely linearithmic. Finally, if the doubling ratio is close to 4 it is likely quadratic or worse. 
+Based on the findings our run time and running time analysis seem to be fairly
+accurate and support each other. When the doubling ratio is close to 1 we know
+that the big-O is likely constant or O(1). If the ratio is between 1 and 2 the
+worst-case time complexity is likely logarithmic. If it is closer to 2 then it
+is likely linear or O(n). If it is between 2 and 4 it is likely linearithmic.
+Finally, if the doubling ratio is close to 4 it is likely quadratic or worse. 
 
 Our findings found that the worst-case time complexities were as follows:
 
@@ -506,12 +515,30 @@ Our findings found that the worst-case time complexities were as follows:
 - quick sort is likely logarithmic or worse
 - python sort varied so much it is other
 
-Our runtime outputs varied at times but this is likely due to the back processes on the PC they were run on. In general, the outputs support these conclusions.
+Our runtime outputs varied at times but this is likely due to the back processes
+on the PC they were run on. In general, the outputs support these conclusions.
 
-Run time can vary though and it is important to remember that empirical results are not always able to accurately show an example of the worst-case time complexity of an algorithm.
+Run time can vary though and it is important to remember that empirical results
+are not always able to accurately show an example of the worst-case time
+complexity of an algorithm.
 
 # Conclusion
 
-The Doubling Experiment Tool is useful for analyzing sorting algorithm performance. It accepts a Python file with sorting routines in it, runs doubling experiments with larger input sizes, logs the execution duration, and calculates the doubling ratio. This ratio sheds light on the scalability of the algorithm by assisting in the inference of its time complexity. The tool divides time complexity into standard categories, such as logarithmic, constant, linear, linearithmic, and quadratic. In general, it helps in research and software development by helping to optimize algorithms and make intelligent decisions.
+The Doubling Experiment Tool is useful for analyzing sorting algorithm
+performance. It accepts a Python file with sorting routines in it, runs doubling
+experiments with larger input sizes, logs the execution duration, and calculates
+the doubling ratio. This ratio sheds light on the scalability of the algorithm
+by assisting in the inference of its time complexity. The tool divides time
+complexity into standard categories, such as logarithmic, constant, linear,
+linearithmic, and quadratic. In general, it helps in research and software
+development by helping to optimize algorithms and make intelligent decisions.
 
-In conclusion, for sorting large lists, it's more efficient to implement sorting algorithms with a time complexity of O(log n), just like merge sort and quick sort, or just using the sorting function that is built in Python programming language. Algorithms with a time complexity of O(n^2), like Selection Sort and Insertion Sort, are less efficient for larger list sizes. It is also important to mention that at low input sizes tasks running in the background can affect the result or different computers will do different results as well since the configuration is not the same for every one of them. In our analysis we tried to run the experiments in the same situation every time we ran the code.
+In conclusion, for sorting large lists, it's more efficient to implement sorting
+algorithms with a time complexity of O(log n), just like merge sort and quick
+sort, or just using the sorting function that is built in Python programming
+language. Algorithms with a time complexity of O(n^2), like Selection Sort and
+Insertion Sort, are less efficient for larger list sizes. It is also important
+to mention that at low input sizes tasks running in the background can affect
+the result or different computers will do different results as well since the
+configuration is not the same for every one of them. In our analysis we tried to
+run the experiments in the same situation every time we ran the code.
