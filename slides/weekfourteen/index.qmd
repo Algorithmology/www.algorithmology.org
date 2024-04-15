@@ -59,3 +59,53 @@ the `findmin` method, ties are broken arbitrarily.
 - Use the `heap` to support efficient priority queue operations
 
 :::
+
+## Using a `list` for a `PriorityQueue`
+
+```{python}
+class SimpleListPQ:
+    def __init__(self):
+        self._L = []
+
+    def insert(self, item, priority):
+        self._L.append((item, priority))
+
+    def findmin(self):
+        return min(self._L, key = lambda x : x[1])[0]
+
+    def removemin(self):
+        item, priority = min(self._L, key = lambda x : x[1])
+        self._L.remove((item, priority))
+        return item
+```
+
+::: fragment
+
+- The variable `_L` is a `list` of tuples stored in `self`
+- Each tuple stores an `item` and its `priority`
+- Both `findmin` and `removemin` have $O(n)$ time complexity
+
+:::
+
+## Creating and using a `SimpleListPQ`
+
+```{python}
+pq = SimpleListPQ()
+
+pq.insert('apple', 3)
+pq.insert('banana', 1)
+pq.insert('cherry', 2)
+
+print(pq.findmin())    # Outputs: 'banana'
+print(pq.removemin())  # Outputs: 'banana'
+print(pq.findmin())    # Outputs: 'cherry'
+```
+
+::: {.fragment style="font-size: 0.85em;"}
+
+- The first parameter to `insert` method is the `item`
+- The second parameter to `insert` method is the `priority`
+- The `findmin` method returns the item with minimum priority
+- The `removemin` method removes and returns item with minimum priority
+
+:::
