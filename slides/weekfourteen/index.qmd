@@ -36,3 +36,26 @@ format:
 {{< iconify game-icons team-idea >}} **Any examples of data we should store in a priority queue?**
 
 :::
+
+## Main methods in a `PriorityQueue` API
+
+::: {.fragment .fade-up .boxed-content style="margin-top: 0em; font-size: 0.80em;"}
+
+- `insert(item, priority)`: Add `item` with the given `priority`.
+
+- `findmin()` - Return the item with the minimum priority. If there are
+multiple items with the minimum priority, ties may be broken arbitrarily.
+
+- `removemin()` - Remove and return the item with the minimum priority. As with
+the `findmin` method, ties are broken arbitrarily.
+
+:::
+
+::: incremental
+
+- Use a list-based approach for a starting implementation
+- Identify performance trade-offs when using a list
+- Develop a new data structure called a `heap`
+- Use the `heap` to support efficient priority queue operations
+
+:::
