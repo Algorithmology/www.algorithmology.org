@@ -200,19 +200,19 @@ have slow `insert` and fast `removemin`
 
 ## Exploring the `heap` data structure
 
-####  Priority Queues and Heaps
+####  Priority queues and heaps
 
-- Priority Queue: Abstract Data Type (ADT)
-- Heap: Data Structure used to implement a Priority Queue
+- Priority queue: Abstract data type (ADT)
+- Heap: Data structure used to implement a priority queue
 
-#### Vocabulary Issues
+#### Clarifying terminology
 
-- Many types of heaps exist, we'll focus on Binary Heap
+- Many types of heaps exist, we'll focus on the binary heap
 - The term "key" is often used for "priority" in a heap
 
-#### Binary Heap
+#### Binary heap
 
-- A binary tree with smaller priorities above larger ones
+- A binary tree with smaller priorities "above" larger ones
 
 ## Creating a `HeapPQ` class
 
