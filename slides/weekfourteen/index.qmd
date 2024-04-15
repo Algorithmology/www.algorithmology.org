@@ -197,3 +197,19 @@ have slow `insert` and fast `removemin`
 - Achieve constant or logarithmic time complexity for all?
 
 - Need a new data structure to achieve this ambitious goal!
+
+## Exploring the `heap` data structure
+
+####  Priority Queues and Heaps
+
+- Priority Queue: Abstract Data Type (ADT)
+- Heap: Data Structure used to implement a Priority Queue
+
+#### Vocabulary Issues
+
+- Many types of heaps exist, we'll focus on Binary Heap
+- The term "key" is often used for "priority" in a heap
+
+#### Binary Heap
+
+- A binary tree with smaller priorities above larger ones
