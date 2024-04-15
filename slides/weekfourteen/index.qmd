@@ -397,3 +397,30 @@ for item in pq:
 - What is the worst-case time complexity of these methods?
 
 :::
+
+## Random access in a `PriorityQueue`
+
+```python
+def _remove_at_index(self, index):
+    L = self._entries
+    self._swap(index, len(L) - 1)
+    del self._itemmap[L[-1].item]
+    L.pop()
+    self._downheap(index)
+
+def removemin(self):
+    item = self._entries[0].item
+    self._remove_at_index(0)
+    return item
+
+def remove(self, item):
+    self.remove_at_index(self._itemmap[item])
+```
+
+::: fragment
+
+- `removemin` method is the canonical way to extract next value
+- `remove` method supports random access to remove any item
+- `_remove_at_index` method supports both remove methods
+
+:::
