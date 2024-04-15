@@ -109,3 +109,91 @@ print(pq.findmin())    # Outputs: 'cherry'
 - The `removemin` method removes and returns item with minimum priority
 
 :::
+
+## Creating an `Entry` class
+
+```{python}
+class Entry:
+    def __init__(self, item, priority):
+        self.priority = priority
+        self.item = item
+
+    def __lt__(self, other):
+        return self.priority < other.priority
+```
+
+::: {.fragment style="font-size: 0.95em;"}
+
+- Indexing the `tuple` in the `list` is error-prone for `SimpleListPQ`
+- Alternatively, use an `Entry` class to store `item` and `priority`
+- The `__init__` constructor initializes the `item` and `priority`
+- The `__lt__` method compares the priorities of two `Entry`s
+- A lower `priority` value indicates a higher priority item!
+- Now, we can use this to build `UnsoredListPQ`!
+
+:::
+
+## Creating the `UnsortedListPQ` class
+
+```{python}
+class UnsortedListPQ:
+    def __init__(self):
+        self._entries = []
+
+    def insert(self, item, priority):
+        self._entries.append(Entry(item, priority))
+
+    def findmin(self):
+        return min(self._entries).item
+
+    def removemin(self):
+        entry = min(self._entries)
+        self._entries.remove(entry)
+        return entry.item
+```
+
+::: {.fragment style="font-size: 0.925em; margin-top: 0.5em;"}
+
+- The `insert` method has a worst-case time complexity of $O(1)$
+- The `findmin` and `removemin` methods have a worst-case time complexity of
+$O(n)$ because the `min` function is $O(n)$
+
+:::
+
+## Creating the `SortedListPQ` class
+
+```{python}
+class SortedListPQ:
+    def __init__(self):
+        self._entries = []
+
+    def insert(self, item, priority):
+        self._entries.append(Entry(item, priority))
+        self._entries.sort(reverse = True)
+
+    def findmin(self):
+        return self._entries[-1].item
+
+    def removemin(self):
+        return self._entries.pop().item
+```
+
+::: {.fragment style="font-size: 0.85em; margin-top: 0.5em;"}
+
+- `findmin` and `removemin` have a worst-case time complexity of $O(1)$
+- However, now `insert` has worst-case time complexity of $O(n \log n)$!
+- Wait, using an insertion sort could improve performance of `insert`!
+
+:::
+
+# What are the trade-offs in the `SortedListPQ`?
+
+- Trade-offs exist between the time complexity of the `insert` method and the
+`findmin` and `removemin` methods
+
+- In one system, we have fast `insert` and slow `removemin` and in the other we
+have slow `insert` and fast `removemin`
+
+- Achieve constant or logarithmic time complexity for all?
+
+- Need a new data structure to achieve this ambitious goal!
