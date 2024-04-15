@@ -129,7 +129,7 @@ class Entry:
 - The `__init__` constructor initializes the `item` and `priority`
 - The `__lt__` method compares the priorities of two `Entry`s
 - A lower `priority` value indicates a higher priority item!
-- Now, we can use this to build `UnsoredListPQ`!
+- Now, we can use this to build `UnsortedListPQ`!
 
 :::
 
