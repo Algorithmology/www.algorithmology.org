@@ -19,3 +19,20 @@ format:
     html-math-method: mathjax
     footer: "Algorithmology"
 ---
+
+# What is a priority queue? Why is it useful?
+
+::: incremental
+
+- Normally data items removed based on insertion order
+- Now, data items are removed based on priority!
+- Queue that supports priority-oriented data access
+- Aim to have good performance for all key operations
+
+:::
+
+::: {.fragment .fade}
+
+{{< iconify game-icons team-idea >}} **Any examples of data we should store in a priority queue?**
+
+:::
