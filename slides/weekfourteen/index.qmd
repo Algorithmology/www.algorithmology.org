@@ -520,52 +520,16 @@ while not len(job_queue) == 0:
     print(f"{next_job.name} has finished running.")
 ```
 
-## `PriorityQueue` data structure
+## Comparing `PriorityQueue` structures
 
-::: {.columns}
+### {{< iconify fa6-solid arrows-to-circle >}} `UnsortedListPQ`
 
-::: {.column style="font-size: 0.875em;"}
+- Uses an unsorted list to store entries
+- **Fast**: `insert` method is $O(1)$
+- **Slow**: `findmin` and `removemin` methods are $O(n)$
 
-::: fragment
+### {{< iconify fa6-solid arrows-to-circle >}} `SortedListPQ`
 
-### `ListMapping`
-
-#### Implementation
-
-- Good design
-- Easy to understand
-- List of key-value pairs
-
-#### Performance
-
-- Can be inefficient
-- Limits memory usage
-- Does not match `dict`
-
-:::
-
-:::
-
-::: {.column style="font-size: 0.875em;"}
-
-::: fragment
-
-### `HashMapping`
-
-#### Implementation
-
-- Good design
-- Challenging to build
-- Use the `ListMapping`
-
-#### Performance
-
-- Improved efficiency
-- Amortizes costs
-- Increases memory usage
-
-:::
-
-:::
-
-:::
+- Uses a sorted list to store entries
+- **Slow**: `insert` method is $O(n \times log_2n)$
+- **Fast**: `findmin` and `removemin` methods are $O(1)$
