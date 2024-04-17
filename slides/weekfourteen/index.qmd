@@ -437,7 +437,7 @@ for i in range(n):
     maxheap.insert(i)
 
 # displays the values in decreasing order
-print([maxheap.removemin() for i in range(n)])
+print([maxheap.removemin() for _ in range(n)])
 ```
 
 ::: {.fragment style="font-size: 0.95em;"}
