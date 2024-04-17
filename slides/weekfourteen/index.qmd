@@ -499,6 +499,13 @@ job_queue.insert(job2, job2.priority)
 job_queue.insert(job3, job3.priority)
 ```
 
+::: {.fragment style="font-size: 0.85em;"}
+
+- Define a `Job` class with `name`, `priority`, and `duration`
+- Create three `Job` instances with different priorities and durations
+
+:::
+
 ## Running `Job`s with a `PriorityQueue`
 
 ```{python}
