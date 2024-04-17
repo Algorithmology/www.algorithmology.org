@@ -399,11 +399,13 @@ def remove(self, item):
 
 :::
 
-# What are uses of this `PriorityQueue`?
+# What are some uses of this `PriorityQueue`?
 
-- Sorting algorithms like `heapsort`
-- Scheduling decisions in operating systems
-- Event-driven simulations that run "next event"
+- Featured application areas:
+    - Prioritizing steps in a task list
+    - Inverted priority in a `MaxHeap`
+    - Sorting algorithms like `heapsort`
+    - Scheduling decisions in operating systems
 
 ## Creating and using a `PriorityQueue`
 
