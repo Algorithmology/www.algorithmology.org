@@ -372,29 +372,30 @@ class PriorityQueue(HeapPQ):
 
 :::
 
-## Creating and using a `PriorityQueue`
+## Random access in a `PriorityQueue`
 
-```{python}
-pq = PriorityQueue()
+```python
+def _remove_at_index(self, index):
+    L = self._entries
+    self._swap(index, len(L) - 1)
+    del self._itemmap[L[-1].item]
+    L.pop()
+    self._downheap(index)
 
-pq.insert('apple', 3)
-pq.insert('banana', 1)
-pq.insert('cherry', 2)
+def removemin(self):
+    item = self._entries[0].item
+    self._remove_at_index(0)
+    return item
 
-pq.changepriority('apple', 0)
-
-print(pq.removemin())  # Outputs: 'apple'
-
-pq.remove('cherry')
-
-for item in pq:
-    print(item)        # Outputs: 'banana'
+def remove(self, item):
+    self.remove_at_index(self._itemmap[item])
 ```
 
-::: {.fragment style="font-size: 0.85em;"}
+::: fragment
 
-- Illustrates the use of the `PriorityQueue` constructor and methods
-- What is the worst-case time complexity of these methods?
+- `removemin` method is the canonical way to extract next value
+- `remove` method supports random access to remove any item
+- `_remove_at_index` method supports both remove methods
 
 :::
 
@@ -445,5 +446,27 @@ print([maxheap.removemin() for _ in range(n)])
 - Creates a `PriorityQueue` to store values in decreasing order
 - Conveniently coalesces the key and the value into a single key
 - Note that the `removemin` function was not changed in any way!
+
+:::
+
+## Performing a `HeapSort`
+
+```{python}
+def heapsort(L):
+    H = PriorityQueue(L)
+    L[:] = [item for item in H]
+
+L = [3,2,4,1, 6, 5]
+print("Before heapsort:", L)
+heapsort(L)
+print("After heapsort: ", L)
+```
+
+::: {.fragment style="font-size: 0.95em;"}
+
+- Uses the `_heapify` method to create a `PriorityQueue` in $O(n)$
+- Iteration over each item in `list` comprehension costs $O(\log n)$
+- This means that the `heapsort` function has a time complexity of $O(n \log
+n)$. Is this better, worse, or the same as `mergesort`?
 
 :::
