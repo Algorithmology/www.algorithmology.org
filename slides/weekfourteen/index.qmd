@@ -398,29 +398,52 @@ for item in pq:
 
 :::
 
-## Random access in a `PriorityQueue`
+## Creating and using a `PriorityQueue`
 
-```python
-def _remove_at_index(self, index):
-    L = self._entries
-    self._swap(index, len(L) - 1)
-    del self._itemmap[L[-1].item]
-    L.pop()
-    self._downheap(index)
+```{python}
+pq = PriorityQueue()
 
-def removemin(self):
-    item = self._entries[0].item
-    self._remove_at_index(0)
-    return item
+pq.insert('apple', 3)
+pq.insert('banana', 1)
+pq.insert('cherry', 2)
 
-def remove(self, item):
-    self.remove_at_index(self._itemmap[item])
+pq.changepriority('apple', 0)
+
+print(pq.removemin())  # Outputs: 'apple'
+
+pq.remove('cherry')
+
+for item in pq:
+    print(item)        # Outputs: 'banana'
 ```
 
-::: fragment
+::: {.fragment style="font-size: 0.85em;"}
 
-- `removemin` method is the canonical way to extract next value
-- `remove` method supports random access to remove any item
-- `_remove_at_index` method supports both remove methods
+- Illustrates the use of the `PriorityQueue` constructor and methods
+- What is the worst-case time complexity of these methods?
+
+:::
+
+## Creating and using a `MaxHeap`
+
+```{python}
+# create a PriorityQueue instance where the
+# key is the opposite of the input value of x
+maxheap = PriorityQueue(key = lambda x: -x)
+
+# does not specify a priority for a value
+n = 10
+for i in range(n):
+    maxheap.insert(i)
+
+# displays the values in decreasing order
+print([maxheap.removemin() for i in range(n)])
+```
+
+::: {.fragment style="font-size: 0.95em;"}
+
+- Creates a `PriorityQueue` to store values in decreasing order
+- Conveniently coalesces the key and the value into a single key
+- Note that the `removemin` function was not changed in any way!
 
 :::
