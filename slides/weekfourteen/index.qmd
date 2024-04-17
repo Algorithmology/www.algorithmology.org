@@ -456,7 +456,7 @@ def heapsort(L):
     H = PriorityQueue(L)
     L[:] = [item for item in H]
 
-L = [3,2,4,1, 6, 5]
+L = [3, 2, 4, 1, 6, 5]
 print("Before heapsort:", L)
 heapsort(L)
 print("After heapsort: ", L)
