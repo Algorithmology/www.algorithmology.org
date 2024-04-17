@@ -522,14 +522,42 @@ while not len(job_queue) == 0:
 
 ## Comparing `PriorityQueue` structures
 
+::: fragment
+
 ### {{< iconify fa6-solid arrows-to-circle >}} `UnsortedListPQ`
 
 - Uses an unsorted list to store entries
 - **Fast**: `insert` method is $O(1)$
 - **Slow**: `findmin` and `removemin` methods are $O(n)$
 
+:::
+
+::: fragment
+
 ### {{< iconify fa6-solid arrows-to-circle >}} `SortedListPQ`
 
 - Uses a sorted list to store entries
 - **Slow**: `insert` method is $O(n \times log_2n)$
 - **Fast**: `findmin` and `removemin` methods are $O(1)$
+
+:::
+
+## `HeapPQ` and `PriorityQueue`
+
+::: fragment
+
+- {{< iconify fa6-solid arrows-to-circle >}} **Performance analysis**:
+    - Uses a binary heap to store entries
+    - **Fast**: `insert`, `findmin`, and `removemin` are $O(\log_2 n)$
+    - **Trade-offs**: no more constant-time complexity methods!
+
+:::
+
+::: fragment
+
+- {{< iconify fa6-solid arrows-to-circle >}} **Functionality review**:
+    - `PriorityQueue` extends `HeapPQ` and adds more methods
+    - `PriorityQueue` offers random access to remove any item
+    - `PriorityQueue` supports iteration to remove all items
+
+:::
