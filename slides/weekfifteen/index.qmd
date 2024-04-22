@@ -19,3 +19,23 @@ format:
     html-math-method: mathjax
     footer: "Algorithmology"
 ---
+
+# What is a graph? Why is it a useful structure?
+
+::: incremental
+
+- Mathematical object often used in computer science
+
+- A graph is a pair $(V, E)$ where $V$ is any set of entities and $E$ is a set
+of pairs of elements of $V$ 
+
+- $V$ is called the **vertex set** and $E$ is the **edge set**
+
+:::
+
+::: {.fragment .fade}
+
+{{< iconify game-icons team-idea >}} **Any examples of data we could store in a graph?**
+
+:::
+
