@@ -125,3 +125,27 @@ class EdgeSetGraph:
 - Represents a graph using a set of edges between vertices
 
 :::
+
+## Creating an `EdgeSetGraph` 
+
+```{python}
+graph = EdgeSetGraph()
+graph.addvertex('A')
+graph.addvertex('B')
+graph.addvertex('C')
+graph.addedge('A', 'B')
+graph.addedge('B', 'C')
+
+print('A' in graph)             # Output: True
+print(graph.hasedge('A', 'B'))  # Output: True
+print(list(graph.nbrs('B')))    # Output: ['C']
+graph.removeedge('A', 'B')      # Remove edge
+print(graph.hasedge('A', 'B'))  # Output: False
+print(len(graph))               # Output: 3
+```
+
+::: incremental
+
+- How to create an un-directed version of the `EdgeSetGraph`?
+
+:::
