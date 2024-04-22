@@ -82,7 +82,7 @@ print(graph_two)
 
 :::
 
-## Defining the `EdgeSetGraph`
+## Defining the `EdgeSetGraph` class
 
 ```{python}
 class EdgeSetGraph:
@@ -147,5 +147,31 @@ print(len(graph))               # Output: 3
 ::: incremental
 
 - How to create an un-directed version of the `EdgeSetGraph`?
+
+:::
+
+## `UndirectedEdgeSetGraph` class
+
+```{python}
+class UndirectedEdgeSetGraph(EdgeSetGraph):
+    def addedge(self, u, v):
+        self._E.add(frozenset({u,v}))
+
+    def removeedge(self, u, v):
+        self._E.remove(frozenset({u,v}))
+
+    def nbrs(self, v):
+        for u, w in self._E:
+            if u == v:
+                yield w
+            elif w == v:
+                yield u
+```
+
+::: fragment
+
+- `UnidirectedEdgeSetGraph` subclass of `EdgeSetGraph`
+- Standard sets in Python do not support storing a `set`
+- The `frozenset` is an immutable version of the `set`
 
 :::
