@@ -188,3 +188,71 @@ should not be necessary to go through all the edges! Alternatively, can we
 store a set of neighbors for each vertex?
 
 :::
+
+## Creating `AdjacencySetGraph`
+
+```{python}
+class AdjacencySetGraph:
+    def __init__(self, V = (), E = ()):
+        self._V = set()
+        self._nbrs = {}
+        for v in V: self.addvertex(v)
+        for e in E: self.addedge(*e)
+
+    def vertices(self):
+        return iter(self._V)
+
+    def edges(self):
+        for u in self._V:
+            for v in self.nbrs(u):
+                yield (u,v)
+
+    def addvertex(self, v):
+        self._V.add(v)
+        self._nbrs[v] = set()
+
+    def addedge(self, u, v):
+        self._nbrs[u].add(v)
+
+    def removeedge(self, u, v):
+        self._nbrs[u].remove(v)
+
+    def __contains__(self, v):
+        return v in self._nbrs
+
+    def nbrs(self, v):
+        return iter(self._nbrs[v])
+
+    def __len__(self):
+      return len(self._nbrs)
+```
+
+::: fragment
+
+- Now `nbrs` works with `return iter(self._nbrs[v])` 
+
+:::
+
+## Using `AdjacencySetGraph`
+
+```{python}
+G = AdjacencySetGraph({1,2,3}, {(1,2),(2,1),(1,3)})
+print("Neighbors of 1:", list(G.nbrs(1)))
+print("Neighbors of 2:", list(G.nbrs(2)))
+print("Neighbors of 3:", list(G.nbrs(3)))
+```
+
+::: fragment
+
+- Calling the `nbrs` method is now much faster!
+- Direct access to the neighbors of a vertex
+- Preserves same interface in the constructor
+- Does not explicitly store edges of the graph
+
+:::
+
+::: {.fragment .fade style="margin-top: -.25em; font-size: 1em;"}
+
+{{< iconify game-icons team-idea >}} **How could we implement the un-directed version?**
+
+:::
