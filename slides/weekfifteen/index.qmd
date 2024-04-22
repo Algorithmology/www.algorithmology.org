@@ -62,3 +62,22 @@ print(graph_one)
 graph_two = ({1,2,3,4}, {(1,2), (1,3), (1,4)})
 print(graph_two)
 ```
+
+## Methods for a simple directed graph
+
+::: {.fragment .fade-up .boxed-content style="margin-top: 0em; font-size: 0.725em;"}
+
+  - `__init__(V, E)`: Initialize a new graph with vertex set `V` and edge set `E`
+  - `vertices()`: Return an iterable collection of the vertices
+  - `edges()`: Return an iterable collection of the edges
+  - `addvertex(v)`: Add vertex to graph that is identified with the `v` object
+  - `addedge(u, v)`: Add edge to graph between vertices with keys `u` and `v`
+  - `removeedge(u,v)` : Remove the edge u,v from the graph
+  - `__contains__(v)` : Return `True` if vertex `v` in graph; `False` otherwise
+  - `hasedge(u,v)` : Return `True` if edge `(u,v)` in graph; `False` otherwise.
+  - `nbrs(v)` : Return an iterable collection of (out)neighbors of `v`,
+  i.e., those vertices `w` such that `(v, w)` is an edge. (For directed
+  graphs, this is out-neighbors.)
+  - `__len__()` : Return the number of vertices in the graph.
+
+:::
