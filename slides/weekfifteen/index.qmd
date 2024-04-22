@@ -175,3 +175,16 @@ class UndirectedEdgeSetGraph(EdgeSetGraph):
 - The `frozenset` is an immutable version of the `set`
 
 :::
+
+# Problems with the `EdgeSetGraph` class
+
+- The `EdgeSetGraph` class is not efficient for large graphs
+- Very slow to enumerate all edges incident to a vertex!
+
+::: {.fragment .fade-up .boxed-content style="margin-top: 0em; font-size: 1em;"}
+
+**Key insight**: To find the vertices that are incident to a given vertex, it
+should not be necessary to go through all the edges! Alternatively, can we
+store a set of neighbors for each vertex?
+
+:::
