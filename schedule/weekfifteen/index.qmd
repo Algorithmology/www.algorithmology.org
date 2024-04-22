@@ -22,7 +22,7 @@ structure.
 ## Activities
 
 - {{< iconify fa6-solid people-line size=18px >}} **Monday and Wednesday**:
-Priority Queues
+Graph Structures
   - Explore how to implement the `Graph` and `Digraph` data structures
   - Understand the adjacency list and adjacency matrix representations
   - Examine Python source code segments to illustrate key points
