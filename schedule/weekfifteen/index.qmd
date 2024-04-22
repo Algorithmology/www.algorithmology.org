@@ -28,7 +28,7 @@ Graph Structures
   - Examine Python source code segments to illustrate key points
 - {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Continue an
 algorithm engineering project
-- {{< iconify game-icons team-idea size=18px >}} **Friday**: Recap all of the
+- {{< iconify game-icons team-idea size=18px >}} **Friday**: Team-work on final
 algorithm all-hands projects
 
 ## Project
