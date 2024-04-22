@@ -126,7 +126,7 @@ class EdgeSetGraph:
 
 :::
 
-## Creating an `EdgeSetGraph` 
+## Using an `EdgeSetGraph` instance
 
 ```{python}
 graph = EdgeSetGraph()
