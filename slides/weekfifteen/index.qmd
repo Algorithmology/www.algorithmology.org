@@ -257,6 +257,28 @@ print("Neighbors of 3:", list(G.nbrs(3)))
 
 :::
 
+# Finding cycles and paths in a graph
+
+::: fragment
+
+- A **path** is a sequence of vertices connected by edges
+
+:::
+
+::: {.fragment .fade-up .boxed-content style="margin-top: 0em; font-size: 0.975em;"}
+
+A non-empty sequence of vertices $(v_0, v_1,\ldots, v_k)$ is a path from $v_0$
+to $v_k$ as long as $(v_{i-1}, v_i)\in E$ for all $i \in \{1,\ldots, k\}$.
+
+:::
+
+::: fragment
+
+- A **path** is **simple** if it does not repeat any vertices
+- The **length** of a path is the number of edges in the path
+
+:::
+
 ## Enhanced `AdjacencySetGraph`
 
 ```{python}
