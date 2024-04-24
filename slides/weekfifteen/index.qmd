@@ -279,6 +279,38 @@ to $v_k$ as long as $(v_{i-1}, v_i)\in E$ for all $i \in \{1,\ldots, k\}$.
 
 :::
 
+## Defining a cycle in a graph
+
+::: incremental
+
+- A **cycle** is a path of length at least one that starts and ends at the same
+vertex. The **cycle length** is the number of edges.
+
+- A **cycle** is **simple** if it's a cycle and removing last edge makes a
+simple path (i.e., no repeated vertices until the last one).
+
+:::
+
+::: {.fragment .fade style="margin-top: -.2em; font-size: 1em;"}
+
+{{< iconify game-icons team-idea >}} **How could we implement these definitions in Python?**
+
+:::
+
+::: {.fragment .fade style="margin-top: 1em; font-size: 1em;"}
+
+```python
+def iscycle(self, V):
+    """Return True if and only if the vertices V form a cycle."""
+    return self.ispath(V) and V[0] == V[-1]
+
+def issimplecycle(self, V):
+    """Return True if and only if the vertices V form a simple cycle."""
+    return self.iscycle(V) and self.issimplepath(V[:-1])
+```
+
+:::
+
 ## Enhanced `AdjacencySetGraph`
 
 ```{python}
@@ -352,3 +384,32 @@ print("[1,2,3,4] is a simple cycle:", G.issimplecycle([1,2,3,4]))
 print("[1,2,3,4,3,1] is a cycle:", G.iscycle([1,2,3,4,3,1]))
 print("[1,2,3,4,3,1] is a simple cycle:", G.issimplecycle([1,2,3,4,3,1]))
 ```
+
+# Searching a graph
+
+::: incremental
+
+- After defining a graph, we can search its nodes for data
+- However, we have to be super careful to avoid **infinite loops**!
+- Why is searching a `Tree` easier than searching a `Graph`?
+
+:::
+
+::: fragment
+
+```python
+def printall(G, v):
+    print(v)
+    for n in G.nbrs(v):
+        printall(G, n)
+```
+
+:::
+
+::: {.fragment .fade style="margin-top: .5em; font-size: 1em;"}
+
+- `printall` might yield `RecursionError` for certain graphs `G`
+
+- **Can we implement graph search without this defect?**
+
+:::
