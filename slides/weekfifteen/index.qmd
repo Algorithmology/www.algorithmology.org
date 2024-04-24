@@ -256,3 +256,77 @@ print("Neighbors of 3:", list(G.nbrs(3)))
 {{< iconify game-icons team-idea >}} **How could we implement the un-directed version?**
 
 :::
+
+## Enhanced `AdjacencySetGraph`
+
+```{python}
+class AdjacencySetGraphWithPath:
+    def __init__(self, V = (), E = ()):
+        self._V = set()
+        self._nbrs = {}
+        for v in V: self.addvertex(v)
+        for e in E: self.addedge(*e)
+
+    def vertices(self):
+        return iter(self._V)
+
+    def edges(self):
+        for u in self._V:
+            for v in self.nbrs(u):
+                yield (u,v)
+
+    def addvertex(self, v):
+        self._V.add(v)
+        self._nbrs[v] = set()
+
+    def addedge(self, u, v):
+        self._nbrs[u].add(v)
+
+    def removeedge(self, u, v):
+        self._nbrs[u].remove(v)
+
+    def __contains__(self, v):
+        return v in self._nbrs
+
+    def nbrs(self, v):
+        return iter(self._nbrs[v])
+
+    def __len__(self):
+      return len(self._nbrs)
+
+    def hasedge(self, u, v):
+        return v in self._nbrs[u]
+
+    def ispath(self, V):
+      return V and all(self.hasedge(V[i-1], V[i]) for i in range(1, len(V)))
+
+    def issimplepath(self, V):
+      return self.ispath(V) and len(V) == len(set(V))
+
+    def iscycle(self, V):
+        return self.ispath(V) and V[0] == V[-1]
+
+    def issimplecycle(self, V):
+        return self.iscycle(V) and self.issimplepath(V[:-1])
+```
+
+::: fragment
+
+- Add `ispath`, `issimplepath`, `iscycle`, and `issimplecycle`
+
+:::
+
+## Using `AdjacencySetGraphWithPath`
+
+```{python}
+G = AdjacencySetGraphWithPath({1,2,3,4}, {(1,2),(3,1), (2,3), (3,4), (4,3)})
+print("[1,2,3,1] is a path", G.ispath([1,2,3,1]))
+print("[1,2,3,1] is a simple path", G.issimplepath([1,2,3,1]))
+print("[1,2,3] is a simple path", G.issimplepath([1,2,3]))
+print("[1,2,3] is a simple cycle:", G.issimplecycle([1,2,3]))
+print("[1,2,3,1] is a simple cycle:", G.issimplecycle([1,2,3]))
+print("[1,2,3,4] is a simple path:", G.issimplepath([1,2,3,4]))
+print("[1,2,3,4] is a simple cycle:", G.issimplecycle([1,2,3,4]))
+print("[1,2,3,4,3,1] is a cycle:", G.iscycle([1,2,3,4,3,1]))
+print("[1,2,3,4,3,1] is a simple cycle:", G.issimplecycle([1,2,3,4,3,1]))
+```
