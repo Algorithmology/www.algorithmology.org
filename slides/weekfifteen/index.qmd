@@ -484,4 +484,7 @@ print("4 is connected to 1:", connected(G, 4, 1))
 - Develop a non-recursion-based traversal algorithm
 - Implement a breadth-first search (BFS) algorithm
 - Handle weighted edges in the `Graph` data structure
-- Find the shortest path between two vertices in the `Graph`!
+- Find the shortest path between two vertices in the `Graph`
+
+{{< iconify fa6-solid diagram-project >}} Generalizing a `Tree`, a `Graph`
+can model real-world data!
