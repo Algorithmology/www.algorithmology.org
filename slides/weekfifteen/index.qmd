@@ -385,7 +385,7 @@ print("[1,2,3,4,3,1] is a cycle:", G.iscycle([1,2,3,4,3,1]))
 print("[1,2,3,4,3,1] is a simple cycle:", G.issimplecycle([1,2,3,4,3,1]))
 ```
 
-# Searching a graph
+# Traversing a graph
 
 ::: incremental
 
@@ -413,3 +413,75 @@ def printall(G, v):
 - **Can we implement graph search without this defect?**
 
 :::
+
+## Traversing a graph with a `set`
+
+```{python}
+def printall(G, v, visited):
+    visited.add(v)
+    print(v)
+    for n in G.nbrs(v):
+        if n not in visited:
+            printall(G, n, visited)
+
+G = AdjacencySetGraphWithPath({1,2,3,4}, {(1,2), (2,3), (3,4), (4,1)})
+printall(G, 1, set())
+```
+
+- Intuitively, this approach leaves "bread crumbs" for tracking
+- Traversal only proceeds to vertices not visited before
+- **Wait, does this really print _all_ the nodes?**
+
+## Depth-first search (DFS)
+
+```{python}
+def dfs(G, v):
+    visited = {v}
+    _dfs(G, v, visited)
+    return visited
+
+def _dfs(G, v, visited):
+    for n in G.nbrs(v):
+        if n not in visited:
+            visited.add(n)
+            _dfs(G, n, visited)
+
+G = AdjacencySetGraphWithPath({1,2,3,4}, {(1,2), (2,3), (3,4), (4,2)})
+print('reachable from 1:', dfs(G, 1))
+print('reachable from 2:', dfs(G, 2))
+```
+
+::: {.fragment style="margin-top: 0em; font-size: 0.9em;"}
+
+- Graph reachability is a key concept in graph theory
+- A depth-first search can be used to find the reachable nodes
+
+:::
+
+## Determining graph connectivity
+
+```{python}
+def connected(G, u, v):
+    return v in dfs(G, u)
+
+G = AdjacencySetGraphWithPath({1,2,3,4}, {(1,2), (2,3), (3,4), (4,2)})
+print("1 is connected to 4:", connected(G, 1, 4))
+print("4 is connected to 3:", connected(G, 4, 3))
+print("4 is connected to 1:", connected(G, 4, 1))
+```
+
+::: fragment
+
+- `connected` uses the `dfs` function to determine connectivity
+- `connected` returns `True` if there is a path between `u` and `v`
+- Otherwise, it returns `False` as there is no connection
+- Useful in a wide variety of graph theoretic algorithms!
+
+:::
+
+# Additional avenues for exploring the `Graph`
+
+- Develop a non-recursion-based traversal algorithm
+- Implement a breadth-first search (BFS) algorithm
+- Handle weighted edges in the `Graph` data structure
+- Find the shortest path between two vertices in the `Graph`!
