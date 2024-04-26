@@ -1,6 +1,6 @@
 ---
 author: [The Algorithmology Class]
-title: Bork Bork Bosco 
+title: Bork Bork Bosco
 page-layout: full
 categories: [post, average, matrix]
 date: "2024-03-22"
