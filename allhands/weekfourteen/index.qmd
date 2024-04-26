@@ -1,6 +1,6 @@
 ---
 author: [The Algorithmology Class]
-title: Bosco is an automated benchmarking tool for list-based Python functions
+title: Bork Bork Bosco
 page-layout: full
 categories: [post, average, matrix]
 date: "2024-04-29"
