@@ -65,6 +65,9 @@ Number of doubles to execute: 5
 ╘══════════════╧═════════════╧══════════════╧════════════════╛
 ```
 
+
+![example_graph](https://github.com/Algorithmology/bosco/assets/70417208/0be0e695-f06c-490a-98df-cb3eaaf5ca07)
+
 # Function Explanation
 
 In our code analysis, several functions stand out for their crucial roles in creating benchmarking experiments and assessing 
@@ -120,7 +123,8 @@ Additionally, the `benchmark` module offers utilities for conducting doubling ex
 # Analysis 
 
 
-# Conclusion 
+Cited from "Doubling Experiment with O(n) Analysis" All Hands Article, 
 
 
-# Future Work 
+# Conclusion and Furture Work
+Overall, through the function that we closely evaluated we can see that most of them had an estimated worst case time complexity of O(n²). Because most teams worked separately to build a similar tool last week that analyized the performance of sorting algorithms. Bubble sort, selection sort and insertion sort, and heap sort had estimated worst case time complexities of O(n²). While quick sort and merge sort had estimated worst case time complexities of O(n log(n)). These result were also corroborated by the "Doubling Experiment with O(n) Analysis" AllHands project and the "Simple sorting algorithm doubling experiment with worst-case time complexity analysis" AllHands project. The "Comparative analysis of sorting algorithms" also found those same results along with analyzing bucket sort which was also O(n²) and radix, heap, tim, and merge sort which were more logarithmic. Beyond some of these function there are many more functions in the `sorting.py` file. Furture work could consist of evaluating all those function more closely, along with adding others.
