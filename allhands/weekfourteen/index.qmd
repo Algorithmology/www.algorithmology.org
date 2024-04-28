@@ -10,7 +10,8 @@ toc: true
 
 # Overview and Introduction
 
-[Introducing Bosco](https://github.com/Algorithmology/bosco): a versatile benchmarking framework designed to evaluate the performance of arbitrary list-processing algorithms through doubling experiments. The tool BOSCO stands for, Benchmarking
+[Introducing Bosco](https://github.com/Algorithmology/bosco): a versatile benchmarking framework designed to evaluate the performance
+of arbitrary list-processing algorithms through doubling experiments. The tool BOSCO stands for, Benchmarking
 of Sorting & Computational OperationsBosco automates the process of benchmarking by accepting Python source
 code files containing list-processing functions, fully-qualified function names for benchmarking, and input
 generation procedures. Leveraging Typer for a user-friendly command-line interface and Poetry for dependency
@@ -105,7 +106,8 @@ def run_sorting_algorithm(file_path: str, algorithm: str, array: List[int]) -> T
     return min(times), max(times), sum(times) / len(times)
 ```
 
-The `bosco` function serves as the command-line interface for configuring benchmarking experiments. By specifying parameters like the starting size and number of doubles, users can tailor experiments to their needs. 
+The `bosco` function serves as the command-line interface for configuring benchmarking experiments. By specifying parameters like the
+starting size and number of doubles, users can tailor experiments to their needs. 
 
 ```python
 def bosco(starting_size: int = typer.Option(100), number_doubles: int = typer.Option(5),
