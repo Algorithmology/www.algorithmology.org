@@ -10,8 +10,7 @@ toc: true
 
 # Overview and Introduction
 
-Introducing Bosco: a versatile benchmarking framework designed to evaluate the performance of
-arbitrary list-processing algorithms through doubling experiments. The tool BOSCO stands for, Benchmarking
+[Introducing Bosco](https://github.com/Algorithmology/bosco): a versatile benchmarking framework designed to evaluate the performance of arbitrary list-processing algorithms through doubling experiments. The tool BOSCO stands for, Benchmarking
 of Sorting & Computational OperationsBosco automates the process of benchmarking by accepting Python source
 code files containing list-processing functions, fully-qualified function names for benchmarking, and input
 generation procedures. Leveraging Typer for a user-friendly command-line interface and Poetry for dependency
@@ -24,8 +23,99 @@ decision-making and optimization efforts.
 
 # Tool Use 
 
+To utilize the Bosco tool effectively, navigate to the main directory of your project and execute the tool using a command similar to
+ `poetry run bosco --starting-size 100 --number-doubles 5 --file bosco/sorting.py --function-name bubble_sort`. This command
+initiates the benchmarking process with specified parameters: `--starting-size` determines the initial size of the dataset for the
+doubling experiment, `--number-doubles` defines how many times the input size will be doubled, `--file` specifies the path to the
+ file containing the sorting algorithm to test, and `--function-name` indicates the name of the sorting function within the file.
 
-# Analysis
+Once executed, Bosco fetches the results and displays them in a tabular format, showcasing the performance metrics for different
+input sizes and cases. The output includes the best case, worst case, and average case execution times for each input size during the
+doubling experiment. Additionally, Bosco generates a graphical representation of the performance data, aiding in visualizing the
+efficiency of the sorting algorithm under analysis. By following this workflow and interpreting the output, users can gain valuable
+insights into the computational efficiency of their sorting algorithms and make informed decisions about algorithm selection and
+optimization strategies. This is an example of the output:
+
+```python
+🐶 Bosco is fetching our results!
+
+Path to the desired file: bosco/sorting.py
+
+Name of the desired function: quick_sort
+
+Starting size of the data container: 100
+
+Number of doubles to execute: 5
+
+📈 Here are the results from running the experiment!
+
+╒══════════════╤═════════════╤══════════════╤════════════════╕
+│   Input Size │   Best Case │   Worst Case │   Average Case │
+╞══════════════╪═════════════╪══════════════╪════════════════╡
+│          100 │     0.00058 │      0.00061 │        0.00060 │
+├──────────────┼─────────────┼──────────────┼────────────────┤
+│          200 │     0.00129 │      0.00155 │        0.00139 │
+├──────────────┼─────────────┼──────────────┼────────────────┤
+│          400 │     0.00268 │      0.00374 │        0.00305 │
+├──────────────┼─────────────┼──────────────┼────────────────┤
+│          800 │     0.00578 │      0.00656 │        0.00610 │
+├──────────────┼─────────────┼──────────────┼────────────────┤
+│         1600 │     0.01312 │      0.01414 │        0.01372 │
+╘══════════════╧═════════════╧══════════════╧════════════════╛
+```
+
+# Function Explanation
+
+In our code analysis, several functions stand out for their crucial roles in creating benchmarking experiments and assessing 
+algorithm performance. For example, the `generate_random_container` function generates randomized datasets essential for 
+benchmarking, it creates a list of integers within a specified range, enabling testing scenarios. 
+
+```python
+def generate_random_container(size: int) -> List[int]:
+    """Generate a random list defined by the size."""
+    random_list = [random.randint(1, size * size) for _ in range(size)]
+    return random_list
+```
+
+Meanwhile, the `run_sorting_algorithm` function executes sorting algorithms and profiles their performance using the timeit package.
+With a call, it measures the execution time of sorting algorithms, providing valuable insights into their efficiency.
+
+```python
+def run_sorting_algorithm(file_path: str, algorithm: str, array: List[int]) -> Tuple[float, float, float]:
+    """Run a sorting algorithm and profile it with the timeit package."""
+    directory, file_name = os.path.split(file_path)
+    module_name = os.path.splitext(file_name)[0]
+
+    if directory:
+        sys.path.append(directory)
+
+    try:
+        module = __import__(module_name)
+        algorithm_func = getattr(module, algorithm)
+    except (ImportError, AttributeError):
+        raise ValueError(f"Could not import {algorithm} from {file_path}")
+
+    stmt = f"{algorithm_func.__name__}({array})"
+    times = repeat(
+        setup=f"from {module_name} import {algorithm}",
+        stmt=stmt,
+        repeat=3,
+        number=10,
+    )
+    return min(times), max(times), sum(times) / len(times)
+```
+
+The `bosco` function serves as the command-line interface for configuring benchmarking experiments. By specifying parameters like the starting size and number of doubles, users can tailor experiments to their needs. 
+
+```python
+def bosco(starting_size: int = typer.Option(100), number_doubles: int = typer.Option(5),
+          file: str = typer.Option("./bosco/sorting.py"), function_name: str = typer.Option("bubble_sort")) -> None:
+    """Conduct a doubling experiment to measure the performance of list sorting for a specific algorithm."""
+```
+
+Additionally, the `benchmark` module offers utilities for conducting doubling experiments, creating the performance evaluation. The `sorting` module contains implementations of various sorting algorithms, such as bubble sort and merge sort, enabling comparative analysis. Together, these functions allow for the efficiency of sorting algorithms in different scenarios.
+
+# Analysis 
 
 
 # Conclusion 
