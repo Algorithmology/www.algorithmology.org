@@ -465,7 +465,7 @@ of this article.
 
 ![Experiment results from running the `radix_sort` algorithm](radix_sort.png)
 
-Sorting algorithm: bucket_sortGraph:
+**Sorting algorithm**: `bucket_sortGraph`
 
 Command: `poetry run bosco --starting-size 500 --number-doubles 5 --file bosco/sorting.py --function-name bucket_sort`
 
