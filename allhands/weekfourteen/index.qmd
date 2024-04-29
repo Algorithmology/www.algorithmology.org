@@ -113,7 +113,7 @@ Additionally, the `benchmark` module offers utilities for conducting doubling ex
 `sorting` module contains implementations of various sorting algorithms, such as bubble sort and merge sort, enabling comparative 
 analysis. Together, these functions allow for the efficiency of sorting algorithms in different scenarios.
 
-# Analysis of Bosco outputs for sorting algorithms in sorting.py
+# Analysis of utputs from sorting.py
 
 **sorting algorithm**: bubble_sort
 
@@ -188,10 +188,7 @@ Number of doubles to execute: 5
 │         8000 │     6.82943 │      6.88829 │        6.85718 │
 ╘══════════════╧═════════════╧══════════════╧════════════════╛
 ```
-Similar to bubble sort there was not a large distance between the best and worst case time results. They were all quite similar. The 
-expected worst case time complexity of this table is O(n²). The experimental results confirm the expected worst case time complexity. 
-The values are increasing exponentially. The starting times for the insertion sort function start smaller than the starting values 
-for the bubble sort function.
+Similar to bubble sort there was not a large distance between the best and worst case time results. They were all quite similar. The expected worst case time complexity of this table is O(n²). The experimental results confirm the expected worst case time complexity. The values are increasing exponentially. The starting times for the insertion sort function start smaller than the starting values for the bubble sort function.
 
 **sorting algorithm**: merge_sort
 
@@ -225,15 +222,9 @@ Number of doubles to execute: 5
 │         8000 │     0.13366 │      0.13735 │        0.13528 │
 ╘══════════════╧═════════════╧══════════════╧════════════════╛
 ```
-Merge sort started a whole decimal place smaller than both insertion sort and bubble sort. It also had a different worst case time 
-complexity. The worst case time complexity of merge sort was more logarithmic. And it's Big O(n) notation was O(n log(n)). Compared 
-to bubble sort and insertion sort the growth of this function was a bit slow. Which makes sense that it had shorter run times.
+Merge sort started a whole decimal place smaller than both insertion sort and bubble sort. It also had a different worst case time complexity. The worst case time complexity of merge sort was more logarithmic. And it's Big O(n) notation was O(n log(n)). Compared to bubble sort and insertion sort the growth of this function was a bit slow. Which makes sense that it had shorter run times.
 
-While bubble sort approxiamately had a value of 0.05 and insertion sort start at 0.02, merge sort started at approximately 0.005. 
-However the expected worst case time complexity was still O(n²) which was the same as both insertion sort and bubble sort. This shows 
-that although functions can have the same Big O(n) notation and expected worst case time complexity. The empirical results of running 
-the function can still vary a broad amount. So although a function might have a bad Big O(n) notation it is important to consider the 
-time differences that still exist between functions with the same Big O(n) notation.
+While bubble sort approxiamately had a value of 0.05 and insertion sort start at 0.02, merge sort started at approximately 0.005. However the expected worst case time complexity was still O(n²) which was the same as both insertion sort and bubble sort. This shows that although functions can have the same Big O(n) notation and expected worst case time complexity. The empirical results of running the function can still vary a broad amount. So although a function might have a bad Big O(n) notation it is important to consider the time differences that still exist between functions with the same Big O(n) notation.
 
 
 **sorting algorithm**: quick_sort
@@ -489,25 +480,10 @@ Number of doubles to execute: 5
 │         8000 │     7.18055 │      8.15643 │        7.63618 │
 ╘══════════════╧═════════════╧══════════════╧════════════════╛
 ```
-Bucket sort has a worse worst case time complexity than logarithmic. This is clear form the data because the data more than doubles 
-on every run, starting from the beginning. Between runs 1 and 2 the time jumps from 0.025 to 0.10. This is just over trippling in 
-time spent. This trend continues through out the rest of the function. The next jump that is made is from 0.10 to 0.44.
+Bucket sort has a worse worst case time complexity than logarithmic. This is clear form the data because the data more than doubles on every run, starting from the beginning. Between runs 1 and 2 the time jumps from 0.025 to 0.10. This is just over trippling in time spent. This trend continues through out the rest of the function. The next jump that is made is from 0.10 to 0.44.
 
 # Conclusion and Furture Work
+Overall, along with `bubble_sort` there are many other function that also show a worst case time complexity of O(n²). Not limited to, but including, selection sort and insertion sort. Bubble sort, selection sort, and insertion sort all had a estimated worst case time complexities of O(n²). While quick sort and merge sort had estimated worst case time complexities of O(n log(n)). These result were also corroborated by the "Doubling Experiment with O(n) Analysis" AllHands project and the "Simple sorting algorithm doubling experiment with worst-case time complexity analysis" AllHands project. The "Comparative analysis of sorting algorithms" also found those same results along with analyzing bucket sort which was also O(n²) and radix, heap, tim, and merge sort which were more logarithmic. Beyond some of these function there are many more functions in the `sorting.py` file. Furture work could consist of evaluating all those function more closely, along with adding others.
 
-Overall, along with `bubble_sort` there are many other function that also show a worst case time complexity of O(n²). Not limited to,
-but including, selection sort and insertion sort. Bubble sort, selection sort, and insertion sort all had a estimated worst case time
-complexities of O(n²). While quick sort and merge sort had estimated worst case time complexities of O(n log(n)). These result were
-also corroborated by the "Doubling Experiment with O(n) Analysis" AllHands project and the "Simple sorting algorithm doubling 
-experiment with worst-case time complexity analysis" AllHands project. The "Comparative analysis of sorting algorithms" also found 
-those same results along with analyzing bucket sort which was also O(n²) and radix, heap, tim, and merge sort which were more 
-logarithmic. Beyond some of these function there are many more functions in the `sorting.py` file. Furture work could consist of evaluating all those function more closely, along with adding others.
-
-In furthered testing it might be best to adjust the data type of the results. One way to possibly do this will be to use the timing 
-functions to adjust the amount of input before return the output to the user. For example, I could speceficy that I want every 
-funtion to reach a limit of 30 seconds before it returns. This could even be as simiple as implementing a while loop and break the 
-loop and return the already recieved result to the user. This could also be implemented through creating a try and expected and the 
-computer will try until it reaches a max amount of time and then there could be a function that would adjust the inputs of the list 
-passed in based on the amount of time it took to run. The computer would repeat this process until it determiend the necessary amount 
-of data to give the funtion based on it's previous run times, this way the doubling experiments would all be hittting their ceiling 
-and this would better allow us to compare results as algorithm engineers.
+In furthered testing it might be best to adjust the data type of the results. 
+One way to possibly do this will be to use the timing functions to adjust the amount of input before return the output to the user. For example, I could speceficy that I want every funtion to reach a limit of 30 seconds before it returns. This could even be as simiple as implementing a while loop and break the loop and return the already recieved result to the user. This could also be implemented through creating a try and expected and the computer will try until it reaches a max amount of time and then there could be a function that would adjust the inputs of the list passed in based on the amount of time it took to run. The computer would repeat this process until it determiend the necessary amount of data to give the funtion based on it's previous run times, this way the doubling experiments would all be hittting their ceiling and this would better allow us to compare results as algorithm engineers.
