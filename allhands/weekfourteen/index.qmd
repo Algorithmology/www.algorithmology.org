@@ -74,9 +74,11 @@ Number of doubles to execute: 5
 
 # Function Explanation
 
-In our code analysis, several functions stand out for their crucial roles in creating benchmarking experiments and assessing 
-algorithm performance. For example, the `generate_random_container` function generates randomized datasets essential for 
-benchmarking, it creates a list of integers within a specified range, enabling testing scenarios. 
+In our code analysis, several functions stand out for their crucial roles in
+creating benchmarking experiments and assessing algorithm performance. For
+example, the `generate_random_container` function generates randomized data sets
+essential for benchmarking, it creates a list of integers within a specified
+range, enabling testing scenarios. 
 
 ```python
 def generate_random_container(size: int) -> List[int]:
@@ -85,8 +87,10 @@ def generate_random_container(size: int) -> List[int]:
     return random_list
 ```
 
-Meanwhile, the `run_sorting_algorithm` function executes sorting algorithms and profiles their performance using the timeit package.
-With a call, it measures the execution time of sorting algorithms, providing valuable insights into their efficiency.
+Meanwhile, the `run_sorting_algorithm` function executes sorting algorithms and
+profiles their performance using the timeit package. With a call, it measures
+the execution time of sorting algorithms, providing valuable insights into their
+efficiency.
 
 ```python
 def run_sorting_algorithm(file_path: str, algorithm: str, array: List[int]) -> Tuple[float, float, float]:
@@ -113,8 +117,9 @@ def run_sorting_algorithm(file_path: str, algorithm: str, array: List[int]) -> T
     return min(times), max(times), sum(times) / len(times)
 ```
 
-The `bosco` function serves as the command-line interface for configuring benchmarking experiments. By specifying parameters like the
-starting size and number of doubles, users can tailor experiments to their needs. 
+The `bosco` function serves as the command-line interface for configuring
+benchmarking experiments. By specifying parameters like the starting size and
+number of doubles, users can tailor experiments to their needs. 
 
 ```python
 def bosco(starting_size: int = typer.Option(100), number_doubles: int = typer.Option(5),
@@ -122,15 +127,18 @@ def bosco(starting_size: int = typer.Option(100), number_doubles: int = typer.Op
     """Conduct a doubling experiment to measure the performance of list sorting for a specific algorithm."""
 ```
 
-Additionally, the `benchmark` module offers utilities for conducting doubling experiments, creating the performance evaluation. The 
-`sorting` module contains implementations of various sorting algorithms, such as bubble sort and merge sort, enabling comparative 
-analysis. Together, these functions allow for the efficiency of sorting algorithms in different scenarios.
+Additionally, the `benchmark` module offers utilities for conducting doubling
+experiments, creating the performance evaluation. The `sorting` module contains
+implementations of various sorting algorithms, such as bubble sort and merge
+sort, enabling comparative analysis. Together, these functions allow for the
+efficiency of sorting algorithms in different scenarios.
 
 # Analysis of outputs from sorting.py
 
-**sorting algorithm**: bubble_sort
+**sorting algorithm**: `bubble_sort`
 
-Command: `poetry run bosco --starting-size 500 --number-doubles 5 --file bosco/sorting.py --function-name bubble_sort`
+Command: `poetry run bosco --starting-size 500 --number-doubles 5 --file
+bosco/sorting.py --function-name bubble_sort`
 
 ```python
 🐶 Bosco is fetching our results!
@@ -152,15 +160,20 @@ Number of doubles to execute: 5
 │         4000 │     4.07717 │      4.13256 │        4.10616 │
 │         8000 │    18.14669 │     19.45909 │       18.70256 │
 ```
-The first funtion we evaluated from `sorting.py` was `bubble_sort`. The graph shows the best case the worst case and the average 
-case. Each line represents a different case. The average case is the case that will most accurately represent the expected worst case 
-time complexity. The best case, average case, and worst case lines all begin to divided from each other when the input size reaches 
-4000. It would be interesting to see waht factors impact where those lines begin to diverage from each other. Most likely this will 
-change based on the function. One possible avenue of further reasearch could be to look at were those lines diverage. We expected 
-that `bubble_sort` has a worst case time complexity of O(n²). The empirical results, which we see represented with a visual aid in 
-the graph confirm that the worst case time complexity is O(n²). 
 
-![bubble](bubble_sort.png)
+The first function we evaluated from `sorting.py` was `bubble_sort`. The graph
+shows the best case the worst case and the average case. Each line represents a
+different case. The average case is the case that will most accurately represent
+the expected worst case time complexity. The best case, average case, and worst
+case lines all begin to divided from each other when the input size reaches 
+4000. It would be interesting to see what factors impact where those lines begin
+      to diverge from each other. Most likely this will change based on the
+function. One possible avenue of further research could be to look at were those
+lines diverge. We expected that `bubble_sort` has a worst case time complexity
+of $O(n^2)$. The empirical results, which we see represented with a visual aid
+in the graph confirm that the worst case time complexity is $O(n^2)$. 
+
+![Experimental results from running the `bubble_sort` algorithm](bubble_sort.png)
 
 **sorting algorithm**: insertion_sort
 
