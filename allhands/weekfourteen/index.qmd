@@ -109,11 +109,13 @@ def bosco(starting_size: int = typer.Option(100), number_doubles: int = typer.Op
     """Conduct a doubling experiment to measure the performance of list sorting for a specific algorithm."""
 ```
 
-Additionally, the `benchmark` module offers utilities for conducting doubling experiments, creating the performance evaluation. The `sorting` module contains implementations of various sorting algorithms, such as bubble sort and merge sort, enabling comparative analysis. Together, these functions allow for the efficiency of sorting algorithms in different scenarios.
+Additionally, the `benchmark` module offers utilities for conducting doubling experiments, creating the performance evaluation. The 
+`sorting` module contains implementations of various sorting algorithms, such as bubble sort and merge sort, enabling comparative 
+analysis. Together, these functions allow for the efficiency of sorting algorithms in different scenarios.
 
 # Analysis of Bosco outputs for sorting algorithms in sorting.py
 
-Sorting algorithm: bubble_sort
+**sorting algorithm**: bubble_sort
 
 Command: `poetry run bosco --starting-size 500 --number-doubles 5 --file bosco/sorting.py --function-name bubble_sort`
 
@@ -145,11 +147,17 @@ Number of doubles to execute: 5
 │         8000 │    18.14669 │     19.45909 │       18.70256 │
 ╘══════════════╧═════════════╧══════════════╧════════════════╛
 ```
-The first funtion we evaluated from `sorting.py` was `bubble_sort`. The graph shows the best case the worst case and the average case. Each line represents a different case. The average case is the case that will most accurately represent the expected worst case time complexity. The best case, average case, and worst case lines all begin to divided from each other when the input size reaches 4000. It would be interesting to see waht factors impact where those lines begin to diverage from each other. Most likely this will change based on the function. One possible avenue of further reasearch could be to look at were those lines diverage. We expected that `bubble_sort` has a worst case time complexity of O(n²). The empirical results, which we see represented with a visual aid in the graph confirm that the worst case time complexity is O(n²). 
+The first funtion we evaluated from `sorting.py` was `bubble_sort`. The graph shows the best case the worst case and the average 
+case. Each line represents a different case. The average case is the case that will most accurately represent the expected worst case 
+time complexity. The best case, average case, and worst case lines all begin to divided from each other when the input size reaches 
+4000. It would be interesting to see waht factors impact where those lines begin to diverage from each other. Most likely this will 
+change based on the function. One possible avenue of further reasearch could be to look at were those lines diverage. We expected 
+that `bubble_sort` has a worst case time complexity of O(n²). The empirical results, which we see represented with a visual aid in 
+the graph confirm that the worst case time complexity is O(n²). 
 
-![screenshot](allhands/weekfourteen/Screenshot_from_2024-04-28 20-27-06.png)
+![screenshot](allhands/weekfourteen/bubble_sort.png)
 
-Sorting algorithm: insertion_sort
+**sorting algorithm**: insertion_sort
 
 Command: `poetry run bosco --starting-size 500 --number-doubles 5 --file bosco/sorting.py --function-name insertion_sort`
 
@@ -180,11 +188,14 @@ Number of doubles to execute: 5
 │         8000 │     6.82943 │      6.88829 │        6.85718 │
 ╘══════════════╧═════════════╧══════════════╧════════════════╛
 ```
-Similar to bubble sort there was not a large distance between the best and worst case time results. They were all quite similar. The expected worst case time complexity of this table is O(n²). The experimental results confirm the expected worst case time complexity. The values are increasing exponentially. The starting times for the insertion sort function start smaller than the starting values for the bubble sort function.
+Similar to bubble sort there was not a large distance between the best and worst case time results. They were all quite similar. The 
+expected worst case time complexity of this table is O(n²). The experimental results confirm the expected worst case time complexity. 
+The values are increasing exponentially. The starting times for the insertion sort function start smaller than the starting values 
+for the bubble sort function.
 
-Sorting algorithm: merge_sort
+**sorting algorithm**: merge_sort
 
-Command: poetry run bosco --starting-size 500 --number-doubles 5 --file bosco/sorting.py --function-name merge_sort
+Command: `poetry run bosco --starting-size 500 --number-doubles 5 --file bosco/sorting.py --function-name merge_sort`
 
 ```
 
@@ -214,14 +225,20 @@ Number of doubles to execute: 5
 │         8000 │     0.13366 │      0.13735 │        0.13528 │
 ╘══════════════╧═════════════╧══════════════╧════════════════╛
 ```
-Merge sort started a whole decimal place smaller than both insertion sort and bubble sort. It also had a different worst case time complexity. The worst case time complexity of merge sort was more logarithmic. And it's Big O(n) notation was O(n log(n)). Compared to bubble sort and insertion sort the growth of this function was a bit slow. Which makes sense that it had shorter run times.
+Merge sort started a whole decimal place smaller than both insertion sort and bubble sort. It also had a different worst case time 
+complexity. The worst case time complexity of merge sort was more logarithmic. And it's Big O(n) notation was O(n log(n)). Compared 
+to bubble sort and insertion sort the growth of this function was a bit slow. Which makes sense that it had shorter run times.
 
-While bubble sort approxiamately had a value of 0.05 and insertion sort start at 0.02, merge sort started at approximately 0.005. However the expected worst case time complexity was still O(n²) which was the same as both insertion sort and bubble sort. This shows that although functions can have the same Big O(n) notation and expected worst case time complexity. The empirical results of running the function can still vary a broad amount. So although a function might have a bad Big O(n) notation it is important to consider the time differences that still exist between functions with the same Big O(n) notation.
+While bubble sort approxiamately had a value of 0.05 and insertion sort start at 0.02, merge sort started at approximately 0.005. 
+However the expected worst case time complexity was still O(n²) which was the same as both insertion sort and bubble sort. This shows 
+that although functions can have the same Big O(n) notation and expected worst case time complexity. The empirical results of running 
+the function can still vary a broad amount. So although a function might have a bad Big O(n) notation it is important to consider the 
+time differences that still exist between functions with the same Big O(n) notation.
 
 
-Sorting algorithm: quick_sort
+**sorting algorithm**: quick_sort
 
-Command: poetry run bosco --starting-size 500 --number-doubles 5 --file bosco/sorting.py --function-name quick_sort
+Command: poetry `run bosco --starting-size 500 --number-doubles 5 --file bosco/sorting.py --function-name quick_sort`
 
 ```
 
@@ -251,11 +268,13 @@ Number of doubles to execute: 5
 │         8000 │     0.07017 │      0.07449 │        0.07220 │
 ╘══════════════╧═════════════╧══════════════╧════════════════╛
 ```
-In contrast to insertion sort and bubble sort and similarly to merge sort quick sort also had a O(n log(n)) expected worst case time complexity. Quick sort had a tinier run time than merge sort. It started at a value of 0.003 whereas merge sort started with a value of 0.005.  
+In contrast to insertion sort and bubble sort and similarly to merge sort quick sort also had a O(n log(n)) expected worst case time 
+complexity. Quick sort had a tinier run time than merge sort. It started at a value of 0.003 whereas merge sort started with a value 
+of 0.005.  
 
-Sorting algorithm: tim_sort
+**sorting algorithm**: tim_sort
 
-Command: poetry run bosco --starting-size 500 --number-doubles 5 --file bosco/sorting.py --function-name tim_sort
+Command: `poetry run bosco --starting-size 500 --number-doubles 5 --file bosco/sorting.py --function-name tim_sort`
 
 ```
 
@@ -285,11 +304,12 @@ Number of doubles to execute: 5
 │         8000 │     0.10955 │      0.11133 │        0.11039 │
 ╘══════════════╧═════════════╧══════════════╧════════════════╛
 ```
-Tim sort also had an expected worst case time complexity of O(n log(n)). The empirical results corroborate this. The data clearly shows that the results close to double every run. This shows that the worst case time complexity is indeed logarithmic. 
+Tim sort also had an expected worst case time complexity of O(n log(n)). The empirical results corroborate this. The data clearly 
+shows that the results close to double every run. This shows that the worst case time complexity is indeed logarithmic. 
 
-Sorting algorithm: selection_sort
+**sorting algorithm**: selection_sort
 
-Command: poetry run bosco --starting-size 500 --number-doubles 5 --file bosco/sorting.py --function-name selection_sort
+Command: `poetry run bosco --starting-size 500 --number-doubles 5 --file bosco/sorting.py --function-name selection_sort`
 
 ```
 
@@ -319,11 +339,14 @@ Number of doubles to execute: 5
 │         8000 │     7.01161 │      7.44163 │        7.19390 │
 ╘══════════════╧═════════════╧══════════════╧════════════════╛
 ```
-Thus far, selection sort also has one of the slower run times and shows that it doubles quite quickly, though not as quick as bubble sort. By the end of the 5th run the bubble sort program had a worst case run time of 18 seconds. Though selection sort wasn't as fast as merge sort or tim sort, neither was it as slow as bubble sort and it was 0.2 seconds away from insertion's sort worst case of 6.8. Selection sort also had a worst case time complexity of O(n²) and had timed results most similar to that of insertion sort. 
+Thus far, selection sort also has one of the slower run times and shows that it doubles quite quickly, though not as quick as bubble 
+sort. By the end of the 5th run the bubble sort program had a worst case run time of 18 seconds. Though selection sort wasn't as fast 
+as merge sort or tim sort, neither was it as slow as bubble sort and it was 0.2 seconds away from insertion's sort worst case of 6.8. 
+Selection sort also had a worst case time complexity of O(n²) and had timed results most similar to that of insertion sort. 
 
-Sorting algorithm: heap_sort
+**sorting algorithm**: heap_sort
 
-Command: poetry run bosco --starting-size 500 --number-doubles 5 --file bosco/sorting.py --function-name heap_sort
+Command: `poetry run bosco --starting-size 500 --number-doubles 5 --file bosco/sorting.py --function-name heap_sort`
 
 ```
 
@@ -353,11 +376,12 @@ Number of doubles to execute: 5
 │         8000 │     0.13563 │      0.13867 │        0.13718 │
 ╘══════════════╧═════════════╧══════════════╧════════════════╛
 ```
-Heap sort appears to be another logarithmic function. It results are close to doubling on every iteration of the douling experiment. As the input size doubles, we can see this functions results are also close to doubling though they are not exactly doubling.
+Heap sort appears to be another logarithmic function. It results are close to doubling on every iteration of the douling experiment. 
+As the input size doubles, we can see this functions results are also close to doubling though they are not exactly doubling.
 
-Sorting algorithm: shell_sort
+**sorting algorithm**: shell_sort
 
-Command: poetry run bosco --starting-size 500 --number-doubles 5 --file bosco/sorting.py --function-name shell_sort
+Command: `poetry run bosco --starting-size 500 --number-doubles 5 --file bosco/sorting.py --function-name shell_sort`
 
 ```
 
@@ -387,11 +411,16 @@ Number of doubles to execute: 5
 │         8000 │     0.10575 │      0.11186 │        0.10789 │
 ╘══════════════╧═════════════╧══════════════╧════════════════╛
 ```
-In addition to heap sort this also appears to be a logarithmic funtion. The results go from 0.004, to 0.008 almost a perfect double. Then from 0.008 to 0.020 which is pretty close to a double though it is a little more and a double. The next run goes from 0.02 to 0.04 which again is doubling. However, we see the difference between the fourth and the fifth run take a bigger spike. The number between these runs go from 0.04 to 0.11 which is almost trippling. This shows that it isn't linear though from the first four runs it might have been able to think that. The fourth to the fifth run indicate to us that this is more than linear, and this is where the logn part of the Big O(n) notation come into play.
+In addition to heap sort this also appears to be a logarithmic funtion. The results go from 0.004, to 0.008 almost a perfect double. 
+Then from 0.008 to 0.020 which is pretty close to a double though it is a little more and a double. The next run goes from 0.02 to 0. 
+04 which again is doubling. However, we see the difference between the fourth and the fifth run take a bigger spike. The number 
+between these runs go from 0.04 to 0.11 which is almost trippling. This shows that it isn't linear though from the first four runs it 
+might have been able to think that. The fourth to the fifth run indicate to us that this is more than linear, and this is where the 
+logn part of the Big O(n) notation come into play.
 
-Sorting algorithm: radix_sort
+**sorting algorithm**: radix_sort
 
-Command: poetry run bosco --starting-size 500 --number-doubles 5 --file bosco/sorting.py --function-name radix_sort
+Command: `poetry run bosco --starting-size 500 --number-doubles 5 --file bosco/sorting.py --function-name radix_sort`
 
 ```
 
@@ -421,11 +450,17 @@ Number of doubles to execute: 5
 │         8000 │     0.11634 │      0.12265 │        0.11910 │
 ╘══════════════╧═════════════╧══════════════╧════════════════╛
 ```
-Radix sort also appears linear for the first three runs. However, in contrast to shell sort radix sort begins to more than double between the third and fourth runs, whereas we saw this change in the shell sort function between runs four and five. Here, run three has a value of 0.024 and run four has a value of 0.059. This is more than doubled, though it is still under trippling. The next run from four to five appears much closer to a double. This inconsistency probably has to do with the small data sizes. In order to get more information it would be prudent to increase the input size and see how long it take before this sorting algorithm takes to long to calculate the next iteration of the function. Ways to do this will be disscuessed further in the furture works section of this article. 
+Radix sort also appears linear for the first three runs. However, in contrast to shell sort radix sort begins to more than double 
+between the third and fourth runs, whereas we saw this change in the shell sort function between runs four and five. Here, run three 
+has a value of 0.024 and run four has a value of 0.059. This is more than doubled, though it is still under trippling. The next run 
+from four to five appears much closer to a double. This inconsistency probably has to do with the small data sizes. In order to get 
+more information it would be prudent to increase the input size and see how long it take before this sorting algorithm takes to long 
+to calculate the next iteration of the function. Ways to do this will be disscuessed further in the furture works section of this 
+article. 
 
 Sorting algorithm: bucket_sortGraph:
 
-Command: poetry run bosco --starting-size 500 --number-doubles 5 --file bosco/sorting.py --function-name bucket_sort
+Command: `poetry run bosco --starting-size 500 --number-doubles 5 --file bosco/sorting.py --function-name bucket_sort`
 
 ```
 🐶 Bosco is fetching our results!
@@ -454,10 +489,25 @@ Number of doubles to execute: 5
 │         8000 │     7.18055 │      8.15643 │        7.63618 │
 ╘══════════════╧═════════════╧══════════════╧════════════════╛
 ```
-Bucket sort has a worse worst case time complexity than logarithmic. This is clear form the data because the data more than doubles on every run, starting from the beginning. Between runs 1 and 2 the time jumps from 0.025 to 0.10. This is just over trippling in time spent. This trend continues through out the rest of the function. The next jump that is made is from 0.10 to 0.44.
+Bucket sort has a worse worst case time complexity than logarithmic. This is clear form the data because the data more than doubles 
+on every run, starting from the beginning. Between runs 1 and 2 the time jumps from 0.025 to 0.10. This is just over trippling in 
+time spent. This trend continues through out the rest of the function. The next jump that is made is from 0.10 to 0.44.
 
 # Conclusion and Furture Work
-Overall, along with `bubble_sort` there are many other function that also show a worst case time complexity of O(n²). Not limited to, but including, selection sort and insertion sort. Bubble sort, selection sort, and insertion sort all had a estimated worst case time complexities of O(n²). While quick sort and merge sort had estimated worst case time complexities of O(n log(n)). These result were also corroborated by the "Doubling Experiment with O(n) Analysis" AllHands project and the "Simple sorting algorithm doubling experiment with worst-case time complexity analysis" AllHands project. The "Comparative analysis of sorting algorithms" also found those same results along with analyzing bucket sort which was also O(n²) and radix, heap, tim, and merge sort which were more logarithmic. Beyond some of these function there are many more functions in the `sorting.py` file. Furture work could consist of evaluating all those function more closely, along with adding others.
 
-In furthered testing it might be best to adjust the data type of the results. 
-One way to possibly do this will be to use the timing functions to adjust the amount of input before return the output to the user. For example, I could speceficy that I want every funtion to reach a limit of 30 seconds before it returns. This could even be as simiple as implementing a while loop and break the loop and return the already recieved result to the user. This could also be implemented through creating a try and expected and the computer will try until it reaches a max amount of time and then there could be a function that would adjust the inputs of the list passed in based on the amount of time it took to run. The computer would repeat this process until it determiend the necessary amount of data to give the funtion based on it's previous run times, this way the doubling experiments would all be hittting their ceiling and this would better allow us to compare results as algorithm engineers.
+Overall, along with `bubble_sort` there are many other function that also show a worst case time complexity of O(n²). Not limited to,
+but including, selection sort and insertion sort. Bubble sort, selection sort, and insertion sort all had a estimated worst case time
+complexities of O(n²). While quick sort and merge sort had estimated worst case time complexities of O(n log(n)). These result were
+also corroborated by the "Doubling Experiment with O(n) Analysis" AllHands project and the "Simple sorting algorithm doubling 
+experiment with worst-case time complexity analysis" AllHands project. The "Comparative analysis of sorting algorithms" also found 
+those same results along with analyzing bucket sort which was also O(n²) and radix, heap, tim, and merge sort which were more 
+logarithmic. Beyond some of these function there are many more functions in the `sorting.py` file. Furture work could consist of evaluating all those function more closely, along with adding others.
+
+In furthered testing it might be best to adjust the data type of the results. One way to possibly do this will be to use the timing 
+functions to adjust the amount of input before return the output to the user. For example, I could speceficy that I want every 
+funtion to reach a limit of 30 seconds before it returns. This could even be as simiple as implementing a while loop and break the 
+loop and return the already recieved result to the user. This could also be implemented through creating a try and expected and the 
+computer will try until it reaches a max amount of time and then there could be a function that would adjust the inputs of the list 
+passed in based on the amount of time it took to run. The computer would repeat this process until it determiend the necessary amount 
+of data to give the funtion based on it's previous run times, this way the doubling experiments would all be hittting their ceiling 
+and this would better allow us to compare results as algorithm engineers.
