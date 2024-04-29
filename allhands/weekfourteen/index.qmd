@@ -175,9 +175,10 @@ in the graph confirm that the worst case time complexity is $O(n^2)$.
 
 ![Experimental results from running the `bubble_sort` algorithm](bubble_sort.png)
 
-**sorting algorithm**: insertion_sort
+**sorting algorithm**: `insertion_sort`
 
-Command: `poetry run bosco --starting-size 500 --number-doubles 5 --file bosco/sorting.py --function-name insertion_sort`
+Command: `poetry run bosco --starting-size 500 --number-doubles 5 --file
+bosco/sorting.py --function-name insertion_sort`
 
 ```python
 🐶 Bosco is fetching our results!
@@ -199,11 +200,18 @@ Number of doubles to execute: 5
 │         4000 │     1.63956 │      1.67517 │        1.66051 │
 │         8000 │     6.82943 │      6.88829 │        6.85718 │
 ```
-Similar to bubble sort there was not a large distance between the best and worst case time results. They were all quite similar. The expected worst case time complexity of this table is O(n²). The experimental results confirm the expected worst case time complexity. The values are increasing exponentially. The starting times for the insertion sort function start smaller than the starting values for the bubble sort function.
+
+Similar to bubble sort there was not a large distance between the best and worst
+case time results. They were all quite similar. The expected worst case time
+complexity of this table is $O(n²)$. The experimental results confirm the
+expected worst case time complexity. The values are increasing exponentially.
+The starting times for the insertion sort function start smaller than the
+starting values for the bubble sort function.
 
 **sorting algorithm**: merge_sort
 
-Command: `poetry run bosco --starting-size 500 --number-doubles 5 --file bosco/sorting.py --function-name merge_sort`
+Command: `poetry run bosco --starting-size 500 --number-doubles 5 --file
+bosco/sorting.py --function-name merge_sort`
 
 ```python
 🐶 Bosco is fetching our results!
@@ -225,16 +233,29 @@ Number of doubles to execute: 5
 │         4000 │     0.06143 │      0.06447 │        0.06278 │
 │         8000 │     0.13366 │      0.13735 │        0.13528 │
 ```
-Merge sort started a whole decimal place smaller than both insertion sort and bubble sort. It also had a different worst case time complexity. The worst case time complexity of merge sort was more logarithmic. And it's Big O(n) notation was O(n log(n)). Compared to bubble sort and insertion sort the growth of this function was a bit slow. Which makes sense that it had shorter run times.
 
-While bubble sort approxiamately had a value of 0.05 and insertion sort start at 0.02, merge sort started at approximately 0.005. However the expected worst case time complexity was still O(n²) which was the same as both insertion sort and bubble sort. This shows that although functions can have the same Big O(n) notation and expected worst case time complexity. The empirical results of running the function can still vary a broad amount. So although a function might have a bad Big O(n) notation it is important to consider the time differences that still exist between functions with the same Big O(n) notation.
+Merge sort started a whole decimal place smaller than both insertion sort and
+bubble sort. It also had a different worst case time complexity. The worst case
+time complexity of merge sort was more logarithmic. And its worst-case time
+complexity was $O(n \times log_2(n))$. Compared to bubble sort and insertion sort the
+growth of this function was a bit slow. Which makes sense that it had shorter
+run times.
 
-![merge_sort](merge_sort.png)
+While bubble sort approximately had a value of $0.05$ and insertion sort start
+at $0.02$, merge sort started at approximately $0.005$. However the expected
+worst case time complexity was still $O(n^2)$ which was the same as both
+insertion sort and bubble sort. This shows that although functions can have the
+same big-O notation and expected worst case time complexity. The empirical
+results of running the function can still vary a broad amount. So although a
+function might have a bad Big O(n) notation it is important to consider the time
+differences that still exist between functions with the same Big O(n) notation.
 
+![Experimental results from running the `merge_sort` algorithm](merge_sort.png)
 
 **sorting algorithm**: quick_sort
 
-Command: poetry `run bosco --starting-size 500 --number-doubles 5 --file bosco/sorting.py --function-name quick_sort`
+Command: poetry `run bosco --starting-size 500 --number-doubles 5 --file
+bosco/sorting.py --function-name quick_sort`
 
 ```python
 🐶 Bosco is fetching our results!
