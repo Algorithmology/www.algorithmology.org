@@ -1,6 +1,6 @@
 ---
 author: [The Algorithmology Class]
-title: Bork Bork Bosco
+title: "Bosco: A tool for automatically conducting doubling experiments for list-based Python functions"
 page-layout: full
 categories: [post, average, matrix]
 date: "2024-04-29"
@@ -10,17 +10,22 @@ toc: true
 
 # Overview and Introduction
 
-[Introducing Bosco](https://github.com/Algorithmology/bosco): a versatile benchmarking framework designed to evaluate the performance
-of arbitrary list-processing algorithms through doubling experiments. The tool BOSCO stands for, Benchmarking
-of Sorting & Computational OperationsBosco automates the process of benchmarking by accepting Python source
-code files containing list-processing functions, fully-qualified function names for benchmarking, and input
-generation procedures. Leveraging Typer for a user-friendly command-line interface and Poetry for dependency
-management, Bosco streamlines the benchmarking process. Key features include automatic extraction and
-invocation of list-processing functions, generation of data sets fordoubling experiments, and computation of
-doubling ratios to infer worst-case time complexity. Diagnostic data, including execution times for each
-experiment round and inferred time complexities, are provided for comprehensive analysis. With Bosco, researchers
-and developers can efficiently assess the performance of list-processing algorithms, facilitating informed
-decision-making and optimization efforts.
+[Introducing Bosco](https://github.com/Algorithmology/bosco): a versatile
+benchmarking framework designed to evaluate the performance of arbitrary
+list-processing algorithms through doubling experiments. The tool's name,
+`bosco` stands for, Benchmarking of Sorting & Computational Operations. Bosco
+automates the process of benchmarking by accepting Python source code files
+containing list-processing functions, fully-qualified function names for
+benchmarking, and input generation procedures. Leveraging Typer for a
+user-friendly command-line interface and Poetry for dependency management, Bosco
+streamlines the benchmarking process. Key features include automatic extraction
+and invocation of list-processing functions, generation of data sets for doubling
+experiments, and computation of doubling ratios to infer worst-case time
+complexity. Diagnostic data, including execution times for each experiment round
+and inferred time complexities, are provided for comprehensive analysis. With
+Bosco, researchers and developers can efficiently assess the performance of
+list-processing algorithms, facilitating informed decision-making and
+optimization efforts.
 
 # Tool Use 
 
