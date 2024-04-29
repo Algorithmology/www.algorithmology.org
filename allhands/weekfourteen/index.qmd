@@ -226,6 +226,8 @@ Merge sort started a whole decimal place smaller than both insertion sort and bu
 
 While bubble sort approxiamately had a value of 0.05 and insertion sort start at 0.02, merge sort started at approximately 0.005. However the expected worst case time complexity was still O(n²) which was the same as both insertion sort and bubble sort. This shows that although functions can have the same Big O(n) notation and expected worst case time complexity. The empirical results of running the function can still vary a broad amount. So although a function might have a bad Big O(n) notation it is important to consider the time differences that still exist between functions with the same Big O(n) notation.
 
+![merge_sort](allhands/weekfourteen/merge_sort.png)
+
 
 **sorting algorithm**: quick_sort
 
@@ -263,6 +265,8 @@ In contrast to insertion sort and bubble sort and similarly to merge sort quick 
 complexity. Quick sort had a tinier run time than merge sort. It started at a value of 0.003 whereas merge sort started with a value 
 of 0.005.  
 
+![quick](allhands/weekfourteen/quick_sort.png)
+
 **sorting algorithm**: tim_sort
 
 Command: `poetry run bosco --starting-size 500 --number-doubles 5 --file bosco/sorting.py --function-name tim_sort`
@@ -297,6 +301,8 @@ Number of doubles to execute: 5
 ```
 Tim sort also had an expected worst case time complexity of O(n log(n)). The empirical results corroborate this. The data clearly 
 shows that the results close to double every run. This shows that the worst case time complexity is indeed logarithmic. 
+
+![tim](allhands/weekfourteen/tim_sort.png)
 
 **sorting algorithm**: selection_sort
 
@@ -335,6 +341,7 @@ sort. By the end of the 5th run the bubble sort program had a worst case run tim
 as merge sort or tim sort, neither was it as slow as bubble sort and it was 0.2 seconds away from insertion's sort worst case of 6.8. 
 Selection sort also had a worst case time complexity of O(n²) and had timed results most similar to that of insertion sort. 
 
+
 **sorting algorithm**: heap_sort
 
 Command: `poetry run bosco --starting-size 500 --number-doubles 5 --file bosco/sorting.py --function-name heap_sort`
@@ -369,6 +376,8 @@ Number of doubles to execute: 5
 ```
 Heap sort appears to be another logarithmic function. It results are close to doubling on every iteration of the douling experiment. 
 As the input size doubles, we can see this functions results are also close to doubling though they are not exactly doubling.
+
+![heap](allhands/weekfourteen/heap_sort.png)
 
 **sorting algorithm**: shell_sort
 
@@ -408,6 +417,8 @@ Then from 0.008 to 0.020 which is pretty close to a double though it is a little
 between these runs go from 0.04 to 0.11 which is almost trippling. This shows that it isn't linear though from the first four runs it 
 might have been able to think that. The fourth to the fifth run indicate to us that this is more than linear, and this is where the 
 logn part of the Big O(n) notation come into play.
+
+![shell](allhands/weekfourteen/shell_sort.png)
 
 **sorting algorithm**: radix_sort
 
@@ -449,6 +460,8 @@ more information it would be prudent to increase the input size and see how long
 to calculate the next iteration of the function. Ways to do this will be disscuessed further in the furture works section of this 
 article. 
 
+![radix](allhands/weekfourteen/radix_sort.png)
+
 Sorting algorithm: bucket_sortGraph:
 
 Command: `poetry run bosco --starting-size 500 --number-doubles 5 --file bosco/sorting.py --function-name bucket_sort`
@@ -481,6 +494,8 @@ Number of doubles to execute: 5
 ╘══════════════╧═════════════╧══════════════╧════════════════╛
 ```
 Bucket sort has a worse worst case time complexity than logarithmic. This is clear form the data because the data more than doubles on every run, starting from the beginning. Between runs 1 and 2 the time jumps from 0.025 to 0.10. This is just over trippling in time spent. This trend continues through out the rest of the function. The next jump that is made is from 0.10 to 0.44.
+
+![bucket](allhands/weekfourteen/bucket_sort.png)
 
 # Conclusion and Furture Work
 Overall, along with `bubble_sort` there are many other function that also show a worst case time complexity of O(n²). Not limited to, but including, selection sort and insertion sort. Bubble sort, selection sort, and insertion sort all had a estimated worst case time complexities of O(n²). While quick sort and merge sort had estimated worst case time complexities of O(n log(n)). These result were also corroborated by the "Doubling Experiment with O(n) Analysis" AllHands project and the "Simple sorting algorithm doubling experiment with worst-case time complexity analysis" AllHands project. The "Comparative analysis of sorting algorithms" also found those same results along with analyzing bucket sort which was also O(n²) and radix, heap, tim, and merge sort which were more logarithmic. Beyond some of these function there are many more functions in the `sorting.py` file. Furture work could consist of evaluating all those function more closely, along with adding others.
