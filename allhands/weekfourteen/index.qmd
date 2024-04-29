@@ -386,7 +386,7 @@ they are not exactly doubling.
 
 ![heap](heap_sort.png)
 
-**sorting algorithm**: shell_sort
+**sorting algorithm**: `shell_sort`
 
 Command: `poetry run bosco --starting-size 500 --number-doubles 5 --file bosco/sorting.py --function-name shell_sort`
 
@@ -410,12 +410,17 @@ Number of doubles to execute: 5
 │         4000 │     0.04701 │      0.04802 │        0.04757 │
 │         8000 │     0.10575 │      0.11186 │        0.10789 │
 ```
-In addition to heap sort this also appears to be a logarithmic funtion. The results go from 0.004, to 0.008 almost a perfect double. 
-Then from 0.008 to 0.020 which is pretty close to a double though it is a little more and a double. The next run goes from 0.02 to 0. 
-04 which again is doubling. However, we see the difference between the fourth and the fifth run take a bigger spike. The number 
-between these runs go from 0.04 to 0.11 which is almost trippling. This shows that it isn't linear though from the first four runs it 
-might have been able to think that. The fourth to the fifth run indicate to us that this is more than linear, and this is where the 
-logn part of the Big O(n) notation come into play.
+
+In addition to heap sort this also appears to be a logarithmic function. The
+results go from 0.004, to 0.008 almost a perfect double. Then from 0.008 to
+0.020 which is pretty close to a double though it is a little more and a double.
+The next run goes from 0.02 to 0. 04 which again is doubling. However, we see
+the difference between the fourth and the fifth run take a bigger spike. The
+number between these runs go from 0.04 to 0.11 which is almost tripling. This
+shows that it isn't linear though from the first four runs it might have been
+able to think that. The fourth to the fifth run indicate to us that this is more
+than linear, and this is where the logarithmic part of the big-O notation come
+into play.
 
 ![shell](shell_sort.png)
 
