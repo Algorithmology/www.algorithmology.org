@@ -147,7 +147,7 @@ change based on the function. One possible avenue of further reasearch could be 
 that `bubble_sort` has a worst case time complexity of O(n²). The empirical results, which we see represented with a visual aid in 
 the graph confirm that the worst case time complexity is O(n²). 
 
-![screenshot](allhands/weekfourteen/bubble_sort.png)
+![bubble](allhands/weekfourteen/bubble_sort.png)
 
 **sorting algorithm**: insertion_sort
 
