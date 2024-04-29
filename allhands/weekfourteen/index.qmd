@@ -491,48 +491,49 @@ Number of doubles to execute: 5
 ```
 
 Bucket sort has a worse worst case time complexity than logarithmic. This is
-clear form the data because the data more than doubles on every run, starting
-from the beginning. Between runs 1 and 2 the time jumps from 0.025 to 0.10. This
-is just over tripling in time spent. This trend continues through out the rest
-of the function. The next jump that is made is from 0.10 to 0.44.
+clear from the data because the data more than doubles on every run, starting
+from the beginning. Between runs $14$ and $2$ the time jumps from $0.025$ to
+$0.10$. This is just over tripling in time spent. This trend continues through
+out the rest of the function. The next jump that is made is from $0.10$ to
+$0.44$.
 
-![bucket](bucket_sort.png)
+![Experimental results from running the `bucket_sort` algorithm](bucket_sort.png)
 
 # Conclusion
 
 Overall, along with `bubble_sort` there are many other function that also show a
-worst case time complexity of O(n²). Not limited to, but including, selection
+worst case time complexity of $O(n^2)$. Not limited to, but including, selection
 sort and insertion sort. Bubble sort, selection sort, and insertion sort all had
-a estimated worst case time complexities of O(n²). While quick sort and merge
-sort had estimated worst case time complexities of O(n log(n)). These result
-were also corroborated by the "Doubling Experiment with O(n) Analysis" All-Hands
-project and the "Simple sorting algorithm doubling experiment with worst-case
-time complexity analysis" All-Hands project. The "Comparative analysis of
-sorting algorithms" also found those same results along with analyzing bucket
-sort which was also O(n²) and radix, heap, tim, and merge sort which were more
-logarithmic. Beyond some of these function there are many more functions in the
-`sorting.py` file. Future work could consist of evaluating all those function
-more closely, along with adding others.
+a estimated worst case time complexities of $O(n^2)$. While quick sort and merge
+sort had estimated worst case time complexities of $O(n \times log_2(n))$. These
+result were also corroborated by the "Doubling Experiment with O(n) Analysis"
+All-Hands project and the "Simple sorting algorithm doubling experiment with
+worst-case time complexity analysis" All-Hands project. The "Comparative
+analysis of sorting algorithms" also found those same results along with
+analyzing bucket sort which was also $O(n^2)$ and radix, heap, tim, and merge
+sort which were more logarithmic. Beyond some of these function there are many
+more functions in the `sorting.py` file. Future work could consist of evaluating
+all those function more closely, along with adding others.
 
 # Additional Future Work
 
-In furthered testing it might be best to adjust the data type of the results. We
-could make a function that would determine the sizes the runs should be based on
-the how long the function takes to run the above experiment. Then the computer
-would determine the number of runs the computer would make in order to get the
-most data possible. This would also help to push functions to their limits and
-so it would return the functions in their truly worst case and at their max
-limit.
+In further experimental studies it might be best to adjust the data type of the
+results. We could make a function that would determine the sizes the runs should
+be based on the how long the function takes to run the above experiment. Then
+the computer would determine the number of runs the computer would make in order
+to get the most data possible. This would also help to push functions to their
+limits and so it would return the functions in their truly worst case and at
+their max limit.
 
 One approach to implementing this is to use an `if` statement to check the time
 each run took. We could code it so that the run would continue until the float
 value holding the time reached the max time we set and then the runs would stop.
-For example, I could specificy that I want every funtion to reach a limit of 30
-seconds before it returns the runs. This could even be as simiple as
-implementing a while loop and break the loop and return the already recieved
-result to the user. Then there could be a function that would adjust the inputs
-of the list passed in based on the amount of time it took to run. The computer
-would repeat this process until it determiend the necessary amount of data to
-give the funtion based on it's previous run times, this way the doubling
-experiments would all be hittting their ceiling and this would better allow us
-to compare results as algorithm engineers.
+For example, I could specific that I want every function to reach a limit of 30
+seconds before it returns the runs. This could even be as simple as implementing
+a while loop and break the loop and return the already received result to the
+user. Then there could be a function that would adjust the inputs of the list
+passed in based on the amount of time it took to run. The computer would repeat
+this process until it determined the necessary amount of data to give the
+function based on it's previous run times, this way the doubling experiments
+would all be hitting their ceiling and this would better allow us to compare
+results as algorithm engineers.
