@@ -287,7 +287,7 @@ sort also had a $O(n \times log_2(n))$ expected worst case time complexity.
 Quick sort had a tinier run time than merge sort. It started at a value of $0.003$
 whereas merge sort started with a value of $0.005$.  
 
-![quick](quick_sort.png)
+![Experimental results from running the `quick_sort` algorithm](quick_sort.png)
 
 **sorting algorithm**: `tim_sort`
 
@@ -319,11 +319,12 @@ log_2(n))$. The empirical results corroborate this. The data clearly shows that
 the results close to double every run. This shows that the worst case time
 complexity is indeed linearithmic 
 
-![tim](tim_sort.png)
+![Experimental results from running the `tim_sort` algorithm](tim_sort.png)
 
 **sorting algorithm**: `selection_sort`
 
-Command: `poetry run bosco --starting-size 500 --number-doubles 5 --file bosco/sorting.py --function-name selection_sort`
+Command: `poetry run bosco --starting-size 500 --number-doubles 5 --file
+bosco/sorting.py --function-name selection_sort`
 
 ```python
 🐶 Bosco is fetching our results!
@@ -384,7 +385,7 @@ doubling on every iteration of the doubling experiment. As the input size
 doubles, we can see this functions results are also close to doubling though
 they are not exactly doubling.
 
-![heap](heap_sort.png)
+![Experimental results from running the `heap_sort` algorithm](heap_sort.png)
 
 **sorting algorithm**: `shell_sort`
 
