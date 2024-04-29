@@ -313,8 +313,11 @@ Number of doubles to execute: 5
 │         4000 │     0.04829 │      0.04948 │        0.04881 │
 │         8000 │     0.10955 │      0.11133 │        0.11039 │
 ```
-Tim sort also had an expected worst case time complexity of O(n log(n)). The empirical results corroborate this. The data clearly 
-shows that the results close to double every run. This shows that the worst case time complexity is indeed logarithmic. 
+
+Tim sort also had an expected worst case time complexity of $O(n \times
+log_2(n))$. The empirical results corroborate this. The data clearly shows that
+the results close to double every run. This shows that the worst case time
+complexity is indeed linearithmic 
 
 ![tim](tim_sort.png)
 
