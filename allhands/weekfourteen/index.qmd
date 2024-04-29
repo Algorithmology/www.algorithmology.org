@@ -29,18 +29,26 @@ optimization efforts.
 
 # Tool Use 
 
-To utilize the Bosco tool effectively, navigate to the main directory of your project and execute the tool using a command similar to
- `poetry run bosco --starting-size 100 --number-doubles 5 --file bosco/sorting.py --function-name bubble_sort`. This command
-initiates the benchmarking process with specified parameters: `--starting-size` determines the initial size of the dataset for the
-doubling experiment, `--number-doubles` defines how many times the input size will be doubled, `--file` specifies the path to the
- file containing the sorting algorithm to test, and `--function-name` indicates the name of the sorting function within the file.
+To utilize the Bosco tool effectively, navigate to the main directory of your
+project and execute the tool using a command similar to `poetry run bosco
+--starting-size 100 --number-doubles 5 --file bosco/sorting.py --function-name
+bubble_sort`. This command initiates the benchmarking process with specified
+parameters: `--starting-size` determines the initial size of the data set for the
+doubling experiment, `--number-doubles` defines how many times the input size
+will be doubled, `--file` specifies the path to the file containing the sorting
+algorithm to test, and `--function-name` indicates the name of the sorting
+function within the file.
 
-Once executed, Bosco fetches the results and displays them in a tabular format, showcasing the performance metrics for different
-input sizes and cases. The output includes the best case, worst case, and average case execution times for each input size during the
-doubling experiment. Additionally, Bosco generates a graphical representation of the performance data, aiding in visualizing the
-efficiency of the sorting algorithm under analysis. By following this workflow and interpreting the output, users can gain valuable
-insights into the computational efficiency of their sorting algorithms and make informed decisions about algorithm selection and
-optimization strategies. This is an example of the output:
+Once executed, Bosco fetches the results and displays them in a tabular format,
+showcasing the performance metrics for different input sizes and cases. The
+output includes the best case, worst case, and average case execution times for
+each input size during the doubling experiment. Additionally, Bosco generates a
+graphical representation of the performance data, aiding in visualizing the
+efficiency of the sorting algorithm under analysis. By following this workflow
+and interpreting the output, users can gain valuable insights into the
+computational efficiency of their sorting algorithms and make informed decisions
+about algorithm selection and optimization strategies. This is an example of the
+output:
 
 ```python
 🐶 Bosco is fetching our results!
