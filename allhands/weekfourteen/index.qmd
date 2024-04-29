@@ -489,7 +489,12 @@ Number of doubles to execute: 5
 │         4000 │     1.79721 │      1.83186 │        1.81489 │
 │         8000 │     7.18055 │      8.15643 │        7.63618 │
 ```
-Bucket sort has a worse worst case time complexity than logarithmic. This is clear form the data because the data more than doubles on every run, starting from the beginning. Between runs 1 and 2 the time jumps from 0.025 to 0.10. This is just over trippling in time spent. This trend continues through out the rest of the function. The next jump that is made is from 0.10 to 0.44.
+
+Bucket sort has a worse worst case time complexity than logarithmic. This is
+clear form the data because the data more than doubles on every run, starting
+from the beginning. Between runs 1 and 2 the time jumps from 0.025 to 0.10. This
+is just over tripling in time spent. This trend continues through out the rest
+of the function. The next jump that is made is from 0.10 to 0.44.
 
 ![bucket](bucket_sort.png)
 
