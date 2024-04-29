@@ -8,6 +8,10 @@ date-format: long
 toc: true
 ---
 
+<!-- TODO:  Many of the numerical values in this article do not have a unit of
+measurement. For instance, the data in the table does not have a unit of
+measurement and there are numbers in paragraphs without them as well. -->
+
 # Overview and Introduction
 
 [Introducing Bosco](https://github.com/Algorithmology/bosco): a versatile
@@ -277,9 +281,11 @@ Number of doubles to execute: 5
 │         4000 │     0.03622 │      0.03649 │        0.03637 │
 │         8000 │     0.07017 │      0.07449 │        0.07220 │
 ```
-In contrast to insertion sort and bubble sort and similarly to merge sort quick sort also had a O(n log(n)) expected worst case time 
-complexity. Quick sort had a tinier run time than merge sort. It started at a value of 0.003 whereas merge sort started with a value 
-of 0.005.  
+
+In contrast to insertion sort and bubble sort and similarly to merge sort quick
+sort also had a $O(n \times log_2(n))$ expected worst case time complexity.
+Quick sort had a tinier run time than merge sort. It started at a value of $0.003$
+whereas merge sort started with a value of $0.005$.  
 
 ![quick](quick_sort.png)
 
