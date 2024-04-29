@@ -463,7 +463,7 @@ this sorting algorithm takes to long to calculate the next iteration of the
 function. Ways to do this will be discussed further in the future work section
 of this article. 
 
-![radix](radix_sort.png)
+![Experiment results from running the `radix_sort` algorithm](radix_sort.png)
 
 Sorting algorithm: bucket_sortGraph:
 
