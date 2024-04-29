@@ -256,9 +256,9 @@ differences that still exist between functions with the same big-O notation.
 
 ![Experimental results from running the `merge_sort` algorithm](merge_sort.png)
 
-**sorting algorithm**: quick_sort
+**sorting algorithm**: `quick_sort`
 
-Command: poetry `run bosco --starting-size 500 --number-doubles 5 --file
+Command: `poetry run bosco --starting-size 500 --number-doubles 5 --file
 bosco/sorting.py --function-name quick_sort`
 
 ```python
