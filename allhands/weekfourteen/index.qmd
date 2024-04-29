@@ -345,11 +345,14 @@ Number of doubles to execute: 5
 │         4000 │     1.72169 │      1.73033 │        1.72708 │
 │         8000 │     7.01161 │      7.44163 │        7.19390 │
 ```
-Thus far, selection sort also has one of the slower run times and shows that it doubles quite quickly, though not as quick as bubble 
-sort. By the end of the 5th run the bubble sort program had a worst case run time of 18 seconds. Though selection sort wasn't as fast 
-as merge sort or tim sort, neither was it as slow as bubble sort and it was 0.2 seconds away from insertion's sort worst case of 6.8. 
-Selection sort also had a worst case time complexity of O(n²) and had timed results most similar to that of insertion sort. 
 
+Thus far, selection sort also has one of the slower run times and shows that it
+doubles quite quickly, though not as quick as bubble sort. By the end of the 5th
+run the bubble sort program had a worst case runtime of 18 seconds. Though
+selection sort wasn't as fast as merge sort or tim sort, neither was it as slow
+as bubble sort and it was 0.2 seconds away from insertion's sort worst case of
+6.8. Selection sort also had a worst case time complexity of $O(n^2)$ and had
+timed results most similar to that of insertion sort. 
 
 **sorting algorithm**: heap_sort
 
