@@ -515,7 +515,7 @@ sort which were more logarithmic. Beyond some of these function there are many
 more functions in the `sorting.py` file. Future work could consist of evaluating
 all those function more closely, along with adding others.
 
-# Additional Future Work
+# Future Work
 
 In further experimental studies it might be best to adjust the data type of the
 results. We could make a function that would determine the sizes the runs should
