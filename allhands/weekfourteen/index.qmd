@@ -450,13 +450,18 @@ Number of doubles to execute: 5
 │         4000 │     0.05889 │      0.06040 │        0.05962 │
 │         8000 │     0.11634 │      0.12265 │        0.11910 │
 ```
-Radix sort also appears linear for the first three runs. However, in contrast to shell sort radix sort begins to more than double 
-between the third and fourth runs, whereas we saw this change in the shell sort function between runs four and five. Here, run three 
-has a value of 0.024 and run four has a value of 0.059. This is more than doubled, though it is still under trippling. The next run 
-from four to five appears much closer to a double. This inconsistency probably has to do with the small data sizes. In order to get 
-more information it would be prudent to increase the input size and see how long it take before this sorting algorithm takes to long 
-to calculate the next iteration of the function. Ways to do this will be disscuessed further in the furture works section of this 
-article. 
+
+Radix sort also appears linear for the first three runs. However, in contrast to
+shell sort radix sort begins to more than double between the third and fourth
+runs, whereas we saw this change in the shell sort function between runs four
+and five. Here, run three has a value of 0.024 and run four has a value of
+0.059. This is more than doubled, though it is still under tripling. The next
+run from four to five appears much closer to a double. This inconsistency
+probably has to do with the small data sizes. In order to get more information
+it would be prudent to increase the input size and see how long it take before
+this sorting algorithm takes to long to calculate the next iteration of the
+function. Ways to do this will be discussed further in the future work section
+of this article. 
 
 ![radix](radix_sort.png)
 
