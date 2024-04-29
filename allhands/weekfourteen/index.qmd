@@ -423,11 +423,12 @@ able to think that. The fourth to the fifth run indicate to us that this is more
 than linear, and this is where the logarithmic part of the big-O notation come
 into play.
 
-![shell](shell_sort.png)
+![Experimental results from running the `shell_sort` algorithm](shell_sort.png)
 
 **sorting algorithm**: radix_sort
 
-Command: `poetry run bosco --starting-size 500 --number-doubles 5 --file bosco/sorting.py --function-name radix_sort`
+Command: `poetry run bosco --starting-size 500 --number-doubles 5 --file
+bosco/sorting.py --function-name radix_sort`
 
 ```python
 🐶 Bosco is fetching our results!
