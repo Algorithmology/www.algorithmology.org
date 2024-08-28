@@ -7,7 +7,7 @@ project:
     navigate: false
 
 website:
-  title: "{{< iconify uis microscope size=30px >}} &nbsp; Algorithmology"
+  title: ""
   search:
     location: navbar
   reader-mode: false
@@ -18,7 +18,9 @@ website:
   site-url: https://www.algorithmology.org/
   repo-url: https://github.com/Algorithmology/www.algorithmology.org
   navbar:
-    right:
+    left:
+      - href: index.qmd
+        text: Home
       - syllabus/index.qmd
       - schedule/index.qmd
       - slides/index.qmd
