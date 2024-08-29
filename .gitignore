@@ -142,6 +142,3 @@ _optimize
 ### Python Tools ###
 .mutmut-cache
 /.mutmut-cache/
-
-### Python Tools ###
-*.html
