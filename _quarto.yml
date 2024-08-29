@@ -46,6 +46,9 @@ format:
     theme: zephyr
     highlight-style: github
     css: css/styles.css
+    include-in-header:
+      # include in the header preconnect and theme-color
+      - file: _include/html/header-include.html
 
 execute:
   freeze: auto
