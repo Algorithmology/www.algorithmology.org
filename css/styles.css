@@ -45,6 +45,12 @@ body a:hover {
   background-size: 100%;
 }
 
+.navbar-toggler:focus,
+.navbar-toggler-icon:focus {
+  outline: none;
+  box-shadow: none;
+}
+
 .navbar .navbar-nav .nav-link.active {
   color: #fdfdff !important;
   box-shadow: 0 0 0 2px #fdfdff;
