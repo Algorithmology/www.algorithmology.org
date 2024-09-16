@@ -70,25 +70,25 @@ print(duplicates([1,2,6,3,4,5,6,7,8]))
 print(not duplicates([1,2,3,4]))
 ```
 
-Thought this site, the source code that appears in an top-most region of a page
-is available for use in later sections of the same page. For instance, the
+Throughout this site, the source code that appears in the top-most region of a
+page is available for use in later sections of the same page. For instance, the
 following code defines a new `timetrials` function that can be used to time the
 `duplicates` function in a doubling experiment. Wow, check it out! The output
 from running the following function will produce a data table that reveals that
 the likely worst-case time complexity of `duplicates` is $O(n^2)$. Are you
-wondering how the data shows that `duplicate` is $O(n^2)$? Well, you can use the
-data in the table to compute `0.23 / 0.05 = 4.6`, which suggests that as the
-input size doubles, the time more than quadruples. To learn more about this
+wondering how the data shows that `duplicate` is $O(n^2)$? Well, you can use
+the data in the table to compute `0.23 / 0.05 = 4.6`, which suggests that as
+the input size doubles, the time more than quadruples. To learn more about this
 topic, you can use the technical content in the course to learn how to analyze
 the time complexity of algorithms --- so check out the
 [schedule](schedule/index.qmd) and the [slides](slides/index.qmd) for more
 details!
 
 ```{python}
-from typing import Callable
+from typing import Callable, List
 import time
 
-def timetrials(function: Callable, n: int, trials: int = 10) -> List[float]:
+def timetrials(function: Callable, n: int, trials: int = 10) -> float:
     """Time a function with an input of size n for trials number of times."""
     totaltime = 0
     for _ in range(trials):
