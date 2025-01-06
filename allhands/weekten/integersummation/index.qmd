@@ -145,7 +145,7 @@ basic run time of the function is a lot slower compared to the second method.
 The time at the lowest input of `stop = 1000000` was on average 0.027588
 seconds compared to the second method was only 0.000001 seconds. 
 
-### Function One
+### Function Two
 
 ![Average Execution Time as a Function of the Input Size](./images/Screenshot%202024-03-21%20at%203.38.52%20PM.png)
 
