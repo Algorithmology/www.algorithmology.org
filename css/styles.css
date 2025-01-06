@@ -97,6 +97,18 @@ body a:hover {
   vertical-align: top;
 }
 
+.callout.callout-style-simple>div.callout-header {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 100%;
+}
+
+.callout .callout-title-container {
+  overflow-wrap: anywhere;
+  color: #212529 !important;
+}
+
 div.quarto-post a {
   color: #212529;
   text-decoration: none;
