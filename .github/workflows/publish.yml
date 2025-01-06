@@ -26,7 +26,7 @@ jobs:
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
         with:
-          version: 1.5.56
+          version: 1.6.39
       # Render and Publish the Site
       # Note that this uses Quarto to
       # directly publish the site, which
