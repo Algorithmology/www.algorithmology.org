@@ -97,6 +97,12 @@ body a:hover {
   vertical-align: top;
 }
 
+div.quarto-post a {
+  color: #212529;
+  text-decoration: none;
+  font-weight: 400;
+}
+
 .slide-deck {
   border: 3px solid #dee2e6;
   width: 100%;
