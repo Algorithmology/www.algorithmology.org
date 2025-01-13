@@ -79,8 +79,6 @@ listing:
     - **Time**: 9:00 AM -- 12:00 Noon
     - **Location**: Alden 109
 
-#### Algorithm Engineering Projects
-
 ### Weekly Cadence
 
 - {{< iconify fa6-solid people-line size=18px >}} **Tuesday and Thursday**:
@@ -103,8 +101,8 @@ Algorithm All-Hands Projects
     the second halves of Thursday's classroom session and Friday's laboratory
     session.
     - {{< iconify fa6-solid users-gear size=18px >}} **Phase One**: Building on
-    prior scientific and engineering content, prepare a research question and
-    design an experiment to answer it
+    the course's prior scientific and engineering content, prepare a research
+    question and design an experiment to answer it
         - **Goal**: *Scientific study in algorithmology*
           - Propose research question connect to current module
           - Specify evaluation metrics used to answer research question
@@ -120,7 +118,7 @@ Algorithm All-Hands Projects
           - Give an overview of the completed function(s)
           - Give a demonstration of a command-line tool using the function(s)
     - {{< iconify fa6-solid users-gear size=18px >}} **Phase Three**: Leveraging
-    prior work, release useful function(s)
+    prior work, answer the research question
         - **Goal**: *Effective communication in algorithmology*
           - Analyze and interpret the results
           - Create a web-based report to present and discuss the results
@@ -128,12 +126,15 @@ Algorithm All-Hands Projects
           - Present the report and participate in a discussion session
           - Provide thorough answer(s) to the chosen research question
 
-- {{< iconify fa6-solid diagram-project size=18px >}} **Friday**: Algorithm Engineering Project
-  - **Week One**: Design, implement, test, document, and maintain
+- {{< iconify fa6-solid diagram-project size=18px >}} **Friday**: Algorithm
+Engineering Project
+  - {{< iconify fa6-solid gear size=18px >}} **Week One**: Design, implement,
+  test, and document software tools
       - Data structure(s) and algorithm(s)
       - Benchmark evaluation framework
       - Data analysis and visualization tools
-  - **Week Two**: Design and conduct an experiment
+  - {{< iconify fa6-solid gear size=18px >}} **Week Two**: Design, conduct, and
+  report on an experiment
     - Demonstrate implementation of completed system
     - Document the experimental design
     - Pose research question(s)
@@ -142,3 +143,9 @@ Algorithm All-Hands Projects
     - Analyze and interpret the results
     - Draw conclusions and make recommendations
 
+- {{< iconify fa6-solid diagram-project size=18px >}} **Friday**: Skill-Checks
+and Executable Examinations
+  - {{< iconify fa6-solid gear size=18px >}} **Skill-Check**: Completed during
+  the last 45-minutes of the laboratory session
+  - {{< iconify fa6-solid gear size=18px >}} **Examination**: Completed during
+  the entire laboratory session
