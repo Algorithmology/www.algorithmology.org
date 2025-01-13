@@ -19,14 +19,15 @@ performance of algorithms, data structures, and systems in the `ds2` package of
 
 ## Activities
 
-- {{< iconify fa6-solid people-line size=18px >}} **Monday and Wednesday**:
+- {{< iconify fa6-solid people-line size=18px >}} **Tuesday and Thursday**:
 Analytical Evaluation
   - Further understand why program performance is critically important
   - Characterize performance patterns in Python programs
   - Use asymptotic analysis to characterize performance
   - Examine Python source code segments to illustrate key points
-- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Start new algorithm engineering project
-- {{< iconify game-icons team-idea size=18px >}} **Friday**: Review complexity class diagrams
+- {{< iconify fa6-solid diagram-project size=18px >}} **Friday**: Submit
+algorithm engineering project three, start algorithm engineering project four,
+and give presentations for the first algorithm all-hands session
 
 ## Project
 
@@ -37,9 +38,11 @@ study the performance of sorting different types of data stored in a CSV file.
 
 ### Steps
 
-- Use [File Sorting](https://github.com/Algorithmology/file-sorting-starter) as your template repository
-- Use  as your template repository
-- Install the project's dependencies using `devenv`
+- Click the link provided in Discord to get started on this project
+- Use {{< iconify fa6-brands github size=18px >}} [File
+Sorting](https://github.com/Algorithmology/file-sorting-starter) as your
+template repository
+- Install the project's dependencies using `devenv` and/or `poetry`
 - Follow the instructions to complete the project:
   - **Week 1**: Implement all of the modules in `filesorter`
   - **Week 2**: Design and conduct experiments and document experimental results
