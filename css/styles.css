@@ -98,10 +98,10 @@ body a:hover {
 }
 
 .callout.callout-style-simple>div.callout-header {
-    border-bottom: none;
-    font-size: .9rem;
-    font-weight: 600;
-    opacity: 100%;
+  border-bottom: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  opacity: 100%;
 }
 
 .callout .callout-title-container {
@@ -115,11 +115,49 @@ div.quarto-post a {
   font-weight: 400;
 }
 
-h3 > a,
-h4 > a {
+h3>a,
+h4>a {
   color: #343a40;
   text-decoration: none;
   font-weight: 600 !important;
+}
+
+div.sourceCode {
+  background-color: #fff;
+  border: none;
+  padding: none;
+}
+
+code {
+  background-color: #fff !important;
+  border: none;
+  padding: 0;
+}
+
+pre {
+  font-family: "IBM Plex Mono" !important;
+  overflow-x: auto !important;
+  white-space: pre-wrap !important;
+  white-space: -moz-pre-wrap !important;
+  white-space: -pre-wrap !important;
+  white-space: -o-pre-wrap !important;
+  word-wrap: break-word !important;
+  background-color: initial;
+  padding: initial;
+  border: initial;
+}
+
+pre.sourceCode {
+  border-left: 3px;
+  border-left-style: solid;
+  border-left-color: #3459e6;
+  padding: 0.5em;
+  margin-left: 0.25em;
+  border-right: 1px solid #dee2e6;
+  border-top: 1px solid #dee2e6;
+  border-bottom: 1px solid #dee2e6;
+  font-size: 0.875em;
+  overflow: visible !important;
 }
 
 .slide-deck {
