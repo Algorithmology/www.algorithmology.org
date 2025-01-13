@@ -25,10 +25,10 @@ software systems that contain them.
 ## Course Overview
 
 With the goal of enabling the growth of algorithm engineers, this web site
-features a sixteen-week schedule filled with activities that support the
-development of your professional and technical capacities in the field of
-algorithm analysis. Although this site is best used by an on-campus learner in
-the [Department of Computer and information
+features a [sixteen-week schedule](schedule/index.qmd) filled with activities
+that support the development of your professional and technical capacities in
+the field of algorithm analysis. Although this site is best used by an on-campus
+learner in the [Department of Computer and information
 Science](https://www.cs.allegheny.edu/) at [Allegheny
 College](https://www.allegheny.edu/), the resources and projects are all
 publicly available. For instance, this course leverages and extends the
