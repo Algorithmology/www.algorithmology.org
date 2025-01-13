@@ -131,8 +131,8 @@ the [Algorithmology Discord Server](https://discord.gg/phSQfB8bZx) and join the
 conversation! If you are an on-campus learning at Allegheny College, you may
 also join the [Allegheny College Computer Science Discord
 Server](https://discord.gg/CS2h9kXzX6). Finally, if you are an on-campus
-learner, then you may schedule a meeting with the course instructor during
-office hours by visiting the [Course Instructor's Appointment
+learner, you can schedule a meeting with the instructor during office hours by
+visiting the [Course Instructor's Appointment
 Scheduler](https://www.gregorykapfhammer.com/schedule/).
 
 :::
