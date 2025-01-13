@@ -19,35 +19,20 @@ you add debugging statements to trace how these algorithms work?
 - {{< iconify fa6-solid book size=18px >}} Read chapter 9 for a review of
 recursion and how it works in the Python language
 - {{< iconify fa6-solid robot size=18px >}} Design, implement, and test your own
-efficient implementation of the `lcs` function!
+efficient implementation of the `lcs` function! How would you measure this
+function's performance?
 
 ## Activities
 
-- {{< iconify fa6-solid people-line size=18px >}} **Monday and Wednesday**:
+- {{< iconify fa6-solid people-line size=18px >}} **Tuesday and Thursday**:
 Dynamic Programming
   - Explore how to implement recursive functions in Python
   - Investigate a new algorithmic paradigm called dynamic programming
   - Learn more about the longest common sub-sequence problem
   - Examine Python source code segments to illustrate key points
-- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Start new algorithm engineering project
-- {{< iconify game-icons team-idea size=18px >}} **Friday**: Present results from an algorithm all-hands project
-
-## Project
-
-### Goal
-
-To build and use a Python program, called `listconcatenator`, that runs benchmarks to
-study the performance of combining data into different types of `list`s
-
-### Steps
-
-- Use `listconcatenator` as your template repository
-- Install the project's dependencies using `devenv`
-- Follow the instructions to complete the project:
-  - **Week 1**: Implement all of the modules in `listconcatenator`
-  - **Week 2**: Design and conduct experiments and document experimental results
-- Schedule [office hours](https://www.gregorykapfhammer.com/schedule/) if you
-have questions
+- {{< iconify fa6-solid diagram-project size=18px >}} **Friday**: Continue
+algorithm engineering project five (see the [prior week](../weeknine/) for
+details about this project) and take algorithm engineering skill-check three
 
 ## Slides
 
