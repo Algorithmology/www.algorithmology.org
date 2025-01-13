@@ -83,13 +83,47 @@ listing:
 
 ### Weekly Cadence
 
-- {{< iconify fa6-solid people-line size=18px >}} **Monday and Wednesday**: Algorithm Analysis Exposition
+- {{< iconify fa6-solid people-line size=18px >}} **Tuesday and Thursday**:
+Algorithm Analysis Exposition
   - Introduction to scientific, technical, and engineering topics:
     - Data structures and algorithms
     - Performance evaluation techniques
     - Software engineering best practices
-    - Prepare for an algorithm engineering project
-- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Algorithm Engineering Project
+    - Prepare for these projects:
+      - Algorithm engineering project
+      - Algorithm all-hands project
+    - Prepare for these assessments:
+      - Midterm examination
+      - Final examination
+      - Skill-checks
+- {{< iconify game-icons team-idea size=18px >}} **Thursday and Friday**:
+Algorithm All-Hands Projects
+    - **Cadence**: Two weeks devoted to **task one**, two weeks for **task
+    two**, and finally one week for **task three**. Complete these tasks during
+    the second half of Thursday's classroom session and Friday's laboratory
+    session.
+    - {{< iconify fa6-solid users-gear size=18px >}} **Task One**: Leveraging
+    prior work, suggest a research question
+        - **Goal**: *Scientific study in algorithmology*
+        - **Tasks**:
+          - Proposed research question connect to current module
+          - Specify evaluation metrics used to answer research question
+          - Design and conduct an experiment to measure evaluation metrics
+    - **Task Two**: Leveraging prior work, release useful function(s)
+        - **Goal**: *Engineering effort in algorithmology*
+          - Identify useful function(s) for refinement
+          - Explain steps for improving the function(s)
+          - Create a pull request and follow it through review
+          - Give an overview of the completed function(s)
+          - Give a demonstration of a command-line tool using the function(s)
+    - **Task Three**: Leveraging prior work, release useful function(s)
+        - **Goal**: *Effective communication in algorithmology*
+          - Analyze and interpret the results
+          - Create a web-based slide deck to present the results
+          - Present the slides published to the course web site
+          - Explain answer(s) to the research question
+
+- {{< iconify fa6-solid diagram-project size=18px >}} **Friday**: Algorithm Engineering Project
   - **Week One**: Design, implement, test, document, and maintain
       - Data structure(s) and algorithm(s)
       - Benchmark evaluation framework
@@ -102,23 +136,4 @@ listing:
     - Conduct the experiment
     - Analyze and interpret the results
     - Draw conclusions and make recommendations
-- {{< iconify game-icons team-idea size=18px >}} **Friday**: Algorithm All-Hands Session
-    - **Cadence**: Two weeks devoted to **task one** and then two weeks for **task two**
-    - **Task One**: Leveraging prior work, suggest a research question
-        - **Goal**: *Scientific study in algorithmology*
-        - **Current Week**: Come to class with a proposed research question
-          - Design and conduct an experiment
-          - Analyze and interpret the results
-          - Create a web-based slide deck to present the results
-        - **Following Week**:
-          - Present the slides published to the course web site
-          - Explain answer(s) to the research question
-    - **Task Two**: Leveraging prior work, release useful function(s)
-        - **Goal**: *Engineering effort in algorithmology*
-        - **Current Week**: Come to class with a proposed function for implementation
-          - Identify useful function(s) for refinement
-          - Explain steps for improving the function(s)
-          - Create a pull request and follow it through review
-        - **Following Week**:
-          - Give an overview of the completed function(s)
-          - Give a demonstration of a command-line tool using the function(s)
+
