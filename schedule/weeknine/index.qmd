@@ -55,6 +55,23 @@ template repository
 - Schedule [office hours](https://www.gregorykapfhammer.com/schedule/) if you
 have questions
 
+::: {.callout-note appearance="minimal" title="Student Insights" collapse="false"}
+Students who completed this project shared these insights:
+
+- "Python allows for an easy way to create complex data structures through a
+user-friendly syntax. Because of Python's subtle overhead when calling multiple
+functions in a sequence, this overhead is greatly magnified when scaled on the
+order of `10e6` items or more. That said, using Python to perform doubling
+experiments is a quick way to quickly evaluate the effectiveness of data
+structures and algorithms." **Simon Jones**
+
+- "Implementing a robust benchmarking methodology can be challenging. You have
+to define the experimental setup, conduct multiple runs to account for
+variability, and analyze the results statistically to draw meaningful
+conclusions." **Vital Joseph**
+
+:::
+
 ## Slides
 
 ```{=html}
