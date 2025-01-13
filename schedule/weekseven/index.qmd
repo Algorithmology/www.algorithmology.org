@@ -1,7 +1,7 @@
 ---
 title: Stacks, Queues, and Deques
 description: "Explore Basic Abstract Data Types"
-date: 2024-02-24
+date: 2025-02-22
 layout: full
 toc: true
 toc-expand: 3

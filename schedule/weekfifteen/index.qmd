@@ -1,7 +1,7 @@
 ---
 title: Graph Structures
 description: "Create a Data Structure for Linked Data"
-date: 2024-04-22
+date: 2025-04-21
 layout: full
 toc: true
 toc-expand: 3

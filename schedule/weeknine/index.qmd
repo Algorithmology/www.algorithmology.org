@@ -1,7 +1,7 @@
 ---
 title: Linked and Doubly Linked Lists
 description: "Investigate List-Based Abstract Data Types"
-date: 2024-03-11
+date: 2025-03-10
 layout: full
 toc: true
 toc-expand: 3
