@@ -20,31 +20,40 @@ abstract data types in your own program?
 - {{< iconify fa6-solid book size=18px >}} Note that chapter 7 was also the
 focus of last week
 - {{< iconify fa6-solid robot size=18px >}} Design, implement, and test your own
-efficient implementation of the `Deque` using the `DoubleLinkedList`!
+efficient implementation of the `Deque` using the `DoubleLinkedList`! How would
+you measure this structure's performance?
 
 ## Activities
 
-- {{< iconify fa6-solid people-line size=18px >}} **Monday and Wednesday**:
+- {{< iconify fa6-solid people-line size=18px >}} **Tuesday and Thursday**:
 Linked Lists and Doubly Linked Lists
   - Deepen understanding of an abstract data type (ADT)
   - Understand implementation trade-offs for list-based structures
   - Use asymptotic analysis to characterize performance of an ADT
   - Examine Python source code segments to illustrate key points
-- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Mid-term executable examination
-- {{< iconify game-icons team-idea size=18px >}} **Friday**: Algorithm
-analysis from mid-term examination
+- {{< iconify fa6-solid diagram-project size=18px >}} **Friday**: Submit
+algorithm engineering project four and start algorithm engineering project five
+and review for the algorithm engineering skill-check next week
 
 ## Project
 
 ### Goal
 
-Complete an executable examination for the mid-term assessment that covers the
-content in Chapters one through five of [A First Course on Data Structures in
-Python](https://donsheehy.github.io/datastructures/). In the algorithm all-hands
-session following the examination, you will receive an additional assignment
-that invites you to write a retrospective in which you assess the design,
-implementation, and performance of one of the Python functions that you
-implemented as part of the examination.
+To build and use a Python program, called `listmutator`, that runs benchmarks to
+study the performance of combining data into different types of `list`s
+
+### Steps
+
+- Click the link provided in Discord to get started on this project
+- Use {{< iconify fa6-brands github size=18px >}} [List
+Mutation](https://github.com/Algorithmology/list-mutation-starter) as your
+template repository
+- Install the project's dependencies using `devenv` and/or `poetry`
+- Follow the instructions to complete the project:
+  - **Week 1**: Implement all of the modules in `listmutator`
+  - **Week 2**: Design and conduct experiments and document experimental results
+- Schedule [office hours](https://www.gregorykapfhammer.com/schedule/) if you
+have questions
 
 ## Slides
 
@@ -52,4 +61,5 @@ implemented as part of the examination.
 <iframe class="slide-deck" src="../../slides/weeknine/"></iframe>
 ```
 
-{{< iconify majesticons presentation-play size=18px >}} Full Screen: [Week Nine: Implementing List-Based Structures](../../slides/weeknine/)
+{{< iconify majesticons presentation-play size=18px >}} Full Screen: [Week Nine:
+Implementing List-Based Structures](../../slides/weeknine/)
