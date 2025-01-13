@@ -107,6 +107,7 @@ body a:hover {
 .callout .callout-title-container {
   overflow-wrap: anywhere;
   color: #212529 !important;
+  margin-bottom: 0.5rem;
 }
 
 div.quarto-post a {
