@@ -98,30 +98,35 @@ Algorithm Analysis Exposition
       - Skill-checks
 - {{< iconify game-icons team-idea size=18px >}} **Thursday and Friday**:
 Algorithm All-Hands Projects
-    - **Cadence**: Two weeks devoted to **task one**, two weeks for **task
-    two**, and finally one week for **task three**. Complete these tasks during
-    the second half of Thursday's classroom session and Friday's laboratory
+    - **Cadence**: Two weeks devoted to **phase one**, two weeks for **phase
+    two**, and finally one week for **phase three**. Complete these tasks during
+    the second halves of Thursday's classroom session and Friday's laboratory
     session.
-    - {{< iconify fa6-solid users-gear size=18px >}} **Task One**: Leveraging
-    prior work, suggest a research question
+    - {{< iconify fa6-solid users-gear size=18px >}} **Phase One**: Building on
+    prior scientific and engineering content, prepare a research question and
+    design an experiment to answer it
         - **Goal**: *Scientific study in algorithmology*
-        - **Tasks**:
-          - Proposed research question connect to current module
+          - Propose research question connect to current module
           - Specify evaluation metrics used to answer research question
-          - Design and conduct an experiment to measure evaluation metrics
-    - **Task Two**: Leveraging prior work, release useful function(s)
+          - Design an experiment to measure evaluation metrics
+          - Assign tasks for the remaining phases of the project
+    - {{< iconify fa6-solid users-gear size=18px >}} **Phase Two**: Leveraging
+    prior work, implement all needed software tools and apply them when
+    conducting the experiment designed in the prior phase
         - **Goal**: *Engineering effort in algorithmology*
           - Identify useful function(s) for refinement
           - Explain steps for improving the function(s)
           - Create a pull request and follow it through review
           - Give an overview of the completed function(s)
           - Give a demonstration of a command-line tool using the function(s)
-    - **Task Three**: Leveraging prior work, release useful function(s)
+    - {{< iconify fa6-solid users-gear size=18px >}} **Phase Three**: Leveraging
+    prior work, release useful function(s)
         - **Goal**: *Effective communication in algorithmology*
           - Analyze and interpret the results
-          - Create a web-based slide deck to present the results
-          - Present the slides published to the course web site
-          - Explain answer(s) to the research question
+          - Create a web-based report to present and discuss the results
+          - Collaboratively publish the report to the course web site
+          - Present the report and participate in a discussion session
+          - Provide thorough answer(s) to the chosen research question
 
 - {{< iconify fa6-solid diagram-project size=18px >}} **Friday**: Algorithm Engineering Project
   - **Week One**: Design, implement, test, document, and maintain
