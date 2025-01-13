@@ -1,7 +1,7 @@
 ---
 title: Object-Oriented Programming
 description: "Understand Basics of Object-Oriented Programming"
-date: 2024-01-29
+date: 2025-01-27
 layout: full
 toc: true
 toc-expand: 3
@@ -17,7 +17,7 @@ of [donsheehy/datastructures](https://github.com/donsheehy/datastructures)
 
 ## Activities
 
-- {{< iconify fa6-solid people-line size=18px >}} **Monday and Wednesday**:
+- {{< iconify fa6-solid people-line size=18px >}} **Tuesday and Thursday**:
 Object-oriented programming
   - Review the goals of object-oriented programming
   - Review the principles of object-oriented programming
@@ -26,27 +26,10 @@ Object-oriented programming
     - Encapsulation
     - Polymorphism
   - Examine source code segments to illustrate trade-offs
-- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Continue algorithm engineering project
-- {{< iconify game-icons team-idea size=18px >}} **Friday**: Continue the algorithm engineering project
-
-## Project
-
-### Goal
-
-To build and use a Python program, called `containmentchecking`, that runs
-benchmarks to measure the performance of `in` for `list`, `tuple`, and `set`,
-thereby enabling software engineers to pick the fastest collection for their
-program.
-
-### Steps
-
-- Use [Containment Checking](https://github.com/Algorithmology/containment-checking-starter) as your template repository
-- Install the project's dependencies using `devenv`
-- Follow the instructions to complete the project:
-  - **Week 1**: Implement all of the modules in `containmentchecking`
-  - **Week 2**: Design and conduct experiments and document experimental results
-- Schedule [office hours](https://www.gregorykapfhammer.com/schedule/) if you
-have questions
+  - Conduct experiments to measure performance of object-orientation
+- {{< iconify fa6-solid diagram-project size=18px >}} **Friday**: Continue
+algorithm engineering project two (see the [prior week](../weektwo/) for
+details about this project)
 
 ## Slides
 

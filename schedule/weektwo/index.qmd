@@ -27,8 +27,9 @@ Course introduction
   - Consider different ways to create collections in Python
   - Measure the performance trade-offs of Python's collections
 - {{< iconify fa6-solid diagram-project size=18px >}} **Friday**: Submit
-algorithm engineering project one and start algorithm engineering project two
-(note that the first project requires only one week of work)
+algorithm engineering project one, start algorithm engineering project two
+(note that the first project requires only one week of work), and take the first
+algorithm engineering skill-check in the second half of the laboratory session
 
 ## Project
 
