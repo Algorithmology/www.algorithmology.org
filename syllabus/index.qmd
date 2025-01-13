@@ -204,13 +204,9 @@ computer to take these tests on the scheduled date and to complete it in the
 stated location while taking no more than the required amount of time. The
 midterm is an executable examination that students will complete through the use
 of GitHub, VS Code, and the Python programming tools installed on their laptops.
-Following the completion of the midterm examination during a laboratory session,
-students will, during algorithm all-hands sessions, collaboratively complete and
-present an analytical and empirical evaluation of the performance of one
-component of their examination. Students may use external sources, including
-artificial intelligence coding assistants, during the completion of the midterm
-examination provided that they cite these sources and explain how they used them
-to complete the examination.
+Students may use external sources, including artificial intelligence coding
+assistants, during the completion of the midterm examination provided that they
+cite these sources and explain how they used them to complete the examination.
 
 - **Final Examination**: The final examination is an online, executable,
 cumulative assessment covering all of the material during all of the course
