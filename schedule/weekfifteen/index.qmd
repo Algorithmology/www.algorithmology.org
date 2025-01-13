@@ -21,32 +21,14 @@ structure.
 
 ## Activities
 
-- {{< iconify fa6-solid people-line size=18px >}} **Monday and Wednesday**:
+- {{< iconify fa6-solid people-line size=18px >}} **Tuesday and Thursday**:
 Graph Structures
   - Explore how to implement the `Graph` and `Digraph` data structures
   - Understand the adjacency list and adjacency matrix representations
   - Examine Python source code segments to illustrate key points
-- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Continue an
-algorithm engineering project
-- {{< iconify game-icons team-idea size=18px >}} **Friday**: Team-work on final
-algorithm all-hands projects
-
-## Project
-
-### Goal
-
-To build and use a Python program, called `treesearcher`, that runs benchmarks to
-study the performance of finding data values in a hierarchical data structure.
-
-### Steps
-
-- Use `treesearcher` as your template repository
-- Install the project's dependencies using `devenv`
-- Follow the instructions to complete the project:
-  - **Week 1**: Implement all of the modules in `treesearcher`
-  - **Week 2**: Design and conduct experiments and document experimental results
-- Schedule [office hours](https://www.gregorykapfhammer.com/schedule/) if you
-have questions
+- {{< iconify fa6-solid diagram-project size=18px >}} **Friday**: Continue
+algorithm engineering project seven (see the [prior week](../weekfourteen/) for
+details about this project) and take algorithm engineering skill-check four
 
 ## Slides
 
