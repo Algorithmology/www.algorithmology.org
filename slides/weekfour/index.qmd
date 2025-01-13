@@ -2,7 +2,7 @@
 title: "Software Testing"
 echo: true
 description: "How do you establish a confidence in the correctness of a Python program?"
-date: "2024-02-05"
+date: "2025-02-03"
 date-format: long
 author: Gregory M. Kapfhammer
 format:

@@ -2,7 +2,7 @@
 title: "Implementing Linked-Based Data Structures"
 echo: true
 description: "How do you design and implement linked-based data structures in Python?"
-date: "2024-03-11"
+date: "2025-03-10"
 date-format: long
 author: Gregory M. Kapfhammer
 execute:

@@ -2,7 +2,7 @@
 title: "Graph Structures"
 echo: true
 description: "How do you represent and process graph structured data?"
-date: "2024-04-22"
+date: "2025-04-21"
 date-format: long
 author: Gregory M. Kapfhammer
 execute:

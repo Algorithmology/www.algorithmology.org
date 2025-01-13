@@ -2,7 +2,7 @@
 title: "Hash Tables"
 echo: true
 description: "How do you effectively map data to a backing list?"
-date: "2024-04-01"
+date: "2025-03-31"
 date-format: long
 author: Gregory M. Kapfhammer
 execute:

@@ -2,7 +2,7 @@
 title: "Running Time Analysis through Analytical Evaluation"
 echo: true
 description: "How do you use proofs to measure the performance of a Python program?"
-date: "2024-02-19"
+date: "2025-02-17"
 date-format: long
 author: Gregory M. Kapfhammer
 execute:

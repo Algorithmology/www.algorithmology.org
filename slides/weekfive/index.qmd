@@ -2,7 +2,7 @@
 title: "Runtime Analysis through Experimental Evaluation"
 echo: true
 description: "How do you use experiments to measure the performance of a Python program?"
-date: "2024-02-12"
+date: "2025-02-10"
 date-format: long
 author: Gregory M. Kapfhammer
 execute:

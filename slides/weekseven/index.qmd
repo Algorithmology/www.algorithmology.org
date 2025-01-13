@@ -2,7 +2,7 @@
 title: "Implementing Stacks, Queues, and Deques"
 echo: true
 description: "How do you implement efficient stacks and queues in Python?"
-date: "2024-02-26"
+date: "2025-02-24"
 date-format: long
 author: Gregory M. Kapfhammer
 execute:
