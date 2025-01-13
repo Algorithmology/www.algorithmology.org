@@ -52,6 +52,23 @@ repository
 - Schedule [office hours](https://www.gregorykapfhammer.com/schedule/) if you
 have questions
 
+::: {.callout-note appearance="minimal" title="Student Insights" collapse="false"}
+Students who completed this project shared these insights:
+
+- "A key takeaway is that while a simple recursive implementation may seem
+straightforward, it can lead to inefficient code with poor time complexity."
+**Alish Chhetri**
+
+- "In this project we learned about finding the longest common subsequence
+(LCS). We evaluated our algorithm's performance by running a doubling
+experiment. We explored a dynamic function and a recursive function, along with
+a third that simply calculated the length of the computed LCS. Finally, we
+compared the pros and cons of these different methods, revealing some surprising
+results!" **Rebekah Rudd**
+
+:::
+
+
 ## Slides
 
 ```{=html}
