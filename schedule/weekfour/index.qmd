@@ -17,14 +17,16 @@ of [donsheehy/datastructures](https://github.com/donsheehy/datastructures/)
 
 ## Activities
 
-- {{< iconify fa6-solid people-line size=18px >}} **Monday and Wednesday**:
+- {{< iconify fa6-solid people-line size=18px >}} **Tuesday and Thursday**:
 Software Testing
   - Understand why algorithm engineers must test Python programs
   - Explore the benefits and limitations of testing
-  - Investigate different approaches to testing
+  - Investigate different approaches to software testing
   - Examine source code segments to illustrate trade-offs
-- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Start new algorithm engineering project
-- {{< iconify game-icons team-idea size=18px >}} **Friday**: Project work during algorithm all-hands session
+- {{< iconify fa6-solid diagram-project size=18px >}} **Friday**: Submit
+algorithm engineering project two, start algorithm engineering project three,
+and take the first algorithm engineering skill-check in the second half of the
+laboratory session
 
 ## Project
 
@@ -38,12 +40,27 @@ value in an object's attributes.
 ### Steps
 
 - Use [Object Processing](https://github.com/Algorithmology/object-processing-starter) as your template repository
-- Install the project's dependencies using `devenv`
+- Install the project's dependencies using `devenv` and/or `poetry`
 - Follow the instructions to complete the project:
   - **Week 1**: Implement all of the modules in `objectprocessing`
   - **Week 2**: Design, conduct, and document experimental results
 - Schedule [office hours](https://www.gregorykapfhammer.com/schedule/) if you
 have questions
+
+::: {.callout-note appearance="minimal" title="Student Insights" collapse="false"}
+Students who completed this project shared these insights:
+
+- "Object processing can be a challenging task! But it is useful when
+determining overheads for how fast a different search approaches are going to be
+in Python. It allows us to manipulate different variables of the approach to
+determine the fastest way to search through a database." **Keller Liptrap**
+
+- "This experiment taught me how to properly organize and search through large
+data files using an object-oriented approach. This project taught me how
+efficient these systems can be when handling larger data sets." **Sabrina
+Rodriguez**
+
+:::
 
 ## Slides
 
