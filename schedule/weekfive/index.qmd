@@ -15,38 +15,21 @@ Python](https://donsheehy.github.io/datastructures/)
 - {{< iconify fa6-brands github size=18px >}} Experimentally evaluate
 performance of algorithms, data structures, and systems in the `ds2` package of
 [donsheehy/datastructures](https://github.com/donsheehy/datastructures/)
-- {{< iconify fa6-solid book size=18px >}} Note that next week's focus will also be on running time analysis!
+- {{< iconify fa6-solid book size=18px >}} Note that next week's focus will be
+on running time analysis, which is a related concept!
 
 ## Activities
 
-- {{< iconify fa6-solid people-line size=18px >}} **Monday and Wednesday**:
+- {{< iconify fa6-solid people-line size=18px >}} **Tuesday and Thursday**:
 Empirical Evaluation
   - Understand why program performance is critically important
   - Characterize performance patterns in Python programs
   - Use experimentation to characterize performance trade-offs
   - Prepare for using asymptotic analysis to characterize performance
   - Examine source code segments to illustrate key points
-- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Continue algorithm engineering project
-- {{< iconify game-icons team-idea size=18px >}} **Friday**: Presentations during algorithm all-hands session
-
-## Project
-
-### Goal
-
-To build and use a Python program, called `objectprocessing`, that runs
-benchmarks to study the performance of storing and searching for objects using
-three different ways for determining whether or not a search term matches the
-value in an object's attributes.
-
-### Steps
-
-- Use [Object Processing](https://github.com/Algorithmology/object-processing-starter) as your template repository
-- Install the project's dependencies using `devenv`
-- Follow the instructions to complete the project:
-  - **Week 1**: Implement all of the modules in `objectprocessing`
-  - **Week 2**: Design and conduct experiments and document experimental results
-- Schedule [office hours](https://www.gregorykapfhammer.com/schedule/) if you
-have questions
+- {{< iconify fa6-solid diagram-project size=18px >}} **Friday**: Continue
+algorithm engineering project two (see the [prior week](../weekfour/) for
+details about this project)
 
 ## Slides
 
