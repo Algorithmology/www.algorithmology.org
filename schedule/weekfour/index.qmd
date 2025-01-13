@@ -54,7 +54,7 @@ have questions
 Students who completed this project shared these insights:
 
 - "Object processing can be a challenging task! But it is useful when
-determining overheads for how fast a different search approaches are going to be
+determining overheads for how fast different search approaches are going to be
 in Python. It allows us to manipulate different variables of the approach to
 determine the fastest way to search through a database." **Keller Liptrap**
 
