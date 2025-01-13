@@ -16,7 +16,7 @@ Python](https://donsheehy.github.io/datastructures/)
 performance of algorithms, data structures, and systems in the `ds2` package of
 [donsheehy/datastructures](https://github.com/donsheehy/datastructures/)
 - {{< iconify fa6-solid book size=18px >}} Note that next week's focus will be
-on running time analysis, which is a related concept!
+on running time analysis, which is a related concept in algorithm analysis!
 
 ## Activities
 
