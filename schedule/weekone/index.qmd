@@ -17,11 +17,13 @@ Python](https://donsheehy.github.io/datastructures/)
 
 ## Activities
 
-- {{< iconify fa6-solid people-line size=18px >}} **Tuesday and Thursday**: Course introduction
+- {{< iconify fa6-solid people-line size=18px >}} **Tuesday and Thursday**:
+Course introduction
   - Introduction to algorithm engineering
   - Overview of a course on algorithm analysis
   - Prepare for an algorithm engineering project
-- {{< iconify fa6-solid diagram-project size=18px >}} **Friday**: Algorithm engineering project
+- {{< iconify fa6-solid diagram-project size=18px >}} **Friday**: Algorithm
+engineering project one
 
 ## Project
 
@@ -42,8 +44,6 @@ template repository
 - Follow the instructions to complete the project
 - Schedule [office hours](https://www.gregorykapfhammer.com/schedule/) if you
 have questions
-
-### Insights
 
 ::: {.callout-note appearance="minimal" title="Student Insights" collapse="false"}
 
