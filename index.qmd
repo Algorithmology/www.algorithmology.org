@@ -35,7 +35,7 @@ publicly available. For instance, this course leverages and extends the
 open-access course textbook called [A First Course on Data Structures in
 Python](https://github.com/donsheehy/datastructures). You can access all of the
 source code and technical content for this book by checking out its GitHub
-repository and following along with the [schedule](schedule/index.qmd) and the
+repositories and following along with the [schedule](schedule/index.qmd) and the
 [slides](slides/index.qmd) for this course, as found on this site.
 
 ## Wow, Python Source Code ... and its Output!
