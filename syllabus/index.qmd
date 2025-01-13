@@ -177,10 +177,10 @@ percentages during the academic semester.
 |------------------------------------|------------|
 | Class Participation                |   5%       |
 | Midterm Examinations               |  20%       |
-| Final Examination                  |  15%       |
+| Final Examination                  |  10%       |
 | Algorithm All-Hands Projects       |  15%       |
 | Algorithm Engineering Projects     |  30%       |
-| Algorithm Engineering Skill-Checks |  15%       |
+| Algorithm Engineering Skill-Checks |  20%       |
 
 These assessment categories have the following definitions:
 
@@ -225,20 +225,22 @@ intelligence coding assistants, during the completion of the final examination
 provided that they cite these sources and explain how they used them to complete
 the examination.
 
-- **Algorithm All-Hands**: These projects enable students to explore both the
-scientific and engineering aspects of algorithm analysis, as outlined in the
-[course schedule](../schedule/index.qmd). During the completion of a
-*scientific study* in the field of algorithm analysis, students will complete
-and present a team-based project in which they propose and then answer a
-research question about the performance of a Python program. When completing an
-*engineering effort* in the field of algorithm analysis, students will build
-and present a team-based project in which they design, implement, document,
-release, and maintain software tools that support the rigorous evaluation of
-the performance (e.g., time or space overhead) of a Python program. Students
-may use external sources, including artificial intelligence coding assistants,
-during the completion of an algorithm all-hands project provided that they cite
-these sources and explain how they used them to complete their part(s) of an
-algorithm all-hands project.
+- **Algorithm All-Hands Projects**: These projects enable students to explore
+both the scientific and engineering aspects of algorithm analysis, as outlined
+in the [course schedule](../schedule/index.qmd). During the completion of a
+*scientific study* phase of algorithm analysis, students will work in a team to
+propose an original research question and design an experiment to answer it.
+When completing an *engineering effort* phase of algorithm analysis, students
+work in a team as they design, implement, document, test, and maintain software
+tools that support the rigorous evaluation of the performance (e.g., time or
+space overhead) of a Python program. The conclusion of an algorithm all-hands
+project involves the team-based creation, publication, and oral presentation of
+a report that overviews all of the experiences during the completion of the
+scientific study and engineering effort tasks for answering an original research
+question in the field of algorithm analysis. Students may use external sources,
+including artificial intelligence coding assistants, during the completion of an
+algorithm all-hands project provided that they cite these sources and explain
+how they used them to complete their part(s) of an algorithm all-hands project.
 
 - **Algorithm Engineering Projects**: These projects enable students to explore
 both the scientific and engineering aspects of algorithm analysis, as outlined
