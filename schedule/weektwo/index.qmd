@@ -56,9 +56,9 @@ have questions
 Students who completed this project shared these insights:
 
 - "My biggest takeaway from this entire experience is that it's important to
-know what kinds of inputs would be considered 'large', 'small', or 'standard' for
-whatever task you're performing. Having that kind of information is crucial in
-being able to come up with good values to test to make sure the experiment is
+know what kinds of inputs would be considered 'large', 'small', or 'standard'
+for whatever task you're performing. Having that kind of information is crucial
+in being able to come up with good values to test to make sure the experiment is
 being performed correctly." **Jacob Allebach**
 
 - "Throughout conducting my experiments, I learned that the tuple is the overall
