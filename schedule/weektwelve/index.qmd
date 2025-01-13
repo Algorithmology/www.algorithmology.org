@@ -23,32 +23,14 @@ structure.
 
 ## Activities
 
-- {{< iconify fa6-solid people-line size=18px >}} **Monday and Wednesday**:
-Hash Tables
+- {{< iconify fa6-solid people-line size=18px >}} **Tuesday and Thursday**: Hash
+Tables
   - Explore how to implement hashing functions that map numbers to list indices
   - Investigate trade-offs with bucket size, hashing function, and re-hashing
   - Examine Python source code segments to illustrate key points
-- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Start new
-algorithm engineering project
-- {{< iconify game-icons team-idea size=18px >}} **Friday**: Report on results
-from algorithm all-hands project
-
-## Project
-
-### Goal
-
-To build and use a Python program, called `lcsfinder`, that runs benchmarks to
-study the performance of finding the longest common sub-sequence of data values
-
-### Steps
-
-- Use `lcsfinder` as your template repository
-- Install the project's dependencies using `devenv`
-- Follow the instructions to complete the project:
-  - **Week 1**: Implement all of the modules in `lcsfinder`
-  - **Week 2**: Design and conduct experiments and document experimental results
-- Schedule [office hours](https://www.gregorykapfhammer.com/schedule/) if you
-have questions
+- {{< iconify fa6-solid diagram-project size=18px >}} **Friday**: Continue
+algorithm engineering project four (see the [prior week](../weekeleven/) for
+details about this project) and take mid-term examination two
 
 ## Slides
 
