@@ -49,6 +49,23 @@ template repository
 - Schedule [office hours](https://www.gregorykapfhammer.com/schedule/) if you
 have questions
 
+::: {.callout-note appearance="minimal" title="Student Insights" collapse="false"}
+Students who completed this project shared these insights:
+
+- "The main take home point for me was how impactful the input file size is to
+runtime as well as the running time analysis. We can double the input size and
+it will show us the function by which the time increases. In this project,
+different methods produce the same output but exhibit different efficiency
+characteristics." **Pallas Athena-Cain**
+
+- "This experiment revealed how confounding variables, such as function design,
+play a role in the results gathered from outcome variables, such as time
+overhead. Striking the right balance between these aspects is key in developing
+the most efficient approach to sorting data quickly, yet also accurately."
+**Chloe Bonson**
+
+:::
+
 ## Slides
 
 ```{=html}
