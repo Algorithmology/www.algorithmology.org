@@ -39,7 +39,10 @@ value in an object's attributes.
 
 ### Steps
 
-- Use [Object Processing](https://github.com/Algorithmology/object-processing-starter) as your template repository
+- Click the link provided in Discord to get started on this project
+- Use {{< iconify fa6-brands github size=18px >}} [Object
+Processing](https://github.com/Algorithmology/object-processing-starter) as your
+template repository
 - Install the project's dependencies using `devenv` and/or `poetry`
 - Follow the instructions to complete the project:
   - **Week 1**: Implement all of the modules in `objectprocessing`
