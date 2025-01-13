@@ -446,6 +446,6 @@ College](https://www.allegheny.edu/). Even though external learners are not
 bound by this syllabus, they can rely on the
 [Algorithmology](https://github.com/TeamDevDev/www.developerdevelopment.com/graphs/contributors)
 team and the members of the [Algorithmology
-Discord](https://discord.gg/YHjhQaBnme).
+Discord](https://discord.gg/phSQfB8bZx).
 
 :::
