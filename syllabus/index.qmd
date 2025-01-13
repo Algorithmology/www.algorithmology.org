@@ -259,17 +259,19 @@ algorithm all-hands project provided that they cite these sources and explain
 how they used them to complete the various components of an algorithm
 engineering project.
 
-- **Algorithm Engineering Skill-Checks**: These skill-checks are
-in-class online cumulative assessments covering all prior technical material
-from the course sessions, as outlined on the [course
-schedule](../schedule/index.qmd). Unless prior arrangements are made with the
-instructor, all students should use their computer to take these skill-checks on
-the scheduled date and to complete it in the stated location while taking no
-more than the required amount of time. Designed to prepare learners for an
-examination, each skill-check is an in-class executable assessment that students
-complete through the use of GitHub, VS Code, and the Python programming tools on
-their laptops.
-
+- **Algorithm Engineering Skill-Checks**: Completing during the second half of a
+laboratory session, these skill-checks are online, cumulative assessments
+covering all prior technical material from the course sessions, as outlined on
+the [course schedule](../schedule/index.qmd). Unless prior arrangements are made
+with the instructor, all students should use their computer to take these
+skill-checks on the scheduled date and to complete it in the stated location
+while taking no more than the required amount of time. Designed to prepare
+learners for an examination, each skill-check is an executable assessment that
+students complete through the use of GitHub, VS Code, and the Python programming
+tools on their laptops. Students may use external sources, including artificial
+intelligence coding assistants, during the completion of a skill-check provided
+that they cite these sources and explain how they used them to complete the
+examination.
 
 #### Assessment Policies
 
