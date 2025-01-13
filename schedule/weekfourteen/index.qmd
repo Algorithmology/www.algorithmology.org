@@ -23,32 +23,54 @@ this data structure.
 
 ## Activities
 
-- {{< iconify fa6-solid people-line size=18px >}} **Monday and Wednesday**:
+- {{< iconify fa6-solid people-line size=18px >}} **Tuesday and Thursday**:
 Priority Queues
   - Explore how to implement the `PriorityQueue` data structure
-  - Understand how the `List` and `Tree` support implementing the `PriorityQueue`
+  - Understand how the `List` and `Tree` support implementing the
+  `PriorityQueue`
   - Explore how the `Heap` can be used to implement the `PriorityQueue`
   - Examine Python source code segments to illustrate key points
-- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Start a new 
-algorithm engineering project
-- {{< iconify game-icons team-idea size=18px >}} **Friday**: Report on an algorithm all-hands project
+- {{< iconify fa6-solid diagram-project size=18px >}} **Friday**: Submit
+algorithm engineering project six, start algorithm engineering project seven,
+and prepare for the algorithm engineering skill-check next week
 
 ## Project
 
 ### Goal
 
-To build and use a Python program, called `treesearcher`, that runs benchmarks to
+To build and use a Python program, called `treeprocessor`, that runs benchmarks to
 study the performance of finding data values in a hierarchical data structure.
 
 ### Steps
 
-- Use `treesearcher` as your template repository
-- Install the project's dependencies using `devenv`
+- Click the link provided in Discord to get started on this project
+- Use {{< iconify fa6-brands github size=18px >}} [Tree
+Processor](https://github.com/Algorithmology/tree-processing-starter) as your
+template repository
+- Install the project's dependencies using `devenv` and/or `poetry`
 - Follow the instructions to complete the project:
-  - **Week 1**: Implement all of the modules in `treesearcher`
+  - **Week 1**: Implement all of the modules in `treeprocessor`
   - **Week 2**: Design and conduct experiments and document experimental results
 - Schedule [office hours](https://www.gregorykapfhammer.com/schedule/) if you
 have questions
+
+::: {.callout-note appearance="minimal" title="Student Insights" collapse="false"}
+Students who completed this project shared these insights:
+
+- "Creating a file traversal system highlights the intricacies of path
+structures and the flow of systems. It was also eye opening in terms of various
+permissions and error handling, as the importance of such factors impact how
+access to the directory is programmed. Knowing how these factors affect each
+other is key in figuring out how to most efficiently traverse a file system."
+**Chloe Bonson**
+
+- "After completing this project, one takeaway that I had is that files can have
+different sizes based on the operating system. The Windows operating system
+files take up more space based on the average amount of bytes from processing
+the same folder across the three operating systems that I studied." **Luke
+Barker**
+
+:::
 
 ## Slides
 
