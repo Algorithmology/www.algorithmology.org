@@ -115,6 +115,13 @@ div.quarto-post a {
   font-weight: 400;
 }
 
+h3 > a,
+h4 > a {
+  color: #343a40;
+  text-decoration: none;
+  font-weight: 600 !important;
+}
+
 .slide-deck {
   border: 3px solid #dee2e6;
   width: 100%;
