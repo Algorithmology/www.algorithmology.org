@@ -1,7 +1,7 @@
 ---
 title: Equipping Algorithm Engineers
 description: "Ensure Success in Algorithm Analysis"
-date: 2024-01-16
+date: 2025-01-13
 layout: full
 toc: true
 toc-expand: 3
@@ -17,13 +17,11 @@ Python](https://donsheehy.github.io/datastructures/)
 
 ## Activities
 
-- {{< iconify fa6-solid people-line size=18px >}} **Monday and Wednesday**: Course introduction
-  - No class on Monday
+- {{< iconify fa6-solid people-line size=18px >}} **Tuesday and Thursday**: Course introduction
   - Introduction to algorithm engineering
   - Overview of a course on algorithm analysis
   - Prepare for an algorithm engineering project
-- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Algorithm engineering project
-- {{< iconify game-icons team-idea size=18px >}} **Friday**: Continue the algorithm engineering project
+- {{< iconify fa6-solid diagram-project size=18px >}} **Friday**: Algorithm engineering project
 
 ## Project
 
@@ -36,8 +34,11 @@ future algorithm engineering projects.
 
 ### Steps
 
-- Use [System Sense](https://github.com/Algorithmology/algorithmology-setup-starter) as your template repository
-- Install the project's dependencies using `devenv`
+- Click the link provided in Discord to get started on this project
+- Leverage {{< iconify fa6-brands github size=18px >}} [System
+Sense](https://github.com/Algorithmology/algorithmology-setup-starter) as your
+template repository
+- Install the project's dependencies using `devenv` and/or `poetry`
 - Follow the instructions to complete the project
 - Schedule [office hours](https://www.gregorykapfhammer.com/schedule/) if you
 have questions
