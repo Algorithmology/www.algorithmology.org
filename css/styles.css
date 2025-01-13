@@ -105,9 +105,17 @@ body a:hover {
 }
 
 .callout .callout-title-container {
+  margin-top: 0.5rem;
   overflow-wrap: anywhere;
   color: #212529 !important;
   margin-bottom: 0.5rem;
+}
+
+.callout.callout-titled .callout-body> :last-child:not(.sourceCode),
+.callout.callout-titled .callout-body>div> :last-child:not(.sourceCode) {
+  padding-left: 1rem;
+  padding-bottom: 0rem;
+  margin-bottom: 0;
 }
 
 div.quarto-post a {
@@ -194,9 +202,10 @@ h2,
   font-size: 0.875rem;
 }
 
-table, table.table {
-    margin-top: .5rem;
-    margin-bottom: 1.5rem;
+table,
+table.table {
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .quarto-title .quarto-categories .quarto-category {
