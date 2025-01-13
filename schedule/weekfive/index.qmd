@@ -28,7 +28,7 @@ Empirical Evaluation
   - Prepare for using asymptotic analysis to characterize performance
   - Examine source code segments to illustrate key points
 - {{< iconify fa6-solid diagram-project size=18px >}} **Friday**: Continue
-algorithm engineering project two (see the [prior week](../weekfour/) for
+algorithm engineering project three (see the [prior week](../weekfour/) for
 details about this project)
 
 ## Slides
