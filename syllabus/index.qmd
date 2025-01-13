@@ -173,13 +173,14 @@ categories. All of these percentages are approximate and, if the need to do so
 presents itself, the course instructor may, for instance, change the assigned
 percentages during the academic semester.
 
-| Category                 | Percentage |
-|--------------------------|------------|
-| Class Participation      |  10%       |
-| Midterm Examination      |  15%       |
-| Final Examination        |  15%       |
-| Algorithm All-Hands      |  10%       |
-| Algorithm Engineering    |  50%       |
+| Category                           | Percentage |
+|------------------------------------|------------|
+| Class Participation                |   5%       |
+| Midterm Examinations               |  20%       |
+| Final Examination                  |  15%       |
+| Algorithm All-Hands Projects       |  15%       |
+| Algorithm Engineering Projects     |  30%       |
+| Algorithm Engineering Skill-Checks |  15%       |
 
 These assessment categories have the following definitions:
 
@@ -195,9 +196,9 @@ observed, during either class or laboratory sessions, undertaking
 non-course-related activities like viewing email, social media, or other
 content not about algorithm analysis. 
 
-- **Midterm Examination**: The midterm examination is an online, executable, and
-cumulative assessment covering all prior material from the course sessions, as
-outlined on the [course schedule](../schedule/index.qmd). Unless prior
+- **Midterm Examinations**: Each midterm examination is an online, executable,
+and cumulative assessment covering all prior material from the course sessions,
+as outlined on the [course schedule](../schedule/index.qmd). Unless prior
 arrangements are made with the instructor, all students should use their
 computer to take these tests on the scheduled date and to complete it in the
 stated location while taking no more than the required amount of time. The
@@ -255,6 +256,18 @@ artificial intelligence coding assistants, during the completion of an
 algorithm all-hands project provided that they cite these sources and explain
 how they used them to complete the various components of an algorithm
 engineering project.
+
+- **Algorithm Engineering Skill-Checks**: These skill-checks are
+in-class online cumulative assessments covering all prior technical material
+from the course sessions, as outlined on the [course
+schedule](../schedule/index.qmd). Unless prior arrangements are made with the
+instructor, all students should use their computer to take these skill-checks on
+the scheduled date and to complete it in the stated location while taking no
+more than the required amount of time. Designed to prepare learners for an
+examination, each skill-check is an in-class executable assessment that students
+complete through the use of GitHub, VS Code, and the Python programming tools on
+their laptops.
+
 
 #### Assessment Policies
 
