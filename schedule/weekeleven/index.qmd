@@ -22,28 +22,32 @@ understand the worst-case time complexities
 
 ## Activities
 
-- {{< iconify fa6-solid people-line size=18px >}} **Monday and Wednesday**:
+- {{< iconify fa6-solid people-line size=18px >}} **Tuesday and Thursday**:
 Searching and Sorting
   - Explore how to implement searching and sorting algorithms Python
   - Apply a new algorithmic paradigm called dynamic programming
   - Learn more about the `mergesort` and `quickselect` algorithms
   - Examine Python source code segments to illustrate key points
-- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Continue algorithm engineering project
-- {{< iconify game-icons team-idea size=18px >}} **Friday**: Start new algorithm all-hands project
+- {{< iconify fa6-solid diagram-project size=18px >}} **Friday**: Submit
+algorithm engineering project five, start algorithm engineering project six, and
+give presentations for the second algorithm all-hands session
 
 ## Project
 
 ### Goal
 
-To build and use a Python program, called `listconcatenator`, that runs benchmarks to
-study the performance of combining data into different types of `list`s
+To build and use a Python program, called `lcsfinder`, that runs benchmarks to
+study the performance of finding the longest common sub-sequence of data values
 
 ### Steps
 
-- Use `listconcatenator` as your template repository
-- Install the project's dependencies using `devenv`
+- Click the link provided in Discord to get started on this project
+- Use {{< iconify fa6-brands github size=18px >}} [Longest Common Subsequence
+Finder](https://github.com/Algorithmology/lcs-finder-starter) as your template
+repository
+- Install the project's dependencies using `devenv` and/or `poetry`
 - Follow the instructions to complete the project:
-  - **Week 1**: Implement all of the modules in `listconcatenator`
+  - **Week 1**: Implement all of the modules in `lcsfinder`
   - **Week 2**: Design and conduct experiments and document experimental results
 - Schedule [office hours](https://www.gregorykapfhammer.com/schedule/) if you
 have questions
