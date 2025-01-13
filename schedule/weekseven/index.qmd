@@ -22,32 +22,16 @@ chapter 7 will again be the focus for next week
 
 ## Activities
 
-- {{< iconify fa6-solid people-line size=18px >}} **Monday and Wednesday**:
+- {{< iconify fa6-solid people-line size=18px >}} **Tuesday and Thursday**:
 Stacks, Queues, and Deques
   - Explore the concept of an abstract data type (ADT)
   - Understand implementation trade-offs for stacks, queues, and deques
   - Use asymptotic analysis to characterize performance of an ADT
   - Enhance an ADT implementation with useful exception handling
   - Examine Python source code segments to illustrate key points
-- {{< iconify fa6-solid diagram-project size=18px >}} **Thursday**: Continue algorithm engineering project
-- {{< iconify game-icons team-idea size=18px >}} **Friday**: Planning for next algorithm all-hands project
-
-## Project
-
-### Goal
-
-To build and use a Python program, called `filesorter`, that runs benchmarks to
-study the performance of sorting different types of data stored in a CSV file.
-
-### Steps
-
-- Use [File Sorting](https://github.com/Algorithmology/file-sorting-starter) as your template repository
-- Install the project's dependencies using `devenv`
-- Follow the instructions to complete the project:
-  - **Week 1**: Implement all of the modules in `filesorter`
-  - **Week 2**: Design and conduct experiments and document experimental results
-- Schedule [office hours](https://www.gregorykapfhammer.com/schedule/) if you
-have questions
+- {{< iconify fa6-solid diagram-project size=18px >}} **Friday**: Continue
+algorithm engineering project four (see the [prior week](../weeksix/) for
+details about this project) and take mid-term examination one
 
 ## Slides
 
