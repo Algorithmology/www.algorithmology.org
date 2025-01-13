@@ -294,12 +294,12 @@ platform.
 
 ##### Algorithmology Tokens
 
-Students may "spend" up to five algorithmology "tokens" that they may use to
+Students may "spend" up to three algorithmology "tokens" that they may use to
 either (i) secure 48 hours of additional time to complete an assigned task or
 (ii) request a reassessment of an already graded project after revising it
-according to feedback from the instructor. For instance, a student may choose
-to spend a token by asking the instructor to reevaluate one of the algorithm
-engineering projects. Outside of the use of these five tokens, the instructor
+according to feedback from the instructor. For instance, a student may choose to
+spend a token by asking the instructor to reevaluate one of the algorithm
+engineering projects. Outside of the use of these three tokens, the instructor
 will not consider any additional requests for deadline extensions or assignment
 reassessment.
 
