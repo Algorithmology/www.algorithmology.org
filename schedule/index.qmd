@@ -42,24 +42,44 @@ listing:
 
 ### Schedule Details
 
-#### Week-by-Week
+#### Week-by-Week Highlights
 
-- **Start Semester**: Week One
-- **Spring Break**: Week Eight
-- **Midterm Exam**: Week Nine
-- **Final Exam**: Week Sixteen
+- **Basics**:
+  - **Start Semester**: Week One
+  - **Spring Break**: Week Eight
+  - **Refresh Break**: Week Thirteen
+  - **End Semester**: Week Sixteen
+- **Examinations**:
+  - **Midterm Exam One**: Week Seven
+  - **Midterm Exam Two**: Week Twelve
+  - **Final Exam**: Week Sixteen
+- **Skill-Checks**:
+  - **Skill-Check One**: Week Two
+  - **Skill-Check Two**: Week Four
+  - **Skill-Check Three**: Week Ten
+  - **Skill-Check Four**: Week Fifteen
+- **Algorithm All-Hands Projects**:
+  - **Project One**: Weeks One through Six
+  - **Project Two**: Weeks Seven through Eleven
+  - **Project Three**: Weeks Twelve through Sixteen
 
 #### Important Dates
 
-- **Midterm Executable Examination**
-    - **Date**: March 14, 2024
-    - **Time**: 2:30 -- 4:30 PM
+- **Midterm Executable Examination One**
+    - **Date**: February 28, 2025
+    - **Time**: 2:30 -- 4:00 PM
+    - **Location**: Alden 109
+- **Midterm Executable Examination Two**
+    - **Date**: April 4, 2025
+    - **Time**: 2:30 -- 4:00 PM
     - **Location**: Alden 109
 - **Final Executable Examination**
-    - **Examination Code**: A
-    - **Date**: May 2, 2024
+    - **Examination Code**: D
+    - **Date**: May 2, 2025
     - **Time**: 9:00 AM -- 12:00 Noon
     - **Location**: Alden 109
+
+#### Algorithm Engineering Projects
 
 ### Weekly Cadence
 
