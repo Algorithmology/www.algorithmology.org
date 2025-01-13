@@ -158,8 +158,10 @@ Data Structures in Python](https://donsheehy.github.io/datastructures/)
 [donsheehy/datastructures](https://github.com/donsheehy/datastructures)  GitHub
 repository
 
-Extensive details about the content that the course covers in the textbook are
-available in the [course schedule](../schedule/index.qmd) and the [course
+The online textbook and the `ds2` package serve as the starting point for
+additional content developed by the course instructor. Finally, extensive
+details about the content that the course covers in the textbook are available
+in the [course schedule](../schedule/index.qmd) and the [course
 slides](../slides/index.qmd).
 
 ### Course Policies
