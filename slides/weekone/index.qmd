@@ -181,6 +181,21 @@ different configurations? *...* How do we *improve* their performance? *...*
 
 :::
 
+## Wait, what is the execution environment of a program?
+
+::: {.fragment style="margin-top: 0.1em; font-size: 0.9em;"}
+
+- Python interpreter version (e.g., Python 3.11 or Python 3.12)
+- Operating system (e.g., Linux, Windows, or macOS)
+- Hardware specifications (e.g., CPU and memory)
+- Installed libraries and their versions
+- Environment variables and configurations
+- Virtual environments or Docker containers
+- Power management settings on laptop
+- Network settings and connectivity
+
+:::
+
 ## Learn more about algorithm analysis
 
 :::: {.columns}
@@ -230,7 +245,7 @@ systeminfo: Detect all relevant information about the system used for experiment
 
 :::
 
-::: {.fragment .fade-up style="font-size: 1.1em;"}
+::: {.fragment .fade-up style="font-size: 0.9em;"}
 
 - `systeminfo`: use packages like `psutil` to collect relevant information
 about the execution environment, suitable for characterizing and comparing
