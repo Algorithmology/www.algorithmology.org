@@ -104,7 +104,7 @@ print(not duplicates([1,2,3,4]))
 
 ::: {.fragment style="margin-top: -0.25em; font-size: 0.80em;"}
 
-- **Important consideration**: is this function implemented correctly?
+- **Important question**: is this function implemented correctly?
 
 :::
 
@@ -125,26 +125,31 @@ def timetrials(function: Callable, n: int, trials: int = 10) -> float:
     return totaltime/trials
 ```
 
-::: {.fragment style="margin-top: -0.25em; font-size: 0.80em;"}
+::: {.fragment style="margin-top: 0.1em; font-size: 0.80em;"}
 
-- **Analytical evaluation**: prove performance characteristics
-- **Experimental evaluation**: measure performance in practice
+- `timetrial`: time a provided `function` with an input of size `n`
+- Use the `time.time` function to compute `start` for each trial
+- Compute the elapsed time using `totaltime += time.time() - start`
+- Use `print` to display the average time for `n` and return the average
 
 :::
 
 ## Run benchmark for `duplicates`
 
 ```{python}
+#| freeze: auto
 # conduct a doubling experiment for a provided function
 timings = []
 for n in [50, 100, 200, 400, 800, 1600, 3200]:
     timings.append(timetrials(duplicates, n))
 ```
 
-::: {.fragment style="margin-top: -0.25em; font-size: 0.80em;"}
+::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
 
-- **Analytical evaluation**: prove performance characteristics
-- **Experimental evaluation**: measure performance in practice
+- {{< iconify game-icons team-idea >}} **Discuss in your teams:**
+    - When input size doubles, how does the execution time change?
+    - What is the likely worst-case time complexity of `duplicates`?
+    - What does this tell us about the performance of `duplicates`?
 
 :::
 
