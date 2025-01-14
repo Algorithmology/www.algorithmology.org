@@ -239,6 +239,14 @@ Data Structures in Python](https://donsheehy.github.io/datastructures/)"
 
 :::
 
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+{{< iconify fa6-solid lightbulb >}} Algorithm engineers who use software
+engineering tools, including code generators, are responsible for ensuring
+correctness and efficiency!
+
+:::
+
 # How can we characterize the execution environment of a program?
 
 - *Sensing* properties of a system with Python
