@@ -10,6 +10,14 @@ a {
   text-decoration: none;
 }
 
+pre,
+code,
+kbd,
+samp {
+  font-family: "Ubuntu Mono" !important;
+  font-size: 1em;
+}
+
 body a:hover {
   color: #3459e6 !important;
   transition:
@@ -144,7 +152,7 @@ code {
 }
 
 pre {
-  font-family: "IBM Plex Mono" !important;
+  font-family: "Ubuntu Mono" !important;
   overflow-x: auto !important;
   white-space: pre-wrap !important;
   white-space: -moz-pre-wrap !important;
