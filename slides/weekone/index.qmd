@@ -15,27 +15,61 @@ format:
     footer: "Algorithmology"
 ---
 
-# What is algorithm analysis?
+# Algorithm analysis
 
-::: incremental
-- Data structures that organize data
-- Algorithms that process data structures
-- Experimental and theoretical analysis
-- "Algorithmology" is both *science* and *engineering*
+::: {.fragment style="margin-top: -0.5em; font-size: 0.80em;"} 
+
+- {{< iconify fa6-solid lightbulb >}} **What is algorithm analysis?**
+    - Data structures that organize data
+    - Algorithms that process data structures
+    - Experimental and theoretical analysis
+    - "Algorithmology" is both *science* and *engineering*
+
+:::
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.80em;"}
+
+- {{< iconify fa6-solid lightbulb >}} **Why is it important?**
+    - System performance is critical
+        - Poor performance causes system failure
+        - Slow systems are not user-friendly
+        - Slow algorithms increase overall cost
+
 :::
 
 ## Algorithm analysis process
 
 ::: incremental
-- Design, implement, and test
+
+- {{< iconify fa6-solid gear >}} **Design, implement, and test**
   - Data structures and algorithms
   - Benchmark framework
   - Data analysis tools
-- Create execution environments
+- {{< iconify fa6-solid gear >}} **Create execution environments**
   - Repeatable and reproducible
   - Controlled and varied
   - Local and in the cloud
+
 :::
+
+## How fast is this program?
+
+```python
+from typing import List
+def duplicates(input_list: List[int]) -> bool:
+    """Determine whether or not the input list contains a duplicate value."""
+    n = len(input_list)
+    for i in range(n):
+        for j in range(n):
+            if i != j and input_list[i] == input_list[j]:
+                return True
+    return False
+
+assert(duplicates([1,2,6,3,4,5,6,7,8]))
+assert(not duplicates([1,2,3,4]))
+print(duplicates([1,2,6,3,4,5,6,7,8]))
+print(not duplicates([1,2,3,4]))
+```
 
 ## Examples of four programs to study through performance benchmarks
 
