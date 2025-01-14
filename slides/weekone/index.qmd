@@ -227,6 +227,18 @@ Data Structures in Python](https://donsheehy.github.io/datastructures/)"
 
 :::
 
+## Algorithm analysis in the time of generative artificial intelligence
+
+::: {.fragment style="margin-top: 0.1em; font-size: 0.95em;"}
+
+- GitHub Copilot generates an algorithm or a data structure
+  - Is the generated code correct and efficient?
+  - Can the generated code be optimized?
+  - Is the generated code easy to understand and maintain?
+  - Can you integrate the generated code into your system?
+
+:::
+
 # How can we characterize the execution environment of a program?
 
 - *Sensing* properties of a system with Python
@@ -251,7 +263,8 @@ systeminfo: Detect all relevant information about the system used for experiment
 about the execution environment, suitable for characterizing and comparing
 local and cloud-based systems
 - `benchmarkinfo`: use packages like `timeit` to run simple micro-benchmarks
-involving basic operations so as to characterize baseline system performance
+involving basic operations so as to characterize and compare baseline system
+performance
 
 :::
 
