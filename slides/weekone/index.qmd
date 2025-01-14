@@ -54,7 +54,8 @@ format:
 
 ## How fast is this program?
 
-```python
+```{python}
+#| echo: true
 from typing import List
 def duplicates(input_list: List[int]) -> bool:
     """Determine whether or not the input list contains a duplicate value."""
@@ -70,6 +71,13 @@ assert(not duplicates([1,2,3,4]))
 print(duplicates([1,2,6,3,4,5,6,7,8]))
 print(not duplicates([1,2,3,4]))
 ```
+
+::: {.fragment style="margin-top: -0.25em; font-size: 0.80em;"}
+
+- **Analytical evaluation**: prove performance characteristics
+- **Experimental evaluation**: measure performance in practice
+
+:::
 
 ## Examples of four programs to study through performance benchmarks
 
