@@ -4,6 +4,8 @@ description: "How can we use Python packages to characterize the runtime environ
 date: "2025-01-13"
 date-format: long
 author: Gregory M. Kapfhammer
+execute:
+  echo: true
 format:
   live-revealjs:
     completion: true
@@ -56,7 +58,6 @@ format:
 ## How fast is this program?
 
 ```{python}
-#| echo: true
 from typing import List
 def duplicates(input_list: List[int]) -> bool:
     """Determine whether or not the input list contains a duplicate value."""
@@ -100,6 +101,52 @@ assert(not duplicates([1,2,3,4]))
 print(duplicates([1,2,6,3,4,5,6,7,8]))
 print(not duplicates([1,2,3,4]))
 ```
+
+::: {.fragment style="margin-top: -0.25em; font-size: 0.80em;"}
+
+- **Important consideration**: is this function implemented correctly?
+
+:::
+
+## Create benchmark for `duplicates`
+
+```{python}
+from typing import Callable, List
+import time
+
+def timetrials(function: Callable, n: int, trials: int = 10) -> float:
+    """Time a function with an input of size n for trials number of times."""
+    totaltime = 0
+    for _ in range(trials):
+        start = time.time()
+        function(list(range(n)))
+        totaltime += time.time() - start
+    print("Average time =%10.7f (s) for n = %d" % (totaltime/trials, n))
+    return totaltime/trials
+```
+
+::: {.fragment style="margin-top: -0.25em; font-size: 0.80em;"}
+
+- **Analytical evaluation**: prove performance characteristics
+- **Experimental evaluation**: measure performance in practice
+
+:::
+
+## Run benchmark for `duplicates`
+
+```{python}
+# conduct a doubling experiment for a provided function
+timings = []
+for n in [50, 100, 200, 400, 800, 1600, 3200]:
+    timings.append(timetrials(duplicates, n))
+```
+
+::: {.fragment style="margin-top: -0.25em; font-size: 0.80em;"}
+
+- **Analytical evaluation**: prove performance characteristics
+- **Experimental evaluation**: measure performance in practice
+
+:::
 
 ## Examples of four programs to study through performance benchmarks
 
