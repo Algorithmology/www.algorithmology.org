@@ -110,9 +110,9 @@ print(not duplicates([1,2,3,4]))
 
 ::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
 
-*...* How do we *characterize* the execution environment of these programs? *...* How
-do we *compare* their performance in different configurations? *...* How do we
-*improve* their performance? *...*
+{{< iconify fa6-solid microscope >}} How do we *characterize* the execution
+environment of these programs? *...* How do we *compare* their performance in
+different configurations? *...* How do we *improve* their performance? *...*
 
 :::
 
