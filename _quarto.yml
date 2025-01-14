@@ -40,6 +40,9 @@ website:
 
 format:
   html:
+    # Note that the fonts must also be loaded inside of the
+    # css/styles.css file and then declared correctly, at
+    # least for the monospace font to work on all platforms
     mainfont: Inter
     monofont: Ubuntu Mono
     fontsize: 1.25em
