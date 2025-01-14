@@ -274,6 +274,7 @@ local and cloud-based systems
 - `benchmarkinfo`: use packages like `timeit` to run simple micro-benchmarks
 involving basic operations so as to characterize and compare baseline system
 performance
+- Tools: `python`, `mise`, `asdf`, `devenv`, and `poetry`
 
 :::
 
@@ -357,15 +358,16 @@ size = {size}
 
 ## Overall goals of "algorithmology"
 
-::: {.fragment .fade-right}
+::: {.fragment .fade style="margin-top: 0.0em; font-size: 0.925em;"}
 
 - **Algorithm Engineering**:
-  - Design and implement algorithm and data structure
+  - Design and implement algorithms and data structures
   - Test all aspects of the system to ensure correctness
   - Make a benchmark framework to measure performance
 - **Algorithm Evaluation**:
   - Design experiments to answer research questions
   - Conduct experiments and collect data
   - Analyze and visualize data to draw conclusions
+- **Check syllabus for details about the Algorithm Analysis course!**
 
 :::
