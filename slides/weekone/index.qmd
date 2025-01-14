@@ -231,7 +231,7 @@ Data Structures in Python](https://donsheehy.github.io/datastructures/)"
 
 ::: {.fragment style="margin-top: 0.1em; font-size: 0.9em;"}
 
-- GitHub Copilot generates an algorithm or a data structure
+- GitHub Copilot generates an algorithm or a data structure:
   - Is the generated code correct and efficient?
   - Can the generated code be optimized?
   - Is the generated code easy to understand and maintain?
