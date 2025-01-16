@@ -233,13 +233,14 @@ Data Structures in Python](https://donsheehy.github.io/datastructures/)"
 
 ::::
 
-::: {.fragment .fade-down style="font-size: 0.9em;"}
+::: {.fragment .fade-down style="margin-top: -0.15em; font-size: 0.9em;"}
 
 - The FCDSP book is both "simple" and "complex"
 - Coverage of introductory topics:
   - Python programming
+  - Object-oriented design
   - Software testing
-- Data structures and algorithms
+- Data structures, algorithms, algorithmic paradigms
 - Experimental and theoretical analysis of performance
 
 :::
