@@ -413,7 +413,7 @@ size = {size}
 
 ## Overall goals of "algorithmology"
 
-::: {.fragment .fade style="margin-top: 0.0em; font-size: 0.925em;"}
+::: {.fragment .fade style="margin-top: -0.15em; font-size: 0.875em;"}
 
 - **Algorithm Engineering**:
   - Design and implement algorithms and data structures
@@ -421,8 +421,9 @@ size = {size}
   - Make a benchmark framework to measure performance
 - **Algorithm Evaluation**:
   - Design experiments to answer research questions
-  - Conduct experiments and collect data
+  - Conduct experiments and collect accurate data sets
   - Analyze and visualize data to draw conclusions
+- Communicate the results and conclusion of algorithm evaluation
 - **Check syllabus for details about the Algorithm Analysis course!**
 
 :::
