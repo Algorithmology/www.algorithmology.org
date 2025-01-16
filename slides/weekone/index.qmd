@@ -378,12 +378,17 @@ size = {size}
 
 ::: {.fragment .fade style="margin-top: -0.15em; font-size: 0.875em;"}
 
-- **Algorithm Engineering Projects**:
+- **Algorithm Engineering Projects**
   - Latest version of the Python programming language
   - Use `mise` or `asdf` to manage Python versions
   - Use `poetry` to manage Python packages
   - Use `git` with instructor-provided repositories
-- **Algorithm All-Hands Projects**:
+
+:::
+
+::: {.fragment .fade style="margin-top: -0.45em; font-size: 0.875em;"}
+
+- **Algorithm All-Hands Projects**
   - Use the same tools as in the engineering projects
   - Use `git` and GitHub flow on the course web site's repository
   - Use `quarto` to render a preview of the course web site
