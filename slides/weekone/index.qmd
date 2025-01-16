@@ -423,7 +423,7 @@ size = {size}
   - Design experiments to answer research questions
   - Conduct experiments and collect accurate data sets
   - Analyze and visualize data to draw conclusions
-- Communicate the results and conclusion of algorithm evaluation
+- **Communicate** the results and conclusion of algorithm evaluation
 - **Check syllabus for details about the Algorithm Analysis course!**
 
 :::
