@@ -376,7 +376,7 @@ size = {size}
 
 ## Important software and processes
 
-::: {.fragment .fade style="margin-top: 0.0em; font-size: 0.9em;"}
+::: {.fragment .fade style="margin-top: -0.15em; font-size: 0.875em;"}
 
 - **Algorithm Engineering Projects**:
   - Latest version of the Python programming language
@@ -385,10 +385,24 @@ size = {size}
   - Use `git` with instructor-provided repositories
 - **Algorithm All-Hands Projects**:
   - Use the same tools as in the engineering projects
-  - Use `git` GitHub flow on the course web site's repository
+  - Use `git` and GitHub flow on the course web site's repository
   - Use `quarto` to render a preview of the course web site
   - Use the Quarto VS Code extension to run code segments
-- **Confirm operation with the instructor and technical leader!**
+
+:::
+
+## You must have all of the required programs installed and running! Make sure that your tools work correctly!
+
+::: {.fragment .callout-note icon=false title="Tips for effective algorithm engineering"}
+
+- Devote time out of class to installing the necessary tools
+- Confirm that the tools work during the first lab session
+- Run and enhance all of the source code in the web site
+- Complete the first algorithm engineering project on time
+- Contribute to the first algorithm all-hands project
+- Prepare for the first algorithm engineering skill-check
+
+{{< iconify fa6-solid rocket >}} **Get ready for a challenging and exciting introduction to algorithmology!**
 
 :::
 
