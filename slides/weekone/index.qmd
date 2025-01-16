@@ -398,7 +398,7 @@ size = {size}
 
 ## You must have all of the required programs installed and running! Make sure that your tools work correctly!
 
-::: {.fragment .callout-note icon=false title="Tips for effective algorithm engineering"}
+::: {.fragment .callout-note icon=true title="Tips for effective algorithm engineering"}
 
 - Devote time out of class to installing the necessary tools
 - Confirm that the tools work during the first lab session
