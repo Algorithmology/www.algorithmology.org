@@ -258,7 +258,7 @@ Data Structures in Python](https://donsheehy.github.io/datastructures/)"
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+::: {.fragment .fade .boxed-content style="margin-top: -0.1em; font-size: 0.8em;"}
 
 {{< iconify fa6-solid lightbulb >}} Algorithm engineers who use software
 engineering tools, including code generators, are responsible for ensuring
@@ -266,7 +266,7 @@ correctness and efficiency!
 
 :::
 
-# How can we characterize the execution environment of a program?
+# How can we accurately characterize the program's execution environment?
 
 - *Sensing* properties of a system with Python
 - *Characterizing* system performance with micro-benchmarks
@@ -292,7 +292,7 @@ local and cloud-based systems
 - `benchmarkinfo`: use packages like `timeit` to run simple micro-benchmarks
 involving basic operations so as to characterize and compare baseline system
 performance
-- Tools: `python`, `mise`, `asdf`, `devenv`, and `poetry`
+- Tools: Install and use `python`, `mise`, `asdf`, `devenv`, and `poetry`
 
 :::
 
@@ -371,6 +371,24 @@ size = {size}
 
 - Use `timeit` to benchmark string concatenation function
 - Call function subject to benchmarking multiple times
+
+:::
+
+## Important software and processes
+
+::: {.fragment .fade style="margin-top: 0.0em; font-size: 0.9em;"}
+
+- **Algorithm Engineering Projects**:
+  - Latest version of the Python programming language
+  - Use `mise` or `asdf` to manage Python versions
+  - Use `poetry` to manage Python packages
+  - Use `git` with instructor-provided repositories
+- **Algorithm All-Hands Projects**:
+  - Use the same tools as in the engineering projects
+  - Use `git` GitHub flow on the course web site's repository
+  - Use `quarto` to render a preview of the course web site
+  - Use the Quarto VS Code extension to run code segments
+- **Confirm operation with the instructor and technical leader!**
 
 :::
 
