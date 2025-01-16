@@ -42,7 +42,7 @@ format:
 
 ## Algorithm analysis process
 
-::: incremental
+::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
 
 - {{< iconify fa6-solid gear >}} **Design, implement, and test**
   - Data structures and algorithms
@@ -52,6 +52,7 @@ format:
   - Repeatable and reproducible
   - Controlled and varied
   - Local and in the cloud
+- {{< iconify fa6-solid lightbulb >}} **Use science and engineering to study system performance!**
 
 :::
 
