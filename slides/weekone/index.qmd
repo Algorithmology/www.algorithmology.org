@@ -292,7 +292,7 @@ local and cloud-based systems
 - `benchmarkinfo`: use packages like `timeit` to run simple micro-benchmarks
 involving basic operations so as to characterize and compare baseline system
 performance
-- Tools: Install and use `python`, `mise`, `asdf`, and/or `devenv`, and `poetry`
+- Tools: Install `python`, `mise`, `asdf`, and/or `devenv`, and `poetry`
 
 :::
 
