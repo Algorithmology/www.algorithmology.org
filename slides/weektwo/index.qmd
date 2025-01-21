@@ -215,7 +215,7 @@ values.add(2)
 print(values)
 ```
 
-::: {.fragment .fade-up style="margin-top: -0.1em; font-size: 0.87em;"}
+::: {.incremental .fade-up style="margin-top: -0.1em; font-size: 0.87em;"}
 
 - Sets do not store duplicate values
 - The data in a set must be hashable
@@ -225,7 +225,7 @@ print(values)
 
 :::
 
-# Common operations to perform on a collection
+# Operations to perform on most collections
 
 ::: {.fragment .fade-right}
 - Determine the *length* of a collection
@@ -302,6 +302,33 @@ print()
 for key in mydict.keys():
   print(key, mydict[key])
 ```
+
+## Mutable and Immutable Collections
+
+::: {.fragment .fade-right}
+
+- **Mutable Collections**: *can be changed after creation*
+  - Lists (`list`)
+  - Dictionaries (`dict`)
+  - Sets (`set`)
+
+:::
+
+::: {.fragment .fade-right style="margin-top: -0.75em;"}
+
+- **Immutable Collections**: *cannot be changed after creation*
+  - Tuples (`tuple`)
+  - Strings (`str`)
+
+:::
+
+::: {.fragment .fade-right style="margin-top: -0.5em; font-size: 0.9em;"}
+
+- {{< iconify fa6-solid lightbulb >}} Among other factors, how does the
+mutability of the collection influence performance of containment checking
+process?
+
+:::
 
 ## Containment checking for collections
 
