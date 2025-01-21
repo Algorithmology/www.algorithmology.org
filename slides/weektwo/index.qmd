@@ -337,6 +337,30 @@ print(5 in e)
 print("1" in e)
 ```
 
+## Containment checking with a `List`
+
+```{python}
+from typing import List
+def containment_check_list(thelist: List[int], number: int) -> bool:
+    """Determine if a value is contained in the list."""
+    # assume that the value is not inside of the list
+    found = False
+    # the value is, in fact, inside of the list
+    if number in thelist:
+        found = True
+    # return bool to indicate whether or not value is found
+    return found
+```
+
+::: {.incremental .fade-right}
+
+- What is the type of the parameter called `thelist`?
+- What is the type of the parameter called `number`?
+- What is the type of `containment_check_list`?
+- How does Python implement `if number in thelist`?
+
+:::
+
 ## What are the performance trade-offs associated with checking to see if a collection contains a value?
 
 ::: {.fragment .fade-right}
