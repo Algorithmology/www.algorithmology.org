@@ -44,7 +44,7 @@ def detect() -> Dict[str, str]:
     return util.union_list_of_dicts(run_output)
 ```
 
-::: {.fragment .fade style="margin-top: 0.5em; font-size: 0.9em;"}
+::: {.incremental .fade style="margin-top: 0.5em; font-size: 0.9em;"}
 
 - Calling the `detect` function causes each line to run sequentially
 
@@ -67,7 +67,7 @@ else:
     used_disk = psutil.disk_usage("/").used
 ```
 
-::: {.fragment .fade style="margin-top: 0.5em; font-size: 0.925em;"}
+::: {.incremental .fade style="margin-top: 0.5em; font-size: 0.925em;"}
 
 - The `psutil` module provides access to system information
 
@@ -90,7 +90,7 @@ def union_list_of_dicts(container: List[Dict[str, str]]) -> Dict[str, str]:
     return output
 ```
 
-::: {.fragment .fade style="margin-top: 0.5em; font-size: 0.925em;"}
+::: {.incremental .fade style="margin-top: 0.5em; font-size: 0.925em;"}
 
 - `output` is a dictionary that starts out empty
 
@@ -129,7 +129,7 @@ n = str(9876)
 print(n[2])
 ```
 
-::: {.fragment .fade-up style="margin-top: -0.25em; font-size: 0.875em;"}
+::: {.incremental style="margin-top: -0.25em; font-size: 0.85em;"}
 
 - What is the purpose of the `type` function?
 - What is the purpose of the `u[9]` notation?
@@ -193,7 +193,7 @@ print(d)
 print(d["pi"])
 ```
 
-::: {.fragment .fade-up style="margin-top: -0.1em; font-size: 0.87em;"}
+::: {.incremental .fade-up style="margin-top: -0.1em; font-size: 0.825em;"}
 
 - The `dict` function creates an empty dictionary called `d`
 - Dictionaries store key-value pairs like `{5: 'five'}` and `{2: 'two'}`
@@ -318,6 +318,23 @@ print("tuple" in c)
 print("a" in d)
 print("b" in d)
 print(4 in e)
+```
+
+## More containment checking
+
+```{python}
+a = "a string"
+b = ["my", "second", "favorite", "list"]
+c = (1, "tuple")
+d = {"a": "b", "b": 2, "c": False}
+e = {1,2,3,4,4,4,4,2,2,2,1}
+print("xyz" in a)
+print("third" in b)
+print("element" in c)
+print("d" in d)
+print("e" in d)
+print(5 in e)
+print("1" in e)
 ```
 
 ## What are the performance trade-offs associated with checking to see if a collection contains a value?
