@@ -16,7 +16,7 @@ format:
     footer: "Algorithmology"
 ---
 
-# What are the key features of the Python programming language?
+# What are some key features of the Python programming language?
 
 ::: incremental
 - Defining and evaluating expressions
