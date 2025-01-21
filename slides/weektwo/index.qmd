@@ -388,6 +388,30 @@ def containment_check_list(thelist: List[int], number: int) -> bool:
 
 :::
 
+## Containment checking with a `Tuple`
+
+```{python}
+from typing import Tuple
+def containment_check_tuple(thetuple: Tuple[int], number: int) -> bool:
+    """Determine if a value is contained in the list."""
+    # assume that the value is not inside of the tuple
+    found = False
+    # the value is, in fact, inside of the tuple
+    if number in thetuple:
+        found = True
+    # return the bool to indicate whether or not value is found
+    return found
+```
+
+::: {.incremental .fade-right}
+
+- What is the type of the parameter called `thetuple`?
+- What is the type of the parameter called `number`?
+- What is the type of `containment_check_tuple`?
+- How does Python implement `if number in thetuple`?
+
+:::
+
 ## What are the performance trade-offs associated with checking to see if a collection contains a value?
 
 ::: {.fragment .fade-right}
