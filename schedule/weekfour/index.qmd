@@ -25,8 +25,8 @@ Software Testing
   - Examine source code segments to illustrate trade-offs
 - {{< iconify fa6-solid diagram-project size=18px >}} **Friday**: Submit
 algorithm engineering project two, start algorithm engineering project three,
-and take the first algorithm engineering skill-check in the second half of the
-laboratory session
+and take the second algorithm engineering skill-check in the second half of the
+laboratory session.
 
 ## Project
 
