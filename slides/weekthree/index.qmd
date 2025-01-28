@@ -19,10 +19,32 @@ format:
 # What are the main goals of object-oriented programming?
 
 ::: incremental
+
 - Write code that reflects thought and the world
 - Enable code reuse and sharing among programmers
 - Encourage the creation of well-designed software
 - Ensure that software is easy to maintain and extend
+
+:::
+
+## What is a class? What is an object?
+
+::: incremental
+
+- A class is a blueprint for creating objects
+- An object is an instantiation of a class
+- A class defines the **attributes** and **methods** of an object
+    - **Attributes** are the data that an object holds
+    - **Methods** are the behaviors that an object can perform
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
+
+{{< iconify fa6-solid microscope >}} Find an example of a class and object in a
+Python program that you previously wrote! After identifying the attributes and the
+methods, assess the overall quality of the object-oriented design.
+
 :::
 
 ## Type Inference in Python
