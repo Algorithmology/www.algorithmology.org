@@ -6,7 +6,8 @@ date: "2025-01-27"
 date-format: long
 author: Gregory M. Kapfhammer
 format:
-  revealjs:
+  live-revealjs:
+    completion: true
     theme: default
     css: ../css/styles.css
     history: false
@@ -85,7 +86,7 @@ print(type(generator_example))
 print(type(generator_example(5)))
 ```
 
-::: {.fragment .fade style="margin-top: 0.5em; font-size: 0.9em;"}
+::: {.fragment .fade style="margin-top: 0.25em; font-size: 0.9em;"}
 
 - `type` shows that functions and generators have their own types
 - What are the similarities and differences for these two types?
@@ -93,6 +94,32 @@ print(type(generator_example(5)))
 
 :::
 
+## Explore use of the `type` function
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 10
+# define variables of different types
+integer_var = 10
+float_var = 10.5
+string_var = "Hello, World!"
+list_var = [1, 2, 3, 4, 5]
+dict_var = {"key1": "value1", "key2": "value2"}
+
+# display the type of each variable
+print("Type of integer_var:", type(integer_var))
+print("Type of float_var:", type(float_var))
+print("Type of string_var:", type(string_var))
+print("Type of list_var:", type(list_var))
+print("Type of dict_var:", type(dict_var))
+```
+
+::: {.fragment style="margin-top: 0.15em; font-size: 0.80em;"}
+
+- {{< iconify fa6-solid microscope >}} **Key Task**: Add other types, including
+  those that contain other types!
+
+:::
 
 ## What if we don't create objects?
 
