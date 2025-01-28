@@ -201,6 +201,41 @@ print(u + v)
 
 :::
 
+## Explore an object-oriented approach
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 12
+class Vector:
+  def __init__(self, x, y):
+    try:
+      self.x = float(x)
+      self.y = float(y)
+    except ValueError:
+      self.x = 0.0
+      self.y = 0.0
+  def norm(self):
+    return (self.x ** 2 + self.y ** 2) ** 0.5
+  def __add__(self, other):
+    newx = self.x + other.x
+    newy = self.y + other.y
+    return Vector(newx, newy)
+  def __str__(self):
+    return "({:.2f}, {:.2f})".format(self.x, self.y)
+u = Vector(3,4)
+v = Vector(3,6)
+print(u + v)
+```
+
+::: {.fragment style="margin-top: 0.2em; font-size: 0.80em;"}
+
+- {{< iconify fa6-solid lightbulb >}} **Key Questions**: After trying different
+instances of `Vector`, what is the state and behavior? What are the strengths
+and weaknesses of this approach to representing vectors? How could this approach
+lead to program defects?
+
+:::
+
 # What are the principles of object-oriented programming?
 
 ::: incremental
