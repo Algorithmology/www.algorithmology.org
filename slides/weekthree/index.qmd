@@ -31,8 +31,8 @@ format:
 
 ::: incremental
 
-- A class is a blueprint for creating objects
-- An object is an instantiation of a class
+- A class is a **blueprint** for creating objects
+- An object is an **instantiation** of a class
 - A class defines the **attributes** and **methods** of an object
     - **Attributes** are the data that an object holds
     - **Methods** are the behaviors that an object can perform
