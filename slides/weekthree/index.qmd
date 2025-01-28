@@ -415,6 +415,18 @@ print(limited[2])
 
 :::
 
+# Performance of object-oriented programming?
+
+::: incremental
+
+- Costs to consider in object-oriented programming:
+    - Create a new instance of a class
+    - Access an object's attribute
+    - Call a method on an object
+    - Store an object in memory
+
+:::
+
 # What is the expected performance overhead of a function call?
 
 ::: {.fragment .fade-right}
@@ -432,8 +444,7 @@ print(limited[2])
 
 ```{python}
 import timeit, f
-n = int(1e6)
-num_exec = 1
+n = int(1e6); num_exec = 1
 for func in filter(lambda f: f.startswith('loop'), sorted(dir(f))):
     print('====== Timing function called:', func)
     print(getattr(f, func).__doc__)
@@ -452,8 +463,7 @@ for func in filter(lambda f: f.startswith('loop'), sorted(dir(f))):
 
 ```{python}
 import timeit, g
-n = int(1e6)
-num_exec = 1
+n = int(1e6); num_exec = 1
 for func in filter(lambda g: g.startswith('loop'), sorted(dir(g))):
     print('====== Timing function called:', func)
     print(getattr(g, func).__doc__)
@@ -474,10 +484,10 @@ for func in filter(lambda g: g.startswith('loop'), sorted(dir(g))):
 {{< iconify fa6-brands github >}} [jni/performance-tests](https://github.com/jni/performance-tests)
 - Change into the directory called `function-calls`
 - Run the program called `timer.py` and observe the results
-- Make sure that you review the Python code in `f.py` and `g.py`
+- Carefully review the Python code in `f.py` and `g.py`
 - What trends did you observe in the performance results?
 - What are the implications of these experimental results?
-- Share (a) your results and (b) a one-sentence summary!
+- {{< iconify fa6-solid share >}} **Share (a) your results and (b) a one-sentence summary!**
 
 :::
 
