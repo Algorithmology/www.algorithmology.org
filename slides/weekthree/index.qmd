@@ -429,7 +429,7 @@ print(limited[2])
 
 # What is the expected performance overhead of a function call?
 
-::: {.fragment .fade-right}
+::: {.fragment .boxed-content .fade-right}
 
 - Invocation of a function in Python has overhead
 - Function call overhead in Python is reputed to be high
