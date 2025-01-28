@@ -117,7 +117,7 @@ print("Type of dict_var:", type(dict_var))
 ::: {.fragment style="margin-top: 0.15em; font-size: 0.80em;"}
 
 - {{< iconify fa6-solid microscope >}} **Key Task**: Add other types, including
-  those that contain other types!
+  those that contain different types!
 
 :::
 
