@@ -268,7 +268,7 @@ class Triangle:
 
 - What state does a `Triangle` object have?
 - How can we access the state of a `Triangle` object?
-- What are the benefits of encapsulation?
+- What are the benefits and limitations of encapsulation?
 
 :::
 
@@ -293,7 +293,7 @@ class Square:
 
 - What state does a `Square` object have?
 - How can we access the state of a `Square` object?
-- Again, what are the benefits of encapsulation?
+- Wait, what is the purpose of `__init__` and `__str__`?
 
 :::
 
