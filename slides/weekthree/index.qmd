@@ -239,10 +239,12 @@ lead to program defects?
 # What are the principles of object-oriented programming?
 
 ::: incremental
-- Abstraction
-- Inheritance
-- Encapsulation
-- Polymorphism
+
+- **Abstraction**: Hide implementation details
+- **Inheritance**: Create new classes from existing classes
+- **Encapsulation**: Group related data and methods together
+- **Polymorphism**: Allow objects to take on multiple forms
+
 :::
 
 ## Encapsulation with `Triangle`
