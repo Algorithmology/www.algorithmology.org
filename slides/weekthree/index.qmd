@@ -142,6 +142,37 @@ print(u + v)
 print(isvertical(subtract(v, u)))
 ```
 
+## Explore `tuple` for encoding state
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 10
+u = (3,4)
+v = (3,6)
+def add(a, b):
+  return (a[0] + b[0], a[1] + b[1])
+def subtract(a,b):
+  return (a[0] - b[0], a[1] - b[1])
+def dot(a, b):
+  return (a[0] * b[0] + a[1] * b[1])
+def norm(a):
+  return (a[0] * a[0] + a[1] * a[1]) ** 0.5
+def isvertical(a):
+  return a[0] == 0
+print(norm(u))
+print(add(u,v))
+print(u + v)
+print(isvertical(subtract(v, u)))
+```
+
+::: {.fragment style="margin-top: 0.2em; font-size: 0.80em;"}
+
+- {{< iconify fa6-solid lightbulb >}} **Key Questions**: What are the strengths
+    and weaknesses of this approach to representing vectors? How could this
+    approach lead to program defects?
+
+:::
+
 ## An object-oriented alternative
 
 ::: {.fragment .fade-right style="margin-top: 0.5em; font-size: 0.9em;"}
@@ -162,8 +193,7 @@ class Vector:
     newy = self.y + other.y
     return Vector(newx, newy)
   def __str__(self):
-    return "(%f, %f)" %(self.x, self.y)
-
+    return "({:.2f}, {:.2f})".format(self.x, self.y)
 u = Vector(3,4)
 v = Vector(3,6)
 print(u + v)
