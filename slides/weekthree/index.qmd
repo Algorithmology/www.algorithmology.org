@@ -345,7 +345,9 @@ class Square(Polygon):
 
 :::
 
-## What is duck typing? How does it work in Python?
+## What is duck typing? How does it work in the Python language?
+
+::: incremental
 
 - Python is a dynamically typed language
 
@@ -360,6 +362,8 @@ class Square(Polygon):
 - Yet, inheritance makes the "is-a" relationship explicit
 
 - **Let's explore an example of duck typing in Python!**
+
+:::
 
 ## Connecting `Triangle` and `Square` to the `Polygon` Superclass
 
