@@ -353,6 +353,32 @@ Run a small trial first!
 
 :::
 
+## Improve the performance of testing
+
+::: fragment
+
+- **Test Prioritization**: Focus on the most important tests first
+- **Test Reduction**: Eliminate the redundant test cases
+- **Test Parallelization**: Run the tests concurrently
+- **Combinatorial Testing**: Explore test platform combinations
+
+:::
+
+::: fragment
+
+```yaml
+matrix:
+os: [ubuntu-latest]
+python-version: ["3.12", "3.10"]
+include:
+    - os: macos-latest
+    python-version: "3.9"
+    - os: windows-latest
+    python-version: "3.11"
+```
+
+:::
+
 # Advanced Software Testing Techniques
 
 ::: incremental
