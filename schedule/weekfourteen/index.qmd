@@ -44,9 +44,9 @@ study the performance of finding data values in a hierarchical data structure.
 ### Steps
 
 - Click the link provided in Discord to get started on this project
-- Use {{< iconify fa6-brands github size=18px >}} [Tree
-Processor](https://github.com/Algorithmology/tree-processing-starter) as your
-template repository
+- Review {{< iconify fa6-brands github size=18px >}} [Tree
+Processor](https://github.com/Algorithmology/tree-processing-starter) as a
+public reference repository
 - Install the project's dependencies using `devenv` and/or `poetry`
 - Follow the instructions to complete the project:
   - **Week 1**: Implement all of the modules in `treeprocessor`
