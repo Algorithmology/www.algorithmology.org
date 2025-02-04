@@ -484,7 +484,7 @@ TOTAL                             6      0      0      0   100%
 
 ## *Oh, one more thing*! Did you know that some of the test cases you see in `test_dayoftheweek.py` were written by a large language model?
 
-::: {.fragment .fade-right style="margin-top: 0.25em; font-size: 1.25em;"}
+::: {.fragment .boxed-content .fade-right style="margin-top: 0.25em; font-size: 1.25em;"}
 
 - What are the **benefits** and **downsides** of using artificial intelligence (AI) to generate tests?
 
