@@ -37,9 +37,9 @@ future algorithm engineering projects.
 ### Steps
 
 - Click the link provided in Discord to get started on this project
-- Leverage {{< iconify fa6-brands github size=18px >}} [System
-Sense](https://github.com/Algorithmology/algorithmology-setup-starter) as your
-template repository
+- Review {{< iconify fa6-brands github size=18px >}} [System
+Sense](https://github.com/Algorithmology/algorithmology-setup-starter) as a
+public reference repository
 - Install the project's dependencies using `devenv` and/or `poetry`
 - Follow the instructions to complete the project
 - Schedule [office hours](https://www.gregorykapfhammer.com/schedule/) if you
