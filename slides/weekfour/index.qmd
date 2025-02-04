@@ -315,6 +315,19 @@ print("avg(", L2, ") -->", avg2)
 
 :::
 
+# Don't benchmark until you are done testing!
+
+::: {.fragment .boxed-content .fade-right}
+
+- **Testing**: Use test cases to run the program to confirm that it produces the
+correct output for a given input
+- **Benchmarking**: Use timing instrumentation to collect and analyze data about
+a program's performance
+- Running experiments on an incorrect system may comprise experimental results!
+Run a small trial first!
+
+:::
+
 # Advanced Software Testing Techniques
 
 ::: incremental
