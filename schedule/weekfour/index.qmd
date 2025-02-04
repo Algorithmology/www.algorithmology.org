@@ -41,9 +41,9 @@ value in an object's attributes.
 ### Steps
 
 - Click the link provided in Discord to get started on this project
-- Use {{< iconify fa6-brands github size=18px >}} [Object
-Processing](https://github.com/Algorithmology/object-processing-starter) as your
-template repository
+- Reference {{< iconify fa6-brands github size=18px >}} [Object
+Processing](https://github.com/Algorithmology/object-processing-starter) as a
+public reference repository
 - Install the project's dependencies using `devenv` and/or `poetry`
 - Follow the instructions to complete the project:
   - **Week 1**: Implement all of the modules in `objectprocessing`

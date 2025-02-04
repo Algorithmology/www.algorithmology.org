@@ -42,13 +42,14 @@ study the performance of finding the longest common sub-sequence of data values
 ### Steps
 
 - Click the link provided in Discord to get started on this project
-- Use {{< iconify fa6-brands github size=18px >}} [Longest Common Subsequence
-Finder](https://github.com/Algorithmology/lcs-finder-starter) as your template
-repository
+- Review {{< iconify fa6-brands github size=18px >}} [Longest Common
+Subsequence Finder](https://github.com/Algorithmology/lcs-finder-starter) as a
+public reference repository
 - Install the project's dependencies using `devenv` and/or `poetry`
 - Follow the instructions to complete the project:
   - **Week 1**: Implement all of the modules in `lcsfinder`
-  - **Week 2**: Design and conduct experiments and document experimental results
+  - **Week 2**: Design and conduct experiments and document experimental
+  results
 - Schedule [office hours](https://www.gregorykapfhammer.com/schedule/) if you
 have questions
 
