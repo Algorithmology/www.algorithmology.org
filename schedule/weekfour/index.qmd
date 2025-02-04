@@ -19,9 +19,10 @@ of [donsheehy/datastructures](https://github.com/donsheehy/datastructures/)
 
 - {{< iconify fa6-solid people-line size=18px >}} **Tuesday and Thursday**:
 Software Testing
-  - Understand why algorithm engineers must test Python programs
+  - Understand why algorithm engineers must test programs
   - Explore the benefits and limitations of testing
   - Investigate different approaches to software testing
+  - Understand performance trade-offs with software testing
   - Examine source code segments to illustrate trade-offs
 - {{< iconify fa6-solid diagram-project size=18px >}} **Friday**: Submit
 algorithm engineering project two, start algorithm engineering project three,
