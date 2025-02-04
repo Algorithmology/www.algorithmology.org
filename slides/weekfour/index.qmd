@@ -260,6 +260,22 @@ print("avg(", L2, ") -->", avg2)
 
 :::
 
+## Refactoring in algorithm engineering
+
+::: {.incremental .fade-right style="margin-top: font-size: 0.775em;"}
+
+- *What is refactoring?*
+    - **Defined**: Better code structure without changing features
+    - **Goal**: Enhance characteristics of the software system
+
+- *Why refactor a software system?*
+    - **Readability**: Easier for others to understand
+    - **Maintainability**: Simplifies modifications and debugging
+    - **Reusability**: Promotes code reuse through design
+    - **Performance**: Can sometimes improve efficiency
+
+:::
+
 ## What should we test?
 
 ::: {.incremental style="margin-top: -0.25em; font-size: 0.875em;"}
