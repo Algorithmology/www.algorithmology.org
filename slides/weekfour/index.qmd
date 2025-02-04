@@ -6,7 +6,8 @@ date: "2025-02-03"
 date-format: long
 author: Gregory M. Kapfhammer
 format:
-  revealjs:
+  live-revealjs:
+    completion: true
     theme: default
     css: ../css/styles.css
     history: false
