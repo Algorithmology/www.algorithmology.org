@@ -260,6 +260,31 @@ print("avg(", L2, ") -->", avg2)
 
 :::
 
+## Bug hunt for average computation
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 10
+# initialize the lists
+L1 = [1, 2, 3, 4, 5]
+L2 = [6, 7, 8, 9, 10]
+# compute the averages
+avg1 = sum(L1)/len(L1)
+avg2 = sum(L2)/len(L2)
+# display the results
+print("avg(", L1, ") -->", avg1)
+print("avg(", L2, ") -->", avg2)
+```
+
+::: {.fragment style="margin-top: 0.3em; font-size: 0.91em;"}
+
+- {{< iconify fa6-solid gears >}} **Key Tasks**: After confirming that the
+program works for the initial lists in `L1` and `L2`, try to find the defect.
+Can you make a solution that works for empty lists? How do you know it is
+correct?
+
+:::
+
 ## Refactoring in algorithm engineering
 
 ::: {.incremental .fade-right style="margin-top: font-size: 0.775em;"}
