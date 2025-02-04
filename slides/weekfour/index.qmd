@@ -78,6 +78,34 @@ assert(y.n() == -8)
 
 :::
 
+## Explore use of the `print` and `assert`
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 10
+class Doubler:
+    def __init__(self, n):
+        self._n = 2 * n
+
+    def n(self):
+        return self._n
+
+x = Doubler(5)
+print(x.n() == 10)
+assert(x.n() == 10)
+y = Doubler(-4)
+print(y.n() == -8)
+assert(y.n() == -8)
+```
+
+::: {.fragment style="margin-top: 0.15em; font-size: 0.90em;"}
+
+- {{< iconify fa6-solid lightbulb >}} **Key Tasks**: After creating `assert`
+statements that will pass and fail as expected, decide which you prefer and why!
+What situations warrant a `print` statement and which ones require an `assert`?
+
+:::
+
 ## Best practices for software testing
 
 ::: {.fragment .fade-right}
