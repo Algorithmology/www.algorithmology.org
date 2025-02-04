@@ -41,6 +41,17 @@ format:
 
 :::
 
+# What is the difference between testing and benchmarking?
+
+::: {.fragment .boxed-content .fade-right}
+
+- **Testing**: Use test cases to run the program to confirm that it produces the
+correct output for a given input
+- **Benchmarking**: Use timing instrumentation to collect and analyze data about
+a program's performance
+
+:::
+
 ## How would you test the `Doubler`?
 
 ```{python}
