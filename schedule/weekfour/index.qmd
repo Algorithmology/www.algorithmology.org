@@ -20,6 +20,7 @@ of [donsheehy/datastructures](https://github.com/donsheehy/datastructures/)
 - {{< iconify fa6-solid people-line size=18px >}} **Tuesday and Thursday**:
 Software Testing
   - Understand why algorithm engineers must test programs
+  - Discern the differences between benchmarking and testing
   - Explore the benefits and limitations of testing
   - Investigate different approaches to software testing
   - Understand performance trade-offs with software testing
