@@ -162,9 +162,10 @@ assert(not duplicates([1,2,3,4]))
 print(not duplicates([1,2,3,4]))
 ```
 
-::: {.fragment .fade-left style="margin-top: -0.25em; font-size: 0.9em;"}
+::: {.fragment .fade-left style="margin-top: -0.25em; font-size: 0.825em;"}
 
 - Run `duplicate` with different inputs and observe its output
+- What is the purpose of the `assert` and `print` statements?
 
 :::
 
