@@ -8,7 +8,8 @@ author: Gregory M. Kapfhammer
 execute:
   freeze: auto
 format:
-  revealjs:
+  live-revealjs:
+    completion: true
     theme: default
     css: ../css/styles.css
     history: false
@@ -127,9 +128,10 @@ def duplicates(input_list: List[int]) -> bool:
                 return True
     return False
 
+
 assert(duplicates([1,2,6,3,4,5,6,7,8]))
-assert(not duplicates([1,2,3,4]))
 print(duplicates([1,2,6,3,4,5,6,7,8]))
+assert(not duplicates([1,2,3,4]))
 print(not duplicates([1,2,3,4]))
 ```
 
@@ -137,6 +139,32 @@ print(not duplicates([1,2,3,4]))
 
 - Returns `True` if there are any duplicates and `False` otherwise
 - What is the performance of the `duplicates` function? Why?
+
+:::
+
+## Explore the duplicate detector
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 15
+from typing import List
+def duplicates(input_list: List[int]) -> bool:
+    n = len(input_list)
+    for i in range(n):
+        for j in range(n):
+            if i != j and input_list[i] == input_list[j]:
+                return True
+    return False
+
+assert(duplicates([1,2,6,3,4,5,6,7,8]))
+print(duplicates([1,2,6,3,4,5,6,7,8]))
+assert(not duplicates([1,2,3,4]))
+print(not duplicates([1,2,3,4]))
+```
+
+::: {.fragment .fade-left style="margin-top: -0.25em; font-size: 0.9em;"}
+
+- Run `duplicate` with different inputs and observe its output
 
 :::
 
