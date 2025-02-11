@@ -218,6 +218,25 @@ for n in [50, 100, 200, 400, 800, 1600, 3200]:
 
 :::
 
+## Explanation of `timetrial` function
+
+::: {style="font-size: 0.8em;"}
+
+- **Imports**:
+  - `Callable` from `typing`: Allows functions as arguments
+  - `time`: Used for timing the function's execution
+
+- **Function `timetrials`**:
+  - **Parameters**:
+    - `function`: The function to be timed
+    - `n`: The size of the input list
+    - `trials`: Number of times to run the function (default is 10)
+  - **Timing Loop**:
+    - Runs the function `trials` times
+    - Measures the time taken for each run and calculates the average
+
+:::
+
 ## Duplicate detecting experiment
 
 ::: {.columns style="margin-top: 1.25em;"}
