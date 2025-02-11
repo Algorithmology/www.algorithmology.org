@@ -276,7 +276,7 @@ the likely worst-case performance of a Python function
 
 ## Understanding Doubling Experiments
 
-::: {.fragment style="font-size: 0.8em; margin-top: -0.25em;"}
+::: {.fragment style="font-size: 0.8em; margin-top: -0.3em;"}
 
 - {{< iconify fa6-solid gears >}} **Doubling Experiments**:
   - Measure performance by doubling input size
@@ -507,10 +507,10 @@ a function like `timetrials` and compare results
 
 # Summarize results from empirically studying duplicate detection
 
-::: {.fragment .fade-right}
+::: {.fragment .fade .boxed-content}
 
 - Make a table to summarize the results for each function
-- Determine which function is best according to time overhead
+- Determine which function is best according to runtime
 - Clearly articulate why that function is the best choice
 
 :::
