@@ -274,6 +274,25 @@ the likely worst-case performance of a Python function
 
 :::
 
+## Understanding Doubling Experiments
+
+::: {.fragment style="font-size: 0.8em; margin-top: -0.25em;"}
+
+- {{< iconify fa6-solid gears >}} **Doubling Experiments**:
+  - Measure performance by doubling input size
+  - Observe changes in execution time
+  - Helps to identify the worst-case performance
+
+- {{< iconify fa6-solid lightbulb >}} **Key Insights**:
+  - **Double Time**: Execution time doubles when input size doubles
+    - Indicates *linear time complexity* or $O(n)$.
+  - **Quadruple Time**: Time quadruples when input size doubles
+    - Indicates *quadratic time complexity* or $O(n^2)$.
+  - **Eight-times Time**: Time increases eight-fold when input size doubles
+    - Indicates *cubic time complexity* or $O(n^3)$
+
+:::
+
 # Can we improve the performance of duplicate detection?
 
 ::: {.fragment .fade-right style="font-size: 1.1em;"}
