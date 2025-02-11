@@ -424,11 +424,71 @@ for n in [50, 100, 200, 400, 800, 1600, 3200]:
 
 :::
 
+## Duplicate Detection: `for` or `any`
+
+::: {.fragment style="font-size: 0.925em;"}
+
+- **`duplicates`**:
+  - Uses double nested `for` loops
+  - Compares each pair of elements
+
+- **`duplicates_restrict_range`**:
+  - Optimizes by restricting the range of the inner loop
+  - Compares each pair only once
+
+- **`duplicates_any`**:
+  - Uses `any` with a generator expression
+  - More concise but not necessarily faster
+
+:::
+
+## Duplicate Detection : `sort` and `any`
+
+::: {.fragment style="font-size: 0.925em;"}
+
+- **`duplicates_sort`**:
+  - Sorts the list first
+  - Checks adjacent elements for duplicates
+
+- **`duplicates_sort_any`**:
+  - Combines sorting with `any`
+  - Uses `any` to check adjacent elements
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.1em; font-size: 0.9em;"}
+
+- {{< iconify fa6-solid users-gear >}} Compared to `duplicates_restrict_range`,
+are either of these functions faster? Can you explain why or why not?
+
+:::
+
+## Duplicate Detection: `set` and `for`
+
+::: {.fragment style="font-size: 0.925em;"}
+
+- **`duplicates_set_loop`**:
+  - Uses a `set` to track seen elements
+  - Checks for duplicates during iteration
+
+- **`duplicates_set`**:
+  - Compares list length with `set` length
+  - Fastest approach using `set`
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.1em; font-size: 0.9em;"}
+
+- {{< iconify fa6-solid users-gear >}} Compared to `duplicates_restrict_range`,
+are either of these functions faster? Can you explain why or why not?
+
+:::
+
 ## Key insights from the duplicate detection experiments
 
 ::: {.incremental style="font-size: 0.9em; margin-top: -0.25em;"}
 
-- What did we learn from these experiments?
+- **What did we learn from these experiments?**
 
     - Different implementations yield different performance results
     - Time overhead increases as the input size increases
@@ -442,6 +502,16 @@ for n in [50, 100, 200, 400, 800, 1600, 3200]:
 
 **Algorithm Engineering Skill**: quickly implement a doubling experiment using
 a function like `timetrials` and compare results
+
+:::
+
+# Summarize results from empirically studying duplicate detection
+
+::: {.fragment .fade-right}
+
+- Make a table to summarize the results for each function
+- Determine which function is best according to time overhead
+- Clearly articulate why that function is the best choice
 
 :::
 
