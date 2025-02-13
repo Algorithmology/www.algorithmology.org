@@ -8,7 +8,8 @@ author: Gregory M. Kapfhammer
 execute:
   freeze: auto
 format:
-  revealjs:
+  live-revealjs:
+    completion: true
     theme: default
     css: ../css/styles.css
     history: false
@@ -127,9 +128,10 @@ def duplicates(input_list: List[int]) -> bool:
                 return True
     return False
 
+
 assert(duplicates([1,2,6,3,4,5,6,7,8]))
-assert(not duplicates([1,2,3,4]))
 print(duplicates([1,2,6,3,4,5,6,7,8]))
+assert(not duplicates([1,2,3,4]))
 print(not duplicates([1,2,3,4]))
 ```
 
@@ -137,6 +139,31 @@ print(not duplicates([1,2,3,4]))
 
 - Returns `True` if there are any duplicates and `False` otherwise
 - What is the performance of the `duplicates` function? Why?
+
+:::
+
+## Explore the duplicate detector
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 15
+from typing import List
+def duplicates(input_list: List[int]) -> bool:
+    n = len(input_list)
+    for i in range(n):
+        for j in range(n):
+            if i != j and input_list[i] == input_list[j]:
+                return True
+    return False
+
+print(duplicates([1,2,6,3,4,5,6,7,8]))
+print(not duplicates([1,2,3,4]))
+```
+
+::: {.fragment .fade-left style="margin-top: -0.25em; font-size: 0.825em;"}
+
+- Run `duplicate` with different inputs and observe its output
+- Experiment with using both the `assert` and `print` statements
 
 :::
 
@@ -189,6 +216,25 @@ for n in [50, 100, 200, 400, 800, 1600, 3200]:
 
 :::
 
+## Explanation of `timetrial` function
+
+::: {.incremental style="font-size: 0.8em;"}
+
+- **Imports**:
+  - `Callable` from `typing`: Allows functions as arguments
+  - `time`: Used for timing the function's execution
+
+- **Function `timetrials`**:
+  - **Parameters**:
+    - `function`: The function to be timed
+    - `n`: The size of the input list
+    - `trials`: Number of times to run the function (default is 10)
+  - **Timing Loop**:
+    - Runs the function `trials` times
+    - Measures the time taken for each run and calculates the average
+
+:::
+
 ## Duplicate detecting experiment
 
 ::: {.columns style="margin-top: 1.25em;"}
@@ -223,6 +269,25 @@ for n in [50, 100, 200, 400, 800, 1600, 3200]:
 
 **Key Observation**: properly designed experiments yield meaningful insights into
 the likely worst-case performance of a Python function
+
+:::
+
+## Understanding Doubling Experiments
+
+::: {.incremental style="font-size: 0.8em; margin-top: -0.3em;"}
+
+- {{< iconify fa6-solid gears >}} **Doubling Experiments**:
+  - Measure performance by doubling input size
+  - Observe changes in execution time
+  - Helps to identify the worst-case performance
+
+- {{< iconify fa6-solid lightbulb >}} **Key Insights**:
+  - **Double Time**: Execution time doubles when input size doubles
+    - Suggests *linear time complexity* or $O(n)$
+  - **Quadruple Time**: Time quadruples when input size doubles
+    - Suggests *quadratic time complexity* or $O(n^2)$
+  - **Eight-times Time**: Time increases eight-fold when input size doubles
+    - Suggests *cubic time complexity* or $O(n^3)$
 
 :::
 
@@ -357,11 +422,90 @@ for n in [50, 100, 200, 400, 800, 1600, 3200]:
 
 :::
 
+## Confirming correct output
+
+```{python}
+print(duplicates([1, 2, 3, 4, 5, 6, 7, 8]))
+print(duplicates([1, 2, 3, 4, 1, 5, 6, 7, 8]))
+print(duplicates_restrict_range([1, 2, 3, 4, 5, 6, 7, 8]))
+print(duplicates_restrict_range([1, 2, 3, 4, 5, 1, 6, 7, 8]))
+print(duplicates_any([1, 2, 3, 4, 5, 6, 7, 8]))
+print(duplicates_any([1, 2, 3, 4, 5, 6, 7, 8, 3]))
+print(duplicates_sort([1, 2, 3, 4, 5, 6, 7, 8]))
+print(duplicates_sort([1, 2, 3, 4, 5, 2, 6, 7, 8]))
+print(duplicates_sort_any([1, 2, 3, 4, 5, 6, 7, 8]))
+print(duplicates_sort_any([1, 2, 3, 4, 5, 6, 7, 8, 8]))
+print(duplicates_set_loop([1, 2, 3, 4, 5, 6, 7, 8]))
+print(duplicates_set_loop([1, 2, 2, 3, 4, 5, 6, 7, 8]))
+print(duplicates_set([1, 2, 3, 4, 5, 6, 7, 8]))
+print(duplicates_set([1, 2, 3, 4, 5, 6, 7, 8, 3]))
+```
+
+## Duplicate Detection: `for` or `any`
+
+::: {.fragment style="font-size: 0.925em;"}
+
+- **`duplicates`**:
+  - Uses double nested `for` loops
+  - Compares each pair of elements
+
+- **`duplicates_restrict_range`**:
+  - Optimizes by restricting the range of the inner loop
+  - Compares each pair only once
+
+- **`duplicates_any`**:
+  - Uses `any` with a generator expression
+  - More concise but not necessarily faster
+
+:::
+
+## Duplicate Detection : `sort` and `any`
+
+::: {.fragment style="font-size: 0.925em;"}
+
+- **`duplicates_sort`**:
+  - Sorts the list first
+  - Checks adjacent elements for duplicates
+
+- **`duplicates_sort_any`**:
+  - Combines sorting with `any`
+  - Uses `any` to check adjacent elements
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.1em; font-size: 0.9em;"}
+
+- {{< iconify fa6-solid users-gear >}} Compared to `duplicates_restrict_range`,
+are either of these functions faster? Can you explain why or why not?
+
+:::
+
+## Duplicate Detection: `set` and `for`
+
+::: {.fragment style="font-size: 0.925em;"}
+
+- **`duplicates_set_loop`**:
+  - Uses a `set` to track seen elements
+  - Checks for duplicates during iteration
+
+- **`duplicates_set`**:
+  - Compares list length with `set` length
+  - Fastest approach using `set`
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.1em; font-size: 0.9em;"}
+
+- {{< iconify fa6-solid users-gear >}} Compared to `duplicates_restrict_range`,
+are either of these functions faster? Can you explain why or why not?
+
+:::
+
 ## Key insights from the duplicate detection experiments
 
 ::: {.incremental style="font-size: 0.9em; margin-top: -0.25em;"}
 
-- What did we learn from these experiments?
+- **What did we learn from these experiments?**
 
     - Different implementations yield different performance results
     - Time overhead increases as the input size increases
@@ -375,6 +519,16 @@ for n in [50, 100, 200, 400, 800, 1600, 3200]:
 
 **Algorithm Engineering Skill**: quickly implement a doubling experiment using
 a function like `timetrials` and compare results
+
+:::
+
+# Summarize results from empirically studying duplicate detection
+
+::: {.fragment .fade .boxed-content}
+
+- Make a table to summarize the results for each function
+- Determine which function is best according to runtime
+- Clearly articulate why that function is the best choice
 
 :::
 
