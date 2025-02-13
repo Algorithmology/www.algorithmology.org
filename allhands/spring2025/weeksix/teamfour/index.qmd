@@ -1,0 +1,15 @@
+---
+author: [Hemani Alaparthi, Finley Banas, Faaris Cheema, Darius Googe, Anton Hedlund, Vivian Potts]
+title: How does response time for append and concatenation scale with data size in mutable vs. immutable structures in a doubling experiment?
+page-layout: full
+categories: [post, doubling, lists, tuples]
+date: "2025-02-21"
+date-format: long
+toc: true
+---
+
+# Overview
+
+# Project Purpose
+
+# Results
