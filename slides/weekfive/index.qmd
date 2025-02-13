@@ -532,6 +532,25 @@ a function like `timetrials` and compare results
 
 :::
 
+## Let's play an algorithm analysis game!
+
+::: {.incremental style="font-size: 0.95em;"}
+
+- You are invited to experimentally evaluate the runtime of `def f(values:
+List[int]): -> None`
+
+-  {{< iconify fa6-solid people-line >}} **Alternate from one table to the
+next**:
+
+    - Sit with the members of your algorithm all-hands team
+    - State the step that you would next take to evaluate function
+    - If prior step was wrong, explain why and suggest a new one
+    - Continue this process until we have correctly studied runtime
+    - For each round, you may ask the instructor one question
+    - Question asking is determined by consensus across all teams
+
+:::
+
 ## How to empirically measure the running time of a Python program
 
 ::: {.fragment .fade-right}
