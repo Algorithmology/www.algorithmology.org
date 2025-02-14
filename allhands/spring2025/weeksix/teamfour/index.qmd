@@ -9,6 +9,7 @@ toc: true
 ---
 
 # Overview
+
 ## Mutable vs Immutable Analysis
 
 Our All Hands project focuses on the ways that immutable and mutable objects effect our codes run time and RAM usage.
@@ -31,4 +32,71 @@ We know that immutable structures (such as tuples) do not support appends. Meani
 
 However, because we allocate memory for the entire sequence and copy all elements of the coefficient we can expect a higher memory cost since we must allocate a new memory block each time. We can expect that the time it wouldd take wold vary based on how long and short the tuple is.
 
+
+# TODO: Functionality - Hemani
+
 # Results
+
+## Hemani (MacOS)
+### TODO: Laptop Details
+
+|                |    Container size = 1000    |    Container size = 5000    |
+|----------------|--------------|--------------|--------------|--------------|
+| Data Structure | Doubling (3) | Doubling (9) | Doubling (3) | Doubling (9) |
+|----------------|--------------|--------------|--------------|--------------|
+| Tuple          |              |              |              |              |
+| Nested Tuple   |              |              |              |              |
+| List           |              |              |              |              |
+| Nested List    |              |              |              |              |
+
+## Finley (Windows)
+### TODO: Laptop Details
+
+|                |    Container size = 1000    |    Container size = 5000    |
+|----------------|--------------|--------------|--------------|--------------|
+| Data Structure | Doubling (3) | Doubling (9) | Doubling (3) | Doubling (9) |
+|----------------|--------------|--------------|--------------|--------------|
+| Tuple          |              |              |              |              |
+| Nested Tuple   |              |              |              |              |
+| List           |              |              |              |              |
+| Nested List    |              |              |              |              |
+
+## Anton (MacOS)
+### TODO: Laptop Details
+
+|                |    Container size = 1000    |    Container size = 5000    |
+|----------------|--------------|--------------|--------------|--------------|
+| Data Structure | Doubling (3) | Doubling (9) | Doubling (3) | Doubling (9) |
+|----------------|--------------|--------------|--------------|--------------|
+| Tuple          |              |              |              |              |
+| Nested Tuple   |              |              |              |              |
+| List           |              |              |              |              |
+| Nested List    |              |              |              |              |
+
+
+## Summary Table
+
+|                |    Container size = 1000    |    Container size = 5000    |
+|----------------|--------------|--------------|--------------|--------------|
+| Data Structure | Doubling (3) | Doubling (9) | Doubling (3) | Doubling (9) |
+|----------------|--------------|--------------|--------------|--------------|
+| Tuple          |              |              |              |              |
+| Nested Tuple   |              |              |              |              |
+| List           |              |              |              |              |
+| Nested List    |              |              |              |              |
+
+# TODO: Analysis - Faaris
+
+### Tuple
+
+### Nested Tuple
+
+### list
+
+### Nested List
+
+
+# TODO: Conclussion - Faaris
+
+
+# TODO: Take home points - Darius
