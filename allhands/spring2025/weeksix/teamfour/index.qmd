@@ -30,3 +30,5 @@ Due to this process when that space does eventually fill up, we can expect the l
 We know that immutable structures (such as tuples) do not support appends. Meaning we must use a "+=" to create a whole new object thst contains both the original and the appended elements. 
 
 However, because we allocate memory for the entire sequence and copy all elements of the coefficient we can expect a higher memory cost since we must allocate a new memory block each time. We can expect that the time it wouldd take wold vary based on how long and short the tuple is.
+
+# Results
