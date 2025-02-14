@@ -8,10 +8,8 @@ date-format: long
 toc: true
 ---
 
-# Project Purpose
-
 # Overview
-# Mutable vs Immutable Analysis
+## Mutable vs Immutable Analysis
 
 Our All Hands project focuses on the ways that immutable and mutable objects effect our codes run time and RAM usage.
 
