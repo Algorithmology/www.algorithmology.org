@@ -10,7 +10,11 @@ toc: true
 
 # Introduction
 
+Comparing two string objects to determine equality is a common operation within computer programming. In this post, we will perform a series of experiments to discover if different containers influence the speed of equality comparisons, specifically comparing a value against all of the values within the container. We will the review the experimental results to arrive at an empirical conclusion about the impact of container types on string equality comparison operations.
+
 ## Motivation
+
+Given the prevalence of comparison operations within computer programming, especially comparisons where a given value is being compared against values in a container, we felt that the processing speed implications of different container types would be a beneficial data point for computer programmers to have as they made implementation decisions throughout their work. When deciding on a specific architecture, having clear data about container types' impact on equality checking would provide beneficial information to help in container type selection.
 
 # Method
 
