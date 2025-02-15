@@ -1,0 +1,36 @@
+---
+author: [Rosa Ruiz, Anoop Guragain, Hank Grefenstette, Gabriel Salvatore, Kris Hatcher]
+title: Does the type of container used to hold strings affect the speed of string equality comparisons?
+page-layout: full
+categories: [post, equality comparison, lists, dictionaries, sets]
+date: "2025-02-21"
+date-format: long
+toc: true
+---
+
+# Introduction
+
+## Motivation
+
+# Method
+
+approach
+
+results
+
+data tables here
+
+# Results
+
+# References
+
+These references were utilized during the creation of the experimental harness used to generate the empirical data referenced in this write-up.
+
+* <https://stackoverflow.com/questions/48510512/python-comparing-value-to-an-element-of-list-of-lists/>
+* <https://stackoverflow.com/questions/3860009/custom-comparison-for-built-in-containers/>
+* [ChatGPT](https://chatgpt.com/) : Used for information about the comparison of a value against elements in a container and also the use of `isInstance()` to check the type of container.
+* [Copilot](https://github.com/features/copilot)
+   * Used for debugging the code with 'Fix with Copilot'.
+   * Used to generate the function signature type annotations in order to meet the class expectations.
+* [Grammarly](https://app.grammarly.com): an AI assistant that helps me with spelling and grammar errors. Used in comments.
+* [educative](https://www.educative.io/answers/what-is-asciilowercase-constant-in-python): Used to understand the module utilized to generate random strings, specifically `import string;`.
