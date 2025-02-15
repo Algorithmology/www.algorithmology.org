@@ -18,11 +18,13 @@ Given the prevalence of comparison operations within computer programming, espec
 
 # Method
 
-approach
+## Approach
 
-results
+_code blocks, with descriptions of logic, go here_
 
-data tables here
+## Data
+
+_data tables go here_
 
 # Results
 
