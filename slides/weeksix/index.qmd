@@ -535,6 +535,8 @@ function that characterizes it!
 
 ## Functions with big-O Notation
 
+::: fragment
+
 - **Constant Functions**, $O(1)$
 - **Logarithmic Functions**, $O(\log n)$
 - **Linear Functions**, $O(n)$
@@ -543,6 +545,8 @@ function that characterizes it!
 - **Polynomial Functions**, $O(n^k)$ for some constant $k$.
 - **Exponential Functions**, $O(2^n)$ (this is different from $2^{O(n)}$)
 - **Factorial Functions**, $O(n!)$
+
+:::
 
 ## `f002`: A linear-time algorithm
 
@@ -555,7 +559,7 @@ def f002(L):
     return newlist  # 1 return
 ```
 
-::: fragment
+::: incremental
 
 - Assume the input is a list of length $n$
 - Count the cost of each line of code
@@ -577,7 +581,7 @@ def f003(L):
     return x # 1
 ```
 
-::: fragment
+::: incremental
 
 - Assume the input is a list of length $n$
 - Count the cost of each line of code
@@ -599,7 +603,7 @@ def f004(L):
     return x # 1
 ```
 
-::: {.fragment .fade style="margin-top: 0.25em; font-size: 1em;"}
+::: {.incremental .fade style="margin-top: 0.25em; font-size: 1em;"}
 
 - Assume the input is a list of length $n$
 - Count the cost of each line of code
@@ -609,7 +613,24 @@ def f004(L):
 
 :::
 
-# Studying program performance
+## Synthetic function performance
+
+::: {.fragment .callout-note icon=false title="Reminders about worst-case time complexity"}
+
+- All functions have an input list `L` of length $n$
+- **`f002`: Linear-time**
+    - Total cost: $2n + 3$
+    - Running time: $O(n)$
+- **`f003`: Quadratic-time**
+    - Total cost: $3n^2 + 2$
+    - Running time: $O(n^2)$
+- **`f004`: Quadratic-time**
+    - Total cost: $2 + 5\sum_{i=1}^{n-1}i = O(n^2)$
+    - Running time: $O(n^2)$
+
+:::
+
+# Effectively studying program performance
 
 ::: incremental
 
