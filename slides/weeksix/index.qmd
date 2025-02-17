@@ -347,7 +347,7 @@ print(f001(9))
 
 ::: {.incremental .fade style="margin-top: -0.25em; font-size: 0.975em;"}
 
-- Atomic operations include:
+- **Atomic operations include**:
     - Arithmetic and boolean operations
     - Variable assignment
     - Accessing the value of a variable from its name
@@ -396,8 +396,9 @@ print(f001(9))
 
 ::: {.fragment .fade .boxed-content style="margin-top: -0.25em; font-size: 0.9em;"}
 
-**Key Insight**: counting the maximum number of atomic operations for a
-function's input size yields its worst-case running time
+{{< iconify fa6-solid lightbulb >}} **Key Insight**: counting the maximum
+number of atomic operations for a function's input size yields its worst-case
+running time
 
 :::
 
@@ -442,7 +443,7 @@ to a fixed-size backing array
 
 ::: {.incremental style="margin-top: 0.25em;"}
 
-- Can you explain these cost functions for `set` operations?
+- {{< iconify fa6-solid people-line >}} Can you explain these cost functions for `set` operations?
 
 :::
 
@@ -462,6 +463,8 @@ to a fixed-size backing array
 
 ## What is the size of the input?
 
+::: incremental
+
 - For a container, the **size** is the number of elements
 
 - Otherwise, it is the **number of bits** needed to encode
@@ -472,7 +475,9 @@ to a fixed-size backing array
 
 - Yet, note that Python supports **arbitrary precision** integers
 
-- Our model is useful even though it is note entirely accurate
+- Our model is useful even though it is not entirely accurate
+
+:::
 
 ::: {.fragment .fade .boxed-content style="margin-top: -0.25em; font-size: 0.9em;"}
 
@@ -483,6 +488,8 @@ characterize the relationship between input size and running time
 
 ## Focus on the worst-case running time!
 
+::: incremental
+
 - Different inputs of the same size may have different:
     - **Runtimes** in actual software implementations
     - **Running time** according to the performance models
@@ -491,6 +498,8 @@ characterize the relationship between input size and running time
     - **Slow programs** have fast-growing functions
     - **Fast programs** have slow-growing functions
 - Count number of atomic operations for the input size
+
+:::
 
 ## Exploring the big-O notation
 
