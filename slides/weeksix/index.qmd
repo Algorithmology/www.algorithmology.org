@@ -141,7 +141,7 @@ print(not duplicates([1,2,3,4]))
 
 - The double-nested `for` loop influences the time complexity
 - This quadratic time complexity is inefficient for large input lists
-- Optimizing this function by reducing the number of comparisons
+- May optimize this function by reducing the number of comparisons
 - Wow, we completed this analysis without running the program!
 - Does analytical evaluation confirm the prior empirical one?
 
@@ -245,11 +245,11 @@ timetrials_int(sumk, 1000000)
 timetrials_int(sumk, 10000000)
 ```
 
-::: {.fragment .fade style="margin-top: -0.2em; font-size: 0.9em;"}
+::: {.fragment .fade style="margin-top: -0.2em; font-size: 0.8em;"}
 
 - The `sumk` function outputs the sum of the first `k` integers
 - This function has a `for` loop that iterates `k` times
-- Ratio `0.203677/0.0220115 = 9.25` reveals *linear* performance
+- Ratios `0.2036/0.0221=9.21` or `0.424/0.0373=11.36` show *linear* growth
 
 :::
 
@@ -292,6 +292,35 @@ timetrials_int(sumk_calc, 100000000)
 
 - Wow, the `sumk_calc` function is *much* faster than `sumk`!
 - Direct calculation is faster than using `for` loop in `sumk`!
+
+:::
+
+## Summary of performance evaluation
+
+::: {.fragment .boxed-content .fade style="margin-top: 0.25em; font-size: 0.9em;"}
+
+- **Increasing by a factor of ten**
+    - Shows how runtime scales with input size
+    - Helps characterize performance
+    - Example: `sumk` function runtime increases linearly with `k`
+
+- **Doubling experiment**
+    - Repeatedly double the input size
+    - Measure the ratio of current time to prior time
+    - A ratio of `4` indicates quadratic performance
+    - A ratio of `2` indicates linear performance
+
+:::
+
+# Input size: Double or increase by a factor of ten? Which one? Why?
+
+::: fragment
+
+- **Key Takeaways**:
+    - Both experiments are crucial for understanding program performance
+    - Doubling experiment is good for measuring performance
+    - Factor-of-ten experiment is good for characterizing performance
+    - Use both methods to gain comprehensive insights
 
 :::
 
