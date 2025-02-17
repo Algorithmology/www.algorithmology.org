@@ -121,13 +121,13 @@ print(not duplicates([1,2,3,4]))
 
 ::: {.incremental .fade-left style="margin-top: -0.25em; font-size: 0.85em;"}
 
-- **Function behavior**
+- {{< iconify fa6-solid check-double >}} **Function behavior**
     - The function `duplicates` takes a list of integers as input
     - Two nested `for` loops to compare each element with every other
     - If any two elements are equal, the function returns `True`
     - If no duplicates are found, the function returns `False`
 
-- **Time complexity analysis**
+- {{< iconify fa6-solid compass-drafting >}} **Time complexity analysis**
     - The outer `for` loop runs $n$ times, where $n$ is length of input list
     - For each iteration of outer loop, inner `for` loop also runs $n$ times
     - This results in a total of $n * n$ or $n^2$ iterations in the worst case
@@ -141,9 +141,9 @@ print(not duplicates([1,2,3,4]))
 
 - The double-nested `for` loop influences the time complexity
 - This quadratic time complexity is inefficient for large input lists
-- May optimize this function by reducing the number of comparisons
+- May optimize this function by reducing number of comparisons
 - Wow, we completed this analysis without running the program!
-- Does analytical evaluation confirm the prior empirical one?
+- Does the analytical evaluation confirm the prior empirical one?
 
 :::
 
@@ -299,12 +299,12 @@ timetrials_int(sumk_calc, 100000000)
 
 ::: {.fragment .boxed-content .fade style="margin-top: 0.25em; font-size: 0.9em;"}
 
-- **Increasing by a factor of ten**
+- {{< iconify fa6-solid chart-line >}} **Increasing by a factor of ten**
     - Shows how runtime scales with input size
     - Helps characterize performance
     - Example: `sumk` function runtime increases linearly with `k`
 
-- **Doubling experiment**
+- {{< iconify fa6-solid object-group >}} **Doubling experiment**
     - Repeatedly double the input size
     - Measure the ratio of current time to prior time
     - A ratio of `4` indicates quadratic performance
@@ -314,13 +314,12 @@ timetrials_int(sumk_calc, 100000000)
 
 # Input size: Double or increase by a factor of ten? Which one? Why?
 
-::: fragment
+::: {.fragment .fade style="margin-top: 0.25em; font-size: 0.9em;"}
 
-- **Key Takeaways**:
-    - Both experiments are crucial for understanding program performance
-    - Doubling experiment is good for measuring performance
-    - Factor-of-ten experiment is good for characterizing performance
-    - Use both methods to gain comprehensive insights
+- Both experiments can aid understanding of performance
+- Doubling experiment grows the input size somewhat slowly
+- Factor-of-ten experiment rapidly increases the input size
+- Use both methods to gain comprehensive performance insights
 
 :::
 
@@ -340,7 +339,7 @@ print(f001(9))
 - Instead, focus on **counts** of the number of **atomic operations**
 - Contextualize the operation count based on input size
 - **Faster functions** require **fewer atomic operations**
-- Remember, as the input grows, the code slows!
+- *Remember, as the input grows, the code slows!*
 
 :::
 
@@ -352,7 +351,7 @@ print(f001(9))
     - Arithmetic and boolean operations
     - Variable assignment
     - Accessing the value of a variable from its name
-    - Branching (jumping to another part of the code for `if`/`for`/`while` statements)
+    - Branching (jumping to another part of the code with the `if`/`for`/`while` statements)
     - Calling a function
     - Returning from a function
 - Atomic operations are roughly equivalent in required work
