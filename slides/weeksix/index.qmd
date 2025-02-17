@@ -117,6 +117,44 @@ print(not duplicates([1,2,3,4]))
 
 :::
 
+## Highlights of time complexity analysis
+
+::: {.incremental .fade-left style="margin-top: -0.25em; font-size: 0.85em;"}
+
+- **Function behavior**
+    - The function `duplicates` takes a list of integers as input
+    - Two nested `for` loops to compare each element with every other
+    - If any two elements are equal, the function returns `True`
+    - If no duplicates are found, the function returns `False`
+
+- **Time complexity analysis**
+    - The outer `for` loop runs $n$ times, where $n$ is length of input list
+    - For each iteration of outer loop, inner `for` loop also runs $n$ times
+    - This results in a total of $n * n$ or $n^2$ iterations in the worst case
+    - Worst-case time complexity of the `duplicates` function is $O(n^2)$
+
+:::
+
+## Key points about the performance of the naive `duplicates` function
+
+::: {.fragment .boxed-content .fade-left style="margin-top: -0.05em; font-size: 0.9em;"}
+
+- The double-nested `for` loop influences the time complexity
+- This quadratic time complexity is inefficient for large input lists
+- Optimizing this function by reducing the number of comparisons
+- Wow, we completed this analysis without running the program!
+- Does analytical evaluation confirm the prior empirical one?
+
+:::
+
+::: fragment
+
+- {{< iconify fa6-solid people-line >}} **Key tasks**: After additional review,
+let's explore this for complex functions! We will analytically model a
+function's running time and connect empirical results to the model.
+
+:::
+
 ## Review the `timetrials` function
 
 ::: {style="font-size: 0.925em;"}
@@ -141,7 +179,7 @@ for n in [50, 100, 200, 400, 800, 1600, 3200]:
 
 :::
 
-## Performance of `duplicates`
+## Doubling ratio for `duplicates`
 
 ```{python}
 # calculate a doubling ratio
