@@ -20,11 +20,101 @@ Given the prevalence of comparison operations within computer programming, espec
 
 ## Approach
 
-_code blocks, with descriptions of logic, go here_
+At the core of our experiment is comparison logic. We need to compare a string against the string values in a collection. This is accomplished by using a `for` loop, as demonstrated in the code block below.
 
-## Data
+```python
+# Function to perform equality comparisons between a passed value and values in the container
+def compare_value_in_container(
+    value: str, container: (list | set | dict)
+) -> list:
+    """
+    Compare the passed value with each element in the container.
+    """
+    # Depending on the type of container, loop through and compare values
+    # For lists and sets, compare directly to each element
+    if isinstance(container, (list, set)):
+        return [value == item for item in container]
 
-_data tables go here_
+    # For dictionaries, compare the value against each key-value pair
+    if isinstance(container, dict):
+        return [value == entry for entry in container.values()]
+
+    # Container type is unsupported by this toolset
+    raise TypeError("Unsupported container type")
+```
+
+The logic runs an inline `for` loop, comparing the passed-in string value against each of the values within the passed-in container of string values. In an effort to keep our research focused, we solely utilized `str` type values within our processing.
+
+In order to limit our time measurements specifically to the comparison operations, we've architected our code to record the time for the comparison, but to ignore any time utilized to create the collections being analyzed.
+
+```python
+# Perform the containment check benchmark
+def perform_containment_check_benchmark(
+    value: str,
+    # The value to compare against elements in the container.
+    container: (list | set | dict),
+    # The container holding the elements to compare against.
+    number_runs: int = 10,
+    # The number of runs per benchmark.
+    number_repeats: int = 3,
+    # The number of times to repeat the benchmark.
+) -> List[float]:
+    """
+    Run an experiment using the timeit package for the specific function.
+
+    This function benchmarks the comparison of a value against elements in a container
+    using the `benchmark_comparison` function. It runs the comparison `number_runs` times
+    per benchmark and repeats the benchmark `number_repeats` times to get a reliable measurement.
+
+    Args:
+        value (str): The value to compare against elements in the container.
+        container (list | set | dict): The container holding the elements to compare against.
+        number_runs (int): The number of runs per benchmark.
+        number_repeats (int): The number of times to repeat the benchmark.
+    """
+    times = timeit.repeat(
+        # Perform the benchmark using the `benchmark_comparison` function
+        lambda: comparison_logic.compare_value_in_container(value, container),
+        number=number_runs,
+        repeat=number_repeats,
+    )
+
+    return times
+```
+
+The value to search for, and the container, are both passed in as parameters to this function, which uses the `timeit` module to run multiple instance of the logic and then report out results.
+
+## Raw Data
+
+| Container Type | String Length | Container Size | Min Time   | Avg Time   | Max Time   |
+| -------------- | ------------: | -------------: | ---------: | ---------: | ---------: |
+| Set            | 100           | 100,000        | `0.073553` | `0.073723` | `0.073947` |
+| List           | 100           | 100,000        | `0.018447` | `0.018741` | `0.019304` |
+| Dictionary     | 100           | 100,000        | `0.021495` | `0.022215` | `0.023176` |
+| Set            | 100           | 50,000         | `0.015568` | `0.016286` | `0.017164` |
+| List           | 100           | 50,000         | `0.008816` | `0.009133` | `0.009390` |
+| Dictionary     | 100           | 50,000         | `0.010052` | `0.010084` | `0.010136` |
+| Set            | 100           | 25,000         | `0.007795` | `0.009405` | `0.011840` |
+| List           | 100           | 25,000         | `0.004432` | `0.004523` | `0.004619` |
+| Dictionary     | 100           | 25,000         | `0.004996` | `0.005133` | `0.005233` |
+| Set            | 200           | 100,000        | `0.102771` | `0.105011` | `0.107937` |
+| List           | 200           | 100,000        | `0.027504` | `0.028650` | `0.029245` |
+| Dictionary     | 200           | 100,000        | `0.030532` | `0.032309` | `0.033476` |
+| Set            | 200           | 50,000         | `0.042385` | `0.047238` | `0.051337` |
+| List           | 200           | 50,000         | `0.010158` | `0.010570` | `0.011372` |
+| Dictionary     | 200           | 50,000         | `0.014681` | `0.015522` | `0.016787` |
+| Set            | 200           | 25,000         | `0.008394` | `0.008806` | `0.009481` |
+| List           | 200           | 25,000         | `0.004929` | `0.006933` | `0.009785` |
+| Dictionary     | 200           | 25,000         | `0.005190` | `0.005400` | `0.005553` |
+| Set            | 400           | 100,000        | `0.107843` | `0.109054` | `0.110224` |
+| List           | 400           | 100,000        | `0.038784` | `0.039341` | `0.039654` |
+| Dictionary     | 400           | 100,000        | `0.044132` | `0.045181` | `0.046891` |
+| Set            | 400           | 50,000         | `0.032686` | `0.034432` | `0.035384` |
+| List           | 400           | 50,000         | `0.012241` | `0.013212` | `0.014575` |
+| Dictionary     | 400           | 50,000         | `0.014732` | `0.017525` | `0.019509` |
+| Set            | 400           | 25,000         | `0.008965` | `0.009877` | `0.011552` |
+| List           | 400           | 25,000         | `0.005139` | `0.005639` | `0.006630` |
+| Dictionary     | 400           | 25,000         | `0.005534` | `0.006304` | `0.007326` |
 
 # Results
 
