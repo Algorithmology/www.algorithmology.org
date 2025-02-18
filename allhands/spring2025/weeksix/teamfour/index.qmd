@@ -33,7 +33,7 @@ We know that immutable structures (such as tuples) do not support appends. Meani
 However, because we allocate memory for the entire sequence and copy all elements of the coefficient we can expect a higher memory cost since we must allocate a new memory block each time. We can expect that the time it wouldd take wold vary based on how long and short the tuple is.
 
 
-# TODO: Functionality - Hemani
+# Functionality - Hemani
 
 # Results
 
@@ -132,16 +132,55 @@ Displaying System Information
 | Nested List    | 0.000085     | 0.015265     | 0.000965     | 0.076853     |
 
 ## Anton (MacOS)
-### TODO: Laptop Details
+### Laptop Details
+```cmd
+Displaying System Information
+
+╭────────────────────────────────────────────────────── System Information ───────────────────────────────────────────────────────╮
+│ ╭──────────────────┬──────────────────────────────────────────────────────────────────────────────────────────────────────────╮ │
+│ │ System Parameter │ Parameter Value                                                                                          │ │
+│ ├──────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────┤ │
+│ │ battery          │ 37.00% battery life remaining, 3:05:00 seconds remaining                                                 │ │
+│ │ cpu              │ arm                                                                                                      │ │
+│ │ cpucores         │ 11 cores                                                                                                 │ │
+│ │ cpufrequencies   │ Min: Unknown Mhz, Max: Unknown Mhz                                                                       │ │
+│ │ datetime         │ 2025-02-18 12:18:32.346405                                                                               │ │
+│ │ disk             │ Using 14.13 GB of 460.43 GB                                                                              │ │
+│ │ hostname         │ MacBook-Pro-Anton.local                                                                                  │ │
+│ │ memory           │ Using 8.04 GB of 18.00 GB                                                                                │ │
+│ │ platform         │ macOS-15.1.1-arm64-arm-64bit                                                                             │ │
+│ │ pythonversion    │ 3.12.8                                                                                                   │ │
+│ │ runningprocesses │ 480 running processes                                                                                    │ │
+│ │ swap             │ Using 0.00 GB of 0.00 GB                                                                                 │ │
+│ │ system           │ Darwin                                                                                                   │ │
+│ │ systemload       │ Average Load: 1.52, CPU Utilization: 13.50%                                                              │ │
+│ │ virtualenv       │ /Users/antonhedlund/Compsci/algorhytms_202/computer-science-202-algorithm-engineering-project-1-ahedlun… │ │
+│ ╰──────────────────┴──────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Displaying Benchmark Results
+
+╭─────────────────────────────────────────────────────── Benchmark Results ───────────────────────────────────────────────────────╮
+│ ╭────────────────┬────────────────────────────────────────────────────────────────╮                                             │
+│ │ Benchmark Name │ Benchmark Results (sec)                                        │                                             │
+│ ├────────────────┼────────────────────────────────────────────────────────────────┤                                             │
+│ │ addition       │ [0.36809995799558237, 0.3705150419991696, 0.36666045800666325] │                                             │
+│ │ concatenation  │ [1.7376747919915942, 1.7254252090060618, 1.7633794589928584]   │                                             │
+│ │ exponentiation │ [2.0676654590060934, 2.107653166007367, 2.0617878750053933]    │                                             │
+│ │ multiplication │ [0.39263445799588226, 0.39074745899415575, 0.3888672500033863] │                                             │
+│ │ rangelist      │ [0.1000612909992924, 0.09830641599546652, 0.09847687500587199] │                                             │
+│ ╰────────────────┴────────────────────────────────────────────────────────────────╯                                             │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+```
 
 |                |    Container size = 1000    |    Container size = 5000    |
 |----------------|--------------|--------------|--------------|--------------|
 | Data Structure | Doubling (3) | Doubling (9) | Doubling (3) | Doubling (9) |
 |----------------|--------------|--------------|--------------|--------------|
-| List           |              |              |              |              |
-| Nested List    |              |              |              |              |
-| Tuple          |              |              |              |              |
-| Nested Tuple   |              |              |              |              |
+| List           | 0.000010     | 0.001157     | 0.000052     | 0.005466     |
+| Nested List    | 0.000037     | 0.002724     | 0.000182     | 0.013588     |
+| Tuple          | 0.000006     | 0.001040     | 0.000047     | 0.005302     |
+| Nested Tuple   | 0.000094     | 0.006874     | 0.000521     | 0.038212     |
 
 
 ## Summary Table
