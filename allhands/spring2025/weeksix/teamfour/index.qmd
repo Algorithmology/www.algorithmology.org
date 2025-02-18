@@ -38,16 +38,45 @@ However, because we allocate memory for the entire sequence and copy all element
 # Results
 
 ## Hemani (MacOS)
-### TODO: Laptop Details
+
+### Laptop Details
+
+```cmd
+Displaying System Information
+
+╭───────────────────────────────────────────────────── System Information Panel ──────────────────────────────────────────────────────╮
+│ ╭──────────────────┬──────────────────────────────────────────────────────────────────────────────────────────────────────────────╮ │
+│ │ System Parameter │ Parameter Value                                                                                              │ │
+│ ├──────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────┤ │
+│ │ battery          │ 63.00% battery life remaining, 7:06:00 seconds remaining                                                     │ │
+│ │ cpu              │                                                                                                              │ │
+│ │ cpucores         │ Physical cores: 8, Logical cores: 8                                                                          │ │
+│ │ cpufrequencies   │ Min: Unknown Mhz, Max: Unknown Mhz                                                                           │ │
+│ │ datetime         │ 2025-02-17 21:40:39                                                                                          │ │
+│ │ disk             │ Total: 228.27 GB, Used: 14.13 GB, Free: 90.49 GB, Percent: 13.5%                                             │ │
+│ │ hostname         │ Hemanis-MacBook-Air.local                                                                                    │ │
+│ │ memory           │ svmem(total=8589934592, available=1409531904, percent=83.6, used=3016491008, free=63717376,                  │ │
+│ │                  │ active=1356316672, inactive=1307279360, wired=1660174336)                                                    │ │
+│ │ platform         │ macOS-15.1.1-arm64-arm-64bit                                                                                 │ │
+│ │ pythonversion    │ 3.11.9                                                                                                       │ │
+│ │ runningprocesses │ 508                                                                                                          │ │
+│ │ swap             │ Total: 8.00 GB, Used: 7.02 GB, Free: 0.98 GB, Percent: 87.8%                                                 │ │
+│ │ system           │ Darwin                                                                                                       │ │
+│ │ systemload       │ (3.953125, 3.2275390625, 2.65234375)                                                                         │ │
+│ │ virtualenv       │ /Users/hemanialaparthi/Library/Caches/pypoetry/virtualenvs/systemsense-GfKbtxco-py3.11                       │ │
+│ ╰──────────────────┴──────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+```
 
 |                |    Container size = 1000    |    Container size = 5000    |
 |----------------|--------------|--------------|--------------|--------------|
 | Data Structure | Doubling (3) | Doubling (9) | Doubling (3) | Doubling (9) |
 |----------------|--------------|--------------|--------------|--------------|
-| Tuple          |              |              |              |              |
-| Nested Tuple   |              |              |              |              |
-| List           |              |              |              |              |
-| Nested List    |              |              |              |              |
+| List           |0.000070      |0.006552      |0.000011      |0.001267      |
+| Nested List    |0.000213      |0.016261      |0.000046      |0.002966      |
+| Tuple          |0.000069      |0.006025      |0.000006      |0.001146      |
+| Nested Tuple   |0.000513      |0.040819      |0.000088      |0.007281      |
+
 
 ## Finley (Windows)
 ### TODO: Laptop Details
@@ -56,10 +85,10 @@ However, because we allocate memory for the entire sequence and copy all element
 |----------------|--------------|--------------|--------------|--------------|
 | Data Structure | Doubling (3) | Doubling (9) | Doubling (3) | Doubling (9) |
 |----------------|--------------|--------------|--------------|--------------|
-| Tuple          |              |              |              |              |
-| Nested Tuple   |              |              |              |              |
 | List           |              |              |              |              |
 | Nested List    |              |              |              |              |
+| Tuple          |              |              |              |              |
+| Nested Tuple   |              |              |              |              |
 
 ## Anton (MacOS)
 ### TODO: Laptop Details
@@ -68,10 +97,10 @@ However, because we allocate memory for the entire sequence and copy all element
 |----------------|--------------|--------------|--------------|--------------|
 | Data Structure | Doubling (3) | Doubling (9) | Doubling (3) | Doubling (9) |
 |----------------|--------------|--------------|--------------|--------------|
-| Tuple          |              |              |              |              |
-| Nested Tuple   |              |              |              |              |
 | List           |              |              |              |              |
 | Nested List    |              |              |              |              |
+| Tuple          |              |              |              |              |
+| Nested Tuple   |              |              |              |              |
 
 
 ## Summary Table
@@ -80,10 +109,10 @@ However, because we allocate memory for the entire sequence and copy all element
 |----------------|--------------|--------------|--------------|--------------|
 | Data Structure | Doubling (3) | Doubling (9) | Doubling (3) | Doubling (9) |
 |----------------|--------------|--------------|--------------|--------------|
-| Tuple          |              |              |              |              |
-| Nested Tuple   |              |              |              |              |
 | List           |              |              |              |              |
 | Nested List    |              |              |              |              |
+| Tuple          |              |              |              |              |
+| Nested Tuple   |              |              |              |              |
 
 # TODO: Analysis - Faaris
 
