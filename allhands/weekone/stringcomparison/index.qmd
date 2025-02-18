@@ -116,7 +116,25 @@ The value to search for, and the container, are both passed in as parameters to 
 | List           | 400           | 25,000         | `0.005139` | `0.005639` | `0.006630` |
 | Dictionary     | 400           | 25,000         | `0.005534` | `0.006304` | `0.007326` |
 
+# Charts
+
+The following charts show clearly that evaluating within a `Set` takes additional time. In some cases, nearly three times as much as the shortest container type. At the same time, the data shows that there is a very minimal difference between the `List` and `Dictionary` container types when considering string equality comparisons.
+
+## Data for Long Strings
+
+This is a chart using the subset of the Raw Data above where the String Length is 400. The "Avg Time" value is then aggregated per Container Type.
+
+![Line Graph with Time on the Vertical Axis and Container Type on the Horizontal Axis for Long Strings](./images/string-length-400.png)
+
+## Data for Large Containers
+
+This is a chart using the subset of the Raw Data above where the Container Size is 100,000. The "Avg Time" value is then aggregated per Container Type.
+
+![Line Graph with Time on the Vertical Axis and Container Type on the Horizontal Axis for Large Containers](./images/container-size-100000.png)
+
 # Results
+
+
 
 # References
 
