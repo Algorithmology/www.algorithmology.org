@@ -134,7 +134,9 @@ This is a chart using the subset of the Raw Data above where the Container Size 
 
 # Results
 
+The data presented here demonstrate that performing string equality comparisons using a `Set` container type is notably slower than the same comparison operations on either `List` or `Dictionary` containers. When considering similar container sizes and object sizes within the containers, we see a significant speed penalty for using the `Set` container type. In at least one comparison, the 'Long List of Short Strings' experiment, we see that using a `List` container required on average one quarter the time necessary to perform the same operations in a `Set` container.
 
+In nearly every experiment we found that the `List` container type performed faster than the `Dictionary` container type, in fact only one of our experiments showed the `Dictionary` container running faster than the `List` container. The difference between the average elapsed time for these two container types varied with `List` being between 9.43% to 31.90% faster in cases where it was faster. The one case where `Dictionary` was faster than `List` showed a 28.39% speed benefit when using `Dictionary`. This data seems inconclusive, given it's wide range and lack of clear conclusion. At most, the data show that `List` containers would _typically_ provide a faster performance than `Dictionary` containers, but individual use-cases should be evaluated to determine the best container in specific applications.
 
 # References
 
