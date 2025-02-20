@@ -12,7 +12,7 @@ toc: true
 
 ## Mutable vs Immutable Analysis
 
-Our All Hands project focuses on the ways that immutable and mutable objects effect our codes run time and RAM usage.
+For our All Hands Project, we are examining mutable and immutable data structures—specifically lists and tuples. Our focus is on analyzing how appending elements to a list and concatenating elements to a tuple impact runtime performance.
 
 ## What We Know
 
@@ -347,18 +347,21 @@ Displaying Benchmark Results
 | Tuple          |0.0000375     |0.003533      |0.00000535    |0.003224      |
 | Nested Tuple   |0.0003035     |0.02384       |0.0003045     |0.02275       |
 
-# TODO: Analysis - Faaris
 
-### Tuple
+## Tuple
 
-### Nested Tuple
+We observed that tuples generally perform better than list, nested tuples and nested lists in the doubling experiment. For both container sizes (1000 and 5000), tuples consistently exhibit lower execution times compared to other structures. This suggests that tuples benefit from their immutable nature, which likely optimizes memory usage and lookup operations. Additionally, as the number of doublings increases (from 3 to 9), the performance of tuples remains relatively stable compared to nested structures, highlighting their efficiency in handling iterative operations. However, the performance of tuples compared to list can be noted to be 
 
-### list
+## Nested Tuple
+
+Comparing nested tuples to just tuples, we found that they were significantly slower. This is likely due to the fact that nested tuples require more memory allocation and copying operations, which can slow down the execution time. As the number of doublings increases, the performance of nested tuples deteriorates further, indicating that the overhead of managing nested structures becomes more pronounced with larger data sizes. This suggests that nested tuples may not be the most efficient choice for handling complex data structures that require frequent modifications.
+
+### List
 
 ### Nested List
 
 
-# TODO: Conclussion - Faaris
+# Conclusion
 
 
-# TODO: Take home points - Darius
+# Take Home Points
