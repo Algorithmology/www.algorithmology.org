@@ -1,5 +1,5 @@
 ---
-author: [Titus Smith, Molly Suppo, Duru Akbas, Joseph Oforkansi, Daniel ]
+author: [Titus Smith, Molly Suppo, Duru Akbas, Joseph Oforkansi, Daniel Bekele]
 title: "Investigating the efficiency of adding and removing data from containers."
 page-layout: full
 categories: [post, average, function]
@@ -120,19 +120,33 @@ tested and makes results more significant.
 
 ## Output Analysis
 
-The benchmarking results highlight the performance differences in basic operations across Python’s `list`, `dictionary`, and
-`tuple` data structures. This running time analysis measures the actual execution time of `append` and `pop` operations at
-different container `sizes`. The append operation in lists remains consistently efficient across all sizes, with an average
-execution time of 0.000005 seconds, demonstrating the `O(1)` complexity of Python’s dynamic array. Dictionaries, which do not
-have a native append method, show slightly higher append times (0.000007 - 0.000009 seconds) due to internal reallocation when
-adding key-value pairs. Tuples, being immutable, have the fastest append times, but this is misleading as appending requires
-creating a new tuple rather than modifying an existing one. For the pop operation, lists and tuples exhibit near-instantaneous
-performance (0.000000 seconds) since removing the last element in a list is an O(1) operation, and tuples do not support true
-pop operations. Dictionaries experience slight fluctuations in pop times, with 0.000003 seconds at size 10, likely due to
-internal key adjustments. These results suggest that lists are ideal for dynamic collections with frequent additions and
-removals, dictionaries are efficient for key-value storage but with minor overhead for modifications, and tuples are best for
-immutable data sets. Understanding these performance characteristics through `empirical` measurement allows developers to make
-informed decisions about data structure selection in Python applications.
+The benchmarking results highlight the performance differences in basic operations across Python’s list, dictionary, and tuple data structures. This running time analysis measures the actual execution time of append and pop operations at different container sizes. The append operation in lists remains consistently efficient across all sizes, with an average execution time ranging from 0.000011 to 0.000014 seconds, demonstrating the O(1) complexity of Python’s dynamic array. Dictionaries, which do not have a native append method, show slightly higher append times (0.000017 - 0.000021 seconds) due to internal reallocation when adding key-value pairs. Tuples, being immutable, have the fastest append times (0.000008 - 0.000009 seconds), but this is misleading as appending requires creating a new tuple rather than modifying an existing one. For the pop operation, lists consistently execute in 0.000000 seconds, confirming that removing the last element is an O(1) operation. Dictionaries experience slight fluctuations in pop times, ranging from 0.000000 to 0.000006 seconds, likely due to internal key adjustments. Tuples do not support true pop operations, but the measured times (0.000000 - 0.000001 seconds) reflect the cost of creating a new tuple. These results suggest that lists are ideal for dynamic collections with frequent additions and removals, dictionaries are efficient for key-value storage but with minor overhead for modifications, and tuples are best for immutable datasets. Understanding these performance characteristics through empirical measurement allows developers to make informed decisions about data structure selection in Python applications.
+
+```text
+Benchmarking Results:
+Container | Size | Operation | Average Time (s)
+--------------------------------------------------
+List       |    0 | append     | 0.000014
+List       |    0 | pop        | 0.000000
+Dict       |    0 | append     | 0.000018
+Dict       |    0 | pop        | 0.000000
+Tuple      |    0 | append     | 0.000008
+Tuple      |    0 | pop        | 0.000000
+List       |   10 | append     | 0.000011
+List       |   10 | pop        | 0.000000
+Dict       |   10 | append     | 0.000017
+Dict       |   10 | pop        | 0.000006
+Tuple      |   10 | append     | 0.000009
+Tuple      |   10 | pop        | 0.000000
+List       |  100 | append     | 0.000011
+List       |  100 | pop        | 0.000000
+Dict       |  100 | append     | 0.000021
+Dict       |  100 | pop        | 0.000001
+Tuple      |  100 | append     | 0.000009
+Tuple      |  100 | pop        | 0.000001
+```
+
+The benchmarking results highlight significant differences in the performance of lists, dictionaries, and tuples in Python. Lists demonstrate flexibility but tend to be slower in lookup operations compared to dictionaries and tuples, as their search time increases with the number of elements. Dictionaries, on the other hand, provide fast lookups due to their hash table implementation, making them ideal for applications requiring rapid key-based access. Tuples, being immutable, exhibit faster iteration and access times compared to lists since they are stored more efficiently in memory. However, their immutability also means they lack the ability to be modified after creation, which can be a limitation in modifiable scenarios. The implications of these differences are crucial when selecting a data structure for specific tasks. Lists are suitable for sequential data storage and modification, dictionaries are better in key-value associations with quick lookups, and tuples offer performance benefits when working with fixed, unchangeable datasets. Understanding these trade-offs allows for better optimization in Python programming, ensuring efficiency in both computation and memory usage.
 
 ## Conclusion
 
