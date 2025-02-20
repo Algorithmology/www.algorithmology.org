@@ -1,0 +1,211 @@
+---
+author: [Hemani Alaparthi, Finley Banas, Faaris Cheema, Darius Googe, Anton Hedlund, Vivian Potts]
+title: How does response time for append and concatenation scale with data size in mutable vs. immutable structures in a doubling experiment?
+page-layout: full
+categories: [post, doubling, lists, tuples]
+date: "2025-02-21"
+date-format: long
+toc: true
+---
+
+# Overview
+
+## Mutable vs Immutable Analysis
+
+Our All Hands project focuses on the ways that immutable and mutable objects effect our codes run time and RAM usage.
+
+## What We Know
+
+The difference in space overhead when appending elements to mutable collections versus immutable structures comes down to how memory allocation and object copying work.
+
+## What We Expect
+
+### Mutable Collections 
+
+We know mutable collections (such as list) are able to be chnaged using an append. These append operations manage memory dynamically by distrubing extra space between what is needed. This means you can append withoout reallocating memory each time. So we can expect the mutable collecton to be more memory efficient. 
+
+Due to this process when that space does eventually fill up, we can expect the list to resize by distrubuting a larger block of memory. This process would include copying the existing elements to the new memory block. Since it doesn't have to resize each time we can also expect it to take less time.
+
+### Immutable Collections
+
+We know that immutable structures (such as tuples) do not support appends. Meaning we must use a "+=" to create a whole new object thst contains both the original and the appended elements. 
+
+However, because we allocate memory for the entire sequence and copy all elements of the coefficient we can expect a higher memory cost since we must allocate a new memory block each time. We can expect that the time it wouldd take wold vary based on how long and short the tuple is.
+
+
+# Functionality - Hemani
+
+# Results
+
+## Hemani (MacOS)
+
+### Laptop Details
+
+```cmd
+Displaying System Information
+
+╭───────────────────────────────────────────────────── System Information Panel ──────────────────────────────────────────────────────╮
+│ ╭──────────────────┬──────────────────────────────────────────────────────────────────────────────────────────────────────────────╮ │
+│ │ System Parameter │ Parameter Value                                                                                              │ │
+│ ├──────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────┤ │
+│ │ battery          │ 63.00% battery life remaining, 7:06:00 seconds remaining                                                     │ │
+│ │ cpu              │                                                                                                              │ │
+│ │ cpucores         │ Physical cores: 8, Logical cores: 8                                                                          │ │
+│ │ cpufrequencies   │ Min: Unknown Mhz, Max: Unknown Mhz                                                                           │ │
+│ │ datetime         │ 2025-02-17 21:40:39                                                                                          │ │
+│ │ disk             │ Total: 228.27 GB, Used: 14.13 GB, Free: 90.49 GB, Percent: 13.5%                                             │ │
+│ │ hostname         │ Hemanis-MacBook-Air.local                                                                                    │ │
+│ │ memory           │ svmem(total=8589934592, available=1409531904, percent=83.6, used=3016491008, free=63717376,                  │ │
+│ │                  │ active=1356316672, inactive=1307279360, wired=1660174336)                                                    │ │
+│ │ platform         │ macOS-15.1.1-arm64-arm-64bit                                                                                 │ │
+│ │ pythonversion    │ 3.11.9                                                                                                       │ │
+│ │ runningprocesses │ 508                                                                                                          │ │
+│ │ swap             │ Total: 8.00 GB, Used: 7.02 GB, Free: 0.98 GB, Percent: 87.8%                                                 │ │
+│ │ system           │ Darwin                                                                                                       │ │
+│ │ systemload       │ (3.953125, 3.2275390625, 2.65234375)                                                                         │ │
+│ │ virtualenv       │ /Users/hemanialaparthi/Library/Caches/pypoetry/virtualenvs/systemsense-GfKbtxco-py3.11                       │ │
+│ ╰──────────────────┴──────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+```
+
+|                |    Container size = 1000    |    Container size = 5000    |
+|----------------|--------------|--------------|--------------|--------------|
+| Data Structure | Doubling (3) | Doubling (9) | Doubling (3) | Doubling (9) |
+|----------------|--------------|--------------|--------------|--------------|
+| List           |0.000070      |0.006552      |0.000011      |0.001267      |
+| Nested List    |0.000213      |0.016261      |0.000046      |0.002966      |
+| Tuple          |0.000069      |0.006025      |0.000006      |0.001146      |
+| Nested Tuple   |0.000513      |0.040819      |0.000088      |0.007281      |
+
+
+## Finley (Windows)
+### Laptop Details
+
+```cmd
+✨ Displaying System Information
+
+╭───────────────────────────────────────────────────────────────────── System Information Panel ─────────────────────────────────────────────────────────────────────╮
+│ ╭───────────────────┬─────────────────────────────────────────────────────────────────────────────────────╮                                                        │
+│ │ System Parameter  │ Parameter Value                                                                     │                                                        │
+│ ├───────────────────┼─────────────────────────────────────────────────────────────────────────────────────┤                                                        │
+│ │ battery           │ Percent: 42%, Plugged In: True                                                      │                                                        │
+│ │ cpu               │ AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD                                   │                                                        │
+│ │ cpucores          │ Logical: 16, Physical: 8                                                            │                                                        │
+│ │ cpufrequencies    │ Min: 0.0 Mhz, Max: 3201.0 Mhz                                                       │                                                        │
+│ │ datetime          │ 2025-02-18 12:20:24                                                                 │                                                        │
+│ │ disk_usage        │ Total: 952 GB, Used: 819 GB, Free: 133 GB                                           │                                                        │
+│ │ hostname          │ LAPTOP-LF29MNQ9                                                                     │                                                        │
+│ │ memory            │ Total: 13 GB, Used: 13 GB, Available: 0 GB                                          │                                                        │
+│ │ platform          │ Windows-11-10.0.22631-SP0                                                           │                                                        │
+│ │ pythonversion     │ 3.12.6                                                                              │                                                        │
+│ │ running_processes │ 376                                                                                 │                                                        │
+│ │ swap              │ Total: 36 GB, Used: 2 GB, Free: 33 GB                                               │                                                        │
+│ │ system            │ Windows 10.0.22631                                                                  │                                                        │
+│ │ system_load       │ Load Average (1 min): 0.0, (5 min): 0.0, (15 min): 0.0                              │                                                        │
+│ │ virtual_env       │ C:\Users\finle\AppData\Local\pypoetry\Cache\virtualenvs\systemsense-wH1noHbB-py3.12 │                                                        │
+│ ╰───────────────────┴─────────────────────────────────────────────────────────────────────────────────────╯                                                        │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+
+🏁 Displaying Benchmark Results
+
+╭─────────────────────────────────────────────────────────────────── Benchmark Information Panel ────────────────────────────────────────────────────────────────────╮
+│ ╭────────────────┬────────────────────────────────────────────────────────────────╮                                                                                │
+│ │ Benchmark Name │ Benchmark Results (sec)                                        │                                                                                │
+│ ├────────────────┼────────────────────────────────────────────────────────────────┤                                                                                │
+│ │ addition       │ [0.5045552999945357, 0.5307341000007, 0.5133566000004066]      │                                                                                │
+│ │ concatenation  │ [2.647170099997311, 2.6313645000045653, 2.628883900004439]     │                                                                                │
+│ │ exponentiation │ [2.546220900010667, 2.55919040000299, 2.5246280999999726]      │                                                                                │
+│ │ multiplication │ [0.48429310000210535, 0.4932515000109561, 0.4835355000104755]  │                                                                                │
+│ │ rangelist      │ [0.1670014999981504, 0.17028800000844058, 0.16126609999628272] │                                                                                │
+│ ╰────────────────┴────────────────────────────────────────────────────────────────╯                                                                                │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+```
+
+|                |    Container size = 1000    |    Container size = 5000    |
+|----------------|--------------|--------------|--------------|--------------|
+| Data Structure | Doubling (3) | Doubling (9) | Doubling (3) | Doubling (9) |
+|----------------|--------------|--------------|--------------|--------------|
+| Tuple          | 0.000008     | 0.001762     | 0.000230     | 0.011243     |
+| Nested Tuple   | 0.004481     | 0.006838     | 0.255142     | 0.036581     |
+| List           | 0.000007     | 0.001538     | 0.000218     | 0.009863     |
+| Nested List    | 0.000085     | 0.015265     | 0.000965     | 0.076853     |
+
+## Anton (MacOS)
+### Laptop Details
+```cmd
+Displaying System Information
+
+╭────────────────────────────────────────────────────── System Information ───────────────────────────────────────────────────────╮
+│ ╭──────────────────┬──────────────────────────────────────────────────────────────────────────────────────────────────────────╮ │
+│ │ System Parameter │ Parameter Value                                                                                          │ │
+│ ├──────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────┤ │
+│ │ battery          │ 37.00% battery life remaining, 3:05:00 seconds remaining                                                 │ │
+│ │ cpu              │ arm                                                                                                      │ │
+│ │ cpucores         │ 11 cores                                                                                                 │ │
+│ │ cpufrequencies   │ Min: Unknown Mhz, Max: Unknown Mhz                                                                       │ │
+│ │ datetime         │ 2025-02-18 12:18:32.346405                                                                               │ │
+│ │ disk             │ Using 14.13 GB of 460.43 GB                                                                              │ │
+│ │ hostname         │ MacBook-Pro-Anton.local                                                                                  │ │
+│ │ memory           │ Using 8.04 GB of 18.00 GB                                                                                │ │
+│ │ platform         │ macOS-15.1.1-arm64-arm-64bit                                                                             │ │
+│ │ pythonversion    │ 3.12.8                                                                                                   │ │
+│ │ runningprocesses │ 480 running processes                                                                                    │ │
+│ │ swap             │ Using 0.00 GB of 0.00 GB                                                                                 │ │
+│ │ system           │ Darwin                                                                                                   │ │
+│ │ systemload       │ Average Load: 1.52, CPU Utilization: 13.50%                                                              │ │
+│ │ virtualenv       │ /Users/antonhedlund/Compsci/algorhytms_202/computer-science-202-algorithm-engineering-project-1-ahedlun… │ │
+│ ╰──────────────────┴──────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Displaying Benchmark Results
+
+╭─────────────────────────────────────────────────────── Benchmark Results ───────────────────────────────────────────────────────╮
+│ ╭────────────────┬────────────────────────────────────────────────────────────────╮                                             │
+│ │ Benchmark Name │ Benchmark Results (sec)                                        │                                             │
+│ ├────────────────┼────────────────────────────────────────────────────────────────┤                                             │
+│ │ addition       │ [0.36809995799558237, 0.3705150419991696, 0.36666045800666325] │                                             │
+│ │ concatenation  │ [1.7376747919915942, 1.7254252090060618, 1.7633794589928584]   │                                             │
+│ │ exponentiation │ [2.0676654590060934, 2.107653166007367, 2.0617878750053933]    │                                             │
+│ │ multiplication │ [0.39263445799588226, 0.39074745899415575, 0.3888672500033863] │                                             │
+│ │ rangelist      │ [0.1000612909992924, 0.09830641599546652, 0.09847687500587199] │                                             │
+│ ╰────────────────┴────────────────────────────────────────────────────────────────╯                                             │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+```
+
+|                |    Container size = 1000    |    Container size = 5000    |
+|----------------|--------------|--------------|--------------|--------------|
+| Data Structure | Doubling (3) | Doubling (9) | Doubling (3) | Doubling (9) |
+|----------------|--------------|--------------|--------------|--------------|
+| List           | 0.000010     | 0.001157     | 0.000052     | 0.005466     |
+| Nested List    | 0.000037     | 0.002724     | 0.000182     | 0.013588     |
+| Tuple          | 0.000006     | 0.001040     | 0.000047     | 0.005302     |
+| Nested Tuple   | 0.000094     | 0.006874     | 0.000521     | 0.038212     |
+
+
+## Summary Table
+
+|                |    Container size = 1000    |    Container size = 5000    |
+|----------------|--------------|--------------|--------------|--------------|
+| Data Structure | Doubling (3) | Doubling (9) | Doubling (3) | Doubling (9) |
+|----------------|--------------|--------------|--------------|--------------|
+| List           |              |              |              |              |
+| Nested List    |              |              |              |              |
+| Tuple          |              |              |              |              |
+| Nested Tuple   |              |              |              |              |
+
+# TODO: Analysis - Faaris
+
+### Tuple
+
+### Nested Tuple
+
+### list
+
+### Nested List
+
+
+# TODO: Conclussion - Faaris
+
+
+# TODO: Take home points - Darius
