@@ -138,6 +138,10 @@ The data presented here demonstrate that performing string equality comparisons 
 
 In nearly every experiment we found that the `List` container type performed faster than the `Dictionary` container type, in fact only one of our experiments showed the `Dictionary` container running faster than the `List` container. The difference between the average elapsed time for these two container types varied with `List` being between 9.43% to 31.90% faster in cases where it was faster. The one case where `Dictionary` was faster than `List` showed a 28.39% speed benefit when using `Dictionary`. This data seems inconclusive, given it's wide range and lack of clear conclusion. At most, the data show that `List` containers would _typically_ provide a faster performance than `Dictionary` containers, but individual use-cases should be evaluated to determine the best container in specific applications.
 
+# Next Steps
+
+Given the inability to draw any conclusions about the relative benefits of `Dictionary` and `List` container types, we recommend that further experiments be run in order to specifically analyze the performance of these two container types against each other. While we have not taken the time necessary to establish a detailed experimental design, we would recommend focusing on these two container types and utilizing larger data sets for each experiment with a larger number of runs in each experiment. The theory we posit is that with additional experimental outputs, from larger datasets, the outputs would be more stable and at a timing resolution that is possible to evaluate.
+
 # References
 
 These references were utilized during the creation of the experimental harness used to generate the empirical data referenced in this write-up.
