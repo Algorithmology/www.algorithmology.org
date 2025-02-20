@@ -383,6 +383,14 @@ Performance characteristics:
 
 
 # Conclusion
+- In conclusion after running a doubling experiemnt and meaasuring Time (sec), and Ram Storage using Tuples, Nested Tuples, List and Nested Lists we came to conclusion that Tuple was the fastest, likely due to their immutable nature, which optimizes memory usage and lookup effieciency. They maintain relatively stable performance even as the number of doublings increases
 
+- In conclusion for Lists they were slights slower than regular Tuple but still efficient, benefitting from simpler memory management and predictable scaling 
+
+- In conclusion for Nested Tuples were slower than regular Tuples as they introduce significant memory allocation and copying overhead. Performances degrades further with larger data sizes 
+
+- In conlcusion Nested Lists were the slowesr, as they introduce significant overhead when managing multiple levels of data structures. Performance deterioted noticebly as the container size and doubling factors increase
 
 # Take Home Points
+
+When doing an experiment like this be mindful of the size of your containers. Along with addition of layers in containers for example nested tuples and list as that extra step adds additional memory and takes longer to run. When optimizinng performance users need to ask essential questions like how memory will this take up and how fast can we display the date. So when comparing these four containers we found Tuples to be more efficient in the memory space it took up and how fast it took to run.
