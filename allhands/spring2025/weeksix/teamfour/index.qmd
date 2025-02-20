@@ -358,7 +358,28 @@ Comparing nested tuples to just tuples, we found that they were significantly sl
 
 ### List
 
+Lists show better performance compared to nested structures due to simpler memory management.
+
+Performance is notably affected by container size increases but maintains relatively stable behavior
+Main characteristics:
+
+- Handles smaller container sizes (1000) efficiently across different doubling factors
+- Shows predictable scaling behavior when size increases to 5000
+- Performance impact from doubling operations is less severe compared to nested structures
+- Maintains good efficiency with basic operations due to straightforward memory access patterns
+- Shows consistent behavior across different operation scenarios
+
 ### Nested List
+
+Nested lists demonstrate notably slower performance compared to regular lists
+Performance characteristics:
+
+- Shows significant overhead due to managing multiple levels of data structures
+- Performance degrades more dramatically with larger container sizes
+- Particularly sensitive to doubling operations, especially with 9x doubling
+- Memory management becomes more complex due to handling inner and outer structures
+- Shows less predictable scaling patterns compared to regular lists
+- Performance impact is most noticeable when combining large sizes with high doubling factors
 
 
 # Conclusion
