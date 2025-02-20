@@ -380,9 +380,13 @@ print(f001(9))
 
 ## What do we know about the performance of `List` operations?
 
-::: incremental
+::: {.incremental style="margin-top: -0.25em; font-size: 0.8em;"}
 
 - Table reports the asymptotic cost of `List` operations
+
+- Insert at index `i` is $n-i$ because of element shifting
+
+- Delete an `item` is $n-i$ because it exists at an index `i` 
 
 - Partly driven by which operations produce a new list
 
@@ -394,11 +398,11 @@ print(f001(9))
 
 :::
 
-::: {.fragment .fade .boxed-content style="margin-top: -0.25em; font-size: 0.9em;"}
+::: {.fragment .fade .boxed-content style="margin-top: -0.25em; font-size: 0.85em;"}
 
-{{< iconify fa6-solid lightbulb >}} **Key Insight**: counting the maximum
-number of atomic operations for a function's input size yields its worst-case
-running time
+{{< iconify fa6-solid lightbulb >}} **Key Insight**: Correctly counting the
+maximum number of atomic operations for a function's input size yields its
+worst-case running time
 
 :::
 
