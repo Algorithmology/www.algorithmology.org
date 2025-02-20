@@ -18,19 +18,172 @@ Our All Hands project focuses on the ways that immutable and mutable objects eff
 
 The difference in space overhead when appending elements to mutable collections versus immutable structures comes down to how memory allocation and object copying work.
 
-## What We Expect
+## Mutable Collections (Lists)
 
-### Mutable Collections 
+### Base List Operations
 
-We know mutable collections (such as list) are able to be chnaged using an append. These append operations manage memory dynamically by distrubing extra space between what is needed. This means you can append withoout reallocating memory each time. So we can expect the mutable collecton to be more memory efficient. 
+```python
+def append_to_list(input_list, element):
+    """Appends new element to the input list"""
+    input_list.append(element)
+    return input_list
+```
 
-Due to this process when that space does eventually fill up, we can expect the list to resize by distrubuting a larger block of memory. This process would include copying the existing elements to the new memory block. Since it doesn't have to resize each time we can also expect it to take less time.
+**Time Complexity:**
+- Worst Case: O(n) where n is list size
 
-### Immutable Collections
+**Performance Characteristics:**
+The implementation's efficiency stems from Python's list management system. When appending elements, Python works directly with the original data structure, avoiding unnecessary copies. This approach significantly reduces memory allocation overhead since no new list creation is needed for each operation.
 
-We know that immutable structures (such as tuples) do not support appends. Meaning we must use a "+=" to create a whole new object thst contains both the original and the appended elements. 
+Python's list implementation employs a growth factor strategy when resizing is necessary. Instead of increasing capacity by just one element, it grows by a multiplicative factor. This strategic growth pattern means that resizing operations become increasingly rare as the list grows larger. The cost of these occasional resizing operations is effectively distributed across many append operations, leading to excellent average-case performance.
 
-However, because we allocate memory for the entire sequence and copy all elements of the coefficient we can expect a higher memory cost since we must allocate a new memory block each time. We can expect that the time it wouldd take wold vary based on how long and short the tuple is.
+Key implementation benefits:
+- Direct modification through append()
+- No new list creation per operation
+- Growth factor-based resizing strategy
+
+### Nested List Operations
+
+```python
+def append_to_sublists(list_of_lists, element):
+    for sublist in list_of_lists:
+        if isinstance(sublist, list):
+            sublist.append(element)
+    return list_of_lists
+```
+
+**Time Complexity:**
+- Worst Case: O(m * n) where m is number of sublists and n is sublist size
+
+**Performance Characteristics:**
+Nested list operations build upon the efficiency of base list operations while introducing additional complexity through iteration. The function processes each sublist individually, applying the same efficient append operation we see in base lists. This approach maintains the performance benefits of in-place modification while handling the added complexity of nested structures.
+
+Performance considerations:
+- Efficient in-place modification of sublists
+- Type checking overhead per sublist
+- Linear scaling with number of sublists
+- No temporary list creation
+
+## Immutable Collections (Tuples)
+
+### Base Tuple Operations
+
+```python
+def concatenate_to_tuple(input_tuple, element):
+    """Concatenates new element to the input tuple"""
+    new_tuple = input_tuple + (element,)
+    return new_tuple
+```
+
+**Time Complexity:**
+- Worst Case: O(n) where n is tuple size
+
+**Performance Characteristics:**
+Tuple operations fundamentally differ from list operations due to their immutable nature. When adding an element to a tuple, Python must create an entirely new tuple object containing all existing elements plus the new one. This requirement leads to a consistent but less efficient performance profile compared to list operations.
+
+The performance cost grows linearly with tuple size, as each operation must copy all existing elements. This makes tuple concatenation operations inherently more expensive for large data structures.
+
+Critical factors:
+- New tuple creation for each operation
+- Complete element copying required
+- Linear performance scaling
+
+### Nested Tuple Operations
+```python
+def concatenate_nested_tuple(input_tuple, element):
+    """Concatenates a new element to each tuple in a nested tuple"""
+    result_tuple = tuple(item + (element,) for item in input_tuple)
+    return result_tuple
+```
+
+**Time Complexity:**
+- Worst Case: O(m * n) where m is number of inner tuples and n is inner tuple size
+
+**Performance Characteristics:**
+Nested tuple operations compound the performance characteristics of base tuple operations. The function must create new tuples at both the outer and inner levels, resulting in multiple allocation operations for each addition. This multiplicative effect significantly impacts performance as both the number and size of inner tuples increase.
+
+The implementation uses a generator expression to process inner tuples, which helps manage memory usage during the operation but doesn't reduce the fundamental complexity of creating new tuple structures at multiple levels.
+
+Key performance factors:
+- Multiple tuple creations per operation
+- Compound copying requirements
+- Generator expression overhead
+- Multiplicative performance scaling
+
+## Experimental Framework
+
+The experimental framework provides a systematic approach to measuring and comparing the performance of these different operations. It includes functions for generating test data and measuring execution time.
+
+### Random Container Generation
+
+```python
+def generate_random_containers(size: int) -> Tuple[list, list, tuple, tuple]:
+    """Generate random containers of specified size"""
+    base_list = [random.randint(1, 1000) for _ in range(size)]
+    nested_list = [[random.randint(1, 1000), random.randint(1, 1000)] for _ in range(size // 2)]
+    base_tuple = tuple(random.randint(1, 1000) for _ in range(size))
+    nested_tuple = tuple((random.randint(1, 1000), random.randint(1, 1000)) for _ in range(size // 2))
+    return base_list, nested_list, base_tuple, nested_tuple
+```
+
+The container generation function creates comparable data structures for testing, ensuring fair performance comparisons across different types and structures. It maintains consistent relationships between base and nested structures while using a uniform range for random values.
+
+### Timing Implementation
+
+```python
+def time_operation(func: Callable, input_data, elements, num_runs: int = 10, num_trials: int = 5) -> float:
+    """Time an operation multiple times and return the median execution time."""
+    times = [
+        timeit.timeit(lambda: func(input_data.copy() if isinstance(input_data, list) else input_data, elements), number=num_runs)
+        for _ in range(num_trials)
+    ]
+    return statistics.median(times) / num_runs
+```
+
+The timing mechanism incorporates several strategies to ensure reliable measurements. Multiple trials and runs help eliminate system variations and outliers, while careful handling of data copies prevents contamination between tests.
+
+Expected Performance Patterns
+Our analysis reveals four distinct performance patterns based on the fundamental differences between Python's mutable and immutable data structures:
+
+1. Base List Operations
+Pattern: Relatively stable performance with occasional spikes
+This pattern emerges because Python's list implementation:
+
+Pre-allocates extra memory during list creation
+Performs direct modifications to the existing structure
+Only requires resizing when pre-allocated space is exhausted
+Needs to copy elements to a new array during resizing
+
+2. Base Tuple Operations
+Pattern: Steadily increasing, linear cost growth
+This consistent growth occurs because:
+
+Each operation must create an entirely new tuple
+All existing elements must be copied every time
+No pre-allocation is possible due to immutability
+Performance cost is directly proportional to tuple size
+
+3. Nested List Operations
+Pattern: Higher overhead but maintains stability with more frequent spikes
+The increased complexity comes from:
+
+Iteration through all sublists adding base overhead
+Type checking requirements for each sublist
+Multiple lists potentially requiring resizing
+Direct modification still possible at sublist level
+Pre-allocation benefits applying to each sublist
+
+4. Nested Tuple Operations
+Pattern: Highest overhead with multiplicative growth
+This pattern shows the most significant impact because:
+
+New tuples must be created at both outer and inner levels
+Complete recreation is required at every level
+All elements must be copied for each modification
+Memory allocation occurs at multiple levels
+No optimization opportunities exist due to immutability
+
+The key distinction lies in how these structures handle modifications: lists leverage pre-allocation and direct modification, while tuples require complete recreation to maintain immutability. These implementation choices become particularly significant when dealing with nested structures and larger datasets.
 
 
 # Functionality - Hemani
