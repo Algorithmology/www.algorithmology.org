@@ -1,6 +1,6 @@
 ---
 author: [Coltin Colucci, Grant Anderson, Javier Bejarano, Megan Wolfarth, Willem Bennett]
-title: How is runtime affected in a vertical and horizontal subclassing hierarchy?
+title: How does runtime vary in vertical and horizontal subclassing hierarchies?
 page-layout: full
 categories: [post, objects, subclasses]
 date: "2025-02-18"
