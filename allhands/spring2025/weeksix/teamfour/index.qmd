@@ -52,7 +52,7 @@ occasional resizing operations is effectively distributed across many append
 operations, leading to excellent average-case performance.
 
 Key implementation benefits:
-- Direct modification through append()
+- Direct modification through `append()`
 - No new list creation per operation
 - Growth factor-based resizing strategy
 
@@ -66,11 +66,15 @@ def append_to_sublists(list_of_lists, element):
     return list_of_lists
 ```
 
-**Time Complexity:**
-- Worst Case: O(m * n) where m is number of sublists and n is sublist size
+**Time Complexity:** Worst Case: $O(m * n)$ where m is number of sublists and
+$n$ is sublist size.
 
-**Performance Characteristics:**
-Nested list operations build upon the efficiency of base list operations while introducing additional complexity through iteration. The function processes each sublist individually, applying the same efficient append operation we see in base lists. This approach maintains the performance benefits of in-place modification while handling the added complexity of nested structures.
+**Performance Characteristics:** Nested list operations build upon the
+efficiency of base list operations while introducing additional complexity
+through iteration. The function processes each sublist individually, applying
+the same efficient append operation we see in base lists. This approach
+maintains the performance benefits of in-place modification while handling the
+added complexity of nested structures.
 
 Performance considerations:
 - Efficient in-place modification of sublists
