@@ -10,17 +10,31 @@ toc: true
 
 # Introduction
 
-Comparing two string objects to determine equality is a common operation within computer programming. In this post, we will perform a series of experiments to discover if different containers influence the speed of equality comparisons, specifically comparing a value against all of the values within the container. We will the review the experimental results to arrive at an empirical conclusion about the impact of container types on string equality comparison operations.
+Comparing two string objects to determine equality is a common operation within
+computer programming. In this post, we will perform a series of experiments to
+discover if different containers influence the speed of equality comparisons,
+specifically comparing a value against all of the values within the container.
+We will the review the experimental results to arrive at an empirical conclusion
+about the impact of container types on string equality comparison operations.
 
 ## Motivation
 
-Given the prevalence of comparison operations within computer programming, especially comparisons where a given value is being compared against values in a container, we felt that the processing speed implications of different container types would be a beneficial data point for computer programmers to have as they made implementation decisions throughout their work. When deciding on a specific architecture, having clear data about container types' impact on equality checking would provide beneficial information to help in container type selection.
+Given the prevalence of comparison operations within computer programming,
+especially comparisons where a given value is being compared against values in a
+container, we felt that the processing speed implications of different container
+types would be a beneficial data point for computer programmers to have as they
+made implementation decisions throughout their work. When deciding on a specific
+architecture, having clear data about container types' impact on equality
+checking would provide beneficial information to help in container type
+selection.
 
 # Method
 
 ## Approach
 
-At the core of our experiment is comparison logic. We need to compare a string against the string values in a collection. This is accomplished by using a `for` loop, as demonstrated in the code block below.
+At the core of our experiment is comparison logic. We need to compare a string
+against the string values in a collection. This is accomplished by using a `for`
+loop, as demonstrated in the code block below.
 
 ```python
 # Function to perform equality comparisons between a passed value and values in the container
@@ -43,9 +57,14 @@ def compare_value_in_container(
     raise TypeError("Unsupported container type")
 ```
 
-The logic runs an inline `for` loop, comparing the passed-in string value against each of the values within the passed-in container of string values. In an effort to keep our research focused, we solely utilized `str` type values within our processing.
+The logic runs an inline `for` loop, comparing the passed-in string value
+against each of the values within the passed-in container of string values. In
+an effort to keep our research focused, we solely utilized `str` type values
+within our processing.
 
-In order to limit our time measurements specifically to the comparison operations, we've architected our code to record the time for the comparison, but to ignore any time utilized to create the collections being analyzed.
+In order to limit our time measurements specifically to the comparison
+operations, we've architected our code to record the time for the comparison,
+but to ignore any time utilized to create the collections being analyzed.
 
 ```python
 # Perform the containment check benchmark
@@ -82,7 +101,9 @@ def perform_containment_check_benchmark(
     return times
 ```
 
-The value to search for, and the container, are both passed in as parameters to this function, which uses the `timeit` module to run multiple instance of the logic and then report out results.
+The value to search for, and the container, are both passed in as parameters to
+this function, which uses the `timeit` module to run multiple instance of the
+logic and then report out results.
 
 ## Raw Data
 
@@ -118,33 +139,67 @@ The value to search for, and the container, are both passed in as parameters to 
 
 # Charts
 
-The following charts show clearly that evaluating within a `Set` takes additional time. In some cases, nearly three times as much as the shortest container type. At the same time, the data shows that there is a very minimal difference between the `List` and `Dictionary` container types when considering string equality comparisons.
+The following charts show clearly that evaluating within a `Set` takes
+additional time. In some cases, nearly three times as much as the shortest
+container type. At the same time, the data shows that there is a very minimal
+difference between the `List` and `Dictionary` container types when considering
+string equality comparisons.
 
 ## Data for Long Strings
 
-This is a chart using the subset of the Raw Data above where the String Length is 400. The "Avg Time" value is then aggregated per Container Type.
+This is a chart using the subset of the Raw Data above where the String Length
+is 400. The "Avg Time" value is then aggregated per Container Type.
 
 ![Line Graph with Time on the Vertical Axis and Container Type on the Horizontal Axis for Long Strings](./images/string-length-400.png)
 
 ## Data for Large Containers
 
-This is a chart using the subset of the Raw Data above where the Container Size is 100,000. The "Avg Time" value is then aggregated per Container Type.
+This is a chart using the subset of the Raw Data above where the Container Size
+is 100,000. The "Avg Time" value is then aggregated per Container Type.
 
 ![Line Graph with Time on the Vertical Axis and Container Type on the Horizontal Axis for Large Containers](./images/container-size-100000.png)
 
 # Results
 
-The data presented here demonstrate that performing string equality comparisons using a `Set` is notably slower than the same comparison operations on either `List` or `Dictionary`. When considering similar container sizes and object sizes within the containers, we see a significant speed penalty for using a `Set`. In at least one comparison, the 'Long List of Short Strings' experiment, we see that using a `List` required on average one quarter the time necessary to perform the same operations in a `Set`. This would align with the underlying processing infrastructure of Python. Within Python, the `Set` data structure is optimized for containment checking; that same optimization limits the performance speed of looping through the contents of a `Set` especially when compared against the sequential memory storage setup of `List` structures.
+The data presented here demonstrate that performing string equality comparisons
+using a `Set` is notably slower than the same comparison operations on either
+`List` or `Dictionary`. When considering similar container sizes and object
+sizes within the containers, we see a significant speed penalty for using a
+`Set`. In at least one comparison, the 'Long List of Short Strings' experiment,
+we see that using a `List` required on average one quarter the time necessary to
+perform the same operations in a `Set`. This would align with the underlying
+processing infrastructure of Python. Within Python, the `Set` data structure is
+optimized for containment checking; that same optimization limits the
+performance speed of looping through the contents of a `Set` especially when
+compared against the sequential memory storage setup of `List` structures.
 
-In nearly every experiment we found that a `List` performed faster than the `Dictionary`, in fact only one of our experiments showed a `Dictionary` faster than a `List`. The difference between the average elapsed time for these two container types varied with `List` being between 9.43% to 31.90% faster in cases where it was faster. The one case where `Dictionary` was faster than `List` showed a 28.39% speed benefit when using `Dictionary`. This data seems inconclusive, given it's wide range and lack of clear conclusion. At most, the data show that `List` would _typically_ provide a faster performance than `Dictionary`, but individual use-cases should be evaluated to determine the best container in specific applications.
+In nearly every experiment we found that a `List` performed faster than the
+`Dictionary`, in fact only one of our experiments showed a `Dictionary` faster
+than a `List`. The difference between the average elapsed time for these two
+container types varied with `List` being between 9.43% to 31.90% faster in cases
+where it was faster. The one case where `Dictionary` was faster than `List`
+showed a 28.39% speed benefit when using `Dictionary`. This data seems
+inconclusive, given it's wide range and lack of clear conclusion. At most, the
+data show that `List` would _typically_ provide a faster performance than
+`Dictionary`, but individual use-cases should be evaluated to determine the best
+container in specific applications.
 
 # Next Steps
 
-Given the inability to draw any conclusions about the relative benefits of `Dictionary` and `List` containers, we recommend that further experiments be run in order to specifically analyze the performance of these two container types against each other. While we have not taken the time necessary to establish a detailed experimental design, we would recommend focusing on these two container types and utilizing larger data sets for each experiment with a larger number of runs in each experiment. The theory we posit is that with additional experimental outputs, from larger datasets, the outputs would be more stable and at a timing resolution that is possible to evaluate.
+Given the inability to draw any conclusions about the relative benefits of
+`Dictionary` and `List` containers, we recommend that further experiments be run
+in order to specifically analyze the performance of these two container types
+against each other. While we have not taken the time necessary to establish a
+detailed experimental design, we would recommend focusing on these two container
+types and utilizing larger data sets for each experiment with a larger number of
+runs in each experiment. The theory we posit is that with additional
+experimental outputs, from larger datasets, the outputs would be more stable and
+at a timing resolution that is possible to evaluate.
 
 # References
 
-These references were utilized during the creation of the experimental harness used to generate the empirical data referenced in this write-up.
+These references were utilized during the creation of the experimental harness
+used to generate the empirical data referenced in this write-up.
 
 * <https://stackoverflow.com/questions/48510512/python-comparing-value-to-an-element-of-list-of-lists/>
 * <https://stackoverflow.com/questions/3860009/custom-comparison-for-built-in-containers/>
