@@ -120,15 +120,21 @@ def concatenate_nested_tuple(input_tuple, element):
     return result_tuple
 ```
 
-**Time Complexity:**
-- Worst Case: O(m * n) where m is number of inner tuples and n is inner tuple size
+**Time Complexity:** Worst Case: $O(m * n)$ where $m$ is number of inner tuples
+and $n$ is inner tuple size
 
-**Performance Characteristics:**
-Nested tuple operations compound the performance characteristics of base tuple operations. The function must create new tuples at both the outer and inner levels, resulting in multiple allocation operations for each addition. This multiplicative effect significantly impacts performance as both the number and size of inner tuples increase.
+**Performance Characteristics:** Nested tuple operations compound the
+performance characteristics of base tuple operations. The function must create
+new tuples at both the outer and inner levels, resulting in multiple allocation
+operations for each addition. This multiplicative effect significantly impacts
+performance as both the number and size of inner tuples increase.
 
-The implementation uses a generator expression to process inner tuples, which helps manage memory usage during the operation but doesn't reduce the fundamental complexity of creating new tuple structures at multiple levels.
+The implementation uses a generator expression to process inner tuples, which
+helps manage memory usage during the operation but doesn't reduce the
+fundamental complexity of creating new tuple structures at multiple levels.
 
-Key performance factors:
+**Key performance factors:**
+
 - Multiple tuple creations per operation
 - Compound copying requirements
 - Generator expression overhead
@@ -136,7 +142,9 @@ Key performance factors:
 
 ## Experimental Framework
 
-The experimental framework provides a systematic approach to measuring and comparing the performance of these different operations. It includes functions for generating test data and measuring execution time.
+The experimental framework provides a systematic approach to measuring and
+comparing the performance of these different operations. It includes functions
+for generating test data and measuring execution time.
 
 ### Random Container Generation
 
