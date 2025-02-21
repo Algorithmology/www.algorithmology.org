@@ -158,7 +158,10 @@ def generate_random_containers(size: int) -> Tuple[list, list, tuple, tuple]:
     return base_list, nested_list, base_tuple, nested_tuple
 ```
 
-The container generation function creates comparable data structures for testing, ensuring fair performance comparisons across different types and structures. It maintains consistent relationships between base and nested structures while using a uniform range for random values.
+The container generation function creates comparable data structures for
+testing, ensuring fair performance comparisons across different types and
+structures. It maintains consistent relationships between base and nested
+structures while using a uniform range for random values.
 
 ### Timing Implementation
 
@@ -172,10 +175,14 @@ def time_operation(func: Callable, input_data, elements, num_runs: int = 10, num
     return statistics.median(times) / num_runs
 ```
 
-The timing mechanism incorporates several strategies to ensure reliable measurements. Multiple trials and runs help eliminate system variations and outliers, while careful handling of data copies prevents contamination between tests.
+The timing mechanism incorporates several strategies to ensure reliable
+measurements. Multiple trials and runs help eliminate system variations and
+outliers, while careful handling of data copies prevents contamination between
+tests.
 
-Expected Performance Patterns
-Our analysis reveals four distinct performance patterns based on the fundamental differences between Python's mutable and immutable data structures:
+**Expected Performance Patterns**: Our analysis reveals four distinct
+performance patterns based on the fundamental differences between Python's
+mutable and immutable data structures:
 
 1. Base List Operations
 Pattern: Relatively stable performance with occasional spikes
