@@ -56,7 +56,7 @@ operation across different container types.
 One road block that we encountered in our implementation was indicating how we
 planned on handling removing from data containers that did not contain enough
 data to be removed. (i.e., the amount we were trying to remove was larger than
-the length of the container). Initially we raised Index Errors, but in order to
+the length of the container). Initially we raised `IndexError`s, but in order to
 run our benchmarking, we had to readjust and return the originally inputted
 list. You can see this present in the below function:
 
@@ -73,11 +73,13 @@ def pop_list(input_list: List[int]) -> List[int]:
     return input_list
 ```
 
-Other important factors that we had to consider while implementing this tool broke down what exactly we meant
-by **basic operations**. While we highlighted we wanted to focus on adding and removing from a container we
-quickly found that this was a more complicated problem. For example, where do we add/remove from the container
-and how does that effect performance. This is something that we would recommend could be a part of a future
-research question or future All Hands Project!
+Other important factors that we had to consider while implementing this tool
+broke down what exactly we meant by **basic operations**. While we highlighted
+we wanted to focus on adding and removing from a container we quickly found that
+this was a more complicated problem. For example, where do we add/remove from
+the container and how does that effect performance? This is something that we
+would recommend could be a part of a future research question or future All
+Hands Project!
 
 ### Benchmarking
 
