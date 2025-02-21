@@ -220,13 +220,14 @@ allows for better optimization in Python programming, ensuring efficiency in
 both computation and memory usage.
 
 Importantly, the above output was from running our program on a Windows 11,
-running on Python 3.12.5. While these specific results are from this OS setup,
-throughout our team we have Windows and Mac operating system. This is important
-because it shows that we get similar results and can make conclusions that
-include results from different operating systems. It is also important to note
-that we each ran the program multiple times, and the program itself runs the
-functions multiple times, so we did as much as we could to mitigate the impact
-of random background operations and other outside factors impacting our results.
+running on Python 3.12.5. While these specific results are from this system
+setup, throughout our team we have Windows and Mac operating system. This is
+important because it shows that we get similar results and can make conclusions
+that include results from different operating systems. It is also important to
+note that we each ran the program multiple times, and the program itself runs
+the functions multiple times, so we did as much as we could to mitigate the
+impact of random background operations and other outside factors impacting our
+results.
 
 ## Conclusion
 
