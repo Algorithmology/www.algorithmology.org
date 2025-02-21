@@ -148,12 +148,12 @@ different result than in Python due to this.
 
 ## Conclusion
 
-In our experiment, we wanted to see if making a class hierarchy deeper (more
-levels of inheritance) would slow down a program in Python. We thought that if a
-class had to go through many layers to find a function, it would take more time.
-But when we tested it, we found out that this wasn't really true.  
+In our experiment, we wanted to see if making a class hierarchy deeper (i.e.,
+more levels of inheritance) would slow down a program in Python. We thought that
+if a class had to go through many layers to find a function, it would take more
+time. But when we tested it, we found out that this wasn't really true.  
 
-Python is smart. It has a way of remember where to find things, so it doesn't
+Python is smart! It has a way of remember where to find things, so it doesn't
 need to keep searching every time. Even if a class is deep down in a long chain
 of inheritance, Python still finds the function quickly. It also saves some of
 this information to make future times even faster.  
@@ -161,8 +161,8 @@ this information to make future times even faster.
 We tested two different types of class structures:  
 
 - **Vertical** – You start with one base class at the top, and each new class is
-built in top of each other. Each class gets more specific. For example: Animal
-(base class), Mammal (subclass), Dog (subclass of Mammal)
+built in top of each other. Each class gets more specific. For example: `Animal`
+(base class), `Mammal` (subclass), `Dog` (subclass of `Mammal`).
 - **Horizontal** – You start with one base class at the top, and then you create
 several subclasses, all of them coming from the same base. They don’t come from
 each other. For example: Shape (base class), Circle, Square, Triangle (all of
