@@ -18,37 +18,47 @@ format:
 
 ### Motivation
 
-When working with different data containers in Python (lists, dictionaries, and tuples), developers often need
-to perform basic operations like adding or removing elements. While these operations might seem straightforward,
-their performance characteristics can vary significantly depending on the container type and the size of the data.
-In this analysis, we investigate how different Python containers perform basic operations and how their execution times
-change with varying data sizes.
+When working with different data containers in Python (i.e., lists,
+dictionaries, and tuples), developers often need to perform basic operations
+like adding or removing elements. While these operations might seem
+straightforward, their performance characteristics can vary significantly
+depending on the container type and the size of the data. In this analysis, we
+investigate how different Python containers perform basic operations and how
+their execution times change with varying data sizes.
 
 ### Overview
 
-To explore how the time efficiency of basic operations changes for different data containers, we implemented
-functions that add and remove elements in lists, dictionaries, and tuples. All operations are performed on
-containers holding integer values, with three different sizes: empty (length 0), medium (length 10), and
-large (length 100). By benchmarking these operations across varying container sizes (empty, medium, and large)
-we aim to answer the research question: **How does the time required for basic operations change based on container**
-**type and size?** As we will explain in the results section, our output provides insight into the performance
-trade-offs when using different data structures for modification-heavy tasks.
+To explore how the time efficiency of basic operations changes for different
+data containers, we implemented functions that add and remove elements in lists,
+dictionaries, and tuples. All operations are performed on containers holding
+integer values, with three different sizes: empty (length 0), medium (length
+10), and large (length 100). By benchmarking these operations across varying
+container sizes (empty, medium, and large) we aim to answer the research
+question: **How does the time required for basic operations change based on
+container** **type and size?** As we will explain in the results section, our
+output provides insight into the performance trade-offs when using different
+data structures for modification-heavy tasks.
 
 ## Implementation
 
-The `functions.py` file contains the core implementations of the basic operations. The `append_list` and `pop_list` 
-functions modify lists by inserting elements at the beginning and removing them from the end. Similarly, `append_dict`
-adds key-value pairs at the beginning of a dictionary, while `pop_dict` removes the last 10 elements. Since tuples are
-immutable `append_tuple` creates a new tuple with additional elements, and `pop_tuple` returns a new version of the tuple
-without the last 10 elements. These functions enabled us to complete a structured comparison of the efficiency of each
+The `functions.py` file contains the core implementations of the basic
+operations. The `append_list` and `pop_list` functions modify lists by inserting
+elements at the beginning and removing them from the end. Similarly,
+`append_dict` adds key-value pairs at the beginning of a dictionary, while
+`pop_dict` removes the last 10 elements. Since tuples are immutable
+`append_tuple` creates a new tuple with additional elements, and `pop_tuple`
+returns a new version of the tuple without the last 10 elements. These functions
+enabled us to complete a structured comparison of the efficiency of each
 operation across different container types.
 
 ### Important Considerations
 
-One road block that we encountered in our implementation was indicating how we planned on handling removing
-from data containers that did not contain enough data to be removed. (i.e. the amount we were trying to remove
-was larger than the length of the container). Initially we raised Index Errors, but in order to run our benchmarking,
-we had to readjust and return the originally inputted list. You can see this present in the below function:
+One road block that we encountered in our implementation was indicating how we
+planned on handling removing from data containers that did not contain enough
+data to be removed. (i.e., the amount we were trying to remove was larger than
+the length of the container). Initially we raised Index Errors, but in order to
+run our benchmarking, we had to readjust and return the originally inputted
+list. You can see this present in the below function:
 
 ```python
 def pop_list(input_list: List[int]) -> List[int]:
