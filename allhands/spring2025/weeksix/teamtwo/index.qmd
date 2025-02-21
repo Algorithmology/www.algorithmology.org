@@ -83,9 +83,10 @@ Hands Project!
 
 ### Benchmarking
 
-The `main.py` file is responsible for generating our data for benchmarking, executing the timing benchmarks,
-and displaying our results. It first creates lists, dictionaries, and tuples of varying lengths filled with
-random integers, which can be seen below:
+The `main.py` file is responsible for generating our data for benchmarking,
+executing the timing benchmarks, and displaying our results. It first creates
+lists, dictionaries, and tuples of varying lengths filled with random integers,
+which can be seen below:
 
 ```python
 def generate_random_inputs(size: int) -> Tuple[List[int], Dict[str, int], Tuple[int, ...]]:
@@ -99,11 +100,14 @@ def generate_random_inputs(size: int) -> Tuple[List[int], Dict[str, int], Tuple[
     return random_list, random_dict, random_tuple
 ```
 
-Next, the `benchmark_operation` function measures the execution time of each operation across multiple
-trials to ensure reliable results. The `operations_benchmark` function orchestrates the benchmarking process,
-by applying each operation to its respective container and storing the results. As you can see in the
-function below, we perform our tests multiple runs through and perform an average operation to handle some
-of the differences we may experience in OS, battery, background, etc.
+Next, the `benchmark_operation` function measures the execution time of each
+operation across multiple trials to ensure reliable results. The
+`operations_benchmark` function orchestrates the benchmarking process, by
+applying each operation to its respective container and storing the results. As
+you can see in the function below, we perform our tests multiple runs through
+and perform an average operation to handle some of the differences we may
+experience in, for instance, the operating system, battery level, and number and
+type of background processes.
 
 ```python
 def benchmark_operation(container: Any, operation_func: callable, num_trials: int = 100) -> float:
