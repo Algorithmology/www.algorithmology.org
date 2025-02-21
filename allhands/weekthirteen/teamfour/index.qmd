@@ -1,6 +1,6 @@
 ---
 author: [Mordred Boulais, Rebekah Rudd, William Wolff, Simon Jones]
-title: Doubling Experiment with O(n) Analysis
+title: Doubling experiment with worst-case time complexity analysis
 page-layout: full
 categories: [post, doubling, sorting]
 date: "2024-04-12"
