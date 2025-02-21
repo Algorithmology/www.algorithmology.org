@@ -1,0 +1,475 @@
+---
+author: [Hemani Alaparthi, Finley Banas, Faaris Cheema, Darius Googe, Anton Hedlund, Vivian Potts]
+title: Performance comparison of append and concatenation in mutable and immutable Structures
+page-layout: full
+categories: [post, doubling, lists, tuples]
+date: "2025-02-21"
+date-format: long
+toc: true
+---
+
+# Overview
+
+## Mutable versus Immutable Analysis
+
+This Algorithm All-Hands Project examines mutable and immutable data
+structures—specifically lists and tuples. The focus of this article is on
+analyzing how appending elements to a list and concatenating elements to a tuple
+impact runtime performance.
+
+## What We Know
+
+The difference in space overhead when appending elements to mutable collections
+versus immutable structures comes down to how memory allocation and object
+copying work.
+
+## Mutable Collections (Lists)
+
+### Base List Operations
+
+```python
+def append_to_list(input_list, element):
+    """Appends new element to the input list"""
+    input_list.append(element)
+    return input_list
+```
+
+**Time Complexity:** Worst Case: $O(n)$ where $n$ is list size
+
+**Performance Characteristics:** The implementation's efficiency stems from
+Python's list management system. When appending elements, Python works directly
+with the original data structure, avoiding unnecessary copies. This approach
+significantly reduces memory allocation overhead since no new list creation is
+needed for each operation.
+
+Python's list implementation employs a growth factor strategy when resizing is
+necessary. Instead of increasing capacity by just one element, it grows by a
+multiplicative factor. This strategic growth pattern means that resizing
+operations become increasingly rare as the list grows larger. The cost of these
+occasional resizing operations is effectively distributed across many append
+operations, leading to excellent average-case performance.
+
+**Key implementation benefits**:
+
+- Direct modification through `append`
+- No new list creation per operation
+- Growth factor-based resizing strategy
+
+### Nested List Operations
+
+```python
+def append_to_sublists(list_of_lists, element):
+    for sublist in list_of_lists:
+        if isinstance(sublist, list):
+            sublist.append(element)
+    return list_of_lists
+```
+
+**Time Complexity:** Worst Case: $O(m * n)$ where m is number of sublists and
+$n$ is sublist size.
+
+**Performance Characteristics:** Nested list operations build upon the
+efficiency of base list operations while introducing additional complexity
+through iteration. The function processes each sublist individually, applying
+the same efficient append operation we see in base lists. This approach
+maintains the performance benefits of in-place modification while handling the
+added complexity of nested structures.
+
+**Performance considerations:**
+
+- Efficient in-place modification of sublists
+- Type checking overhead per sublist
+- Linear scaling with number of sublists
+- No temporary list creation
+
+## Immutable Collections (Tuples)
+
+### Base Tuple Operations
+
+```python
+def concatenate_to_tuple(input_tuple, element):
+    """Concatenates new element to the input tuple"""
+    new_tuple = input_tuple + (element,)
+    return new_tuple
+```
+
+**Time Complexity:** Worst Case: $O(n)$ where $n$ is tuple size
+
+**Performance Characteristics:** Tuple operations fundamentally differ from list
+operations due to their immutable nature. When adding an element to a tuple,
+Python must create an entirely new tuple object containing all existing elements
+plus the new one. This requirement leads to a consistent but less efficient
+performance profile compared to list operations.
+
+The performance cost grows linearly with tuple size, as each operation must copy
+all existing elements. This makes tuple concatenation operations inherently more
+expensive for large data structures.
+
+**Critical factors:**
+
+- New tuple creation for each operation
+- Complete element copying required
+- Linear performance scaling
+
+### Nested Tuple Operations
+
+```python
+def concatenate_nested_tuple(input_tuple, element):
+    """Concatenates a new element to each tuple in a nested tuple"""
+    result_tuple = tuple(item + (element,) for item in input_tuple)
+    return result_tuple
+```
+
+**Time Complexity:** Worst Case: $O(m * n)$ where $m$ is number of inner tuples
+and $n$ is inner tuple size
+
+**Performance Characteristics:** Nested tuple operations compound the
+performance characteristics of base tuple operations. The function must create
+new tuples at both the outer and inner levels, resulting in multiple allocation
+operations for each addition. This multiplicative effect significantly impacts
+performance as both the number and size of inner tuples increase.
+
+The implementation uses a generator expression to process inner tuples, which
+helps manage memory usage during the operation but doesn't reduce the
+fundamental complexity of creating new tuple structures at multiple levels.
+
+**Key performance factors:**
+
+- Multiple tuple creations per operation
+- Compound copying requirements
+- Generator expression overhead
+- Multiplicative performance scaling
+
+## Experimental Framework
+
+The experimental framework provides a systematic approach to measuring and
+comparing the performance of these different operations. It includes functions
+for generating test data and measuring execution time.
+
+### Random Container Generation
+
+```python
+def generate_random_containers(size: int) -> Tuple[list, list, tuple, tuple]:
+    """Generate random containers of specified size"""
+    base_list = [random.randint(1, 1000) for _ in range(size)]
+    nested_list = [[random.randint(1, 1000), random.randint(1, 1000)] for _ in range(size // 2)]
+    base_tuple = tuple(random.randint(1, 1000) for _ in range(size))
+    nested_tuple = tuple((random.randint(1, 1000), random.randint(1, 1000)) for _ in range(size // 2))
+    return base_list, nested_list, base_tuple, nested_tuple
+```
+
+The container generation function creates comparable data structures for
+testing, ensuring fair performance comparisons across different types and
+structures. It maintains consistent relationships between base and nested
+structures while using a uniform range for random values.
+
+### Timing Implementation
+
+```python
+def time_operation(func: Callable, input_data, elements, num_runs: int = 10, num_trials: int = 5) -> float:
+    """Time an operation multiple times and return the median execution time."""
+    times = [
+        timeit.timeit(lambda: func(input_data.copy() if isinstance(input_data, list) else input_data, elements), number=num_runs)
+        for _ in range(num_trials)
+    ]
+    return statistics.median(times) / num_runs
+```
+
+The timing mechanism incorporates several strategies to ensure reliable
+measurements. Multiple trials and runs help eliminate system variations and
+outliers, while careful handling of data copies prevents contamination between
+tests.
+
+**Expected Performance Patterns**: Our analysis reveals four distinct
+performance patterns based on the fundamental differences between Python's
+mutable and immutable data structures:
+
+#### Base List Operations
+
+Pattern: Relatively stable performance with occasional spikes
+This pattern emerges because Python's list implementation:
+
+- Pre-allocates extra memory during list creation
+- Performs direct modifications to the existing structure
+- Only requires resizing when pre-allocated space is exhausted
+- Needs to copy elements to a new array during resizing
+
+#### Base Tuple Operations
+
+Pattern: Steadily increasing, linear cost growth
+This consistent growth occurs because:
+
+- Each operation must create an entirely new tuple
+- All existing elements must be copied every time
+- No pre-allocation is possible due to immutability
+- Performance cost is directly proportional to tuple size
+
+#### Nested List Operations
+
+Pattern: Higher overhead but maintains stability with more frequent spikes. The
+increased complexity comes from:
+
+- Iteration through all sublists adding base overhead
+- Type checking requirements for each sublist
+- Multiple lists potentially requiring resizing
+- Direct modification still possible at sublist level
+- Pre-allocation benefits applying to each sublist
+
+#### Nested Tuple Operations
+
+Pattern: Highest overhead with multiplicative growth
+This pattern shows the most significant impact because:
+
+- New tuples must be created at both outer and inner levels
+- Complete recreation is required at every level
+- All elements must be copied for each modification
+- Memory allocation occurs at multiple levels
+- No optimization opportunities exist due to immutability
+
+The key distinction lies in how these structures handle modifications: lists
+leverage pre-allocation and direct modification, while tuples require complete
+recreation to maintain immutability. These implementation choices become
+particularly significant when dealing with nested structures and larger
+datasets.
+
+# Functionality - Hemani
+
+# Results
+
+## Hemani (MacOS)
+
+### Laptop Details
+
+```cmd
+Displaying System Information
+
+╭───────────────────────────────────────────────────── System Information Panel ──────────────────────────────────────────────────────╮
+│ ╭──────────────────┬──────────────────────────────────────────────────────────────────────────────────────────────────────────────╮ │
+│ │ System Parameter │ Parameter Value                                                                                              │ │
+│ ├──────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────┤ │
+│ │ battery          │ 63.00% battery life remaining, 7:06:00 seconds remaining                                                     │ │
+│ │ cpu              │                                                                                                              │ │
+│ │ cpucores         │ Physical cores: 8, Logical cores: 8                                                                          │ │
+│ │ cpufrequencies   │ Min: Unknown Mhz, Max: Unknown Mhz                                                                           │ │
+│ │ datetime         │ 2025-02-17 21:40:39                                                                                          │ │
+│ │ disk             │ Total: 228.27 GB, Used: 14.13 GB, Free: 90.49 GB, Percent: 13.5%                                             │ │
+│ │ hostname         │ Hemanis-MacBook-Air.local                                                                                    │ │
+│ │ memory           │ svmem(total=8589934592, available=1409531904, percent=83.6, used=3016491008, free=63717376,                  │ │
+│ │                  │ active=1356316672, inactive=1307279360, wired=1660174336)                                                    │ │
+│ │ platform         │ macOS-15.1.1-arm64-arm-64bit                                                                                 │ │
+│ │ pythonversion    │ 3.11.9                                                                                                       │ │
+│ │ runningprocesses │ 508                                                                                                          │ │
+│ │ swap             │ Total: 8.00 GB, Used: 7.02 GB, Free: 0.98 GB, Percent: 87.8%                                                 │ │
+│ │ system           │ Darwin                                                                                                       │ │
+│ │ systemload       │ (3.953125, 3.2275390625, 2.65234375)                                                                         │ │
+│ │ virtualenv       │ /Users/hemanialaparthi/Library/Caches/pypoetry/virtualenvs/systemsense-GfKbtxco-py3.11                       │ │
+│ ╰──────────────────┴──────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+```
+
+|                |    Container size = 1000    |    Container size = 5000    |
+|----------------|--------------|--------------|--------------|--------------|
+| Data Structure | Doubling (3) | Doubling (9) | Doubling (3) | Doubling (9) |
+|----------------|--------------|--------------|--------------|--------------|
+| List           |0.000070      |0.006552      |0.000011      |0.001267      |
+| Nested List    |0.000213      |0.016261      |0.000046      |0.002966      |
+| Tuple          |0.000069      |0.006025      |0.000006      |0.001146      |
+| Nested Tuple   |0.000513      |0.040819      |0.000088      |0.007281      |
+
+
+## Finley (Windows)
+
+### Laptop Details
+
+```cmd
+✨ Displaying System Information
+
+╭───────────────────────────────────────────────────────────────────── System Information Panel ─────────────────────────────────────────────────────────────────────╮
+│ ╭───────────────────┬─────────────────────────────────────────────────────────────────────────────────────╮                                                        │
+│ │ System Parameter  │ Parameter Value                                                                     │                                                        │
+│ ├───────────────────┼─────────────────────────────────────────────────────────────────────────────────────┤                                                        │
+│ │ battery           │ Percent: 42%, Plugged In: True                                                      │                                                        │
+│ │ cpu               │ AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD                                   │                                                        │
+│ │ cpucores          │ Logical: 16, Physical: 8                                                            │                                                        │
+│ │ cpufrequencies    │ Min: 0.0 Mhz, Max: 3201.0 Mhz                                                       │                                                        │
+│ │ datetime          │ 2025-02-18 12:20:24                                                                 │                                                        │
+│ │ disk_usage        │ Total: 952 GB, Used: 819 GB, Free: 133 GB                                           │                                                        │
+│ │ hostname          │ LAPTOP-LF29MNQ9                                                                     │                                                        │
+│ │ memory            │ Total: 13 GB, Used: 13 GB, Available: 0 GB                                          │                                                        │
+│ │ platform          │ Windows-11-10.0.22631-SP0                                                           │                                                        │
+│ │ pythonversion     │ 3.12.6                                                                              │                                                        │
+│ │ running_processes │ 376                                                                                 │                                                        │
+│ │ swap              │ Total: 36 GB, Used: 2 GB, Free: 33 GB                                               │                                                        │
+│ │ system            │ Windows 10.0.22631                                                                  │                                                        │
+│ │ system_load       │ Load Average (1 min): 0.0, (5 min): 0.0, (15 min): 0.0                              │                                                        │
+│ │ virtual_env       │ C:\Users\finle\AppData\Local\pypoetry\Cache\virtualenvs\systemsense-wH1noHbB-py3.12 │                                                        │
+│ ╰───────────────────┴─────────────────────────────────────────────────────────────────────────────────────╯                                                        │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+
+🏁 Displaying Benchmark Results
+
+╭─────────────────────────────────────────────────────────────────── Benchmark Information Panel ────────────────────────────────────────────────────────────────────╮
+│ ╭────────────────┬────────────────────────────────────────────────────────────────╮                                                                                │
+│ │ Benchmark Name │ Benchmark Results (sec)                                        │                                                                                │
+│ ├────────────────┼────────────────────────────────────────────────────────────────┤                                                                                │
+│ │ addition       │ [0.5045552999945357, 0.5307341000007, 0.5133566000004066]      │                                                                                │
+│ │ concatenation  │ [2.647170099997311, 2.6313645000045653, 2.628883900004439]     │                                                                                │
+│ │ exponentiation │ [2.546220900010667, 2.55919040000299, 2.5246280999999726]      │                                                                                │
+│ │ multiplication │ [0.48429310000210535, 0.4932515000109561, 0.4835355000104755]  │                                                                                │
+│ │ rangelist      │ [0.1670014999981504, 0.17028800000844058, 0.16126609999628272] │                                                                                │
+│ ╰────────────────┴────────────────────────────────────────────────────────────────╯                                                                                │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+```
+
+|                |    Container size = 1000    |    Container size = 5000    |
+|----------------|--------------|--------------|--------------|--------------|
+| Data Structure | Doubling (3) | Doubling (9) | Doubling (3) | Doubling (9) |
+|----------------|--------------|--------------|--------------|--------------|
+| List           | 0.00007      | 0.001538     | 0.000218     | 0.009863     |
+| Nested List    | 0.000085     | 0.015265     | 0.000965     | 0.076853     |
+| Tuple          | 0.000008     | 0.001762     | 0.000230     | 0.011243     |
+| Nested Tuple   | 0.004481     | 0.006838     | 0.255142     | 0.036581     |
+
+## Anton (MacOS)
+
+### Laptop Details
+
+```cmd
+Displaying System Information
+
+╭────────────────────────────────────────────────────── System Information ───────────────────────────────────────────────────────╮
+│ ╭──────────────────┬──────────────────────────────────────────────────────────────────────────────────────────────────────────╮ │
+│ │ System Parameter │ Parameter Value                                                                                          │ │
+│ ├──────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────┤ │
+│ │ battery          │ 37.00% battery life remaining, 3:05:00 seconds remaining                                                 │ │
+│ │ cpu              │ arm                                                                                                      │ │
+│ │ cpucores         │ 11 cores                                                                                                 │ │
+│ │ cpufrequencies   │ Min: Unknown Mhz, Max: Unknown Mhz                                                                       │ │
+│ │ datetime         │ 2025-02-18 12:18:32.346405                                                                               │ │
+│ │ disk             │ Using 14.13 GB of 460.43 GB                                                                              │ │
+│ │ hostname         │ MacBook-Pro-Anton.local                                                                                  │ │
+│ │ memory           │ Using 8.04 GB of 18.00 GB                                                                                │ │
+│ │ platform         │ macOS-15.1.1-arm64-arm-64bit                                                                             │ │
+│ │ pythonversion    │ 3.12.8                                                                                                   │ │
+│ │ runningprocesses │ 480 running processes                                                                                    │ │
+│ │ swap             │ Using 0.00 GB of 0.00 GB                                                                                 │ │
+│ │ system           │ Darwin                                                                                                   │ │
+│ │ systemload       │ Average Load: 1.52, CPU Utilization: 13.50%                                                              │ │
+│ │ virtualenv       │ /Users/antonhedlund/Compsci/algorhytms_202/computer-science-202-algorithm-engineering-project-1-ahedlun… │ │
+│ ╰──────────────────┴──────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Displaying Benchmark Results
+
+╭─────────────────────────────────────────────────────── Benchmark Results ───────────────────────────────────────────────────────╮
+│ ╭────────────────┬────────────────────────────────────────────────────────────────╮                                             │
+│ │ Benchmark Name │ Benchmark Results (sec)                                        │                                             │
+│ ├────────────────┼────────────────────────────────────────────────────────────────┤                                             │
+│ │ addition       │ [0.36809995799558237, 0.3705150419991696, 0.36666045800666325] │                                             │
+│ │ concatenation  │ [1.7376747919915942, 1.7254252090060618, 1.7633794589928584]   │                                             │
+│ │ exponentiation │ [2.0676654590060934, 2.107653166007367, 2.0617878750053933]    │                                             │
+│ │ multiplication │ [0.39263445799588226, 0.39074745899415575, 0.3888672500033863] │                                             │
+│ │ rangelist      │ [0.1000612909992924, 0.09830641599546652, 0.09847687500587199] │                                             │
+│ ╰────────────────┴────────────────────────────────────────────────────────────────╯                                             │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+```
+
+|                |    Container size = 1000    |    Container size = 5000    |
+|----------------|--------------|--------------|--------------|--------------|
+| Data Structure | Doubling (3) | Doubling (9) | Doubling (3) | Doubling (9) |
+|----------------|--------------|--------------|--------------|--------------|
+| List           | 0.000010     | 0.001157     | 0.000052     | 0.005466     |
+| Nested List    | 0.000037     | 0.002724     | 0.000182     | 0.013588     |
+| Tuple          | 0.000006     | 0.001040     | 0.000047     | 0.005302     |
+| Nested Tuple   | 0.000094     | 0.006874     | 0.000521     | 0.038212     |
+
+
+## Summary Table
+
+|                |    Container size = 1000    |    Container size = 5000    |
+|----------------|--------------|--------------|--------------|--------------|
+| Data Structure | Doubling (3) | Doubling (9) | Doubling (3) | Doubling (9) |
+|----------------|--------------|--------------|--------------|--------------|
+| List           |0.00004       |0.003854      |0.0000315     |0.003365      |
+| Nested List    |0.000125      |0.009493      |0.000114      |0.008277      |
+| Tuple          |0.0000375     |0.003533      |0.00000535    |0.003224      |
+| Nested Tuple   |0.0003035     |0.02384       |0.0003045     |0.02275       |
+
+
+## Tuple
+
+We observed that tuples generally perform better than list, nested tuples and
+nested lists in the doubling experiment. For both container sizes (1000 and
+5000), tuples consistently exhibit lower execution times compared to other
+structures. This suggests that tuples benefit from their immutable nature, which
+likely optimizes memory usage and lookup operations. Additionally, as the number
+of doublings increases (from 3 to 9), the performance of tuples remains
+relatively stable compared to nested structures, highlighting their efficiency
+in handling iterative operations. However, the performance of tuples compared to
+list can be noted to be 
+
+## Nested Tuple
+
+Comparing nested tuples to just tuples, we found that they were significantly
+slower. This is likely due to the fact that nested tuples require more memory
+allocation and copying operations, which can slow down the execution time. As
+the number of doublings increases, the performance of nested tuples deteriorates
+further, indicating that the overhead of managing nested structures becomes more
+pronounced with larger data sizes. This suggests that nested tuples may not be
+the most efficient choice for handling complex data structures that require
+frequent modifications.
+
+### List
+
+Lists show better performance compared to nested structures due to simpler memory management.
+
+Performance is notably affected by container size increases but maintains
+relatively stable behavior Main characteristics:
+
+- Handles smaller container sizes (1000) efficiently across different doubling factors
+- Shows predictable scaling behavior when size increases to 5000
+- Performance impact from doubling operations is less severe compared to nested structures
+- Maintains good efficiency with basic operations due to straightforward memory access patterns
+- Shows consistent behavior across different operation scenarios
+
+### Nested List
+
+Nested lists demonstrate notably slower performance compared to regular lists
+Performance characteristics:
+
+- Shows significant overhead due to managing multiple levels of data structures
+- Performance degrades more dramatically with larger container sizes
+- Particularly sensitive to doubling operations, especially with 9x doubling
+- Memory management becomes more complex due to handling inner and outer structures
+- Shows less predictable scaling patterns compared to regular lists
+- Performance impact is most noticeable when combining large sizes with high doubling factors
+
+# Conclusion
+
+- In conclusion after running a doubling experiment and measuring time (sec),
+and RAM storage using Tuples, Nested Tuples, List and Nested Lists we came to
+conclusion that Tuple was the fastest, likely due to their immutable nature,
+which optimizes memory usage and lookup efficiency. They maintain relatively
+stable performance even as the number of doublings increases.
+
+- In conclusion for Lists they were slights slower than regular Tuple but still
+efficient, benefiting from simpler memory management and predictable scaling.
+
+- In conclusion for Nested Tuples were slower than regular Tuples as they
+introduce significant memory allocation and copying overhead. Performances
+degrades further with larger data sizes.
+
+- In conclusion Nested Lists were the slower, as they introduce significant
+overhead when managing multiple levels of data structures. Performance
+deteriorated noticeably as the container size and doubling factors increase.
+
+# Take Home Points
+
+When doing an experiment like this be mindful of the size of your containers.
+Along with addition of layers in containers for example nested tuples and list
+as that extra step adds additional memory and takes longer to run. When
+optimizing performance users need to ask essential questions like how memory
+will this take up and how fast can we display the date. So when comparing these
+four containers we found Tuples to be more efficient in the memory space it took
+up and how fast it took to run.
