@@ -1,6 +1,6 @@
 ---
 author: [Hemani Alaparthi, Finley Banas, Faaris Cheema, Darius Googe, Anton Hedlund, Vivian Potts]
-title: Following a doubling experiment paradigm how does the response time for operations like append and concatenation vary for different sizes of data between mutable and immutable containment structures
+title: Performance comparison of append and concatenation in mutable and immutable Structures
 page-layout: full
 categories: [post, doubling, lists, tuples]
 date: "2025-02-21"
@@ -12,11 +12,16 @@ toc: true
 
 ## Mutable vs Immutable Analysis
 
-For our All Hands Project, we are examining mutable and immutable data structures—specifically lists and tuples. Our focus is on analyzing how appending elements to a list and concatenating elements to a tuple impact runtime performance.
+For our All Hands Project, we are examining mutable and immutable data
+structures—specifically lists and tuples. Our focus is on analyzing how
+appending elements to a list and concatenating elements to a tuple impact
+runtime performance.
 
 ## What We Know
 
-The difference in space overhead when appending elements to mutable collections versus immutable structures comes down to how memory allocation and object copying work.
+The difference in space overhead when appending elements to mutable collections
+versus immutable structures comes down to how memory allocation and object
+copying work.
 
 ## Mutable Collections (Lists)
 
@@ -33,9 +38,18 @@ def append_to_list(input_list, element):
 - Worst Case: O(n) where n is list size
 
 **Performance Characteristics:**
-The implementation's efficiency stems from Python's list management system. When appending elements, Python works directly with the original data structure, avoiding unnecessary copies. This approach significantly reduces memory allocation overhead since no new list creation is needed for each operation.
 
-Python's list implementation employs a growth factor strategy when resizing is necessary. Instead of increasing capacity by just one element, it grows by a multiplicative factor. This strategic growth pattern means that resizing operations become increasingly rare as the list grows larger. The cost of these occasional resizing operations is effectively distributed across many append operations, leading to excellent average-case performance.
+The implementation's efficiency stems from Python's list management system. When
+appending elements, Python works directly with the original data structure,
+avoiding unnecessary copies. This approach significantly reduces memory
+allocation overhead since no new list creation is needed for each operation.
+
+Python's list implementation employs a growth factor strategy when resizing is
+necessary. Instead of increasing capacity by just one element, it grows by a
+multiplicative factor. This strategic growth pattern means that resizing
+operations become increasingly rare as the list grows larger. The cost of these
+occasional resizing operations is effectively distributed across many append
+operations, leading to excellent average-case performance.
 
 Key implementation benefits:
 - Direct modification through append()
