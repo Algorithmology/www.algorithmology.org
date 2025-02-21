@@ -84,7 +84,7 @@ def measure_performance():
 |  Heptagon   |    100000    |  [0.671177, 0.675468, 0.706550]  |  [0.587933, 0.598938, 0.598938]  |  [1.188629, 1.204649, 1.172515]  |
 |  Octagon    |    100000    |  [0.558312, 0.555632, 0.601104]  |  [0.517227, 0.529137, 0.529137]  |  [0.985888, 1.020366, 1.145782]  |
 
-### Verticle Subclasses
+### Vertical Subclasses
 
 |    Class    |  Level  |  Iterations  |           Computer 1             |           Computer 2             |            Computer 3            |
 |:-----------:|:-------:|:------------:|:--------------------------------:|:--------------------------------:|:--------------------------------:|
@@ -116,9 +116,9 @@ Looking deeper into the topic of class hierarchy overhead, we find that it actua
 
 ## Conclusion
 
-In our experiment, we wanted to see if making a class hierarchy deeper (more levels of inheritance) would slow down a program in Python. We thought that if a class had to go through many layers to find a function, it would take more time. But when we tested it, we found out that this wasn’t really true.  
+In our experiment, we wanted to see if making a class hierarchy deeper (more levels of inheritance) would slow down a program in Python. We thought that if a class had to go through many layers to find a function, it would take more time. But when we tested it, we found out that this wasn't really true.  
 
-Python is smart. It has a way of remember where to find things, so it doesn’t need to keep searching every time. Even if a class is deep down in a long chain of inheritance, Python still finds the function quickly. It also saves some of this information to make future times even faster.  
+Python is smart. It has a way of remember where to find things, so it doesn't need to keep searching every time. Even if a class is deep down in a long chain of inheritance, Python still finds the function quickly. It also saves some of this information to make future times even faster.  
 
 We tested two different types of class structures:  
 1. **Vertical** – You start with one base class at the top, and each new class is built in top of each other. Each class gets more specific. For example: Animal (base class), Mammal (subclass), Dog (subclass of Mammal)
