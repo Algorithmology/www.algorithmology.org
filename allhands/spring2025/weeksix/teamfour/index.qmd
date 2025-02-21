@@ -95,17 +95,24 @@ def concatenate_to_tuple(input_tuple, element):
 
 **Time Complexity:** Worst Case: $O(n)$ where $n$ is tuple size
 
-**Performance Characteristics:**
-Tuple operations fundamentally differ from list operations due to their immutable nature. When adding an element to a tuple, Python must create an entirely new tuple object containing all existing elements plus the new one. This requirement leads to a consistent but less efficient performance profile compared to list operations.
+**Performance Characteristics:** Tuple operations fundamentally differ from list
+operations due to their immutable nature. When adding an element to a tuple,
+Python must create an entirely new tuple object containing all existing elements
+plus the new one. This requirement leads to a consistent but less efficient
+performance profile compared to list operations.
 
-The performance cost grows linearly with tuple size, as each operation must copy all existing elements. This makes tuple concatenation operations inherently more expensive for large data structures.
+The performance cost grows linearly with tuple size, as each operation must copy
+all existing elements. This makes tuple concatenation operations inherently more
+expensive for large data structures.
 
-Critical factors:
+**Critical factors:**
+
 - New tuple creation for each operation
 - Complete element copying required
 - Linear performance scaling
 
 ### Nested Tuple Operations
+
 ```python
 def concatenate_nested_tuple(input_tuple, element):
     """Concatenates a new element to each tuple in a nested tuple"""
