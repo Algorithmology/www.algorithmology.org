@@ -1,6 +1,6 @@
 ---
 author: [Aidan Dyga, Nicholas Ingerson-Meacham, Ochirsaikhan Davaajambal, Keller Liptrap, Sabrina Rodriguez]
-title: A Comparative Analysis of Sorting Algorithms using Doubling Experiments
+title: Comparative analysis of sorting algorithms using doubling experiments
 page-layout: full
 categories: [post, sorting, lists]
 date: "2024-04-12"

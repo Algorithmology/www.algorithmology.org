@@ -1,0 +1,189 @@
+---
+author: [Coltin Colucci, Grant Anderson, Javier Bejarano, Megan Wolfarth, Willem Bennett]
+title: How does runtime vary in vertical and horizontal subclassing hierarchies?
+page-layout: full
+categories: [post, objects, subclasses]
+date: "2025-02-18"
+date-format: long
+toc: true
+format:
+    html:
+        code-links:    
+            - text: Github Repository
+              icon: github
+              href: https://github.com/ganderson03/algorithmology-all-hands-object-subclassing
+---
+
+## Overview
+
+Using objects and classes in python is a great way to encapsulate both data and
+functionality, while being easy to implement and use. Larger implementations via
+object oriented programming may require subclass hierarchies with large depth
+and breadth. This experiment tests how depth and breadth of subclassing can
+affect running time of a program. The tool calculates the areas of different
+shapes via different subclasses and measures the time to run throughout to
+measure the effect of subclass layer depth. 
+
+## Implementation
+
+For our experiment, we set up two inheritance hierarchies to determine how
+runtime is affected by a deep (vertical) hierarchy compared to a wide
+(horizontal) hierarchy. Both of these hierarchies were polygon-based, where each
+subclass calculated the area of a different shape. For the vertical hierarchy,
+each class was inherited from the class above it for a total of ten subclasses
+and ten levels. For the horizontal hierarchy, each class was a subclass of a
+single base class for one level eight wide. In order to determine runtime for
+the vertical hierarchy, we created two classes, square and rectangle, at the top
+of the hierarchy, and recreated those two classes at the bottom of the
+hierarchy. We then instantiated those four classes and used the `time` module in
+the `measure_performance` function to determine the runtime for each
+instantiation. To determine runtime for the horizontal hierarchy, we created
+eight subclasses, all inherited from the `Shape` base class. We then
+instantiated those eight classes and used the `time` module in the
+`measure_performance` function to determine the runtime for each instantiation.
+
+The `measure_performance` function is the function we used to determine the
+runtime for classes in the horizontal and vertical hierarchies. To determine the
+runtime, the function ran 10,000,000 iterations for each class, using the `time`
+module to determine the elapsed time by subtracting the start time from the end
+time.
+
+```python
+def measure_performance():
+    iterations = 10000000
+
+    shapes = [
+        (Square(5), "Square (Top)"),
+        (Rectangle(5, 10), "Rectangle (Top)"),
+        (DeepSquare(5), "Square (Bottom)"),
+        (DeepRectangle(5, 10), "Rectangle (Bottom)"),
+    ]
+
+    for shape, name in shapes:
+        start_time = time.time()
+        for _ in range(iterations):
+            _ = shape.area()
+        elapsed_time = time.time() - start_time
+
+        # Print the results
+        print(f"{name}: Time for {iterations} iterations: {elapsed_time:.6f} seconds")
+```
+
+## Data 
+
+### Horizontal Subclasses
+
+|    Class    |  Iterations  |            Computer 1            |           Computer 2             |           Computer 3             |
+|:-----------:|:------------:|:--------------------------------:|:--------------------------------:|:--------------------------------:|
+|  Square     |    100000    |  [0.437014, 0.439291, 0.465412]  |  [0.376381, 0.377706, 0.376821]  |  [0.861841, 0.911199, 0.840164]  |
+|  Rectangle  |    100000    |  [0.412933, 0.411842, 0.442752]  |  [0.303293, 0.305012, 0.305012]  |  [0.694384, 0.732972, 0.714049]  |
+|  Circle     |    100000    |  [0.560467, 0.560190, 0.594598]  |  [0.522940, 0.522017, 0.522017]  |  [1.122864, 1.021113, 1.136251]  |
+|  Triangle   |    100000    |  [0.592885, 0.590606, 0.611711]  |  [0.527731, 0.531641, 0.531641]  |  [1.091306, 1.042946, 1.137563]  |
+|  Pentagon   |    100000    |  [0.669617, 0.671051, 0.692877]  |  [0.601187, 0.601641, 0.601641]  |  [1.192361, 1.208389, 1.201563]  |
+|  Hexagon    |    100000    |  [0.558083, 0.555671, 0.593760]  |  [0.528183, 0.523655, 0.523655]  |  [0.985421, 0.998305, 1.013470]  |
+|  Heptagon   |    100000    |  [0.671177, 0.675468, 0.706550]  |  [0.587933, 0.598938, 0.598938]  |  [1.188629, 1.204649, 1.172515]  |
+|  Octagon    |    100000    |  [0.558312, 0.555632, 0.601104]  |  [0.517227, 0.529137, 0.529137]  |  [0.985888, 1.020366, 1.145782]  |
+
+### Vertical Subclasses
+
+|    Class    |  Level  |  Iterations  |           Computer 1             |           Computer 2             |            Computer 3            |
+|:-----------:|:-------:|:------------:|:--------------------------------:|:--------------------------------:|:--------------------------------:|
+|    Square   |    1    |   10000000   |  [0.437325, 0.438489, 0.425351]  |  [0.372876, 0.369683, 0.383607]  |  [0.773531, 0.897097, 0.866563]  |
+|    Square   |    8    |   10000000   |  [0.428256, 0.428251, 0.427778]  |  [0.377128, 0.379158, 0.388889]  |  [0.790949, 0.906696, 0.903268]  |
+|  Rectangle  |    1    |   10000000   |  [0.412837, 0.411726, 0.411775]  |  [0.304220, 0.308051, 0.310708]  |  [0.728893, 0.750396, 0.817389]  |
+|  Rectangle  |    8    |   10000000   |  [0.412388, 0.413181, 0.411833]  |  [0.303456, 0.309540, 0.316914]  |  [0.768824, 0.762135, 0.811588]  |
+
+## Analysis of Results
+
+Our data shows that generally our times have little deviation that is not
+accounted for by the base complexity of getting the area of each polygon. The
+results from the horizontal subclassing show that the time taken for each shape
+is relatively consistent across different computers, with minor variations due
+to the inherent differences in hardware performance. Similarly, the results from
+the vertical subclassing indicate that the depth of the hierarchy does not
+significantly impact the runtime, as the times for the top-level and
+bottom-level classes are quite similar. For example, the average runtime of
+Rectangle on level 1 was 0.49511 and for the same subclass on level 8, the
+average run time was 0.50110.
+
+This consistency in runtime can be attributed to Python's efficient method
+resolution order (MRO) and its optimization techniques, which ensure that method
+lookups and attribute accesses are performed quickly, regardless of the depth of
+the class hierarchy. Therefore, our hypothesis that deeper hierarchies would
+result in longer runtimes was not supported by the experimental data.
+
+*  **Dynamic Method Resolution**: Dynamic Method Resolution means that when a
+method is called, Python looks up the class where the object was instantiated
+and checks the class hierarchy dynamically at runtime. The lookup is very fast
+and does not introduce any special overhead for deeper hierarchies.
+
+* **Inheritance Lookup Overhead**: Python caches method resolution for an
+instance. If you have a deeper hierarchy, Python still only performs the lookup
+once, as if the class were flat.
+
+* **Attribute Lookup**: In our example calculating the area of the shapes was
+our attribute. We did see a difference in run time when the area calculation was
+more complex for certain shapes. An example of this would be the rectangle and
+circle subclasses from the horizontal experiment. The average runtime of the
+rectangle was 0.48025 seconds. This was likely due to the simple area
+calculation of a rectangle. On the other end of the spectrum was the circle,
+with an average run time of 0.72916 seconds. This was likely due to the more
+complex calculation of finding the area of a circle. Based on the results of the
+vertical subclasses, we can assume that these differences in run time come from
+the attribute lookup as opposed to the class hierarchy structure.
+
+* **Python's Optimization**: All of the features listed above help us better
+explain our results. Python is extremely optimized for tasks such as moving
+through class hierarchies, and that is why our results showed little to no
+difference as you go deeper into these hierarchies.
+
+* **Other Languages**: Looking deeper into the topic of class hierarchy overhead,
+we find that it actually does play a factor in other languages. In C, there is
+no support for  classes or inheritance without any additional features. You
+would have to manually implement them using structs, function pointers, or other
+manual techniques. This means that you would not benefit from any of the
+optimizations that exist in Python. Languages such as Rust and Go also lack
+these optimizations. Running a similar experiment in those languages may yield a
+different result than in Python due to this.
+
+## Conclusion
+
+In our experiment, we wanted to see if making a class hierarchy deeper (i.e.,
+more levels of inheritance) would slow down a program in Python. We thought that
+if a class had to go through many layers to find a function, it would take more
+time. But when we tested it, we found out that this wasn't really true.  
+
+Python is smart! It has a way of remember where to find things, so it doesn't
+need to keep searching every time. Even if a class is deep down in a long chain
+of inheritance, Python still finds the function quickly. It also saves some of
+this information to make future times even faster.  
+
+We tested two different types of class structures:  
+
+- **Vertical**: You start with one base class at the top, and each new class is
+built in top of each other. Each class gets more specific. For example: `Animal`
+(base class), `Mammal` (subclass), `Dog` (subclass of `Mammal`).
+- **Horizontal**: You start with one base class at the top, and then you create
+several subclasses, all of them coming from the same base. They don’t come from
+each other. For example: `Shape` (base class), `Circle`, `Square`, `Triangle`
+(all of them coming from the base class `Shape`). 
+
+We ran our code a lot of times and measured how long it took. The results showed
+that both deep and wide hierarchies took about the same amount of time to run.
+This means that in Python, making a class deeper doesn't really slow things
+down.  
+
+Python is different from some other programming languages. In languages like C
+or Java, inheritance is not built-in the same way, so deep hierarchies might
+work differently or even cause problems. But in Python, the way it looks up
+functions is super optimized, so depth doesn't slow it down much.  
+
+If someone is writing code in Python, they don't need to worry about whether
+their class structure is deep or wide. However, it’s still a good idea to keep
+things simple and organized.
+
+Overall, we learned that Python is super efficient when it comes to classes.
+Some of you guys might think this project was a failure because we didn't find
+any evidence to support our guesses, but in my opinion, it went even better than
+expected. None of us were right! Not a single guess was correct! Isn't that
+crazy?
