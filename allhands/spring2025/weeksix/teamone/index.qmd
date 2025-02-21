@@ -16,13 +16,37 @@ format:
 
 ## Overview
 
-Using objects and classes in python is a great way to encapsulate both data and functionality, while being easy to implement and use. Larger implementations via object oriented programming may require subclass hierarchies with large depth and breadth. This experiment tests how depth and breadth of subclassing can affect running time of a program. The tool calculates the areas of different shapes via different subclasses and measures the time to run throughout to measure the effect of subclass layer depth. 
+Using objects and classes in python is a great way to encapsulate both data and
+functionality, while being easy to implement and use. Larger implementations via
+object oriented programming may require subclass hierarchies with large depth
+and breadth. This experiment tests how depth and breadth of subclassing can
+affect running time of a program. The tool calculates the areas of different
+shapes via different subclasses and measures the time to run throughout to
+measure the effect of subclass layer depth. 
 
 ## Implementation
 
-For our experiment, we set up two inheritance hierarchies to determine how runtime is affected by a deep (vertical) hierarchy compared to a wide (horizontal) hierarchy. Both of these hierarchies were polygon-based, where each subclass calculated the area of a different shape. For the vertical hierarchy, each class was inherited from the class above it for a total of ten subclasses and ten levels. For the horizontal hierarchy, each class was a subclass of a single base class for one level eight wide. In order to determine runtime for the vertical hierarchy, we created two classes, square and rectangle, at the top of the hierarchy, and recreated those two classes at the bottom of the hierarchy. We then instantiated those four classes and used the `time` module in the `measure_performance` function to determine the runtime for each instantiation. To determine runtime for the horizontal hierarchy, we created eight subclasses, all inherited from the `Shape` base class. We then instantiated those eight classes and used the `time` module in the `measure_performance` function to determine the runtime for each instantiation.
+For our experiment, we set up two inheritance hierarchies to determine how
+runtime is affected by a deep (vertical) hierarchy compared to a wide
+(horizontal) hierarchy. Both of these hierarchies were polygon-based, where each
+subclass calculated the area of a different shape. For the vertical hierarchy,
+each class was inherited from the class above it for a total of ten subclasses
+and ten levels. For the horizontal hierarchy, each class was a subclass of a
+single base class for one level eight wide. In order to determine runtime for
+the vertical hierarchy, we created two classes, square and rectangle, at the top
+of the hierarchy, and recreated those two classes at the bottom of the
+hierarchy. We then instantiated those four classes and used the `time` module in
+the `measure_performance` function to determine the runtime for each
+instantiation. To determine runtime for the horizontal hierarchy, we created
+eight subclasses, all inherited from the `Shape` base class. We then
+instantiated those eight classes and used the `time` module in the
+`measure_performance` function to determine the runtime for each instantiation.
 
-The `measure_performance` function is the function we used to determine the runtime for classes in the horizontal and vertical hierarchies. To determine the runtime, the function ran 10,000,000 iterations for each class, using the `time` module to determine the elapsed time by subtracting the start time from the end time.
+The `measure_performance` function is the function we used to determine the
+runtime for classes in the horizontal and vertical hierarchies. To determine the
+runtime, the function ran 10,000,000 iterations for each class, using the `time`
+module to determine the elapsed time by subtracting the start time from the end
+time.
 
 ```python
 def measure_performance():
