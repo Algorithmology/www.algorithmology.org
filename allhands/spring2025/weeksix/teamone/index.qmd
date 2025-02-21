@@ -1,6 +1,6 @@
 ---
 author: [Coltin Colucci, Grant Anderson, Javier Bejarano, Megan Wolfarth, Willem Bennett]
-title: How is the run time affected in a vertical and horizontal subclassing hierarchy?
+title: How is runtime affected in a vertical and horizontal subclassing hierarchy?
 page-layout: full
 categories: [post, objects, subclasses]
 date: "2025-02-18"
@@ -12,9 +12,7 @@ format:
             - text: Github Repository
               icon: github
               href: https://github.com/ganderson03/algorithmology-all-hands-object-subclassing
-
 ---
-
 
 ## Overview
 
