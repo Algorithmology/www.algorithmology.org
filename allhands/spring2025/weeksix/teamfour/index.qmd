@@ -184,46 +184,53 @@ tests.
 performance patterns based on the fundamental differences between Python's
 mutable and immutable data structures:
 
-1. Base List Operations
+#### Base List Operations
+
 Pattern: Relatively stable performance with occasional spikes
 This pattern emerges because Python's list implementation:
 
-Pre-allocates extra memory during list creation
-Performs direct modifications to the existing structure
-Only requires resizing when pre-allocated space is exhausted
-Needs to copy elements to a new array during resizing
+- Pre-allocates extra memory during list creation
+- Performs direct modifications to the existing structure
+- Only requires resizing when pre-allocated space is exhausted
+- Needs to copy elements to a new array during resizing
 
-2. Base Tuple Operations
+#### Base Tuple Operations
+
 Pattern: Steadily increasing, linear cost growth
 This consistent growth occurs because:
 
-Each operation must create an entirely new tuple
-All existing elements must be copied every time
-No pre-allocation is possible due to immutability
-Performance cost is directly proportional to tuple size
+- Each operation must create an entirely new tuple
+- All existing elements must be copied every time
+- No pre-allocation is possible due to immutability
+- Performance cost is directly proportional to tuple size
 
-3. Nested List Operations
-Pattern: Higher overhead but maintains stability with more frequent spikes
-The increased complexity comes from:
+#### Nested List Operations
 
-Iteration through all sublists adding base overhead
-Type checking requirements for each sublist
-Multiple lists potentially requiring resizing
-Direct modification still possible at sublist level
-Pre-allocation benefits applying to each sublist
+Pattern: Higher overhead but maintains stability with more frequent spikes. The
+increased complexity comes from:
 
-4. Nested Tuple Operations
+- Iteration through all sublists adding base overhead
+- Type checking requirements for each sublist
+- Multiple lists potentially requiring resizing
+- Direct modification still possible at sublist level
+- Pre-allocation benefits applying to each sublist
+
+#### Nested Tuple Operations
+
 Pattern: Highest overhead with multiplicative growth
 This pattern shows the most significant impact because:
 
-New tuples must be created at both outer and inner levels
-Complete recreation is required at every level
-All elements must be copied for each modification
-Memory allocation occurs at multiple levels
-No optimization opportunities exist due to immutability
+- New tuples must be created at both outer and inner levels
+- Complete recreation is required at every level
+- All elements must be copied for each modification
+- Memory allocation occurs at multiple levels
+- No optimization opportunities exist due to immutability
 
-The key distinction lies in how these structures handle modifications: lists leverage pre-allocation and direct modification, while tuples require complete recreation to maintain immutability. These implementation choices become particularly significant when dealing with nested structures and larger datasets.
-
+The key distinction lies in how these structures handle modifications: lists
+leverage pre-allocation and direct modification, while tuples require complete
+recreation to maintain immutability. These implementation choices become
+particularly significant when dealing with nested structures and larger
+datasets.
 
 # Functionality - Hemani
 
