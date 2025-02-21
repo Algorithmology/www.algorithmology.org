@@ -278,6 +278,7 @@ Displaying System Information
 
 
 ## Finley (Windows)
+
 ### Laptop Details
 
 ```cmd
@@ -331,7 +332,9 @@ Displaying System Information
 | Nested Tuple   | 0.004481     | 0.006838     | 0.255142     | 0.036581     |
 
 ## Anton (MacOS)
+
 ### Laptop Details
+
 ```cmd
 Displaying System Information
 
@@ -396,18 +399,33 @@ Displaying Benchmark Results
 
 ## Tuple
 
-We observed that tuples generally perform better than list, nested tuples and nested lists in the doubling experiment. For both container sizes (1000 and 5000), tuples consistently exhibit lower execution times compared to other structures. This suggests that tuples benefit from their immutable nature, which likely optimizes memory usage and lookup operations. Additionally, as the number of doublings increases (from 3 to 9), the performance of tuples remains relatively stable compared to nested structures, highlighting their efficiency in handling iterative operations. However, the performance of tuples compared to list can be noted to be 
+We observed that tuples generally perform better than list, nested tuples and
+nested lists in the doubling experiment. For both container sizes (1000 and
+5000), tuples consistently exhibit lower execution times compared to other
+structures. This suggests that tuples benefit from their immutable nature, which
+likely optimizes memory usage and lookup operations. Additionally, as the number
+of doublings increases (from 3 to 9), the performance of tuples remains
+relatively stable compared to nested structures, highlighting their efficiency
+in handling iterative operations. However, the performance of tuples compared to
+list can be noted to be 
 
 ## Nested Tuple
 
-Comparing nested tuples to just tuples, we found that they were significantly slower. This is likely due to the fact that nested tuples require more memory allocation and copying operations, which can slow down the execution time. As the number of doublings increases, the performance of nested tuples deteriorates further, indicating that the overhead of managing nested structures becomes more pronounced with larger data sizes. This suggests that nested tuples may not be the most efficient choice for handling complex data structures that require frequent modifications.
+Comparing nested tuples to just tuples, we found that they were significantly
+slower. This is likely due to the fact that nested tuples require more memory
+allocation and copying operations, which can slow down the execution time. As
+the number of doublings increases, the performance of nested tuples deteriorates
+further, indicating that the overhead of managing nested structures becomes more
+pronounced with larger data sizes. This suggests that nested tuples may not be
+the most efficient choice for handling complex data structures that require
+frequent modifications.
 
 ### List
 
 Lists show better performance compared to nested structures due to simpler memory management.
 
-Performance is notably affected by container size increases but maintains relatively stable behavior
-Main characteristics:
+Performance is notably affected by container size increases but maintains
+relatively stable behavior Main characteristics:
 
 - Handles smaller container sizes (1000) efficiently across different doubling factors
 - Shows predictable scaling behavior when size increases to 5000
@@ -427,16 +445,31 @@ Performance characteristics:
 - Shows less predictable scaling patterns compared to regular lists
 - Performance impact is most noticeable when combining large sizes with high doubling factors
 
-
 # Conclusion
-- In conclusion after running a doubling experiemnt and meaasuring Time (sec), and Ram Storage using Tuples, Nested Tuples, List and Nested Lists we came to conclusion that Tuple was the fastest, likely due to their immutable nature, which optimizes memory usage and lookup effieciency. They maintain relatively stable performance even as the number of doublings increases
 
-- In conclusion for Lists they were slights slower than regular Tuple but still efficient, benefitting from simpler memory management and predictable scaling 
+- In conclusion after running a doubling experiment and measuring time (sec),
+and RAM Storage using Tuples, Nested Tuples, List and Nested Lists we came to
+conclusion that Tuple was the fastest, likely due to their immutable nature,
+which optimizes memory usage and lookup efficiency. They maintain relatively
+stable performance even as the number of doublings increases
 
-- In conclusion for Nested Tuples were slower than regular Tuples as they introduce significant memory allocation and copying overhead. Performances degrades further with larger data sizes 
+- In conclusion for Lists they were slights slower than regular Tuple but still
+efficient, benefiting from simpler memory management and predictable scaling 
 
-- In conlcusion Nested Lists were the slowesr, as they introduce significant overhead when managing multiple levels of data structures. Performance deterioted noticebly as the container size and doubling factors increase
+- In conclusion for Nested Tuples were slower than regular Tuples as they
+introduce significant memory allocation and copying overhead. Performances
+degrades further with larger data sizes 
+
+- In conclusion Nested Lists were the slower, as they introduce significant
+overhead when managing multiple levels of data structures. Performance
+deteriorated noticeably as the container size and doubling factors increase
 
 # Take Home Points
 
-When doing an experiment like this be mindful of the size of your containers. Along with addition of layers in containers for example nested tuples and list as that extra step adds additional memory and takes longer to run. When optimizinng performance users need to ask essential questions like how memory will this take up and how fast can we display the date. So when comparing these four containers we found Tuples to be more efficient in the memory space it took up and how fast it took to run.
+When doing an experiment like this be mindful of the size of your containers.
+Along with addition of layers in containers for example nested tuples and list
+as that extra step adds additional memory and takes longer to run. When
+optimizing performance users need to ask essential questions like how memory
+will this take up and how fast can we display the date. So when comparing these
+four containers we found Tuples to be more efficient in the memory space it took
+up and how fast it took to run.
