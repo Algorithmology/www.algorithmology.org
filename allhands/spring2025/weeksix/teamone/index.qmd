@@ -160,13 +160,13 @@ this information to make future times even faster.
 
 We tested two different types of class structures:  
 
-- **Vertical** – You start with one base class at the top, and each new class is
+- **Vertical**: You start with one base class at the top, and each new class is
 built in top of each other. Each class gets more specific. For example: `Animal`
 (base class), `Mammal` (subclass), `Dog` (subclass of `Mammal`).
-- **Horizontal** – You start with one base class at the top, and then you create
+- **Horizontal**: You start with one base class at the top, and then you create
 several subclasses, all of them coming from the same base. They don’t come from
-each other. For example: Shape (base class), Circle, Square, Triangle (all of
-them coming from the base class 'Shape'). 
+each other. For example: `Shape` (base class), `Circle`, `Square`, `Triangle`
+(all of them coming from the base class `Shape`). 
 
 We ran our code a lot of times and measured how long it took. The results showed
 that both deep and wide hierarchies took about the same amount of time to run.
