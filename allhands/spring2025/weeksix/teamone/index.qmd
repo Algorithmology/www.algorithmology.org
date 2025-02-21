@@ -3,7 +3,7 @@ author: [Coltin Colucci, Grant Anderson, Javier Bejarano, Megan Wolfarth, Willem
 title: How does runtime vary in vertical and horizontal subclassing hierarchies?
 page-layout: full
 categories: [post, objects, subclasses]
-date: "2025-02-18"
+date: "2025-02-21"
 date-format: long
 toc: true
 format:
