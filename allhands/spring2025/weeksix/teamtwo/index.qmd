@@ -78,8 +78,8 @@ broke down what exactly we meant by **basic operations**. While we highlighted
 we wanted to focus on adding and removing from a container we quickly found that
 this was a more complicated problem. For example, where do we add/remove from
 the container and how does that effect performance? This is something that we
-would recommend could be a part of a future research question or future All
-Hands Project!
+would recommend could be a part of a future research question or future
+All-Hands Project!
 
 ### Benchmarking
 
