@@ -75,7 +75,8 @@ the same efficient append operation we see in base lists. This approach
 maintains the performance benefits of in-place modification while handling the
 added complexity of nested structures.
 
-Performance considerations:
+**Performance considerations:**
+
 - Efficient in-place modification of sublists
 - Type checking overhead per sublist
 - Linear scaling with number of sublists
@@ -92,8 +93,7 @@ def concatenate_to_tuple(input_tuple, element):
     return new_tuple
 ```
 
-**Time Complexity:**
-- Worst Case: O(n) where n is tuple size
+**Time Complexity:** Worst Case: $O(n)$ where $n$ is tuple size
 
 **Performance Characteristics:**
 Tuple operations fundamentally differ from list operations due to their immutable nature. When adding an element to a tuple, Python must create an entirely new tuple object containing all existing elements plus the new one. This requirement leads to a consistent but less efficient performance profile compared to list operations.
