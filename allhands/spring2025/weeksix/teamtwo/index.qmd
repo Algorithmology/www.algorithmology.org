@@ -6,12 +6,13 @@ categories: [post, average, function]
 date: "2025-02-21"
 date-format: long
 toc: true
+format:
+    html:
+        code-links:    
+            - text: Github Repository
+              icon: github
+              href: https://github.com/suppo01/Algorithm-Analysis-All-Hands-Project-Module-1
 ---
-
-# Repository Link
-
-Below is the link that will direct you to our GitHub repository needed to run our experiment on your personal device: 
-<https://github.com/suppo01/Algorithm-Analysis-All-Hands-Project-Module-1>
 
 ## Introduction
 
