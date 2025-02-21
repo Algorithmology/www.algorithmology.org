@@ -125,46 +125,58 @@ def benchmark_operation(container: Any, operation_func: callable, num_trials: in
     return total_time / num_trials
 ```
 
-Finally, the data is formatted and printed in a structured table, making it easy to compare the performance
-of different operations. We will now breakdown the analysis of our results from these benchmarking functions,
-as well as an explanation as to why we may be getting certain results.
+Finally, the data is formatted and printed in a structured table, making it easy
+to compare the performance of different operations. We will now breakdown the
+analysis of our results from these benchmarking functions, as well as an
+explanation as to why we may be getting certain results.
 
 ## Running and Using the Tool
 
-We have opted to use Python directly to run our script as we generate the data containers within the program
-that are to be used for benchmarking and such. In order to run the program, all that the user needs to do is
-clone the repo to their laptop. From there, the user simply types `python main.py` in the terminal and the program
-will produce a data table with time results from each data container for each of the container sizes and basic
-opperations we outlined above.
+We have opted to use Python directly to run our script as we generate the data
+containers within the program that are to be used for benchmarking and such. In
+order to run the program, all that the user needs to do is clone the repo to
+their laptop. From there, the user simply types `python main.py` in the terminal
+and the program will produce a data table with time results from each data
+container for each of the container sizes and basic operations we outlined
+above.
 
-When using the tool, it is important to note that there should be no need for alteration of the code to
-properly run an edition of our experiment, as we have handled all the variables and container generation
-through the individual functions for each opperation and data container with the individual value being added
-or removed, and this is also handled when generating the container passed to functions inside of the `main.py`
-file. This tool is intended to be used for the purpose of comparing the speed of different basic opperations with
-the factor of different sizes, spread across three different data container types. The user should also intend to
-utilize the random inputs part of the code as it allows for a more wide range of values to be tested and makes
-results more significant.
+When using the tool, it is important to note that there should be no need for
+alteration of the code to properly run an edition of our experiment, as we have
+handled all the variables and container generation through the individual
+functions for each operation and data container with the individual value being
+added or removed, and this is also handled when generating the container passed
+to functions inside of the `main.py` file. This tool is intended to be used for
+the purpose of comparing the speed of different basic operations with the factor
+of different sizes, spread across three different data container types. The user
+should also intend to utilize the random inputs part of the code as it allows
+for a more wide range of values to be tested and makes results more significant.
 
 ## Output Analysis
 
-The benchmarking results highlight the performance differences in basic operations across
-Python’s list, dictionary, and tuple data structures. This running time analysis measures the
-actual execution time of append and pop operations at different container sizes. The append
-operation in lists remains consistently efficient across all sizes, with an average execution time
-ranging from 0.000011 to 0.000014 seconds, demonstrating the $O(1)$ complexity of Python’s dynamic array.
-Dictionaries, which do not have a native append method, show slightly higher append times
-(0.000017 - 0.000021 seconds) due to internal reallocation when adding key-value pairs. Tuples,
-being immutable, have the fastest append times (0.000008 - 0.000009 seconds), but this is misleading as
-appending requires creating a new tuple rather than modifying an existing one. For the pop operation,
-lists consistently execute in 0.000000 seconds, confirming that removing the last element is an $O(1)$ operation.
-Dictionaries experience slight fluctuations in pop times, ranging from 0.000000 to 0.000006 seconds, likely
-due to internal key adjustments. Tuples do not support true pop operations, but the measured times 
-(0.000000 - 0.000001 seconds) reflect the cost of creating a new tuple. These results suggest that lists
-are ideal for dynamic collections with frequent additions and removals, dictionaries are efficient for 
-key-value storage but with minor overhead for modifications, and tuples are best for immutable
-datasets. Understanding these performance characteristics through empirical measurement allows developers
-to make informed decisions about data structure selection in Python applications.
+The benchmarking results highlight the performance differences in basic
+operations across Python’s list, dictionary, and tuple data structures. This
+running time analysis measures the actual execution time of append and pop
+operations at different container sizes. The append operation in lists remains
+consistently efficient across all sizes, with an average execution time ranging
+from 0.000011 to 0.000014 seconds, demonstrating the $O(1)$ complexity of
+Python’s dynamic array. Dictionaries, which do not have a native `append`
+method, show slightly higher append times (0.000017 - 0.000021 seconds) due to
+internal reallocation when adding key-value pairs. Tuples, being immutable, have
+the fastest append times (0.000008 - 0.000009 seconds), but this is misleading
+as appending requires creating a new tuple rather than modifying an existing
+one.
+
+For the `pop` operation, lists consistently execute in 0.000000 seconds,
+confirming that removing the last element is an $O(1)$ operation. Dictionaries
+experience slight fluctuations in pop times, ranging from 0.000000 to 0.000006
+seconds, likely due to internal key adjustments. Tuples do not support true pop
+operations, but the measured times (0.000000 - 0.000001 seconds) reflect the
+cost of creating a new tuple. These results suggest that lists are ideal for
+dynamic collections with frequent additions and removals, dictionaries are
+efficient for key-value storage but with minor overhead for modifications, and
+tuples are best for immutable datasets. Understanding these performance
+characteristics through empirical measurement allows developers to make informed
+decisions about data structure selection in Python applications.
 
 ```text
 Benchmarking Results:
