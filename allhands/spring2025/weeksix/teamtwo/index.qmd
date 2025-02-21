@@ -202,53 +202,61 @@ Tuple      |  100 | append     | 0.000006
 Tuple      |  100 | pop        | 0.000001
 ```
 
-The benchmarking results highlight significant differences in the performance of lists,
-dictionaries, and tuples in Python. Lists demonstrate flexibility but tend to be slower in
-lookup operations compared to dictionaries and tuples, as their search time increases with
-the number of elements. Dictionaries, on the other hand, provide fast lookups due to their
-hash table implementation, making them ideal for applications requiring rapid key-based access.
-Tuples, being immutable, exhibit faster iteration and access times compared to lists since they
-are stored more efficiently in memory. However, their immutability also means they lack the
-ability to be modified after creation, which can be a limitation in modifiable scenarios. The
-implications of these differences are crucial when selecting a data structure for specific tasks.
-Lists are suitable for sequential data storage and modification, dictionaries are better in
-key-value associations with quick lookups, and tuples offer performance benefits when working
-with fixed, unchangeable datasets. Understanding these trade-offs allows for better optimization
-in Python programming, ensuring efficiency in both computation and memory usage.
+The benchmarking results highlight significant differences in the performance of
+lists, dictionaries, and tuples in Python. Lists demonstrate flexibility but
+tend to be slower in lookup operations compared to dictionaries and tuples, as
+their search time increases with the number of elements. Dictionaries, on the
+other hand, provide fast lookups due to their hash table implementation, making
+them ideal for applications requiring rapid key-based access. Tuples, being
+immutable, exhibit faster iteration and access times compared to lists since
+they are stored more efficiently in memory. However, their immutability also
+means they lack the ability to be modified after creation, which can be a
+limitation in modifiable scenarios. The implications of these differences are
+crucial when selecting a data structure for specific tasks. Lists are suitable
+for sequential data storage and modification, dictionaries are better in
+key-value associations with quick lookups, and tuples offer performance benefits
+when working with fixed, unchangeable datasets. Understanding these trade-offs
+allows for better optimization in Python programming, ensuring efficiency in
+both computation and memory usage.
 
-Importantly, the above output was from running our program on a Windows 11, running on Python 3.12.5.
-While these specific results are from this OS setup, throughout our team we have Windows and Mac 
-operating system. This is important because it shows that we get similar results and can make 
-conclusions that include results from different operating systems. It is also important to note 
-that we each ran the program multiple times, and the program itself runs the functions multiple 
-times, so we did as much as we could to mitigate the impact of random background operations and 
-other outside factors impacting our results.
+Importantly, the above output was from running our program on a Windows 11,
+running on Python 3.12.5. While these specific results are from this OS setup,
+throughout our team we have Windows and Mac operating system. This is important
+because it shows that we get similar results and can make conclusions that
+include results from different operating systems. It is also important to note
+that we each ran the program multiple times, and the program itself runs the
+functions multiple times, so we did as much as we could to mitigate the impact
+of random background operations and other outside factors impacting our results.
 
 ## Conclusion
 
-Our project examined how basic operations, such as appending and removing elements, perform
-across three Python data structures: lists, dictionaries, and tuples. By benchmarking
-containers of various sizes, we gained a better understanding of how these structures
-respond to changes and how their execution times vary with container size.
+Our project examined how basic operations, such as appending and removing
+elements, perform across three Python data structures: lists, dictionaries, and
+tuples. By benchmarking containers of various sizes, we gained a better
+understanding of how these structures respond to changes and how their execution
+times vary with container size.
 
-Our findings showed that lists were the most effective for frequent changes. The reason
-behind that is that, lists in Python are dynamic arrays that can be modified very quickly.
-Lists can expand very quickly therefore, appending was a fast operation for lists. Since
-changing elements is not necessary, removing elements -especially those at the end- is also
-very quick. For dictionaries, appending took slightly longer due to the key management that
-are essential for dictionaries. Removing elements from dictionaries was faster than
-appending, though execution times varied slightly depending on size. For tuples, the
-performance was the slowest due to their structure. Since tuples are immutable, adding or
-removing elements requires constructing a new tuple which slows down the performance. In
-smaller datasets, this cost is less obvious, but in bigger datasets, it becomes extremely
-inefficient.
+Our findings showed that lists were the most effective for frequent changes. The
+reason behind that is that, lists in Python are dynamic arrays that can be
+modified very quickly. Lists can expand very quickly therefore, appending was a
+fast operation for lists. Since changing elements is not necessary, removing
+elements --- especially those at the end --- is also very quick. For
+dictionaries, appending took slightly longer due to the key management that are
+essential for dictionaries. Removing elements from dictionaries was faster than
+appending, though execution times varied slightly depending on size. For tuples,
+the performance was the slowest due to their structure. Since tuples are
+immutable, adding or removing elements requires constructing a new tuple which
+slows down the performance. In smaller datasets, this cost is less obvious, but
+in bigger datasets, it becomes extremely inefficient.
 
-During this research, one obstacle that we faced was handling the case where we attempted to
-remove more elements than the container had. Initially, we raised errors when this situation
-occured. However, to maintain consistent benchmarking, we adjusted our approach to return
-the unchanged container instead. Our findings reinforce the importance of the data structure 
-that is being used for specificcases and purposes. Lists are the best fit for frequently 
-changing data, dictionaries are efficient when dealing with key-value storage with occasional 
-changes needed, and tuples work the best when immutability is required. These conclusions are 
-essential for developers to know and can help write more efficient Python programs based on 
-performance considerations.
+During this research, one obstacle that we faced was handling the case where we
+attempted to remove more elements than the container had. Initially, we raised
+errors when this situation occurred. However, to maintain consistent
+benchmarking, we adjusted our approach to return the unchanged container
+instead. Our findings reinforce the importance of the data structure that is
+being used for specific cases and purposes. Lists are the best fit for
+frequently changing data, dictionaries are efficient when dealing with key-value
+storage with occasional changes needed, and tuples work the best when
+immutability is required. These conclusions are essential for developers to know
+and can help write more efficient Python programs based on performance
+considerations.
