@@ -75,7 +75,7 @@ format:
 - These names express too many implementation details!
 - Done so that you can remember each data structure
 - Generally avoid using names like this in your system
-- Use descriptive names without implementation details
+- Use names without extraneous implementation details
 
 :::
 
