@@ -50,6 +50,8 @@ format:
 
 ## An ADT and its CDS are the basic building blocks of programs!
 
+::: {.fragment style="margin-top: -0.1em; font-size: 0.925em;"}
+
 - **Stack**: ADT for a last-in, first-out (LIFO) list
 - **Queue**: ADT for a first-in, first-out (FIFO) list
 - **Deque**: ADT for a flexible, double-ended queue
@@ -58,6 +60,24 @@ format:
   - Feature and use
   - Time overhead
   - Space overhead
+
+:::
+
+## Note on naming conventions
+
+::: {.incremental style="margin-top: -0.1em; font-size: 0.95em;"}
+
+- CDS names used this week include:
+  - `InefficientListStack`
+  - `RobustStack`
+  - `ListQueueSimple`
+  - `ListQueueFakeDelete`
+- These names express too many implementation details!
+- Done so that you can remember each data structure
+- Generally avoid using names like this in your system
+- Use descriptive names without implementation details
+
+:::
 
 # Specifying and implementing the `Stack` abstract data type
 
