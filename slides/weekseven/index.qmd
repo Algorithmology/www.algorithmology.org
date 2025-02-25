@@ -8,7 +8,8 @@ author: Gregory M. Kapfhammer
 execute:
   freeze: auto
 format:
-  revealjs:
+  live-revealjs:
+    completion: true
     theme: default
     css: ../css/styles.css
     monofont: Ubuntu Mono
@@ -162,6 +163,42 @@ manipulate_stack()
 - It breaks encapsulation of `ListStack` by accessing `_L`
 
 :::
+
+## Try out the `ListStack`!
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 15
+class ListStack:
+    def __init__(self):
+        self._L = []
+
+    def push(self, item):
+        self._L.append(item)
+
+    def pop(self):
+        return self._L.pop()
+
+    def peek(self):
+        return self._L[-1]
+
+    def __len__(self):
+        return len(self._L)
+
+    def isempty(self):
+        return len(self) == 0
+
+def manipulate_stack():
+    stack = ListStack()
+    stack.push('umbrella')
+    stack.push('backpack')
+    stack.push('sandals')
+    print("Stack contents after push operations: ", [item for item in stack._L])
+    stack.pop()
+    print("Stack contents after pop operation: ", [item for item in stack._L])
+
+manipulate_stack()
+```
 
 ## Inefficient implementation of `Stack` {transition="convex"}
 
