@@ -385,12 +385,16 @@ manipulate_queue()
 
 - Either approach is inefficient for a `Queue` implementation
 
+:::
+
+::: {.fragment .callout-note icon=false title="Okay, let's make the `Queue` faster!"}
+
 - Making the `Queue` implementation more efficient:
 
     - Do not delete the items when removed from `Queue`
     - Ignore each item when it is removed from `Queue`
     - Keep an index to the head of the `Queue`
-    - Will this increase the space overhead or delete data ?!?!
+    - Wait, will this increase the space overhead or delete data ?!?!
 
 :::
 
