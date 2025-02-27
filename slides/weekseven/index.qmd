@@ -628,7 +628,7 @@ class ListDeque:
 
 :::
 
-::: {.fragment .fade style="margin-top: 0.0em; font-size: 0.85em;"}
+::: {.fragment .fade style="margin-top: 0.1em; font-size: 0.85em;"}
 
 - Modification methods have a postfix label of `first` or `last`
 
@@ -645,7 +645,8 @@ class ListDeque:
 
 ::: {.fragment .fade .boxed-content style="margin-top: -0.25em; font-size: 0.9em;"}
 
-**Key question**: Can we preserve the features of the `Deque` while avoiding
-the linear time complexity of `addfirst` and `removefirst`?
+{{< iconify fa6-solid lightbulb >}} **Key question**: Can we preserve the
+features of the `Deque` while avoiding the linear time complexity of `addfirst`
+and `removefirst`?
 
 :::
