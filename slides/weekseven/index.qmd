@@ -224,6 +224,20 @@ class InefficientListStack(ListStack):
 
 :::
 
+## What is the meaning of the notation `InefficientListStack(ListStack)`?
+
+::: {.fragment .boxed-content style="margin-bottom: -1.25em;"}
+
+- This creates a class that inherits from `ListStack` class!
+- Means `InefficientListStack` is a subclass of `ListStack`
+- Allows `InefficientListStack` to reuse `ListStack` methods
+- `InefficientListStack` can override methods in `ListStack`
+- `InefficientListStack` can add new methods to `ListStack`
+- `InefficientListStack` can add new attributes to `ListStack`
+- `InefficientListStack` can call methods from `ListStack`
+
+:::
+
 ## Using the `InefficientListStack`
 
 ```{python}
@@ -246,6 +260,34 @@ manipulate_stack()
 - When would the inefficiency become a problem?
 
 :::
+
+## Try out the `InefficientListStack`!
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 15
+class InefficientListStack(ListStack):    
+    def push(self, item):
+        self._L.insert(0, item)
+
+    def pop(self):
+        return self._L.pop(0)
+
+    def peek(self):
+        return self._L[0]
+
+def manipulate_stack():
+    stack = InefficientListStack()
+    stack.push('umbrella')
+    stack.push('backpack')
+    stack.push('sandals')
+    print("Stack contents after push operations: ", [item for item in stack._L])
+    stack.pop()
+    print("Stack contents after pop operation: ", [item for item in stack._L])
+
+manipulate_stack()
+```
+
 
 # Specifying and implementing the `Queue` abstract data type
 
