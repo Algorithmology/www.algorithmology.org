@@ -135,7 +135,7 @@ def addlast(self, item):
         currentnode.link = ListNode(item)
 ```
 
-- The `while currentnode.link is not None` is not efficient
+- `while currentnode.link is not None` is not efficient!
 - Access to the final node requires traversing the entire list
 - This is a $O(n)$ (or linear-time) operation!
 
@@ -649,7 +649,7 @@ while n is not None:
 
 ## Insights about the design and implementation of data structures
 
-::: {.fragment style="font-size: 0.9em; margin-top: -0.25em"}
+::: {.fragment style="font-size: 0.9em; margin-top: -0.2em"}
 
 ### {{< iconify fa6-solid archway >}} Design Considerations
 
