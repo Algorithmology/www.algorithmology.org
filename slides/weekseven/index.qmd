@@ -402,7 +402,7 @@ manipulate_queue()
 
 ```{python}
 #| code-line-numbers: "|2-4|6-15|17-21|"
-class ListQueueFakeDelete: 
+class ListQueueFakeDelete:
     def __init__(self):
         self._head = 0
         self._L = []
@@ -448,7 +448,58 @@ manipulate_queue()
 
 :::
 
-## Revised `ListQueueFakeDelete`
+## Enhancing the display of output
+
+```{python}
+class ListQueueFakeDeleteWithDisplay:
+    def __init__(self):
+        self._head = 0
+        self._L = []
+
+    def enqueue(self, item):
+        self._L.append(item)
+
+    def peek(self):
+        return self._L[self._head]
+
+    def dequeue(self):
+        item = self.peek()
+        self._head += 1
+        return item
+
+    def __len__(self):
+        return len(self._L) - self._head
+
+    def isempty(self):
+        return len(self) == 0
+
+    def __str__(self):
+        return str(self._L[self._head:])
+```
+
+## Does `ListQueueFakeDeleteWithDisplay`'s new `__str__` work as expected?
+
+```{python}
+def manipulate_queue_enhanced_display():
+    queue = ListQueueFakeDeleteWithDisplay()
+    queue.enqueue('umbrella')
+    queue.enqueue('backpack')
+    queue.enqueue('sandals')
+    print("Queue contents after enqueue operations: ", queue)
+    queue.dequeue()
+    print("Queue contents after dequeue operation: ", queue)
+
+manipulate_queue_enhanced_display()
+```
+
+::: fragment
+
+- The prior approach breaks the encapsulation of the `Queue`
+- New approach uses `__str__` method to display the `Queue`
+
+:::
+
+## More revisions to `ListQueueFakeDelete`
 
 ```{python}
 class ListQueue(ListQueueFakeDelete):
