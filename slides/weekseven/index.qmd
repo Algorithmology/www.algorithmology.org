@@ -226,15 +226,17 @@ class InefficientListStack(ListStack):
 
 ## What is the meaning of the notation `InefficientListStack(ListStack)`?
 
-::: {.fragment .boxed-content style="margin-bottom: -1.25em;"}
+::: {.fragment .callout-note icon=false title="Creating an inheritance hierarchy in Python"}
 
-- This creates a class that inherits from `ListStack` class!
-- Means `InefficientListStack` is a subclass of `ListStack`
-- Allows `InefficientListStack` to reuse `ListStack` methods
-- `InefficientListStack` can override methods in `ListStack`
-- `InefficientListStack` can add new methods to `ListStack`
-- `InefficientListStack` can add new attributes to `ListStack`
-- `InefficientListStack` can call methods from `ListStack`
+- Understanding the notation `InefficientListStack(ListStack)`:
+    - This creates a class that inherits from `ListStack` class!
+    - The `InefficientListStack` is a subclass of `ListStack`
+    - Means `InefficientListStack` is a subclass of `ListStack`
+    - Allows `InefficientListStack` to reuse `ListStack` methods
+    - `InefficientListStack` can override methods in `ListStack`
+    - `InefficientListStack` can add new methods to `ListStack`
+    - `InefficientListStack` can add new attributes to `ListStack`
+    - `InefficientListStack` can call methods from `ListStack`
 
 :::
 
@@ -648,5 +650,21 @@ class ListDeque:
 {{< iconify fa6-solid lightbulb >}} **Key question**: Can we preserve the
 features of the `Deque` while avoiding the linear time complexity of `addfirst`
 and `removefirst`?
+
+:::
+
+## Recapping the `Stack`, `Queue`, and `Deque`
+
+::: {.incremental style="margin-top: -0.1em; font-size: 0.975em;"}
+
+- Abstract data types versus concrete data structures
+    - **Stack**: LIFO discipline with `push`, `pop`, `peek`
+    - **Queue**: FIFO discipline with `enqueue`, `dequeue`, `peek`
+    - **Deque**: Offer `addfirst`, `addlast`, `removefirst`, `removelast`
+- Implementations of the `Stack`, `Queue`, and `Deque`
+    - **Stack**: `ListStack`, `InefficientListStack`, `RobustStack`
+    - **Queue**: `ListQueueSimple`, `ListQueueFakeDelete`, `ListQueue`
+    - **Deque**: `ListDeque`
+- {{< iconify fa6-solid mountain >}} **We need faster functions while preserving features!**
 
 :::
