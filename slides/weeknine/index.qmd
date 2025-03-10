@@ -250,8 +250,9 @@ def removelast(self):
         return item
 ```
 
-- `while currentnode.link.link is not None` not efficient
-- `removelast` traverses all nodes to find second-to-last one
+- `while currentnode.link.link is not None` efficient?
+- `removelast` traverses all nodes to find second-to-last one!
+- This is a $O(n)$ (or linear-time) operation!
 
 :::
 
