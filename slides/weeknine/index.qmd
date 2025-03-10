@@ -8,7 +8,8 @@ author: Gregory M. Kapfhammer
 execute:
   freeze: auto
 format:
-  revealjs:
+  live-revealjs:
+    completion: true
     theme: default
     css: ../css/styles.css
     history: false
@@ -150,6 +151,66 @@ print(LL.removelast() == 13)
 - This `LinkedList` can be used to build a `Queue`
 - However, two of these methods have `while` loops!
 - This means it is not always better than the `ListQueue`
+
+:::
+
+## Explore use of the `LinkedList`
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 10
+class ListNode:
+    def __init__(self, data, link = None):
+        self.data = data
+        self.link = link
+
+class LinkedList:
+    def __init__(self):
+        self._head = None
+
+    def addfirst(self, item):
+        self._head = ListNode(item, self._head)
+
+    def addlast(self, item):
+        if self._head is None:
+            self.addfirst(item)
+        else:
+            currentnode = self._head
+            while currentnode.link is not None:
+                currentnode = currentnode.link
+            currentnode.link = ListNode(item)
+
+    def removefirst(self):
+        item = self._head.data
+        self._head = self._head.link
+        return item
+
+    def removelast(self):
+        if self._head.link is None:
+            return self.removefirst()
+        else:
+            currentnode = self._head
+            while currentnode.link.link is not None:
+                currentnode = currentnode.link
+            item = currentnode.link.data
+            currentnode.link = None
+            return item
+
+LL = LinkedList()
+LL.addfirst(3)
+LL.addfirst(5)
+print(LL.removefirst() == 5)
+LL.addlast(9)
+LL.addlast(13)
+print(LL.removefirst() == 3)
+print(LL.removefirst() == 9)
+print(LL.removelast() == 13)
+```
+::: {.fragment style="margin-top: 0.15em; font-size: 0.80em;"}
+
+- {{< iconify fa6-solid robot >}} **Key Task**: After finding definitions of
+`ListNode` and `LinkedList`, draw a picture to show their relationship! Can you
+explain the `True` outputs?
 
 :::
 
