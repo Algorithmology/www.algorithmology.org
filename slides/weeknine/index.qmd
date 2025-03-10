@@ -27,6 +27,7 @@ format:
 - Uses individual nodes to store data values
 - Each node has a reference to the next node
 - The first node is called the **head** and the last is the **tail**
+- Enables list traversal in a "forward" direction
 
 ```{python}
 class ListNode:
@@ -51,8 +52,9 @@ class LinkedList:
         return item
 ```
 
-::: {.fragment style="margin-top: 0.5em"}
+::: {.fragment style="margin-top: 0em"}
 
+- Using `self` to reference the current instance of `LinkedList`
 - A `LinkedList` contains an instance of `ListNode` in `_head`
 - `addfirst` creates a new `ListNode` and updates `_head`
 - `removefirst` updates `_head` and returns the data
@@ -63,11 +65,12 @@ class LinkedList:
 
 ```{mermaid}
 %%| echo: false
-%%| fig-width: 18
+%%| fig-cap: "A linked list with three data-containing nodes"
+%%| scale: 200
 graph LR
-    Head["_head"] --> Node1["Node1<br>data: 42"]
-    Node1 --> Node2["Node2<br>data: 17"]
-    Node2 --> Node3["Node3<br>data: 99"]
+    Head["_head"] --> Node1["Node 1<br>data: 42"]
+    Node1 --> Node2["Node 2<br>data: 17"]
+    Node2 --> Node3["Node 3<br>data: 99"]
     Node3 --> Null["None"]
     
     classDef nodeStyle fill:#f9f9f9,stroke:#333,stroke-width:1px
@@ -85,8 +88,8 @@ graph LR
     - `link` that points to the next `ListNode`
 - Arrows indicate `link` references to the next node
 - The `_head` attribute points to the first node in the list
-- The `None` reference marks the end of the linked list
-- Adding or removing nodes only changes the `link` pointers!
+- The `ListNode` storing `None` marks the end of the linked list
+- Adding or removing nodes changes the `link` references!
 
 :::
 
