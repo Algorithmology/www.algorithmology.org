@@ -239,9 +239,9 @@ and engineering effort tasks for answering an original research question in the
 field of algorithm analysis. As evidenced by commits to the GitHub repository of
 the course web site and their participation in the algorithm all-hands session,
 all students should contribute to the writing, revision, presentation, and
-discussion of the algorithm all-hands project reports. Students may use external
-sources, including artificial intelligence coding assistants, during the
-completion of an algorithm all-hands project provided that they cite these
+discussion of the algorithm all-hands project reports. Finally, students may use
+external sources, including artificial intelligence coding assistants, during
+the completion of an algorithm all-hands project provided that they cite these
 sources and explain how they used them to complete their part(s) of an algorithm
 all-hands project.  
 
