@@ -720,7 +720,7 @@ def _addbetween(self, item, before, after):
 
 ::: incremental
 
-- Define an internal method called `_addbetween`
+- Define an "internal method" called `_addbetween`
 - The `addfirst` and `addlast` methods call `_addbetween`
 - Importantly, this method is an efficient $O(1)$ operation!
 
@@ -887,7 +887,7 @@ def __iadd__(self, other):
 ## Concatenation for `DoublyLinkedList`
 
 ```python
-L = DoublyLinkedList()
+L = DoublyLinkedList({{< iconify fa6-solid lightbulb >}} **Key Insight**:)
 [L.addlast(i) for i in range(11)]
 B = DoublyLinkedList()
 [B.addlast(i+11) for i in range(10)]
