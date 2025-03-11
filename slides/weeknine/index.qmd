@@ -862,6 +862,7 @@ while n is not None:
 - The `DoublyLinkedList` `L` is concatenated with `B`
 - Using `+=` calls the `__iadd__` method in `DoublyLinkedList`
 - The `B` list is drained of values when it is the `other` parameter
+- Is this an efficient way to perform concatenation?
 
 :::
 
