@@ -266,7 +266,7 @@ def removelast(self):
     - **Deque**: `addfirst`, `addlast`, `removefirst`, `removelast`
 - Implementations of the `Stack`, `Queue`, and `Deque`
     - **Stack**: `ListStack`, `InefficientListStack`, `RobustStack`
-    - **Queue**: `ListQueueSimple`, ... ,`ListQueue`
+    - **Queue**: `ListQueueSimple`, ... , `ListQueue`
     - **Deque**: `ListDeque`
 - {{< iconify fa6-solid mountain >}} **We need faster functions while preserving features!**
 
@@ -283,11 +283,11 @@ def removelast(self):
 
 :::
 
-## Better `Queue` with a `LinkedList`
+## Better `Queue` with a `LinkedList`?
 
 ```{python}
 #| code-line-numbers: "|1-4|6-15|17-21|21-33|"
-class LinkedListQueueTrial:
+class LinkedListTrial:
     def __init__(self):
         self._head = None
         self._tail = None
@@ -322,10 +322,10 @@ class LinkedListQueueTrial:
             return item
 ```
 
-## Using the `LinkedListQueueTrial`
+## Using the `LinkedListTrial`
 
 ```{python}
-LL = LinkedListQueueTrial()
+LL = LinkedListTrial()
 LL.addfirst(3)
 LL.addfirst(5)
 print(LL.removefirst() == 5)
@@ -338,13 +338,13 @@ print(LL.removelast() == 13)
 
 ::: {.fragment style="font-size: 0.9em"}
 
-- This `LinkedList` can be used to build a `Queue`
+- Wow, this `LinkedList` can be used to build a `Queue`
 - However, one of these methods still has a `while` loop!
 - This means it is not always better than the `ListQueue`
 
 :::
 
-## `LinkedListQueueTrial` concerns?
+## `LinkedListTrial` concerns?
 
 ::: {.panel-tabset}
 
