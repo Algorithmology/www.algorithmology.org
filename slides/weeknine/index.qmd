@@ -504,29 +504,6 @@ print(len(LL) == 0)
 
 :::
 
-## Reviewing efficient operations
-
-```python
-def addfirst(self, item):
-    self._head = ListNode(item, self._head)
-    if self._tail is None: self._tail = self._head
-    self._length += 1
-
-def addlast(self, item):
-    if self._head is None:
-        self.addfirst(item)
-    else:
-        self._tail.link = ListNode(item)
-        self._tail = self._tail.link
-        self._length += 1
-```
-
-::: incremental
-
-- Neither of these methods have a loop in them!
-
-:::
-
 ## `LinkedQueue` with a `LinkedList`
 
 ```{python}
@@ -580,6 +557,90 @@ manipulate_queue()
 
 - `LinkedQueue` is functionally equivalent to the `ListQueue`
 - The `LinkedQueue` uses `display` to reveal the contents
+
+:::
+
+## Reviewing efficient adding operations
+
+```python
+def addfirst(self, item):
+    self._head = ListNode(item, self._head)
+    if self._tail is None: self._tail = self._head
+    self._length += 1
+
+def addlast(self, item):
+    if self._head is None:
+        self.addfirst(item)
+    else:
+        self._tail.link = ListNode(item)
+        self._tail = self._tail.link
+        self._length += 1
+```
+
+::: incremental
+
+- Neither of these methods have a loop in them
+- Assignment statements and conditional logic are $O(1)$
+- Importantly, all of the method calls are also $O(1)$
+
+:::
+
+## Wait, inefficient data removal!
+
+```python
+def removefirst(self):
+    item = self._head.data
+    self._head = self._head.link
+    if self._head is None: self._tail = None
+    self._length -= 1
+    return item
+
+def removelast(self):
+    if self._head is self._tail:
+        return self.removefirst()
+    else:
+        currentnode = self._head
+        while currentnode.link is not self._tail:
+            currentnode = currentnode.link
+        item = self._tail.data
+        self._tail = currentnode
+        self._tail.link = None
+        self._length -= 1
+        return item
+```
+
+## Okay, let's explore the inefficiency in the `removelast` method!
+
+```python
+def removelast(self):
+    if self._head is self._tail:
+        return self.removefirst()
+    else:
+        currentnode = self._head
+        while currentnode.link is not self._tail:
+            currentnode = currentnode.link
+        item = self._tail.data
+        self._tail = currentnode
+        self._tail.link = None
+        self._length -= 1
+        return item
+```
+
+::: fragment
+
+- The `while` loop in `removelast` is a $O(n)$ operation
+- Looping is needed to find the second-to-last node
+
+:::
+
+# Improve performance of a `Queue` using a `LinkedList`?
+
+::: fragment
+
+- Discuss performance problem with members of your table
+- Create a technical diagram of a `LinkedList` and its nodes
+- Step through the code and move through `LinkedList`
+- Identify the performance problem and propose solution(s)
 
 :::
 
