@@ -256,11 +256,38 @@ def removelast(self):
 
 :::
 
+## Recap `Stack`, `Queue`, and `Deque`
+
+::: {.incremental style="margin-top: -0.1em; font-size: 0.975em;"}
+
+- Abstract data types versus concrete data structures
+    - **Stack**: LIFO discipline with `push`, `pop`, `peek`
+    - **Queue**: FIFO discipline with `enqueue`, `dequeue`, `peek`
+    - **Deque**: `addfirst`, `addlast`, `removefirst`, `removelast`
+- Implementations of the `Stack`, `Queue`, and `Deque`
+    - **Stack**: `ListStack`, `InefficientListStack`, `RobustStack`
+    - **Queue**: `ListQueueSimple`, ... ,`ListQueue`
+    - **Deque**: `ListDeque`
+- {{< iconify fa6-solid mountain >}} **We need faster functions while preserving features!**
+
+:::
+
+# Let's implement these structures using a `LinkedList`!
+
+::: fragment
+
+- Build a `Queue` and/or `Deque` with a `LinkedList`
+- Identify performance limitations and improve them
+- Create a revised `LinkedList` that moves both directions
+- Explore the trade-offs between time and space overhead
+
+:::
+
 ## Better `Queue` with a `LinkedList`
 
 ```{python}
 #| code-line-numbers: "|1-4|6-15|17-21|21-33|"
-class LinkedListNew:
+class LinkedListQueue:
     def __init__(self):
         self._head = None
         self._tail = None
@@ -295,10 +322,10 @@ class LinkedListNew:
             return item
 ```
 
-## Using the new `LinkedList`
+## Using the `LinkedListQueue`
 
 ```{python}
-LL = LinkedListNew()
+LL = LinkedListQueue()
 LL.addfirst(3)
 LL.addfirst(5)
 print(LL.removefirst() == 5)
@@ -317,7 +344,7 @@ print(LL.removelast() == 13)
 
 :::
 
-## Concerns about new `LinkedList`?
+## Concerns about `LinkedListQueue`?
 
 ::: {.panel-tabset}
 
