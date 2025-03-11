@@ -66,7 +66,6 @@ class LinkedList:
 
 ```{mermaid}
 %%| echo: false
-%%| fig-cap: "A linked list with three data-containing nodes"
 %%| scale: 200
 graph LR
     Head["_head"] --> Node1["Node 1<br>data: 42"]
