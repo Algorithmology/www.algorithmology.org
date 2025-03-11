@@ -779,6 +779,22 @@ class DoublyLinkedList:
             current = current.next
 ```
 
+## Refactored `DoublyLinkedList`
+
+::: {.fragment style="font-size: 0.9em"}
+
+- {{< iconify fa6-solid circle-plus >}} `_addbetween` method:
+    - Adds a new node between two existing nodes
+    - Uses the `_head` or `_tail` node as needed
+    - Both `addfirst` and `addlast` call this method
+- {{< iconify fa6-solid circle-minus >}} `_remove` method:
+    - Removes a node between two existing nodes
+    - Uses the `prev` or `link` node as needed
+    - Both `removefirst` and `removelast` call this method
+- Wow, both of these methods are efficient $O(1)$ operations!
+
+:::
+
 ## Using the `DoublyLinkedList`
 
 ```{python}
