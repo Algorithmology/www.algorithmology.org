@@ -432,7 +432,28 @@ class LinkedListPrime:
         return self._length
 ```
 
-## How do methods influence size?
+## Constructor for the `LinkedListPrime`
+
+```python
+class LinkedListPrime:
+    def __init__(self):
+        self._head = None
+        self._tail = None
+        self._length = 0
+```
+
+::: incremental
+
+- As with other classes, the constructor is called `__init__`
+- The `self` variable enables access to the instance attributes
+- The class continues to use the `_head` and `_tail` attributes
+- Add the `_length` attribute to make it easy to track size
+- Start the size of a `LinkedListPrime` instance at zero
+- **Question**: which methods have to update the `_length`?
+
+:::
+
+## How do methods influence the size?
 
 ::: {.fragment style="font-size: 0.9em"}
 
