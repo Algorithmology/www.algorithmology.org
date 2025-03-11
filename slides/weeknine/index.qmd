@@ -879,7 +879,7 @@ while n is not None:
 
 ## Insights about the design and implementation of data structures
 
-::: {.fragment style="font-size: 0.9em; margin-top: -0.2em"}
+::: {.fragment style="font-size: 0.9em; margin-top: -0.1em"}
 
 ### {{< iconify fa6-solid archway >}} Design Considerations
 
