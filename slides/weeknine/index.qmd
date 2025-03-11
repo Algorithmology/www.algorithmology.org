@@ -278,7 +278,7 @@ def removelast(self):
 
 - Build a `Queue` and/or `Deque` with a `LinkedList`
 - Identify performance limitations and improve them
-- Create a revised `LinkedList` that moves both directions
+- Revise the `LinkedList` movement in both directions
 - Explore the trade-offs between time and space overhead
 
 :::
@@ -287,7 +287,7 @@ def removelast(self):
 
 ```{python}
 #| code-line-numbers: "|1-4|6-15|17-21|21-33|"
-class LinkedListQueue:
+class LinkedListQueueTrial:
     def __init__(self):
         self._head = None
         self._tail = None
@@ -322,10 +322,10 @@ class LinkedListQueue:
             return item
 ```
 
-## Using the `LinkedListQueue`
+## Using the `LinkedListQueueTrial`
 
 ```{python}
-LL = LinkedListQueue()
+LL = LinkedListQueueTrial()
 LL.addfirst(3)
 LL.addfirst(5)
 print(LL.removefirst() == 5)
@@ -344,7 +344,7 @@ print(LL.removelast() == 13)
 
 :::
 
-## Concerns about `LinkedListQueue`?
+## `LinkedListQueueTrial` concerns?
 
 ::: {.panel-tabset}
 
@@ -380,7 +380,7 @@ def removelast(self):
         return item
 ```
 
-- `while currentnode.link is not self._tail` not efficient
+- `while currentnode.link is not self._tail` efficient?
 - `removelast` still traverses nodes to perform a removal!
 
 :::
