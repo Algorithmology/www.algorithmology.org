@@ -500,7 +500,30 @@ print(len(LL) == 0)
 ::: {.fragment style="font-size: 0.9em"}
 
 - `LinkedListPrime` has features equivalent to `LinkedListNew`
-- Represents an improved building block for a `Queue`
+- Represents an improved building block for a `Queue`-like structure
+
+:::
+
+## Reviewing efficient operations
+
+```python
+def addfirst(self, item):
+    self._head = ListNode(item, self._head)
+    if self._tail is None: self._tail = self._head
+    self._length += 1
+
+def addlast(self, item):
+    if self._head is None:
+        self.addfirst(item)
+    else:
+        self._tail.link = ListNode(item)
+        self._tail = self._tail.link
+        self._length += 1
+```
+
+::: incremental
+
+- Neither of these methods have a loop in them!
 
 :::
 
