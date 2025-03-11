@@ -795,6 +795,33 @@ class DoublyLinkedList:
 
 :::
 
+## Efficiency of the `display` method?
+
+```python
+def display(self):
+    current = self._head
+    while current is not None:
+        print(current.data)
+        current = current.next
+```
+
+::: fragment
+
+- The `display` method is a $O(n)$ operation
+- The `while` loop traverses all nodes in the list
+- The time complexity is proportional to list's length
+- This makes sense since we must visit all nodes!
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: -0.25em; font-size: 0.9em;"}
+
+{{< iconify fa6-solid lightbulb >}} **Insight**: Unless we only need to display
+a subset of the list, the $O(n)$ time complexity is the best that we can
+achieve for `display`!
+
+:::
+
 ## Using the `DoublyLinkedList`
 
 ```{python}
@@ -851,6 +878,7 @@ def __iadd__(self, other):
 
 ::: fragment
 
+- No need to traverse the entire list in `__iadd__`!
 - The internal `__iadd__` method is called when `+=` is used
 - The `other` `DoublyLinkedList` is concatenated to `self`
 
@@ -876,7 +904,7 @@ while n is not None:
 
 - The `DoublyLinkedList` `L` is concatenated with `B`
 - Using `+=` calls the `__iadd__` method in `DoublyLinkedList`
-- The `B` list is drained of values when it is the `other` parameter
+- The `B` list is "drained" of values when it is the `other` parameter
 - Is this an efficient way to perform concatenation?
 
 :::
