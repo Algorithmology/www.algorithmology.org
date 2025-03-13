@@ -121,8 +121,8 @@ course instructor.
 written by learners as they explore the engineering and scientific knowledge and
 skills in the field of algorithmology. While some of these articles report on
 the results from running experiments, others explain how to implement and use
-the Python programs that supports performance evaluation. Read these reports
-to learn more about the algorithmology!
+the Python programs that support performance evaluation. Read these reports to
+learn more about the algorithmology!
 
 ::: {.callout-note appearance="minimal" title="Algorithmology Community Resources"}
 
