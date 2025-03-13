@@ -127,8 +127,8 @@ to learn more about the algorithmology!
 ::: {.callout-note appearance="minimal" title="Algorithmology Community Resources"}
 
 Interested in connecting with other like-minded algorithm engineers? Please join
-the [Algorithmology Discord Server](https://discord.gg/phSQfB8bZx) and join the
-conversation! If you are an on-campus learning at Allegheny College, you may
+the [Algorithmology Discord Server](https://discord.gg/phSQfB8bZx) and join
+the conversation! If you are an on-campus learner at Allegheny College, you may
 also join the [Allegheny College Computer Science Discord
 Server](https://discord.gg/CS2h9kXzX6). Finally, if you are an on-campus
 learner, you can schedule a meeting with the instructor during office hours by
