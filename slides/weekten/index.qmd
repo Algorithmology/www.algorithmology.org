@@ -111,7 +111,7 @@ print(sumk(4))
 print(sumk(5))
 ```
 
-::: fragment
+::: {.fragment style="font-size: 0.975em; margin-top: -0.15em"}
 
 - The `sumk` function calls itself with a smaller value of `k`
 - The base case stops the recursion when `k` is equal to `0`
