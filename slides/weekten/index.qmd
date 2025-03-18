@@ -397,6 +397,28 @@ print("GCD of 19 and 515 is", gcd_revised(515, 19))
 
 :::
 
+## Compare iteration and recursion
+
+::: {.fragment style="font-size: 0.9em" .callout-note icon=true title="Empirically comparing the performance of iterative and recursive functions"}
+
+1. **Implement both versions of the algorithm**
+   - Create a recursive implementation that uses function calls
+   - Create an iterative implementation using loops
+
+2. **Create benchmarking harness**
+   - Use `time.perf_counter()` for precise measurement
+   - Implement a function like `timetrials()` that runs multiple trials
+
+3. **Design controlled experiments**
+   - Use a doubling experiment with appropriate input sizes
+   - Generate consistent test data for both implementations
+
+4. **Collect and analyze data**
+   - Record execution times for each implementation
+   - Calculate doubling ratios to determine time complexity
+
+:::
+
 # What is dynamic programming?
 
 ::: fragment
