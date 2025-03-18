@@ -697,6 +697,33 @@ print(f"LCS length is {lcs_len} and LCS contents are {lcs_str}")
 
 :::
 
+## Try out `lcs_dynamic`
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 16
+def lcs_dynamic(X, Y):
+    t = {}
+    for i in range(len(X)+1): t[(i,0)] = ""
+    for j in range(len(Y)+1): t[(0,j)] = ""
+
+    for i, x in enumerate(X):
+        for j, y in enumerate(Y):
+            if x == y:
+                t[(i+1,j+1)] = t[(i, j)] + x
+            else:
+                t[(i+1,j+1)] = max([t[(i, j+1)], t[(i+1, j)]], key = len)
+    return t[(len(X), len(Y))]
+
+seq1 = "ACGTACGT"; seq2 = "AAGGTCGT"
+lcs_dna = lcs_recursive(seq1, seq2)
+print(f"Longest Common Subsequence: {lcs_dna} (length: {len(lcs_dna)})")
+
+word1 = "ALGORITHM"; word2 = "ALTRUISTIC"
+lcs_word = lcs_recursive(word1, word2)
+print(f"Longest Common Subsequence: {lcs_word} (length: {len(lcs_dna)})")
+```
+
 ## Only calculating the length of LCS
 
 ```{python}
