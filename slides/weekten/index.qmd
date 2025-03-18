@@ -41,11 +41,24 @@ designing, implementing, maintaining, and revising programs
 
 ## Learning objectives
 
-::: {.fragment style="margin-top: -0.25em; font-size: 0.9em;"}
+::: {.incremental style="margin-top: -0.25em; font-size: 0.8em;"}
 
 - {{< iconify fa6-solid circle-check >}} **CS-202-1**: Correctly
 implement both well-established and custom data structures using a programming
 language so as to solve a problem with a computer program.
+
+- {{< iconify fa6-solid circle-check >}} **CS-202-2**: Perform an asymptotic
+analysis of an algorithm to arrive at its correct worst-case time complexity
+class.
+
+- {{< iconify fa6-solid circle-check >}} **CS-202-3**: Conduct experiments that
+measure the efficiency of different combinations of programming languages, data
+structures, and algorithms.
+
+- {{< iconify fa6-solid circle-check >}} **CS-202-4**: Use both theoretical and
+experimental results to pick the data structure(s) and algorithm(s) that
+balance the trade-offs associated with correctly and efficiently solving a
+problem with a computer program.
 
 :::
 
