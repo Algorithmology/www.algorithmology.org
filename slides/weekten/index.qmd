@@ -34,8 +34,8 @@ format:
 
 ::: {.fragment .fade .boxed-content style="margin-top: -0.05em; font-size: 0.9em;"}
 
-**Ultimate Goal**: create a nuanced description of program efficiency that
-adapts to *different inputs* and to *different computers*
+**Goals**: make wise decisions about correctness and performance when
+designing, implementing, maintaining, and revising programs
 
 :::
 
