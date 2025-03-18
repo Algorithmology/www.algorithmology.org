@@ -69,6 +69,25 @@ these objectives!
 
 :::
 
+## There is another learning objective! And, we've not covered it fully!
+
+::: {.fragment .fade .boxed-content style="margin-top: -0.05em; font-size: 0.85em;"}
+
+- **CS-202-5**: Effectively apply algorithmic problem solving techniques like
+searching, sorting, and memoization to correctly and efficiently solve a problem
+through the use of a computer program.
+
+:::
+
+::: incremental
+
+- Thorough investigation of basic linear searching
+- Brief investigation of sorting through a project
+- We need to study algorithmic strategies further!
+- Investigate **recursive functions** and **dynamic programming**
+
+:::
+
 # Recursion means a "reference to self"!
 
 - Implementation of recursion in Python language
