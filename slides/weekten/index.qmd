@@ -80,17 +80,19 @@ through the use of a computer program.
 
 :::
 
-::: incremental
+::: {.incremental style="margin-top: -0.05em; font-size: 0.9em;"}
 
 - Thorough investigation of basic linear searching
 - Brief investigation of sorting through a project
 - We need to study algorithmic strategies further!
 - Investigate **recursive functions** and **dynamic programming**
+- Unlocks a new class of **algorithms** and **data structures**
 
 :::
 
-# Recursion means a "reference to self"!
+# Recursion means a "reference to self"
 
+- Seen with `SingleLinkedList` and `DoubleLinkedList`!
 - Implementation of recursion in Python language
 - Mental model for how to think about recursive functions
 - Use of recursion as a problem solving technique
