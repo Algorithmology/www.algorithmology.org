@@ -430,6 +430,26 @@ print("GCD of 19 and 515 is", gcd_revised(515, 19))
 
 :::
 
+## What is a change-making algorithm?
+
+::: {.fragment .boxed-content style="font-size: 1em;"}
+
+- **Given**: a list of coin denominations and a target amount
+- **Find**: minimum number of coins to make target amount
+
+:::
+
+::: fragment
+
+- Arrive at a correct solution with the following approach:
+    - Technique that only works for "canonical" coin systems
+    - Recursive algorithm that works but is slow sometimes
+    - Memoized recursive algorithm that is faster
+    - Dynamic programming algorithm that is efficient
+    - Optimized approaches for specific coin systems
+
+:::
+
 ## Defective Greedy Change-Making
 
 ```{python}
@@ -447,10 +467,10 @@ print(greedyMC([1, 21, 25], 63))    # Incorrect, should be 3
 print(greedyMC([1, 5, 21, 25], 63)) # Incorrect, should be 3
 ```
 
-::: fragment
+::: {.fragment style="font-size: 0.9em; margin-top: 0.1em"}
 
-- What is the minimum number of coins to make change for `63` cents? This
-`greedyMC` only works for canonical coin systems!
+- What is the minimum number of coins to make change for `63` cents? Wait, this
+`greedyMC` only works for "canonical" coin systems!
 
 :::
 
@@ -475,7 +495,7 @@ print(recMC([1, 5, 21, 25], 63))
 
 ::: fragment
 
-- The `recMC` function calls itself with a smaller value of `change`
+- `recMC` calls itself with a smaller value of `change`
 - Works correctly --- but is very slow for certain input values!
 
 :::
