@@ -207,7 +207,7 @@ print(sumsquarek(5))
 
 ::: fragment
 
-{{< iconify fa6-solid draw-polygon >}} Can you crash the `sumsquarek` function?
+{{< iconify fa6-solid gear >}} Can you crash the `sumsquarek` function?
 Why does it crash?
 
 :::
@@ -231,7 +231,7 @@ a(340)
 ::: {.fragment style="font-size: 1em; margin-top: 0.25em"}
 
 - This program will raise a `RecursionError` in Python
-- Interestingly, it does not contain a recursive function!
+- It does not contain a (direct) recursive function!
 - Error signals that Python reached limit of call stack
 
 :::
