@@ -212,6 +212,26 @@ Why does it crash?
 
 :::
 
+## Recursion and the call stack
+
+::: {.fragment .fade .boxed-content style="margin-top: -0.05em; font-size: 0.95em;"}
+
+- **Call stack** stores information about active functions
+- **Stack frame** stores information about a function call
+- **Stack overflow** occurs when the call stack is full
+- **RecursionError** is raised when the call stack is full
+
+:::
+
+::: {.fragment .fade style="margin-top: -0.05 font-size: 0.95em;"}
+
+- {{< iconify fa6-solid gears >}} **Behavior of a recursive function**:
+    - **Push** a new stack frame when a function is **called**
+    - **Pop** the stack frame when the function **returns**
+    - **Continue** until the **base case** is reached or **stack overflow**
+
+:::
+
 ## `RecursionError` with functions
 
 ```python
@@ -233,6 +253,32 @@ a(340)
 - This program will raise a `RecursionError` in Python
 - It does not contain a (direct) recursive function!
 - Error signals that Python reached limit of call stack
+
+:::
+
+## Create your own `RecursionError`!
+
+```{pyodide}
+#| autorun: false
+#| max-lines: 10
+def a(k):
+    if k == 0: return 0
+    return b(k)
+
+def b(k):
+    return c(k)
+
+def c(k):
+    return a(k-1)
+
+a(340)
+```
+
+::: {.fragment style="font-size: 1em; margin-top: 0.05em"}
+
+- This program will raise a `RecursionError` in Python
+- Error reported with a diagnostic message
+- Can you explain why this program crashes?
 
 :::
 
