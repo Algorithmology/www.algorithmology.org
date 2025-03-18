@@ -39,6 +39,16 @@ designing, implementing, maintaining, and revising programs
 
 :::
 
+## Learning objectives
+
+::: {.fragment style="margin-top: -0.25em; font-size: 0.9em;"}
+
+- {{< iconify fa6-solid circle-check >}} **CS-202-1**: Correctly
+implement both well-established and custom data structures using a programming
+language so as to solve a problem with a computer program.
+
+:::
+
 # Recursion means a "reference to self"!
 
 - Implementation of recursion in Python language
