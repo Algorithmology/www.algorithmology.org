@@ -450,7 +450,7 @@ print("GCD of 19 and 515 is", gcd_revised(515, 19))
 
 :::
 
-## Defective Greedy Change-Making
+## "Defective" Greedy Change-Making
 
 ```{python}
 def greedyMC(coinvalueList, change):
@@ -572,20 +572,20 @@ print(dpMakeChange([1,5,10,21,25], 63))
 the worst-case time complexity of a change-making algorithm?"}
 
 - **Greedy algorithm**: `greedyMC`
-  - Time complexity: $O(m)$ where $m$ is number of coin types
+  - **Time complexity**: $O(m)$ where $m$ is number of coin types
   - Correct only for "canonical" coin systems like US coins
 
 - **Recursive algorithm**: `recMC`
-  - Time complexity: $O(c^n)$ where $c$ is a constant and $n$ is the change amount
+  - **Time complexity**: $O(c^n)$ where $c$ is a constant and $n$ is the change amount
   - Correct for all coin systems but exponentially slow
 
 - **Memoized recursive algorithm**: `memoMC`
-  - Time complexity: $O(n \times m)$ where $n$ is change amount
+  - **Time complexity**: $O(n \times m)$ where $n$ is change amount and $m$ is number of coin types
   - Stores results of subproblems in a dictionary
   - Correct for all coin systems and much faster than naive recursion
 
 - **Dynamic programming algorithm**: `dpMakeChange`
-  - Time complexity: $O(n \times m)$ where $n$ is change amount
+  - **Time complexity**: $O(n \times m)$ where $n$ is change amount and $m$ is number of coin types
   - Builds solution bottom-up using an array
   - Avoids recursion overhead and dictionary lookups
 
