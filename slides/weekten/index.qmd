@@ -334,6 +334,25 @@ faster? Why do you think that is the case?
 
 :::
 
+## Use `fibonacci_recursive` and `fibonacci_iterative`
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 12
+def fibonacci_recursive(k):
+    if k in [0,1]: return k
+    return fibonacci_recursive(k-1) + fibonacci_recursive(k-2)
+
+def fibonacci_iterative(k):
+    a, b = 0,1
+    for i in range(k):
+        a, b = b, a + b
+    return a
+
+print("Recursive: " + str([fibonacci_recursive(i) for i in range(10)]))
+print("Iterative: " + str([fibonacci_iterative(i) for i in range(10)]))
+```
+
 ## Recursive greatest common divisor
 
 ```{python}
@@ -359,16 +378,16 @@ print("GCD of 19 and 515 is", gcd(515, 19))
 ## Revising the recursive `gcd`
 
 ```{python}
-def gcd(a, b):
+def gcd_revised(a, b):
     if a > b:
         a, b = b, a
     if a == 0:
         return b
-    return gcd(a, b % a)
+    return gcd_revised(a, b % a)
 
-print("GCD of 12 and 513 is", gcd(12, 513))
-print("GCD of 19 and 513 is", gcd(19, 513))
-print("GCD of 19 and 515 is", gcd(515, 19))
+print("GCD of 12 and 513 is", gcd_revised(12, 513))
+print("GCD of 19 and 513 is", gcd_revised(19, 513))
+print("GCD of 19 and 515 is", gcd_revised(515, 19))
 ```
 
 ::: {.fragment style="font-size: 1em; margin-top: 0.25em"}
