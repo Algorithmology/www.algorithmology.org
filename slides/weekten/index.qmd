@@ -19,6 +19,26 @@ format:
     footer: "Algorithmology"
 ---
 
+# Recap prior topics
+
+::: {.fragment style="margin-top: -0.25em; font-size: 0.9em;"}
+
+- Programming in Python
+- Object-oriented analysis and design
+- Software testing and debugging
+- Algorithm analysis and complexity
+- Design and conduct timing experiments
+- Abstract data types and data structures
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: -0.05em; font-size: 0.9em;"}
+
+**Ultimate Goal**: create a nuanced description of program efficiency that
+adapts to *different inputs* and to *different computers*
+
+:::
+
 # Recursion means a "reference to self"!
 
 - Implementation of recursion in Python language
