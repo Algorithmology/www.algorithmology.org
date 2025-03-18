@@ -421,7 +421,7 @@ print("GCD of 19 and 515 is", gcd_revised(515, 19))
 
 # What is dynamic programming?
 
-::: fragment
+::: {.fragment .boxed-content style="font-size: 1em;"}
 
 - Solve a problem using solutions to sub-problems
 - Often starts with an inefficient recursive algorithm
