@@ -62,6 +62,13 @@ problem with a computer program.
 
 :::
 
+::: {.fragment .fade .boxed-content style="margin-top: -0.05em; font-size: 0.9em;"}
+
+{{< iconify fa6-solid rocket >}} *Hooray*, we've worked hard to achieve each of
+these objectives!
+
+:::
+
 # Recursion means a "reference to self"!
 
 - Implementation of recursion in Python language
