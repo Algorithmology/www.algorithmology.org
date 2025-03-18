@@ -148,9 +148,9 @@ function's behavior?
 
 {{< iconify fa6-solid gears >}} **How to ensure that a recursive function stops running?**
 
-  - Base case stops the recursion by returning fixed value
-  - Recursive case reduces the input towards the base case
-  - Recursive calls are made of smaller sub-problems
+  - **Base case** stops the recursion by returning fixed value
+  - **Recursive case** reduces the input towards the base case
+  - **Recursive calls** are made of smaller sub-problems
 
 :::
 
@@ -164,7 +164,7 @@ function's behavior?
 
 :::
 
-## The call stack and recursion
+## Using the `sumsquarek` function
 
 ```{python}
 def sumsquarek(k):
@@ -184,6 +184,31 @@ print(sumsquarek(5))  # Output: 55
 
 - The `sumsquarek` function calls itself with a smaller value of `k`
 - The base case stops the recursion when `k` is equal to `0`
+
+:::
+
+## Try out the `sumsquarek` function
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 10
+def sumsquarek(k):
+    if k == 0:
+        return 0
+    else:
+        return k ** 2 + sumsquarek(k - 1)
+
+print(sumsquarek(1))
+print(sumsquarek(2))
+print(sumsquarek(3))
+print(sumsquarek(4))
+print(sumsquarek(5))
+```
+
+::: fragment
+
+{{< iconify fa6-solid draw-polygon >}} Can you crash the `sumsquarek` function?
+Why does it crash?
 
 :::
 
