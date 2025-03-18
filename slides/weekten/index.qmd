@@ -8,7 +8,8 @@ author: Gregory M. Kapfhammer
 execute:
   freeze: auto
 format:
-  revealjs:
+  live-revealjs:
+    completion: true
     theme: default
     css: ../css/styles.css
     history: false
@@ -114,6 +115,30 @@ print(sumk(5))
 
 - The `sumk` function calls itself with a smaller value of `k`
 - The base case stops the recursion when `k` is equal to `0`
+
+:::
+
+## Try out the `sumk` function
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 10
+def sumk(k):
+    if k > 0:
+        return sumk(k-1) + k
+    return 0
+
+print(sumk(1))
+print(sumk(2))
+print(sumk(3))
+print(sumk(4))
+print(sumk(5))
+```
+
+::: fragment
+
+{{< iconify fa6-solid draw-polygon >}} What picture best explains the `sumk`
+function's behavior?
 
 :::
 
