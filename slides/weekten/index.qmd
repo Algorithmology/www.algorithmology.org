@@ -21,7 +21,7 @@ format:
 
 # Recap prior topics
 
-::: {.fragment style="margin-top: -0.25em; font-size: 0.9em;"}
+::: {.incremental style="margin-top: -0.25em; font-size: 0.9em;"}
 
 - Programming in Python
 - Object-oriented analysis and design
