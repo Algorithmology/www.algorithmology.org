@@ -647,6 +647,25 @@ print(f"LCS length is {lcs_len} and LCS contents are {lcs_str}")
 
 :::
 
+## Longest common subsequence
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 12
+def lcs_recursive(X, Y):
+    if X == "" or Y == "":
+        return ""
+    if X[-1] == Y[-1]:
+        return lcs_recursive(X[:-1], Y[:-1]) + X[-1]
+    else:
+        return max([lcs_recursive(X[:-1], Y),
+                    lcs_recursive(X, Y[:-1])], key = len)
+
+lcs_str = lcs_recursive('ABCBDAB', 'BDCAB')
+lcs_len = len(lcs_str)
+print(f"LCS length is {lcs_len} and LCS contents are {lcs_str}")
+```
+
 ## LCS with dynamic programming
 
 ```{python}
