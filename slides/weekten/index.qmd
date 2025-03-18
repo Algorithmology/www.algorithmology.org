@@ -566,6 +566,31 @@ print(dpMakeChange([1,5,10,21,25], 63))
 
 :::
 
+## Change-making time complexities
+
+::: {.fragment style="font-size: 0.8em" .callout-note icon=true title="What is
+the worst-case time complexity of a change-making algorithm?"}
+
+- **Greedy algorithm**: `greedyMC`
+  - Time complexity: $O(m)$ where $m$ is number of coin types
+  - Correct only for "canonical" coin systems like US coins
+
+- **Recursive algorithm**: `recMC`
+  - Time complexity: $O(c^n)$ where $c$ is a constant and $n$ is the change amount
+  - Correct for all coin systems but exponentially slow
+
+- **Memoized recursive algorithm**: `memoMC`
+  - Time complexity: $O(n \times m)$ where $n$ is change amount
+  - Stores results of subproblems in a dictionary
+  - Correct for all coin systems and much faster than naive recursion
+
+- **Dynamic programming algorithm**: `dpMakeChange`
+  - Time complexity: $O(n \times m)$ where $n$ is change amount
+  - Builds solution bottom-up using an array
+  - Avoids recursion overhead and dictionary lookups
+
+:::
+
 ## What are the similarities and differences between memoization and dynamic programming?
 
 ::: {.columns}
