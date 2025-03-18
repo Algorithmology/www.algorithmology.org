@@ -441,7 +441,7 @@ print("GCD of 19 and 515 is", gcd_revised(515, 19))
 
 ::: fragment
 
-- Arrive at a correct solution with the following approach:
+- **Arrive at a suitable solution with the following approach**:
     - Technique that only works for "canonical" coin systems
     - Recursive algorithm that works but is slow sometimes
     - Memoized recursive algorithm that is faster
