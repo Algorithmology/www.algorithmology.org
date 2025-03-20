@@ -166,7 +166,7 @@ function's behavior?
 
 :::
 
-## Using the `sumsquarek` function
+## Calling the `sumsquarek` function
 
 ```{python}
 def sumsquarek(k):
@@ -444,7 +444,7 @@ print("GCD of 19 and 515 is", gcd_revised(515, 19))
 - **Arrive at a suitable solution with the following approach**:
     - Technique that only works for "canonical" coin systems
     - Recursive algorithm that works but is slow sometimes
-    - Memoized recursive algorithm that is faster
+    - Memoized recursive algorithm that is faster than recursive
     - Dynamic programming algorithm that is efficient
     - Optimized approaches for specific coin systems
 
@@ -462,7 +462,7 @@ def greedyMC(coinvalueList, change):
         change = change % c
     return numcoins
 
-print(greedyMC([1, 5, 10, 25], 63))
+print(greedyMC([1, 5, 10, 25], 63)) # Correct answer of 6
 print(greedyMC([1, 21, 25], 63))    # Incorrect, should be 3
 print(greedyMC([1, 5, 21, 25], 63)) # Incorrect, should be 3
 ```
