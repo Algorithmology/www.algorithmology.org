@@ -751,6 +751,26 @@ print(f"LCS length is {lcs_len}")
 
 :::
 
+## Summary of LCS Approaches
+
+::: {.fragment style="font-size: 0.875em; margin-top: -0.1em"}
+
+- **Recursive (`lcs_recursive`)**
+  - Time Complexity: $O(2^n)$
+  - Elegant but impractical for moderate inputs
+
+- **Dynamic Programming with Reconstruction (`lcs_dynamic`)**
+  - Time Complexity: $O(k \times (m \times n))$ where $k$ is output length
+  - Uses dictionary for memoization and builds actual subsequence
+
+- **Dynamic Programming for Length Only (`lcs_calculate`)**
+  - Time Complexity: $O(m \times n)$
+  - Most efficient implementation, but LCS returned
+
+- **Different trade-offs for each method! Which do you prefer? Why?**
+
+:::
+
 ## Algorithmic problem solving
 
 ::: {.columns}
