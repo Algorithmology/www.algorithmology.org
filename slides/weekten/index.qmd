@@ -444,7 +444,7 @@ print("GCD of 19 and 515 is", gcd_revised(515, 19))
 - **Arrive at a suitable solution with the following approach**:
     - Technique that only works for "canonical" coin systems
     - Recursive algorithm that works but is slow sometimes
-    - Memoized recursive algorithm that is faster than recursive
+    - Memoized recursive method that is faster than recursive
     - Dynamic programming algorithm that is efficient
     - Optimized approaches for specific coin systems
 
@@ -469,7 +469,7 @@ print(greedyMC([1, 5, 21, 25], 63)) # Incorrect, should be 3
 
 ::: {.fragment style="font-size: 0.9em; margin-top: 0.1em"}
 
-- What is the minimum number of coins to make change for `63` cents? Wait, this
+- What is the minimum number of coins to make change for `63` cents? This
 `greedyMC` only works for "canonical" coin systems!
 
 :::
@@ -667,7 +667,7 @@ print(f"Longest Common Subsequence: {lcs_dna} (length: {len(lcs_dna)})")
 
 word1 = "ALGORITHM"; word2 = "ALTRUISTIC"
 lcs_word = lcs_recursive(word1, word2)
-print(f"Longest Common Subsequence: {lcs_word} (length: {len(lcs_dna)})")
+print(f"Longest Common Subsequence: {lcs_word} (length: {len(lcs_word)})")
 ```
 
 ## LCS with dynamic programming
@@ -721,7 +721,7 @@ print(f"Longest Common Subsequence: {lcs_dna} (length: {len(lcs_dna)})")
 
 word1 = "ALGORITHM"; word2 = "ALTRUISTIC"
 lcs_word = lcs_recursive(word1, word2)
-print(f"Longest Common Subsequence: {lcs_word} (length: {len(lcs_dna)})")
+print(f"Longest Common Subsequence: {lcs_word} (length: {len(lcs_word)})")
 ```
 
 ## Only calculating the length of LCS
