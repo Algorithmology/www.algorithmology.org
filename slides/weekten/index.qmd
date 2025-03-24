@@ -329,7 +329,7 @@ print([fibonacci_iterative(i) for i in range(10)])
 
 ::: {.fragment style="font-size: 1em; margin-top: -0.2em"}
 
-- Both approaches compute the Fibonacci sequence. Which one do you think is
+- Both approaches compute Fibonacci sequence. Which one do you think is
 faster? Why do you think that is the case?
 
 :::
