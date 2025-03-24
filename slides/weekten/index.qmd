@@ -751,7 +751,7 @@ print(f"LCS length is {lcs_len}")
 
 :::
 
-## Summary of LCS Approaches
+## Summary of LCS approaches
 
 ::: {.fragment style="font-size: 0.875em; margin-top: -0.1em"}
 
