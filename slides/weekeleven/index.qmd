@@ -330,8 +330,8 @@ print(data)
 
 - Use a `while` loop containing a `for` loop to order elements in `L`
 
-- Although it may consume less time for some lists, the `bubblesort_stopearly`
-function still has a time complexity of $O(n^2)$
+- Although it may consume less time *for some lists*, `bubblesort_stopearly`
+still has a time complexity of $O(n^2)$
 
 :::
 
@@ -510,7 +510,7 @@ print(data)
 
 :::
 
-## Comparing `mergesort` and `quicksort`
+## Compare `mergesort` and `quicksort`
 
 ### {{< iconify fa6-solid bolt >}} Both algorithms use divide and conquer!
 
@@ -529,6 +529,48 @@ print(data)
   - Not a stable sort and thus relative order not preserved
   - Worst-case time complexity is $O(n^2)$, but often faster in practice
   - In-place sorting means it does not require additional space
+
+:::
+
+## Exploring properties of sorting
+
+::: incremental
+
+- Sorting algorithms can be **stable** or **unstable**:
+    - **Stable**: Equal elements maintain their relative order
+    - **Unstable**: Equal elements may change their relative order
+- Stability is most important when values have "satellite" data
+- Sorting algorithms can be **in-place** or **not**:
+    - **In-place**: Algorithm only requires constant extra space
+    - **Not in-place**: Algorithm requires non-constant space
+- Sorting algorithms may also be **comparison-based** or not
+
+:::
+
+## Counting sort algorithm
+
+```{python}
+def counting_sort(arr, k=None):
+    if not arr:
+        return []
+    if k is None:
+        k = max(arr)
+    count = [0] * (k+1)
+    for num in arr:
+        count[num] += 1
+    sorted_arr = []
+    for i in range(1, k+1):
+        sorted_arr.extend([i] * count[i])
+    return sorted_arr
+
+array = [4, 2, 2, 8, 3, 3, 1]
+print("Original array:", array)
+print("Sorted array:", counting_sort(array))
+```
+
+::: {.fragment style="font-size: 0.85em; margin-top: -0.2em"}
+
+- **Non-comparison based** sorting with $O(n + k)$ time complexity
 
 :::
 
