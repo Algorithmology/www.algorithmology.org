@@ -103,6 +103,26 @@ print(fast_binary_search([2, 4, 6, 8, 10], 5))  # Output: False
 
 :::
 
+## Linear and tail recursion
+
+::: {.incremental style="font-size: 0.85em; margin-top: -0.2em"}
+
+- **Linear Recursion**: 
+  - Each function makes at most one recursive call
+  - Binary search is linear recursive (makes one call per level)
+  - Keeps total calls to $O(\log n)$ for binary search
+
+- **Tail Recursion**:
+  - Recursive call is the last operation in the function
+  - Compiler optimized into loops, thus avoiding stack overflow
+  - Often more memory efficient than non-tail recursion
+
+- {{< iconify fa6-solid gears >}} **What is the evidence for linear and/or tail recursion?**
+
+- {{< iconify fa6-solid lightbulb >}} **If you see tail recursion try to make an iterative solution!**
+
+:::
+
 ## Iterative `binary_search`
 
 ```{python}
