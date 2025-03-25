@@ -17,6 +17,8 @@ format:
     highlight-style: github
     html-math-method: mathjax
     footer: "Algorithmology"
+    mermaid:
+      theme: default
 ---
 
 # What are purposes of searching and sorting?
@@ -167,6 +169,44 @@ print(iterative_binary_search([2, 4, 6, 8, 10], 5))  # Output: False
 4. **Collect and analyze data**
    - Record execution times for each implementation
    - Calculate doubling ratios to determine time complexity
+
+:::
+
+## Ascending versus Descending Sort
+
+```{mermaid}
+%%| echo: false
+%%| scale: 200
+flowchart LR
+    subgraph Original["Original Array"]
+        direction LR
+        O1[30] --- O2[5] --- O3[100] --- O4[17] --- O5[82]
+        style Original fill:#f5f5f5,stroke:#333
+    end
+    
+    subgraph Ascending["Ascending Order"]
+        direction LR
+        A1[5] --- A2[17] --- A3[30] --- A4[82] --- A5[100]
+        style Ascending fill:#f5f5f5,stroke:#333
+    end
+    
+    subgraph Descending["Descending Order"]
+        direction LR
+        D1[100] --- D2[82] --- D3[30] --- D4[17] --- D5[5]
+        style Descending fill:#f5f5f5,stroke:#333
+    end
+
+    Original --->|"  &nbsp;&nbsp;&nbsp;<br>sort()  "| Ascending
+    Original --->|"  sort(reverse=True)  "| Descending
+```
+
+::: {.fragment style="font-size: 0.825em; margin-top: -0.2em"}
+
+- **Ascending**: Elements arranged from smallest to largest
+- **Descending**: Elements arranged from largest to smallest
+- Python's built-in sorting functions support both:
+  - Ascending: `sorted(array)` or `array.sort()`
+  - Descending: `sorted(array, reverse=True)` or `array.sort(reverse=True)`
 
 :::
 
