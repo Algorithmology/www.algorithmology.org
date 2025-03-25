@@ -196,10 +196,14 @@ flowchart LR
         style Descending fill:#f5f5f5,stroke:#333
     end
 
-    Original ---> |text|Ascending
-    Original ---> Descending
+    AscendingSort["Ascending Sort"]
+    DescendingSort["Descending Sort"]
+    
+    Original --> AscendingSort --> Ascending
+    Original --> DescendingSort --> Descending
 
-    linkStyle 0,1 fontSize:14px,fontWeight:bold;
+    style AscendingSort fill:#e6e6e6,stroke:#333,fontSize:12px
+    style DescendingSort fill:#e6e6e6,stroke:#333,fontSize:12px
 ```
 
 ::: {.fragment style="font-size: 0.8em; margin-top: -0.4em"}
