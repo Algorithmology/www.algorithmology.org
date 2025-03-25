@@ -20,8 +20,59 @@ TODO: Complete motivation section
 
 ## Approach
 
-TODO: outline the approach
-TODO: include code snippets, with explanations
+### Generate Fibonacci using a Recursive approach
+
+TODO: Duru- please explain your approach, including a code sample
+
+### Generate Fibonacci using a Memoized approach
+
+TODO: Titus- please explain your approach, including a code sample
+
+### Generate Fibonacci using an Iterative approach
+
+TODO: Faaris- please explain your approach, including a code sample
+
+### Run a Benchmark
+
+TODO: Hank- please explain your implementation of `main.py`, including a code sample
+
+### Capture Results
+
+TODO: Kris- please explain the timing implementation, including a code sample
+
+## Benchmark Systems
+
+In order to fully understand the results included below, here are basic explanations of the systems utilized by each team member to run the benchmarking executions.
+
+### Duru Akbas
+
+```cmd
+TODO: include the output from `systemsense` on your own laptop
+```
+
+### Faaris Cheema
+
+```cmd
+TODO: include the output from `systemsense` on your own laptop
+```
+
+### Hank Grefenstette
+
+```cmd
+TODO: include the output from `systemsense` on your own laptop
+```
+
+### Kris Hatcher
+
+```cmd
+TODO: include the output from `systemsense` on your own laptop
+```
+
+### Titus Smith
+
+```cmd
+TODO: include the output from `systemsense` on your own laptop
+```
 
 ## Raw Data
 
