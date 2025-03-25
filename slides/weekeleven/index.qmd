@@ -534,7 +534,7 @@ print(data)
 
 ## Exploring properties of sorting
 
-::: incremental
+::: {.incremental style="font-size: 0.95em; margin-top: -0.2em"}
 
 - Sorting algorithms can be **stable** or **unstable**:
     - **Stable**: Equal elements maintain their relative order
@@ -544,6 +544,7 @@ print(data)
     - **In-place**: Algorithm only requires constant extra space
     - **Not in-place**: Algorithm requires non-constant space
 - Sorting algorithms may also be **comparison-based** or not
+- {{< iconify fa6-solid users-viewfinder >}} **Question**: Can we further improve sorting performance?
 
 :::
 
