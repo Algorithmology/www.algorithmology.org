@@ -10,11 +10,11 @@ toc: true
 
 # Introduction
 
-TODO: Complete introduction section
+TODO: Faaris to complete
 
 ## Motivation
 
-TODO: Complete motivation section
+TODO: Faaris to complete
 
 # Method
 
@@ -39,40 +39,6 @@ TODO: Hank- please explain your implementation of `main.py`, including a code sa
 ### Capture Results
 
 TODO: Kris- please explain the timing implementation, including a code sample
-
-## Benchmark Systems
-
-In order to fully understand the results included below, here are basic explanations of the systems utilized by each team member to run the benchmarking executions.
-
-### Duru Akbas
-
-```cmd
-TODO: include the output from `systemsense` on your own laptop
-```
-
-### Faaris Cheema
-
-```cmd
-TODO: include the output from `systemsense` on your own laptop
-```
-
-### Hank Grefenstette
-
-```cmd
-TODO: include the output from `systemsense` on your own laptop
-```
-
-### Kris Hatcher
-
-```cmd
-TODO: include the output from `systemsense` on your own laptop
-```
-
-### Titus Smith
-
-```cmd
-TODO: include the output from `systemsense` on your own laptop
-```
 
 ## Raw Data
 
@@ -156,11 +122,11 @@ This is a chart using the values in the `Averages` table above, for the Recursiv
 
 # Results
 
-TODO: outline results
+TODO: Titus to complete
 
 # Next Steps
 
-TODO: outline suggested next steps
+TODO: Hank to complete
 
 # References
 
