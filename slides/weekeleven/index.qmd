@@ -218,7 +218,7 @@ flowchart LR
     style DescendingSort fill:#e6e6e6,stroke:#333,fontSize:12px
 ```
 
-::: {.fragment style="font-size: 0.8em; margin-top: -0.4em"}
+::: {.fragment style="font-size: 0.8em; margin-top: -0.6em"}
 
 - **Ascending**: Elements arranged from smallest to largest
 - **Descending**: Elements arranged from largest to smallest
