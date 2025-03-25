@@ -27,6 +27,28 @@ format:
 - Basic building blocks of many algorithms
 - **One technique can be used to implement another**!
 
+## Key concepts in a binary search
+
+::: incremental
+
+- **Divide and conquer** algorithm for searching in a **sorted list**
+- Works by **repeatedly dividing** the search space in half
+- Each step **eliminates half** of the remaining elements
+- Can be implemented **recursively** or **iteratively**
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: -0.25em; font-size: 0.85em;"}
+
+{{< iconify fa6-solid lightbulb >}} **Question**: What is the best way to
+implement a binary search?
+
+  - `binary_search(L, item)`
+  - `fast_binary_search(L, item, left, right)`
+  - `iterative_binary_search(L, item)`
+
+:::
+
 ## Recursive `binary_search`
 
 ```{python}
