@@ -549,9 +549,20 @@ print(data)
 
 :::
 
+# Improving the efficiency of sorting requires new assumptions and different approaches 
+
+::: fragment
+
+- **Comparison-based sorting** is at best $O(n \times \log n)$
+- **Non-comparison-based sorting** algorithms can be faster!
+
+:::
+
 ## Counting sort algorithm
 
-```{python}
+```{pyodide}
+#| autorun: true
+#| max-lines: 15
 def counting_sort(arr, k=None):
     if not arr:
         return []
@@ -608,6 +619,12 @@ print("Original array:", array)
 print("Sorted array:", radix_sort(array.copy()))
 ```
 
+::: {.fragment style="font-size: 0.85em; margin-top: -0.2em"}
+
+- **Non-comparison based** sorting with $O(d × (n + k))$ time complexity
+
+:::
+
 ## Recapping count and radix sort
 
 ::: {.fragment style="font-size: 0.85em; margin-top: -0.2em"}
@@ -625,10 +642,41 @@ print("Sorted array:", radix_sort(array.copy()))
 
 - **Radix sort**:
     - Non-comparison based sorting with $O(d × (n + k))$ time complexity
-    - Uses counting sort as a subroutine for each digit position
+    - Uses counting sort approach as a subroutine for each digit position
     - Sorts numbers digit by digit, from least to most significant
 
 :::
+
+## Bucket sort algorithm
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 15
+def bucket_sort(arr, num_buckets=10):
+    if not arr or len(arr) == 0:
+        return []
+    min_val, max_val = min(arr), max(arr)
+    value_range = (max_val - min_val) / num_buckets
+    buckets = [[] for _ in range(num_buckets)]
+    for num in arr:
+        if num == max_val:
+            index = num_buckets - 1
+        else:
+            index = int((num - min_val) / value_range)
+        buckets[index].append(num)
+    for i in range(num_buckets):
+        buckets[i].sort()
+    result = []
+    for bucket in buckets:
+        result.extend(bucket)
+    return result
+
+# Example usage
+array = [0.42, 0.32, 0.33, 0.52, 0.37, 0.47, 0.51]
+print("Original array:", array)
+print("Sorted array:", bucket_sort(array))
+```
+
 
 ## Recursive quick selection
 
