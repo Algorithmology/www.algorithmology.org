@@ -1,0 +1,31 @@
+---
+author: [Hemani Alaparthi, Grant Anderson, Will Bennett, Coltin Colucci, Vivian Potts, Megan Wolfarth]
+title: How does the presence of duplicate entries in primary sorting attributes affect the runtime (ms) of a Multi-Level-Comparison-Sorting Algorithm (an approach that sequentially evaluates attributes to resolve ties)?
+page-layout: full
+categories: [post, sortings, multi-level, algorithms, runtime]
+date: "2025-02-28"
+date-format: long
+toc: true
+---
+
+# Introduction
+
+## Motivation
+
+# Method
+
+## Approach
+
+### Bubble Sort
+
+### Quick Sort
+
+### Tim Sort
+
+# Data
+
+## Data Tables
+
+# Results
+
+# Future work
