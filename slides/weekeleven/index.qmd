@@ -677,6 +677,12 @@ print("Original array:", array)
 print("Sorted array:", bucket_sort(array))
 ```
 
+::: {.fragment style="font-size: 0.85em; margin-top: -0.2em"}
+
+- **Assumes** that are uniformly distributed between 0 and 1
+
+:::
+
 
 ## Recursive quick selection
 
