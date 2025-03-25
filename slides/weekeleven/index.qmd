@@ -196,11 +196,13 @@ flowchart LR
         style Descending fill:#f5f5f5,stroke:#333
     end
 
-    Original --->|"  &nbsp;&nbsp;&nbsp;<br>sort()  "| Ascending
-    Original --->|"  sort(reverse=True)  "| Descending
+    Original ---> |text|Ascending
+    Original ---> Descending
+
+    linkStyle 0,1 fontSize:14px,fontWeight:bold;
 ```
 
-::: {.fragment style="font-size: 0.825em; margin-top: -0.2em"}
+::: {.fragment style="font-size: 0.8em; margin-top: -0.4em"}
 
 - **Ascending**: Elements arranged from smallest to largest
 - **Descending**: Elements arranged from largest to smallest
