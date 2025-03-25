@@ -124,9 +124,35 @@ TODO: include the output from `systemsense` on your own laptop
 | Titus       | 8       | `0.000234000` | `0.000093900` | `0.000076800` | `0.000076700` | `0.000083500` |       14 | memoization |   15 |       5 |
 | Titus       | 9       | `0.000225300` | `0.000178000` | `0.000190900` | `0.000207500` | `0.000186000` |       28 | memoization |   15 |       5 |
 
+## Averages
+
+The following table averages out the data in the table above, grouping them by the `Quantity` and `Approach` columns.
+
+| Average Time  | Quantity | Approach    | Runs | Repeats |
+| ------------: | -------: | ----------- | :--: | :-----: |
+| `0.000007536` |        7 | iterative   |   15 |       5 |
+| `0.000009418` |       14 | iterative   |   15 |       5 |
+| `0.000017121` |       28 | iterative   |   15 |       5 |
+| `0.000060102` |        7 | recursive   |   15 |       5 |
+| `0.001653598` |       14 | recursive   |   15 |       5 |
+| `1.190864052` |       28 | recursive   |   15 |       5 |
+| `0.000028342` |        7 | memoization |   15 |       5 |
+| `0.000062747` |       14 | memoization |   15 |       5 |
+| `0.000111318` |       28 | memoization |   15 |       5 |
+
 # Charts
 
-TODO: include charts, if necessary
+## Iterative and Memoization
+
+This is a chart using the values in the `Averages` table above, for the Iterative and Memoization approaches.
+
+![Line Graph with Time on the Vertical Axis and Approach on the Horizontal Axis for Iterative and Memoization](./images/chart_im.png)
+
+## Recursive
+
+This is a chart using the values in the `Averages` table above, for the Recursive approach.
+
+![Line Graph with Time on the Vertical Axis and Approach on the Horizontal Axis for Recursive](./images/chart_r.png)
 
 # Results
 
