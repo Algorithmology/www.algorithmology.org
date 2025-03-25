@@ -21,10 +21,11 @@ format:
 
 # What are purposes of searching and sorting?
 
-- Searching finds a specific item in a collection
-- Sorting orders the items in a collection
+- Searching *finds* a specific item in a collection
+- Sorting *orders* the items in a collection
 - Recursive and iterative algorithms are possible
 - Basic building blocks of many algorithms
+- **One technique can be used to implement another**!
 
 ## Recursive `binary_search`
 
