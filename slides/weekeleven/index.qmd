@@ -172,7 +172,19 @@ print(iterative_binary_search([2, 4, 6, 8, 10], 5))  # Output: False
 
 :::
 
-## Ascending versus Descending Sort
+# Let's explore several sorting algorithms!
+
+::: fragment
+
+- Quadratic time sorting algorithms are easy to implement
+- Various sorting algorithms have quadratic time complexity
+- Mergesort and quicksort are efficient yet harder to build
+- Python contains its own sorting algorithm called `timsort`
+- The divide and conquer paradigm is useful for sorting
+
+:::
+
+## Ascending and descending sort
 
 ```{mermaid}
 %%| echo: false
@@ -216,17 +228,6 @@ flowchart LR
 
 :::
 
-# Let's explore several sorting algorithms!
-
-::: fragment
-
-- Quadratic time sorting algorithms are easy to implement
-- Various sorting algorithms have quadratic time complexity
-- Mergesort and quicksort are efficient yet harder to build
-- Python contains its own sorting algorithm called `timsort`
-- The divide and conquer paradigm is useful for sorting
-
-:::
 
 ## Detecting a sorted list
 
