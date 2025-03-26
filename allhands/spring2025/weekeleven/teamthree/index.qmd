@@ -30,7 +30,7 @@ complete system failures. By systematically comparing these methods, we provide 
 insights that can prevent such issues.
 
 To conduct a fair comparison of these approaches we implemented each approach as separate,
-testable units and subjected them to benchmarking. This mimiced the conditions under which
+testable units and subjected them to benchmarking. This mimicked the conditions under which
 professional developers evaluate competing solutions and allowed us to yield practical
 concrete data which can ultimately used to help inform implementation decisions.
 
@@ -164,7 +164,7 @@ def fibonacci_iterative(n: int) -> int:
 ```
 
 This code works by checking if you ask for the 0th Fibonacci number, it immediately says "0".
-If you ask for the 1st number in the fibonnaci sequence, it says "1", and If you ask for a
+If you ask for the 1st number in the Fibonacci sequence, it says "1", and If you ask for a
 negative number, it gives an error. For any nth term above 1 the code looks at the last
 two numbers it wrote down ('a' and 'b') and adds them together to get the next number. It then
 "slides" the numbers over and the old 'b' becomes the new 'a', and the new sum becomes the new 'b'. 
@@ -311,7 +311,7 @@ in order to provide the most inclusive and well-rounded analysis possible.
 
 # Next Steps
 
-Potential next steps for our understanding of the most efficent method of
+Potential next steps for our understanding of the most efficient method of
 finding fibonacci numbers could include incorporating additional methods or
 finding the smallest/largest quantity that can be utilized with said methods.
 
