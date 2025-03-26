@@ -200,10 +200,6 @@ a table for comparison between different fibonacci numbers and approaches.
         ).repeat(repeat=repeats, number=runs)
 ```
 
-### Capture Results
-
-TODO: Kris- please explain the timing implementation, including a code sample
-
 ## Raw Data
 
 | Team Member | Test ID | Total Time 1  | Total Time 2  | Total Time 3  | Total Time 4  | Total Time 5  | Quantity | Approach    | Runs | Repeats |
