@@ -10,7 +10,11 @@ toc: true
 
 # Introduction
 
+In modern data processing, efficient sorting is foundational to everything from database operations to machine learning pipelines. While most algorithms excel with unique keys, real-world datasets frequently contain duplicate entries in primary attributes like `name` or `country`. These duplicates usually require algorithms to resolve ties through sequential comparisons of secondary attributes (e.g., `phone_number`, `email`) or an attribute chosen by a user that can be deemed as an `tie-breaker` attribute.
+
 ## Motivation
+
+Duplicate entries in primary sorting attributes (e.g., `name`, `country`) are common and when these duplicates occur, sorting algorithms must resolve ties using secondary attributes or attributes inputted by the user that can be considered a 'secondary' attribute, creating a need for efficient **multi-level comparison strategies**. This study analyzes how duplicate rates impact three sorting algorithms (`Bubble Sort`, `QuickSort`, and `Timsort`) when handling multi-level comparisons, providing insights into algorithm selection for real-world data processing.
 
 # Method
 
