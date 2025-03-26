@@ -20,7 +20,47 @@ Duplicate entries in primary sorting attributes (e.g., `name`, `country`) are co
 
 ## Approach
 
+At the core of our analysis is multi-level sorting logic. We implemented three sorting paradigms with configurable attribute prioritization:
+
 ### Bubble Sort
+
+```python
+def sort_persons_bubblesort_multilevel(
+    persons: List[Person], attribute: str
+) -> List[Person]:
+
+    # define the tie-breaking attributes (e.g., secondary and tertiary attributes)
+    tie_breaking_attributes = ["name", "country", "phone_number", "job", "email"]
+
+    length_of_persons = len(persons)
+    for i in range(length_of_persons):
+        for j in range(0, length_of_persons - i - 1):
+            # compare records based on the primary attribute
+            value1 = getattr(persons[j], attribute)
+            value2 = getattr(persons[j + 1], attribute)
+
+            if value1 == value2:
+                # if the values are equal, use tie-breaking attributes
+                swap = False
+                for tie_attr in tie_breaking_attributes:
+                    tie_value1 = getattr(persons[j], tie_attr)
+                    tie_value2 = getattr(persons[j + 1], tie_attr)
+                    if tie_value1 > tie_value2:
+                        swap = True
+                        break
+                    elif tie_value1 < tie_value2:
+                        break
+            else:
+                # if values are not equal, determine if a swap is needed
+                swap = value1 > value2
+
+            # swap if necessary
+            if swap:
+                persons[j], persons[j + 1] = persons[j + 1], persons[j]
+    return persons
+```
+
+This `bubblesort_multilevel` algorithm implementation extends the classic algorithm by introducing hierarchical attribute comparisons. While traditional `Bubble Sort` compares elements using a single attribute, this version first evaluates the primary attribute (e.g., `country`), then sequentially checks secondary attributes (`name` → `phone_number` → `job` → `email`) to resolve ties - effectively implementing lexicographical ordering. Each comparison may require up to six attribute checks (primary + five tie-breakers), increasing computational overhead from O(n²) to O(kn²) where k represents attribute tiers.
 
 ### Quick Sort
 
