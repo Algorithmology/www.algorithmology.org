@@ -22,7 +22,44 @@ TODO: Faaris to complete
 
 ### Generate Fibonacci using a Recursive approach
 
-TODO: Duru- please explain your approach, including a code sample
+The recursive approach computes Fibonacci numbers by repeatedly calling the function itself. However, this method is highly inefficient because it recalculates the same values multiple times. For example, to compute fibonacci_recursive(5), the function computes fibonacci_recursive(2) three times:
+```python
+fibonacci_recursive(5)
+ ├── fibonacci_recursive(4)
+ │   ├── fibonacci_recursive(3)
+ │   │   ├── fibonacci_recursive(2)
+ │   │   │   ├── fibonacci_recursive(1)  → 1
+ │   │   │   ├── fibonacci_recursive(0)  → 0
+ │   │   ├── fibonacci_recursive(1)  → 1
+ │   ├── fibonacci_recursive(2)
+ │       ├── fibonacci_recursive(1)  → 1
+ │       ├── fibonacci_recursive(0)  → 0
+ ├── fibonacci_recursive(3)
+     ├── fibonacci_recursive(2)
+     │   ├── fibonacci_recursive(1)  → 1
+     │   ├── fibonacci_recursive(0)  → 0
+     ├── fibonacci_recursive(1)  → 1
+```
+As shown above, even for a small input like n = 5, the function makes redundant calculations, leading to an exponential growth in execution time.
+```python
+def fibonacci_recursive(n: int) -> int:
+    """Generates the Fibonacci sequence up to the nth term using recursion without memoization."""
+
+    # Handle negative inputs
+    if n < 0:
+        raise ValueError("Input must be a positive integer.")
+
+    # Base cases
+    if n == 0:
+        return 0
+    if n == 1:
+        return 1
+
+    # do the recursive calculation for the nth number
+    return fibonacci_recursive(n - 1) + fibonacci_recursive(n - 2)
+```
+It takes in integer as an input and outputs an integer which is the fibonacci number's answer. There are two base cases for this approach which the input integer, in this case "n", is equal to 0 and 1. Each function call branches into two recursive calls, forming a binary tree of depth n. This results in an exponential number of operations, making the approach extremely slow for large values of n. Therefore, the worst-time complexity is O(n^2)! 
+
 
 ### Generate Fibonacci using a Memoized approach
 
