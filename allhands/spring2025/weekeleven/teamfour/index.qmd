@@ -70,6 +70,127 @@ This `bubblesort_multilevel` algorithm implementation extends the classic algori
 
 ### Quick Sort
 
+```python
+def sort_persons_quicksort_multilevel(
+   persons: List[Person], attribute: str
+) -> List[Person]:
+   """Optimized multi-level quicksort with early comparison shortcut"""
+   if len(persons) <= 1:
+       return persons
+
+
+   # Define tie-breakers and precompute getters
+   tie_breakers = ["name", "country", "phone_number", "job", "email"]
+   # combines primary sorting attribute with tie_breakers into list
+   keys = [attribute] + tie_breakers
+   # create list of getter functions for each attribute in keys list
+   getters = [attrgetter(key) for key in keys]
+  
+   # Initialize stack
+   stack = [(0, len(persons) - 1)]
+  
+   # Process ranges iteratively until empty
+   while stack:
+       # Get current range to process
+       low, high = stack.pop()
+       # skip of range is invalid or sorted
+       if low >= high:
+           continue
+      
+       # Median-of-three pivot selection
+       mid = (low + high) // 2 # Calculate middle index of current range
+
+
+       # Compare element with first
+       # If the last element is smaller swap to ensure the first element is smaller
+       if getters[0](persons[high]) < getters[0](persons[low]):
+           persons[low], persons[high] = persons[high], persons[low]
+
+
+       # Compare with middle element with the first element
+       # if middle element smaller swap them
+       if getters[0](persons[mid]) < getters[0](persons[low]):
+           persons[mid], persons[low] = persons[low], persons[mid]
+      
+       # Compare the last element with the middle element
+       # if last element smaller swap to ensure middle element is smaller
+       if getters[0](persons[high]) < getters[0](persons[mid]):
+           persons[high], persons[mid] = persons[mid], persons[high]
+      
+       # Select pivot element
+       pivot = persons[mid]
+       pivot_vals = [getter(pivot) for getter in getters]
+      
+       # initialize pointers for partitioning
+       i, j = low, high
+      
+       # Partition the range while two pointers have not crossed
+       while i <= j:
+
+
+           # Left scan: Move 'i' right
+           while True:
+               # Get primary attribute at index 'i'
+               left_primary = getters[0](persons[i])
+               # exit early if
+               if left_primary != pivot_vals[0]:
+                   if left_primary >= pivot_vals[0]:
+                       break
+                   # otherwise move pointer right
+                   i += 1
+                   continue
+              
+               left_vals = [left_primary] + [getter(persons[i]) for getter in getters[1:]]
+               if left_vals >= pivot_vals:
+                   break
+               i += 1
+          
+           # Right scan with early exit
+           while True:
+               # Get primary attribute from index 'j'
+               right_primary = getters[0](persons[j])
+               # If primary value is not equal to pivots
+               # Current value is <= pivots primary value
+               # Stop scanning otherwise continue
+               if right_primary != pivot_vals[0]:
+                   if right_primary <= pivot_vals[0]:
+                       break
+                   j -= 1
+                   continue
+              
+               # if primary value matches pivot - tiebreak
+               # Stop scanning if element <= pivot
+               right_vals = [right_primary] + [getter(persons[j]) for getter in getters[1:]]
+               if right_vals <= pivot_vals:
+                   break
+               j -= 1
+          
+           # Swap elements if pointers haven't crossed
+           # Ensures elements in the correct position
+           if i <= j:
+               persons[i], persons[j] = persons[j], persons[i]
+               i += 1 # Move left pointer right
+               j -= 1 # Move right pointer left
+      
+       # Push smaller partition first
+       if (j - low) < (high - i):
+           stack.append((low, j))
+           stack.append((i, high))
+       else:
+           stack.append((i, high))
+           stack.append((low, j))
+  
+   return persons
+   ```
+   
+The 'quicksort_multilevel' algorithm is an addition to the classic QuickSort algorithm. With this implementation you can hierarchically compare attributes. You have your primary attribute (e.g., country) and then you can sequentially check the secondary attributes (name -> job -> email -> phone_number) in order to resolve duplicate entries.
+
+
+This is achieved through an iterative approach with a stack that manages sub-ranges (low, high). This algorithm also uses a median of three pivot because it allows there to be more evenly sized partitions and improved efficiency by making by making the pivot closer to the median value. During partitioning there are two pointers (i and j) are used to scan the range.
+
+
+For this particular data set there may be up to five attribute checks (primary + 4 tie-breakers). The big O notation from this would usually be O(n log n) but because of the additional attribute comparisons it is O(k n log n) where k is the number of attribute tiers.
+
 ### Tim Sort
 
 ```py
