@@ -92,7 +92,7 @@ def sort_persons_timsort_multilevel(
     return sorted_persons
 ```
 
-The 'sort_persons_timsort_multilevel' function compares the list with multiple attributes if two entries share similar attrbutes. The function first makes a list of the tie breaking attributes. It enters them into a composite key function to form a tuple of the attributes. The tuple holds the primary sorting attribute, the one input when running the algorithm via terminal command, followed by the other attributes. It then uses python's built in `sorted` with the tuple key to sort the file. 
+The `sort_persons_timsort_multilevel` function compares the list with multiple attributes if two entries share similar attrbutes. The function first makes a list of the tie breaking attributes. It enters them into a composite key function to form a tuple of the attributes. The tuple holds the primary sorting attribute, the one input when running the algorithm via terminal command, followed by the other attributes. It then uses python's built in `sorted` with the tuple key to sort the file. 
 
 # Data
 
