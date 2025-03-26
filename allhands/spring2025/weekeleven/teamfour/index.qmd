@@ -6,6 +6,12 @@ categories: [post, sorting, multi-level, algorithms, runtime]
 date: "2025-03-28"
 date-format: long
 toc: true
+format:
+    html:
+        code-links:    
+            - text: Github Repository
+              icon: github
+              href: https://github.com/hemanialaparthi/wapbac-sorting
 ---
 
 # Introduction
@@ -65,6 +71,28 @@ This `bubblesort_multilevel` algorithm implementation extends the classic algori
 ### Quick Sort
 
 ### Tim Sort
+
+```py
+@timer("Time to Sort Person Data Using Timsort with Multi-Level Sorting (ms)")
+def sort_persons_timsort_multilevel(
+    persons: List[Person], attribute: str
+) -> List[Person]:
+    """Sort a list of Person objects using Timsort with multi-level comparison"""
+    # Define the tie-breaking attributes (e.g., secondary and tertiary attributes)
+    tie_breaking_attributes = ["name", "country", "phone_number", "job", "email"]
+
+    # Create a composite key function for multi-level sorting
+    def composite_key(person: Person):
+        primary_value = getattr(person, attribute)
+        tie_values = tuple(getattr(person, tie_attr) for tie_attr in tie_breaking_attributes)
+        return (primary_value, *tie_values)
+
+    # Use Timsort (Python's built-in sorted function) with the composite key
+    sorted_persons = sorted(persons, key=composite_key)
+    return sorted_persons
+```
+
+The 'sort_persons_timsort_multilevel' function compares the list with multiple attributes if two entries share similar attrbutes. The function first makes a list of the tie breaking attributes. It enters them into a composite key function to form a tuple of the attributes. The tuple holds the primary sorting attribute, the one input when running the algorithm via terminal command, followed by the other attributes. It then uses python's built in `sorted` with the tuple key to sort the file. 
 
 # Data
 
