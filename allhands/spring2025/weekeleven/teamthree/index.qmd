@@ -10,13 +10,29 @@ toc: true
 
 # Introduction
 
-TODO: Faaris to complete
+This investigation seeks to answer a deceptively simple question with far-reaching
+implications, which method: recursive, iterative, or memoized - is fastest to build a
+Fibonacci sequence?
+
+To evaluate these different approaches, we put them to the test by employing them to
+generate a Fibonacci sequence. Using precise timing measurements, we systematically
+compare how long each approach takes to compute these sequences. This head-to-head
+performance testing allows us to reveal differences in efficiency and ultimately enables
+us to determine which approach delivers results the fastest.
 
 ## Motivation
 
-TODO: Faaris to complete
+The motivation for this comparison stems from real-world programming challenges. While
+all three approaches can correctly generate Fibonacci sequences, their performance
+characteristics differ. Developers frequently encounter situations where choosing the
+wrong implementation leads to sluggish performance, unresponsive applications, or even
+complete system failures. By systematically comparing these methods, we provide actionable
+insights that can prevent such issues.
 
-# Method
+To conduct a fair comparison of these approaches we implemented each approach as separate,
+testable units and subjected them to benchmarking. This mimiced the conditions under which
+professional developers evaluate competing solutions and allowed us to yield practical
+concrete data which can ultimately used to help inform implementation decisions.
 
 ## Approach
 
@@ -108,7 +124,53 @@ complexity and memory usage when considering a memoized approach.
 
 ### Generate Fibonacci using an Iterative approach
 
-TODO: Faaris- please explain your approach, including a code sample
+The iterative approach works by initializing the first two Fibonacci numbers (0 and 1) and then
+iteratively calculating each subsequent number in the sequence. For each iteration from 2 to n,
+the algorithm simply updates two variables containing the previous two Fibonacci values.
+
+This method is the fastest because it follows the most efficient computational path - it performs
+each calculation exactly once without any redundant operations, and uses minimal memory by only
+tracking the last two numbers. This ultimately makes it a predictable loop that modern processors
+can optimize extremely well. All-in-all the simplicity of this approach, just adding two numbers and
+updating values in each iteration, allows it to be the fastest.
+
+Below is the implementation of the Iterative approach used:
+
+
+```python
+def fibonacci_iterative(n: int) -> int:
+    """Generates the Fibonacci sequence up to the nth term using an iterative approach."""
+
+    # Handle negative inputs
+    if n < 0:
+        raise ValueError("Input must be a positive integer.")
+
+    # Base cases
+    if n == 0:
+        return 0
+    if n == 1:
+        return 1
+
+    # Initialize the first two Fibonacci numbers
+    a, b = 0, 1
+
+    # Iterate from 2 to n
+    for _ in range(2, n + 1):
+        # Update the Fibonacci numbers
+        a, b = b, a + b
+
+    # Return the nth Fibonacci number
+    return b
+```
+
+This code works by checking if you ask for the 0th Fibonacci number, it immediately says "0".
+If you ask for the 1st number in the fibonnaci sequence, it says "1", and If you ask for a
+negative number, it gives an error. For any nth term above 1 the code looks at the last
+two numbers it wrote down ('a' and 'b') and adds them together to get the next number. It then
+"slides" the numbers over and the old 'b' becomes the new 'a', and the new sum becomes the new 'b'. 
+
+This means that tt doesn't re-calculate anything (unlike the recursive method), nor does it need
+extra memory to store past results (unlike memoization).
 
 ### Run a Benchmark
 
