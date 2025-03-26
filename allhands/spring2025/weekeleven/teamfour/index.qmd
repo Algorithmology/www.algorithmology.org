@@ -182,14 +182,14 @@ def sort_persons_quicksort_multilevel(
   
    return persons
    ```
-   
-The 'quicksort_multilevel' algorithm is an addition to the classic QuickSort algorithm. With this implementation you can hierarchically compare attributes. You have your primary attribute (e.g., country) and then you can sequentially check the secondary attributes (name -> job -> email -> phone_number) in order to resolve duplicate entries.
+      
+The `quicksort_multilevel` algorithm is an enhancement of the classic QuickSort algorithm. With this implementation, you can hierarchically compare attributes. You have your primary attribute (e.g., `country`) and then sequentially check the secondary attributes (`name` → `job` → `email` → `phone_number`) to resolve duplicate entries.
 
 
-This is achieved through an iterative approach with a stack that manages sub-ranges (low, high). This algorithm also uses a median of three pivot because it allows there to be more evenly sized partitions and improved efficiency by making by making the pivot closer to the median value. During partitioning there are two pointers (i and j) are used to scan the range.
+This is achieved through an iterative approach with a stack that manages sub-ranges (low, high). This algorithm also uses a median-of-three pivot selection, which allows for more evenly sized partitions and improved efficiency by making the pivot closer to the median value. During partitioning, two pointers (i and j) are used to scan the range.
 
 
-For this particular data set there may be up to five attribute checks (primary + 4 tie-breakers). The big O notation from this would usually be O(n log n) but because of the additional attribute comparisons it is O(k n log n) where k is the number of attribute tiers.
+For this particular dataset, there may be up to five attribute checks (primary + 4 tie-breakers). The Big O notation for this would usually be O(n log n), but due to the additional attribute comparisons, it is O(k n log n), where k is the number of attribute tiers.
 
 ### Tim Sort
 
