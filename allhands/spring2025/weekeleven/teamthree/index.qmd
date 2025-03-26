@@ -26,7 +26,48 @@ TODO: Duru- please explain your approach, including a code sample
 
 ### Generate Fibonacci using a Memoized approach
 
-TODO: Titus- please explain your approach, including a code sample
+This implementation uses a concept we previously discussed in a class session: memoization. 
+Memoization is a technique that stores previously computed values to avoid redundant 
+calculations. Our implementation checks if `n` has already been computed, and if so, 
+it retrieves the value from memo, which saves on computation time. It uses a recursive
+approach to calculate the fibonacci value, but importantly it stores the result in 
+a dictionary `memo` to prevent recalculating the same values multiple times on future
+runs. This approach is particularly valuable for algorithms that exhibit overlapping 
+problems, or frequent use of similar calculations. Without memoization, recursive calls 
+can lead to exponential time complexity, making computations infeasible for large inputs. 
+However, by using a memoized approach and storing/reusing results, we found that our program
+is more efficient as `n` increases.
+
+Below I have included a section of this approach:
+
+```python
+def fibonacci_generator(n: int, memo: Dict[int, int]) -> int:
+    """Generates the Fibonacci sequence up to the nth term using memoization."""
+    # initialize a dictionary to store previously computed numbers.
+    if memo is None:
+        memo = {}
+    # if the number has already been calculated, use it
+    if n in memo:
+        return memo[n]
+    # create the base case for handling 1 & 2 fibonacci numbers
+    base_case = 2
+    if n < base_case:
+        return n
+    # calculate the fibonacci for nth number
+    memo[n] = fibonacci_generator(n - 1, memo) + fibonacci_generator(
+        n - 2, memo
+    )
+    # return the appropriate fibonacci number
+    return memo[n]
+```
+
+As you can see in the above code, this memoized approach takes in a possible dictionary,
+`memo` and stores already computed results in said dictionary. Then, when computing the
+fibonacci number, it first looks to see if it was already calculated, then if not, it performs
+a recursive approach to find the value. This approach, as mentioned before, allows for faster
+time complexity, especially as the number of runs increases and previously calculated results
+are already store. However, it is still important to understand and weight the trade-off of time
+complexity and memory usage when considering a memoized approach.
 
 ### Generate Fibonacci using an Iterative approach
 
@@ -146,7 +187,28 @@ This is a chart using the values in the `Averages` table above, for the Recursiv
 
 # Results
 
-TODO: Titus to complete
+Our results from running our Fibonacci sequence experiments, using iterative, recursive, and 
+memoized approaches show clear performance differences, with respect to time. The iterative 
+method consistently performed the fastest across all test cases, with an average runtime of 
+`0.000017121 sec` with our largest experiment input. This shows that even as the sequence size 
+increased, the iterative approach maintained its efficiency, proving a worst case time complexity 
+of $O(n)$. In contrast, the recursive approach showed exponential time complexity $O(2^n)$, 
+as our execution times skyrocket as the sequence size grew. While manageable for small inputs, 
+the recursive method is impractical for larger Fibonacci numbers, as seen in the drastic jump to 
+execution times. Our results highlight the inefficiency of recursion, which can be attributed 
+to redundant calculations and the cost associated with function call overhead.
+
+The memoized approach, which optimizes recursion by storing previously computed values, improved 
+performance over the recursive approach. While not as fast as the iterative approach, memoization 
+reduced run time compared to recursion, with an average runtime of `0.000111318 sec` with our largest 
+experimental input. Interestingly, if you view the above image highlight the time complexity of each approach,
+you will notice as the values increase for the memoization, you begin to see a plateau, showing that an 
+increase in previously calculated results starts to drastically effect the run time as our values increase. 
+Overall, our results suggest that for computing Fibonacci numbers, the iterative method is the best choice for
+run time efficiency, while memoization provides a viable compromise when a recursive approach is necessary.
+
+Importantly, our results are ran and averaged across a variety of operating systems, including Windows, and Mac,
+in order to provide the most inclusive and well-rounded analysis possible.
 
 # Next Steps
 
