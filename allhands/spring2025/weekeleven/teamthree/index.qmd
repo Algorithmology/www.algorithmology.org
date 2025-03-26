@@ -306,7 +306,7 @@ increase in previously calculated results starts to drastically effect the run t
 Overall, our results suggest that for computing Fibonacci numbers, the iterative method is the best choice for
 run time efficiency, while memoization provides a viable compromise when a recursive approach is necessary.
 
-Importantly, our results are ran and averaged across a variety of operating systems, including Windows, and Mac,
+Importantly, our results are ran and averaged across a variety of operating systems, including Windows and macOS,
 in order to provide the most inclusive and well-rounded analysis possible.
 
 # Next Steps
