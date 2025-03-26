@@ -158,4 +158,11 @@ finding the smallest/largest quantity that can be utilized with said methods.
 
 These references were utilized during the creation of the experimental harness used to generate the empirical data referenced in this write-up.
 
-TODO: include references
+* <https://www.geeksforgeeks.org/>
+  * General information on Fibonacci sequence
+* GitHub Copilot
+  * debugging & comment generation
+* <https://github.com/Allegheny-Computer-Science-202-S2025/computer-science-202-algorithm-engineering-project-2-krishatcher>
+  * timing and output logic in this repo influenced by AEP 2
+* <https://stackoverflow.com/questions/2819625/how-to-use-a-callable-as-the-setup-with-timeit-timer>
+  * successfully using the `timeit` library
