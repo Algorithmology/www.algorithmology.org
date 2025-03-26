@@ -34,7 +34,31 @@ TODO: Faaris- please explain your approach, including a code sample
 
 ### Run a Benchmark
 
-TODO: Hank- please explain your implementation of `main.py`, including a code sample
+The main.py file was implemented with the goal of calling the methods from approach.py and
+analyze.py with a Typer interface for the command line interface and a Console for the output.
+A main function is then defined which allows for user inputs that define the quantity
+(number of Fibonacci numbers computed) and the method used (Iterative, recursive, or
+memoization). The Timeit module is imported to allow for the console to include the
+time the methods ran for in the output. Finally, the run times are printed out in
+a table for comparison between different fibonacci numbers and approaches.
+
+```python
+    if approach == GenerationApproach.ITERATIVE:
+        execution_times = timeit.Timer(
+            f"fibonacci_iterative({quantity})",
+            setup="from fibonacci.iterative import fibonacci_iterative",
+        ).repeat(repeat=repeats, number=runs)
+    elif approach == GenerationApproach.RECURSIVE:
+        execution_times = timeit.Timer(
+            f"fibonacci_recursive({quantity})",
+            setup="from fibonacci.recursive import fibonacci_recursive",
+        ).repeat(repeat=repeats, number=runs)
+    elif approach == GenerationApproach.MEMOIZATION:
+        execution_times = timeit.Timer(
+            f"fibonacci_memoization({quantity})",
+            setup="from fibonacci.memoization import fibonacci_memoization",
+        ).repeat(repeat=repeats, number=runs)
+```
 
 ### Capture Results
 
@@ -126,7 +150,9 @@ TODO: Titus to complete
 
 # Next Steps
 
-TODO: Hank to complete
+Potential next steps for our understanding of the most efficent method of
+finding fibonacci numbers could include incorporating additional methods or
+finding the smallest/largest quantity that can be utilized with said methods.
 
 # References
 
