@@ -278,3 +278,23 @@ The `sort_persons_timsort_multilevel` function compares the list with multiple a
 # Conclusion (Vivian)
 
 # Future work
+
+While our multi-level sorting implementation provides robust tie-breaking capabilities, several key enhancements could improve both usability and performance:
+
+## 1. Dynamic Tie-Breaker Specification 
+
+**Current Limitation**:
+Tie-breaking attributes follow a fixed priority order (`name → country → phone_number → job → email`), regardless of dataset characteristics.
+
+**Proposed Improvement**:
+Allowing user-defined secondary attributes would enable dynamic prioritization—instead of a fixed tie-breaker order, users could specify which attribute to use as the "second most important" when primary duplicates occur. This would reduce unnecessary comparisons for datasets where certain attributes (e.g., email vs. phone_number) are more likely to resolve ties quickly.
+
+## 2. Adaptive Comparision Depth 
+
+**Proposed Improvements**: We could halt attribute checks once a tie is definitively resolved, avoiding redundant evaluations of lower-priority fields. Third, a hybrid algorithm selector could automatically switch between Bubble Sort (for small datasets) and Timsort (for larger ones), leveraging Bubble Sort’s simplicity for n < 1,000 while retaining Timsort’s scalability.
+
+## 3. Cost-Aware Attribute Ordering 
+
+**Proposed Improvements**: We could also optimize performance by prioritizing attributes with faster comparison operations (e.g., numeric phone_number over string-based job), potentially cutting comparison time.
+
+
