@@ -694,12 +694,12 @@ print("Sorted array:", bucket_sort(array))
 
 # What if want a list's $k$th smallest element?
 
-::: {.fragment .tight-boxed-content style="font-size: 0.85em; margin-top: 0.4em"}
+::: {.fragment .tight-boxed-content style="font-size: 0.85em; margin-top: 0.5em"}
 
 - **Quick selection** finds the $k$th smallest element in an unsorted array
 - Much more efficient than sorting the entire array first
 - **Average time complexity**: $O(n)$ versus $O(n \times \log n)$  for sorting
-- Based on the same partitioning strategy as quicksort
+- Leverages the same partitioning strategy as `quicksort`
 - Enables various types of statistical analysis without expensive sorting
 
 :::
