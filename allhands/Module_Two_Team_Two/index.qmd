@@ -1,0 +1,36 @@
+---
+author: [Molly Suppo, Daniel Bekele, Add Name Here, Add Name here, Add Name Here]
+title: "Investigating Test Priotitization in Traditional Sorting Algorithms vs. a Multi Objective Sorting Algorithm"
+page-layout: full
+categories: [post, sorting, comparison]
+date: "2025-03-27"
+date-format: long
+toc: true
+---
+
+# Repository Link
+
+Below is the link that will direct you to our GitHub repository needed to run our experiment on your personal device: 
+<https://github.com/suppo01/Algorithm-Analysis-All-Hands-Module-2>
+
+## Introduction
+
+### Organizing Data
+
+### A Note About Timing
+
+## Implementation and Results
+
+The implementation of this project required the use of serveral algorithms. As we were comparing traditional algorithms with
+multi objective algorithms. We decided upon two different traditional algorithms, quick sort and bubble sort. As for the multi
+objective algorithms, we had the NSGA-II sorting algorithm recommended to us by Professor Kaphammer, so we decided to look into
+that one. More specifics about each algorithm and the results obtained are below. (Insert general note about how the results
+compare here, aka which method, multi objective or traditional, was better)
+
+### The Quick Sort Algorithm
+
+### The Bubble Sort Algorithm
+
+### The NSGA-II Multi Objective Algorithm
+
+## Conclusion
