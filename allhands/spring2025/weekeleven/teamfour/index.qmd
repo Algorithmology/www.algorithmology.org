@@ -228,7 +228,6 @@ The `sort_persons_timsort_multilevel` function compares the list with multiple a
 | 100%       | 79625.79             | 372714.09                | 54.89                | 453.03                   | 2.92              | 80.52                  |
 | control    | 112539.95            | 144189.03                | 69.99                | 142.23                   | 12.4              | 55.79                  |
 
-
 ## Two Similar Attributes (MacOS)
 
 | Percentage | Bubble Sort Algorithm | Bubble Sort (Multi-Level) | Quick Sort Algorithm | Quick Sort (Multi-Level) | Tim Sort Algorithm | Tim Sort (Multi-Level) |
