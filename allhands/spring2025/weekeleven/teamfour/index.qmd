@@ -219,6 +219,61 @@ The `sort_persons_timsort_multilevel` function compares the list with multiple a
 
 ## Data Tables
 
+## One Similar Attribute (MacOS)
+
+| Percentage | Bubble Sort Algorithm | Bubble Sort (Multi-Level) | Quick Sort Algorithm | Quick Sort (Multi-Level) | Tim Sort Algorithm | Tim Sort (Multi-Level) |
+|------------|----------------------|--------------------------|----------------------|--------------------------|--------------------|------------------------|
+| 25%        | 108182.63            | 197884.92                | 68.72                | 191.36                   | 10.97             | 59.86                  |
+| 50%        | 99450.69             | 257284.48                | 63.64                | 285.52                   | 9.84              | 63.48                  |
+| 100%       | 79625.79             | 372714.09                | 54.89                | 453.03                   | 2.92              | 80.52                  |
+| control    | 112539.95            | 144189.03                | 69.99                | 142.23                   | 12.4              | 55.79                  |
+
+
+## Two Similar Attributes (MacOS)
+
+| Percentage | Bubble Sort Algorithm | Bubble Sort (Multi-Level) | Quick Sort Algorithm | Quick Sort (Multi-Level) | Tim Sort Algorithm | Tim Sort (Multi-Level) |
+|------------|----------------------|--------------------------|----------------------|--------------------------|--------------------|------------------------|
+| 25%        | 105920.23            | 200728.85                | 70.71                | 194.95                   | 10.62             | 58.57                  |
+| 50%        | 99065.75             | 261706.01                | 66.1                 | 291.06                   | 9.64              | 65.36                  |
+| 100%       | 78372.14             | 414600.11                | 57.46                | 444.27                   | 2.54              | 79.13                  |
+| control    | 112539.95            | 144189.03                | 69.99                | 142.23                   | 12.4              | 55.79                  |
+
+## All Similar Attributes (MacOS)
+
+| Percentage | Bubble Sort Algorithm | Bubble Sort (Multi-Level) | Quick Sort Algorithm | Quick Sort (Multi-Level) | Tim Sort Algorithm | Tim Sort (Multi-Level) |
+|------------|----------------------|--------------------------|----------------------|--------------------------|--------------------|------------------------|
+| 25%        | 105281.36            | 256972.89                | 67.74                | 166.14                   | 10.4              | 53.35                  |
+| 50%        | 98199.11             | 358049.4                 | 63.66                | 216.31                   | 9.59              | 50.5                   |
+| 100%       | 78594.39             | 592198.03                | 60.49                | 379.23                   | 3.24              | 41.8                   |
+| control    | 112539.95            | 144189.03                | 69.99                | 142.23                   | 12.4              | 55.79                  |
+
+## One Similar Attribute (Windows)
+
+| Percentage | Bubble Sort Algorithm | Bubble Sort (Multi-Level) | Quick Sort Algorithm | Quick Sort (Multi-Level) | Tim Sort Algorithm | Tim Sort (Multi-Level) |
+|------------|----------------------|--------------------------|----------------------|--------------------------|--------------------|------------------------|
+| 25%        | 166208.13 ms         | 307545.60 ms             | 101.89 ms            | 273.43 ms                | 10.68 ms           | 58.55 ms               |
+| 50%        | 120395.04 ms         | 362372.39 ms             | 106.25 ms            | 365.49 ms                | 10.88 ms           | 73.96 ms               |
+| 100%       | 83058.14 ms          | 489347.45 ms             | 79.15 ms             | 566.10 ms                | 2.64 ms            | 80.22 ms               |
+| control    | 166233.53 ms         | 259408.47 ms             | 109.20 ms            | 196.01 ms                | 16.87 ms           | 62.40 ms               |
+
+## Two Similar Attributes (Windows)
+
+| Percentage | Bubble Sort Algorithm | Bubble Sort (Multi-Level) | Quick Sort Algorithm | Quick Sort (Multi-Level) | Tim Sort Algorithm | Tim Sort (Multi-Level) |
+|------------|----------------------|--------------------------|----------------------|--------------------------|--------------------|------------------------|
+| 25%        | 166843.46 ms         | 270031.17 ms             | 102.50 ms            | 257.09 ms                | 11.14 ms           | 68.04 ms               |
+| 50%        | 120152.56 ms         | 332788.53 ms             | 92.93 ms             | 366.94 ms                | 9.93 ms            | 72.00 ms               |
+| 100%       | 79899.67 ms          | 541452.69 ms             | 76.98 ms             | 565.29 ms                | 3.70 ms            | 88.83 ms               |
+| control    | 166233.53 ms         | 259408.47 ms             | 109.20 ms            | 196.01 ms                | 16.87 ms           | 62.40 ms               |
+
+## All Similar Attributes (Windows)
+
+| Percentage | Bubble Sort Algorithm | Bubble Sort (Multi-Level) | Quick Sort Algorithm | Quick Sort (Multi-Level) | Tim Sort Algorithm | Tim Sort (Multi-Level) |
+|------------|----------------------|--------------------------|----------------------|--------------------------|--------------------|------------------------|
+| 25%        | 173116.32 ms         | 360738.80 ms             | 99.07 ms             | 219.80 ms                | 13.87 ms           | 66.51 ms               |
+| 50%        | 124899.78 ms         | 407213.52 ms             | 95.36 ms             | 282.70 ms                | 9.92 ms            | 47.88 ms               |
+| 100%       | 84954.53 ms          | 652774.71 ms             | 90.62 ms             | 367.93 ms                | 3.04 ms            | 36.85 ms               |
+| control    | 166233.53 ms         | 259408.47 ms             | 109.20 ms            | 196.01 ms                | 16.87 ms           | 62.40 ms               |
+
 # Results
 
 # Conclusion (Vivian)
