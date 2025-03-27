@@ -697,9 +697,9 @@ print("Sorted array:", bucket_sort(array))
 ::: {.fragment .tight-boxed-content style="font-size: 0.85em; margin-top: 0.5em"}
 
 - **Quick selection** finds the $k$th smallest element in an unsorted array
-- Much more efficient than sorting the entire array first
+- Wow, much more efficient than sorting the entire array first!
 - **Average time complexity**: $O(n)$ versus $O(n \times \log n)$  for sorting
-- Leverages the same partitioning strategy as `quicksort`
+- Leverages the same partitioning strategy as `quicksort` function
 - Enables various types of statistical analysis without expensive sorting
 
 :::
