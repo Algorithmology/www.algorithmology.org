@@ -779,3 +779,46 @@ print(selection_one, selection_three, selection_five, "for", data)
     - **Time complexity**: $O(n)$
 
 :::
+
+## Searching and Sorting: Basic Insights
+
+::: {.fragment style="font-size: 0.925em"}
+
+- **Search algorithms**
+  - Binary search is $O(\log n)$ but needs sorted input
+  - Recursive and iterative functions offer similar speed
+  - Tail recursion can be converted to iteration for better efficiency
+
+:::
+
+::: {.fragment style="font-size: 0.925em"}
+
+- **Basic sorting algorithms**
+  - Simple algorithms (bubble, selection, insertion) are $O(n^2)$
+  - Each maintains different invariants during execution
+  - Suitable for small datasets or nearly-sorted lists
+
+:::
+
+## Sorting and Selection: Basic Insights
+
+::: {.fragment style="font-size: 0.925em"}
+
+- **Advanced sorting algorithms**
+  - Divide-and-conquer algorithms (mergesort, quicksort) achieve $O(n \log n)$
+  average time, best for comparison sorting
+  - Non-comparison sorts (counting, radix, bucket) can beat $O(n \log n)$ under
+  specific data assumptions
+
+:::
+
+::: {.fragment style="font-size: 0.925em"}
+
+- **Fast Selection algorithms**
+
+  - Quickselect finds $k$th element in $O(n)$ average time without full
+  sorting, making it ideal for restricted cases
+  - Shares partitioning strategy with quicksort but makes fewer recursive calls
+  and is thus faster although more specialized
+
+:::
