@@ -30,8 +30,6 @@ that one. More specifics about each algorithm are below.
 
 ### The NSGA-II Multi Objective Algorithm
 
-#### Implementation
-
 The NGSA-II multi objective sorting algorithm is broken down into a variety of approaches. We utilized the binary tournament
 approach and slightly adapted it to suite our needs. The file that runs this part of the experiment has two main parts, the
 `binary_tournament` function and `main`. 
