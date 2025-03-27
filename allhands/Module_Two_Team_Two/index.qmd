@@ -15,17 +15,14 @@ Below is the link that will direct you to our GitHub repository needed to run ou
 
 ## Introduction
 
-### Organizing Data
+### Data Collection and Gathering
 
-### A Note About Timing
-
-## Implementation and Results
+## Implementation
 
 The implementation of this project required the use of serveral algorithms. As we were comparing traditional algorithms with
 multi objective algorithms. We decided upon two different traditional algorithms, quick sort and bubble sort. As for the multi
 objective algorithms, we had the NSGA-II sorting algorithm recommended to us by Professor Kaphammer, so we decided to look into
-that one. More specifics about each algorithm and the results obtained are below. (Insert general note about how the results
-compare here, aka which method, multi objective or traditional, was better)
+that one. More specifics about each algorithm are below.
 
 ### The Quick Sort Algorithm
 
@@ -86,6 +83,6 @@ of Individual objects is created from the information in the array. Finally, tha
 object. Finally, main runs the tournaments by calling the `binary_tournament` function with the Population object and array of
 competitor index pairs passed in.
 
-#### Results
+## The Results
 
 ## Conclusion
