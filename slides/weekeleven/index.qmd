@@ -562,7 +562,7 @@ print(data)
 
 ```{pyodide}
 #| autorun: true
-#| max-lines: 15
+#| max-lines: 12
 def counting_sort(arr, k=None):
     if not arr:
         return []
@@ -591,7 +591,7 @@ print("Sorted array:", counting_sort(array))
 
 ```{pyodide}
 #| autorun: true
-#| max-lines: 15
+#| max-lines: 12
 def radix_sort(arr):
     if not arr:
         return []
@@ -630,7 +630,7 @@ print("Sorted array:", radix_sort(array.copy()))
 ::: {.fragment style="font-size: 0.85em; margin-top: -0.2em"}
 
 - **Counting sort**:
-    - Non-comparison based sorting with $O(n + k)$ time complexity
+    - Non-comparison sorting with $O(n + k)$ time complexity
     - Efficient when range of input values ($k$) is not much larger than $n$
     - Requires extra space proportional to the range of input values
     - A stable sort that preserves relative order of equal elements
@@ -647,11 +647,20 @@ print("Sorted array:", radix_sort(array.copy()))
 
 :::
 
+# What if the sorting only processes data lists containing values in a very restricted range?
+
+::: fragment
+
+- Sort decimals between restrictive minimum and maximum
+- There is often a need to sort probabilities between 0 and 1
+
+:::
+
 ## Bucket sort algorithm
 
 ```{pyodide}
 #| autorun: true
-#| max-lines: 15
+#| max-lines: 12
 def bucket_sort(arr, num_buckets=10):
     if not arr or len(arr) == 0:
         return []
@@ -683,6 +692,17 @@ print("Sorted array:", bucket_sort(array))
 
 :::
 
+# What if want a list's $k$th smallest element?
+
+::: {.fragment .tight-boxed-content style="font-size: 0.85em; margin-top: 0.4em"}
+
+- **Quick selection** finds the $k$th smallest element in an unsorted array
+- Much more efficient than sorting the entire array first
+- **Average time complexity**: $O(n)$ versus $O(n \times \log n)$  for sorting
+- Based on the same partitioning strategy as quicksort
+- Enables various types of statistical analysis without expensive sorting
+
+:::
 
 ## Recursive quick selection
 
