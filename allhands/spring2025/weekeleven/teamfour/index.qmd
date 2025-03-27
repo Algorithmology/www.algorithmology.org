@@ -223,28 +223,28 @@ The `sort_persons_timsort_multilevel` function compares the list with multiple a
 
 | Percentage | Bubble Sort Algorithm | Bubble Sort (Multi-Level) | Quick Sort Algorithm | Quick Sort (Multi-Level) | Tim Sort Algorithm | Tim Sort (Multi-Level) |
 |------------|----------------------|--------------------------|----------------------|--------------------------|--------------------|------------------------|
-| 25%        | 108182.63            | 197884.92                | 68.72                | 191.36                   | 10.97             | 59.86                  |
-| 50%        | 99450.69             | 257284.48                | 63.64                | 285.52                   | 9.84              | 63.48                  |
-| 100%       | 79625.79             | 372714.09                | 54.89                | 453.03                   | 2.92              | 80.52                  |
-| control    | 112539.95            | 144189.03                | 69.99                | 142.23                   | 12.4              | 55.79                  |
+| 25%        | 108182.63 ms         | 197884.92 ms             | 68.72 ms             | 191.36 ms                | 10.97 ms           | 59.86 ms               |
+| 50%        | 99450.69 ms          | 257284.48 ms             | 63.64 ms             | 285.52 ms                | 9.84 ms            | 63.48 ms               |
+| 100%       | 79625.79 ms          | 372714.09 ms             | 54.89 ms             | 453.03 ms                | 2.92 ms            | 80.52 ms               |
+| control    | 112539.95 ms         | 144189.03 ms             | 69.99 ms             | 142.23 ms                | 12.4 ms            | 55.79 ms               |
 
 ## Two Similar Attributes (MacOS)
 
 | Percentage | Bubble Sort Algorithm | Bubble Sort (Multi-Level) | Quick Sort Algorithm | Quick Sort (Multi-Level) | Tim Sort Algorithm | Tim Sort (Multi-Level) |
 |------------|----------------------|--------------------------|----------------------|--------------------------|--------------------|------------------------|
-| 25%        | 105920.23            | 200728.85                | 70.71                | 194.95                   | 10.62             | 58.57                  |
-| 50%        | 99065.75             | 261706.01                | 66.1                 | 291.06                   | 9.64              | 65.36                  |
-| 100%       | 78372.14             | 414600.11                | 57.46                | 444.27                   | 2.54              | 79.13                  |
-| control    | 112539.95            | 144189.03                | 69.99                | 142.23                   | 12.4              | 55.79                  |
+| 25%        | 105920.23 ms         | 200728.85 ms             | 70.71 ms             | 194.95 ms                | 10.62 ms           | 58.57 ms               |
+| 50%        | 99065.75 ms          | 261706.01 ms             | 66.1 ms              | 291.06 ms                | 9.64 ms            | 65.36 ms               |
+| 100%       | 78372.14 ms          | 414600.11 ms             | 57.46 ms             | 444.27 ms                | 2.54 ms            | 79.13 ms               |
+| control    | 112539.95 ms         | 144189.03 ms             | 69.99 ms             | 142.23 ms                | 12.4 ms            | 55.79 ms               |
 
 ## All Similar Attributes (MacOS)
 
 | Percentage | Bubble Sort Algorithm | Bubble Sort (Multi-Level) | Quick Sort Algorithm | Quick Sort (Multi-Level) | Tim Sort Algorithm | Tim Sort (Multi-Level) |
 |------------|----------------------|--------------------------|----------------------|--------------------------|--------------------|------------------------|
-| 25%        | 105281.36            | 256972.89                | 67.74                | 166.14                   | 10.4              | 53.35                  |
-| 50%        | 98199.11             | 358049.4                 | 63.66                | 216.31                   | 9.59              | 50.5                   |
-| 100%       | 78594.39             | 592198.03                | 60.49                | 379.23                   | 3.24              | 41.8                   |
-| control    | 112539.95            | 144189.03                | 69.99                | 142.23                   | 12.4              | 55.79                  |
+| 25%        | 105281.36 ms         | 256972.89 ms             | 67.74 ms             | 166.14                   | 10.4 ms            | 53.35 ms               |
+| 50%        | 98199.11 ms          | 358049.4 ms              | 63.66 ms             | 216.31                   | 9.59 ms            | 50.5 ms                |
+| 100%       | 78594.39 ms          | 592198.03 ms             | 60.49 ms             | 379.23                   | 3.24 ms            | 41.8 ms                |
+| control    | 112539.95 ms         | 144189.03 ms             | 69.99 ms             | 142.23                   | 12.4 ms            | 55.79 ms               |
 
 ## One Similar Attribute (Windows)
 
@@ -275,7 +275,9 @@ The `sort_persons_timsort_multilevel` function compares the list with multiple a
 
 # Results
 
-# Conclusion (Vivian)
+# Conclusion
+
+Our results and data provide signifigant evidence that Tim Sort is the optimal choice in regards to sorting with configurable attribute prioritization. Using real-world scenarios such as a list of strings with human data, we show how these varying sorting paradigms vary with multilevel data as well as different CPUs. Our results heavily concure that the Tim Sort algorithm consistently outperforms Quicksort and completely outclasses the Bubble Sort. Especially within the best case time complexity. Using these algorithms we also evaluate how windows and its differences in handling recursion can slow the sorting process especially in multilevel sorting. So while Quick Sort could be a viable option for smaller list, you have to expect some trade offs when using certain cpus. 
 
 # Future work
 
