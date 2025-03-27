@@ -15,7 +15,69 @@ Below is the link that will direct you to our GitHub repository needed to run ou
 
 ## Introduction
 
+During our team's exploration of sorting algorithms and their performance characteristics, an interesting research question emerged: How can we effectively sort test cases considering multiple factors simultaneously? Traditional sorting algorithms excel at sorting based on a single criterion, but real-world test case prioritization often requires balancing multiple objectives, such as execution time and code coverage.
+
+This research question led us to investigate the potential of multi-objective optimization algorithms, specifically NSGA-II (Non-dominated Sorting Genetic Algorithm II), in comparison to traditional sorting approaches. While traditional algorithms like Quick Sort and Bubble Sort can sort test cases based on one factor at a time, NSGA-II offers the advantage of considering multiple objectives simultaneously, potentially providing more nuanced and practical test case prioritization.
+
+Our research aims to answer the question: How does NSGA-II compare to traditional sorting algorithms in terms of running time when comparing test cases in terms of execution speed and code coverage factors? The traditional algorithms would sort according to one factor at a time while NSGA-II would sort according to both factors.
+
 ### Data Collection and Gathering
+
+For our research, we selected the Chasten project, a publicly available GitHub repository developed as part of a course in our department. This choice was strategic for several reasons:
+
+1. **Reproducibility**: Since Chasten was developed within our department, we have direct access to its development history and can ensure that others can replicate our study.
+
+2. **Test Infrastructure**: The project includes a comprehensive test suite, making it an ideal candidate for analyzing test case execution times and coverage metrics.
+
+3. **Tool Development**: As a tool developed in an academic setting, Chasten provides a controlled environment for our research, with well-defined test cases and clear execution patterns.
+
+To collect our data, we developed a custom script (`collect_test_metrics.py`) that leverages `pytest-cov`, a pytest plugin for measuring code coverage. The script executes the test suite using Poetry's task runner with specific `pytest-cov` configurations to generate detailed coverage reports. The coverage data is collected using the following command structure:
+
+```bash
+pytest --cov=chasten tests/ --cov-report=json
+```
+
+This command generates a `coverage.json` file that contains detailed coverage information for each module in the project. The JSON structure includes:
+- Executed lines for each file
+- Summary statistics including covered lines, total statements, and coverage percentages
+- Missing and excluded lines
+- Context information for each covered line
+
+The coverage.json file is structured hierarchically, with each module's data organized under the "files" key. For example:
+```json
+{
+    "files": {
+        "chasten/checks.py": {
+            "executed_lines": [...],
+            "summary": {
+                "covered_lines": 50,
+                "num_statements": 51,
+                "percent_covered": 98,
+                "missing_lines": 1,
+                "excluded_lines": 0
+            }
+        }
+    }
+}
+```
+
+To prepare this data for analysis, we developed a mapping script (`mapper.py`) that serves two key purposes:
+
+1. **Traditional Analysis Format**: The script reads both the coverage.json and test_metrics.json files, creating a mapping between test cases and their corresponding module coverage data. It computes a ratio of covered lines to test duration for each test case, which helps identify tests that provide the best coverage per unit of time.
+
+2. **NSGA-II Format**: The script also transforms the data into a specialized format required by the NSGA-II algorithm. Each test case is represented as a list of `[test name, duration, coverage]`, where coverage is the raw number of covered lines from the coverage.json file. This format enables multi-objective optimization, allowing us to simultaneously consider both test execution time and code coverage.
+
+The mapping process ensures proper handling of edge cases:
+- Failed or skipped tests are assigned zero coverage values
+- Tests with zero duration are handled gracefully
+- Each test case is correctly associated with its corresponding module's coverage data
+- The data is structured appropriately for both traditional and multi-objective analysis approaches
+
+This data preparation pipeline enables us to:
+- Compare the effectiveness of different test prioritization approaches
+- Analyze the trade-offs between test execution time and coverage
+- Generate reproducible results for both traditional and NSGA-II algorithms
+- Maintain data consistency across different analysis methods
 
 ## Implementation
 
