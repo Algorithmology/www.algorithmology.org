@@ -66,7 +66,7 @@ def sort_persons_bubblesort_multilevel(
     return persons
 ```
 
-This `bubblesort_multilevel` algorithm implementation extends the classic algorithm by introducing hierarchical attribute comparisons. While traditional `Bubble Sort` compares elements using a single attribute, this version first evaluates the primary attribute (e.g., `country`), then sequentially checks secondary attributes (`name` → `phone_number` → `job` → `email`) to resolve ties - effectively implementing lexicographical ordering. Each comparison may require up to six attribute checks (primary + five tie-breakers), increasing computational overhead from O(n²) to O(kn²) where k represents attribute tiers.
+This `bubblesort_multilevel` algorithm implementation extends the classic algorithm by introducing hierarchical attribute comparisons. While traditional `Bubble Sort` compares elements using a single attribute, this version first evaluates the primary attribute (e.g., `country`), then sequentially checks secondary attributes (`name` → `phone_number` → `job` → `email`) to resolve ties - effectively implementing lexicographical ordering. Each comparison may require up to six attribute checks (primary + five tie-breakers), increasing computational overhead from `O(n²)` to `O(kn²)` where k represents attribute tiers.
 
 ### Quick Sort
 
@@ -183,13 +183,13 @@ def sort_persons_quicksort_multilevel(
    return persons
    ```
       
-The `quicksort_multilevel` algorithm is an enhancement of the classic QuickSort algorithm. With this implementation, you can hierarchically compare attributes. You have your primary attribute (e.g., `country`) and then sequentially check the secondary attributes (`name` → `job` → `email` → `phone_number`) to resolve duplicate entries.
+The `quicksort_multilevel` algorithm is an enhancement of the classic QuickSort algorithm. With this implementation, we can hierarchically compare attributes. We can have our primary attribute (e.g., `country`) and then sequentially check the secondary attributes (`name` → `job` → `email` → `phone_number`) to resolve duplicate entries.
 
 
 This is achieved through an iterative approach with a stack that manages sub-ranges (low, high). This algorithm also uses a median-of-three pivot selection, which allows for more evenly sized partitions and improved efficiency by making the pivot closer to the median value. During partitioning, two pointers (i and j) are used to scan the range.
 
 
-For this particular dataset, there may be up to five attribute checks (primary + 4 tie-breakers). The Big O notation for this would usually be O(n log n), but due to the additional attribute comparisons, it is O(k n log n), where k is the number of attribute tiers.
+For this particular dataset, there may be up to five attribute checks (primary + 4 tie-breakers). The Big O notation for this would usually be `O(n log n)`, but due to the additional attribute comparisons, it is `O(k n log n)`, where k is the number of attribute tiers.
 
 ### Tim Sort
 
@@ -287,14 +287,12 @@ While our multi-level sorting implementation provides robust tie-breaking capabi
 Tie-breaking attributes follow a fixed priority order (`name → country → phone_number → job → email`), regardless of dataset characteristics.
 
 **Proposed Improvement**:
-Allowing user-defined secondary attributes would enable dynamic prioritization—instead of a fixed tie-breaker order, users could specify which attribute to use as the "second most important" when primary duplicates occur. This would reduce unnecessary comparisons for datasets where certain attributes (e.g., email vs. phone_number) are more likely to resolve ties quickly.
+Allowing user-defined secondary attributes would enable dynamic prioritization—instead of a fixed tie-breaker order, users could specify which attribute to use as the "second most important" when primary duplicates occur. This would reduce unnecessary comparisons for datasets where certain attributes (e.g., `email` vs. `phone_number`) are more likely to resolve ties quickly.
 
 ## 2. Adaptive Comparision Depth 
 
-**Proposed Improvements**: We could halt attribute checks once a tie is definitively resolved, avoiding redundant evaluations of lower-priority fields. Third, a hybrid algorithm selector could automatically switch between Bubble Sort (for small datasets) and Timsort (for larger ones), leveraging Bubble Sort’s simplicity for n < 1,000 while retaining Timsort’s scalability.
+**Proposed Improvements**: We could halt attribute checks once a tie is definitively resolved, avoiding redundant evaluations of lower-priority fields. We could automatically try to implement an algorithm which switch between Bubble Sort (for small datasets) and Timsort (for larger ones), leveraging Bubble Sort’s simplicity for n < 1,000 while retaining Timsort’s scalability.
 
 ## 3. Cost-Aware Attribute Ordering 
 
 **Proposed Improvements**: We could also optimize performance by prioritizing attributes with faster comparison operations (e.g., numeric phone_number over string-based job), potentially cutting comparison time.
-
-
