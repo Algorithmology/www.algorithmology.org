@@ -780,7 +780,7 @@ print(selection_one, selection_three, selection_five, "for", data)
 
 :::
 
-## Searching and Sorting: Basic Insights
+## Searching and sorting: Quick recap
 
 ::: {.fragment style="font-size: 0.925em"}
 
@@ -800,15 +800,15 @@ print(selection_one, selection_three, selection_five, "for", data)
 
 :::
 
-## Sorting and Selection: Basic Insights
+## Sorting and selection: Quick recap
 
 ::: {.fragment style="font-size: 0.925em"}
 
 - **Advanced sorting algorithms**
   - Divide-and-conquer algorithms (mergesort, quicksort) achieve $O(n \log n)$
-  average time, best for comparison sorting
+  average time, provably best for comparison sorting
   - Non-comparison sorts (counting, radix, bucket) can beat $O(n \log n)$ under
-  specific data assumptions
+  specific assumptions about input data
 
 :::
 
@@ -817,7 +817,7 @@ print(selection_one, selection_three, selection_five, "for", data)
 - **Fast Selection algorithms**
 
   - Quickselect finds $k$th element in $O(n)$ average time without full
-  sorting, making it ideal for restricted cases
+  list sorting, making it ideal for restricted cases
   - Shares partitioning strategy with quicksort but makes fewer recursive calls
   and is thus faster although more specialized
 
