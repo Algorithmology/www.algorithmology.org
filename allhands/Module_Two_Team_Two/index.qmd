@@ -33,4 +33,59 @@ compare here, aka which method, multi objective or traditional, was better)
 
 ### The NSGA-II Multi Objective Algorithm
 
+#### Implementation
+
+The NGSA-II multi objective sorting algorithm is broken down into a variety of approaches. We utilized the binary tournament
+approach and slightly adapted it to suite our needs. The file that runs this part of the experiment has two main parts, the
+`binary_tournament` function and `main`. 
+
+The `binary_tournament` function runs the bulk of the experiment, utilizing a list of indices that indicate the opponents for
+each tournament to be performed, `P`, and the population object storing all the objects to be pitted against each other in
+tournaments, `pop`. From there, the tournaments are run continuously until all of them have been completed. In the
+implementation, the function also collects and constantly updates the list of names dictating the winners with a list also
+dictated for the losers to help update the list of winners. At the end, the final winner's list is printed. It is worth noting
+that there are slightly different outcomes each time. This could be due to slightly different evaluations occurring each time
+as there are serveral aspects that go into running the algorithm, even with a limited number of factors to consider. It is also
+worth noting that the variable `S` refers to the result returned by the function, a list of the memory locations for all the
+winners. As that is not as helpful to our purposes, it is not seen in our results.
+
+``` python
+for i in range(n_tournaments):
+        a, b = P[i]
+
+        # if the first individual is better, choose it
+        if pop[a].F < pop[b].F:
+            S[i] = a
+            loser = pop[b].name
+            winner = pop[a].name
+        # otherwise take the other individual
+        else:
+            S[i] = b
+            loser = pop[a].name
+            winner = pop[b].name
+   
+        # update lists with name records
+        if winner not in winner_list:
+            if winner not in loser_list:
+                winner_list.append(winner)
+            else:
+                winner_list.remove(loser)
+        if loser not in loser_list:
+            loser_list.append(loser)
+
+    # return the names of the ideal tests
+    print(f"The Ideal Tests Are: {winner_list}")
+    return S
+```
+
+Main, on the other hand, looks into generating the list of competitor indices using the nested for loop method as that allowed
+the result to be made as a list of lists instead of a list of tuples which is not the right format for the `binary_tournament`
+function. Also, main generates the Population object. First, a 2d numpy array is created from the JSON file designated for use
+by the NSGA-II algorithm as the formatting is slightly different to accomodate the `binary_tournament` function. Then, a list
+of Individual objects is created from the information in the array. Finally, that list is passed into a brand new Population
+object. Finally, main runs the tournaments by calling the `binary_tournament` function with the Population object and array of
+competitor index pairs passed in.
+
+#### Results
+
 ## Conclusion
