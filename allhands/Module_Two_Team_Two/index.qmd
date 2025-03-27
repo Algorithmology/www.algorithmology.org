@@ -10,7 +10,7 @@ toc: true
 
 # Repository Link
 
-Below is the link that will direct you to our GitHub repository needed to run our experiment on your personal device: 
+Below is the link that will direct you to our GitHub repository needed to run our experiment on your personal device:
 <https://github.com/suppo01/Algorithm-Analysis-All-Hands-Module-2>
 
 ## Introduction
@@ -37,7 +37,7 @@ compare here, aka which method, multi objective or traditional, was better)
 
 The NGSA-II multi objective sorting algorithm is broken down into a variety of approaches. We utilized the binary tournament
 approach and slightly adapted it to suite our needs. The file that runs this part of the experiment has two main parts, the
-`binary_tournament` function and `main`. 
+`binary_tournament` function and `main`.
 
 The `binary_tournament` function runs the bulk of the experiment, utilizing a list of indices that indicate the opponents for
 each tournament to be performed, `P`, and the population object storing all the objects to be pitted against each other in
