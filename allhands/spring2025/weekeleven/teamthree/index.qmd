@@ -263,11 +263,12 @@ a table for comparison between different fibonacci numbers and approaches.
 | Titus       | 8       | `0.000234000` | `0.000093900` | `0.000076800` | `0.000076700` | `0.000083500` |       14 | memoization |   15 |       5 |
 | Titus       | 9       | `0.000225300` | `0.000178000` | `0.000190900` | `0.000207500` | `0.000186000` |       28 | memoization |   15 |       5 |
 
-: Raw data for efficiency of all ways to compute the Fibonacci sequence. {.responsive}
+: Raw data for efficiency of all studied ways to compute the Fibonacci sequence. {.responsive}
 
 ## Averages
 
-The following table averages out the data in the table above, grouping them by the `Quantity` and `Approach` columns.
+The following table averages out the data in the table above, grouping them by
+the `Quantity` and `Approach` columns.
 
 | Average Time  | Quantity | Approach    | Runs | Repeats |
 | ------------: | -------: | ----------- | :--: | :-----: |
@@ -280,6 +281,8 @@ The following table averages out the data in the table above, grouping them by t
 | `0.000028342` |        7 | memoization |   15 |       5 |
 | `0.000062747` |       14 | memoization |   15 |       5 |
 | `0.000111318` |       28 | memoization |   15 |       5 |
+
+: Average execution time for all studied ways to compute the Fibonacci sequence. {.responsive}
 
 # Charts
 
