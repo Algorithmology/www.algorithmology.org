@@ -90,16 +90,21 @@ The coverage.json file is structured hierarchically, with each module's data org
 }
 ```
 
-To prepare this data for analysis, we developed a mapping script (`mapper.py`) that serves two key purposes:
+To prepare this data for analysis, we developed a mapping script (`mapper.py`)
+that serves two key purposes:
 
-1. **Traditional Analysis Format**: The script reads both the coverage.json and test_metrics.json files, creating a mapping
-between test cases and their corresponding module coverage data. It computes a ratio of covered lines to test duration for each
-test case, which helps identify tests that provide the best coverage per unit of time.
+1. **Traditional Analysis Format**: The script reads both the coverage.json and
+   test_metrics.json files, creating a mapping between test cases and their
+corresponding module coverage data. It computes a ratio of covered lines to test
+duration for each test case, which helps identify tests that provide the best
+coverage per unit of time.
 
-2. **NSGA-II Format**: The script also transforms the data into a specialized format required by the NSGA-II algorithm. Each
-test case is represented as a list of `[test name, duration, coverage]`, where coverage is the raw number of covered lines from
-the coverage.json file. This format enables multi-objective optimization, allowing us to simultaneously consider both test
-execution time and code coverage.
+2. **NSGA-II Format**: The script also transforms the data into a specialized
+   format required by the NSGA-II algorithm. Each test case is represented as a
+list of `[test name, duration, coverage]`, where coverage is the raw number of
+covered lines from the coverage.json file. This format enables multi-objective
+optimization, allowing us to simultaneously consider both test execution time
+and code coverage.
 
 The mapping process ensures proper handling of edge cases:
 - Failed or skipped tests are assigned zero coverage values
@@ -165,7 +170,7 @@ the best results with the least amount of time.
 
 We selected the Bucket Sort algorithm for this experiment due to its efficiency
 in distributing and sorting data across multiple buckets. With an average time
-complexity of O(n + k), Bucket Sort is well-suited for handling large datasets,
+complexity of `O(n + k)`, Bucket Sort is well-suited for handling large datasets,
 especially when the input is uniformly distributed. Unlike comparison-based
 algorithms like Quick Sort, it efficiently categorizes elements into buckets and
 sorts them individually, reducing the overall sorting overhead.  
