@@ -88,9 +88,15 @@ that one. More specifics about each algorithm are below.
 
 ### The Quick Sort Algorithm
 
-I selected the Quick Sort algorithm for this experiment due to its efficiency in handling large datasets. With an average time complexity of O(n log n), Quick Sort is faster than simpler algorithms like Bubble Sort, making it ideal for optimizing test prioritization. The algorithm selects a random pivot to avoid worst-case performance (O(n²)) and recursively sorts the elements less than and greater than the pivot.
+I selected the Quick Sort algorithm for this experiment due to its efficiency in handling large datasets. With an average time complexity of
+O(n log n), Quick Sort is faster than simpler algorithms like Bubble Sort, making it ideal for optimizing test prioritization.
+The algorithm selects a random pivot to avoid worst-case performance (O(n²)) and recursively sorts the elements less than and greater than
+the pivot.
 
-In this implementation, Quick Sort organizes the test cases based on the coverage/time ratio. The data is partitioned around the pivot, with elements smaller than the pivot in the left partition and those greater in the right. The function recursively sorts both partitions, and once sorted, the pivot is placed between them to produce the final sorted list. This ensures that the most efficient tests (lowest coverage/time ratio) are prioritized.
+In this implementation, Quick Sort organizes the test cases based on the coverage/time ratio. The data is partitioned around the pivot,
+with elements smaller than the pivot in the left partition and those greater in the right. The function recursively sorts both partitions,
+and once sorted, the pivot is placed between them to produce the final sorted list. This ensures that the most efficient tests
+(lowest coverage/time ratio) are prioritized.
 
 ```python
 import json # Import the JSON module to handle JSON file operations
@@ -111,7 +117,8 @@ def quicksort(arr: List[Any]) -> List[Any]:
         return quicksort(left) + [pivot] + quicksort(right)
 ```
 
-This approach minimizes the risk of worst-case performance and ensures the most efficient tests are prioritized, optimizing the testing process by focusing on the best results with the least amount of time.
+This approach minimizes the risk of worst-case performance and ensures the most efficient tests are prioritized,
+optimizing the testing process by focusing on the best results with the least amount of time.
 
 ### The Bubble Sort Algorithm
 
