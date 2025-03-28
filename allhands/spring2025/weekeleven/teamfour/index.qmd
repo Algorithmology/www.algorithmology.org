@@ -1,6 +1,6 @@
 ---
 author: [Hemani Alaparthi, Grant Anderson, Will Bennett, Coltin Colucci, Vivian Potts, Megan Wolfarth]
-title: How does the presence of duplicate entries in primary sorting attributes affect the runtime (ms) of a Multi-Level-Comparison-Sorting Algorithm (an approach that sequentially evaluates attributes to resolve ties)?
+title: How does the presence of duplicate entries in primary sorting attributes affect the runtime of a multi-level-comparison-sorting algorithm?
 page-layout: full
 categories: [post, sorting, multi-level, algorithms, runtime]
 date: "2025-03-28"
@@ -16,17 +16,31 @@ format:
 
 # Introduction
 
-In modern data processing, efficient sorting is foundational to everything from database operations to machine learning pipelines. While most algorithms excel with unique keys, real-world datasets frequently contain duplicate entries in primary attributes like `name` or `country`. These duplicates usually require algorithms to resolve ties through sequential comparisons of secondary attributes (e.g., `phone_number`, `email`) or an attribute chosen by a user that can be deemed as an `tie-breaker` attribute.
+In modern data processing, efficient sorting is foundational to everything from
+database operations to machine learning pipelines. While most algorithms excel
+with unique keys, real-world datasets frequently contain duplicate entries in
+primary attributes like `name` or `country`. These duplicates usually require
+algorithms to resolve ties through sequential comparisons of secondary
+attributes (e.g., `phone_number` or `email`) or an attribute chosen by a user
+that can be deemed as an `tie-breaker` attribute.
 
 ## Motivation
 
-Duplicate entries in primary sorting attributes (e.g., `name`, `country`) are common and when these duplicates occur, sorting algorithms must resolve ties using secondary attributes or attributes inputted by the user that can be considered a 'secondary' attribute, creating a need for efficient **multi-level comparison strategies**. This study analyzes how duplicate rates impact three sorting algorithms (`bubblesort`, `quicksort`, and `timsort`) when handling multi-level comparisons, providing insights into algorithm selection for real-world data processing.
+Duplicate entries in primary sorting attributes (e.g., `name`, `country`) are
+common and when these duplicates occur, sorting algorithms must resolve ties
+using secondary attributes or attributes inputted by the user that can be
+considered a 'secondary' attribute, creating a need for efficient **multi-level
+comparison strategies**. This study analyzes how duplicate rates impact three
+sorting algorithms (`bubblesort`, `quicksort`, and `timsort`) when handling
+multi-level comparisons, providing insights into algorithm selection for
+real-world data processing.
 
 # Method
 
 ## Approach
 
-At the core of our analysis is multi-level sorting logic. We implemented three sorting paradigms with configurable attribute prioritization:
+At the core of our analysis is multi-level sorting logic. We implemented three
+sorting paradigms with configurable attribute prioritization:
 
 ### Bubble Sort
 
@@ -37,14 +51,12 @@ def sort_persons_bubblesort_multilevel(
 
     # define the tie-breaking attributes (e.g., secondary and tertiary attributes)
     tie_breaking_attributes = ["name", "country", "phone_number", "job", "email"]
-
     length_of_persons = len(persons)
     for i in range(length_of_persons):
         for j in range(0, length_of_persons - i - 1):
             # compare records based on the primary attribute
             value1 = getattr(persons[j], attribute)
             value2 = getattr(persons[j + 1], attribute)
-
             if value1 == value2:
                 # if the values are equal, use tie-breaking attributes
                 swap = False
@@ -59,14 +71,21 @@ def sort_persons_bubblesort_multilevel(
             else:
                 # if values are not equal, determine if a swap is needed
                 swap = value1 > value2
-
             # swap if necessary
             if swap:
                 persons[j], persons[j + 1] = persons[j + 1], persons[j]
     return persons
 ```
 
-This `bubblesort_multilevel` algorithm implementation extends the classic algorithm by introducing hierarchical attribute comparisons. While traditional `bubblesort` compares elements using a single attribute, this version first evaluates the primary attribute (e.g., `country`), then sequentially checks secondary attributes (`name` → `phone_number` → `job` → `email`) to resolve ties - effectively implementing lexicographical ordering. Each comparison may require up to six attribute checks (primary + five tie-breakers), increasing computational overhead from `O(n²)` to `O(kn²)` where k represents attribute tiers.
+This `bubblesort_multilevel` algorithm implementation extends the classic
+algorithm by introducing hierarchical attribute comparisons. While traditional
+`bubblesort` compares elements using a single attribute, this version first
+evaluates the primary attribute (e.g., `country`), then sequentially checks
+secondary attributes (`name` → `phone_number` → `job` → `email`) to resolve ties
+--- effectively implementing lexicographical ordering. Each comparison may
+require up to six attribute checks (primary + five tie-breakers), increasing
+computational overhead from `O(n²)` to `O(kn²)` where k represents attribute
+tiers.
 
 ### Quick Sort
 
