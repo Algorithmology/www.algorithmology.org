@@ -96,58 +96,43 @@ def sort_persons_quicksort_multilevel(
    """Optimized multi-level quicksort with early comparison shortcut"""
    if len(persons) <= 1:
        return persons
-
-
-   # Define tie-breakers and precompute getters
+   # define tie-breakers and precompute getters
    tie_breakers = ["name", "country", "phone_number", "job", "email"]
    # combines primary sorting attribute with tie_breakers into list
    keys = [attribute] + tie_breakers
    # create list of getter functions for each attribute in keys list
    getters = [attrgetter(key) for key in keys]
-  
-   # Initialize stack
+   # initialize stack
    stack = [(0, len(persons) - 1)]
-  
-   # Process ranges iteratively until empty
+   # process ranges iteratively until empty
    while stack:
        # Get current range to process
        low, high = stack.pop()
        # skip of range is invalid or sorted
        if low >= high:
            continue
-      
-       # Median-of-three pivot selection
-       mid = (low + high) // 2 # Calculate middle index of current range
-
-
-       # Compare element with first
-       # If the last element is smaller swap to ensure the first element is smaller
+       # median-of-three pivot selection
+       mid = (low + high) // 2 # calculate middle index of current range
+       # compare element with first;
+       # if the last element is smaller swap to ensure the first element is smaller
        if getters[0](persons[high]) < getters[0](persons[low]):
            persons[low], persons[high] = persons[high], persons[low]
-
-
-       # Compare with middle element with the first element
+       # compare with middle element with the first element;
        # if middle element smaller swap them
        if getters[0](persons[mid]) < getters[0](persons[low]):
            persons[mid], persons[low] = persons[low], persons[mid]
-      
-       # Compare the last element with the middle element
+       # compare the last element with the middle element;
        # if last element smaller swap to ensure middle element is smaller
        if getters[0](persons[high]) < getters[0](persons[mid]):
            persons[high], persons[mid] = persons[mid], persons[high]
-      
-       # Select pivot element
+       # select pivot element
        pivot = persons[mid]
        pivot_vals = [getter(pivot) for getter in getters]
-      
        # initialize pointers for partitioning
        i, j = low, high
-      
-       # Partition the range while two pointers have not crossed
+       # partition the range while two pointers have not crossed
        while i <= j:
-
-
-           # Left scan: Move 'i' right
+           # left scan: Move 'i' right
            while True:
                # Get primary attribute at index 'i'
                left_primary = getters[0](persons[i])
@@ -158,40 +143,35 @@ def sort_persons_quicksort_multilevel(
                    # otherwise move pointer right
                    i += 1
                    continue
-              
                left_vals = [left_primary] + [getter(persons[i]) for getter in getters[1:]]
                if left_vals >= pivot_vals:
                    break
                i += 1
-          
-           # Right scan with early exit
+           # right scan with early exit
            while True:
-               # Get primary attribute from index 'j'
+               # get primary attribute from index 'j'
                right_primary = getters[0](persons[j])
-               # If primary value is not equal to pivots
-               # Current value is <= pivots primary value
-               # Stop scanning otherwise continue
+               # if primary value is not equal to pivots
+               # current value is <= pivots primary value
+               # stop scanning otherwise continue
                if right_primary != pivot_vals[0]:
                    if right_primary <= pivot_vals[0]:
                        break
                    j -= 1
                    continue
-              
                # if primary value matches pivot - tiebreak
-               # Stop scanning if element <= pivot
+               # stop scanning if element <= pivot
                right_vals = [right_primary] + [getter(persons[j]) for getter in getters[1:]]
                if right_vals <= pivot_vals:
                    break
                j -= 1
-          
-           # Swap elements if pointers haven't crossed
-           # Ensures elements in the correct position
+           # swap elements if pointers haven't crossed
+           # ensures elements in the correct position
            if i <= j:
                persons[i], persons[j] = persons[j], persons[i]
                i += 1 # Move left pointer right
                j -= 1 # Move right pointer left
-      
-       # Push smaller partition first
+       # push smaller partition first
        if (j - low) < (high - i):
            stack.append((low, j))
            stack.append((i, high))
@@ -202,13 +182,22 @@ def sort_persons_quicksort_multilevel(
    return persons
    ```
       
-The `quicksort_multilevel` algorithm is an enhancement of the classic QuickSort algorithm. With this implementation, we can hierarchically compare attributes. We can have our primary attribute (e.g., `country`) and then sequentially check the secondary attributes (`name` → `job` → `email` → `phone_number`) to resolve duplicate entries.
+The `quicksort_multilevel` algorithm is an enhancement of the classic QuickSort
+algorithm. With this implementation, we can hierarchically compare attributes.
+We can have our primary attribute (e.g., `country`) and then sequentially check
+the secondary attributes (`name` → `job` → `email` → `phone_number`) to resolve
+duplicate entries.
 
+This is achieved through an iterative approach with a stack that manages
+sub-ranges (low, high). This algorithm also uses a median-of-three pivot
+selection, which allows for more evenly sized partitions and improved
+efficiency by making the pivot closer to the median value. During partitioning,
+two pointers (i and j) are used to scan the range.
 
-This is achieved through an iterative approach with a stack that manages sub-ranges (low, high). This algorithm also uses a median-of-three pivot selection, which allows for more evenly sized partitions and improved efficiency by making the pivot closer to the median value. During partitioning, two pointers (i and j) are used to scan the range.
-
-
-For this particular dataset, there may be up to five attribute checks (primary + 4 tie-breakers). The Big O notation for this would usually be `O(n log n)`, but due to the additional attribute comparisons, it is `O(k n log n)`, where k is the number of attribute tiers.
+For this particular dataset, there may be up to five attribute checks (primary
++ 4 tie-breakers). The Big O notation for this would usually be `O(n log n)`,
+but due to the additional attribute comparisons, it is `O(k n log n)`, where k
+is the number of attribute tiers.
 
 ### Tim Sort
 
@@ -218,25 +207,39 @@ def sort_persons_timsort_multilevel(
     persons: List[Person], attribute: str
 ) -> List[Person]:
     """Sort a list of Person objects using Timsort with multi-level comparison"""
-    # Define the tie-breaking attributes (e.g., secondary and tertiary attributes)
+    # define the tie-breaking attributes (e.g., secondary and tertiary attributes)
     tie_breaking_attributes = ["name", "country", "phone_number", "job", "email"]
-
-    # Create a composite key function for multi-level sorting
+    # create a composite key function for multi-level sorting
     def composite_key(person: Person):
         primary_value = getattr(person, attribute)
         tie_values = tuple(getattr(person, tie_attr) for tie_attr in tie_breaking_attributes)
         return (primary_value, *tie_values)
-
-    # Use Timsort (Python's built-in sorted function) with the composite key
+    # use Timsort (Python's built-in sorted function) with the composite key
     sorted_persons = sorted(persons, key=composite_key)
     return sorted_persons
 ```
 
-The `sort_persons_timsort_multilevel` function compares the list with multiple attributes if two entries share similar attrbutes. The function first makes a list of the tie breaking attributes. It enters them into a composite key function to form a tuple of the attributes. The tuple holds the primary sorting attribute, the one input when running the algorithm via terminal command, followed by the other attributes. It then uses python's built in `sorted` with the tuple key to sort the file. 
+The `sort_persons_timsort_multilevel` function compares the `list` with
+multiple attributes if two entries share similar attributes. The function first
+makes a list of the tie breaking attributes. It enters them into a composite
+key function to form a tuple of the attributes. The `tuple` holds the primary
+sorting attribute, the one input when running the algorithm via terminal
+command, followed by the other attributes. It then uses Python's built in
+`sorted` with the tuple key to sort the file. 
 
 # Data
 
-To test out our algorithms we took a base input data base of 49,998 profiles of people with 5 randomized attributes that did not overlap. But we needed to have overlapping strings for attributes so we created a function to replace attributes in our base list with a new string. Then we randomized the position of each list of attributes to simulate a list with spread out variables. Using this we replace certain percentages of the data in the table to test how overlapping variables would effect run times. For our testing we thought it best to test data with two different factors percentage of duplicates and amount of attributes. So we tested with 25%, 50%, and 100% of duplicates in the data and with 1, 2 and all (5) attributes at those percentages as well as the control which had no overlaps
+To test out our algorithms we took a base input data base of `49,998` profiles
+of people with `5` randomized attributes that did not overlap. But we needed to
+have overlapping strings for attributes so we created a function to replace
+attributes in our base list with a new string. Then we randomized the position
+of each list of attributes to simulate a list with spread out variables. Using
+this we replace certain percentages of the data in the table to test how
+overlapping variables would effect run times. For our testing we thought it
+best to test data with two different factors percentage of duplicates and
+amount of attributes. So we experimented with `25%`, `50%`, and `100%` of
+duplicates in the data and with `1`, `2`, and all (`5`) attributes at those
+percentages as well as the control which had no overlaps
 
 ## Data Tables
 
@@ -296,36 +299,89 @@ To test out our algorithms we took a base input data base of 49,998 profiles of 
 
 # Results
 
-Our results show clear variation in runtime performance when using the different multilevel and non-multilevel sorting algorithms. Overall, the non-multilevel algorithms performed faster than the multilevel algorithms, with an average runtime of `37,546 ms` for all non-multilevel algorithms and an average runtime of `66,570 ms` for all multilevel algorithms. `Non-multilevel timsort` was the fastest algorithm overall, with an average runtime of `10 ms`, while `multilevel bubblesort` was the slowest algorithm overall, with an average runtime of `285,117 ms`. 
+Our results show clear variation in runtime performance when using the
+different multilevel and non-multilevel sorting algorithms. Overall, the
+non-multilevel algorithms performed faster than the multilevel algorithms, with
+an average runtime of `37,546 ms` for all non-multilevel algorithms and an
+average runtime of `66,570 ms` for all multilevel algorithms. `Non-multilevel
+timsort` was the fastest algorithm overall, with an average runtime of `10 ms`,
+while `multilevel bubblesort` was the slowest algorithm overall, with an
+average runtime of `285,117 ms`. 
 
-The number of identical attributes within each line affected the runtime performance for multilevel algorithms but not for non-multilevel algorithms. For files with lines containing only one identical attribute, the average runtime was `110,536 ms` for all multilevel algorithms. For two identical attributes, the average runtime for all multilevel algorithms was `112,437 ms`. For all identical attributes, the average runtime for all multilevel algorithms was `146,014 ms`. However, for all non-multilevel algorithms, the average runtime was `36,525 ms` for one identical attribute, `36,267 ms` for two identical attributes, and `36,976` for all identical attributes. This shows that runtime increases for multilevel algorithms but not for non-multilevel algorithms in relation to the number of identical attributes. 
+The number of identical attributes within each line affected the runtime
+performance for multilevel algorithms but not for non-multilevel algorithms.
+For files with lines containing only one identical attribute, the average
+runtime was `110,536 ms` for all multilevel algorithms. For two identical
+attributes, the average runtime for all multilevel algorithms was `112,437 ms`.
+For all identical attributes, the average runtime for all multilevel algorithms
+was `146,014 ms`. However, for all non-multilevel algorithms, the average
+runtime was `36,525 ms` for one identical attribute, `36,267 ms` for two
+identical attributes, and `36,976` for all identical attributes. This shows
+that runtime increases for multilevel algorithms but not for non-multilevel
+algorithms in relation to the number of identical attributes. 
 
-Another factor impacting the runtime performance of the different sorting algorithms is the percentage of lines containing identical attributes. For all multilevel sorting algorithms, the average time for files with `25%` of lines containing identical attributes was `88,643 ms`, for 50% was `109,786 ms`, and for 100% was `170,449 ms`. The average for all non-multilevel sorting algorithms was `45,896 ms` for 25%, `36,823 ms` for 50%, and `26941 ms` for 100%. This shows that, for increasing percentages of lines with identical attributes, the multilevel sorting algorithms have a slower runtime while the non-multilevel sorting algorithms have a faster runtime.
+Another factor impacting the runtime performance of the different sorting
+algorithms is the percentage of lines containing identical attributes. For all
+multilevel sorting algorithms, the average time for files with `25%` of lines
+containing identical attributes was `88,643 ms`, for 50% was `109,786 ms`, and
+for 100% was `170,449 ms`. The average for all non-multilevel sorting
+algorithms was `45,896 ms` for 25%, `36,823 ms` for 50%, and `26941 ms` for
+100%. This shows that, for increasing percentages of lines with identical
+attributes, the multilevel sorting algorithms have a slower runtime while the
+non-multilevel sorting algorithms have a faster runtime.
 
 # Conclusion
 
-Our data conclusively demonstrates that duplicate primary attributes exponentially increase sorting times, with `multi-level bubblesort` runtime (368% slower than single-attribute). A critical 50% duplication threshold emerges: beyond this, `bubblesort` becomes impractical and `quicksort` slows by 8.3×, while `timsort` defies theory—improving 2.1× via adaptive optimizations.
+Our data conclusively demonstrates that duplicate primary attributes
+exponentially increase sorting times, with `multi-level bubblesort` runtime
+(368% slower than single-attribute). A critical 50% duplication threshold
+emerges: beyond this, `bubblesort` becomes impractical and `quicksort` slows by
+8.3×, while `timsort` defies theory—improving 2.1× via adaptive optimizations.
 
-We can show signifigant evidence that `tim sort` is the optimal choice in regards to sorting with configurable attribute prioritization. Our results heavily concure that the `tim sort` algorithm consistently outperforms `quicksort` and completely outclasses the `bubblesort`. Especially within the best case time complexity. Using these algorithms we also evaluate how windows and its differences in handling recursion can slow the sorting process especially in multilevel sorting. So while `quicksort` could be a viable option for smaller list, you have to expect some trade offs when using certain cpus. `tim sort` has shown significant prospects in its ability to manage large list and multilevel sorting, so much so that it is the best bet for fast and optimal sorting processes.
+We can show significant evidence that `tim sort` is the optimal choice in
+regards to sorting with configurable attribute prioritization. Our results
+confirm that the `tim sort` algorithm consistently outperforms `quicksort` and
+completely outclasses the `bubblesort`. Especially within the best case time
+complexity. Using these algorithms we also evaluate how windows and its
+differences in handling recursion can slow the sorting process especially in
+multilevel sorting. So while `quicksort` could be a viable option for smaller
+list, you have to expect some trade offs when using certain CPUs. `tim sort`
+has shown significant prospects in its ability to manage large list and
+multilevel sorting, so much so that it is the best bet for fast and optimal
+sorting processes.
 
-# Future work
+# Future Work
 
-While our multi-level sorting implementation provides robust tie-breaking capabilities, several key enhancements could improve both usability and performance:
+While our multi-level sorting implementation provides robust tie-breaking
+capabilities, several key enhancements could improve both usability and
+performance:
 
 ## 1. Dynamic Tie-Breaker Specification 
 
 **Current Limitation**:
 
-Tie-breaking attributes follow a fixed priority order (`name → country → phone_number → job → email`), regardless of dataset characteristics.
+Tie-breaking attributes follow a fixed priority order (`name → country →
+phone_number → job → email`), regardless of dataset characteristics.
 
 **Proposed Improvement**:
 
-Allowing user-defined secondary attributes would enable dynamic prioritization—instead of a fixed tie-breaker order, users could specify which attribute to use as the "second most important" when primary duplicates occur. This would reduce unnecessary comparisons for datasets where certain attributes (e.g., `email` vs. `phone_number`) are more likely to resolve ties quickly.
+Allowing user-defined secondary attributes would enable dynamic
+prioritization—instead of a fixed tie-breaker order, users could specify which
+attribute to use as the "second most important" when primary duplicates occur.
+This would reduce unnecessary comparisons for datasets where certain attributes
+(e.g., `email` vs. `phone_number`) are more likely to resolve ties quickly.
 
-## 2. Adaptive Comparision Depth 
+## 2. Adaptive Comparison Depth 
 
-**Proposed Improvements**: We could halt attribute checks once a tie is definitively resolved, avoiding redundant evaluations of lower-priority fields. We could automatically try to implement an algorithm which switch between `bubblesort` (for small datasets) and `timsort` (for larger ones), leveraging `bubblesort`’s simplicity for n < 1,000 while retaining `timsort`'s scalability.
+**Proposed Improvements**: We could halt attribute checks once a tie is
+definitively resolved, avoiding redundant evaluations of lower-priority fields.
+We could automatically try to implement an algorithm which switch between
+`bubblesort` (for small datasets) and `timsort` (for larger ones), leveraging
+`bubblesort`’s simplicity for n < 1,000 while retaining `timsort`'s
+scalability.
 
 ## 3. Cost-Aware Attribute Ordering 
 
-**Proposed Improvements**: We could also optimize performance by prioritizing attributes with faster comparison operations (e.g., numeric phone_number over string-based job), potentially cutting comparison time.
+**Proposed Improvements**: We could also optimize performance by prioritizing
+attributes with faster comparison operations (e.g., numeric `phone_number` over
+string-based `job`), potentially cutting comparison time.
