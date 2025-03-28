@@ -107,12 +107,14 @@ optimization, allowing us to simultaneously consider both test execution time
 and code coverage.
 
 The mapping process ensures proper handling of edge cases:
+
 - Failed or skipped tests are assigned zero coverage values
 - Tests with zero duration are handled gracefully
 - Each test case is correctly associated with its corresponding module's coverage data
 - The data is structured appropriately for both traditional and multi-objective analysis approaches
 
 This data preparation pipeline enables us to:
+
 - Compare the effectiveness of different test prioritization approaches
 - Analyze the trade-offs between test execution time and coverage
 - Generate reproducible results for both traditional and NSGA-II algorithms
