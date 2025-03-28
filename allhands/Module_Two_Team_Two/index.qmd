@@ -177,4 +177,23 @@ competitor index pairs passed in.
 
 ## The Results
 
+In this experiment, we focused on comparing the runtime performance of three algorithms—NSGA-II, QuickSort, and Bucket Sort—by measuring their runtime with a single factor in mind: coverage. We conducted tests on a single dataset and recorded the time taken by each algorithm to complete the task.
+
+The results from the experiment are summarized in the following table:
+
+| Dataset Size |     NSGA2 (ms)   | QuickSort (ms) | Bucket Sort (ms) |
+|--------------|------------------|----------------|------------------|
+| 92 lines     |       7.38       |     0.3        |      0.13        |
+
+- Observations:
+
+NSGA-II had the highest runtime, which is expected given its complexity and the nature of multi-objective optimization tasks. Its process of evolving solutions requires significant computational overhead, making it less efficient for simple tasks like sorting or coverage evaluation.
+
+QuickSort, a well-known sorting algorithm, performed significantly faster than NSGA-II, reflecting its efficiency in handling ordered data. With its average time complexity of O(N log N), QuickSort proved well-suited for the task, even as the dataset size was relatively small.
+
+Bucket Sort, with its near-linear time complexity under optimal conditions, demonstrated the fastest performance in this experiment, significantly outperforming both NSGA-II and QuickSort on the given dataset.
+
+
 ## Conclusion
+
+The results of this experiment indicate that, under the tested scenario, NSGA-II did not outperform the algorithms we compared it to (QuickSort and Bucket Sort). Given that these algorithms are designed for fundamentally different purposes, the performance discrepancy is expected. Our tests were conducted in a context that favored QuickSort & Bucketsort, which is inherently more efficient for the sorting tasks at hand. Consequently, while NSGA-II excels in multi-objective optimization, it is not suited for tasks where traditional sorting algorithms like QuickSort are more appropriate.
