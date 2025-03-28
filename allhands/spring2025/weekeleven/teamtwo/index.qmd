@@ -163,7 +163,7 @@ the best results with the least amount of time.
 
 ### The Bucket Sort Algorithm
 
-I selected the Bucket Sort algorithm for this experiment due to its efficiency
+We selected the Bucket Sort algorithm for this experiment due to its efficiency
 in distributing and sorting data across multiple buckets. With an average time
 complexity of O(n + k), Bucket Sort is well-suited for handling large datasets,
 especially when the input is uniformly distributed. Unlike comparison-based
@@ -341,24 +341,32 @@ accordance with multiple factors is needed. Also, the results from this
 algorithm are often more than one test case, so the user is given a list of a
 few optimal test cases to run instead of just one test case.
 
-QuickSort, a well-known sorting algorithm, performed significantly faster than NSGA-II, reflecting its efficiency in handling
-ordered data. With its average time complexity of O(N log N), QuickSort proved well-suited for the task, even as the dataset
-size was relatively small. This algorithm produces the top test case according to a ratio of duration divided by the number of
-lines covered. Seeing as that ratio is all that is used to sort the test cases, the results may differ from those produced by
-NSGA-II. This algorithm is effective for simple sorting tasks like when it was given the ratio mentioned above.
+QuickSort, a well-known sorting algorithm, performed significantly faster than
+NSGA-II, reflecting its efficiency in handling ordered data. With its average
+time complexity of O(N log N), QuickSort proved well-suited for the task, even
+as the dataset size was relatively small. This algorithm produces the top test
+case according to a ratio of duration divided by the number of lines covered.
+Seeing as that ratio is all that is used to sort the test cases, the results may
+differ from those produced by NSGA-II. This algorithm is effective for simple
+sorting tasks like when it was given the ratio mentioned above.
 
-Bucket Sort, with its near-linear time complexity under optimal conditions, demonstrated the fastest performance in this
-experiment, significantly outperforming both NSGA-II and QuickSort on the given dataset. This algorithm produces the top test
-case according to a ratio of duration divided by the number of lines covered. Like with quick sort, since that ratio is all
-that is used to sort the test cases, the algorithm's results may differ from those produced by NSGA-II. This algorithm is
-effective for simple sorting tasks like when it was given the ratio mentioned above. Plus, it does not use recursion like quick
-sort, making it the fastest sorting algorithm in our experiment.
-
+Bucket Sort, with its near-linear time complexity under optimal conditions,
+demonstrated the fastest performance in this experiment, significantly
+outperforming both NSGA-II and QuickSort on the given dataset. This algorithm
+produces the top test case according to a ratio of duration divided by the
+number of lines covered. Like with quick sort, since that ratio is all that is
+used to sort the test cases, the algorithm's results may differ from those
+produced by NSGA-II. This algorithm is effective for simple sorting tasks like
+when it was given the ratio mentioned above. Plus, it does not use recursion
+like quick sort, making it the fastest sorting algorithm in our experiment.
 
 ## Conclusion
 
-The results of this experiment indicate that, under the tested scenario, NSGA-II did not outperform the algorithms we compared
-it to (QuickSort and Bucket Sort). Given that these algorithms are designed for fundamentally different purposes, the
-performance discrepancy is expected. Our tests were conducted in a context that favored QuickSort & Bucketsort, which is
-inherently more efficient for the sorting tasks at hand. Consequently, while NSGA-II excels in multi-objective optimization, it
-is not suited for tasks where traditional sorting algorithms like QuickSort are more appropriate.
+The results of this experiment indicate that, under the tested scenario, NSGA-II
+did not outperform the algorithms we compared it to (QuickSort and Bucket Sort).
+Given that these algorithms are designed for fundamentally different purposes,
+the performance discrepancy is expected. Our tests were conducted in a context
+that favored QuickSort and Bucket Sort, which is inherently more efficient for
+the sorting tasks at hand. Consequently, while NSGA-II excels in multi-objective
+optimization, it is not suited for tasks where traditional sorting algorithms
+like QuickSort are more appropriate.
