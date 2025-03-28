@@ -217,6 +217,8 @@ The `sort_persons_timsort_multilevel` function compares the list with multiple a
 
 # Data
 
+To test out our algorithms we took a base input data base of 49,998 profiles of people with 5 randomized attributes that did not overlap. But we needed to have overlapping strings for attributes so we created a function to replace attributes in our base list with a new string. Then we randomized the position of each list of attributes to simulate a list with spread out variables. Using this we replace certain percentages of the data in the table to test how overlapping variables would effect run times. For our testing we thought it best to test data with two different factors percentage of duplicates and amount of attributes. So we tested with 25%, 50%, and 100% of duplicates in the data and with 1, 2 and all (5) attributes at those percentages as well as the control which had no overlaps
+
 ## Data Tables
 
 ## One Similar Attribute (MacOS)
