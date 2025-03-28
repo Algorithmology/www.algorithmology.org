@@ -129,17 +129,357 @@ def __add__(self, other: "ListQueueDisplay") -> "ListQueueDisplay":
 
 ### Benchmarking
 
+There are two main benchmarking function in our project.
+
+#### Basic analysis
+
+```python
+def analyze_queue(queue_class, size=1000):
+    """Analyze a queue implementation."""
+    approach = next(
+        (k for k, v in QUEUE_IMPLEMENTATIONS.items() if v == queue_class), None
+    )
+    if approach is None:
+        console.print("[red]Unknown queue implementation[/red]")
+        return
+
+    console.print(f"\n{approach.value.upper()} Queue Implementation")
+
+    try:
+        queue = queue_class()
+        operations = []
+
+        # Test enqueue
+        enqueue_time = time_operation(lambda: [queue.enqueue(i) for i in range(size)])
+        operations.append(("enqueue", enqueue_time, size))
+
+        # Test dequeue
+        dequeue_count = size // 2
+        dequeue_time = time_operation(
+            lambda: [queue.dequeue() for _ in range(dequeue_count)]
+        )
+        operations.append(("dequeue", dequeue_time, dequeue_count))
+
+        # Refill queue
+        for i in range(dequeue_count):
+            queue.enqueue(i)
+
+        # Test peek
+        peek_count = size // 3
+        peek_time = time_operation(lambda: [queue.peek() for _ in range(peek_count)])
+        operations.append(("peek", peek_time, peek_count))
+
+        # Test concat
+        other = queue_class()
+        for i in range(size // 10):
+            other.enqueue(i)
+        concat_time = time_operation(lambda: queue + other)
+        operations.append(("concat", concat_time, size // 10))
+
+        # Test iconcat
+        iconcat_time = time_operation(lambda: queue.__iadd__(other))
+        operations.append(("iconcat", iconcat_time, size // 10))
+
+        # Display results in table
+        table = Table(
+            title=f"{approach.value.upper()} Queue Performance Analysis",
+            box=box.ROUNDED,
+            show_header=True,
+            header_style="bold magenta",
+        )
+        table.add_column("Operation", style="cyan")
+        table.add_column("Time (ms)", justify="right")
+        table.add_column("Elements", justify="right")
+        table.add_column("Time/Element (ms)", justify="right")
+
+        for operation, time_taken, elements in operations:
+            time_per_element = time_taken / elements if elements > 0 else 0
+            table.add_row(
+                operation,
+                f"{time_taken * 1000:.6f}",  # Convert to milliseconds
+                f"{elements:,}",
+                f"{time_per_element * 1000:.6f}",  # Convert to milliseconds
+            )
+
+        console.print(Panel(table))
+
+    except Exception as e:
+        console.print(f"[red]Error testing {approach.value}: {str(e)}[/red]")
+        import traceback
+
+        console.print(traceback.format_exc())
+```
+
+This function performs a basic performance analysis with the following operations:
+- Enqueue: Adds size elements to the queue
+- Dequeue: Removes size/2 elements
+- Peek: Looks at size/3 elements without removing them
+- Concat: Concatenates with another queue of size size/10
+- Iconcat: In-place concatenation with another queue of size size/10
+
+#### Doubling experiment
+
+```python
+
+def doubling(
+    initial_size: int = typer.Option(100, help="Initial size for doubling experiment"),
+    max_size: int = typer.Option(1000, help="Maximum size for doubling experiment"),
+    dll: bool = typer.Option(True, help="Test DLL implementation"),
+    sll: bool = typer.Option(True, help="Test SLL implementation"),
+    array: bool = typer.Option(True, help="Test Array implementation"),
+):
+    """Run doubling experiment on queue implementations."""
+    # Create results directory if it doesn't exist
+    results_dir = Path("results")
+    results_dir.mkdir(exist_ok=True)
+
+    sizes = []
+    current_size = initial_size
+    while current_size <= max_size:
+        sizes.append(current_size)
+        current_size *= 2
+
+    # Dictionary to store all results for plotting
+    all_results = {}
+
+    for approach, queue_class in QUEUE_IMPLEMENTATIONS.items():
+        if not (
+            (approach == QueueApproach.dll and dll)
+            or (approach == QueueApproach.sll and sll)
+            or (approach == QueueApproach.array and array)
+        ):
+            continue
+
+        try:
+            console.print(f"\n{approach.value.upper()} Queue Implementation")
+            results = {
+                "enqueue": [],
+                "dequeue": [],
+                "peek": [],
+                "concat": [],
+                "iconcat": [],
+            }
+
+            for size in sizes:
+                queue = queue_class()
+
+                # Enqueue
+                enqueue_time = time_operation(
+                    lambda: [queue.enqueue(i) for i in range(size)]
+                )
+                results["enqueue"].append(enqueue_time)
+
+                # Dequeue
+                dequeue_time = time_operation(
+                    lambda: [queue.dequeue() for _ in range(size // 2)]
+                )
+                results["dequeue"].append(dequeue_time)
+
+                # Refill queue
+                for i in range(size // 2):
+                    queue.enqueue(i)
+
+                # Peek
+                peek_time = time_operation(
+                    lambda: [queue.peek() for _ in range(size // 3)]
+                )
+                results["peek"].append(peek_time)
+
+                # Concat
+                other = queue_class()
+                for i in range(size // 10):
+                    other.enqueue(i)
+
+                concat_time = time_operation(lambda: queue + other)
+                results["concat"].append(concat_time)
+
+                # Iconcat
+                iconcat_time = time_operation(lambda: queue.__iadd__(other))
+                results["iconcat"].append(iconcat_time)
+
+            # Store results for plotting
+            all_results[approach.value] = results
+
+            # Display results in table
+            table = Table(
+                title=f"{approach.value.upper()} Queue Doubling Experiment Results",
+                box=box.ROUNDED,
+                show_header=True,
+                header_style="bold magenta",
+            )
+            table.add_column("Size (n)", justify="right")
+            for operation in results.keys():
+                table.add_column(operation, justify="right")
+
+            for i, size in enumerate(sizes):
+                row = [f"{size:,}"]
+                for operation in results.keys():
+                    value = results[operation][i]
+                    if np.isnan(value):  # Check for NaN
+                        row.append("N/A")
+                    else:
+                        row.append(f"{value * 1000:.6f}")  # Convert to milliseconds
+                table.add_row(*row)
+
+            console.print(Panel(table))
+
+        except Exception as e:
+            console.print(f"[red]Error testing {approach.value}: {str(e)}[/red]")
+            import traceback
+
+            console.print(traceback.format_exc())
+
+    # Generate and save plots
+    plot_results(sizes, all_results, results_dir)
+    console.print(f"[green]Plots saved to [bold]{results_dir}[/bold] directory[/green]")
+
+```
+
+This doubling experiment does the following
+- Starts with initial_size and doubles the size until reaching max_size
+- For each size, measures the same operations as the basic analysis
+- Generates plots to visualize the results
+
+#### Key benchmarking feature
+
+##### Timing Mechanism
+
+```python
+
+def time_operation(func):
+    """Time an operation using high-precision counter."""
+    try:
+        # Warm up
+        func()
+
+        # Actual timing
+        start_time = perf_counter()
+        func()
+        elapsed = perf_counter() - start_time
+        return elapsed
+    except Exception as e:
+        console.print(f"[red]Error during operation: {str(e)}[/red]")
+        return float("nan")
+```
+
+- Uses perf_counter() for high-precision timing
+- Includes a warm-up run to avoid cold-start penalties
+- Returns elapsed time in seconds
+
+##### Result Visualization
+
+```python
+def plot_results(sizes, all_results, results_dir):
+    """Generate and save plots for doubling experiment results."""
+    operations = ["enqueue", "dequeue", "peek", "concat", "iconcat"]
+
+    # Create log-log plots for each operation (keeping only these, removing regular operation plots)
+    for operation in operations:
+        # Skip regular plots for operations - only create log-log plots
+        if len(sizes) > 2:  # Only create log plots if we have enough data points
+            plt.figure(figsize=(10, 6))
+
+            for impl, results in all_results.items():
+                times = np.array(results[operation]) * 1000  # Convert to milliseconds
+                if np.all(times > 0):  # Avoid log(0)
+                    plt.loglog(
+                        sizes, times, marker="o", label=f"{impl.upper()}", linewidth=2
+                    )
+
+            # Add reference lines for O(1), O(n), O(n²)
+            x_range = np.array(sizes)
+            # Add O(1) reference
+            plt.loglog(
+                x_range, np.ones_like(x_range) * times[0], "--", label="O(1)", alpha=0.5
+            )
+            # Add O(n) reference - scale to fit
+            plt.loglog(
+                x_range,
+                x_range * (times[0] / x_range[0]),
+                "--",
+                label="O(n)",
+                alpha=0.5,
+            )
+            # Add O(n²) reference - scale to fit
+            plt.loglog(
+                x_range,
+                np.power(x_range, 2) * (times[0] / np.power(x_range[0], 2)),
+                "--",
+                label="O(n²)",
+                alpha=0.5,
+            )
+
+            plt.title(
+                f"Log-Log Plot for {operation.capitalize()} Operation", fontsize=16
+            )
+            plt.xlabel("Log Queue Size", fontsize=14)
+            plt.ylabel("Log Time (ms)", fontsize=14)
+            plt.grid(True, which="both", linestyle="--", alpha=0.5)
+            plt.legend(fontsize=12)
+            plt.tight_layout()
+
+            # Save log-log plot
+            log_plot_path = results_dir / f"{operation}_loglog_plot.png"
+            plt.savefig(log_plot_path)
+            plt.close()
+
+    # Create regular performance plots for each implementation (keeping these, removing log-scale implementation plots)
+    for impl, results in all_results.items():
+        plt.figure(figsize=(10, 6))
+
+        for operation in operations:
+            times = np.array(results[operation]) * 1000  # Convert to milliseconds
+            plt.plot(sizes, times, marker="o", label=operation, linewidth=2)
+
+        plt.title(f"{impl.upper()} Queue Implementation Performance", fontsize=16)
+        plt.xlabel("Queue Size (n)", fontsize=14)
+        plt.ylabel("Time (ms)", fontsize=14)
+        plt.grid(True, linestyle="--", alpha=0.7)
+        plt.legend(fontsize=12)
+        plt.tight_layout()
+
+        # Save plot
+        plot_path = results_dir / f"{impl}_performance.png"
+        plt.savefig(plot_path)
+        plt.close()
+```
+- Creates log-log plots for each operation to show algorithmic complexity
+- Generates regular performance plots for each implementation
+- Saves all plots to a results directory
+
+##### Error Handling
+
+- Gracefully handles exceptions during benchmarking
+- Report errors with detailed tracebacks
+- Continues testing other implementations if one fails
+
+##### Output Format:
+
+- Uses Rich library for formatted console output
+- Displays results in tables with:
+   - Operation name
+   - Time taken (in milliseconds)
+   - Number of elements
+   - Time per element
+
 ## Running and Using the Tool
+
+The benchmarking supports three queue implementations:
+- DLL (Doubly Linked List)
+- SLL (Singly Linked List)
+- Array-based Queue
 
 ### Setting Up
 
 To run the benchmarking tool, ensure you have Poetry installed onto your device. Navigate to the project directory and install dependencies if you have not already:
 
-`poetry install`
+`cd analyze && poetry install`
 
 ### Running the Experiments
 
-The tool provides two main benchmarking experiments:
+The tool provides two main benchmarking experiments which can also be access by 
+
+`poetry run analyze --help`
 
 #### Doubling Experiment
 
@@ -147,7 +487,11 @@ To run the doubling experiment, execute:
 
 `poetry run analyze doubling`
 
-This experiment measures how performance will scale with the increasing input sizes.
+This experiment measures how performance will scale with the increasing input sizes. 
+
+You can also run:
+`poetry run analyze doubling --help`
+for more details and detailed apporach
 
 #### Implementation Performance Analysis
 
@@ -155,7 +499,11 @@ To analyze the performance of individual queue operations, run:
 
 `poetry run analyze analyze`
 
-this command will provide execution times for operations like `addList`, `dequeue`, and `enqueue` to compare their efficiency.
+This command will provide execution times for operations like `peek`, `dequeue`, and `enqueue` to compare their efficiency.
+
+You can also run:
+`poetry run analyze analyze --help`
+for more details and detailed apporach
 
 ## Output Analysis
 
