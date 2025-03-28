@@ -10,15 +10,16 @@ toc: true
 
 # Introduction
 
-This investigation seeks to answer a deceptively simple question with far-reaching
-implications, which method: recursive, iterative, or memoized - is fastest to build a
-Fibonacci sequence?
+This investigation seeks to answer a deceptively simple question with
+far-reaching implications: which method --- recursive, iterative, or memoized
+--- is the fastest to build a Fibonacci sequence?
 
-To evaluate these different approaches, we put them to the test by employing them to
-generate a Fibonacci sequence. Using precise timing measurements, we systematically
-compare how long each approach takes to compute these sequences. This head-to-head
-performance testing allows us to reveal differences in efficiency and ultimately enables
-us to determine which approach delivers results the fastest.
+To evaluate these different approaches, we put them to the test by employing
+them to generate a Fibonacci sequence. Using precise timing measurements, we
+systematically compare how long each approach takes to compute these sequences.
+This head-to-head performance testing allows us to reveal differences in
+efficiency and ultimately enables us to determine which approach delivers
+results the fastest.
 
 ## Motivation
 
