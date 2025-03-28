@@ -290,54 +290,61 @@ the `Quantity` and `Approach` columns.
 
 This is a chart using the values in the `Averages` table above, for the Iterative and Memoization approaches.
 
-![Line Graph with Time on the Vertical Axis and Approach on the Horizontal Axis for Iterative and Memoization](./images/chart_im.png)
+![Line Graph with Time on the Vertical Axis and Approach on the Horizontal Axis for Iterative and Memoization.](./images/chart_im.png)
 
 ## Recursive
 
 This is a chart using the values in the `Averages` table above, for the Recursive approach.
 
-![Line Graph with Time on the Vertical Axis and Approach on the Horizontal Axis for Recursive](./images/chart_r.png)
+![Line Graph with Time on the Vertical Axis and Approach on the Horizontal Axis for Recursive.](./images/chart_r.png)
 
 # Results
 
-Our results from running our Fibonacci sequence experiments, using iterative, recursive, and 
-memoized approaches show clear performance differences, with respect to time. The iterative 
-method consistently performed the fastest across all test cases, with an average runtime of 
-`0.000017121 sec` with our largest experiment input. This shows that even as the sequence size 
-increased, the iterative approach maintained its efficiency, proving a worst case time complexity 
-of $O(n)$. In contrast, the recursive approach showed exponential time complexity $O(2^n)$, 
-as our execution times skyrocket as the sequence size grew. While manageable for small inputs, 
-the recursive method is impractical for larger Fibonacci numbers, as seen in the drastic jump to 
-execution times. Our results highlight the inefficiency of recursion, which can be attributed 
-to redundant calculations and the cost associated with function call overhead.
+Our results from running our Fibonacci sequence experiments, using iterative,
+recursive, and memoized approaches show clear performance differences, with
+respect to time. The iterative method consistently performed the fastest across
+all test cases, with an average runtime of `0.000017121 sec` with our largest
+experiment input. This shows that even as the sequence size increased, the
+iterative approach maintained its efficiency, demonstrating a worst case time
+complexity of $O(n)$. In contrast, the recursive approach showed exponential
+time complexity $O(2^n)$, as our execution times skyrocket as the sequence size
+grew. While manageable for small inputs, the recursive method is impractical for
+larger Fibonacci numbers, as seen in the drastic jump to execution times. Our
+results highlight the inefficiency of recursion, which can be attributed to
+redundant calculations and the cost associated with function call overhead.
 
-The memoized approach, which optimizes recursion by storing previously computed values, improved 
-performance over the recursive approach. While not as fast as the iterative approach, memoization 
-reduced run time compared to recursion, with an average runtime of `0.000111318 sec` with our largest 
-experimental input. Interestingly, if you view the above image highlight the time complexity of each approach,
-you will notice as the values increase for the memoization, you begin to see a plateau, showing that an 
-increase in previously calculated results starts to drastically effect the run time as our values increase. 
-Overall, our results suggest that for computing Fibonacci numbers, the iterative method is the best choice for
-run time efficiency, while memoization provides a viable compromise when a recursive approach is necessary.
+The memoized approach, which optimizes recursion by storing previously computed
+values, improved performance over the recursive approach. While not as fast as
+the iterative approach, memoization reduced run time compared to recursion, with
+an average runtime of `0.000111318 sec` with our largest experimental input.
+Interestingly, if you view the above image highlight the time complexity of each
+approach, you will notice as the values increase for the memoization, you begin
+to see a plateau, showing that an increase in previously calculated results
+starts to drastically effect the run time as our values increase. Overall, our
+results suggest that for computing Fibonacci numbers, the iterative method is
+the best choice for run time efficiency, while memoization provides a viable
+compromise when a recursive approach is necessary.
 
-Importantly, our results are ran and averaged across a variety of operating systems, including Windows and macOS,
-in order to provide the most inclusive and well-rounded analysis possible.
+Importantly, our results are ran and averaged across a variety of operating
+systems, including Windows and macOS, in order to provide the most inclusive and
+well-rounded analysis possible.
 
 # Next Steps
 
 Potential next steps for our understanding of the most efficient method of
-finding fibonacci numbers could include incorporating additional methods or
+finding Fibonacci numbers could include incorporating additional methods or
 finding the smallest/largest quantity that can be utilized with said methods.
 
 # References
 
-These references were utilized during the creation of the experimental harness used to generate the empirical data referenced in this write-up.
+These references were utilized during the creation of the experimental harness
+used to generate the empirical data referenced in this write-up.
 
 * <https://www.geeksforgeeks.org/>
   * General information on Fibonacci sequence
 * GitHub Copilot
-  * debugging & comment generation
+  * Debugging & comment generation
 * <https://github.com/Allegheny-Computer-Science-202-S2025/computer-science-202-algorithm-engineering-project-2-krishatcher>
-  * timing and output logic in this repo influenced by AEP 2
+  * Timing and output logic in this repo influenced by AEP 2
 * <https://stackoverflow.com/questions/2819625/how-to-use-a-callable-as-the-setup-with-timeit-timer>
-  * successfully using the `timeit` library
+  * Successfully using the `timeit` library
