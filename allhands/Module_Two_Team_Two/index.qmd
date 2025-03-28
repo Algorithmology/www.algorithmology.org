@@ -1,5 +1,5 @@
 ---
-author: [Molly Suppo, Daniel Bekele, Rosa Ruiz, Add Name here, Add Name Here]
+author: [Molly Suppo, Daniel Bekele, Rosa Ruiz, Darius Googe, Add Name Here]
 title: "Investigating Test Priotitization in Traditional Sorting Algorithms vs. a Multi Objective Sorting Algorithm"
 page-layout: full
 categories: [post, sorting, comparison]
@@ -120,7 +120,77 @@ def quicksort(arr: List[Any]) -> List[Any]:
 This approach minimizes the risk of worst-case performance and ensures the most efficient tests are prioritized,
 optimizing the testing process by focusing on the best results with the least amount of time.
 
-### The Bubble Sort Algorithm
+### The Bucket Sort Algorithm
+
+I selected the Bucket Sort algorithm for this experiment due to its efficiency in distributing and sorting data across multiple buckets. With an average time complexity of O(n + k), Bucket Sort is well-suited for handling large datasets, especially when the input is uniformly distributed. Unlike comparison-based algorithms like Quick Sort, it efficiently categorizes elements into buckets and sorts them individually, reducing the overall sorting overhead.  
+
+In this implementation, Bucket Sort organizes test cases based on the coverage/time ratio. The algorithm first distributes the test cases into buckets according to their values, ensuring that similar elements are grouped together. Each bucket is then sorted individually using an appropriate sorting method, such as Insertion Sort, before being concatenated to form the final sorted list. This process ensures that test cases with the lowest coverage/time ratio are prioritized, optimizing test execution order.
+
+```python
+import json
+import os
+from typing import List, Dict, Any
+
+# Function to perform bucket sort on test cases based on a given attribute
+def bucket_sort(data: List[Dict[str, Any]], attribute: str) -> List[Dict[str, Any]]:
+    """Sort a list of dictionaries using bucket sort based on a given attribute."""
+    max_value = max(item[attribute] for item in data)  # Find the maximum value of the attribute
+    buckets = [[] for _ in range(int(max_value) + 1)]  # Create buckets
+
+    for item in data:  # Place each item in the appropriate bucket
+        buckets[int(item[attribute])].append(item)
+
+    sorted_data = []  # Concatenate all buckets into a sorted list
+    for bucket in buckets:
+        sorted_data.extend(bucket)
+
+    return sorted_data  # Return the sorted list
+
+# Function to load data from a JSON file
+def load_data(file_path: str) -> List[Dict[str, Any]]:
+    """Load data from a JSON file."""
+    if not os.path.exists(file_path):  # Check if the file exists
+        raise FileNotFoundError(f"File not found: {file_path}")
+    with open(file_path, 'r') as f:
+        data = json.load(f)
+    return data  # Return the loaded data
+
+# Function to find the test case with the highest coverage
+def find_highest_coverage_test_case(sorted_tests: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """Finds the test case with the highest coverage."""
+    highest_coverage_test: Dict[str, Any] = sorted_tests[0]  # Start with the first test case
+    for test in sorted_tests:  # Loop through all test cases
+        if test['coverage'] > highest_coverage_test['coverage']:
+            highest_coverage_test = test  # Update the test case with the highest coverage
+    return highest_coverage_test  # Return the test case with the largest coverage
+
+# Main function to execute the script
+def main():
+    file_path = 'data/newtryingToCompute.json'  # Path to your test metrics file
+
+    # Debugging: Print the absolute path being used
+    print(f"Looking for file at: {os.path.abspath(file_path)}")
+
+    try:
+        data = load_data(file_path)  # Load the test metrics data
+    except FileNotFoundError as e:
+        print(e)
+        return
+
+    sorted_tests_by_coverage: List[Dict[str, Any]] = bucket_sort(data, 'coverage')  # Sort by coverage
+    highest_coverage_test_case: Dict[str, Any] = find_highest_coverage_test_case(sorted_tests_by_coverage)  # Find the highest coverage
+
+    # Print the results
+    print("\n🌟 Results 🌟")
+    print("\n🚀 Test Case with Highest Coverage:")
+    print(f"Test Name: {highest_coverage_test_case['name']}")
+    print(f"Coverage: {highest_coverage_test_case['coverage']}")
+
+# Entry point of the script
+if __name__ == "__main__":
+    main()
+```
+This approach reduces the likelihood of uneven data distribution, ensuring efficient sorting and prioritization of test cases. By grouping similar values into buckets and sorting them individually, the testing process is optimized, focusing on the most effective test cases with minimal execution time.
 
 ### The NSGA-II Multi Objective Algorithm
 
