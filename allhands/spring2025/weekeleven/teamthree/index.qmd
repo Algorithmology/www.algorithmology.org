@@ -187,13 +187,14 @@ nor does it need extra memory to store past results (unlike memoization).
 
 ### Run a Benchmark
 
-The main.py file was implemented with the goal of calling the methods from approach.py and
-analyze.py with a Typer interface for the command line interface and a Console for the output.
-A main function is then defined which allows for user inputs that define the quantity
-(number of Fibonacci numbers computed) and the method used (Iterative, recursive, or
-memoization). The Timeit module is imported to allow for the console to include the
-time the methods ran for in the output. Finally, the run times are printed out in
-a table for comparison between different fibonacci numbers and approaches.
+The main.py file was implemented with the goal of calling the methods from
+approach.py and `analyze.py` with a `Typer` interface for the command line
+interface and a `Console` for the output. A `main` function is then defined
+which allows for user inputs that define the quantity (number of `Fibonacci`
+numbers computed) and the method used (Iterative, recursive, or memoization).
+The `timeit` module is imported to allow for the console to include the time the
+methods ran for in the output. Finally, the execution times are displayed in a
+table for comparison between different fibonacci numbers and approaches.
 
 ```python
     if approach == GenerationApproach.ITERATIVE:
