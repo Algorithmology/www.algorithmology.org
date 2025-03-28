@@ -23,26 +23,29 @@ results the fastest.
 
 ## Motivation
 
-The motivation for this comparison stems from real-world programming challenges. While
-all three approaches can correctly generate Fibonacci sequences, their performance
-characteristics differ. Developers frequently encounter situations where choosing the
-wrong implementation leads to sluggish performance, unresponsive applications, or even
-complete system failures. By systematically comparing these methods, we provide actionable
-insights that can prevent such issues.
+The motivation for this comparison stems from real-world programming challenges.
+While all three approaches can correctly generate Fibonacci sequences, their
+performance characteristics differ. Developers frequently encounter situations
+where choosing the wrong implementation leads to sluggish performance,
+unresponsive applications, or even complete system failures. By systematically
+comparing these methods, we provide actionable insights that can prevent such
+issues.
 
-To conduct a fair comparison of these approaches we implemented each approach as separate,
-testable units and subjected them to benchmarking. This mimicked the conditions under which
-professional developers evaluate competing solutions and allowed us to yield practical
-concrete data which can ultimately used to help inform implementation decisions.
+To conduct a fair comparison of these approaches we implemented each approach as
+separate, testable units and subjected them to benchmarking. This mimicked the
+conditions under which professional developers evaluate competing solutions and
+allowed us to yield practical concrete data which can ultimately used to help
+inform implementation decisions.
 
 ## Approach
 
 ### Generate Fibonacci using a Recursive approach
 
-The recursive approach computes Fibonacci numbers by repeatedly calling the function itself.
-However, this method is highly inefficient because it recalculates the same values multiple
-times. For example, to compute fibonacci_recursive(5), the function computes
-fibonacci_recursive(2) three times:
+The recursive approach computes Fibonacci numbers by repeatedly calling the
+function itself. However, this method is highly inefficient because it
+recalculates the same values multiple times. For example, to compute
+`fibonacci_recursive(5)`, the function computes `fibonacci_recursive(2)` three
+times:
 
 ```python
 fibonacci_recursive(5)
