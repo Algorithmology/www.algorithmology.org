@@ -112,19 +112,16 @@ def __add__(self, other: "ListQueueDisplay") -> "ListQueueDisplay":
 ### SLL Queue Considerations
 - Simpler structure with less memory overhead per node
 - Forward-only traversal limits some operations
-- Uses tail pointer for O(1) enqueue operations
 - Efficient concatenation due to tail pointer
 
 ### DLL Queue Considerations
 - Bidirectional links enable more flexible operations
 - Higher memory usage due to extra pointer per node
-- All operations including concatenation are O(1)
 - Supports easy traversal in both directions
 
 ### Array-based Queue Considerations
 - No manual pointer management needed
 - Leverages efficient implementation of Python's `deque`
-- Basic operations are O(1), but concatenation is O(n)
 - Internal array may require occasional reallocation
 
 ### Benchmarking
@@ -972,3 +969,10 @@ The choice of queue implementation should be based on the specific requirements 
 - For applications requiring frequent concatenation and dynamic size changes, either DLL or SLL implementation would be more suitable
 - SLL provides a good balance between memory efficiency and functionality, while DLL offers the most flexibility at the cost of higher memory overhead
 The performance analysis shows that there is no "one-size-fits-all" solution, and the optimal choice depends on the specific use case and requirements of the application.
+
+
+#### Future Works
+
+- Analyzing performance under varying workloads and larger data sizes
+- Measuring memory usage across different implementations
+- Develops and experiment with hybrid implementations that combine strengths of different approaches 
