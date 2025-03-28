@@ -930,14 +930,45 @@ ARRAY Queue Implementation
 
 #### Run of Performance Analysis
 
-I am going to talk about the performance analysis of the three queue implementations: SLL, DLL, and Array when running operations like removeFirst, removeLast, addFirst, addLast, peek, dequeue, enqueue, and concat.
+##### Key Finding
 
-First, I want to explain the performance analysis of the SLL queue implementation. The SLL stores a list of elements and accesses the elements in a linear way, so the time complexity of the SLL queue implementation is O(n) for most operations. The SLL has one exception: thanks to its head pointer, the addFirst operation is O(1). For example, in the doubling experiment, the addFirst operation for the SLL took only 0.0065 ms for 1 element, while addLast took 1.0246 ms for 1,000 elements because it requires traversing the list.
+- The Array implementation maintains its O(1) behavior for basic operations even with large data sizes
+- The DLL and SLL implementations show clear O(n) behavior for enqueue operations with large data
+- All implementations show O(1) behavior for peek operations, even with large data
+- The Array implementation's concatenation operation shows clear O(n) behavior with large data
+- The linked list implementations (DLL and SLL) maintain O(1) behavior for concatenation operations
 
-The DLL queue implementation stores a list of elements as well, but it accesses the elements in a bidirectional way. This means the time complexity of the DLL for operations with the first and last items, such as addFirst and addLast, is O(1) due to the head and tail pointers. For instance, in the doubling experiment, the addLast operation for the DLL took 0.00353 ms for 100 elements and remained efficient even as the input size increased, taking only 0.0051 ms for 6,400 elements.
+##### Final Recommendations:
 
-What is a head and tail pointer?
+###### Use Array Queue
 
-These are pointers that reference the first and last elements of the linked list. When removing or adding elements at these positions, the list does not need to shift its elements. Instead, the pointers are updated to reference the next or previous node. In the SLL, there is only a head pointer, while in the DLL, there are both head and tail pointers.
+When:
+- Basic operations (enqueue, dequeue, peek) are the primary operations
+- Memory efficiency is crucial
+- Concatenation operations are rare
+- Fixed or predictable size is expected
 
-The Array-based Queue implementation uses a list of elements where the time complexity for accessing the first and last elements is O(1). However, adding or removing elements is only O(1) if the operation is at the end of the list. If the operation is at the beginning or in the middle, it becomes O(n) because all the elements need to shift to make space or fill the gap. For example, in the doubling experiment, the addFirst operation for the Array-based Queue took 0.00208 ms for 100 elements but increased to 0.00444 ms for 6,400 elements due to the shifting required.
+###### Use DLL Queue 
+
+When:
+- Concatenation operations are frequent
+- Bidirectional traversal is needed
+- Dynamic size changes are common
+- Memory overhead is not a concern
+
+###### Use SLL Queue 
+
+When:
+- Concatenation operations are frequent
+- Memory efficiency is important
+- Unidirectional traversal is sufficient
+- Dynamic size changes are common
+- Example: Task queue in a scheduler
+
+#### Conclusion
+
+The choice of queue implementation should be based on the specific requirements of the application:
+- For applications prioritizing basic operations and memory efficiency, the Array implementation is the best choice
+- For applications requiring frequent concatenation and dynamic size changes, either DLL or SLL implementation would be more suitable
+- SLL provides a good balance between memory efficiency and functionality, while DLL offers the most flexibility at the cost of higher memory overhead
+The performance analysis shows that there is no "one-size-fits-all" solution, and the optimal choice depends on the specific use case and requirements of the application.
