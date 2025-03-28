@@ -157,37 +157,33 @@ Below is the implementation of the Iterative approach that we used:
 ```python
 def fibonacci_iterative(n: int) -> int:
     """Generates the Fibonacci sequence up to the nth term using an iterative approach."""
-
-    # Handle negative inputs
+    # handle negative inputs
     if n < 0:
         raise ValueError("Input must be a positive integer.")
-
-    # Base cases
+    # base cases
     if n == 0:
         return 0
     if n == 1:
         return 1
-
-    # Initialize the first two Fibonacci numbers
+    # initialize the first two Fibonacci numbers
     a, b = 0, 1
-
-    # Iterate from 2 to n
+    # iterate from 2 to n
     for _ in range(2, n + 1):
-        # Update the Fibonacci numbers
+        # update the Fibonacci numbers
         a, b = b, a + b
-
-    # Return the nth Fibonacci number
+    # return the nth Fibonacci number
     return b
 ```
 
-This code works by checking if you ask for the 0th Fibonacci number, it immediately says "0".
-If you ask for the 1st number in the Fibonacci sequence, it says "1", and If you ask for a
-negative number, it gives an error. For any nth term above 1 the code looks at the last
-two numbers it wrote down ('a' and 'b') and adds them together to get the next number. It then
-"slides" the numbers over and the old 'b' becomes the new 'a', and the new sum becomes the new 'b'. 
+This code works by checking if you ask for the `0`th Fibonacci number, it
+immediately says `0`. If you ask for the 1st number in the Fibonacci sequence,
+it says `1`, and if you ask for a negative number, it gives an error. For any
+nth term above `1` the code looks at the last two numbers it wrote down (`a` and
+`b`) and adds them together to get the next number. It then "slides" the numbers
+over and the old `b` becomes the new `a`, and the new sum becomes the new `b`. 
 
-This means that tt doesn't re-calculate anything (unlike the recursive method), nor does it need
-extra memory to store past results (unlike memoization).
+This means that tt doesn't re-calculate anything (unlike the recursive method),
+nor does it need extra memory to store past results (unlike memoization).
 
 ### Run a Benchmark
 
