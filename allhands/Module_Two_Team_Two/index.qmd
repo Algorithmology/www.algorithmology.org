@@ -1,5 +1,5 @@
 ---
-author: [Molly Suppo, Daniel Bekele, Add Name Here, Add Name here, Add Name Here]
+author: [Molly Suppo, Daniel Bekele, Rosa Ruiz, Add Name here, Add Name Here]
 title: "Investigating Test Priotitization in Traditional Sorting Algorithms vs. a Multi Objective Sorting Algorithm"
 page-layout: full
 categories: [post, sorting, comparison]
@@ -87,6 +87,31 @@ objective algorithms, we had the NSGA-II sorting algorithm recommended to us by 
 that one. More specifics about each algorithm are below.
 
 ### The Quick Sort Algorithm
+
+I selected the Quick Sort algorithm for this experiment due to its efficiency in handling large datasets. With an average time complexity of O(n log n), Quick Sort is faster than simpler algorithms like Bubble Sort, making it ideal for optimizing test prioritization. The algorithm selects a random pivot to avoid worst-case performance (O(n²)) and recursively sorts the elements less than and greater than the pivot.
+
+In this implementation, Quick Sort organizes the test cases based on the coverage/time ratio. The data is partitioned around the pivot, with elements smaller than the pivot in the left partition and those greater in the right. The function recursively sorts both partitions, and once sorted, the pivot is placed between them to produce the final sorted list. This ensures that the most efficient tests (lowest coverage/time ratio) are prioritized.
+
+```python
+import json # Import the JSON module to handle JSON file operations
+import time # Import the time module to measure execution time
+import random  # Import random for selecting a random pivot in QuickSort
+from typing import List, Dict, Any
+
+
+def quicksort(arr: List[Any]) -> List[Any]:
+    """Sorts an array using the QuickSort algorithm with a random pivot."""
+    if len(arr) <= 1: # Base case if the array has 1 or no elements, it's already sorted
+        return arr
+    else:
+        pivot = random.choice(arr)  # Select a random pivot element from the array
+        left = [x for x in arr if x < pivot]  # Elements less than the pivot
+        right = [x for x in arr if x > pivot]  # Elements greater than the pivot
+        # Recursively sort the left and right partitions and combine them with the pivot
+        return quicksort(left) + [pivot] + quicksort(right)
+```
+
+This approach minimizes the risk of worst-case performance and ensures the most efficient tests are prioritized, optimizing the testing process by focusing on the best results with the least amount of time.
 
 ### The Bubble Sort Algorithm
 
