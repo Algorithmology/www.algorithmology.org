@@ -95,19 +95,20 @@ values of `n`. Therefore, the worst-time complexity is $O(n^2)$!
 
 ### Generate Fibonacci using a Memoized approach
 
-This implementation uses a concept we previously discussed in a class session: memoization. 
-Memoization is a technique that stores previously computed values to avoid redundant 
-calculations. Our implementation checks if `n` has already been computed, and if so, 
-it retrieves the value from memo, which saves on computation time. It uses a recursive
-approach to calculate the fibonacci value, but importantly it stores the result in 
-a dictionary `memo` to prevent recalculating the same values multiple times on future
-runs. This approach is particularly valuable for algorithms that exhibit overlapping 
-problems, or frequent use of similar calculations. Without memoization, recursive calls 
-can lead to exponential time complexity, making computations infeasible for large inputs. 
-However, by using a memoized approach and storing/reusing results, we found that our program
-is more efficient as `n` increases.
+This implementation uses a concept we previously discussed in a class session:
+memoization. Memoization is a technique that stores previously computed values
+to avoid redundant calculations. Our implementation checks if `n` has already
+been computed, and if so, it retrieves the value from memo, which saves on
+computation time. It uses a recursive approach to calculate the fibonacci value,
+but importantly it stores the result in a dictionary `memo` to prevent
+recalculating the same values multiple times on future runs. This approach is
+particularly valuable for algorithms that exhibit overlapping problems, or
+frequent use of similar calculations. Without memoization, recursive calls can
+lead to exponential time complexity, making computations infeasible for large
+inputs. However, by using a memoized approach and storing/reusing results, we
+found that our program is more efficient as `n` increases.
 
-Below I have included a section of this approach:
+Below we have included a section of this approach:
 
 ```python
 def fibonacci_generator(n: int, memo: Dict[int, int]) -> int:
