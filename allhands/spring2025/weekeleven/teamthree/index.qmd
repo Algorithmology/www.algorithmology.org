@@ -128,13 +128,15 @@ def fibonacci_generator(n: int, memo: Dict[int, int]) -> int:
     return memo[n]
 ```
 
-As you can see in the above code, this memoized approach takes in a possible dictionary,
-`memo` and stores already computed results in said dictionary. Then, when computing the
-fibonacci number, it first looks to see if it was already calculated, then if not, it performs
-a recursive approach to find the value. This approach, as mentioned before, allows for faster
-time complexity, especially as the number of runs increases and previously calculated results
-are already store. However, it is still important to understand and weight the trade-off of time
-complexity and memory usage when considering a memoized approach.
+As you can see in the above code, this memoized approach takes in a possible
+dictionary, `memo` and stores already computed results in said dictionary. Then,
+when computing the fibonacci number, it first looks to see if it was already
+calculated, then if not, it performs a recursive computation to find the value.
+This approach, as mentioned before, allows for faster time complexity,
+especially as the number of runs increases and previously calculated results are
+already store. However, it is still important to understand and weight the
+trade-off of time complexity and memory usage when considering a memoized
+approach.
 
 ### Generate Fibonacci using an Iterative approach
 
