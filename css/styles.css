@@ -216,6 +216,13 @@ table.table {
   margin-bottom: 1.5rem;
 }
 
+caption,
+.table-caption {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  text-align: left;
+}
+
 .quarto-title .quarto-categories .quarto-category {
   padding: 0.25em 0.75em;
   font-size: 0.55em;

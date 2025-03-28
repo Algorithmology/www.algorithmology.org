@@ -1,0 +1,353 @@
+---
+author: [Duru Akbas, Faaris Cheema, Hank Grefenstette, Kris Hatcher, Titus Smith]
+title: What is the fastest method to build a Fibonacci sequence when considering recursive, iterative, and memoized approaches?
+page-layout: full
+categories: [post, fibonacci, recursive, memoization, iterative]
+date: "2025-03-28"
+date-format: long
+toc: true
+---
+
+# Introduction
+
+This investigation seeks to answer a deceptively simple question with
+far-reaching implications: which method --- recursive, iterative, or memoized
+--- is the fastest to build a Fibonacci sequence?
+
+To evaluate these different approaches, we put them to the test by employing
+them to generate a Fibonacci sequence. Using precise timing measurements, we
+systematically compare how long each approach takes to compute these sequences.
+This head-to-head performance testing allows us to reveal differences in
+efficiency and ultimately enables us to determine which approach delivers
+results the fastest.
+
+## Motivation
+
+The motivation for this comparison stems from real-world programming challenges.
+While all three approaches can correctly generate Fibonacci sequences, their
+performance characteristics differ. Developers frequently encounter situations
+where choosing the wrong implementation leads to sluggish performance,
+unresponsive applications, or even complete system failures. By systematically
+comparing these methods, we provide actionable insights that can prevent such
+issues.
+
+To conduct a fair comparison of these approaches we implemented each approach as
+separate, testable units and subjected them to benchmarking. This mimicked the
+conditions under which professional developers evaluate competing solutions and
+allowed us to yield practical concrete data which can ultimately used to help
+inform implementation decisions.
+
+## Approach
+
+### Generate Fibonacci using a Recursive approach
+
+The recursive approach computes Fibonacci numbers by repeatedly calling the
+function itself. However, this method is highly inefficient because it
+recalculates the same values multiple times. For example, to compute
+`fibonacci_recursive(5)`, the function computes `fibonacci_recursive(2)` three
+times:
+
+```python
+fibonacci_recursive(5)
+ ├── fibonacci_recursive(4)
+ │   ├── fibonacci_recursive(3)
+ │   │   ├── fibonacci_recursive(2)
+ │   │   │   ├── fibonacci_recursive(1)  → 1
+ │   │   │   ├── fibonacci_recursive(0)  → 0
+ │   │   ├── fibonacci_recursive(1)  → 1
+ │   ├── fibonacci_recursive(2)
+ │       ├── fibonacci_recursive(1)  → 1
+ │       ├── fibonacci_recursive(0)  → 0
+ ├── fibonacci_recursive(3)
+     ├── fibonacci_recursive(2)
+     │   ├── fibonacci_recursive(1)  → 1
+     │   ├── fibonacci_recursive(0)  → 0
+     ├── fibonacci_recursive(1)  → 1
+```
+
+As shown above, even for a small input like `n = 5`, the function makes
+redundant calculations, leading to an exponential growth in execution time.
+
+```python
+def fibonacci_recursive(n: int) -> int:
+    """Generates the Fibonacci sequence up to the nth term using recursion without memoization."""
+    # handle negative inputs
+    if n < 0:
+        raise ValueError("Input must be a positive integer.")
+    # base cases
+    if n == 0:
+        return 0
+    if n == 1:
+        return 1
+    # do the recursive calculation for the nth number
+    return fibonacci_recursive(n - 1) + fibonacci_recursive(n - 2)
+```
+
+It takes in an integer as an input and outputs an integer which is the fibonacci
+number's answer. There are two base cases for this approach which the input
+integer, in this case `n`, is equal to `0` and `1`. Each function call branches
+into two recursive calls, forming a binary tree of depth `n`. This results in an
+exponential number of operations, making the approach extremely slow for large
+values of `n`. Therefore, the worst-time complexity is $O(n^2)$! 
+
+### Generate Fibonacci using a Memoized approach
+
+This implementation uses a concept we previously discussed in a class session:
+memoization. Memoization is a technique that stores previously computed values
+to avoid redundant calculations. Our implementation checks if `n` has already
+been computed, and if so, it retrieves the value from memo, which saves on
+computation time. It uses a recursive approach to calculate the fibonacci value,
+but importantly it stores the result in a dictionary `memo` to prevent
+recalculating the same values multiple times on future runs. This approach is
+particularly valuable for algorithms that exhibit overlapping problems, or
+frequent use of similar calculations. Without memoization, recursive calls can
+lead to exponential time complexity, making computations infeasible for large
+inputs. However, by using a memoized approach and storing/reusing results, we
+found that our program is more efficient as `n` increases.
+
+Below we have included a section of this approach:
+
+```python
+def fibonacci_generator(n: int, memo: Dict[int, int]) -> int:
+    """Generates the Fibonacci sequence up to the nth term using memoization."""
+    # initialize a dictionary to store previously computed numbers.
+    if memo is None:
+        memo = {}
+    # if the number has already been calculated, use it
+    if n in memo:
+        return memo[n]
+    # create the base case for handling 1 & 2 fibonacci numbers
+    base_case = 2
+    if n < base_case:
+        return n
+    # calculate the fibonacci for nth number
+    memo[n] = fibonacci_generator(n - 1, memo) + fibonacci_generator(
+        n - 2, memo
+    )
+    # return the appropriate fibonacci number
+    return memo[n]
+```
+
+As you can see in the above code, this memoized approach takes in a possible
+dictionary, `memo` and stores already computed results in said dictionary. Then,
+when computing the fibonacci number, it first looks to see if it was already
+calculated, then if not, it performs a recursive computation to find the value.
+This approach, as mentioned before, allows for faster time complexity,
+especially as the number of runs increases and previously calculated results are
+already store. However, it is still important to understand and weight the
+trade-off of time overhead and memory usage when considering a memoized
+approach.
+
+### Generate Fibonacci using an Iterative approach
+
+The iterative approach works by initializing the first two Fibonacci numbers
+(`0` and `1`) and then iteratively calculating each subsequent number in the
+sequence. For each iteration from `2` to `n`, the algorithm simply updates two
+variables containing the previous two Fibonacci values.
+
+This method is the fastest because it follows the most efficient computational
+path --- it performs each calculation exactly once without any redundant
+operations, and uses minimal memory by only tracking the last two numbers. This
+ultimately makes it a predictable loop that modern processors can optimize
+extremely well. All-in-all the simplicity of this approach, just adding two
+numbers and updating values in each iteration, allows it to be the fastest.
+
+Below is the implementation of the Iterative approach that we used:
+
+```python
+def fibonacci_iterative(n: int) -> int:
+    """Generates the Fibonacci sequence up to the nth term using an iterative approach."""
+    # handle negative inputs
+    if n < 0:
+        raise ValueError("Input must be a positive integer.")
+    # base cases
+    if n == 0:
+        return 0
+    if n == 1:
+        return 1
+    # initialize the first two Fibonacci numbers
+    a, b = 0, 1
+    # iterate from 2 to n
+    for _ in range(2, n + 1):
+        # update the Fibonacci numbers
+        a, b = b, a + b
+    # return the nth Fibonacci number
+    return b
+```
+
+This code works by checking if you ask for the `0`th Fibonacci number, it
+immediately says `0`. If you ask for the 1st number in the Fibonacci sequence,
+it says `1`, and if you ask for a negative number, it gives an error. For any
+nth term above `1` the code looks at the last two numbers it wrote down (`a` and
+`b`) and adds them together to get the next number. It then "slides" the numbers
+over and the old `b` becomes the new `a`, and the new sum becomes the new `b`. 
+
+This means that tt doesn't re-calculate anything (unlike the recursive method),
+nor does it need extra memory to store past results (unlike memoization).
+
+### Run a Benchmark
+
+The main.py file was implemented with the goal of calling the methods from
+approach.py and `analyze.py` with a `Typer` interface for the command line
+interface and a `Console` for the output. A `main` function is then defined
+which allows for user inputs that define the quantity (number of `Fibonacci`
+numbers computed) and the method used (Iterative, recursive, or memoization).
+The `timeit` module is imported to allow for the console to include the time the
+methods ran for in the output. Finally, the execution times are displayed in a
+table for comparison between different fibonacci numbers and approaches.
+
+```python
+    if approach == GenerationApproach.ITERATIVE:
+        execution_times = timeit.Timer(
+            f"fibonacci_iterative({quantity})",
+            setup="from fibonacci.iterative import fibonacci_iterative",
+        ).repeat(repeat=repeats, number=runs)
+    elif approach == GenerationApproach.RECURSIVE:
+        execution_times = timeit.Timer(
+            f"fibonacci_recursive({quantity})",
+            setup="from fibonacci.recursive import fibonacci_recursive",
+        ).repeat(repeat=repeats, number=runs)
+    elif approach == GenerationApproach.MEMOIZATION:
+        execution_times = timeit.Timer(
+            f"fibonacci_memoization({quantity})",
+            setup="from fibonacci.memoization import fibonacci_memoization",
+        ).repeat(repeat=repeats, number=runs)
+```
+
+## Raw Data
+
+| Team Member | Test ID | Total Time 1  | Total Time 2  | Total Time 3  | Total Time 4  | Total Time 5  | Quantity | Approach    | Runs | Repeats |
+| ----------- | :-----: | ------------: | ------------: | ------------: | ------------: | ------------: | -------: | ----------- | :--: | :-----: |
+| Duru        | 1       | `0.000017500` | `0.000005900` | `0.000006600` | `0.000005700` | `0.000005800` |        7 | iterative   |   15 |       5 |
+| Duru        | 2       | `0.000012800` | `0.000008400` | `0.000008200` | `0.000008300` | `0.000008300` |       14 | iterative   |   15 |       5 |
+| Duru        | 3       | `0.000021700` | `0.000014700` | `0.000014600` | `0.000014600` | `0.000014500` |       28 | iterative   |   15 |       5 |
+| Duru        | 4       | `0.000065100` | `0.000060600` | `0.000080000` | `0.000079400` | `0.000058200` |        7 | recursive   |   15 |       5 |
+| Duru        | 5       | `0.001597200` | `0.001814300` | `0.001933400` | `0.002276700` | `0.002061000` |       14 | recursive   |   15 |       5 |
+| Duru        | 6       | `1.228925700` | `1.231213500` | `1.218425600` | `1.239988300` | `1.228814600` |       28 | recursive   |   15 |       5 |
+| Duru        | 7       | `0.000032700` | `0.000024500` | `0.000024300` | `0.000024300` | `0.000024200` |        7 | memoization |   15 |       5 |
+| Duru        | 8       | `0.000056500` | `0.000050100` | `0.000049900` | `0.000049800` | `0.000049700` |       14 | memoization |   15 |       5 |
+| Duru        | 9       | `0.000112400` | `0.000103400` | `0.000103300` | `0.000105800` | `0.000106300` |       28 | memoization |   15 |       5 |
+| Faaris      | 1       | `0.000005459` | `0.000003375` | `0.000003333` | `0.000003375` | `0.000003458` |        7 | iterative   |   15 |       5 |
+| Faaris      | 2       | `0.000006417` | `0.000004792` | `0.000004667` | `0.000004625` | `0.000004667` |       14 | iterative   |   15 |       5 |
+| Faaris      | 3       | `0.000011708` | `0.000009583` | `0.000009458` | `0.000009417` | `0.000009417` |       28 | iterative   |   15 |       5 |
+| Faaris      | 4       | `0.000029792` | `0.000028333` | `0.000028250` | `0.000028250` | `0.000028250` |        7 | recursive   |   15 |       5 |
+| Faaris      | 5       | `0.000836375` | `0.000827333` | `0.000827167` | `0.000815375` | `0.000826083` |       14 | recursive   |   15 |       5 |
+| Faaris      | 6       | `0.680736667` | `0.680154208` | `0.686455833` | `0.688156375` | `0.688603167` |       28 | recursive   |   15 |       5 |
+| Faaris      | 7       | `0.000018125` | `0.000015250` | `0.000015208` | `0.000015209` | `0.000015208` |        7 | memoization |   15 |       5 |
+| Faaris      | 8       | `0.000033708` | `0.000030709` | `0.000030666` | `0.000033584` | `0.000030541` |       14 | memoization |   15 |       5 |
+| Faaris      | 9       | `0.000065333` | `0.000061375` | `0.000061125` | `0.000061250` | `0.000061250` |       28 | memoization |   15 |       5 |
+| Hank        | 1       | `0.000011800` | `0.000007160` | `0.000006860` | `0.000006830` | `0.000006810` |        7 | iterative   |   15 |       5 |
+| Hank        | 2       | `0.000015200` | `0.000010900` | `0.000010700` | `0.000010500` | `0.000010500` |       14 | iterative   |   15 |       5 |
+| Hank        | 3       | `0.000028900` | `0.000022700` | `0.000022400` | `0.000022300` | `0.000022200` |       28 | iterative   |   15 |       5 |
+| Hank        | 4       | `0.000087600` | `0.000049300` | `0.000049500` | `0.000049400` | `0.000049200` |        7 | recursive   |   15 |       5 |
+| Hank        | 5       | `0.002000000` | `0.002000000` | `0.002000000` | `0.001000000` | `0.001000000` |       14 | recursive   |   15 |       5 |
+| Hank        | 6       | `1.350000000` | `1.330000000` | `1.350000000` | `1.310000000` | `1.280000000` |       28 | recursive   |   15 |       5 |
+| Hank        | 7       | `0.000040700` | `0.000033500` | `0.000033200` | `0.000033100` | `0.000033000` |        7 | memoization |   15 |       5 |
+| Hank        | 8       | `0.000079000` | `0.000070700` | `0.000070300` | `0.000089700` | `0.000061100` |       14 | memoization |   15 |       5 |
+| Hank        | 9       | `0.000100000` | `0.000100000` | `0.000100000` | `0.000100000` | `0.000100000` |       28 | memoization |   15 |       5 |
+| Kris        | 1       | `0.000007939` | `0.000004894` | `0.000004733` | `0.000004759` | `0.000004612` |        7 | iterative   |   15 |       5 |
+| Kris        | 2       | `0.000009761` | `0.000006870` | `0.000006566` | `0.000006590` | `0.000006498` |       14 | iterative   |   15 |       5 |
+| Kris        | 3       | `0.000016060` | `0.000012943` | `0.000012595` | `0.000012636` | `0.000012612` |       28 | iterative   |   15 |       5 |
+| Kris        | 4       | `0.000038688` | `0.000036637` | `0.000036162` | `0.000035837` | `0.000036156` |        7 | recursive   |   15 |       5 |
+| Kris        | 5       | `0.001559516` | `0.001414167` | `0.000977878` | `0.000981816` | `0.001404749` |       14 | recursive   |   15 |       5 |
+| Kris        | 6       | `0.971831807` | `0.979780404` | `0.958956857` | `0.983081094` | `0.961149388` |       28 | recursive   |   15 |       5 |
+| Kris        | 7       | `0.000023861` | `0.000019831` | `0.000026261` | `0.000019497` | `0.000039703` |        7 | memoization |   15 |       5 |
+| Kris        | 8       | `0.000047589` | `0.000042669` | `0.000042672` | `0.000042514` | `0.000042335` |       14 | memoization |   15 |       5 |
+| Kris        | 9       | `0.000095549` | `0.000089448` | `0.000089613` | `0.000089699` | `0.000089412` |       28 | memoization |   15 |       5 |
+| Titus       | 1       | `0.000019300` | `0.000010300` | `0.000010300` | `0.000011400` | `0.000010200` |        7 | iterative   |   15 |       5 |
+| Titus       | 2       | `0.000021900` | `0.000012300` | `0.000012000` | `0.000012000` | `0.000012000` |       14 | iterative   |   15 |       5 |
+| Titus       | 3       | `0.000029400` | `0.000021100` | `0.000020900` | `0.000020800` | `0.000020800` |       28 | iterative   |   15 |       5 |
+| Titus       | 4       | `0.000095900` | `0.000103300` | `0.000157100` | `0.000095700` | `0.000095900` |        7 | recursive   |   15 |       5 |
+| Titus       | 5       | `0.002238000` | `0.002300000` | `0.002246700` | `0.003815000` | `0.002587200` |       14 | recursive   |   15 |       5 |
+| Titus       | 6       | `2.014577300` | `1.994848800` | `1.730349900` | `1.490137900` | `1.495413900` |       28 | recursive   |   15 |       5 |
+| Titus       | 7       | `0.000045400` | `0.000038200` | `0.000037800` | `0.000037700` | `0.000037800` |        7 | memoization |   15 |       5 |
+| Titus       | 8       | `0.000234000` | `0.000093900` | `0.000076800` | `0.000076700` | `0.000083500` |       14 | memoization |   15 |       5 |
+| Titus       | 9       | `0.000225300` | `0.000178000` | `0.000190900` | `0.000207500` | `0.000186000` |       28 | memoization |   15 |       5 |
+
+: Raw data for efficiency of all studied ways to compute the Fibonacci sequence. {.responsive}
+
+## Averages
+
+The following table averages out the data in the table above, grouping them by
+the `Quantity` and `Approach` columns.
+
+| Average Time  | Quantity | Approach    | Runs | Repeats |
+| ------------: | -------: | ----------- | :--: | :-----: |
+| `0.000007536` |        7 | iterative   |   15 |       5 |
+| `0.000009418` |       14 | iterative   |   15 |       5 |
+| `0.000017121` |       28 | iterative   |   15 |       5 |
+| `0.000060102` |        7 | recursive   |   15 |       5 |
+| `0.001653598` |       14 | recursive   |   15 |       5 |
+| `1.190864052` |       28 | recursive   |   15 |       5 |
+| `0.000028342` |        7 | memoization |   15 |       5 |
+| `0.000062747` |       14 | memoization |   15 |       5 |
+| `0.000111318` |       28 | memoization |   15 |       5 |
+
+: Average execution time for all studied ways to compute the Fibonacci sequence. {.responsive}
+
+# Charts
+
+## Iterative and Memoization
+
+This is a chart using the values in the `Averages` table above, for the
+Iterative and Memoization approaches.
+
+![Line Graph with Time on the Vertical Axis and Approach on the Horizontal Axis for Iterative and Memoization.](./images/chart_im.png)
+
+## Recursive
+
+This is a chart using the values in the `Averages` table above, for the
+Recursive approach.
+
+![Line Graph with Time on the Vertical Axis and Approach on the Horizontal Axis for Recursive.](./images/chart_r.png)
+
+# Results
+
+Our results from running our Fibonacci sequence experiments, using iterative,
+recursive, and memoized approaches show clear performance differences, with
+respect to time. The iterative method consistently performed the fastest across
+all test cases, with an average runtime of `0.000017121 sec` with our largest
+experiment input. This shows that even as the sequence size increased, the
+iterative approach maintained its efficiency, demonstrating a worst case time
+complexity of $O(n)$. In contrast, the recursive approach showed exponential
+time complexity $O(2^n)$, as our execution times skyrocket as the sequence size
+grew. While manageable for small inputs, the recursive method is impractical for
+larger Fibonacci numbers, as seen in the drastic jump to execution times. Our
+results highlight the inefficiency of recursion, which can be attributed to
+redundant calculations and the cost associated with function call overhead.
+
+The memoized approach, which optimizes recursion by storing previously computed
+values, improved performance over the recursive approach. While not as fast as
+the iterative approach, memoization reduced run time compared to recursion, with
+an average runtime of `0.000111318 sec` with our largest experimental input.
+Interestingly, if you view the above image highlight the time complexity of each
+approach, you will notice as the values increase for the memoization, you begin
+to see a plateau, showing that an increase in previously calculated results
+starts to drastically effect the run time as our values increase. Overall, our
+results suggest that for computing Fibonacci numbers, the iterative method is
+the best choice for run time efficiency, while memoization provides a viable
+compromise when a recursive approach is necessary.
+
+Importantly, our results are ran and averaged across a variety of operating
+systems, including Windows and macOS, in order to provide the most inclusive and
+well-rounded analysis possible.
+
+# Next Steps
+
+Potential next steps for our understanding of the most efficient method of
+finding Fibonacci numbers could include incorporating additional methods or
+finding the smallest/largest quantity that can be utilized with said methods.
+
+# References
+
+These references were utilized during the creation of the experimental harness
+used to generate the empirical data referenced in this write-up.
+
+* <https://www.geeksforgeeks.org/>
+  * General information on Fibonacci sequence
+* GitHub Copilot
+  * Debugging & comment generation
+* <https://github.com/Allegheny-Computer-Science-202-S2025/computer-science-202-algorithm-engineering-project-2-krishatcher>
+  * Timing and output logic in this repo influenced by AEP 2
+* <https://stackoverflow.com/questions/2819625/how-to-use-a-callable-as-the-setup-with-timeit-timer>
+  * Successfully using the `timeit` library
