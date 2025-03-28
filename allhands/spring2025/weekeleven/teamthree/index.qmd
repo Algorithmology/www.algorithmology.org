@@ -88,14 +88,14 @@ number's answer. There are two base cases for this approach which the input
 integer, in this case `n`, is equal to `0` and `1`. Each function call branches
 into two recursive calls, forming a binary tree of depth `n`. This results in an
 exponential number of operations, making the approach extremely slow for large
-values of `n`. Therefore, the worst-time complexity is $O(n^2)$! 
+values of `n`. Therefore, the worst-time complexity is $O(2^n)$! 
 
 ### Generate Fibonacci using a Memoized approach
 
 This implementation uses a concept we previously discussed in a class session:
 memoization. Memoization is a technique that stores previously computed values
 to avoid redundant calculations. Our implementation checks if `n` has already
-been computed, and if so, it retrieves the value from memo, which saves on
+been computed, and if so, it retrieves the value from a variable, which saves on
 computation time. It uses a recursive approach to calculate the fibonacci value,
 but importantly it stores the result in a dictionary `memo` to prevent
 recalculating the same values multiple times on future runs. This approach is
@@ -182,16 +182,16 @@ nth term above `1` the code looks at the last two numbers it wrote down (`a` and
 `b`) and adds them together to get the next number. It then "slides" the numbers
 over and the old `b` becomes the new `a`, and the new sum becomes the new `b`. 
 
-This means that tt doesn't re-calculate anything (unlike the recursive method),
+This means that it doesn't re-calculate anything (unlike the recursive method),
 nor does it need extra memory to store past results (unlike memoization).
 
 ### Run a Benchmark
 
 The main.py file was implemented with the goal of calling the methods from
-approach.py and `analyze.py` with a `Typer` interface for the command line
+`approach.py` and `analyze.py` with a `Typer` interface for the command line
 interface and a `Console` for the output. A `main` function is then defined
 which allows for user inputs that define the quantity (number of `Fibonacci`
-numbers computed) and the method used (Iterative, recursive, or memoization).
+numbers computed) and the method used (iterative, recursive, or memoization).
 The `timeit` module is imported to allow for the console to include the time the
 methods ran for in the output. Finally, the execution times are displayed in a
 table for comparison between different fibonacci numbers and approaches.
