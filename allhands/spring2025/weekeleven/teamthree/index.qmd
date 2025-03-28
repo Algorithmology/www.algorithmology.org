@@ -140,18 +140,19 @@ approach.
 
 ### Generate Fibonacci using an Iterative approach
 
-The iterative approach works by initializing the first two Fibonacci numbers (0 and 1) and then
-iteratively calculating each subsequent number in the sequence. For each iteration from 2 to n,
-the algorithm simply updates two variables containing the previous two Fibonacci values.
+The iterative approach works by initializing the first two Fibonacci numbers
+(`0` and `1`) and then iteratively calculating each subsequent number in the
+sequence. For each iteration from `2` to `n`, the algorithm simply updates two
+variables containing the previous two Fibonacci values.
 
-This method is the fastest because it follows the most efficient computational path - it performs
-each calculation exactly once without any redundant operations, and uses minimal memory by only
-tracking the last two numbers. This ultimately makes it a predictable loop that modern processors
-can optimize extremely well. All-in-all the simplicity of this approach, just adding two numbers and
-updating values in each iteration, allows it to be the fastest.
+This method is the fastest because it follows the most efficient computational
+path --- it performs each calculation exactly once without any redundant
+operations, and uses minimal memory by only tracking the last two numbers. This
+ultimately makes it a predictable loop that modern processors can optimize
+extremely well. All-in-all the simplicity of this approach, just adding two
+numbers and updating values in each iteration, allows it to be the fastest.
 
-Below is the implementation of the Iterative approach used:
-
+Below is the implementation of the Iterative approach that we used:
 
 ```python
 def fibonacci_iterative(n: int) -> int:
