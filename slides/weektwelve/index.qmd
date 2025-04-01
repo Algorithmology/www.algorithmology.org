@@ -212,11 +212,15 @@ print(d)
 
 ## Be careful! Don't assume details about hash table behavior!
 
+::: incremental
+
 - 🎉 Remember, `dict` is a non-sequential collection
 - 🎲 The order of items in a `dict` is unpredictable
 - 🔄 Order can change between two iterations of same `dict`
 - 📝 Now `dict` items are in a fixed order since using a `list`
 - 🚀 Moving items around a `list` improves running times!
+
+:::
 
 ::: {.fragment .fade style="margin-top: 0.05em;"}
 
