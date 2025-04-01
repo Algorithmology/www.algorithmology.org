@@ -310,6 +310,41 @@ print(f"Age: {my_map['age']}")
 print(f"City: {my_map.get('city')}")
 ```
 
+## More operations of `ListMappingSimple`
+
+```{python}
+print("Checking if keys exist:")
+print(f"'name' exists: {'name' in my_map}")
+print(f"'email' exists: {'email' in my_map}")
+
+my_map["age"] = 31
+print(f"Updated age: {my_map['age']}")
+
+print("Iterating through keys:")
+for key in my_map:
+    print(f"Key: {key}")
+```
+
+## Updates to a `ListMappingSimple`
+
+```{python}
+print("Removing 'city' entry")
+my_map.remove("city")
+print(f"Updated map: {my_map}")
+print(f"'city' exists after removal: {'city' in my_map}")
+
+print("Iterating through key-value pairs:")
+for key, value in my_map.items():
+    print(f"{key}: {value}")
+```
+
+::: {.incremental style="font-size: 0.85em;"}
+
+- This is a flexible and useful way to store key-value pairs!
+- {{< iconify game-icons team-idea >}} **What is the key drawback of this implementation?**
+
+:::
+
 # The `ListMapping` class is not efficient! Ideas?
 
 - Goal is to get near constant-time access to data like `dict`
