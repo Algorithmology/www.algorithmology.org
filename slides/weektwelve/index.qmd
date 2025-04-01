@@ -410,6 +410,32 @@ print(f"City: {hash_map.get('city')}")
 
 :::
 
+## Understanding the `_bucket` method
+
+```python
+def _bucket(self, key):
+    return self._buckets[hash(key) % self._size]
+```
+
+::: {.incremental .fade style="margin-top: 0.0 em; font-size: 0.825em;"}
+
+- Locates the correct bucket for any key in the hash map
+- `hash(key)` converts any key into a numeric value
+- `% self._size` ensures the index is within valid range of `0` to `size-1`
+- `self._buckets[index]` retrieves the specific bucket of `ListMappingSimple`
+- Each bucket is a separate list that handles its own keys and values
+- Goal is to distribute data for faster lookups for $O(1)$ average case
+- However, multiple keys may share the same bucket! Collisions!
+- The buckets store the data mapped to them by the hash function
+
+:::
+
+::: {.incremental style="margin-top: -0.1em; font-size: 0.825em;"}
+
+- {{< iconify game-icons team-idea >}} **What are the key trade-offs for hashing and bucket count?**
+
+:::
+
 ## Bucket count for `HashMappingSimple`?
 
 - Picking `100` buckets is arbitrary used for illustration!
