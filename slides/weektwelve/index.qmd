@@ -39,12 +39,20 @@ format:
 
 # What are mappings and hash table structures?
 
+::: incremental
+
 - A **mapping** is an association between two sets of items
 - A mapping **associates** a value to a key
 - This association is called a **key-value pair**
-- Key are unique, so there is only **one value per key**
+- Key are ideally unique, so there is only **one value per key**
 
-{{< iconify game-icons team-idea >}} **Why do dictionary operations only take constant time?**
+:::
+
+::: incremental
+
+- {{< iconify game-icons team-idea >}} **Why do dictionary operations only take constant time?**
+
+:::
 
 ## Mapping abstract data type
 
