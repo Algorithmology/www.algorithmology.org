@@ -22,12 +22,20 @@ format:
 
 # Efficient way to find data in a collection?
 
+::: incremental
+
 - Sort the items in a collection
 - Use binary search to find an item
 - Amortize the cost of sorting
 - Operate on collections are static
 
-{{< iconify game-icons team-idea >}} **Wait, what are the limitations of this approach?**
+:::
+
+::: incremental
+
+- {{< iconify game-icons team-idea >}} **Wait, what are the limitations of this approach?**
+
+:::
 
 # What are mappings and hash table structures?
 
@@ -392,7 +400,7 @@ def _double(self):
 
 :::
 
-# Improving the object-oriented design of `ListMapping` and `HashMapping`
+# Improving the design of `ListMapping` and `HashMapping`
 
 - The data structures share methods in common
 - Factoring out a superclass can reduce code duplication
