@@ -292,6 +292,24 @@ class ListMappingSimple:
 
 :::
 
+## First, try out the `ListMappingSimple`!
+
+```{python}
+my_map = ListMappingSimple()
+my_map["name"] = "John Doe"
+my_map["age"] = 30
+my_map["city"] = "New York"
+my_map.put("occupation", "Developer")
+
+print(f"Entire map: {my_map}")
+print(f"Map size: {len(my_map)}")
+
+print("Retrieving values:")
+print(f"Name: {my_map.get('name')}")
+print(f"Age: {my_map['age']}")
+print(f"City: {my_map.get('city')}")
+```
+
 # The `ListMapping` class is not efficient! Ideas?
 
 - Goal is to get near constant-time access to data like `dict`
