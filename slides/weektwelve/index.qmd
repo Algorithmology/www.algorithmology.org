@@ -552,8 +552,13 @@ def _double(self):
 
 # Improving the design of `ListMapping` and `HashMapping`
 
+::: incremental
+
 - The data structures share methods in common
 - Factoring out a superclass can reduce code duplication
+- Goal is to improve the design, not overall performance
+
+:::
 
 ## Creating a common superclass
 
@@ -688,6 +693,24 @@ class HashMapping(Mapping):
 Wow, this implementation is more concise and easier to understand!
 
 :::
+
+## Use the `HashMapping` class
+
+```{python}
+hash_map = HashMapping(size=10)
+
+print(f"Initial hash map with {len(hash_map)} entries")
+print("Adding entries to the hash map!")
+hash_map["name"] = "Alice Johnson"
+hash_map["age"] = 32
+hash_map["email"] = "alice@example.com"
+
+print(f"Hash map now has {len(hash_map)} entries")
+print("Retrieving values:")
+print(f"  Name: {hash_map.get('name')}")
+print(f"  Age: {hash_map['age']}")
+print(f"  Email: {hash_map['email']}")
+```
 
 ## Hash table data structure
 
