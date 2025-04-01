@@ -714,6 +714,18 @@ print(f"  Email: {hash_map['email']}")
 
 ## Wow, similar to Python's dictionary!
 
+```{python}
+hash_map = dict()
+
+hash_map["name"] = "Alice Johnson"
+hash_map["age"] = 32
+hash_map["email"] = "alice@example.com"
+
+print(f"  Name: {hash_map.get('name')}")
+print(f"  Age: {hash_map['age']}")
+print(f"  Email: {hash_map['email']}")
+```
+
 ::: fragment
 
 - Similar core operations like `[]`, `get()`, and `put()`
