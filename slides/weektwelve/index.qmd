@@ -712,6 +712,16 @@ print(f"  Age: {hash_map['age']}")
 print(f"  Email: {hash_map['email']}")
 ```
 
+## Wow, similar to Python's dictionary!
+
+::: fragment
+
+- Similar core operations like `[]`, `get()`, and `put()`
+- Automatic resizing with a simple "load factor"
+- Uses hash function for key distribution
+
+:::
+
 ## Hash table data structure
 
 ::: {.columns}
