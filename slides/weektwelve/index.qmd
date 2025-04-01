@@ -347,7 +347,7 @@ for key, value in my_map.items():
 
 # The `ListMapping` class is not efficient! Ideas?
 
-- Goal is to get near constant-time access to data like `dict`
+- Goal is to get **near constant-time access** to data like `dict`
 
 - Right now more than one method has $O(n)$ running time!
 
@@ -385,6 +385,28 @@ class HashMappingSimple:
 - The `100` instances of `ListMapping` are called **buckets**
 - The `hash` function maps keys to a bucket in the `HashMap`
 - **Warning**! If two keys hash to the same index, it is a **collision**!
+
+:::
+
+## Using the `HashMappingSimple`
+
+```{python}
+hash_map = HashMappingSimple()
+hash_map.put("name", "Alice Smith")
+hash_map.put("age", 28)
+hash_map.put("email", "alice@example.com")
+hash_map.put("city", "Boston")
+
+print(f"Name: {hash_map.get('name')}")
+print(f"Age: {hash_map.get('age')}")
+print(f"Email: {hash_map.get('email')}")
+print(f"City: {hash_map.get('city')}")
+```
+
+::: {.incremental style="font-size: 0.85em;"}
+
+- The `put` method allows for adding key-value pairs
+- The `get` method allows for retrieving the value for a key
 
 :::
 
