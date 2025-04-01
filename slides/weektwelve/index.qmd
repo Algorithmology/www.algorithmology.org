@@ -190,23 +190,23 @@ print(d)
 
 ::: {.fragment .fade-up .boxed-content style="margin-top: 0em; font-size: 0.80em;"}
 
-- `__getitem__(k)` - return the value associate to the key `k`; usually an error (`KeyError`) is raised if the given key is not present
+- `__getitem__(k)`: return the value associate to the key `k`; usually an error (`KeyError`) is raised if the given key is not present
 
-- `__setitem__(k, v)` - Add the key-value pair `(k,v)` to the mapping
+- `__setitem__(k, v)`: Add the key-value pair `(k,v)` to the mapping
 
-- `remove(k)` - Remove the entry with key `k` if it exists
+- `remove(k)`: Remove the entry with key `k` if it exists
 
-- `__len__` - return the number of keys in the dictionary
+- `__len__`: return the number of keys in the dictionary
 
-- `__contains__(k)` - return true if the mapping contains a pair with key `k`
+- `__contains__(k)`: return true if the mapping contains a pair with key `k`
 
-- `__iter__` - return an iterator over the keys in the dictionary
+- `__iter__`: return an iterator over the keys in the dictionary
 
-- `values` - return an iterator over the values in the dictionary
+- `values`: return an iterator over the values in the dictionary
 
-- `items` - return an iterator over the key-value pairs (as tuples)
+- `items`: return an iterator over the key-value pairs (as tuples)
 
-- `__str__` - return a string representation of the mapping
+- `__str__`: return a string representation of the mapping
 
 :::
 
