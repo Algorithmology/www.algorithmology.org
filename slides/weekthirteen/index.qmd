@@ -412,7 +412,6 @@ def preorder(self):
     for child in self.children:
         for data in child.preorder():
             yield data
-
 __iter__ = preorder
 ```
 
@@ -442,14 +441,13 @@ def _postorder(self):
             child = next(childiter)
             stack.append((child, iter(child.children)))
         except StopIteration:
-            yield node
-            stack.pop()                 
+            yield node; stack.pop()                 
 
 def postorder(self):
     return (node.data for node in self._postorder())
 ```
 
-::: {.fragment style="font-size: 0.90em;"}
+::: {.fragment style="font-size: 0.80em;"}
 
 - Use a `stack` structure to store nodes during traversal
 - The public method calls the internal `_postorder` method
@@ -481,14 +479,13 @@ def _layerorder(self):
             child = next(childiter)
             queue.enqueue((child, iter(child.children)))
         except StopIteration:
-            yield node
-            queue.dequeue()                 
+            yield node; queue.dequeue()                 
 
 def layerorder(self):
     return (node.data for node in self._layerorder())
 ```
 
-::: {.fragment style="font-size: 0.90em;"}
+::: {.fragment style="font-size: 0.80em;"}
 
 - Use a `ListQueue` structure to store nodes during traversal
 - The public method calls the internal `_layerorder` method
@@ -742,7 +739,7 @@ for node in iter(T_one):
     print(node)
 ```
 
-::: fragment
+::: {.fragment style="font-size: 0.90em;"}
 
 - Wow, you can use a `BSTMapping` exactly like a `dict`!
 - For illustrative purposes, we only store `None` values
@@ -761,7 +758,7 @@ for node in iter(T_two):
     print(node)
 ```
 
-::: fragment
+::: {.fragment style="font-size: 0.90em;"}
 
 - Adding data in a different order yields same output!
 - The `iter` function performs an **in-order** traversal
@@ -880,6 +877,6 @@ methods are more predictably efficient.
 
 These hierarchical data structures demonstrate the combination of data
 structures to achieve a goal! For instance, the `Tree` uses a `Stack` and a `Queue`
-while the `BSTMapping` is a dictionary.
+while the `BSTMapping` is a `Dictionary`.
 
 :::
