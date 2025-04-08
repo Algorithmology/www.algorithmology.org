@@ -21,14 +21,15 @@ structure.
 
 ## Activities
 
-- {{< iconify fa6-solid people-line size=18px >}} **Tuesday and Thursday**:
-Graph Structures
+- {{< iconify fa6-solid people-line size=18px >}} **Tuesday**: Graph Structures
   - Explore how to implement the `Graph` and `Digraph` data structures
   - Understand the adjacency list and adjacency matrix representations
   - Examine Python source code segments to illustrate key points
+- {{< iconify fa6-solid people-line size=18px >}} **Thursday**: Presentations
+for the third algorithm all-hands project
 - {{< iconify fa6-solid diagram-project size=18px >}} **Friday**: Continue
-algorithm engineering project seven (see the [prior week](../weekfourteen/) for
-details about this project) and take algorithm engineering skill-check four
+algorithm engineering project seven (see the [prior week](../weekfourteen/)
+for details about this project) and take algorithm engineering skill-check four
 
 ## Slides
 
