@@ -50,7 +50,7 @@ print(T)
 printtree(T)
 ```
 
-::: {.incremental style="margin-top: -0.5em"}
+::: {.incremental style="margin-top: -0.5em; font-size: 0.90em;"}
 
 - Represent the tree through a list of nested lists
 - Use a recursive function to traverse the tree
@@ -67,8 +67,7 @@ def printtree_iterator(T):
         printtree_iterator(child)
 
 T = ['c', ['a', ['p'], ['n'], ['t']], ['o', ['n']]]
-print(T)
-printtree_iterator(T)
+print(T); printtree_iterator(T)
 ```
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.90em"}
