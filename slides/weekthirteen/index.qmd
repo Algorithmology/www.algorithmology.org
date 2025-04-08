@@ -37,7 +37,28 @@ format:
 
 :::
 
-## Traversing a Primitive Tree
+## Understanding tree terminology
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.95em;"}
+
+- **Node**: A tree element with data and references to node(s)
+- **Root**: The top node in a tree, with no parent nodes
+- **Parent/Child**: Nodes directly connected in a hierarchy
+- **Leaf**: A node with no children, at the bottom of the tree
+- **Path**: Sequence of nodes from one node to another
+- **Height**: Maximum distance from root to any leaf
+- **Depth**: Distance of a node from the root
+
+:::
+
+::: {.fragment .fade}
+
+{{< iconify game-icons brain >}} **These terms help us describe and analyze
+tree structures. We can start by building a "primitive tree" of nested lists!**
+
+:::
+
+## Traversing a primitive tree
 
 ```{python}
 def printtree(T):
@@ -57,7 +78,7 @@ printtree(T)
 
 :::
 
-## Using an Iterator with a primitive tree
+## Using an iterator with a primitive tree
 
 ```{python}
 def printtree_iterator(T):
@@ -337,8 +358,7 @@ def printtree(T):
     for child in T.children:
         printtree(child)
 
-T = Tree(['a', ['b', ['c', ['d']]],['e',['f'], ['g']]])
-printtree(T)
+T = Tree(['a', ['b', ['c', ['d']]],['e',['f'], ['g']]]); printtree(T)
 ```
 
 ::: {.fragment .fade-right style="font-size: 0.90em;"}
