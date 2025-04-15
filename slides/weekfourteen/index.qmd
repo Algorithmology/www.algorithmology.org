@@ -523,7 +523,7 @@ heapsort(L)
 print("After heapsort: ", L)
 ```
 
-::: {.fragment style="font-size: 0.95em;"}
+::: {.incremental style="font-size: 0.95em;"}
 
 - Uses the `_heapify` method to create a `PriorityQueue` in $O(n)$
 - Iteration over each item in `list` comprehension costs $O(\log n)$
@@ -749,7 +749,7 @@ while not len(job_queue) == 0:
 
 ## Process scheduling in the Linux kernel
 
-::: {.fragment .fade-up style="margin-top: -.25em; font-size: 0.675em;"}
+::: {.incremental .fade-up style="margin-top: -.25em; font-size: 0.675em;"}
 
 - **Multi-level feedback queue**
   - Dynamic priority adjustment based on behavior
