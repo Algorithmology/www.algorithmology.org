@@ -747,6 +747,28 @@ while not len(job_queue) == 0:
 
 :::
 
+## Process scheduling in the Linux kernel
+
+::: {.fragment .fade-up style="margin-top: -.25em; font-size: 0.675em;"}
+
+- **Multi-level feedback queue**
+  - Dynamic priority adjustment based on behavior
+  - I/O-bound processes get priority boosts
+  - CPU-bound processes get priority penalties
+
+- **Preemption and timeslices**
+  - Processes run for short time quantum
+  - Long-running processes don't block others
+  - Real-time processes have special scheduling classes
+
+- **Completely Fair Scheduler (CFS)**
+  - Uses a red-black tree instead of a heap
+  - Tracks "virtual runtime" of processes
+  - Balances CPU time fairly among processes
+
+- **Reference**: [Real-time Ubuntu Documentation: Linux kernel schedulers](https://documentation.ubuntu.com/real-time/en/latest/explanation/schedulers/)
+
+:::
 
 ## Comparing `PriorityQueue` structures
 
