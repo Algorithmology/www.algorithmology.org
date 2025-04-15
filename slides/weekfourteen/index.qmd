@@ -123,7 +123,7 @@ class SimpleListPQ:
         return item
 ```
 
-::: fragment
+::: {.fragment style="font-size: 0.9em;"}
 
 - The variable `_L` is a `list` of tuples stored in `self`
 - Each tuple stores an `item` and its `priority`
@@ -145,10 +145,10 @@ print(pq.removemin())  # Outputs: 'banana'
 print(pq.findmin())    # Outputs: 'cherry'
 ```
 
-::: {.fragment style="font-size: 0.85em;"}
+::: {.incremental style="font-size: 0.8em;"}
 
-- The first parameter to `insert` method is the `item`
-- The second parameter to `insert` method is the `priority`
+- The first parameter to the `insert` method is the `item`
+- The second parameter to the `insert` method is the `priority`
 - The `findmin` method returns the item with minimum priority
 - The `removemin` method removes and returns item with minimum priority
 
@@ -232,22 +232,26 @@ class SortedListPQ:
 
 # What are the trade-offs in the `SortedListPQ`?
 
+::: incremental
+
 - Trade-offs exist between the time complexity of the `insert` method and the
 `findmin` and `removemin` methods
 
 - In one system, we have fast `insert` and slow `removemin` and in the other we
 have slow `insert` and fast `removemin`
 
-- Achieve constant or logarithmic time complexity for all?
+- {{< iconify fa6-solid gears >}} Achieve constant or logarithmic time complexity for all?
 
-- Need a new data structure to achieve this ambitious goal!
+- {{< iconify fa6-solid lightbulb >}} Need a new data structure to achieve this ambitious goal!
+
+:::
 
 ## Exploring the `heap` data structure
 
 ####  Priority queues and heaps
 
-- Priority queue: Abstract data type (ADT)
-- Heap: Data structure used to implement a priority queue
+- **Priority queue**: Abstract data type (ADT)
+- **Heap**: Data structure used to implement a priority queue
 
 #### Clarifying terminology
 
@@ -319,7 +323,7 @@ class HeapPQ:
 
 ::: fragment
 
-- `insert` has a worst-case time complexity of $O(\log n)$
+- `insert` has a worst-case time complexity of $O(\log n)$!
 
 :::
 
