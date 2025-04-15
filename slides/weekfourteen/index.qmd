@@ -774,7 +774,7 @@ while not len(job_queue) == 0:
 
 ::: fragment
 
-- {{< iconify fa6-solid arrows-to-circle >}} **Performance analysis**:
+- {{< iconify fa6-solid arrows-to-circle >}} **Performance analysis**
     - Uses a binary heap to store entries
     - **Fast**: `insert`, `findmin`, and `removemin` are $O(\log_2 n)$
     - **Trade-offs**: no more constant-time complexity methods!
@@ -783,7 +783,7 @@ while not len(job_queue) == 0:
 
 ::: fragment
 
-- {{< iconify fa6-solid arrows-to-circle >}} **Functionality review**:
+- {{< iconify fa6-solid arrows-to-circle >}} **Functionality review**
     - `PriorityQueue` extends `HeapPQ` and adds more methods
     - `PriorityQueue` offers random access to remove any item
     - `PriorityQueue` supports iteration to remove all items
