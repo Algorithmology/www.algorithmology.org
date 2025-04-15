@@ -248,6 +248,8 @@ have slow `insert` and fast `removemin`
 
 ## Exploring the `heap` data structure
 
+::: fragment
+
 ####  Priority queues and heaps
 
 - **Priority queue**: Abstract data type (ADT)
@@ -255,12 +257,14 @@ have slow `insert` and fast `removemin`
 
 #### Clarifying terminology
 
-- Many types of heaps exist, we'll focus on the binary heap
+- Many types of heaps exist --- we'll focus on the binary heap!
 - The term "key" is often used for "priority" in a heap
 
 #### Binary heap
 
 - A binary tree with smaller priorities "above" larger ones
+
+:::
 
 ## Creating a `HeapPQ` class
 
@@ -342,7 +346,7 @@ print(pq.findmin())    # Outputs: 4
 print(pq.removemin())  # Outputs: 4
 ```
 
-::: {.fragment style="font-size: 0.85em;"}
+::: {.fragment style="font-size: 0.85em; margin-top: -0.25em;"}
 
 - Removing the minimum value maintains the "heap property"
 - The `findmin` method returns the minimum value in the heap
@@ -474,7 +478,7 @@ for item in pq:
     print(item)        # Outputs: 'banana'
 ```
 
-::: {.fragment style="font-size: 0.85em;"}
+::: {.fragment style="font-size: 0.8em; margin-top: -0.25em;"}
 
 - Illustrates the use of the `PriorityQueue` constructor and methods
 - What is the worst-case time complexity of these methods?
