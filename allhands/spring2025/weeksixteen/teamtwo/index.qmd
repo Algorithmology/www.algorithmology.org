@@ -1,0 +1,45 @@
+---
+author: [Hemani Alaparthi, Duru Akbas, Williem Bennet, Faaris Cheema, Vivian Potts]
+title: How does the runtime efficiency of linear search and balanced binary search tree (tree based approach) algorithms compare under varying dataset sizes and target element positions?
+page-layout: full
+categories: [post, linear search, binary search, binary search tree, search]
+date: "2025-04-24"
+date-format: long
+toc: true
+format:
+    html:
+        code-links:    
+            - text: Github Repository
+              icon: github
+              href: https://github.com/hemanialaparthi/lvb
+---
+
+# Introduction
+
+# TODO
+
+## Motivation
+
+# TODO
+
+# Method
+
+## Approach
+
+# TODO
+
+# Data
+
+# TODO
+
+# Results
+
+# TODO
+
+# Conclusion
+
+# TODO
+
+# Future Work
+
+# TODO
