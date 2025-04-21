@@ -37,7 +37,28 @@ format:
 
 :::
 
-## Traversing a Primitive Tree
+## Understanding tree terminology
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.95em;"}
+
+- **Node**: A tree element with data and references to node(s)
+- **Root**: The top node in a tree, with no parent nodes
+- **Parent/Child**: Nodes directly connected in a hierarchy
+- **Leaf**: A node with no children, at the bottom of the tree
+- **Path**: Sequence of nodes from one node to another
+- **Height**: Maximum distance from root to any leaf
+- **Depth**: Distance of a node from the root
+
+:::
+
+::: {.fragment .fade}
+
+{{< iconify game-icons brain >}} **These terms help us describe and analyze
+tree structures. We can start by building a "primitive tree" of nested lists!**
+
+:::
+
+## Traversing a primitive tree
 
 ```{python}
 def printtree(T):
@@ -50,14 +71,14 @@ print(T)
 printtree(T)
 ```
 
-::: {.incremental style="margin-top: -0.5em"}
+::: {.incremental style="margin-top: -0.5em; font-size: 0.90em;"}
 
 - Represent the tree through a list of nested lists
 - Use a recursive function to traverse the tree
 
 :::
 
-## Using an Iterator with a primitive tree
+## Using an iterator with a primitive tree
 
 ```{python}
 def printtree_iterator(T):
@@ -67,8 +88,7 @@ def printtree_iterator(T):
         printtree_iterator(child)
 
 T = ['c', ['a', ['p'], ['n'], ['t']], ['o', ['n']]]
-print(T)
-printtree_iterator(T)
+print(T); printtree_iterator(T)
 ```
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.90em"}
@@ -338,8 +358,7 @@ def printtree(T):
     for child in T.children:
         printtree(child)
 
-T = Tree(['a', ['b', ['c', ['d']]],['e',['f'], ['g']]])
-printtree(T)
+T = Tree(['a', ['b', ['c', ['d']]],['e',['f'], ['g']]]); printtree(T)
 ```
 
 ::: {.fragment .fade-right style="font-size: 0.90em;"}
@@ -393,7 +412,6 @@ def preorder(self):
     for child in self.children:
         for data in child.preorder():
             yield data
-
 __iter__ = preorder
 ```
 
@@ -423,14 +441,13 @@ def _postorder(self):
             child = next(childiter)
             stack.append((child, iter(child.children)))
         except StopIteration:
-            yield node
-            stack.pop()                 
+            yield node; stack.pop()                 
 
 def postorder(self):
     return (node.data for node in self._postorder())
 ```
 
-::: {.fragment style="font-size: 0.90em;"}
+::: {.fragment style="font-size: 0.80em;"}
 
 - Use a `stack` structure to store nodes during traversal
 - The public method calls the internal `_postorder` method
@@ -462,14 +479,13 @@ def _layerorder(self):
             child = next(childiter)
             queue.enqueue((child, iter(child.children)))
         except StopIteration:
-            yield node
-            queue.dequeue()                 
+            yield node; queue.dequeue()                 
 
 def layerorder(self):
     return (node.data for node in self._layerorder())
 ```
 
-::: {.fragment style="font-size: 0.90em;"}
+::: {.fragment style="font-size: 0.80em;"}
 
 - Use a `ListQueue` structure to store nodes during traversal
 - The public method calls the internal `_layerorder` method
@@ -723,7 +739,7 @@ for node in iter(T_one):
     print(node)
 ```
 
-::: fragment
+::: {.fragment style="font-size: 0.90em;"}
 
 - Wow, you can use a `BSTMapping` exactly like a `dict`!
 - For illustrative purposes, we only store `None` values
@@ -742,7 +758,7 @@ for node in iter(T_two):
     print(node)
 ```
 
-::: fragment
+::: {.fragment style="font-size: 0.90em;"}
 
 - Adding data in a different order yields same output!
 - The `iter` function performs an **in-order** traversal
@@ -861,6 +877,6 @@ methods are more predictably efficient.
 
 These hierarchical data structures demonstrate the combination of data
 structures to achieve a goal! For instance, the `Tree` uses a `Stack` and a `Queue`
-while the `BSTMapping` is a dictionary.
+while the `BSTMapping` is a `Dictionary`.
 
 :::

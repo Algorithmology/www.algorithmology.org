@@ -8,7 +8,8 @@ author: Gregory M. Kapfhammer
 execute:
   freeze: auto
 format:
-  revealjs:
+  live-revealjs:
+    completion: true
     theme: default
     css: styles.css
     monofont: Ubuntu Mono
@@ -34,6 +35,50 @@ format:
 ::: {.fragment .fade}
 
 {{< iconify game-icons team-idea >}} **Any examples of data we should store in a priority queue?**
+
+:::
+
+## Listing processes using `top`
+
+```text
+  11491 gkapfham  20   0  354948  55176  10312 S   8.6   0.1  41:36.35 nvim
+   8232 gkapfham  20   0 1392.5g 240700 145900 S   7.3   0.4  36:24.57 brave
+  27161 gkapfham  20   0  366756  67212  11092 S   3.3   0.1   0:03.75 nvim
+   7003 gkapfham  20   0   33.1g 240440 137276 S   3.0   0.4  15:44.73 brave
+  12595 gkapfham  20   0  365460  65476  10988 S   1.7   0.1   8:39.04 nvim
+   3264 gkapfham  20   0   32.9g 352664 247924 S   1.3   0.6   1:10.36 chromium
+   6965 gkapfham  20   0   33.0g 649104 288824 S   0.7   1.1   4:40.42 brave
+   7875 gkapfham  20   0 1392.5g 357852 133460 S   0.7   0.6   1:55.45 brave
+  27315 gkapfham  20   0 1394.0g 168968 114160 S   0.7   0.3   0:02.18 brave
+    674 root      20   0   74264  34316  33548 S   0.3   0.1   0:05.41 systemd-journal
+   1189 root      20   0 1413032 149512  86032 S   0.3   0.3   2:55.22 X
+   1367 root      20   0 1321860  56368  23932 S   0.3   0.1   0:46.06 .tailscaled-wra
+   2263 gkapfham  20   0   20260  13792   3808 S   0.3   0.0   0:31.57 tmux: server
+   6848 gkapfham  20   0  906756  17156  14980 S   0.3   0.0   0:53.75 .polybar-wrappe
+   7005 gkapfham  20   0   32.7g 190332 142932 S   0.3   0.3   1:22.24 brave
+   7070 gkapfham  20   0 1397.4g 396612 137440 S   0.3   0.7   0:45.16 brave
+   7780 gkapfham  20   0 1392.5g 271348 138648 S   0.3   0.5   0:20.15 brave
+  25146 root      20   0       0      0      0 I   0.3   0.0   0:00.12 kworker/u48:24-events_unbound
+  25148 root      20   0       0      0      0 I   0.3   0.0   0:00.10 kworker/u48:26-kcryptd-254:0-1
+  25152 root      20   0       0      0      0 I   0.3   0.0   0:00.34 kworker/u48:30-kcryptd-254:0-1
+  27159 gkapfham  20   0   14768   8552   7656 S   0.3   0.0   0:00.03 nvim
+  27324 gkapfham  20   0 1392.4g 178156 121360 S   0.3   0.3   0:00.80 brave
+  27750 gkapfham  20   0    9712   5308   3388 R   0.3   0.0   0:00.05 top
+      1 root      20   0   22964  14080  10620 S   0.0   0.0   0:01.92 systemd
+      2 root      20   0       0      0      0 S   0.0   0.0   0:00.07 kthreadd
+      3 root      20   0       0      0      0 S   0.0   0.0   0:00.00 pool_workqueue_release
+      4 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/R-rcu_gp
+      5 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/R-sync_wq
+      6 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/R-kvfree_rcu_reclaim
+      7 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/R-slub_flushwq
+      8 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/R-netns
+     11 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/0:0H-events_highpri
+     14 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/R-mm_percpu_wq
+     15 root      20   0       0      0      0 I   0.0   0.0   0:00.00 rcu_tasks_kthread
+```
+::: {.fragment .fade style="font-size: 0.85em; margin-top: 0.75em;"}
+
+{{< iconify game-icons team-idea >}} An operating system manages a queue of jobs with priority! Why?
 
 :::
 
@@ -79,7 +124,7 @@ class SimpleListPQ:
         return item
 ```
 
-::: fragment
+::: {.fragment style="font-size: 0.9em;"}
 
 - The variable `_L` is a `list` of tuples stored in `self`
 - Each tuple stores an `item` and its `priority`
@@ -101,10 +146,10 @@ print(pq.removemin())  # Outputs: 'banana'
 print(pq.findmin())    # Outputs: 'cherry'
 ```
 
-::: {.fragment style="font-size: 0.85em;"}
+::: {.incremental style="font-size: 0.8em;"}
 
-- The first parameter to `insert` method is the `item`
-- The second parameter to `insert` method is the `priority`
+- The first parameter to the `insert` method is the `item`
+- The second parameter to the `insert` method is the `priority`
 - The `findmin` method returns the item with minimum priority
 - The `removemin` method removes and returns item with minimum priority
 
@@ -188,31 +233,39 @@ class SortedListPQ:
 
 # What are the trade-offs in the `SortedListPQ`?
 
+::: incremental
+
 - Trade-offs exist between the time complexity of the `insert` method and the
 `findmin` and `removemin` methods
 
 - In one system, we have fast `insert` and slow `removemin` and in the other we
 have slow `insert` and fast `removemin`
 
-- Achieve constant or logarithmic time complexity for all?
+- {{< iconify fa6-solid gears >}} Achieve constant or logarithmic time complexity for all?
 
-- Need a new data structure to achieve this ambitious goal!
+- {{< iconify fa6-solid lightbulb >}} Need a new data structure to achieve this ambitious goal!
+
+:::
 
 ## Exploring the `heap` data structure
 
+::: fragment
+
 ####  Priority queues and heaps
 
-- Priority queue: Abstract data type (ADT)
-- Heap: Data structure used to implement a priority queue
+- **Priority queue**: Abstract data type (ADT)
+- **Heap**: Data structure used to implement a priority queue
 
 #### Clarifying terminology
 
-- Many types of heaps exist, we'll focus on the binary heap
+- Many types of heaps exist --- we'll focus on the binary heap!
 - The term "key" is often used for "priority" in a heap
 
 #### Binary heap
 
 - A binary tree with smaller priorities "above" larger ones
+
+:::
 
 ## Creating a `HeapPQ` class
 
@@ -275,7 +328,7 @@ class HeapPQ:
 
 ::: fragment
 
-- `insert` has a worst-case time complexity of $O(\log n)$
+- `insert` has a worst-case time complexity of $O(\log n)$!
 
 :::
 
@@ -294,7 +347,7 @@ print(pq.findmin())    # Outputs: 4
 print(pq.removemin())  # Outputs: 4
 ```
 
-::: {.fragment style="font-size: 0.85em;"}
+::: {.fragment style="font-size: 0.85em; margin-top: -0.25em;"}
 
 - Removing the minimum value maintains the "heap property"
 - The `findmin` method returns the minimum value in the heap
@@ -426,7 +479,7 @@ for item in pq:
     print(item)        # Outputs: 'banana'
 ```
 
-::: {.fragment style="font-size: 0.85em;"}
+::: {.fragment style="font-size: 0.8em; margin-top: -0.25em;"}
 
 - Illustrates the use of the `PriorityQueue` constructor and methods
 - What is the worst-case time complexity of these methods?
@@ -470,7 +523,7 @@ heapsort(L)
 print("After heapsort: ", L)
 ```
 
-::: {.fragment style="font-size: 0.95em;"}
+::: {.incremental style="font-size: 0.95em;"}
 
 - Uses the `_heapify` method to create a `PriorityQueue` in $O(n)$
 - Iteration over each item in `list` comprehension costs $O(\log n)$
@@ -520,6 +573,203 @@ while not len(job_queue) == 0:
     print(f"{next_job.name} has finished running.")
 ```
 
+## Try the `PriorityQueue` of `Job`s
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 15
+class Entry:
+    def __init__(self, item, priority):
+        self.priority = priority
+        self.item = item
+
+    def __lt__(self, other):
+        return self.priority < other.priority
+
+class HeapPQ:
+    def __init__(self):
+        self._entries = []
+
+    def insert(self, item, priority):
+        self._entries.append(Entry(item, priority))
+        self._upheap(len(self._entries) - 1)
+
+    def _parent(self, i):
+        return (i - 1) // 2
+
+    def _children(self, i):
+        left = 2 * i + 1
+        right = 2 * i + 2
+        return range(left, min(len(self._entries), right + 1))
+
+    def _swap(self, a, b):
+        L = self._entries
+        L[a], L[b] = L[b], L[a]
+
+    def _upheap(self, i):
+        L = self._entries
+        parent = self._parent(i)
+        if i > 0 and L[i] < L[parent]:
+            self._swap(i, parent)
+            self._upheap(parent)
+
+    def findmin(self):
+        return self._entries[0].item
+
+    def removemin(self):
+        L = self._entries
+        item = L[0].item
+        L[0] = L[-1]
+        L.pop()
+        self._downheap(0)
+        return item
+
+    def _downheap(self, i):
+        L = self._entries
+        children = self._children(i)
+        if children:
+            child = min(children, key = lambda x: L[x])
+            if L[child] < L[i]:
+                self._swap(i, child)
+                self._downheap(child)
+
+    def _heapify(self):
+        n = len(self._entries)
+        for i in reversed(range(n)):
+            self._downheap(i)
+
+    def __len__(self):
+        return len(self._entries)
+
+class PriorityQueue(HeapPQ):
+    def __init__(self,
+                 items = (),
+                 entries = (),
+                 key = lambda x: x):
+        self._key = key
+        self._entries = [Entry(i, p) for i, p in entries]
+        self._entries.extend([Entry(i, key(i)) for i in items])
+        self._itemmap = {entry.item : index
+                         for index, entry in enumerate(self._entries)}
+        self._heapify()
+
+    def insert(self, item, priority = None):
+        if priority is None:
+            priority = self._key(item)
+        index = len(self._entries)
+        self._entries.append(Entry(item, priority))
+        self._itemmap[item] = index
+        self._upheap(index)
+
+    def _swap(self, a, b):
+        L = self._entries
+        va = L[a].item
+        vb = L[b].item
+        self._itemmap[va] = b
+        self._itemmap[vb] = a
+        L[a], L[b] = L[b], L[a]
+
+    def changepriority(self, item, priority = None):
+        if priority is None:
+            priority = self._key(item)
+        i = self._itemmap[item]
+        self._entries[i].priority = priority
+        self._upheap(i)
+        self._downheap(i)
+
+    def _remove_at_index(self, index):
+        L = self._entries
+        self._swap(index, len(L) - 1)
+        del self._itemmap[L[-1].item]
+        L.pop()
+        self._downheap(index)
+
+    def removemin(self):
+        item = self._entries[0].item
+        self._remove_at_index(0)
+        return item
+
+    def remove(self, item):
+        self._remove_at_index(self._itemmap[item])
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if len(self) > 0:
+            return self.removemin()
+        else:
+            raise StopIteration
+
+class Job:
+    def __init__(self, name, priority, duration):
+        self.name = name
+        self.priority = priority
+        self.duration = duration
+
+    def __str__(self):
+        return f"Job: {self.name}, Priority: {self.priority}, Duration: {self.duration}"
+
+job1 = Job("Long-running job 1", 3, 5)
+job2 = Job("Medium-running job 2", 1, 2)
+job3 = Job("Short-running job 3", 2, 1)
+job_queue = PriorityQueue()
+job_queue.insert(job1, job1.priority)
+job_queue.insert(job2, job2.priority)
+job_queue.insert(job3, job3.priority)
+while not len(job_queue) == 0:
+    next_job = job_queue.removemin()
+    print(f"Running {next_job}")
+    for i in range(next_job.duration):
+        print(f"{next_job.name} is running...")
+    print(f"{next_job.name} has finished running.")
+```
+
+## Job scheduling with `PriorityQueue`
+
+::: {.fragment .fade-up style="margin-top: 0em; font-size: 0.90em;"}
+
+- **Job representation**
+  - Leverages `Entry`, `HeapPQ`, and `PriorityQueue` classes
+  - `Job` class with `name`, `priority`, and `duration` attributes
+  - Lower priority values indicate higher importance
+
+- **Scheduling process**
+  - Jobs stored in a `PriorityQueue` ordered by priority
+  - `removemin()` selects the next highest-priority job
+  - Each job runs for its full duration before next job starts
+
+:::
+
+::: {.fragment .fade style="font-size: 0.95em; margin-top: -0.25em;"}
+
+- {{< iconify game-icons team-idea >}} **What are the limitations of this job scheduler? Why?**
+
+:::
+
+## Process scheduling in the Linux kernel
+
+::: {.incremental .fade-up style="margin-top: -.25em; font-size: 0.675em;"}
+
+- **Multi-level feedback queue**
+  - Dynamic priority adjustment based on behavior
+  - I/O-bound processes get priority boosts
+  - CPU-bound processes get priority penalties
+
+- **Preemption and timeslices**
+  - Processes run for short time quantum
+  - Long-running processes don't block others
+  - Real-time processes have special scheduling classes
+
+- **Completely Fair Scheduler (CFS)**
+  - Uses a red-black tree instead of a heap
+  - Tracks "virtual runtime" of processes
+  - Balances CPU time fairly among processes
+
+- **Reference**: [Real-time Ubuntu Documentation: Linux kernel schedulers](https://documentation.ubuntu.com/real-time/en/latest/explanation/schedulers/)
+
+:::
+
 ## Comparing `PriorityQueue` structures
 
 ::: fragment
@@ -546,7 +796,7 @@ while not len(job_queue) == 0:
 
 ::: fragment
 
-- {{< iconify fa6-solid arrows-to-circle >}} **Performance analysis**:
+- {{< iconify fa6-solid arrows-to-circle >}} **Performance analysis**
     - Uses a binary heap to store entries
     - **Fast**: `insert`, `findmin`, and `removemin` are $O(\log_2 n)$
     - **Trade-offs**: no more constant-time complexity methods!
@@ -555,7 +805,7 @@ while not len(job_queue) == 0:
 
 ::: fragment
 
-- {{< iconify fa6-solid arrows-to-circle >}} **Functionality review**:
+- {{< iconify fa6-solid arrows-to-circle >}} **Functionality review**
     - `PriorityQueue` extends `HeapPQ` and adds more methods
     - `PriorityQueue` offers random access to remove any item
     - `PriorityQueue` supports iteration to remove all items

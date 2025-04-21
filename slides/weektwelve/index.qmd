@@ -8,7 +8,8 @@ author: Gregory M. Kapfhammer
 execute:
   freeze: auto
 format:
-  revealjs:
+  live-revealjs:
+    completion: true
     theme: default
     css: styles.css
     monofont: Ubuntu Mono
@@ -22,21 +23,37 @@ format:
 
 # Efficient way to find data in a collection?
 
+::: incremental
+
 - Sort the items in a collection
 - Use binary search to find an item
 - Amortize the cost of sorting
 - Operate on collections are static
 
-{{< iconify game-icons team-idea >}} **Wait, what are the limitations of this approach?**
+:::
+
+::: incremental
+
+- {{< iconify game-icons team-idea >}} **Wait, what are the limitations of this approach?**
+
+:::
 
 # What are mappings and hash table structures?
+
+::: incremental
 
 - A **mapping** is an association between two sets of items
 - A mapping **associates** a value to a key
 - This association is called a **key-value pair**
-- Key are unique, so there is only **one value per key**
+- Key are ideally unique, so there is only **one value per key**
 
-{{< iconify game-icons team-idea >}} **Why do dictionary operations only take constant time?**
+:::
+
+::: incremental
+
+- {{< iconify game-icons team-idea >}} **Why do dictionary operations only take constant time?**
+
+:::
 
 ## Mapping abstract data type
 
@@ -99,6 +116,43 @@ print(mapget(m, 1) == 'one')
 print(mapget(m, 4) == 'four')
 ```
 
+## Try the basic hash table
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 15
+class Entry:
+    def __init__(self, key, value):
+        self.key = key
+        self.value = value
+
+    def __str__(self):
+        return str(self.key) + " : " + str(self.value)
+
+def mapput(L, key, value):
+    for e in L:
+        if e.key == key:
+            e.value = value
+            return
+    L.append(Entry(key, value))
+
+def mapget(L, key):
+    for e in L:
+        if e.key == key:
+            return e.value
+    raise KeyError
+
+m = []
+mapput(m, 4, 'five')
+mapput(m, 1, 'one')
+mapput(m, 13, 'thirteen')
+mapput(m, 4, 'four')
+assert(mapget(m, 1) == 'one')
+assert(mapget(m, 4) == 'four')
+print(mapget(m, 1) == 'one')
+print(mapget(m, 4) == 'four')
+```
+
 ## What can we learn from the implementation of `Entry` and the `mapput` and `mapget` functions?
 
 ::: incremental
@@ -121,12 +175,11 @@ print(mapget(m, 4) == 'four')
 
 ```{python}
 d = {'key1': 'value1', 'key2': 'value2'}
+
 for k in d:
     print(k)
-
 for v in d.values():
     print(v)
-
 for k, v in d.items():
     print(k, v)
 
@@ -137,33 +190,37 @@ print(d)
 
 ::: {.fragment .fade-up .boxed-content style="margin-top: 0em; font-size: 0.80em;"}
 
-- `__getitem__(k)` - return the value associate to the key `k`; usually an error (`KeyError`) is raised if the given key is not present
+- `__getitem__(k)`: return the value associate to the key `k`; usually an error (`KeyError`) is raised if the given key is not present
 
-- `__setitem__(k, v)` - Add the key-value pair `(k,v)` to the mapping
+- `__setitem__(k, v)`: Add the key-value pair `(k,v)` to the mapping
 
-- `remove(k)` - Remove the entry with key `k` if it exists
+- `remove(k)`: Remove the entry with key `k` if it exists
 
-- `__len__` - return the number of keys in the dictionary
+- `__len__`: return the number of keys in the dictionary
 
-- `__contains__(k)` - return true if the mapping contains a pair with key `k`
+- `__contains__(k)`: return true if the mapping contains a pair with key `k`
 
-- `__iter__` - return an iterator over the keys in the dictionary
+- `__iter__`: return an iterator over the keys in the dictionary
 
-- `values` - return an iterator over the values in the dictionary
+- `values`: return an iterator over the values in the dictionary
 
-- `items` - return an iterator over the key-value pairs (as tuples)
+- `items`: return an iterator over the key-value pairs (as tuples)
 
-- `__str__` - return a string representation of the mapping
+- `__str__`: return a string representation of the mapping
 
 :::
 
 ## Be careful! Don't assume details about hash table behavior!
+
+::: incremental
 
 - 🎉 Remember, `dict` is a non-sequential collection
 - 🎲 The order of items in a `dict` is unpredictable
 - 🔄 Order can change between two iterations of same `dict`
 - 📝 Now `dict` items are in a fixed order since using a `list`
 - 🚀 Moving items around a `list` improves running times!
+
+:::
 
 ::: {.fragment .fade style="margin-top: 0.05em;"}
 
@@ -235,9 +292,62 @@ class ListMappingSimple:
 
 :::
 
+## First, try out the `ListMappingSimple`!
+
+```{python}
+my_map = ListMappingSimple()
+my_map["name"] = "John Doe"
+my_map["age"] = 30
+my_map["city"] = "New York"
+my_map.put("occupation", "Developer")
+
+print(f"Entire map: {my_map}")
+print(f"Map size: {len(my_map)}")
+
+print("Retrieving values:")
+print(f"Name: {my_map.get('name')}")
+print(f"Age: {my_map['age']}")
+print(f"City: {my_map.get('city')}")
+```
+
+## More operations of `ListMappingSimple`
+
+```{python}
+print("Checking if keys exist:")
+print(f"'name' exists: {'name' in my_map}")
+print(f"'email' exists: {'email' in my_map}")
+
+my_map["age"] = 31
+print(f"Updated age: {my_map['age']}")
+
+print("Iterating through keys:")
+for key in my_map:
+    print(f"Key: {key}")
+```
+
+## Updates to a `ListMappingSimple`
+
+```{python}
+print("Removing 'city' entry")
+my_map.remove("city")
+print(f"Updated map: {my_map}")
+print(f"'city' exists after removal: {'city' in my_map}")
+
+print("Iterating through key-value pairs:")
+for key, value in my_map.items():
+    print(f"{key}: {value}")
+```
+
+::: {.incremental style="font-size: 0.85em;"}
+
+- This is a flexible and useful way to store key-value pairs!
+- {{< iconify game-icons team-idea >}} **What is the key drawback of this implementation?**
+
+:::
+
 # The `ListMapping` class is not efficient! Ideas?
 
-- Goal is to get near constant-time access to data like `dict`
+- Goal is to get **near constant-time access** to data like `dict`
 
 - Right now more than one method has $O(n)$ running time!
 
@@ -275,6 +385,54 @@ class HashMappingSimple:
 - The `100` instances of `ListMapping` are called **buckets**
 - The `hash` function maps keys to a bucket in the `HashMap`
 - **Warning**! If two keys hash to the same index, it is a **collision**!
+
+:::
+
+## Using the `HashMappingSimple`
+
+```{python}
+hash_map = HashMappingSimple()
+hash_map.put("name", "Alice Smith")
+hash_map.put("age", 28)
+hash_map.put("email", "alice@example.com")
+hash_map.put("city", "Boston")
+
+print(f"Name: {hash_map.get('name')}")
+print(f"Age: {hash_map.get('age')}")
+print(f"Email: {hash_map.get('email')}")
+print(f"City: {hash_map.get('city')}")
+```
+
+::: {.incremental style="font-size: 0.85em;"}
+
+- The `put` method allows for adding key-value pairs
+- The `get` method allows for retrieving the value for a key
+
+:::
+
+## Understanding the `_bucket` method
+
+```python
+def _bucket(self, key):
+    return self._buckets[hash(key) % self._size]
+```
+
+::: {.incremental .fade style="margin-top: 0.0 em; font-size: 0.825em;"}
+
+- Locates the correct bucket for any key in the hash map
+- `hash(key)` converts any key into a numeric value
+- `% self._size` ensures the index is within valid range of `0` to `size-1`
+- `self._buckets[index]` retrieves the specific bucket of `ListMappingSimple`
+- Each bucket is a separate list that handles its own keys and values
+- Goal is to distribute data for faster lookups for $O(1)$ average case
+- However, multiple keys may share the same bucket! Collisions!
+- The buckets store the data mapped to them by the hash function
+
+:::
+
+::: {.incremental style="margin-top: -0.1em; font-size: 0.825em;"}
+
+- {{< iconify game-icons team-idea >}} **What are the key trade-offs for hashing and bucket count?**
 
 :::
 
@@ -392,10 +550,15 @@ def _double(self):
 
 :::
 
-# Improving the object-oriented design of `ListMapping` and `HashMapping`
+# Improving the design of `ListMapping` and `HashMapping`
+
+::: incremental
 
 - The data structures share methods in common
 - Factoring out a superclass can reduce code duplication
+- Goal is to improve the design, not overall performance
+
+:::
 
 ## Creating a common superclass
 
@@ -528,6 +691,46 @@ class HashMapping(Mapping):
 ::: {.fragment .fade style="margin-top: 0.85em; font-size: 0.85em;"}
 
 Wow, this implementation is more concise and easier to understand!
+
+:::
+
+## Use the `HashMapping` class
+
+```{python}
+hash_map = HashMapping(size=10)
+
+print(f"Initial hash map with {len(hash_map)} entries")
+print("Adding entries to the hash map!")
+hash_map["name"] = "Alice Johnson"
+hash_map["age"] = 32
+hash_map["email"] = "alice@example.com"
+
+print(f"Hash map now has {len(hash_map)} entries")
+print("Retrieving values:")
+print(f"  Name: {hash_map.get('name')}")
+print(f"  Age: {hash_map['age']}")
+print(f"  Email: {hash_map['email']}")
+```
+
+## Wow, similar to Python's dictionary!
+
+```{python}
+hash_map = dict()
+
+hash_map["name"] = "Alice Johnson"
+hash_map["age"] = 32
+hash_map["email"] = "alice@example.com"
+
+print(f"  Name: {hash_map.get('name')}")
+print(f"  Age: {hash_map['age']}")
+print(f"  Email: {hash_map['email']}")
+```
+
+::: fragment
+
+- Similar core operations like `[]`, `get()`, and `put()`
+- Automatic resizing with a simple "load factor"
+- Uses hash function for key distribution
 
 :::
 

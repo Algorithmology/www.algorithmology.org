@@ -1,0 +1,379 @@
+---
+author: [Molly Suppo, Daniel Bekele, Rosa Ruiz, Darius Googe, Gabriel Salvatore]
+title: "Investigating test priotitization with traditional and multi-objective sorting algorithms"
+page-layout: full
+categories: [post, sorting, comparison]
+date: "2025-03-27"
+date-format: long
+toc: true
+---
+
+# Repository Link
+
+Below is the link that will direct you to our GitHub repository needed to run
+our experiment on your personal device:
+<https://github.com/suppo01/Algorithm-Analysis-All-Hands-Module-2>
+
+## Introduction
+
+During our team's exploration of sorting algorithms and their performance
+characteristics, an interesting research question emerged: How can we
+effectively sort test cases considering multiple factors simultaneously?
+Traditional sorting algorithms excel at sorting based on a single criterion, but
+real-world test case prioritization often requires balancing multiple
+objectives, such as execution time and code coverage.
+
+This research question led us to investigate the potential of multi-objective
+optimization algorithms, specifically NSGA-II (Non-dominated Sorting Genetic
+Algorithm II), in comparison to traditional sorting approaches. While
+traditional algorithms like Quick Sort and Bubble Sort can sort test cases based
+on one factor at a time, NSGA-II offers the advantage of considering multiple
+objectives simultaneously, potentially providing more nuanced and practical test
+case prioritization.
+
+Our research aims to answer the question: How does NSGA-II compare to
+traditional sorting algorithms in terms of running time when comparing test
+cases in terms of execution speed and code coverage factors? The traditional
+algorithms would sort according to one factor at a time while NSGA-II would sort
+according to both factors.
+
+### Data Collection and Gathering
+
+For our research, we selected the Chasten project, a publicly available GitHub
+repository developed as part of a course in our department. This choice was
+strategic for several reasons:
+
+1. **Reproducibility**: Since Chasten was developed within our department, we
+   have direct access to its development history and can ensure that others can
+replicate our study.
+
+2. **Test Infrastructure**: The project includes a comprehensive test suite,
+   making it an ideal candidate for analyzing test case execution times and
+coverage metrics.
+
+3. **Tool Development**: As a tool developed in an academic setting, Chasten
+   provides a controlled environment for our research, with well-defined test
+cases and clear execution patterns.
+
+To collect our data, we developed a custom script (`collect_test_metrics.py`)
+that leverages `pytest-cov`, a pytest plugin for measuring code coverage. The
+script executes the test suite using Poetry's task runner with specific
+`pytest-cov` configurations to generate detailed coverage reports. The coverage
+data is collected using the following command structure:
+
+```bash
+pytest --cov=chasten tests/ --cov-report=json
+```
+
+This command generates a `coverage.json` file that contains detailed coverage information for each module in the project. The
+JSON structure includes:
+- Executed lines for each file
+- Summary statistics including covered lines, total statements, and coverage percentages
+- Missing and excluded lines
+- Context information for each covered line
+
+The coverage.json file is structured hierarchically, with each module's data organized under the "files" key. For example:
+```json
+{
+    "files": {
+        "chasten/checks.py": {
+            "executed_lines": [...],
+            "summary": {
+                "covered_lines": 50,
+                "num_statements": 51,
+                "percent_covered": 98,
+                "missing_lines": 1,
+                "excluded_lines": 0
+            }
+        }
+    }
+}
+```
+
+To prepare this data for analysis, we developed a mapping script (`mapper.py`)
+that serves two key purposes:
+
+1. **Traditional Analysis Format**: The script reads both the coverage.json and
+   test_metrics.json files, creating a mapping between test cases and their
+corresponding module coverage data. It computes a ratio of covered lines to test
+duration for each test case, which helps identify tests that provide the best
+coverage per unit of time.
+
+2. **NSGA-II Format**: The script also transforms the data into a specialized
+   format required by the NSGA-II algorithm. Each test case is represented as a
+list of `[test name, duration, coverage]`, where coverage is the raw number of
+covered lines from the coverage.json file. This format enables multi-objective
+optimization, allowing us to simultaneously consider both test execution time
+and code coverage.
+
+The mapping process ensures proper handling of edge cases:
+
+- Failed or skipped tests are assigned zero coverage values
+- Tests with zero duration are handled gracefully
+- Each test case is correctly associated with its corresponding module's coverage data
+- The data is structured appropriately for both traditional and multi-objective analysis approaches
+
+This data preparation pipeline enables us to:
+
+- Compare the effectiveness of different test prioritization approaches
+- Analyze the trade-offs between test execution time and coverage
+- Generate reproducible results for both traditional and NSGA-II algorithms
+- Maintain data consistency across different analysis methods
+
+## Implementation
+
+The implementation of this project required the use of several algorithms. As we
+were comparing traditional algorithms with multi objective algorithms. We
+decided upon two different traditional algorithms, quick sort and bubble sort.
+As for the multi objective algorithms, we had the NSGA-II sorting algorithm
+recommended to us by Professor Kapfhammer, so we decided to look into that one.
+More specifics about each algorithm are below.
+
+### The Quick Sort Algorithm
+
+We selected the Quick Sort algorithm for this experiment due to its efficiency
+in handling large datasets. With an average time complexity of `O(n log n)`,
+Quick Sort is faster than simpler algorithms like Bubble Sort, making it ideal
+for optimizing test prioritization. The algorithm selects a random pivot to
+avoid worst-case performance of `O(n²)` and recursively sorts the elements less
+than and greater than the pivot.
+
+In this implementation, Quick Sort organizes the test cases based on the
+coverage/time ratio. The data is partitioned around the pivot, with elements
+smaller than the pivot in the left partition and those greater in the right. The
+function recursively sorts both partitions, and once sorted, the pivot is placed
+between them to produce the final sorted list. This ensures that the most
+efficient tests (lowest coverage/time ratio) are prioritized.
+
+```python
+import json # Import the JSON module to handle JSON file operations
+import time # Import the time module to measure execution time
+import random  # Import random for selecting a random pivot in QuickSort
+from typing import List, Dict, Any
+
+
+def quicksort(arr: List[Any]) -> List[Any]:
+    """Sorts an array using the QuickSort algorithm with a random pivot."""
+    if len(arr) <= 1: # Base case if the array has 1 or no elements, it's already sorted
+        return arr
+    else:
+        pivot = random.choice(arr)  # Select a random pivot element from the array
+        left = [x for x in arr if x < pivot]  # Elements less than the pivot
+        right = [x for x in arr if x > pivot]  # Elements greater than the pivot
+        # Recursively sort the left and right partitions and combine them with the pivot
+        return quicksort(left) + [pivot] + quicksort(right)
+```
+
+This approach minimizes the risk of worst-case performance and ensures the most
+efficient tests are prioritized, optimizing the testing process by focusing on
+the best results with the least amount of time.
+
+### The Bucket Sort Algorithm
+
+We selected the Bucket Sort algorithm for this experiment due to its efficiency
+in distributing and sorting data across multiple buckets. With an average time
+complexity of `O(n + k)`, Bucket Sort is well-suited for handling large datasets,
+especially when the input is uniformly distributed. Unlike comparison-based
+algorithms like Quick Sort, it efficiently categorizes elements into buckets and
+sorts them individually, reducing the overall sorting overhead.  
+
+In this implementation, Bucket Sort organizes test cases based on the
+coverage/time ratio. The algorithm first distributes the test cases into buckets
+according to their values, ensuring that similar elements are grouped together.
+Each bucket is then sorted individually using an appropriate sorting method,
+such as Insertion Sort, before being concatenated to form the final sorted list.
+This process ensures that test cases with the lowest coverage/time ratio are
+prioritized, optimizing test execution order.
+
+```python
+import json
+import os
+from typing import List, Dict, Any
+
+# Function to perform bucket sort on test cases based on a given attribute
+def bucket_sort(data: List[Dict[str, Any]], attribute: str) -> List[Dict[str, Any]]:
+    """Sort a list of dictionaries using bucket sort based on a given attribute."""
+    max_value = max(item[attribute] for item in data)  # Find the maximum value of the attribute
+    buckets = [[] for _ in range(int(max_value) + 1)]  # Create buckets
+
+    for item in data:  # Place each item in the appropriate bucket
+        buckets[int(item[attribute])].append(item)
+
+    sorted_data = []  # Concatenate all buckets into a sorted list
+    for bucket in buckets:
+        sorted_data.extend(bucket)
+
+    return sorted_data  # Return the sorted list
+
+# Function to load data from a JSON file
+def load_data(file_path: str) -> List[Dict[str, Any]]:
+    """Load data from a JSON file."""
+    if not os.path.exists(file_path):  # Check if the file exists
+        raise FileNotFoundError(f"File not found: {file_path}")
+    with open(file_path, 'r') as f:
+        data = json.load(f)
+    return data  # Return the loaded data
+
+# Function to find the test case with the highest coverage
+def find_highest_coverage_test_case(sorted_tests: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """Finds the test case with the highest coverage."""
+    highest_coverage_test: Dict[str, Any] = sorted_tests[0]  # Start with the first test case
+    for test in sorted_tests:  # Loop through all test cases
+        if test['coverage'] > highest_coverage_test['coverage']:
+            highest_coverage_test = test  # Update the test case with the highest coverage
+    return highest_coverage_test  # Return the test case with the largest coverage
+
+# Main function to execute the script
+def main():
+    file_path = 'data/newtryingToCompute.json'  # Path to your test metrics file
+
+    # Debugging: Print the absolute path being used
+    print(f"Looking for file at: {os.path.abspath(file_path)}")
+
+    try:
+        data = load_data(file_path)  # Load the test metrics data
+    except FileNotFoundError as e:
+        print(e)
+        return
+
+    sorted_tests_by_coverage: List[Dict[str, Any]] = bucket_sort(data, 'coverage')  # Sort by coverage
+    highest_coverage_test_case: Dict[str, Any] = find_highest_coverage_test_case(sorted_tests_by_coverage)  # Find the highest coverage
+
+    # Print the results
+    print("\n🌟 Results 🌟")
+    print("\n🚀 Test Case with Highest Coverage:")
+    print(f"Test Name: {highest_coverage_test_case['name']}")
+    print(f"Coverage: {highest_coverage_test_case['coverage']}")
+
+# Entry point of the script
+if __name__ == "__main__":
+    main()
+```
+
+This approach reduces the likelihood of uneven data distribution, ensuring
+efficient sorting and prioritization of test cases. By grouping similar values
+into buckets and sorting them individually, the testing process is optimized,
+focusing on the most effective test cases with minimal execution time.
+
+### The NSGA-II Multi Objective Algorithm
+
+The NSGA-II multi objective sorting algorithm is broken down into a variety of
+approaches. We utilized the binary tournament approach and slightly adapted it
+to suite our needs. The file that runs this part of the experiment has two main
+parts, the `binary_tournament` function and `main`.
+
+The `binary_tournament` function runs the bulk of the experiment, utilizing a
+list of indices that indicate the opponents for each tournament to be performed,
+`P`, and the population object storing all the objects to be pitted against each
+other in tournaments, `pop`. From there, the tournaments are run continuously
+until all of them have been completed. In the implementation, the function also
+collects and constantly updates the list of names dictating the winners with a
+list also dictated for the losers to help update the list of winners. At the
+end, the final winner's list is printed. It is worth noting that there are
+slightly different outcomes each time. This could be due to slightly different
+evaluations occurring each time as there are several aspects that go into
+running the algorithm, even with a limited number of factors to consider. It is
+also worth noting that the variable `S` refers to the result returned by the
+function, a list of the memory locations for all the winners. As that is not as
+helpful to our purposes, it is not seen in our results.
+
+``` python
+for i in range(n_tournaments):
+        a, b = P[i]
+
+        # if the first individual is better, choose it
+        if pop[a].F < pop[b].F:
+            S[i] = a
+            loser = pop[b].name
+            winner = pop[a].name
+        # otherwise take the other individual
+        else:
+            S[i] = b
+            loser = pop[a].name
+            winner = pop[b].name
+   
+        # update lists with name records
+        if winner not in winner_list:
+            if winner not in loser_list:
+                winner_list.append(winner)
+            else:
+                winner_list.remove(loser)
+        if loser not in loser_list:
+            loser_list.append(loser)
+
+    # return the names of the ideal tests
+    print(f"The Ideal Tests Are: {winner_list}")
+    return S
+```
+
+Main, on the other hand, looks into generating the list of competitor indices
+using the nested for loop method as that allowed the result to be made as a list
+of lists instead of a list of tuples which is not the right format for the
+`binary_tournament` function. Also, main generates the Population object. First,
+a 2d numpy array is created from the JSON file designated for use by the NSGA-II
+algorithm as the formatting is slightly different to accommodate the
+`binary_tournament` function. Then, a list of Individual objects is created from
+the information in the array. Finally, that list is passed into a brand new
+Population object. Finally, main runs the tournaments by calling the
+`binary_tournament` function with the Population object and array of competitor
+index pairs passed in.
+
+The results produced from this algorithm are the best test cases according to a
+fitness factor, `F` which is calculated similarly to the values used for the two
+more traditional sorting algorithms, dividing the duration of the test case by
+the number of lines it covers and comparing those values in each tournament.
+
+## The Results
+
+In this experiment, we focused on comparing the runtime performance of three
+algorithms—NSGA-II, QuickSort, and Bucket Sort—by measuring their runtime with a
+single factor in mind: coverage. We conducted tests on a single dataset and
+recorded the time taken by each algorithm to complete the task.
+
+The results from the experiment are summarized in the following table:
+
+| Dataset Size |     NSGA2 (ms)   | QuickSort (ms) | Bucket Sort (ms) |
+|--------------|------------------|----------------|------------------|
+| 92 lines     |       7.38       |     0.3        |      0.13        |
+
+- Observations:
+
+NSGA-II had the highest runtime, which is expected given its complexity and the
+nature of multi-objective optimization tasks. Its process of evolving solutions
+requires significant computational overhead, making it less efficient for simple
+tasks like sorting or coverage evaluation. However, one benefit of the algorithm
+is that it prioritizes the best tests to run by considering multiple factors at
+once. So, it is optimal for solving problems where the most optimal solution in
+accordance with multiple factors is needed. Also, the results from this
+algorithm are often more than one test case, so the user is given a list of a
+few optimal test cases to run instead of just one test case.
+
+QuickSort, a well-known sorting algorithm, performed significantly faster than
+NSGA-II, reflecting its efficiency in handling ordered data. With its average
+time complexity of O(N log N), QuickSort proved well-suited for the task, even
+as the dataset size was relatively small. This algorithm produces the top test
+case according to a ratio of duration divided by the number of lines covered.
+Seeing as that ratio is all that is used to sort the test cases, the results may
+differ from those produced by NSGA-II. This algorithm is effective for simple
+sorting tasks like when it was given the ratio mentioned above.
+
+Bucket Sort, with its near-linear time complexity under optimal conditions,
+demonstrated the fastest performance in this experiment, significantly
+outperforming both NSGA-II and QuickSort on the given dataset. This algorithm
+produces the top test case according to a ratio of duration divided by the
+number of lines covered. Like with quick sort, since that ratio is all that is
+used to sort the test cases, the algorithm's results may differ from those
+produced by NSGA-II. This algorithm is effective for simple sorting tasks like
+when it was given the ratio mentioned above. Plus, it does not use recursion
+like quick sort, making it the fastest sorting algorithm in our experiment.
+
+## Conclusion
+
+The results of this experiment indicate that, under the tested scenario, NSGA-II
+did not outperform the algorithms we compared it to (QuickSort and Bucket Sort).
+Given that these algorithms are designed for fundamentally different purposes,
+the performance discrepancy is expected. Our tests were conducted in a context
+that favored QuickSort and Bucket Sort, which is inherently more efficient for
+the sorting tasks at hand. Consequently, while NSGA-II excels in multi-objective
+optimization, it is not suited for tasks where traditional sorting algorithms
+like QuickSort are more appropriate.
