@@ -16,13 +16,23 @@ format:
 
 # Introduction
 
-# TODO
+This study examines how `linear search`, `binary search`, and `balanced binary search tree (BST)` algorithms perform under varying conditions, specifically looking at:
+
+1. How dataset size affects performance scaling
+2. How target element position impacts search efficiency
 
 ## Motivation
 
-# TODO
+Search algorithm selection significantly impacts application performance, particularly as datasets grow. While linear search offers simplicity with O(n) time complexity, binary search trees promise O(log n) efficiency when properly balanced. However, theoretical advantages don't always translate directly to real-world performance. This study systematically analyzes how these algorithms compare across different dataset sizes and when searching for targets located in different positions within the data structure, providing insights for optimal algorithm selection in practical applications.
 
 # Method
+
+For this experiment, we developed a benchmarking tool that allows for systematic comparison between search algorithms across different data structures. The tool measures execution time while controlling for:
+
+1. Data structure type (unsorted list vs. binary search tree)
+2. Search algorithm (linear search vs. BST search)
+3. Dataset size (with automatic doubling between runs)
+4. Target position (`beginning`, `middle`, `end`, `random`, or `nonexistent`)
 
 ## Approach
 
