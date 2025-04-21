@@ -276,7 +276,19 @@ different vertex counts are displayed horizontally instead of vertically.
 
 # Charts
 
-TODO: Kris to create charts to demonstrate data
+## Linear Time Complexity
+
+This is a chart using the values in the `Averages` table above, for approaches
+which demonstrate a roughly linear time complexity.
+
+![Line Graph with Time on the Vertical Axis and Approach on the Horizontal Axis for linear time complexity.](./images/linear.png)
+
+## Quadratic Complexity
+
+This is a chart using the values in the `Averages` table above, for approaches
+which demonstrate a roughly quadratic time complexity.
+
+![Line Graph with Time on the Vertical Axis and Approach on the Horizontal Axis for quadratic time complexity.](./images/quadratic.png)
 
 # Results
 
