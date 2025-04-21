@@ -20,7 +20,23 @@ TODO: content here
 
 ### Generate Trees for Analysis
 
-TODO: Molly to describe her code here
+I have two separate generation algorithms to handle the different data types used for this experiment, lists and sets.
+Regardless, both generate unordered integer pairs within the container specified in the function name. Both functions also
+handle the case where there is not enough nodes present to make a tree. To generate a tree, there needs to be at least two
+nodes, a parent or root node, and a child node. If there are not enough nodes, an error is raised explaining why a tree will
+not be generated.
+
+The node pairs are generated using the random library and it's function, `randint`. The values generated are random integers
+between `0` and `1000`. Nodes are generated until the number of nodes generated is the equal to the value of the parameter
+`num_nodes`. The root or parent node is then assigned as the first node inside the container with the utilization of the `pop`
+function and the value `0` or the first index in the list specified. The available parents list is started with the root node
+as the first entry.
+
+For each value in the randomly generated list of values for the nodes, the parents are randomly selected and a pair consisting
+of the parent value and the child's value are added to the tree. For sets, the `add` function is used and for lists, the
+`append` function is used. Then the available parent list is updated with the value of the child node.
+
+At the end of both functions, the tree is returned either as a set or a list that contains pairs of unordered integers.
 
 ### Process Tree Created Using `Set` Container
 
