@@ -1,0 +1,78 @@
+---
+author: [Anoop Guragain,Kris Hatcher,Anton Hedlund,Rosa Ruiz,Molly Suppo]
+title: How does implementing a tree with Python's set and list structures impact performance in terms of insertion, deletion, and lookup speed?
+page-layout: full
+categories: [post, fibonacci, recursive, memoization, iterative]
+date: "2025-04-24"
+date-format: long
+toc: true
+---
+
+# Introduction
+
+TODO: content here
+
+## Motivation
+
+TODO: content here
+
+## Approach
+
+### Generate Trees for Analysis
+
+TODO: Molly to describe her code here
+
+### Process Tree Created Using `Set` Container
+
+TODO: Rosa to describe her code here
+
+### Process Tree Created Using `List` Container
+
+TODO: Anton to describe his code here
+
+### Run a Benchmark
+
+TODO: Anoop to describe his code here
+
+## Raw Data
+
+TODO: Kris to convert Google Sheet into Markdown Table
+
+# Charts
+
+TODO: Kris to create charts to demonstrate data
+
+# Results
+
+TODO: write up findings
+
+# Next Steps
+
+TODO: write up recommended next steps
+
+# References
+
+1. Documentation
+    - [Python Lists](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists)
+    - [pytest Documentation](https://docs.pytest.org/en/stable/)
+    - [geeksforgeeks](https://www.geeksforgeeks.org/python-dictionary-update-method/)
+    - [Tree Data Structures](https://en.wikipedia.org/wiki/Tree_(data_structure))
+    - [Rich Library for Tables](https://rich.readthedocs.io/en/stable/tables.html)
+    - [Graph vs Tree Data Structures](https://www.geeksforgeeks.org/difference-between-graph-and-tree/)
+2. Course Slides
+    - [Hierarchical Data Structures Course Slides](https://algorithmology.org/slides/weekthirteen/)
+
+## AI Usage in this Project
+
+AI was used in this project for:
+
+- Tree generation algorithms (adapted from Microsoft Copilot)
+- Code optimization and refactoring suggestions
+- Test case generation and documentation templates
+- Error handling and debugging support
+- Generating sample data for testing
+- Bug correction
+- Writing documentation
+- Autocompletion of repetitive code snippets
+
+All AI-generated content was reviewed and validated by team members.
