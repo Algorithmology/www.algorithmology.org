@@ -255,6 +255,25 @@ TODO: Anoop to describe his code here
 | Molly Suppo    |       5 | List           | Delete          |        9999 |   `0.6115274429` |     `0.0000611589` |
 | Molly Suppo    |       5 | List           | Verify Deletion |        9999 |   `1.7308022976` |     `0.0001730975` |  
 
+## Averages
+
+The following table averages out the data in the table above, grouping them by
+the `Implementation` and `Operation` columns. The data was then pivoted so that
+different vertex counts are displayed horizontally instead of vertically.
+
+| Implementation | Operation      | 624 Vertices   | 1249 Vertices  | 2499 Vertices  | 4999 Vertices  | 9999 Vertices  | 19999 Vertices |
+| -------------- | -------------- | -------------: | -------------: | -------------: | -------------: | -------------: | -------------: |
+| List           | Delete         | `0.0001207350` | `0.0025019646` | `0.0088257313` | `0.0351600647` | `0.1401988983` | -              |
+| List           | Insert         | -              | `0.0001283646` | `0.0002351284` | `0.0006656647` | `0.0008868694` | `0.0027206421` |
+| List           | Lookup         | -              | `0.0104080200` | `0.0424319744` | `0.1735907078` | `0.7055952072` | `3.2112814903` |
+| List           | VerifyDeletion | `0.0053706169` | `0.0227275848` | `0.0886682034` | `0.3614669323` | `1.4926889420` | -              |
+| Set            | Delete         | `0.0003408909` | `0.0005283832` | `0.0011797905` | `0.0022188663` | `0.0056355476` | -              |
+| Set            | Insert         | -              | `0.0005842686` | `0.0008664131` | `0.0017162323` | `0.0044518948` | `0.0085622787` |
+| Set            | Lookup         | -              | `0.0002401829` | `0.0005708218` | `0.0020582199` | `0.0054444313` | `0.0123595714` |
+| Set            | VerifyDeletion | `0.0001182079` | `0.0003589153` | `0.0009102344` | `0.0027663231` | `0.0058279991` | -              |
+
+: Average execution time for all studied ways to access a tree. {.responsive}
+
 # Charts
 
 TODO: Kris to create charts to demonstrate data
