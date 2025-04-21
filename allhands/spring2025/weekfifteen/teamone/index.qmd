@@ -2,7 +2,7 @@
 author: [Anoop Guragain,Kris Hatcher,Anton Hedlund,Rosa Ruiz,Molly Suppo]
 title: How does implementing a tree with Python's set and list structures impact performance in terms of insertion, deletion, and lookup speed?
 page-layout: full
-categories: [post, fibonacci, recursive, memoization, iterative]
+categories: [post, tree, set, list, speed, performance]
 date: "2025-04-24"
 date-format: long
 toc: true
