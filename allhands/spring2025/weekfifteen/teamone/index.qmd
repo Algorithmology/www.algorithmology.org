@@ -52,7 +52,208 @@ TODO: Anoop to describe his code here
 
 ## Raw Data
 
-TODO: Kris to convert Google Sheet into Markdown Table
+| Team Member    | Test ID | Implementation | Operation       | Repetitions | Total Time (sec) | Average Time (sec) |
+| -------------- | ------: | -------------- | --------------- | ----------: | ---------------: | -----------------: |
+| Anoop Guragain |       1 | Set            | Insert          |        1249 |   `0.0007219315` |     `0.0000005780` |
+| Anoop Guragain |       1 | Set            | Lookup          |        1249 |   `0.0004174709` |     `0.0000003342` |
+| Anoop Guragain |       1 | Set            | Delete          |         624 |   `0.0002694130` |     `0.0000004318` |
+| Anoop Guragain |       1 | Set            | Verify Deletion |         624 |   `0.0002048016` |     `0.0000003282` |
+| Anoop Guragain |       1 | List           | Insert          |        1249 |   `0.0002067089` |     `0.0000001655` |
+| Anoop Guragain |       1 | List           | Lookup          |        1249 |   `0.0114858150` |     `0.0000091960` |
+| Anoop Guragain |       1 | List           | Delete          |         624 |   `0.0001938343` |     `0.0000003106` |
+| Anoop Guragain |       1 | List           | Verify Deletion |         624 |   `0.0059139729` |     `0.0000094775` |
+| Anoop Guragain |       2 | Set            | Insert          |        2499 |   `0.0018906593` |     `0.0000007566` |
+| Anoop Guragain |       2 | Set            | Lookup          |        2499 |   `0.0012483597` |     `0.0000004995` |
+| Anoop Guragain |       2 | Set            | Delete          |        1249 |   `0.0006318092` |     `0.0000005059` |
+| Anoop Guragain |       2 | Set            | Verify Deletion |        1249 |   `0.0007519722` |     `0.0000006021` |
+| Anoop Guragain |       2 | List           | Insert          |        2499 |   `0.0004298687` |     `0.0000001720` |
+| Anoop Guragain |       2 | List           | Lookup          |        2499 |   `0.0469496250` |     `0.0000187874` |
+| Anoop Guragain |       2 | List           | Delete          |        1249 |   `0.0005016327` |     `0.0000004016` |
+| Anoop Guragain |       2 | List           | Verify Deletion |        1249 |   `0.0245757103` |     `0.0000196763` |
+| Anoop Guragain |       3 | Set            | Insert          |        4999 |   `0.0027675629` |     `0.0000005536` |
+| Anoop Guragain |       3 | Set            | Lookup          |        4999 |   `0.0032362938` |     `0.0000006474` |
+| Anoop Guragain |       3 | Set            | Delete          |        2499 |   `0.0018022060` |     `0.0000007212` |
+| Anoop Guragain |       3 | Set            | Verify Deletion |        2499 |   `0.0017445087` |     `0.0000006981` |
+| Anoop Guragain |       3 | List           | Insert          |        4999 |   `0.0007727146` |     `0.0000001546` |
+| Anoop Guragain |       3 | List           | Lookup          |        4999 |   `0.1906578541` |     `0.0000381392` |
+| Anoop Guragain |       3 | List           | Delete          |        2499 |   `0.0015168190` |     `0.0000006070` |
+| Anoop Guragain |       3 | List           | Verify Deletion |        2499 |   `0.0985131264` |     `0.0000394210` |
+| Anoop Guragain |       4 | Set            | Insert          |        9999 |   `0.0058395863` |     `0.0000005840` |
+| Anoop Guragain |       4 | Set            | Lookup          |        9999 |   `0.0081734657` |     `0.0000008174` |
+| Anoop Guragain |       4 | Set            | Delete          |        4999 |   `0.0044069290` |     `0.0000008816` |
+| Anoop Guragain |       4 | Set            | Verify Deletion |        4999 |   `0.0050458908` |     `0.0000010094` |
+| Anoop Guragain |       4 | List           | Insert          |        9999 |   `0.0016064644` |     `0.0000001607` |
+| Anoop Guragain |       4 | List           | Lookup          |        9999 |   `0.7679641247` |     `0.0000768041` |
+| Anoop Guragain |       4 | List           | Delete          |        4999 |   `0.0058078766` |     `0.0000011618` |
+| Anoop Guragain |       4 | List           | Verify Deletion |        4999 |   `0.3994753361` |     `0.0000799110` |
+| Anoop Guragain |       5 | Set            | Insert          |       19999 |   `0.0090425014` |     `0.0000004521` |
+| Anoop Guragain |       5 | Set            | Lookup          |       19999 |   `0.0132143497` |     `0.0000006608` |
+| Anoop Guragain |       5 | Set            | Delete          |        9999 |   `0.0083487034` |     `0.0000008350` |
+| Anoop Guragain |       5 | Set            | Verify Deletion |        9999 |   `0.0070867538` |     `0.0000007087` |
+| Anoop Guragain |       5 | List           | Insert          |       19999 |   `0.0031774044` |     `0.0000001589` |
+| Anoop Guragain |       5 | List           | Lookup          |       19999 |   `3.1757445335` |     `0.0001587952` |
+| Anoop Guragain |       5 | List           | Delete          |        9999 |   `0.0226500034` |     `0.0000022652` |
+| Anoop Guragain |       5 | List           | Verify Deletion |        9999 |   `1.6271212101` |     `0.0001627284` |
+| Kris Hatcher   |       1 | Set            | Insert          |        1249 |   `0.0006544590` |     `0.0000005240` |
+| Kris Hatcher   |       1 | Set            | Lookup          |        1249 |   `0.0004522800` |     `0.0000003621` |
+| Kris Hatcher   |       1 | Set            | Delete          |         624 |   `0.0002281666` |     `0.0000003657` |
+| Kris Hatcher   |       1 | Set            | Verify Deletion |         624 |   `0.0001893044` |     `0.0000003034` |
+| Kris Hatcher   |       1 | List           | Insert          |        1249 |   `0.0002603531` |     `0.0000002084` |
+| Kris Hatcher   |       1 | List           | Lookup          |        1249 |   `0.0140104294` |     `0.0000112173` |
+| Kris Hatcher   |       1 | List           | Delete          |         624 |   `0.0001783371` |     `0.0000002858` |
+| Kris Hatcher   |       1 | List           | Verify Deletion |         624 |   `0.0066938400` |     `0.0000107273` |
+| Kris Hatcher   |       2 | Set            | Insert          |        2499 |   `0.0013871193` |     `0.0000005551` |
+| Kris Hatcher   |       2 | Set            | Lookup          |        2499 |   `0.0009014606` |     `0.0000003607` |
+| Kris Hatcher   |       2 | Set            | Delete          |        1249 |   `0.0005352497` |     `0.0000004285` |
+| Kris Hatcher   |       2 | Set            | Verify Deletion |        1249 |   `0.0006377697` |     `0.0000005106` |
+| Kris Hatcher   |       2 | List           | Insert          |        2499 |   `0.0004427433` |     `0.0000001772` |
+| Kris Hatcher   |       2 | List           | Lookup          |        2499 |   `0.0568816662` |     `0.0000227618` |
+| Kris Hatcher   |       2 | List           | Delete          |        1249 |   `0.0005249977` |     `0.0000004203` |
+| Kris Hatcher   |       2 | List           | Verify Deletion |        1249 |   `0.0305998325` |     `0.0000244995` |
+| Kris Hatcher   |       3 | Set            | Insert          |        4999 |   `0.0026187897` |     `0.0000005239` |
+| Kris Hatcher   |       3 | Set            | Lookup          |        4999 |   `0.0020656586` |     `0.0000004132` |
+| Kris Hatcher   |       3 | Set            | Delete          |        2499 |   `0.0011301041` |     `0.0000004522` |
+| Kris Hatcher   |       3 | Set            | Verify Deletion |        2499 |   `0.0010702610` |     `0.0000004283` |
+| Kris Hatcher   |       3 | List           | Insert          |        4999 |   `0.0008723736` |     `0.0000001745` |
+| Kris Hatcher   |       3 | List           | Lookup          |        4999 |   `0.2281482220` |     `0.0000456388` |
+| Kris Hatcher   |       3 | List           | Delete          |        2499 |   `0.0015757084` |     `0.0000006305` |
+| Kris Hatcher   |       3 | List           | Verify Deletion |        2499 |   `0.1140768528` |     `0.0000456490` |
+| Kris Hatcher   |       4 | Set            | Insert          |        9999 |   `0.0051593781` |     `0.0000005160` |
+| Kris Hatcher   |       4 | Set            | Lookup          |        9999 |   `0.0051286221` |     `0.0000005129` |
+| Kris Hatcher   |       4 | Set            | Delete          |        4999 |   `0.0029599667` |     `0.0000005921` |
+| Kris Hatcher   |       4 | Set            | Verify Deletion |        4999 |   `0.0027363300` |     `0.0000005474` |
+| Kris Hatcher   |       4 | List           | Insert          |        9999 |   `0.0014669895` |     `0.0000001467` |
+| Kris Hatcher   |       4 | List           | Lookup          |        9999 |   `0.9439439774` |     `0.0000944038` |
+| Kris Hatcher   |       4 | List           | Delete          |        4999 |   `0.0077755451` |     `0.0000015554` |
+| Kris Hatcher   |       4 | List           | Verify Deletion |        4999 |   `0.4784438610` |     `0.0000957079` |
+| Kris Hatcher   |       5 | Set            | Insert          |       19999 |   `0.0102605820` |     `0.0000005131` |
+| Kris Hatcher   |       5 | Set            | Lookup          |       19999 |   `0.0194635391` |     `0.0000009732` |
+| Kris Hatcher   |       5 | Set            | Delete          |        9999 |   `0.0068020821` |     `0.0000006803` |
+| Kris Hatcher   |       5 | Set            | Verify Deletion |        9999 |   `0.0078239441` |     `0.0000007825` |
+| Kris Hatcher   |       5 | List           | Insert          |       19999 |   `0.0038275719` |     `0.0000001914` |
+| Kris Hatcher   |       5 | List           | Lookup          |       19999 |   `5.4431343079` |     `0.0002721703` |
+| Kris Hatcher   |       5 | List           | Delete          |        9999 |   `0.0259702206` |     `0.0000025973` |
+| Kris Hatcher   |       5 | List           | Verify Deletion |        9999 |   `2.1690285206` |     `0.0002169245` |
+| Anton Hedlund  |       1 | Set            | Insert          |        1249 |   `0.0002536774` |     `0.0000002031` |
+| Anton Hedlund  |       1 | Set            | Lookup          |        1249 |   `0.0001590252` |     `0.0000001273` |
+| Anton Hedlund  |       1 | Set            | Delete          |         624 |   `0.0001053810` |     `0.0000001689` |
+| Anton Hedlund  |       1 | Set            | Verify Deletion |         624 |   `0.0001015663` |     `0.0000001628` |
+| Anton Hedlund  |       1 | List           | Insert          |        1249 |   `0.0000927448` |     `0.0000000743` |
+| Anton Hedlund  |       1 | List           | Lookup          |        1249 |   `0.0081560612` |     `0.0000065301` |
+| Anton Hedlund  |       1 | List           | Delete          |         624 |   `0.0001132480` |     `0.0000001815` |
+| Anton Hedlund  |       1 | List           | Verify Deletion |         624 |   `0.0040009022` |     `0.0000064117` |
+| Anton Hedlund  |       2 | Set            | Insert          |        2499 |   `0.0004878044` |     `0.0000001952` |
+| Anton Hedlund  |       2 | Set            | Lookup          |        2499 |   `0.0003283024` |     `0.0000001314` |
+| Anton Hedlund  |       2 | Set            | Delete          |        1249 |   `0.0001740456` |     `0.0000001393` |
+| Anton Hedlund  |       2 | Set            | Verify Deletion |        1249 |   `0.0001869202` |     `0.0000001497` |
+| Anton Hedlund  |       2 | List           | Insert          |        2499 |   `0.0001413822` |     `0.0000000566` |
+| Anton Hedlund  |       2 | List           | Lookup          |        2499 |   `0.0313482285` |     `0.0000125443` |
+| Anton Hedlund  |       2 | List           | Delete          |        1249 |   `0.0003473759` |     `0.0000002781` |
+| Anton Hedlund  |       2 | List           | Verify Deletion |        1249 |   `0.0157310963` |     `0.0000125950` |
+| Anton Hedlund  |       3 | Set            | Insert          |        4999 |   `0.0009343624` |     `0.0000001869` |
+| Anton Hedlund  |       3 | Set            | Lookup          |        4999 |   `0.0009300709` |     `0.0000001861` |
+| Anton Hedlund  |       3 | Set            | Delete          |        2499 |   `0.0004298687` |     `0.0000001720` |
+| Anton Hedlund  |       3 | Set            | Verify Deletion |        2499 |   `0.0003609657` |     `0.0000001444` |
+| Anton Hedlund  |       3 | List           | Insert          |        4999 |   `0.0003294945` |     `0.0000000659` |
+| Anton Hedlund  |       3 | List           | Lookup          |        4999 |   `0.1207776070` |     `0.0000241604` |
+| Anton Hedlund  |       3 | List           | Delete          |        2499 |   `0.0010612011` |     `0.0000004247` |
+| Anton Hedlund  |       3 | List           | Verify Deletion |        2499 |   `0.0603499413` |     `0.0000241496` |
+| Anton Hedlund  |       4 | Set            | Insert          |        9999 |   `0.0020077229` |     `0.0000002008` |
+| Anton Hedlund  |       4 | Set            | Lookup          |        9999 |   `0.0029425621` |     `0.0000002943` |
+| Anton Hedlund  |       4 | Set            | Delete          |        4999 |   `0.0012745857` |     `0.0000002550` |
+| Anton Hedlund  |       4 | Set            | Verify Deletion |        4999 |   `0.0013880730` |     `0.0000002777` |
+| Anton Hedlund  |       4 | List           | Insert          |        9999 |   `0.0007171631` |     `0.0000000717` |
+| Anton Hedlund  |       4 | List           | Lookup          |        9999 |   `0.5085749626` |     `0.0000508626` |
+| Anton Hedlund  |       4 | List           | Delete          |        4999 |   `0.0041770935` |     `0.0000008356` |
+| Anton Hedlund  |       4 | List           | Verify Deletion |        4999 |   `0.2452845573` |     `0.0000490667` |
+| Anton Hedlund  |       5 | Set            | Insert          |       19999 |   `0.0035853386` |     `0.0000001793` |
+| Anton Hedlund  |       5 | Set            | Lookup          |       19999 |   `0.0066003799` |     `0.0000003300` |
+| Anton Hedlund  |       5 | Set            | Delete          |        9999 |   `0.0029261112` |     `0.0000002926` |
+| Anton Hedlund  |       5 | Set            | Verify Deletion |        9999 |   `0.0026454926` |     `0.0000002646` |
+| Anton Hedlund  |       5 | List           | Insert          |       19999 |   `0.0012934208` |     `0.0000000647` |
+| Anton Hedlund  |       5 | List           | Lookup          |       19999 |   `2.0283503532` |     `0.0001014226` |
+| Anton Hedlund  |       5 | List           | Delete          |        9999 |   `0.0191664696` |     `0.0000019168` |
+| Anton Hedlund  |       5 | List           | Verify Deletion |        9999 |   `0.9842171669` |     `0.0000984316` |
+| Rosa Ruiz      |       1 | Set            | Insert          |        1249 |   `0.0002901554` |     `0.0000002323` |
+| Rosa Ruiz      |       1 | Set            | Lookup          |        1249 |   `0.0001721382` |     `0.0000001378` |
+| Rosa Ruiz      |       1 | Set            | Delete          |         624 |   `0.0001032352` |     `0.0000001654` |
+| Rosa Ruiz      |       1 | Set            | Verify Deletion |         624 |   `0.0000953674` |     `0.0000001528` |
+| Rosa Ruiz      |       1 | List           | Insert          |        1249 |   `0.0000820160` |     `0.0000000657` |
+| Rosa Ruiz      |       1 | List           | Lookup          |        1249 |   `0.0073747635` |     `0.0000059045` |
+| Rosa Ruiz      |       1 | List           | Delete          |         624 |   `0.0001182556` |     `0.0000001895` |
+| Rosa Ruiz      |       1 | List           | Verify Deletion |         624 |   `0.0038998127` |     `0.0000062497` |
+| Rosa Ruiz      |       2 | Set            | Insert          |        2499 |   `0.0005664825` |     `0.0000002267` |
+| Rosa Ruiz      |       2 | Set            | Lookup          |        2499 |   `0.0003759861` |     `0.0000001505` |
+| Rosa Ruiz      |       2 | Set            | Delete          |        1249 |   `0.0003008842` |     `0.0000002409` |
+| Rosa Ruiz      |       2 | Set            | Verify Deletion |        1249 |   `0.0002179146` |     `0.0000001745` |
+| Rosa Ruiz      |       2 | List           | Insert          |        2499 |   `0.0001616478` |     `0.0000000647` |
+| Rosa Ruiz      |       2 | List           | Lookup          |        2499 |   `0.0299577713` |     `0.0000119879` |
+| Rosa Ruiz      |       2 | List           | Delete          |        1249 |   `0.0003404617` |     `0.0000002726` |
+| Rosa Ruiz      |       2 | List           | Verify Deletion |        1249 |   `0.0156574249` |     `0.0000125360` |
+| Rosa Ruiz      |       3 | Set            | Insert          |        4999 |   `0.0012614727` |     `0.0000002523` |
+| Rosa Ruiz      |       3 | Set            | Lookup          |        4999 |   `0.0010662079` |     `0.0000002133` |
+| Rosa Ruiz      |       3 | Set            | Delete          |        2499 |   `0.0005378723` |     `0.0000002152` |
+| Rosa Ruiz      |       3 | Set            | Verify Deletion |        2499 |   `0.0004682541` |     `0.0000001874` |
+| Rosa Ruiz      |       3 | List           | Insert          |        4999 |   `0.0003514290` |     `0.0000000703` |
+| Rosa Ruiz      |       3 | List           | Lookup          |        4999 |   `0.1198709011` |     `0.0000239790` |
+| Rosa Ruiz      |       3 | List           | Delete          |        2499 |   `0.0012116432` |     `0.0000004849` |
+| Rosa Ruiz      |       3 | List           | Verify Deletion |        2499 |   `0.0594894886` |     `0.0000238053` |
+| Rosa Ruiz      |       4 | Set            | Insert          |        9999 |   `0.0022077560` |     `0.0000002208` |
+| Rosa Ruiz      |       4 | Set            | Lookup          |        9999 |   `0.0024387836` |     `0.0000002439` |
+| Rosa Ruiz      |       4 | Set            | Delete          |        4999 |   `0.0014414787` |     `0.0000002884` |
+| Rosa Ruiz      |       4 | Set            | Verify Deletion |        4999 |   `0.0011606216` |     `0.0000002322` |
+| Rosa Ruiz      |       4 | List           | Insert          |        9999 |   `0.0006437302` |     `0.0000000644` |
+| Rosa Ruiz      |       4 | List           | Lookup          |        9999 |   `0.4762122631` |     `0.0000476260` |
+| Rosa Ruiz      |       4 | List           | Delete          |        4999 |   `0.0045065880` |     `0.0000009015` |
+| Rosa Ruiz      |       4 | List           | Verify Deletion |        4999 |   `0.2361598015` |     `0.0000472414` |
+| Rosa Ruiz      |       5 | Set            | Insert          |       19999 |   `0.0044944286` |     `0.0000002247` |
+| Rosa Ruiz      |       5 | Set            | Lookup          |       19999 |   `0.0059998035` |     `0.0000003000` |
+| Rosa Ruiz      |       5 | Set            | Delete          |        9999 |   `0.0030324459` |     `0.0000003033` |
+| Rosa Ruiz      |       5 | Set            | Verify Deletion |        9999 |   `0.0035686493` |     `0.0000003569` |
+| Rosa Ruiz      |       5 | List           | Insert          |       19999 |   `0.0013079643` |     `0.0000000654` |
+| Rosa Ruiz      |       5 | List           | Lookup          |       19999 |   `1.8983876705` |     `0.0000949241` |
+| Rosa Ruiz      |       5 | List           | Delete          |        9999 |   `0.0216803551` |     `0.0000021683` |
+| Rosa Ruiz      |       5 | List           | Verify Deletion |        9999 |   `0.9522755146` |     `0.0000952371` |
+| Molly Suppo    |       1 | Set            | Insert          |        1249 |   `0.0010011196` |     `0.0000008015` |
+| Molly Suppo    |       1 | Set            | Lookup          |        1249 |   `0.0000000000` |     `0.0000000000` |
+| Molly Suppo    |       1 | Set            | Delete          |         624 |   `0.0009982586` |     `0.0000015998` |
+| Molly Suppo    |       1 | Set            | Verify Deletion |         624 |   `0.0000000000` |     `0.0000000000` |
+| Molly Suppo    |       1 | List           | Insert          |        1249 |   `0.0000000000` |     `0.0000000000` |
+| Molly Suppo    |       1 | List           | Lookup          |        1249 |   `0.0110130310` |     `0.0000088175` |
+| Molly Suppo    |       1 | List           | Delete          |         624 |   `0.0000000000` |     `0.0000000000` |
+| Molly Suppo    |       1 | List           | Verify Deletion |         624 |   `0.0063445568` |     `0.0000101676` |
+| Molly Suppo    |       2 | Set            | Insert          |        2499 |   `0.0000000000` |     `0.0000000000` |
+| Molly Suppo    |       2 | Set            | Lookup          |        2499 |   `0.0000000000` |     `0.0000000000` |
+| Molly Suppo    |       2 | Set            | Delete          |        1249 |   `0.0009999275` |     `0.0000008006` |
+| Molly Suppo    |       2 | Set            | Verify Deletion |        1249 |   `0.0000000000` |     `0.0000000000` |
+| Molly Suppo    |       2 | List           | Insert          |        2499 |   `0.0000000000` |     `0.0000000000` |
+| Molly Suppo    |       2 | List           | Lookup          |        2499 |   `0.0470225811` |     `0.0000188166` |
+| Molly Suppo    |       2 | List           | Delete          |        1249 |   `0.0107953548` |     `0.0000086432` |
+| Molly Suppo    |       2 | List           | Verify Deletion |        1249 |   `0.0270738602` |     `0.0000216764` |
+| Molly Suppo    |       3 | Set            | Insert          |        4999 |   `0.0009989738` |     `0.0000001998` |
+| Molly Suppo    |       3 | Set            | Lookup          |        4999 |   `0.0029928684` |     `0.0000005987` |
+| Molly Suppo    |       3 | Set            | Delete          |        2499 |   `0.0019989014` |     `0.0000007999` |
+| Molly Suppo    |       3 | Set            | Verify Deletion |        2499 |   `0.0009071827` |     `0.0000003630` |
+| Molly Suppo    |       3 | List           | Insert          |        4999 |   `0.0010023117` |     `0.0000002005` |
+| Molly Suppo    |       3 | List           | Lookup          |        4999 |   `0.2084989548` |     `0.0000417081` |
+| Molly Suppo    |       3 | List           | Delete          |        2499 |   `0.0387632847` |     `0.0000155115` |
+| Molly Suppo    |       3 | List           | Verify Deletion |        2499 |   `0.1109116077` |     `0.0000443824` |
+| Molly Suppo    |       4 | Set            | Insert          |        9999 |   `0.0070450306` |     `0.0000007046` |
+| Molly Suppo    |       4 | Set            | Lookup          |        9999 |   `0.0085387230` |     `0.0000008540` |
+| Molly Suppo    |       4 | Set            | Delete          |        4999 |   `0.0010113716` |     `0.0000002023` |
+| Molly Suppo    |       4 | Set            | Verify Deletion |        4999 |   `0.0035007000` |     `0.0000007003` |
+| Molly Suppo    |       4 | List           | Insert          |        9999 |   `0.0000000000` |     `0.0000000000` |
+| Molly Suppo    |       4 | List           | Lookup          |        9999 |   `0.8312807083` |     `0.0000831364` |
+| Molly Suppo    |       4 | List           | Delete          |        4999 |   `0.1535332203` |     `0.0000307128` |
+| Molly Suppo    |       4 | List           | Verify Deletion |        4999 |   `0.4479711056` |     `0.0000896121` |
+| Molly Suppo    |       5 | Set            | Insert          |       19999 |   `0.0154285431` |     `0.0000007715` |
+| Molly Suppo    |       5 | Set            | Lookup          |       19999 |   `0.0165197849` |     `0.0000008260` |
+| Molly Suppo    |       5 | Set            | Delete          |        9999 |   `0.0070683956` |     `0.0000007069` |
+| Molly Suppo    |       5 | Set            | Verify Deletion |        9999 |   `0.0080151558` |     `0.0000008016` |
+| Molly Suppo    |       5 | List           | Insert          |       19999 |   `0.0039968491` |     `0.0000001999` |
+| Molly Suppo    |       5 | List           | Lookup          |       19999 |   `3.5107905865` |     `0.0001755483` |
+| Molly Suppo    |       5 | List           | Delete          |        9999 |   `0.6115274429` |     `0.0000611589` |
+| Molly Suppo    |       5 | List           | Verify Deletion |        9999 |   `1.7308022976` |     `0.0001730975` |  
 
 # Charts
 
