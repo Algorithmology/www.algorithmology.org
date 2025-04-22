@@ -553,7 +553,38 @@ which demonstrate a roughly quadratic time complexity.
 
 # Results
 
-TODO: write up findings
+The result of the worst case time complexities are as follow:
+
+| Implementation |  Insert  |  Lookup  |  Delete  |  Verify Deletion  |
+| -------------- | -------- |--------: | -------: | ----------------: | 
+| List           | 0(1)avg  | 0(n)     | 0(n)     | 0(n)              |
+| Set            | 0(1)avg  | 0(1)avg  | 0(1)avg  | 0(1)av            |
+
+## Insert
+- Set remains at constant 0(1) 
+- List is also constant 0(1) as it is  appending at the end
+- Even though both are at 0(1), List is comparatively a lot faster than set at pure appending hence it is faster than set.
+
+## Lookup
+- Set remains at constant 0(1) 
+- List provide worst case time complexity of 0(n) when doubling the list size 
+- Set is faster constantly for the both small and large data sizes compared to list as list
+
+## Delete
+- Set remains at constant 0(1) 
+- List provide worst case time complexity of 0(n)
+- For the smaller data both are almost similar for the deletion but as the data increases the list falls behind due to the shifting
+
+## Verify Deletion
+- Set remains at constant 0(1) 
+- List provide worst case time complexity of 0(n)
+- Set is faster constantly for the both small and large data sizes compared to list as list
+
+## Conclusion
+
+Set is alot faster than list because it uses hash table while list use dynamic array. Other than append(insert) which amortize 0(1) due to python geometrically growing capacity, List must look at every element or need to shift for other operations which results in 0(n).
+- If you need fast, random insert, delete and lookup of vertices or edges use **Set**. 
+- If you truly just need to build up nodes or neighbors and then walk them sequentially use **List**.
 
 # Next Steps
 
