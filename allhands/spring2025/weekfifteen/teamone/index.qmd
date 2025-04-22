@@ -6,6 +6,10 @@ categories: [post, tree, set, list, speed, performance]
 date: "2025-04-24"
 date-format: long
 toc: true
+format:
+    html:
+        code-fold: true
+        code-tools: true
 ---
 
 # Introduction
@@ -44,7 +48,76 @@ TODO: Rosa to describe her code here
 
 ### Process Tree Created Using `List` Container
 
-TODO: Anton to describe his code here
+The ListProcessor class implements a tree data structure using Python's list to store parent-child relationships. Each relationship is stored as a tuple pair (parent, child) within the list, allowing for efficient storage and traversal of the tree structure.
+The class provides a set of operations to manage these relationships:
+
+- `insert_tree_pair(parent, child)`Creates a new parent-child relationship, returning True if successful or False if the relationship already exists
+- `delete_tree_pair(parent, child)`Removes a specific relationship, returning True if successful or False if the relationship didn't exist
+- `lookup_tree_pair(parent, child)` Checks if a specific relationship exists in the tree
+- `get_tree_size()` Returns the total number of relationships in the tree
+- `get_tree()` Returns a copy of all relationships in the tree
+- `get_children(parent)` Retrieves all children connected to a specific parent
+- `get_parents(child)` Retrieves all parents connected to a specific child
+
+```{python}
+from typing import TypeVar, List, Tuple
+
+T = TypeVar('T')  # Generic type for values
+
+class ListProcessor:
+    def __init__(self) -> None:
+        self.tree: List[Tuple[T, T]] = []
+#| class: scrollable
+    def insert_tree_pair(self, parent: T, child: T) -> bool:
+        """Insert a parent-child pair into the tree structure.
+        
+        Args:
+            parent: The parent node value
+            child: The child node value
+            
+        Returns:
+            bool: True if the pair was inserted, False if it already exists
+        """
+        if (parent, child) in self.tree:
+            return False
+        self.tree.append((parent, child))
+        return True
+
+    def delete_tree_pair(self, parent: T, child: T) -> bool:
+        """Delete a parent-child pair from the tree structure.
+        
+        Args:
+            parent: The parent node value
+            child: The child node value
+            
+        Returns:
+            bool: True if the pair was deleted, False if it didn't exist
+        """
+        try:
+            self.tree.remove((parent, child))
+            return True
+        except ValueError:
+            return False
+
+    def lookup_tree_pair(self, parent: T, child: T) -> bool:
+        """Check if a parent-child pair exists in the tree structure.
+        
+        Args:
+            parent: The parent node value
+            child: The child node value
+            
+        Returns:
+            bool: True if the pair exists, False otherwise
+        """
+        return (parent, child) in self.tree
+```
+
+The implementation uses Python's built-in list operations:
+
+- `append()` for adding new relationships
+- `remove()` for deleting relationships
+- `in` operator for checking relationship existence
+- `copy()` for returning safe copies of the tree data
 
 ### Run a Benchmark
 
