@@ -101,3 +101,5 @@ Several areas for future investigation could provide additional insights:
 
 # References
 
+- [Linear vs Binary Search](https://www.geeksforgeeks.org/linear-search-vs-binary-search/)
+- [Binary Search Tree](https://www.geeksforgeeks.org/introduction-to-binary-search-tree/)
