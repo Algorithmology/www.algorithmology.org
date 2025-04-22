@@ -23,7 +23,7 @@ This study examines how `linear search`, `binary search`, and `balanced binary s
 
 ## Motivation
 
-Search algorithm selection significantly impacts application performance, particularly as datasets grow. While linear search offers simplicity with O(n) time complexity, binary search trees promise O(log n) efficiency when properly balanced. However, theoretical advantages don't always translate directly to real-world performance. This study systematically analyzes how these algorithms compare across different dataset sizes and when searching for targets located in different positions within the data structure, providing insights for optimal algorithm selection in practical applications.
+Search algorithm selection significantly impacts application performance, particularly as datasets grow. While linear search offers simplicity with O(n) time complexity, binary search trees promise O(log n) efficiency when properly balanced. However, theoretical advantages don't always translate directly to real-world performance. This study systematically analyzes how these algorithms compare across different dataset sizes and when searching for targets located in different positions within the data structure, providing insights for optimal algorithm selection in practical applications. As datasets grow and performance requirements become more stringent, the choice between linear search, binary search, and tree-based approaches can significantly impact application responsiveness. This study aims to provide empirical data to guide these decisions.
 
 # Method
 
@@ -36,7 +36,33 @@ For this experiment, we developed a benchmarking tool that allows for systematic
 
 ## Approach
 
-# TODO
+### Linear Search
+
+```cmd
+def linear_search(dataset: List[Any], target: Any) -> Optional[int]:
+    """Perform a linear search on the dataset.
+
+    Args:
+        dataset: List to search through
+        target: Element to search for
+
+    Returns:
+        int: Index of the target element, or None if not found
+    """
+    # Iterate through the dataset
+    for i, item in enumerate(dataset):
+        if item == target:
+            return i
+
+    # Target not found
+    return None
+```
+
+Linear search sequentially checks each element until finding the target or reaching the end. It works on both sorted and unsorted data with `O(n)` time complexity.
+
+### Binary Search
+
+### Binary Search Tree
 
 # Data
 
