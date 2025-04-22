@@ -479,7 +479,7 @@ print("4 is connected to 1:", connected(G, 4, 1))
 - `connected` uses the `dfs` function to determine connectivity
 - `connected` returns `True` if there is a path between `u` and `v`
 - Otherwise, it returns `False` as there is no connection
-- Useful in a wide variety of graph theoretic algorithms!
+- {{< iconify fa6-solid lightbulb >}} **Useful in a wide variety of graph theoretic algorithms!**
 
 :::
 
