@@ -14,7 +14,9 @@ format:
 
 # Introduction
 
-TODO: content here
+This investigation seeks to answer a fundamental question in data structure implementation: How does implementing a tree with Python's set and list structures impact performance in terms of insertion, deletion, and lookup speed?
+
+To evaluate the two different implmentations, we compare their performance across three operations: insertion, lookup and deletion. Using precise timing measurements and controlled experiments with varying tree sizes, we analyze how each data structure handles these operations. This comprehensive performance testing reveals differences in efficiency and scalability, enabling us to determine which implementation delivers optimal performance for different tree operation scenarios.
 
 ## Motivation
 
@@ -130,7 +132,7 @@ The main.py implements a performance benchmarking system that compares two diffe
 - Deletion (removing relationships)
 - Verification (confirming deletions)
 
-```python
+```{python}
 
 def run_demo(num_vertices=20, quiet=False):
     console = Console()
@@ -310,6 +312,7 @@ The benchmarking process includes:
 - Detailed operation logs showing successful insertions, lookups, and deletions
 - Summary statistics comparing average execution times between implementations
 
+Note: The Code arrow is interactive and will display relevant code snippets.
 
 ## Raw Data
 
