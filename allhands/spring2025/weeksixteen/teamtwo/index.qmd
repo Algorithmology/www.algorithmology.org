@@ -72,11 +72,11 @@ TODO
 
 # Data
 
-We conducted experiments with datasets of 1,000 and 5,000 elements, using both sorted and unsorted arrays. For each algorithm, we measured:
+We conducted experiments with datasets of `1,000` and `5,000` elements, using both sorted and unsorted arrays. For each algorithm, we measured:
 
 1. Performance across different dataset sizes
-2. Impact of target position (beginning, middle, end, or nonexistent)
-3. Runtime consistency across multiple searches (100 and 500 searches)
+2. Impact of target position (`beginning`, `middle`, `end`, or `nonexistent`)
+3. Runtime consistency across multiple searches (`100` and `500` searches)
 
 # Data Tables
 
