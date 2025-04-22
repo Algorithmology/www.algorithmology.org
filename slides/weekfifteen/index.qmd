@@ -455,10 +455,10 @@ print('reachable from 1:', dfs(G, 1))
 print('reachable from 2:', dfs(G, 2))
 ```
 
-::: {.fragment style="margin-top: 0em; font-size: 0.9em;"}
+::: {.fragment style="margin-top: 0em; font-size: 0.8em;"}
 
-- Graph reachability is a key concept in graph theory
-- A depth-first search can be used to find the reachable nodes
+- Graph **reachability** is a key concept in graph theory
+- A **depth-first search** can be used to find the reachable nodes
 
 :::
 
