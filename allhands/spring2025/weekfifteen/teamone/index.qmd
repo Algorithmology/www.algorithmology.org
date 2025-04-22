@@ -16,7 +16,7 @@ format:
 
 This investigation seeks to answer a fundamental question in data structure implementation: How does implementing a tree with Python's set and list structures impact performance in terms of insertion, deletion, and lookup speed?
 
-To evaluate the two different implmentations, we compare their performance across three operations: insertion, lookup and deletion. Using precise timing measurements and controlled experiments with varying tree sizes, we analyze how each data structure handles these operations. This comprehensive performance testing reveals differences in efficiency and scalability, enabling us to determine which implementation delivers optimal performance for different tree operation scenarios.
+To evaluate the two different implementations, we compare their performance across three operations: insertion, lookup and deletion. Using precise timing measurements and controlled experiments with varying tree sizes, we analyze how each data structure handles these operations. This comprehensive performance testing reveals differences in efficiency and scalability, enabling us to determine which implementation delivers optimal performance for different tree operation scenarios.
 
 ## Motivation
 
@@ -589,7 +589,7 @@ The result of the worst case time complexities are as follow:
 
 ## Conclusion
 
-Set is alot faster than list because it uses hash table while list use dynamic array.Other than append(insert) which amortize 0(1) due to python geometrically growing capacity, List must look at every element or need to shift for other operations which results in 0(n).
+Set is demonstrably faster than list because it uses a hash table while lists use dynamic arrays. Other than append(insert) which amortize 0(1) due to python geometrically growing capacity, List must look at every element or need to shift for other operations which results in 0(n).
 - If you need fast, random insert, delete and lookup of vertices or edges use **Set**. 
 - If you truly just need to build up nodes or neighbors and then walk them sequentially use **List**.
 
