@@ -519,6 +519,8 @@ Note: The Code arrow is interactive and will display relevant code snippets.
 | Molly Suppo    |       5 | List           | Delete          |        9999 |   `0.6115274429` |     `0.0000611589` |
 | Molly Suppo    |       5 | List           | Verify Deletion |        9999 |   `1.7308022976` |     `0.0001730975` |  
 
+: Raw data for all studied ways to access a tree. {.responsive}
+
 ## Averages
 
 The following table averages out the data in the table above, grouping them by
@@ -562,6 +564,8 @@ The result of the worst case time complexities are as follow:
 | -------------- | -------- |--------: | -------: | ----------------: | 
 | List           | 0(1)avg  | 0(n)     | 0(n)     | 0(n)              |
 | Set            | 0(1)avg  | 0(1)avg  | 0(1)avg  | 0(1)avg           |
+
+: Worst case time complexities for all operations and implementations studied in this experiment. {.responsive}
 
 ## Insert
 - Set remains at constant 0(1).
