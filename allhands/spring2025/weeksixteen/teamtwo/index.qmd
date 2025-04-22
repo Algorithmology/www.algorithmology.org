@@ -21,11 +21,17 @@ This study examines how `linear search`, `binary search`, and `balanced binary s
 1. How dataset size affects performance scaling
 2. How target element position impacts search efficiency
 
-## Motivation
+# Motivation
 
-Search algorithm selection significantly impacts application performance, particularly as datasets grow. While `linear search` offers simplicity with `O(n)` time complexity, `binary search` and `binary search tree` promise`O(log n)` efficiency. However, theoretical advantages don't always translate directly to real-world performance.
+While `linear search` `(O(n))` offers simplicity and `binary search`/`balanced BSTs` `(O(log n))` promise theoretical efficiency, real-world performance depends heavily on:
 
-This study systematically analyzes how these algorithms compare across different dataset sizes and when searching for targets located in different positions within the data structure. As applications process increasingly large datasets under tight performance constraints, the choice between linear search, binary search, and tree-based approaches can dramatically affect responsiveness. Our research provides empirical data to guide these crucial implementation decisions.
+1. Dataset growth patterns
+
+2. Target location distributions
+
+3. Hardware/platform characteristics
+
+Our benchmarking provides empirical insights to guide algorithm selection in production systems where theoretical models may not reflect actual behavior.
 
 # Method
 
