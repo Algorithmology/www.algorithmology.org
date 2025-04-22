@@ -35,11 +35,11 @@ of pairs of elements of $V$
 
 ::: {.fragment .fade}
 
-{{< iconify game-icons team-idea >}} **Any examples of data we could store in a graph?**
+{{< iconify game-icons team-idea >}} **Any examples of data we could store in a graph? Why?**
 
 :::
 
-## Representing a primitive graph
+## A primitive graph with `dict` and `list`
 
 ```{python}
 graph_one = {
@@ -74,11 +74,11 @@ print(graph_two)
   - `addedge(u, v)`: Add edge to graph between vertices with keys `u` and `v`
   - `removeedge(u,v)` : Remove the edge u,v from the graph
   - `__contains__(v)` : Return `True` if vertex `v` in graph; `False` otherwise
-  - `hasedge(u,v)` : Return `True` if edge `(u,v)` in graph; `False` otherwise.
+  - `hasedge(u,v)` : Return `True` if edge `(u,v)` in graph; `False` otherwise
   - `nbrs(v)` : Return an iterable collection of (out)neighbors of `v`,
   i.e., those vertices `w` such that `(v, w)` is an edge. (For directed
-  graphs, this is out-neighbors.)
-  - `__len__()` : Return the number of vertices in the graph.
+  graphs, this is out-neighbors)
+  - `__len__()` : Return the number of vertices in the graph
 
 :::
 
