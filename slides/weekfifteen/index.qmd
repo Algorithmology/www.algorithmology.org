@@ -120,7 +120,7 @@ class EdgeSetGraph:
         return len(self._V)
 ```
 
-::: incremental
+::: {.incremental style="margin-top: 0em; font-size: 0.95em;"}
 
 - Represents a graph using a set of edges between vertices
 
@@ -144,7 +144,7 @@ print(graph.hasedge('A', 'B'))  # Output: False
 print(len(graph))               # Output: 3
 ```
 
-::: incremental
+::: {.incremental style="margin-top: -.4em; font-size: 0.95em;"}
 
 - How to create an un-directed version of the `EdgeSetGraph`?
 
@@ -410,7 +410,7 @@ def printall(G, v):
 
 - `printall` might yield `RecursionError` for certain graphs `G`
 
-- **Can we implement graph search without this defect?**
+- {{< iconify fa6-solid lightbulb >}} **Can we implement graph search without this defect?**
 
 :::
 
@@ -428,9 +428,13 @@ G = AdjacencySetGraphWithPath({1,2,3,4}, {(1,2), (2,3), (3,4), (4,1)})
 printall(G, 1, set())
 ```
 
+::: {.fragment .fade style="margin-top: -0.25em; font-size: 0.9em;"}
+
 - Intuitively, this approach leaves "bread crumbs" for tracking
 - Traversal only proceeds to vertices not visited before
-- **Wait, does this really print _all_ the nodes?**
+- **Wait, does this really print _all_ the nodes? All nodes reachable?** 
+
+:::
 
 ## Depth-first search (DFS)
 
