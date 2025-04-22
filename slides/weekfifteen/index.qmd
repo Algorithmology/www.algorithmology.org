@@ -495,9 +495,10 @@ can model real-world data!
 
 # Review graph structures
 
-::: {.incremental style="margin-top: 0em; font-size: 0.825em;"}
+::: {.incremental style="margin-top: -.2em; font-size: 0.825em;"}
 
-- **Key**: Graphs are objects with vertices ($V$) and edges ($E$)
+- {{< iconify fa6-solid lightbulb >}} **Key Insight**: Graphs are objects with
+vertices ($V$) and edges ($E$)
   
 - **Implementations Details**
   - `EdgeSetGraph`: simple but inefficient for finding neighbors
