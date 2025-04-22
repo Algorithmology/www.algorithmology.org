@@ -1,6 +1,6 @@
 ---
 author: [Hemani Alaparthi, Duru Akbas, Williem Bennet, Faaris Cheema, Vivian Potts]
-title: How does the runtime efficiency of linear search and balanced binary search tree (tree based approach) algorithms compare under varying dataset sizes and target element positions?
+title: How do linear search, binary search, balanced BSTs compare in runtime efficiency across varying dataset sizes and target positions?
 page-layout: full
 categories: [post, linear search, binary search, binary search tree, search]
 date: "2025-04-24"
