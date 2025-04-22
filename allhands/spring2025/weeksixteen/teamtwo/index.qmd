@@ -31,8 +31,8 @@ This study systematically analyzes how these algorithms compare across different
 
 For this experiment, we developed a benchmarking tool that allows for systematic comparison between search algorithms across different data structures. The tool measures execution time while controlling for:
 
-1. Data structure type (unsorted list vs. binary search tree)
-2. Search algorithm (linear search vs. BST search)
+1. Data structure type (`unsorted list`, `sorted list` and `binary search tree`)
+2. Search algorithm (`linear search` vs. `binary search` vs. `BST search`)
 3. Dataset size (with automatic doubling between runs)
 4. Target position (`beginning`, `middle`, `end`, `random`, or `nonexistent`)
 
