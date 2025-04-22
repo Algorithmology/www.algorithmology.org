@@ -119,6 +119,8 @@ The implementation uses Python's built-in list operations:
 - `in` operator for checking relationship existence
 - `copy()` for returning safe copies of the tree data
 
+Note: The Code arrow is interactive and will display relevant code snippets.
+
 ### Run a Benchmark
 
 TODO: Anoop to describe his code here
