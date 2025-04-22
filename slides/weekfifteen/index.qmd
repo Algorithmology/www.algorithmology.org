@@ -492,3 +492,22 @@ print("4 is connected to 1:", connected(G, 4, 1))
 
 {{< iconify fa6-solid diagram-project >}} Generalizing a `Tree`, a `Graph`
 can model real-world data!
+
+# Review graph structures
+
+::: {.incremental style="margin-top: 0em; font-size: 0.825em;"}
+
+- **Key**: Graphs are objects with vertices ($V$) and edges ($E$)
+  
+- **Implementations Details**
+  - `EdgeSetGraph`: simple but inefficient for finding neighbors
+  - `AdjacencySetGraph`: efficient neighbor access with adjacency sets
+  - Both support **directed** and **undirected** versions
+
+- **Path and Cycle Operations and Graph Traversal**
+  - Methods to verify paths, simple paths, cycles, and simple cycles
+  - Used to analyze graph connectivity and graph structure
+  - Depth-first search (DFS) avoids infinite loops with visited tracking
+  - Enables connectivity testing and node reachability
+
+:::
