@@ -35,11 +35,11 @@ of pairs of elements of $V$
 
 ::: {.fragment .fade}
 
-{{< iconify game-icons team-idea >}} **Any examples of data we could store in a graph?**
+{{< iconify game-icons team-idea >}} **Any examples of data we could store in a graph? Why?**
 
 :::
 
-## Representing a primitive graph
+## A primitive graph with `dict` and `list`
 
 ```{python}
 graph_one = {
@@ -74,11 +74,11 @@ print(graph_two)
   - `addedge(u, v)`: Add edge to graph between vertices with keys `u` and `v`
   - `removeedge(u,v)` : Remove the edge u,v from the graph
   - `__contains__(v)` : Return `True` if vertex `v` in graph; `False` otherwise
-  - `hasedge(u,v)` : Return `True` if edge `(u,v)` in graph; `False` otherwise.
+  - `hasedge(u,v)` : Return `True` if edge `(u,v)` in graph; `False` otherwise
   - `nbrs(v)` : Return an iterable collection of (out)neighbors of `v`,
   i.e., those vertices `w` such that `(v, w)` is an edge. (For directed
-  graphs, this is out-neighbors.)
-  - `__len__()` : Return the number of vertices in the graph.
+  graphs, this is out-neighbors)
+  - `__len__()` : Return the number of vertices in the graph
 
 :::
 
@@ -120,7 +120,7 @@ class EdgeSetGraph:
         return len(self._V)
 ```
 
-::: incremental
+::: {.incremental style="margin-top: 0em; font-size: 0.95em;"}
 
 - Represents a graph using a set of edges between vertices
 
@@ -144,7 +144,7 @@ print(graph.hasedge('A', 'B'))  # Output: False
 print(len(graph))               # Output: 3
 ```
 
-::: incremental
+::: {.incremental style="margin-top: -.4em; font-size: 0.95em;"}
 
 - How to create an un-directed version of the `EdgeSetGraph`?
 
@@ -410,7 +410,7 @@ def printall(G, v):
 
 - `printall` might yield `RecursionError` for certain graphs `G`
 
-- **Can we implement graph search without this defect?**
+- {{< iconify fa6-solid lightbulb >}} **Can we implement graph search without this defect?**
 
 :::
 
@@ -428,9 +428,13 @@ G = AdjacencySetGraphWithPath({1,2,3,4}, {(1,2), (2,3), (3,4), (4,1)})
 printall(G, 1, set())
 ```
 
+::: {.fragment .fade style="margin-top: -0.25em; font-size: 0.9em;"}
+
 - Intuitively, this approach leaves "bread crumbs" for tracking
 - Traversal only proceeds to vertices not visited before
-- **Wait, does this really print _all_ the nodes?**
+- **Wait, does this really print _all_ the nodes? All nodes reachable?** 
+
+:::
 
 ## Depth-first search (DFS)
 
@@ -451,10 +455,10 @@ print('reachable from 1:', dfs(G, 1))
 print('reachable from 2:', dfs(G, 2))
 ```
 
-::: {.fragment style="margin-top: 0em; font-size: 0.9em;"}
+::: {.fragment style="margin-top: 0em; font-size: 0.8em;"}
 
-- Graph reachability is a key concept in graph theory
-- A depth-first search can be used to find the reachable nodes
+- Graph **reachability** is a key concept in graph theory
+- A **depth-first search** can be used to find the reachable nodes
 
 :::
 
@@ -475,7 +479,7 @@ print("4 is connected to 1:", connected(G, 4, 1))
 - `connected` uses the `dfs` function to determine connectivity
 - `connected` returns `True` if there is a path between `u` and `v`
 - Otherwise, it returns `False` as there is no connection
-- Useful in a wide variety of graph theoretic algorithms!
+- {{< iconify fa6-solid lightbulb >}} **Useful in a wide variety of graph theoretic algorithms!**
 
 :::
 
@@ -488,3 +492,23 @@ print("4 is connected to 1:", connected(G, 4, 1))
 
 {{< iconify fa6-solid diagram-project >}} Generalizing a `Tree`, a `Graph`
 can model real-world data!
+
+# Review graph structures
+
+::: {.incremental style="margin-top: -.2em; font-size: 0.825em;"}
+
+- {{< iconify fa6-solid lightbulb >}} **Key Insight**: Graphs are objects with
+vertices ($V$) and edges ($E$)
+  
+- **Implementations Details**
+  - `EdgeSetGraph`: simple but inefficient for finding neighbors
+  - `AdjacencySetGraph`: efficient neighbor access with adjacency sets
+  - Both support **directed** and **undirected** versions
+
+- **Path and Cycle Operations and Graph Traversal**
+  - Methods to verify paths, simple paths, cycles, and simple cycles
+  - Used to analyze graph connectivity and graph structure
+  - Depth-first search (DFS) avoids infinite loops with visited tracking
+  - Enables connectivity testing and node reachability
+
+:::
