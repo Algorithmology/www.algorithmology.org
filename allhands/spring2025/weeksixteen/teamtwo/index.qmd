@@ -70,7 +70,65 @@ Linear search sequentially checks each element until finding the target or reach
 
 ## Binary Search
 
-TODO
+```cmd
+def binary_search_iterative(dataset: List[Any], target: Any) -> Optional[int]:
+    """Perform an iterative binary search on the dataset.
+
+    Note: Dataset must be sorted for binary search to work correctly.
+
+    Args:
+        dataset: Sorted list to search through
+        target: Element to search for
+
+    Returns:
+        int: Index of the target element, or None if not found
+    """
+    left, right = 0, len(dataset) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if dataset[mid] == target:
+            return mid
+        elif dataset[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return None
+```
+
+Binary search iteratively divides a sorted dataset in half, comparing the middle element to the target. If the target is smaller, it searches the left half; if larger, it searches the right. This process continues until the target is found or the search space is empty.
+
+```cmd
+def binary_search_recursive(
+    dataset: List[Any], target: Any, left: int = 0, right: Optional[int] = None
+) -> Optional[int]:
+    """Perform a recursive binary search on the dataset.
+
+    Note: Dataset must be sorted for binary search to work correctly.
+
+    Args:
+        dataset: Sorted list to search through
+        target: Element to search for
+        left: Left boundary index
+        right: Right boundary index
+
+    Returns:
+        int: Index of the target element, or None if not found
+    """
+    if right is None:
+        right = len(dataset) - 1
+    if left > right:
+        return None
+
+    mid = (left + right) // 2
+    if dataset[mid] == target:
+        return mid
+    elif dataset[mid] < target:
+        return binary_search_recursive(dataset, target, mid + 1, right)
+    else:
+        return binary_search_recursive(dataset, target, left, mid - 1)
+```
+
+Recursive binary search repeatedly divides a sorted dataset in half by calling itself with updated boundaries (left and right). It compares the middle element to the target, narrowing the search to the left or right half until the target is found or the search space is empty.
 
 ## Binary Search Tree
 
