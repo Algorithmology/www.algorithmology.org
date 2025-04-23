@@ -636,36 +636,36 @@ The result of the worst case time complexities are as follow:
 
 | Implementation |  Insert  |  Lookup  |  Delete  |  Verify Deletion  |
 | -------------- | -------- |--------: | -------: | ----------------: | 
-| List           | 0(1)avg  | 0(n)     | 0(n)     | 0(n)              |
-| Set            | 0(1)avg  | 0(1)avg  | 0(1)avg  | 0(1)avg           |
+| List           | 0(n)     | 0(n^2)   | 0(n^2)   | 0(n^2)            |
+| Set            | 0(n)     | 0(n)     | 0(n)     | 0(n)              |
 
 : Worst case time complexities for all operations and implementations studied in this experiment. {.responsive}
 
 ## Insert
-- Set remains at constant 0(1).
-- List is also constant 0(1) as it is  appending at the end.
-- Even though both are at 0(1), List is comparatively a lot faster than set at pure appending hence it is faster than set.
+- Set remains at 0(n).
+- List is also 0(n) as it is  appending at the end.
+- Even though both are at 0(n), List is comparatively a lot faster than set at pure appending hence it is faster than set.
 
 ## Lookup
-- Set remains at constant 0(1) 
-- List provide worst case time complexity of 0(n) when doubling the list size.
+- Set remains at 0(n) 
+- List provide time complexity of 0(n^2) when doubling the list size.
 - Set is faster constantly for the both small and large data sizes compared to list.
 
 ## Delete
-- Set remains at constant 0(1).
-- List provide worst case time complexity of 0(n).
+- Set remains at 0(n).
+- List provides time complexity of 0(n^2).
 - For the smaller data both are almost similar for the deletion but as the data increases the list falls behind due to the shifting.
 
 ## Verify Deletion
-- Set remains at constant 0(1).
-- List provide worst case time complexity of 0(n).
+- Set remains at 0(n).
+- List provide time complexity of 0(n^2).
 - Set is faster constantly for the both small and large data sizes compared to list.
 
 ## Conclusion
 
 Set is demonstrably faster than list because it uses a hash table while lists use dynamic arrays. Other than append(insert)
-which amortize 0(1) due to python geometrically growing capacity, List must look at every element or need to shift for other
-operations which results in 0(n).
+which is 0(n) due to python geometrically growing capacity, List must look at every element or need to shift for other
+operations which results in 0(n^2).
 - If you need fast, random insert, delete and lookup of vertices or edges use **Set**. 
 - If you truly just need to build up nodes or neighbors and then walk them sequentially use **List**.
 
