@@ -35,7 +35,7 @@ Our benchmarking provides empirical insights to guide algorithm selection in pro
 
 # Method
 
-For this experiment, we developed a benchmarking tool that allows for systematic comparison between search algorithms across different data structures. The tool measures execution time while controlling for:
+For this experiment, we developed a benchmarking tool called [lvb](https://github.com/hemanialaparthi/lvb) that allows for systematic comparison between search algorithms across different data structures. The tool measures execution time while controlling for:
 
 1. Data structure type (`unsorted list`, `sorted list` and `binary search tree`)
 2. Search algorithm (`linear search` vs. `binary search` vs. `BST search`)
@@ -191,7 +191,8 @@ The Binary Search Tree, is such an efficient approach for searching projects, wi
       5    15
      / \   / \
     3   7 12 18
-the smaller numbers go to the left, and the bigger numbers go to the right. It is very efficient because you do not necessarily go through the majority of the values, depending on the value.
+
+The smaller numbers go to the left, and the bigger numbers go to the right. It is very efficient because you do not necessarily go through the majority of the values, depending on the value.
 
 # Data
 
@@ -202,7 +203,6 @@ We conducted experiments with datasets of `1,000` and `5,000` elements, using bo
 3. Runtime consistency across multiple searches (`100` and `500` searches)
 
 # Data Tables
-
 
 ### MacOS
 
@@ -383,13 +383,14 @@ Our benchmarking reveals dramatic efficiency differences between search algorith
 
 # Conclusion
 
-All-in-all our results show that there are increased search times for `Linear Search`, while `Binary Search` and BST search times show relatively stable performance. This reinforces the difference in time complexity: `linear search` is `O(n)`, and `binary search` is `O(log n)`.
+All-in-all our results show that there are increased search times for linear search, while binary search and BST search times show relatively stable performance. This reinforces the difference in time complexity: linear search is `O(n)`, and binary search is `O(log n)`.
+Our experiments demonstrate that binary search algorithms (`iterative`, `recursive`) and BST consistently outperform linear search. Linear search takes longer, especially as the dataset grows, whereas binary search and BST search times remain relatively low and constant.
 
-Our experiments demonstrate that `binary search` algorithms (`iterative`, `recursive`) and BST consistently outperform `linear search` and it takes longer, especially as the dataset grows, whereas` binary search` and `BST` search times remain relatively low and constant.
+Both `sorted` and `unsorted` lists experience a significant increase in search time as the dataset size increases, especially for the larger dataset (5000 entries). This is expected as linear search examines each element one by one, which results in a time complexity of `O(n)`. In contrast, binary search and BST searches have much lower average time even when the dataset size increases, benefiting from `O(log n)` time complexity.
 
-Both `sorted` and `unsorted` lists experience a significant increase in search time as the dataset size increases, especially for the larger dataset (`5000` entries). This is expected as `linear search` examines each element one by one, which results in a time complexity of` O(n)`. In contrast, `binary search` and `BST` searches have much lower average time even when the dataset size increases, benefiting from `O(log n)` time complexity.
+Target position significantly influences linear search performance, with searching for targets at the end or nonexistent positions taking much longer (up to `22×` slower for `nonexistent` vs. `beginning` targets). This occurs because more elements need to be examined or the search needs to traverse the entire list. Binary search algorithms, however, experience nearly constant search times for all target positions because they always halve the search space with each step. Even for `nonexistent` targets, binary search only needs to perform a few additional comparisons, resulting in minimal performance differences.
 
-Target position significantly influences `linear search`performance, with searching for targets at the `end` or `nonexistent` positions taking much longer (up to `22×` slower for `nonexistent` vs. `beginning` targets). This occurs because more elements need to be examined or the search needs to traverse the entire list. `Binary search` algorithms, however, experience nearly constant search times for all target positions because they always halve the search space with each step. Even for `nonexistent` targets, `binary search` only needs to perform a few additional comparisons, resulting in minimal performance differences.
+It's important to note that while binary search and BSTs offer superior search performance, they come with preprocessing costs. Binary search requires a sorted array, and BSTs need to be constructed. These upfront costs should be considered in scenarios where data frequently changes.
 
 # Future Work
 
@@ -400,9 +401,11 @@ Several areas for future investigation could provide additional insights:
 
 - **Hybrid Approaches**
     - Evaluate potential performance benefits of algorithms that switch strategies based on dataset size (e.g., linear search for small segments, binary search for larger ones)
+    - Determine specific thresholds at which switching between algorithms becomes beneficial, possibly using metrics like dataset size, expected search frequency, and data volatility
 
 - **Unbalanced BST Performance**
-    -  Examine how performance degrades when BSTs become unbalanced, and compare with tree-balancing algorithms
+    -  Examine how performance degrades when BSTs become unbalanced, and compare with tree-balancing algorithms such as AVL trees and Red-Black trees
+    -  Measure the overhead cost of maintaining balance in self-balancing trees and compare against the search performance benefits
 
 # References
 
