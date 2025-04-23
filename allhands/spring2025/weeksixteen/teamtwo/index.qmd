@@ -410,5 +410,5 @@ Several areas for future investigation could provide additional insights:
 # References
 
 - [Linear vs Binary Search](https://www.geeksforgeeks.org/linear-search-vs-binary-search/)
-- [Binary Search Tree](https://www.geeksforgeeks.org/introduction-to-binary-search-tree/)
-- [Binary Search Tree](https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/)
+- [Intro to Binary Search Tree](https://www.geeksforgeeks.org/introduction-to-binary-search-tree/)
+- [Searching in Binary Search Tree](https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/)
