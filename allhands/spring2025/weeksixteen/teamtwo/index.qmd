@@ -145,11 +145,187 @@ We conducted experiments with datasets of `1,000` and `5,000` elements, using bo
 
 # Data Tables
 
+
 ### MacOS
+
+#### Data Set Size and Searches Comparison (Random Target)
+
+##### Un-sorted list - Linear search
+| Dataset Size | Data Structure  | Search Algorithm | Target Position | Searches | Avg Time (s) | Doubling |
+|--------------|-----------------|------------------|------------------|----------|--------------|----------|
+| 1,000        | unsorted_list   | linear_search    | random           | 100      | 0.004141     | 5        |
+| 1,000        | unsorted_list   | linear_search    | random           | 500      | 0.019249     | 5        |
+| 5,000        | unsorted_list   | linear_search    | random           | 100      | 0.010662     | 5        |
+
+##### Sorted list - Linear search
+| Dataset Size | Data Structure | Search Algorithm | Target Position | Searches | Avg Time (s) | Doubling |
+|--------------|----------------|------------------|------------------|----------|--------------|----------|
+| 1,000        | sorted_list    | linear_search    | random           | 500      | 0.136840     | 5        |
+| 1,000        | sorted_list    | linear_search    | random           | 100      | 0.005462     | 5        |
+| 5,000        | sorted_list    | linear_search    | random           | 500      | 0.144115     | 5        |
+
+##### Sorted list - Binary search (Iterative)
+| Dataset Size | Data Structure | Search Algorithm         | Target Position | Searches | Avg Time (s) | Doubling |
+|--------------|----------------|--------------------------|------------------|----------|--------------|----------|
+| 1,000        | sorted_list    | binary_search_iterative  | random           | 100      | 0.000084     | 5        |
+| 1,000        | sorted_list    | binary_search_iterative  | random           | 500      | 0.000347     | 5        |
+| 5,000        | sorted_list    | binary_search_iterative  | random           | 100      | 0.000077     | 5        |
+
+##### Sorted list - Binary search (Recursive)
+| Dataset Size | Data Structure | Search Algorithm         | Target Position | Searches | Avg Time (s) | Doubling |
+|--------------|----------------|--------------------------|------------------|----------|--------------|----------|
+| 1,000        | sorted_list    | binary_search_recursive  | random           | 100      | 0.000095     | 5        |
+| 1,000        | sorted_list    | binary_search_recursive  | random           | 500      | 0.000478     | 5        |
+| 5,000        | sorted_list    | binary_search_recursive  | random           | 100      | 0.000533     | 5        |
+
+##### Binary Sesrch Tree - bst search 
+| Dataset Size | Data Structure      | Search Algorithm | Target Position | Searches | Avg Time (s) | Doubling |
+|--------------|---------------------|------------------|------------------|----------|--------------|----------|
+| 1,000        | binary_search_tree  | bst_search       | random           | 100      | 0.000063     | 5        |
+| 1,000        | binary_search_tree  | bst_search       | random           | 500      | 0.000311     | 5        |
+| 5,000        | binary_search_tree  | bst_search       | random           | 100      | 0.000097     | 5        |
+
+
+#### Target Position Comparison (Fixed Dataset Size = 5,000)
+
+##### Un-sorted list - Linear search
+| Dataset Size | Data Structure  | Search Algorithm | Target Position | Searches | Avg Time (s) | Doubling |
+|--------------|-----------------|------------------|------------------|----------|--------------|----------|
+| 5,000        | unsorted_list   | linear_search    | beginning        | 500      | 0.012992     | 5        |
+| 5,000        | unsorted_list   | linear_search    | middle           | 500      | 0.058549     | 5        |
+| 5,000        | unsorted_list   | linear_search    | end              | 500      | 0.066914     | 5        |
+| 5,000        | unsorted_list   | linear_search    | nonexistent      | 500      | 0.287232     | 5        |
+
+##### Sorted list - Linear search
+| Dataset Size | Data Structure | Search Algorithm | Target Position | Searches | Avg Time (s) | Doubling |
+|--------------|----------------|------------------|------------------|----------|--------------|----------|
+| 5,000        | sorted_list    | linear_search    | beginning        | 500      | 0.013443     | 5        |
+| 5,000        | sorted_list    | linear_search    | middle           | 500      | 0.145900     | 5        |
+| 5,000        | sorted_list    | linear_search    | end              | 500      | 0.264241     | 5        |
+| 5,000        | sorted_list    | linear_search    | nonexistent      | 500      | 0.279474     | 5        |
+
+##### Sorted list - Binary search (Iterative)
+| Dataset Size | Data Structure | Search Algorithm         | Target Position | Searches | Avg Time (s) | Doubling |
+|--------------|----------------|--------------------------|------------------|----------|--------------|----------|
+| 5,000        | sorted_list    | binary_search_iterative  | beginning        | 500      | 0.000368     | 5        |
+| 5,000        | sorted_list    | binary_search_iterative  | middle           | 500      | 0.000371     | 5        |
+| 5,000        | sorted_list    | binary_search_iterative  | end              | 500      | 0.000376     | 5        |
+| 5,000        | sorted_list    | binary_search_iterative  | nonexistent      | 500      | 0.000436     | 5        |
+
+##### Sorted list - Binary search (Recursive)
+| Dataset Size | Data Structure | Search Algorithm         | Target Position | Searches | Avg Time (s) | Doubling |
+|--------------|----------------|--------------------------|------------------|----------|--------------|----------|
+| 5,000        | sorted_list    | binary_search_recursive  | beginning        | 500      | 0.000533     | 5        |
+| 5,000        | sorted_list    | binary_search_recursive  | middle           | 500      | 0.000542     | 5        |
+| 5,000        | sorted_list    | binary_search_recursive  | end              | 500      | 0.000532     | 5        |
+| 5,000        | sorted_list    | binary_search_recursive  | nonexistent      | 500      | 0.000613     | 5        |
+
+##### Binary Sesrch Tree - bst search 
+| Dataset Size | Data Structure      | Search Algorithm | Target Position | Searches | Avg Time (s) | Doubling |
+|--------------|---------------------|------------------|------------------|----------|--------------|----------|
+| 5,000        | binary_search_tree  | bst_search       | beginning        | 500      | 0.000467     | 5        |
+| 5,000        | binary_search_tree  | bst_search       | middle           | 500      | 0.000472     | 5        |
+| 5,000        | binary_search_tree  | bst_search       | end              | 500      | 0.000482     | 5        |
+| 5,000        | binary_search_tree  | bst_search       | nonexistent      | 500      | 0.000825     | 5        |
 
 ### Windows
 
+#### Data Set Size and Searches Comparison (Random Target)
+
+##### Un-sorted list - Linear search
+| Dataset Size | Data Structure  | Search Algorithm | Target Position | Searches | Avg Time (s) | Doubling |
+|--------------|-----------------|------------------|------------------|----------|--------------|----------|
+| 1,000        | unsorted_list   | linear_search    | random           | 100      | 0.010524     | 5        |
+| 1,000        | unsorted_list   | linear_search    | random           | 500      | 0.050583     | 5        |
+| 5,000        | unsorted_list   | linear_search    | random           | 100      | 0.026159     | 5        |
+
+##### Sorted list - Linear search
+| Dataset Size | Data Structure | Search Algorithm | Target Position | Searches | Avg Time (s) | Doubling |
+|--------------|----------------|------------------|------------------|----------|--------------|----------|
+| 1,000        | sorted_list    | linear_search    | random           | 100      | 0.013514     | 5        |
+| 1,000        | sorted_list    | linear_search    | random           | 500      | 0.064779     | 5        |
+| 5,000        | sorted_list    | linear_search    | random           | 500      | 0.323415     | 5        |
+
+##### Sorted list - Binary search (Iterative)
+| Dataset Size | Data Structure | Search Algorithm         | Target Position | Searches | Avg Time (s) | Doubling |
+|--------------|----------------|--------------------------|------------------|----------|--------------|----------|
+| 1,000        | sorted_list    | binary_search_iterative  | random           | 100      | 0.000154     | 5        |
+| 1,000        | sorted_list    | binary_search_iterative  | random           | 500      | 0.000766     | 5        |
+| 5,000        | sorted_list    | binary_search_iterative  | random           | 100      | 0.000172     | 5        |
+
+##### Sorted list - Binary search (Recursive)
+| Dataset Size | Data Structure | Search Algorithm         | Target Position | Searches | Avg Time (s) | Doubling |
+|--------------|----------------|--------------------------|------------------|----------|--------------|----------|
+| 1,000        | sorted_list    | binary_search_recursive  | random           | 100      | 0.000202     | 5        |
+| 1,000        | sorted_list    | binary_search_recursive  | random           | 500      | 0.000937     | 5        |
+| 5,000        | sorted_list    | binary_search_recursive  | random           | 100      | 0.000214     | 5        |
+
+##### Binary Sesrch Tree - bst search 
+| Dataset Size | Data Structure      | Search Algorithm | Target Position | Searches | Avg Time (s) | Doubling |
+|--------------|---------------------|------------------|------------------|----------|--------------|----------|
+| 1,000        | binary_search_tree  | bst_search       | random           | 100      | 0.000123     | 5        |
+| 1,000        | binary_search_tree  | bst_search       | random           | 500      | 0.000528     | 5        |
+| 5,000        | binary_search_tree  | bst_search       | random           | 100      | 0.000159     | 5        |
+
+#### Target Position Comparison (Fixed Dataset Size = 5,000)
+
+##### Un-sorted list - Linear search
+| Dataset Size | Data Structure  | Search Algorithm | Target Position | Searches | Avg Time (s) | Doubling |
+|--------------|-----------------|------------------|------------------|----------|--------------|----------|
+| 5,000        | unsorted_list   | linear_search    | beginning        | 500      | 0.029487     | 5        |
+| 5,000        | unsorted_list   | linear_search    | middle           | 500      | 0.134085     | 5        |
+| 5,000        | unsorted_list   | linear_search    | end              | 500      | 0.164473     | 5        |
+| 5,000        | unsorted_list   | linear_search    | nonexistent      | 500      |              | 5        |
+
+##### Sorted list - Linear search
+| Dataset Size | Data Structure | Search Algorithm | Target Position | Searches | Avg Time (s) | Doubling |
+|--------------|----------------|------------------|------------------|----------|--------------|----------|
+| 5,000        | sorted_list    | linear_search    | beginning        | 500      | 0.032096     | 5        |
+| 5,000        | sorted_list    | linear_search    | middle           | 500      |              | 5        |
+| 5,000        | sorted_list    | linear_search    | end              | 500      |              | 5        |
+| 5,000        | sorted_list    | linear_search    | nonexistent      | 500      |              | 5        |
+
+##### Sorted list - Binary search (Iterative)
+| Dataset Size | Data Structure | Search Algorithm         | Target Position | Searches | Avg Time (s) | Doubling |
+|--------------|----------------|--------------------------|------------------|----------|--------------|----------|
+| 5,000        | sorted_list    | binary_search_iterative  | beginning        | 500      | 0.001463     | 5        |
+| 5,000        | sorted_list    | binary_search_iterative  | middle           | 500      | 0.001475     | 5        |
+| 5,000        | sorted_list    | binary_search_iterative  | end              | 500      | 0.001463     | 5        |
+| 5,000        | sorted_list    | binary_search_iterative  | nonexistent      | 500      | 0.001604     | 5        |
+
+##### Sorted list - Binary search (Recursive)
+| Dataset Size | Data Structure | Search Algorithm         | Target Position | Searches | Avg Time (s) | Doubling |
+|--------------|----------------|--------------------------|------------------|----------|--------------|----------|
+| 5,000        | sorted_list    | binary_search_recursive  | beginning        | 500      | 0.001726     | 5        |
+| 5,000        | sorted_list    | binary_search_recursive  | middle           | 500      | 0.001722     | 5        |
+| 5,000        | sorted_list    | binary_search_recursive  | end              | 500      | 0.001515     | 5        |
+| 5,000        | sorted_list    | binary_search_recursive  | nonexistent      | 500      | 0.002112     | 5        |
+
+##### Binary Sesrch Tree - bst search
+| Dataset Size | Data Structure      | Search Algorithm | Target Position | Searches | Avg Time (s) | Doubling |
+|--------------|---------------------|------------------|------------------|----------|--------------|----------|
+| 5,000        | binary_search_tree  | bst_search       | beginning        | 500      | 0.001381     | 5        |
+| 5,000        | binary_search_tree  | bst_search       | middle           | 500      | 0.001367     | 5        |
+| 5,000        | binary_search_tree  | bst_search       | end              | 500      | 0.001326     | 5        |
+| 5,000        | binary_search_tree  | bst_search       | nonexistent      | 500      | 0.001766     | 5        |
+
 ### Results
+
+All-in-all our results show that there are increased search times for Linear Search, while Binary Search and BST search times show relatively stable performance. This reinforces the difference in time complexity: linear search is O(n), and binary search is O(log n).
+
+Binary Search (iterative, recursive, or BST) outperforms Linear Search in terms of time complexity. Linear search takes longer, especially as the dataset grows, whereas binary search and BST search times remain relatively low and constant.
+
+#### Effect of Dataset size on search time
+
+Linear Search - Both sorted and unsorted lists experience a significant increase in search time as the dataset size increases, especially for the larger dataset (5000 entries). This is expected as linear search examines each element one by one, which results in a time complexity of O(n).
+
+Binary Search - Both iterative and recursive as well as Binary Search Tree searches have much lower average time even when the dataset size increases. This is because these algorthims benefit from the time complexity of (O(log n)), which makes them much more efficient than linear search as the dataset size increases.
+
+#### Effect of target position on search time
+
+Linear Search - On both unsorted and sorted lists, the target position significantly influences the search time. This behavior alligns with what is expeced for linear search where searching for a target at the "end" or "nonexistent" positions takes much longer, as more elements need to be examined or the search needs to traverse the entire list.
+
+Binary Search - Iterative and Recursive on sorted lists experience nearly constant search times for "beginning," "middle," and "end" target positions. This is because binary search always halves the search space with each step, so the position of the target within the list does not substantially affect the search time. Even for a "nonexistent" target, binary search only needs to perform a few comparisons, resulting in a very small increase in time.
 
 # Conclusion
 
