@@ -22,10 +22,6 @@ deletion. Using precise timing measurements and controlled experiments with vary
 structure handles these operations. This comprehensive performance testing reveals differences in efficiency and scalability,
 enabling us to determine which implementation delivers optimal performance for different tree operation scenarios.
 
-## Motivation
-
-TODO: content here
-
 ## Approach
 
 ### Generate Trees for Analysis
