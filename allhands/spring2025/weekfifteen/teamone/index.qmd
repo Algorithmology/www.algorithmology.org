@@ -46,7 +46,77 @@ At the end of both functions, the tree is returned either as a set or a list tha
 
 ### Process Tree Created Using `Set` Container
 
-TODO: Rosa to describe her code here
+To create the process tree, I set up an undirected graph using a dictionary. Each key represents a node, and the value is a set of its connected neighbors. This design makes it easy to add, remove, and look up nodes quickly.
+
+The Graph class supports the following key features:
+
+Edge Insertion (insert_edge): Adds a two-way connection between nodes by updating each node’s neighbor set.
+Node Deletion (delete_node): Removes a node and also cleans up any edges in which it participated by removing it from its neighbors' sets.
+Edge Updating (update_edge): Allows dynamically adding or removing an edge between two existing nodes.
+Node and Edge Lookup: Methods like lookup_node and lookup_edge check for node existence and whether two nodes are connected.
+Neighbor Access and Graph Size: get_neighbors retrieves a node’s adjacent nodes, and get_graph_size returns the total number of nodes in the graph.
+Graph Structure: get_graph_structure provides a full copy of the current graph, useful for visualization or further processing.
+
+This implementation avoids cycles and handles all connections through set operations, ensuring uniqueness and fast membership checks, which makes it well suited for managing tree like structures in process graphs.
+
+```python
+from typing import Dict, Set
+
+class Graph:
+    def __init__(self) -> None:
+        """Initialize an empty graph using a dictionary of sets."""
+        self.graph: Dict[int, Set[int]] = {}
+
+    def insert_edge(self, node1: int, node2: int) -> None:
+        """Insert an edge between two nodes."""
+        if node1 not in self.graph:
+            self.graph[node1] = set()
+        if node2 not in self.graph:
+            self.graph[node2] = set()
+        self.graph[node1].add(node2)
+        self.graph[node2].add(node1)
+
+    def delete_node(self, node: int) -> bool:
+        """Delete a node and all its connections from the graph."""
+        if node not in self.graph:
+            return False
+        for neighbor in list(self.graph[node]):
+            self.graph[neighbor].remove(node)
+        del self.graph[node]
+        return True
+
+    def update_edge(self, node1: int, node2: int, add_edge: bool = True) -> None:
+        """Add or remove an edge between two nodes."""
+        if node1 not in self.graph or node2 not in self.graph:
+            return
+        if add_edge:
+            self.graph[node1].add(node2)
+            self.graph[node2].add(node1)
+        else:
+            self.graph[node1].discard(node2)
+            self.graph[node2].discard(node1)
+
+    def lookup_node(self, node: int) -> bool:
+        """Check if a node exists in the graph."""
+        return node in self.graph
+
+    def lookup_edge(self, node1: int, node2: int) -> bool:
+        """Check if an edge exists between two nodes."""
+        return node1 in self.graph and node2 in self.graph[node1]
+
+    def get_neighbors(self, node: int) -> Set[int]:
+        """Return all neighbors of a given node."""
+        return self.graph.get(node, set())
+
+    def get_graph_size(self) -> int:
+        """Return the number of nodes in the graph."""
+        return len(self.graph)
+
+    def get_graph_structure(self) -> Dict[int, Set[int]]:
+        """Return the current graph structure."""
+        return self.graph.copy()
+
+```
 
 ### Process Tree Created Using `List` Container
 
