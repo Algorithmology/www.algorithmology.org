@@ -14,9 +14,13 @@ format:
 
 # Introduction
 
-This investigation seeks to answer a fundamental question in data structure implementation: How does implementing a tree with Python's set and list structures impact performance in terms of insertion, deletion, and lookup speed?
+This investigation seeks to answer a fundamental question in data structure implementation: How does implementing a tree with
+Python's set and list structures impact performance in terms of insertion, deletion, and lookup speed?
 
-To evaluate the two different implementations, we compare their performance across three operations: insertion, lookup and deletion. Using precise timing measurements and controlled experiments with varying tree sizes, we analyze how each data structure handles these operations. This comprehensive performance testing reveals differences in efficiency and scalability, enabling us to determine which implementation delivers optimal performance for different tree operation scenarios.
+To evaluate the two different implementations, we compare their performance across three operations: insertion, lookup and
+deletion. Using precise timing measurements and controlled experiments with varying tree sizes, we analyze how each data
+structure handles these operations. This comprehensive performance testing reveals differences in efficiency and scalability,
+enabling us to determine which implementation delivers optimal performance for different tree operation scenarios.
 
 ## Motivation
 
@@ -50,7 +54,9 @@ TODO: Rosa to describe her code here
 
 ### Process Tree Created Using `List` Container
 
-The ListProcessor class implements a tree data structure using Python's list to store parent-child relationships. Each relationship is stored as a tuple pair (parent, child) within the list, allowing for efficient storage and traversal of the tree structure.
+The ListProcessor class implements a tree data structure using Python's list to store parent-child relationships. Each
+relationship is stored as a tuple pair (parent, child) within the list, allowing for efficient storage and traversal of the
+tree structure.
 The class provides a set of operations to manage these relationships:
 
 - `insert_tree_pair(parent, child)`Creates a new parent-child relationship, returning True if successful or False if the relationship already exists
@@ -125,7 +131,9 @@ Note: The Code arrow is interactive and will display relevant code snippets.
 
 ### Run a Benchmark
 
-The main.py implements a performance benchmarking system that compares two different tree data structure implementations which are  a set-based (SetGraph) and a list-based (ListProcessor) implementation. It measures and visualizes execution times for common tree operations using the Rich library for formatted output. The operation are:
+The main.py implements a performance benchmarking system that compares two different tree data structure implementations which
+are  a set-based (SetGraph) and a list-based (ListProcessor) implementation. It measures and visualizes execution times for
+common tree operations using the Rich library for formatted output. The operation are:
 
 - Insertion (adding parent-child relationships)
 - Lookup (checking if relationships exist) 
@@ -589,13 +597,17 @@ The result of the worst case time complexities are as follow:
 
 ## Conclusion
 
-Set is demonstrably faster than list because it uses a hash table while lists use dynamic arrays. Other than append(insert) which amortize 0(1) due to python geometrically growing capacity, List must look at every element or need to shift for other operations which results in 0(n).
+Set is demonstrably faster than list because it uses a hash table while lists use dynamic arrays. Other than append(insert)
+which amortize 0(1) due to python geometrically growing capacity, List must look at every element or need to shift for other
+operations which results in 0(n).
 - If you need fast, random insert, delete and lookup of vertices or edges use **Set**. 
 - If you truly just need to build up nodes or neighbors and then walk them sequentially use **List**.
 
 # Next Steps
 
-TODO: write up recommended next steps
+Potential next steps could be testing the limits of the set and list approaches, or seeing the largest number of verticies they
+can handle. Also, considering that this experiment is implemented with a tree structure to avoid cycles, another next step
+could be trying to implement the same thing with a graph structure and cycle detection.
 
 # References
 
