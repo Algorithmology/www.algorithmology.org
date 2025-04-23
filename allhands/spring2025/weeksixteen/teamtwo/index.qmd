@@ -74,7 +74,66 @@ TODO
 
 ## Binary Search Tree
 
-TODO
+```cmd
+class Node:
+    """Creates the Node class for the BST."""
+
+    def __init__(self, value):
+        self.l_child = None
+        self.r_child = None
+        self.data = value
+
+
+class BinarySearchTree:
+    """Initializing the BST."""
+
+    def __init__(self):
+        self.root = None
+
+    def insert(self, value):
+        """Inserts the value into the tree."""
+        if self.root is None:
+            self.root = Node(value)
+        else:
+            self.insert_recursive(self.root, value)
+
+    def insert_recursive(self, node, value):
+        """Inserts the value into the tree recursively."""
+        if value < node.data:
+            if node.l_child is None:
+                node.l_child = Node(value)
+            else:
+                self.insert_recursive(node.l_child, value)
+        else:  # noqa: PLR5501
+            if node.r_child is None:
+                node.r_child = Node(value)
+            else:
+                self.insert_recursive(node.r_child, value)
+
+    def search(self, target):
+        """Search for a value in the BST and return if found."""
+        return self.search_recursive(self.root, target)
+
+    def search_recursive(self, node, target):
+        """Search for a value in the BST recursively."""
+        if node is None:
+            return False
+        if node.data == target:
+            return True
+        elif target < node.data:
+            return self.search_recursive(node.l_child, target)
+        else:
+            return self.search_recursive(node.r_child, target)
+```
+
+The Binary Search Tree, is such an efficient approach for searching projects, with a balanced BST the time complexity is O(logn). The logic behind the BST is that the function, starts with a root node (starting node) and from there comparing the inputs to the target value, the smaller values go to the left as a child and the bigger values go to the right as a child. The BST uses recursion when adding the "children" therefore, the data is always sorted and balanced as it is being implemented to the tree. When searching for a target value, it constantly compares the current node's value and the target value to get to the target. Here is what a balanced BST looks like: 
+
+        10
+       /  \
+      5    15
+     / \   / \
+    3   7 12 18
+the smaller numbers go to the left, and the bigger numbers go to the right. It is very efficient because you do not necessarily go through the majority of the values, depending on the value.
 
 # Data
 
