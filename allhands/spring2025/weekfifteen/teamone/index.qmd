@@ -59,7 +59,7 @@ Graph Structure: get_graph_structure provides a full copy of the current graph, 
 
 This implementation avoids cycles and handles all connections through set operations, ensuring uniqueness and fast membership checks, which makes it well suited for managing tree like structures in process graphs.
 
-```python
+```{python}
 from typing import Dict, Set
 
 class Graph:
