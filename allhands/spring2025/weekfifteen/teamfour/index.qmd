@@ -1,6 +1,6 @@
 ---
 author: [Joseph Oforkansi, Hank Gref, Coltin Colucci, Grant Anderson, Gabriel Salvatore, Javier Bejarano Jimenez]
-title: Collision and Run Time Analysis of Hashing Algorithms
+title: Collision and run time analysis of hashing algorithms
 page-layout: full
 categories: []
 date: "2025-4-22"
@@ -19,7 +19,12 @@ format:
 
 ## Introduction
 
-we picked this project because we wanted to figure out how different ways of hashing data affect how often you get the same "address" (collisions) and how fast it takes to do the hashing. Our main question is: **How do different hashing methods (like Python's built-in hash(), MurmurHash, DJB@, and modulo_hash) change the number of collisions and how quickly they run when you're storing data in a dictionary?**
+We picked this project because we wanted to figure out how different ways of
+hashing data affect how often you get the same "address" (collisions) and how
+fast it takes to do the hashing. Our main question is: **How do different
+hashing methods (like Python's built-in hash(), MurmurHash, DJB@, and
+modulo_hash) change the number of collisions and how quickly they run when
+you're storing data in a dictionary?**
 
 It's really important to understand this because when you store lots of information, you want to find it quickly and not have different pieces of information end up in the same spot. That's what collisions are, and too many slow things down. So, by comparing these hashing methods, we hope to give people good information for choosing the best one for their needs.
 
@@ -122,15 +127,15 @@ def simple_modulo_hash(key, modulo=1000):
 
 This function takes two inputs, `key` which is a string and `modulo` as an integer that determines the range of the hash values (default 1000). Each character in the string is converted to its ASCII value using the `ord` function. The sum of the ASCII values is divided by the `modulo` value, and then the remainder is taken. This ensures the hash value is between 0 and the `modulo - 1`, which is important for indexing the hash value inside the bucket. 
 
-```{python}
+```python
  # Inline implementation of hashing with the simple modulo-based hash function
-    hashed_data = {}
-    for key, value in dataset.items():
-        h = simple_modulo_hash(key, modulo)  # Use the simple modulo-based hash function
-        if h in hashed_data:
-            hashed_data[h].append((key, value))  # Handle collisions
-        else:
-            hashed_data[h] = [(key, value)]
+hashed_data = {}
+for key, value in dataset.items():
+    h = simple_modulo_hash(key, modulo)  # Use the simple modulo-based hash function
+    if h in hashed_data:
+        hashed_data[h].append((key, value))  # Handle collisions
+    else:
+        hashed_data[h] = [(key, value)]
 ```
 
 The keys in `hashed_data` are the hash values computed from the `simple_modulo_hash` function, and the values in `hashed_data` are lists of tuples. Each tuple contains the original key and its associated value from the dataset.
@@ -151,7 +156,7 @@ This data shows a clear doubling in runtime as the number of entries doubles. Wh
 
 ### Murmur Hash
 
-```{python}
+```python
 def murmurhash(key: str, seed: int = 0) -> int:
     """Compute the MurmurHash for a given string.
     """
