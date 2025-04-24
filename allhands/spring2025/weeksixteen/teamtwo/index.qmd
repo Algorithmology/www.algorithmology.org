@@ -16,14 +16,18 @@ format:
 
 # Introduction
 
-This study examines how `linear search`, `binary search`, and `balanced binary search tree (BST)` algorithms perform under varying conditions, specifically looking at:
+This study examines how `linear search`, `binary search`, and `balanced binary
+search tree (BST)` algorithms perform under varying conditions, specifically
+looking at:
 
 1. How dataset size affects performance scaling
 2. How target element position impacts search efficiency
 
 # Motivation
 
-While `linear search` `(O(n))` offers simplicity and `binary search`/`balanced BSTs` `(O(log n))` promise theoretical efficiency, real-world performance depends heavily on:
+While `linear search` `(O(n))` offers simplicity and `binary search`/`balanced
+BSTs` `(O(log n))` promise theoretical efficiency, real-world performance
+depends heavily on:
 
 1. Dataset growth patterns
 
@@ -31,11 +35,15 @@ While `linear search` `(O(n))` offers simplicity and `binary search`/`balanced B
 
 3. Hardware/platform characteristics
 
-Our benchmarking provides empirical insights to guide algorithm selection in production systems where theoretical models may not reflect actual behavior.
+Our benchmarking provides empirical insights to guide algorithm selection in
+production systems where theoretical models may not reflect actual behavior.
 
 # Method
 
-For this experiment, we developed a benchmarking tool called [lvb](https://github.com/hemanialaparthi/lvb) that allows for systematic comparison between search algorithms across different data structures. The tool measures execution time while controlling for:
+For this experiment, we developed a benchmarking tool called
+[lvb](https://github.com/hemanialaparthi/lvb) that allows for systematic
+comparison between search algorithms across different data structures. The tool
+measures execution time while controlling for:
 
 1. Data structure type (`unsorted list`, `sorted list` and `binary search tree`)
 2. Search algorithm (`linear search` vs. `binary search` vs. `BST search`)
@@ -66,7 +74,9 @@ def linear_search(dataset: List[Any], target: Any) -> Optional[int]:
     return None
 ```
 
-Linear search sequentially checks each element until finding the target or reaching the end. It works on both sorted and unsorted data with `O(n)` time complexity.
+Linear search sequentially checks each element until finding the target or
+reaching the end. It works on both sorted and unsorted data with $O(n)$ time
+complexity.
 
 ## Binary Search
 
@@ -259,7 +269,7 @@ both sorted and unsorted arrays. For each algorithm, we measured:
 | 1,000        | sorted_list    | binary_search_recursive  | random           | 500      | 0.000478     | 5        |
 | 5,000        | sorted_list    | binary_search_recursive  | random           | 100      | 0.000533     | 5        |
 
-##### Binary Sesrch Tree - BST search
+##### Binary Search Tree - BST search
 
 | Dataset Size | Data Structure      | Search Algorithm | Target Position | Searches | Avg Time (s) | Doubling |
 |--------------|---------------------|------------------|------------------|----------|--------------|----------|
