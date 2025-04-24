@@ -425,10 +425,11 @@ algorithms maintain near-constant time even as datasets grow.
 All-in-all our results show that there are increased search times for linear
 search, while binary search and BST search times show relatively stable
 performance. This reinforces the difference in time complexity: linear search is
-$O(n)$, and binary search is $O(log_2n)$. Our experiments demonstrate that binary
-search algorithms (`iterative`, `recursive`) and BST consistently outperform
-linear search. Linear search takes longer, especially as the dataset grows,
-whereas binary search and BST search times remain relatively low and constant.
+$O(n)$, and binary search is $O(log_2n)$. Our experiments demonstrate that
+binary search algorithms (`iterative`, `recursive`) and BST consistently
+outperform linear search. Linear search takes longer, especially as the dataset
+grows, whereas binary search and BST search times remain relatively low and
+consistent.
 
 Both `sorted` and `unsorted` lists experience a significant increase in search
 time as the dataset size increases, especially for the larger dataset (5000
