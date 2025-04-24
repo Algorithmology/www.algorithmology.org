@@ -1,0 +1,739 @@
+---
+author: [Anoop Guragain,Kris Hatcher,Anton Hedlund,Rosa Ruiz,Molly Suppo]
+title: How does implementing a tree with Python's set and list structures impact performance in terms of insertion, deletion, and lookup speed?
+page-layout: full
+categories: [post, tree, set, list, speed, performance]
+date: "2025-04-24"
+date-format: long
+toc: true
+format:
+    html:
+        code-fold: true
+        code-tools: true
+---
+
+# Introduction
+
+This investigation seeks to answer a fundamental question in data structure
+implementation: How does implementing a tree with Python's set and list
+structures impact performance in terms of insertion, deletion, and lookup speed?
+
+To evaluate the two different implementations, we compare their performance
+across three operations: insertion, lookup and deletion. Using precise timing
+measurements and controlled experiments with varying tree sizes, we analyze how
+each data structure handles these operations. This comprehensive performance
+evaluation reveals differences in efficiency and scalability, thereby enabling
+us to determine which implementation delivers optimal performance for different
+tree operation scenarios.
+
+## Approach
+
+### Generate Trees for Analysis
+
+We present two separate generation algorithms to handle the different data types
+used for this experiment, lists and sets. Regardless, both generate unordered
+integer pairs within the container specified in the function name. Both
+functions also handle the case where there is not enough nodes present to make a
+tree. To generate a tree, there needs to be at least two nodes, a parent or root
+node, and a child node. If there are not enough nodes, an error is raised
+explaining why a tree will not be generated.
+
+The node pairs are generated using the random library and it's function,
+`randint`. The values generated are random integers between `0` and `1000`.
+Nodes are generated until the number of nodes generated is the equal to the
+value of the parameter `num_nodes`. The root or parent node is then assigned as
+the first node inside the container with the utilization of the `pop` function
+and the value `0` or the first index in the list specified. The available
+parents list is started with the root node as the first entry.
+
+For each value in the randomly generated list of values for the nodes, the
+parents are randomly selected and a pair consisting of the parent value and the
+child's value are added to the tree. For sets, the `add` function is used and
+for lists, the `append` function is used. Then the available parent list is
+updated with the value of the child node.
+
+At the end of both functions, the tree is returned either as a set or a list
+that contains pairs of unordered integers.
+
+### Process Tree Created Using `Set` Container
+
+To create the process tree, I set up an undirected graph using a dictionary.
+Each key represents a node, and the value is a set of its connected neighbors.
+This design makes it easy to add, remove, and look up nodes quickly.
+
+The `Graph` class supports the following key features:
+
+- Edge Insertion (`insert_edge`): Adds a two-way connection between nodes by
+updating each node’s neighbor set.
+- Node Deletion (`delete_node`): Removes a node and also cleans up any edges in
+which it participated by removing it from its neighbors' sets.
+- Edge Updating (`update_edge`): Allows dynamically adding or removing an edge
+between two existing nodes.
+- Node and Edge Lookup: Methods like `lookup_node` and `lookup_edge` check for
+node existence and whether two nodes are connected.
+- Neighbor Access and Graph Size: `get_neighbors` retrieves a node’s adjacent
+nodes, and `get_graph_size` returns the total number of nodes in the graph.
+- Graph Structure: `get_graph_structure` provides a full copy of the current
+graph, useful for visualization or further processing.
+
+This implementation avoids cycles and handles all connections through set
+operations, ensuring uniqueness and fast membership checks, which makes it well
+suited for managing tree-like structures in process graphs.
+
+```{python}
+from typing import Dict, Set
+
+class Graph:
+    def __init__(self) -> None:
+        """Initialize an empty graph using a dictionary of sets."""
+        self.graph: Dict[int, Set[int]] = {}
+
+    def insert_edge(self, node1: int, node2: int) -> None:
+        """Insert an edge between two nodes."""
+        if node1 not in self.graph:
+            self.graph[node1] = set()
+        if node2 not in self.graph:
+            self.graph[node2] = set()
+        self.graph[node1].add(node2)
+        self.graph[node2].add(node1)
+
+    def delete_node(self, node: int) -> bool:
+        """Delete a node and all its connections from the graph."""
+        if node not in self.graph:
+            return False
+        for neighbor in list(self.graph[node]):
+            self.graph[neighbor].remove(node)
+        del self.graph[node]
+        return True
+
+    def update_edge(self, node1: int, node2: int, add_edge: bool = True) -> None:
+        """Add or remove an edge between two nodes."""
+        if node1 not in self.graph or node2 not in self.graph:
+            return
+        if add_edge:
+            self.graph[node1].add(node2)
+            self.graph[node2].add(node1)
+        else:
+            self.graph[node1].discard(node2)
+            self.graph[node2].discard(node1)
+
+    def lookup_node(self, node: int) -> bool:
+        """Check if a node exists in the graph."""
+        return node in self.graph
+
+    def lookup_edge(self, node1: int, node2: int) -> bool:
+        """Check if an edge exists between two nodes."""
+        return node1 in self.graph and node2 in self.graph[node1]
+
+    def get_neighbors(self, node: int) -> Set[int]:
+        """Return all neighbors of a given node."""
+        return self.graph.get(node, set())
+
+    def get_graph_size(self) -> int:
+        """Return the number of nodes in the graph."""
+        return len(self.graph)
+
+    def get_graph_structure(self) -> Dict[int, Set[int]]:
+        """Return the current graph structure."""
+        return self.graph.copy()
+
+```
+
+### Process Tree Created Using `List` Container
+
+The `ListProcessor` class implements a tree data structure using Python's `list`
+to store parent-child relationships. Each relationship is stored as a `tuple`
+pair (parent, child) within the `list`, allowing for efficient storage and
+traversal of the tree structure. The class provides a set of operations to
+manage these relationships:
+
+- `insert_tree_pair(parent, child)`: Creates a new parent-child relationship,
+returning True if successful or False if the relationship already exists
+- `delete_tree_pair(parent, child)`: Removes a specific relationship, returning
+True if successful or False if the relationship didn't exist
+- `lookup_tree_pair(parent, child)`: Checks if a specific relationship exists in
+the tree
+- `get_tree_size()`: Returns the total number of relationships in the tree
+- `get_tree()`: Returns a copy of all relationships in the tree
+- `get_children(parent)`: Retrieves all children connected to a specific parent
+- `get_parents(child)`: Retrieves all parents connected to a specific child
+
+```{python}
+from typing import TypeVar, List, Tuple
+
+T = TypeVar('T')  # Generic type for values
+
+class ListProcessor:
+    def __init__(self) -> None:
+        self.tree: List[Tuple[T, T]] = []
+#| class: scrollable
+    def insert_tree_pair(self, parent: T, child: T) -> bool:
+        """Insert a parent-child pair into the tree structure.
+        
+        Args:
+            parent: The parent node value
+            child: The child node value
+            
+        Returns:
+            bool: True if the pair was inserted, False if it already exists
+        """
+        if (parent, child) in self.tree:
+            return False
+        self.tree.append((parent, child))
+        return True
+
+    def delete_tree_pair(self, parent: T, child: T) -> bool:
+        """Delete a parent-child pair from the tree structure.
+        
+        Args:
+            parent: The parent node value
+            child: The child node value
+            
+        Returns:
+            bool: True if the pair was deleted, False if it didn't exist
+        """
+        try:
+            self.tree.remove((parent, child))
+            return True
+        except ValueError:
+            return False
+
+    def lookup_tree_pair(self, parent: T, child: T) -> bool:
+        """Check if a parent-child pair exists in the tree structure.
+        
+        Args:
+            parent: The parent node value
+            child: The child node value
+            
+        Returns:
+            bool: True if the pair exists, False otherwise
+        """
+        return (parent, child) in self.tree
+```
+
+The implementation uses Python's built-in list operations:
+
+- `append()` for adding new relationships
+- `remove()` for deleting relationships
+- `in` operator for checking relationship existence
+- `copy()` for returning safe copies of the tree data
+
+Note: The Code arrow is interactive and will display relevant code snippets.
+
+### Run a Benchmark
+
+The main.py implements a performance benchmarking system that compares two
+different tree data structure implementations which are  a set-based (`SetGraph`)
+and a list-based (`ListProcessor`) implementation. It measures and visualizes
+execution times for common tree operations using the Rich library for formatted
+output. The operation are:
+
+- Insertion (adding parent-child relationships)
+- Lookup (checking if relationships exist) 
+- Deletion (removing relationships)
+- Verification (confirming deletions)
+
+```{python}
+def run_demo(num_vertices=20, quiet=False):
+    console = Console()
+
+    # Generate tree data
+    try:
+        edges = generate_random_tree_with_random_values_list(num_vertices)
+    except ValueError:
+        edges = [(1, 2), (2, 3), (3, 4), (4, 5)]
+
+    # Initialize implementations
+    set_tree = SetGraph()
+    list_tree = ListProcessor()
+
+    set_insert_times = []
+    list_insert_times = []
+    set_lookup_times = []
+    list_lookup_times = []
+    set_delete_times = []
+    list_delete_times = []
+    set_verify_times = []
+    list_verify_times = []
+
+    # Table for insertion
+    insertion_table = Table(title="Tree Node Insertion Operations")
+    insertion_table.add_column("Parent-Child Edge", style="cyan")
+    insertion_table.add_column("Set Implementation", style="green")
+    insertion_table.add_column("List Implementation", style="yellow")
+
+    # Perform insertions
+    for v1, v2 in edges:
+        set_start_time = time.time()
+        set_tree.insert_edge(v1, v2)
+        set_end_time = time.time()
+        set_insert_times.append((set_end_time - set_start_time))
+
+        list_start_time = time.time()
+        list_tree.insert_tree_pair(v1, v2)
+        list_end_time = time.time()
+        list_insert_times.append((list_end_time - list_start_time))
+
+        insertion_table.add_row(f"({v1}, {v2})", "Success", "Success")
+
+    # Table for lookup
+    lookup_table = Table(title="Tree Node Lookup Operations")
+    lookup_table.add_column("Parent-Child Edge", style="cyan")
+    lookup_table.add_column("Set Implementation", style="green")
+    lookup_table.add_column("List Implementation", style="yellow")
+
+    # Perform lookups
+    for v1, v2 in edges:
+        set_start_time = time.time()
+        set_result = str(set_tree.lookup_edge(v1, v2))
+        set_end_time = time.time()
+        set_lookup_times.append((set_end_time - set_start_time))
+
+        list_start_time = time.time()
+        list_result = str(list_tree.lookup_tree_pair(v1, v2))
+        list_end_time = time.time()
+        list_lookup_times.append((list_end_time - list_start_time))
+
+        lookup_table.add_row(f"({v1}, {v2})", set_result, list_result)
+
+    # Table for deletion
+    deletion_table = Table(title="Tree Node Deletion Operations")
+    deletion_table.add_column("Parent-Child Edge", style="cyan")
+    deletion_table.add_column("Set Implementation", style="green")
+    deletion_table.add_column("List Implementation", style="yellow")
+
+    # Perform deletions
+    deletion_count = len(edges) // 2
+    for v1, v2 in edges[:deletion_count]:
+        set_start_time = time.time()
+        set_tree.update_edge(v1, v2, False)
+        set_end_time = time.time()
+        set_delete_times.append((set_end_time - set_start_time))
+
+        list_start_time = time.time()
+        list_tree.delete_tree_pair(v1, v2)
+        list_end_time = time.time()
+        list_delete_times.append((list_end_time - list_start_time))
+
+        deletion_table.add_row(f"({v1}, {v2})", "Removed", "Removed")
+
+    # Table for verification
+    verification_table = Table(title="Deletion Verification Operations")
+    verification_table.add_column("Parent-Child Edge", style="cyan")
+    verification_table.add_column("Set Implementation", style="green")
+    verification_table.add_column("List Implementation", style="yellow")
+
+    # Verify deletions
+    for v1, v2 in edges[:deletion_count]:
+        set_start_time = time.time()
+        set_result = str(set_tree.lookup_edge(v1, v2))
+        set_end_time = time.time()
+        set_verify_times.append((set_end_time - set_start_time))
+
+        list_start_time = time.time()
+        list_result = str(list_tree.lookup_tree_pair(v1, v2))
+        list_end_time = time.time()
+        list_verify_times.append((list_end_time - list_start_time))
+
+        verification_table.add_row(f"({v1}, {v2})", set_result, list_result)
+
+    results_table = Table(title="Experimental Results")
+    results_table.add_column("Implementation", style="green")
+    results_table.add_column("Operation", style="cyan")
+    results_table.add_column("Repetitions", style="yellow")
+    results_table.add_column("Total Time (sec)", style="white")
+    results_table.add_column("Average Time (sec)", style="magenta")
+
+    results_table.add_row(
+    	"Set",
+		"Insert",
+		str(len(set_insert_times)),
+		f"{sum(set_insert_times):.10f}",
+		f"{(sum(set_insert_times) / len(set_insert_times)):.10f}")
+    results_table.add_row(
+    	"Set",
+		"Lookup",
+		str(len(set_lookup_times)),
+		f"{sum(set_lookup_times):.10f}",
+		f"{(sum(set_lookup_times) / len(set_lookup_times)):.10f}")
+    results_table.add_row(
+    	"Set",
+		"Delete",
+		str(len(set_delete_times)),
+		f"{sum(set_delete_times):.10f}",
+		f"{(sum(set_delete_times) / len(set_delete_times)):.10f}")   
+    results_table.add_row(
+    	"Set",
+		"Verify Deletion",
+		str(len(set_verify_times)),
+		f"{sum(set_verify_times):.10f}",
+		f"{(sum(set_verify_times) / len(set_verify_times)):.10f}")
+    results_table.add_row(
+    	"List",
+		"Insert",
+		str(len(list_insert_times)),
+		f"{sum(list_insert_times):.10f}",
+		f"{(sum(list_insert_times) / len(list_insert_times)):.10f}")
+    results_table.add_row(
+    	"List",
+		"Lookup",
+		str(len(list_lookup_times)),
+		f"{sum(list_lookup_times):.10f}",
+		f"{(sum(list_lookup_times) / len(list_lookup_times)):.10f}")
+    results_table.add_row(
+    	"List",
+		"Delete",
+		str(len(list_delete_times)),
+		f"{sum(list_delete_times):.10f}",
+		f"{(sum(list_delete_times) / len(list_delete_times)):.10f}") 
+    results_table.add_row(
+    	"List",
+		"Verify Deletion",
+		str(len(list_verify_times)),
+		f"{sum(list_verify_times):.10f}",
+		f"{(sum(list_verify_times) / len(list_verify_times)):.10f}")
+
+    if quiet:
+        console.print("\n[bold blue]Tree Implementation Comparison Results Summary[/bold blue]\n")
+        console.print(results_table)
+    else:
+        console.print("\n[bold blue]Tree Implementation Comparison Results Detail[/bold blue]\n")
+        console.print(insertion_table)
+        console.print(lookup_table)
+        console.print(deletion_table)
+        console.print(verification_table)
+```
+
+The benchmarking process includes:
+
+- Tree generation with configurable size
+- Parallel execution of operations on both implementations
+- Precise time measurement for each operation
+- Detailed operation logs showing successful insertions, lookups, and deletions
+- Summary statistics comparing average execution times between implementations
+
+Note: The Code arrow is interactive and will display relevant code snippets.
+
+## Raw Data
+
+| Team Member    | Test ID | Implementation | Operation       | Repetitions | Total Time (sec) | Average Time (sec) |
+| -------------- | ------: | -------------- | --------------- | ----------: | ---------------: | -----------------: |
+| Anoop Guragain |       1 | Set            | Insert          |        1249 |   `0.0007219315` |     `0.0000005780` |
+| Anoop Guragain |       1 | Set            | Lookup          |        1249 |   `0.0004174709` |     `0.0000003342` |
+| Anoop Guragain |       1 | Set            | Delete          |         624 |   `0.0002694130` |     `0.0000004318` |
+| Anoop Guragain |       1 | Set            | Verify Deletion |         624 |   `0.0002048016` |     `0.0000003282` |
+| Anoop Guragain |       1 | List           | Insert          |        1249 |   `0.0002067089` |     `0.0000001655` |
+| Anoop Guragain |       1 | List           | Lookup          |        1249 |   `0.0114858150` |     `0.0000091960` |
+| Anoop Guragain |       1 | List           | Delete          |         624 |   `0.0001938343` |     `0.0000003106` |
+| Anoop Guragain |       1 | List           | Verify Deletion |         624 |   `0.0059139729` |     `0.0000094775` |
+| Anoop Guragain |       2 | Set            | Insert          |        2499 |   `0.0018906593` |     `0.0000007566` |
+| Anoop Guragain |       2 | Set            | Lookup          |        2499 |   `0.0012483597` |     `0.0000004995` |
+| Anoop Guragain |       2 | Set            | Delete          |        1249 |   `0.0006318092` |     `0.0000005059` |
+| Anoop Guragain |       2 | Set            | Verify Deletion |        1249 |   `0.0007519722` |     `0.0000006021` |
+| Anoop Guragain |       2 | List           | Insert          |        2499 |   `0.0004298687` |     `0.0000001720` |
+| Anoop Guragain |       2 | List           | Lookup          |        2499 |   `0.0469496250` |     `0.0000187874` |
+| Anoop Guragain |       2 | List           | Delete          |        1249 |   `0.0005016327` |     `0.0000004016` |
+| Anoop Guragain |       2 | List           | Verify Deletion |        1249 |   `0.0245757103` |     `0.0000196763` |
+| Anoop Guragain |       3 | Set            | Insert          |        4999 |   `0.0027675629` |     `0.0000005536` |
+| Anoop Guragain |       3 | Set            | Lookup          |        4999 |   `0.0032362938` |     `0.0000006474` |
+| Anoop Guragain |       3 | Set            | Delete          |        2499 |   `0.0018022060` |     `0.0000007212` |
+| Anoop Guragain |       3 | Set            | Verify Deletion |        2499 |   `0.0017445087` |     `0.0000006981` |
+| Anoop Guragain |       3 | List           | Insert          |        4999 |   `0.0007727146` |     `0.0000001546` |
+| Anoop Guragain |       3 | List           | Lookup          |        4999 |   `0.1906578541` |     `0.0000381392` |
+| Anoop Guragain |       3 | List           | Delete          |        2499 |   `0.0015168190` |     `0.0000006070` |
+| Anoop Guragain |       3 | List           | Verify Deletion |        2499 |   `0.0985131264` |     `0.0000394210` |
+| Anoop Guragain |       4 | Set            | Insert          |        9999 |   `0.0058395863` |     `0.0000005840` |
+| Anoop Guragain |       4 | Set            | Lookup          |        9999 |   `0.0081734657` |     `0.0000008174` |
+| Anoop Guragain |       4 | Set            | Delete          |        4999 |   `0.0044069290` |     `0.0000008816` |
+| Anoop Guragain |       4 | Set            | Verify Deletion |        4999 |   `0.0050458908` |     `0.0000010094` |
+| Anoop Guragain |       4 | List           | Insert          |        9999 |   `0.0016064644` |     `0.0000001607` |
+| Anoop Guragain |       4 | List           | Lookup          |        9999 |   `0.7679641247` |     `0.0000768041` |
+| Anoop Guragain |       4 | List           | Delete          |        4999 |   `0.0058078766` |     `0.0000011618` |
+| Anoop Guragain |       4 | List           | Verify Deletion |        4999 |   `0.3994753361` |     `0.0000799110` |
+| Anoop Guragain |       5 | Set            | Insert          |       19999 |   `0.0090425014` |     `0.0000004521` |
+| Anoop Guragain |       5 | Set            | Lookup          |       19999 |   `0.0132143497` |     `0.0000006608` |
+| Anoop Guragain |       5 | Set            | Delete          |        9999 |   `0.0083487034` |     `0.0000008350` |
+| Anoop Guragain |       5 | Set            | Verify Deletion |        9999 |   `0.0070867538` |     `0.0000007087` |
+| Anoop Guragain |       5 | List           | Insert          |       19999 |   `0.0031774044` |     `0.0000001589` |
+| Anoop Guragain |       5 | List           | Lookup          |       19999 |   `3.1757445335` |     `0.0001587952` |
+| Anoop Guragain |       5 | List           | Delete          |        9999 |   `0.0226500034` |     `0.0000022652` |
+| Anoop Guragain |       5 | List           | Verify Deletion |        9999 |   `1.6271212101` |     `0.0001627284` |
+| Kris Hatcher   |       1 | Set            | Insert          |        1249 |   `0.0006544590` |     `0.0000005240` |
+| Kris Hatcher   |       1 | Set            | Lookup          |        1249 |   `0.0004522800` |     `0.0000003621` |
+| Kris Hatcher   |       1 | Set            | Delete          |         624 |   `0.0002281666` |     `0.0000003657` |
+| Kris Hatcher   |       1 | Set            | Verify Deletion |         624 |   `0.0001893044` |     `0.0000003034` |
+| Kris Hatcher   |       1 | List           | Insert          |        1249 |   `0.0002603531` |     `0.0000002084` |
+| Kris Hatcher   |       1 | List           | Lookup          |        1249 |   `0.0140104294` |     `0.0000112173` |
+| Kris Hatcher   |       1 | List           | Delete          |         624 |   `0.0001783371` |     `0.0000002858` |
+| Kris Hatcher   |       1 | List           | Verify Deletion |         624 |   `0.0066938400` |     `0.0000107273` |
+| Kris Hatcher   |       2 | Set            | Insert          |        2499 |   `0.0013871193` |     `0.0000005551` |
+| Kris Hatcher   |       2 | Set            | Lookup          |        2499 |   `0.0009014606` |     `0.0000003607` |
+| Kris Hatcher   |       2 | Set            | Delete          |        1249 |   `0.0005352497` |     `0.0000004285` |
+| Kris Hatcher   |       2 | Set            | Verify Deletion |        1249 |   `0.0006377697` |     `0.0000005106` |
+| Kris Hatcher   |       2 | List           | Insert          |        2499 |   `0.0004427433` |     `0.0000001772` |
+| Kris Hatcher   |       2 | List           | Lookup          |        2499 |   `0.0568816662` |     `0.0000227618` |
+| Kris Hatcher   |       2 | List           | Delete          |        1249 |   `0.0005249977` |     `0.0000004203` |
+| Kris Hatcher   |       2 | List           | Verify Deletion |        1249 |   `0.0305998325` |     `0.0000244995` |
+| Kris Hatcher   |       3 | Set            | Insert          |        4999 |   `0.0026187897` |     `0.0000005239` |
+| Kris Hatcher   |       3 | Set            | Lookup          |        4999 |   `0.0020656586` |     `0.0000004132` |
+| Kris Hatcher   |       3 | Set            | Delete          |        2499 |   `0.0011301041` |     `0.0000004522` |
+| Kris Hatcher   |       3 | Set            | Verify Deletion |        2499 |   `0.0010702610` |     `0.0000004283` |
+| Kris Hatcher   |       3 | List           | Insert          |        4999 |   `0.0008723736` |     `0.0000001745` |
+| Kris Hatcher   |       3 | List           | Lookup          |        4999 |   `0.2281482220` |     `0.0000456388` |
+| Kris Hatcher   |       3 | List           | Delete          |        2499 |   `0.0015757084` |     `0.0000006305` |
+| Kris Hatcher   |       3 | List           | Verify Deletion |        2499 |   `0.1140768528` |     `0.0000456490` |
+| Kris Hatcher   |       4 | Set            | Insert          |        9999 |   `0.0051593781` |     `0.0000005160` |
+| Kris Hatcher   |       4 | Set            | Lookup          |        9999 |   `0.0051286221` |     `0.0000005129` |
+| Kris Hatcher   |       4 | Set            | Delete          |        4999 |   `0.0029599667` |     `0.0000005921` |
+| Kris Hatcher   |       4 | Set            | Verify Deletion |        4999 |   `0.0027363300` |     `0.0000005474` |
+| Kris Hatcher   |       4 | List           | Insert          |        9999 |   `0.0014669895` |     `0.0000001467` |
+| Kris Hatcher   |       4 | List           | Lookup          |        9999 |   `0.9439439774` |     `0.0000944038` |
+| Kris Hatcher   |       4 | List           | Delete          |        4999 |   `0.0077755451` |     `0.0000015554` |
+| Kris Hatcher   |       4 | List           | Verify Deletion |        4999 |   `0.4784438610` |     `0.0000957079` |
+| Kris Hatcher   |       5 | Set            | Insert          |       19999 |   `0.0102605820` |     `0.0000005131` |
+| Kris Hatcher   |       5 | Set            | Lookup          |       19999 |   `0.0194635391` |     `0.0000009732` |
+| Kris Hatcher   |       5 | Set            | Delete          |        9999 |   `0.0068020821` |     `0.0000006803` |
+| Kris Hatcher   |       5 | Set            | Verify Deletion |        9999 |   `0.0078239441` |     `0.0000007825` |
+| Kris Hatcher   |       5 | List           | Insert          |       19999 |   `0.0038275719` |     `0.0000001914` |
+| Kris Hatcher   |       5 | List           | Lookup          |       19999 |   `5.4431343079` |     `0.0002721703` |
+| Kris Hatcher   |       5 | List           | Delete          |        9999 |   `0.0259702206` |     `0.0000025973` |
+| Kris Hatcher   |       5 | List           | Verify Deletion |        9999 |   `2.1690285206` |     `0.0002169245` |
+| Anton Hedlund  |       1 | Set            | Insert          |        1249 |   `0.0002536774` |     `0.0000002031` |
+| Anton Hedlund  |       1 | Set            | Lookup          |        1249 |   `0.0001590252` |     `0.0000001273` |
+| Anton Hedlund  |       1 | Set            | Delete          |         624 |   `0.0001053810` |     `0.0000001689` |
+| Anton Hedlund  |       1 | Set            | Verify Deletion |         624 |   `0.0001015663` |     `0.0000001628` |
+| Anton Hedlund  |       1 | List           | Insert          |        1249 |   `0.0000927448` |     `0.0000000743` |
+| Anton Hedlund  |       1 | List           | Lookup          |        1249 |   `0.0081560612` |     `0.0000065301` |
+| Anton Hedlund  |       1 | List           | Delete          |         624 |   `0.0001132480` |     `0.0000001815` |
+| Anton Hedlund  |       1 | List           | Verify Deletion |         624 |   `0.0040009022` |     `0.0000064117` |
+| Anton Hedlund  |       2 | Set            | Insert          |        2499 |   `0.0004878044` |     `0.0000001952` |
+| Anton Hedlund  |       2 | Set            | Lookup          |        2499 |   `0.0003283024` |     `0.0000001314` |
+| Anton Hedlund  |       2 | Set            | Delete          |        1249 |   `0.0001740456` |     `0.0000001393` |
+| Anton Hedlund  |       2 | Set            | Verify Deletion |        1249 |   `0.0001869202` |     `0.0000001497` |
+| Anton Hedlund  |       2 | List           | Insert          |        2499 |   `0.0001413822` |     `0.0000000566` |
+| Anton Hedlund  |       2 | List           | Lookup          |        2499 |   `0.0313482285` |     `0.0000125443` |
+| Anton Hedlund  |       2 | List           | Delete          |        1249 |   `0.0003473759` |     `0.0000002781` |
+| Anton Hedlund  |       2 | List           | Verify Deletion |        1249 |   `0.0157310963` |     `0.0000125950` |
+| Anton Hedlund  |       3 | Set            | Insert          |        4999 |   `0.0009343624` |     `0.0000001869` |
+| Anton Hedlund  |       3 | Set            | Lookup          |        4999 |   `0.0009300709` |     `0.0000001861` |
+| Anton Hedlund  |       3 | Set            | Delete          |        2499 |   `0.0004298687` |     `0.0000001720` |
+| Anton Hedlund  |       3 | Set            | Verify Deletion |        2499 |   `0.0003609657` |     `0.0000001444` |
+| Anton Hedlund  |       3 | List           | Insert          |        4999 |   `0.0003294945` |     `0.0000000659` |
+| Anton Hedlund  |       3 | List           | Lookup          |        4999 |   `0.1207776070` |     `0.0000241604` |
+| Anton Hedlund  |       3 | List           | Delete          |        2499 |   `0.0010612011` |     `0.0000004247` |
+| Anton Hedlund  |       3 | List           | Verify Deletion |        2499 |   `0.0603499413` |     `0.0000241496` |
+| Anton Hedlund  |       4 | Set            | Insert          |        9999 |   `0.0020077229` |     `0.0000002008` |
+| Anton Hedlund  |       4 | Set            | Lookup          |        9999 |   `0.0029425621` |     `0.0000002943` |
+| Anton Hedlund  |       4 | Set            | Delete          |        4999 |   `0.0012745857` |     `0.0000002550` |
+| Anton Hedlund  |       4 | Set            | Verify Deletion |        4999 |   `0.0013880730` |     `0.0000002777` |
+| Anton Hedlund  |       4 | List           | Insert          |        9999 |   `0.0007171631` |     `0.0000000717` |
+| Anton Hedlund  |       4 | List           | Lookup          |        9999 |   `0.5085749626` |     `0.0000508626` |
+| Anton Hedlund  |       4 | List           | Delete          |        4999 |   `0.0041770935` |     `0.0000008356` |
+| Anton Hedlund  |       4 | List           | Verify Deletion |        4999 |   `0.2452845573` |     `0.0000490667` |
+| Anton Hedlund  |       5 | Set            | Insert          |       19999 |   `0.0035853386` |     `0.0000001793` |
+| Anton Hedlund  |       5 | Set            | Lookup          |       19999 |   `0.0066003799` |     `0.0000003300` |
+| Anton Hedlund  |       5 | Set            | Delete          |        9999 |   `0.0029261112` |     `0.0000002926` |
+| Anton Hedlund  |       5 | Set            | Verify Deletion |        9999 |   `0.0026454926` |     `0.0000002646` |
+| Anton Hedlund  |       5 | List           | Insert          |       19999 |   `0.0012934208` |     `0.0000000647` |
+| Anton Hedlund  |       5 | List           | Lookup          |       19999 |   `2.0283503532` |     `0.0001014226` |
+| Anton Hedlund  |       5 | List           | Delete          |        9999 |   `0.0191664696` |     `0.0000019168` |
+| Anton Hedlund  |       5 | List           | Verify Deletion |        9999 |   `0.9842171669` |     `0.0000984316` |
+| Rosa Ruiz      |       1 | Set            | Insert          |        1249 |   `0.0002901554` |     `0.0000002323` |
+| Rosa Ruiz      |       1 | Set            | Lookup          |        1249 |   `0.0001721382` |     `0.0000001378` |
+| Rosa Ruiz      |       1 | Set            | Delete          |         624 |   `0.0001032352` |     `0.0000001654` |
+| Rosa Ruiz      |       1 | Set            | Verify Deletion |         624 |   `0.0000953674` |     `0.0000001528` |
+| Rosa Ruiz      |       1 | List           | Insert          |        1249 |   `0.0000820160` |     `0.0000000657` |
+| Rosa Ruiz      |       1 | List           | Lookup          |        1249 |   `0.0073747635` |     `0.0000059045` |
+| Rosa Ruiz      |       1 | List           | Delete          |         624 |   `0.0001182556` |     `0.0000001895` |
+| Rosa Ruiz      |       1 | List           | Verify Deletion |         624 |   `0.0038998127` |     `0.0000062497` |
+| Rosa Ruiz      |       2 | Set            | Insert          |        2499 |   `0.0005664825` |     `0.0000002267` |
+| Rosa Ruiz      |       2 | Set            | Lookup          |        2499 |   `0.0003759861` |     `0.0000001505` |
+| Rosa Ruiz      |       2 | Set            | Delete          |        1249 |   `0.0003008842` |     `0.0000002409` |
+| Rosa Ruiz      |       2 | Set            | Verify Deletion |        1249 |   `0.0002179146` |     `0.0000001745` |
+| Rosa Ruiz      |       2 | List           | Insert          |        2499 |   `0.0001616478` |     `0.0000000647` |
+| Rosa Ruiz      |       2 | List           | Lookup          |        2499 |   `0.0299577713` |     `0.0000119879` |
+| Rosa Ruiz      |       2 | List           | Delete          |        1249 |   `0.0003404617` |     `0.0000002726` |
+| Rosa Ruiz      |       2 | List           | Verify Deletion |        1249 |   `0.0156574249` |     `0.0000125360` |
+| Rosa Ruiz      |       3 | Set            | Insert          |        4999 |   `0.0012614727` |     `0.0000002523` |
+| Rosa Ruiz      |       3 | Set            | Lookup          |        4999 |   `0.0010662079` |     `0.0000002133` |
+| Rosa Ruiz      |       3 | Set            | Delete          |        2499 |   `0.0005378723` |     `0.0000002152` |
+| Rosa Ruiz      |       3 | Set            | Verify Deletion |        2499 |   `0.0004682541` |     `0.0000001874` |
+| Rosa Ruiz      |       3 | List           | Insert          |        4999 |   `0.0003514290` |     `0.0000000703` |
+| Rosa Ruiz      |       3 | List           | Lookup          |        4999 |   `0.1198709011` |     `0.0000239790` |
+| Rosa Ruiz      |       3 | List           | Delete          |        2499 |   `0.0012116432` |     `0.0000004849` |
+| Rosa Ruiz      |       3 | List           | Verify Deletion |        2499 |   `0.0594894886` |     `0.0000238053` |
+| Rosa Ruiz      |       4 | Set            | Insert          |        9999 |   `0.0022077560` |     `0.0000002208` |
+| Rosa Ruiz      |       4 | Set            | Lookup          |        9999 |   `0.0024387836` |     `0.0000002439` |
+| Rosa Ruiz      |       4 | Set            | Delete          |        4999 |   `0.0014414787` |     `0.0000002884` |
+| Rosa Ruiz      |       4 | Set            | Verify Deletion |        4999 |   `0.0011606216` |     `0.0000002322` |
+| Rosa Ruiz      |       4 | List           | Insert          |        9999 |   `0.0006437302` |     `0.0000000644` |
+| Rosa Ruiz      |       4 | List           | Lookup          |        9999 |   `0.4762122631` |     `0.0000476260` |
+| Rosa Ruiz      |       4 | List           | Delete          |        4999 |   `0.0045065880` |     `0.0000009015` |
+| Rosa Ruiz      |       4 | List           | Verify Deletion |        4999 |   `0.2361598015` |     `0.0000472414` |
+| Rosa Ruiz      |       5 | Set            | Insert          |       19999 |   `0.0044944286` |     `0.0000002247` |
+| Rosa Ruiz      |       5 | Set            | Lookup          |       19999 |   `0.0059998035` |     `0.0000003000` |
+| Rosa Ruiz      |       5 | Set            | Delete          |        9999 |   `0.0030324459` |     `0.0000003033` |
+| Rosa Ruiz      |       5 | Set            | Verify Deletion |        9999 |   `0.0035686493` |     `0.0000003569` |
+| Rosa Ruiz      |       5 | List           | Insert          |       19999 |   `0.0013079643` |     `0.0000000654` |
+| Rosa Ruiz      |       5 | List           | Lookup          |       19999 |   `1.8983876705` |     `0.0000949241` |
+| Rosa Ruiz      |       5 | List           | Delete          |        9999 |   `0.0216803551` |     `0.0000021683` |
+| Rosa Ruiz      |       5 | List           | Verify Deletion |        9999 |   `0.9522755146` |     `0.0000952371` |
+| Molly Suppo    |       1 | Set            | Insert          |        1249 |   `0.0010011196` |     `0.0000008015` |
+| Molly Suppo    |       1 | Set            | Lookup          |        1249 |   `0.0000000000` |     `0.0000000000` |
+| Molly Suppo    |       1 | Set            | Delete          |         624 |   `0.0009982586` |     `0.0000015998` |
+| Molly Suppo    |       1 | Set            | Verify Deletion |         624 |   `0.0000000000` |     `0.0000000000` |
+| Molly Suppo    |       1 | List           | Insert          |        1249 |   `0.0000000000` |     `0.0000000000` |
+| Molly Suppo    |       1 | List           | Lookup          |        1249 |   `0.0110130310` |     `0.0000088175` |
+| Molly Suppo    |       1 | List           | Delete          |         624 |   `0.0000000000` |     `0.0000000000` |
+| Molly Suppo    |       1 | List           | Verify Deletion |         624 |   `0.0063445568` |     `0.0000101676` |
+| Molly Suppo    |       2 | Set            | Insert          |        2499 |   `0.0000000000` |     `0.0000000000` |
+| Molly Suppo    |       2 | Set            | Lookup          |        2499 |   `0.0000000000` |     `0.0000000000` |
+| Molly Suppo    |       2 | Set            | Delete          |        1249 |   `0.0009999275` |     `0.0000008006` |
+| Molly Suppo    |       2 | Set            | Verify Deletion |        1249 |   `0.0000000000` |     `0.0000000000` |
+| Molly Suppo    |       2 | List           | Insert          |        2499 |   `0.0000000000` |     `0.0000000000` |
+| Molly Suppo    |       2 | List           | Lookup          |        2499 |   `0.0470225811` |     `0.0000188166` |
+| Molly Suppo    |       2 | List           | Delete          |        1249 |   `0.0107953548` |     `0.0000086432` |
+| Molly Suppo    |       2 | List           | Verify Deletion |        1249 |   `0.0270738602` |     `0.0000216764` |
+| Molly Suppo    |       3 | Set            | Insert          |        4999 |   `0.0009989738` |     `0.0000001998` |
+| Molly Suppo    |       3 | Set            | Lookup          |        4999 |   `0.0029928684` |     `0.0000005987` |
+| Molly Suppo    |       3 | Set            | Delete          |        2499 |   `0.0019989014` |     `0.0000007999` |
+| Molly Suppo    |       3 | Set            | Verify Deletion |        2499 |   `0.0009071827` |     `0.0000003630` |
+| Molly Suppo    |       3 | List           | Insert          |        4999 |   `0.0010023117` |     `0.0000002005` |
+| Molly Suppo    |       3 | List           | Lookup          |        4999 |   `0.2084989548` |     `0.0000417081` |
+| Molly Suppo    |       3 | List           | Delete          |        2499 |   `0.0387632847` |     `0.0000155115` |
+| Molly Suppo    |       3 | List           | Verify Deletion |        2499 |   `0.1109116077` |     `0.0000443824` |
+| Molly Suppo    |       4 | Set            | Insert          |        9999 |   `0.0070450306` |     `0.0000007046` |
+| Molly Suppo    |       4 | Set            | Lookup          |        9999 |   `0.0085387230` |     `0.0000008540` |
+| Molly Suppo    |       4 | Set            | Delete          |        4999 |   `0.0010113716` |     `0.0000002023` |
+| Molly Suppo    |       4 | Set            | Verify Deletion |        4999 |   `0.0035007000` |     `0.0000007003` |
+| Molly Suppo    |       4 | List           | Insert          |        9999 |   `0.0000000000` |     `0.0000000000` |
+| Molly Suppo    |       4 | List           | Lookup          |        9999 |   `0.8312807083` |     `0.0000831364` |
+| Molly Suppo    |       4 | List           | Delete          |        4999 |   `0.1535332203` |     `0.0000307128` |
+| Molly Suppo    |       4 | List           | Verify Deletion |        4999 |   `0.4479711056` |     `0.0000896121` |
+| Molly Suppo    |       5 | Set            | Insert          |       19999 |   `0.0154285431` |     `0.0000007715` |
+| Molly Suppo    |       5 | Set            | Lookup          |       19999 |   `0.0165197849` |     `0.0000008260` |
+| Molly Suppo    |       5 | Set            | Delete          |        9999 |   `0.0070683956` |     `0.0000007069` |
+| Molly Suppo    |       5 | Set            | Verify Deletion |        9999 |   `0.0080151558` |     `0.0000008016` |
+| Molly Suppo    |       5 | List           | Insert          |       19999 |   `0.0039968491` |     `0.0000001999` |
+| Molly Suppo    |       5 | List           | Lookup          |       19999 |   `3.5107905865` |     `0.0001755483` |
+| Molly Suppo    |       5 | List           | Delete          |        9999 |   `0.6115274429` |     `0.0000611589` |
+| Molly Suppo    |       5 | List           | Verify Deletion |        9999 |   `1.7308022976` |     `0.0001730975` |  
+
+: Raw data for all studied ways to access a tree. {.responsive}
+
+## Averages
+
+The following table averages out the data in the table above, grouping them by
+the `Implementation` and `Operation` columns. The data was then pivoted so that
+different vertex counts are displayed horizontally instead of vertically.
+
+| Implementation | Operation      | 624 Vertices   | 1249 Vertices  | 2499 Vertices  | 4999 Vertices  | 9999 Vertices  | 19999 Vertices |
+| -------------- | -------------- | -------------: | -------------: | -------------: | -------------: | -------------: | -------------: |
+| List           | Delete         | `0.0001207350` | `0.0025019646` | `0.0088257313` | `0.0351600647` | `0.1401988983` | -              |
+| List           | Insert         | -              | `0.0001283646` | `0.0002351284` | `0.0006656647` | `0.0008868694` | `0.0027206421` |
+| List           | Lookup         | -              | `0.0104080200` | `0.0424319744` | `0.1735907078` | `0.7055952072` | `3.2112814903` |
+| List           | VerifyDeletion | `0.0053706169` | `0.0227275848` | `0.0886682034` | `0.3614669323` | `1.4926889420` | -              |
+| Set            | Delete         | `0.0003408909` | `0.0005283832` | `0.0011797905` | `0.0022188663` | `0.0056355476` | -              |
+| Set            | Insert         | -              | `0.0005842686` | `0.0008664131` | `0.0017162323` | `0.0044518948` | `0.0085622787` |
+| Set            | Lookup         | -              | `0.0002401829` | `0.0005708218` | `0.0020582199` | `0.0054444313` | `0.0123595714` |
+| Set            | VerifyDeletion | `0.0001182079` | `0.0003589153` | `0.0009102344` | `0.0027663231` | `0.0058279991` | -              |
+
+: Average execution time for all studied ways to access a tree. {.responsive}
+
+# Charts
+
+## Linear Time Complexity
+
+This is a chart using the values in the `Averages` table above, for approaches
+which demonstrate a roughly linear time complexity.
+
+![Line Graph with Time on the Vertical Axis and Approach on the Horizontal Axis for linear time complexity.](./images/linear.png)
+
+## Quadratic Complexity
+
+This is a chart using the values in the `Averages` table above, for approaches
+which demonstrate a roughly quadratic time complexity.
+
+![Line Graph with Time on the Vertical Axis and Approach on the Horizontal Axis for quadratic time complexity.](./images/quadratic.png)
+
+# Results
+
+The result of the worst case time complexities are as follow:
+
+| Implementation |  Insert  |  Lookup  |  Delete  |  Verify Deletion  |
+| -------------- | -------- |--------: | -------: | ----------------: | 
+| List           | $O(n)$     | $O(n^2)$   | $O(n^2)$   | $O(n^2)$            |
+| Set            | $O(n)$     | $O(n)$     | $O(n)$     | $O(n)$              |
+
+: Worst case time complexities for all operations and implementations studied in this experiment. {.responsive}
+
+## Insert
+- Set remains at $O(n)$.
+- List is also $O(n)$ as it is  appending at the end.
+- Even though both are at $O(n)$, List is comparatively a lot faster than set at
+pure appending hence it is faster than set.
+
+## Lookup
+- Set remains at $O(n)$ 
+- List provide time complexity of $O(n^2)$ when doubling the list size.
+- Set is faster constantly for the both small and large data sizes compared to
+list.
+
+## Delete
+- Set remains at $O(n)$.
+- List provides time complexity of $O(n^2)$.
+- For the smaller data both are almost similar for the deletion but as the data
+increases the list falls behind due to the shifting.
+
+## Verify Deletion
+- Set remains at $O(n)$.
+- List provide time complexity of $O(n^2)$.
+- Set is faster constantly for the both small and large data sizes compared to
+list.
+
+## Conclusion
+
+Set is demonstrably faster than list because it uses a hash table while lists
+use dynamic arrays. Other than `append` and `insert`, which is $O(n)$ due to
+Python's geometrically growing capacity, `List` must look at every element or
+need to shift for other operations which results in $O(n^2)$.
+
+- If you need fast, random insert, delete and lookup of vertices or edges use
+**Set**. 
+- If you truly just need to build up nodes or neighbors and then walk them
+sequentially use **List**.
+
+# Next Steps
+
+Potential next steps could be testing the limits of the set and list approaches,
+or seeing the largest number of vertices they can handle. Also, considering that
+this experiment is implemented with a tree structure to avoid cycles, another
+next step could be trying to implement the same thing with a graph structure and
+cycle detection.
+
+# References
+
+1. Documentation
+    - [Python Lists](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists)
+    - [pytest Documentation](https://docs.pytest.org/en/stable/)
+    - [geeksforgeeks](https://www.geeksforgeeks.org/python-dictionary-update-method/)
+    - [Tree Data Structures](https://en.wikipedia.org/wiki/Tree_(data_structure))
+    - [Rich Library for Tables](https://rich.readthedocs.io/en/stable/tables.html)
+    - [Graph vs Tree Data Structures](https://www.geeksforgeeks.org/difference-between-graph-and-tree/)
+2. Course Slides
+    - [Hierarchical Data Structures Course Slides](https://algorithmology.org/slides/weekthirteen/)
+
+## AI Usage in this Project
+
+AI was used in this project for:
+
+- Tree generation algorithms (adapted from Microsoft Copilot)
+- Code optimization and refactoring suggestions
+- Test case generation and documentation templates
+- Error handling and debugging support
+- Generating sample data for testing
+- Bug correction
+- Writing documentation
+- Autocompletion of repetitive code snippets
+
+All AI-generated content was reviewed and validated by team members.
