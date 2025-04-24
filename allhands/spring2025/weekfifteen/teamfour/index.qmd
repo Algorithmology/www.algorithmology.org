@@ -1,0 +1,356 @@
+---
+author: [Joseph Oforkansi, Hank Gref, Coltin Colucci, Grant Anderson, Gabriel Salvatore, Javier Bejarano Jimenez]
+title: Collision and run time analysis of hashing algorithms
+page-layout: full
+categories: []
+date: "2025-4-22"
+date-format: long
+toc: true
+format:
+    html:
+        code-links:    
+            - text: Github Repository
+              icon: github
+              href: https://github.com/ganderson03/algorithmology-all-hands-3-group-4
+        code-fold: true
+        code-summary: "Show the code"
+
+---
+
+## Introduction
+
+We picked this project because we wanted to figure out how different ways of
+hashing data affect how often you get the same "address" (collisions) and how
+fast it takes to do the hashing. Our main question is: **How do different
+hashing methods (like Python's built-in hash(), MurmurHash, DJB@, and
+modulo_hash) change the number of collisions and how quickly they run when
+you're storing data in a dictionary?**
+
+It's really important to understand this because when you store lots of information, you want to find it quickly and not have different pieces of information end up in the same spot. That's what collisions are, and too many slow things down. So, by comparing these hashing methods, we hope to give people good information for choosing the best one for their needs.
+
+To test this, we made up some generated datasets with different amounts of data: 5,000, 10,000, and 20,000 items. These datasets are like the kind of information you might store in a dictionary. The keys in these datasets are just random strings, so we can see how the hashing works with different kinds of inputs. By using different sizes of datasets, we can also see if some hashing methods work better with more or less data.
+
+Right now, we're looking at Python's built-in hash(), a simple math-based hashing method we made (modulo hashing), MurmurHash, and also SHA-256 and CityHash, which are more advanced. For now, we're counting how many times different keys end up with the same hash and timing how long it takes to hash all the keys. This should give us some solid answers to our main question.
+
+## Implementation
+
+During this experiment, we tested multiple different hashing algorithms and tracked both the number of collisions and the runtimes. We conducted a doubling experiment, increasing the dataset sizes from 5k to 10k and finally to 20k. This allowed us to identify the time complexities of each algorithm and gain a better understanding of how additional data entries impact the number of collisions.
+
+### Python Hash
+
+Python’s built-in hash() takes a value (like a number or a string) and gives back a unique-looking number. That number is called a hash value.
+
+We use it to quickly find or store data in things like:
+
+- `Dictionaries` (`dict`)
+
+- `Sets` (`set`)
+
+Hashing helps Python put things into `buckets` — which makes looking them up really fast.
+
+Our Experiment
+We wanted to see how well Python’s `hash()` function spreads things into different buckets.
+
+Here’s the code we used to store items by their hash values:
+
+```{python}
+def store_with_builtin_hash(data):
+    storage = {}
+    for item in data:
+        h = hash(item)
+        if h in storage:
+            storage[h].append(item)  # Potential collision
+        else:
+            storage[h] = [item]
+    return storage
+```
+
+What it does:
+
+- For each item, it gets its hash value.
+
+- If a bucket (hash) already exists, it adds the item there.
+
+- If not, it creates a new bucket for that hash.
+
+- If multiple items land in the same bucket — that’s a `collision`.
+
+Then I wrote this code to analyze a dataset and report how `hash()` performed:
+
+```python
+def process_dataset(file_path):
+    """
+    Load a dataset from a file, hash its keys using Python's built-in hash function,
+    and calculate collision statistics.
+    :param file_path: Path to the dataset file.
+    """
+    with open(file_path, "r") as f:
+        dataset = json.load(f)
+
+    print(f"\nProcessing dataset: {file_path}")
+
+    # Hash the dataset using the built-in hash function
+    hashed_data = store_with_builtin_hash(dataset)
+
+    # Calculate collision statistics
+    total_collisions = sum(1 for v in hashed_data.values() if len(v) > 1)
+    total_keys = len(dataset)
+    unique_hashes = len(hashed_data)
+
+    print(f"Total keys: {total_keys}")
+    print(f"Unique hash values: {unique_hashes}")
+    print(f"Total collisions: {total_collisions}")
+
+    # Display a few collisions if they exist
+    if total_collisions > 0:
+        print("\nSample collisions:")
+        for hval, items in hashed_data.items():
+            if len(items) > 1:
+                print(f"Hash: {hval} -> Items: {items}")
+                break  # Display only the first collision
+```
+
+This code tell us:
+
+- the total number of items in the dataset.
+- The total number of unique buckets utilized.
+- The number of instances where multiple items were assigned to the same bucket (referred to as `collisions`).
+
+### Modulo Hash
+```{python}
+def simple_modulo_hash(key, modulo=1000):
+    # Calculate the sum of ASCII values of the characters in the key
+    ascii_sum = sum(ord(char) for char in key)
+    # Return the hash value as the modulo of the sum
+    return ascii_sum % modulo
+```
+
+This function takes two inputs, `key` which is a string and `modulo` as an integer that determines the range of the hash values (default 1000). Each character in the string is converted to its ASCII value using the `ord` function. The sum of the ASCII values is divided by the `modulo` value, and then the remainder is taken. This ensures the hash value is between 0 and the `modulo - 1`, which is important for indexing the hash value inside the bucket. 
+
+```python
+ # Inline implementation of hashing with the simple modulo-based hash function
+hashed_data = {}
+for key, value in dataset.items():
+    h = simple_modulo_hash(key, modulo)  # Use the simple modulo-based hash function
+    if h in hashed_data:
+        hashed_data[h].append((key, value))  # Handle collisions
+    else:
+        hashed_data[h] = [(key, value)]
+```
+
+The keys in `hashed_data` are the hash values computed from the `simple_modulo_hash` function, and the values in `hashed_data` are lists of tuples. Each tuple contains the original key and its associated value from the dataset.
+
+The algorithm iterates through all key-value pairs in the dataset and computes hash values for the keys using simple_modulo_hash. If a hash value already exists as a key in hashed_data, the key-value pair is appended to the list of items stored under that hash value (h). If the hash value does not exist, a new entry is created in hashed_data with the hash value as the key and the key-value pair as the first item in the list.
+
+The Modulo Hashing algorithm has a time complexity of O(n), also known as linear time. We came to this conclusion by running a doubling experiment using 5k, 10k, and 20k-key dictionaries and timing how long it took to hash each dataset. As the number of keys doubled, so did the runtimes, confirming the linear time complexity.
+
+This is shown by the average runtimes for each dataset:
+
+5k → 0.0129 seconds
+
+10k → 0.0247 seconds
+
+20k → 0.0526 seconds
+
+This data shows a clear doubling in runtime as the number of entries doubles. While the pattern is mostly linear, there was a small uptick in runtimes with each increase—likely due to a rise in collisions for the larger datasets.
+
+### Murmur Hash
+
+```python
+def murmurhash(key: str, seed: int = 0) -> int:
+    """Compute the MurmurHash for a given string.
+    """
+    key_bytes = key.encode('utf-8')
+    length = len(key_bytes)
+    h = seed
+    c1 = 0xcc9e2d51
+    c2 = 0x1b873593
+    r1 = 15
+    r2 = 13
+    m = 5
+    n = 0xe6546b64
+
+    # Process the input in 4-byte chunks
+    for i in range(0, length // 4):
+        k = int.from_bytes(key_bytes[i * 4:(i + 1) * 4], byteorder='little')
+        k = (k * c1) & 0xFFFFFFFF
+        k = (k << r1 | k >> (32 - r1)) & 0xFFFFFFFF
+        k = (k * c2) & 0xFFFFFFFF
+
+        h ^= k
+        h = (h << r2 | h >> (32 - r2)) & 0xFFFFFFFF
+        h = (h * m + n) & 0xFFFFFFFF
+
+    # Process the remaining bytes
+    remaining_bytes = length & 3
+    if remaining_bytes:
+        k = int.from_bytes(key_bytes[-remaining_bytes:], byteorder='little')
+        k = (k * c1) & 0xFFFFFFFF
+        k = (k << r1 | k >> (32 - r1)) & 0xFFFFFFFF
+        k = (k * c2) & 0xFFFFFFFF
+        h ^= k
+
+    # Finalize the hash
+    h ^= length
+    h ^= (h >> 16)
+    h = (h * 0x85ebca6b) & 0xFFFFFFFF
+    h ^= (h >> 13)
+    h = (h * 0xc2b2ae35) & 0xFFFFFFFF
+    h ^= (h >> 16)
+
+    return h
+
+
+def load_dataset(file_path: str) -> List[str]:
+    """Load a dataset from a file, where each line is treated as a separate entry."""
+    with open(file_path, 'r', encoding='utf-8') as file:
+        return [line.strip() for line in file]
+
+
+def hash_dataset(file_path: str, seed: int = 0) -> List[int]:
+    """Hash each line of a dataset using MurmurHash."""
+    dataset = load_dataset(file_path)
+    return [murmurhash(line, seed) for line in dataset]
+
+
+if __name__ == "__main__":
+    # Example usage
+    dataset_file = "dataset.txt"  # Replace with the path to your dataset file
+    seed_value = 42
+
+    try:
+        hashes = hash_dataset(dataset_file, seed_value)
+        for i, h in enumerate(hashes, start=1):
+            print(f"Line {i}: Hash = {h}")
+    except FileNotFoundError:
+        print(f"Error: The file '{dataset_file}' was not found.")
+```
+
+The implementation of MurmurHash in the provided code is a 32-bit non-cryptographic hash function designed for efficiency and uniform distribution. 
+
+The function begins by encoding the input string into bytes and processing it in 4-byte chunks. Each chunk is transformed using a series of multiplications, bitwise rotations, and masking operations to ensure randomness and minimize collisions. 
+
+Any remaining bytes that do not fit into a 4-byte chunk are processed separately to ensure all input data contributes to the final hash. The hash value is further refined in a finalization step, where it undergoes additional bitwise operations and multiplications to improve distribution. 
+
+The function also incorporates a seed value, allowing for customizable hash outputs. This implementation is particularly effective for applications requiring fast and reliable hashing, such as hash tables or data indexing.
+
+### DJB2 Hash
+
+```python
+def djb2(key: str) -> int:
+    """Hash function: DJB2 with 10-bit truncation for collision analysis."""
+    h = 5381
+    for c in key:
+        h = ((h << 5) + h) + ord(c)  # h * 33 + ord(c)
+    return h & 0x3FF  # 10-bit hash space (0–1023)
+```
+
+The `djb2` function is a well-known non-cryptographic hash function developed by Daniel J. Bernstein. It is widely used for hash tables due to its simplicity and decent distribution properties.
+
+This version of DJB2 takes a single input `key` (a string) and computes a 32-bit hash by starting with a base hash value (`5381`) and iteratively applying a simple formula to each character. The expression `((h << 5) + h)` is equivalent to multiplying the current hash value by 33, and then adding the ASCII value of the current character. The final result is truncated to 10 bits using `& 0x3FF` to force hash values into a smaller range, increasing the chance of collisions for analysis purposes.
+
+---
+
+```python
+# Inline implementation of DJB2-based hashing with collision tracking
+hashed_data = {}
+for key, value in dataset.items():
+    h = djb2(key)  # Use the DJB2 hash function
+    if h in hashed_data:
+        hashed_data[h].append((key, value))  # Handle collisions
+    else:
+        hashed_data[h] = [(key, value)]
+```
+
+Here, `hashed_data` is a dictionary where:
+- The keys are **hash values** generated by the `djb2` function.
+- The values are **lists of key-value pairs** from the original dataset that share the same hash.
+
+The algorithm iterates through each key-value pair in the dataset, hashes the key using `djb2`, and stores the pair in the appropriate bucket. If a hash value already exists in `hashed_data`, it appends the new item to the existing list — effectively handling collisions.
+
+---
+
+The DJB2 algorithm has a **linear time complexity of O(n)**, where `n` is the number of keys in the dataset. This is because:
+- Each key is processed character by character in a single loop.
+- Insertion into Python dictionaries is O(1) on average.
+- The hashing step for each key is independent and does not depend on the dataset size.
+
+We verified this through **empirical testing** using datasets of 5k, 10k, and 20k elements. As the number of keys doubled, so did the runtime, confirming the algorithm’s linear growth. This linearity held true even when we reduced the hash space to 10 bits to force more collisions — although the **collision rate increased**, the overall runtime remained proportional to input size.
+
+## Data
+
+|Hash Algorithm | Dataset | Run | Total Keys | Unique Hash Values | Total Collisions | Time Taken (s) | Seed Value | Modulo Value|
+|---|---|---|---|---|---|---|---|---|
+|builtin | dataset_5k | 1 | 5000 | 5000 | 0 | 0.0056 | -- | --|
+|builtin | dataset_5k | 2 | 5000 | 5000 | 0 | 0.0042 | -- | --|
+|builtin | dataset_5k | 3 | 5000 | 5000 | 0 | 0.0044 | -- | --|
+|builtin | dataset_10k | 1 | 10000 | 10000 | 0 | 0.0109 | -- | --|
+|builtin | dataset_10k | 2 | 10000 | 10000 | 0 | 0.0094 | -- | --|
+|builtin | dataset_10k | 3 | 10000 | 10000 | 0 | 0.0087 | -- | --|
+|builtin | dataset_20k | 1 | 20000 | 20000 | 0 | 0.0216 | -- | --|
+|builtin | dataset_20k | 2 | 20000 | 20000 | 0 | 0.0196 | -- | --|
+|builtin | dataset_20k | 3 | 20000 | 20000 | 0 | 0.0187 | -- | --|
+|murmur | dataset_5k | 1 | 5000 | 1 | 4999 | 0.0540 | 1000 | --|
+|murmur | dataset_5k | 2 | 5000 | 1 | 4999 | 0.0543 | 1000 | --|
+|murmur | dataset_5k | 3 | 5000 | 1 | 4999 | 0.0547 | 1000 | --|
+|murmur | dataset_10k | 1 | 10000 | 1 | 9999 | 0.1075 | 1000 | --|
+|murmur | dataset_10k | 2 | 10000 | 1 | 9999 | 0.1066 | 1000 | --|
+|murmur | dataset_10k | 3 | 10000 | 1 | 9999 | 0.1069 | 1000 | --|
+|murmur | dataset_20k | 1 | 20000 | 1 | 19999 | 0.2160 | 1000 | --|
+|murmur | dataset_20k | 2 | 20000 | 1 | 19999 | 0.2173 | 1000 | --|
+|murmur | dataset_20k | 3 | 20000 | 1 | 19999 | 0.2174 | 1000 | --|
+|modulo | dataset_5k | 1 | 5000 | 376 | 4624 | 0.0129 | -- | 1000|
+|modulo | dataset_5k | 2 | 5000 | 376 | 4624 | 0.0115 | -- | 1000|
+|modulo | dataset_5k | 3 | 5000 | 376 | 4624 | 0.0119 | -- | 1000|
+|modulo | dataset_10k | 1 | 10000 | 406 | 9594 | 0.0247 | -- | 1000|
+|modulo | dataset_10k | 2 | 10000 | 406 | 9594 | 0.0234 | -- | 1000|
+|modulo | dataset_10k | 3 | 10000 | 406 | 9594 | 0.0234 | -- | 1000|
+|modulo | dataset_20k | 1 | 20000 | 436 | 19564 | 0.0526 | -- | 1000|
+|modulo | dataset_20k | 2 | 20000 | 436 | 19564 | 0.0491 | -- | 1000|
+|modulo | dataset_20k | 3 | 20000 | 436 | 19564 | 0.0493 | -- | 1000|
+|djb2 | dataset_5k | 1 | 5000 | 4826 | 174 | 0.0165 | -- | --|
+|djb2 | dataset_5k | 2 | 5000 | 4826 | 174 | 0.0156 | -- | --|
+|djb2 | dataset_5k | 3 | 5000 | 4826 | 174 | 0.0157 | -- | --|
+|djb2 | dataset_10k | 1 | 10000 | 9270 | 730 | 0.0316 | -- | --|
+|djb2 | dataset_10k | 2 | 10000 | 9270 | 730 | 0.0317 | -- | --|
+|djb2 | dataset_10k | 3 | 10000 | 9270 | 730 | 0.0317 | -- | --|
+|djb2 | dataset_20k | 1 | 20000 | 17293 | 2707 | 0.0675 | -- | --|
+|djb2 | dataset_20k | 2 | 20000 | 17293 | 2707 | 0.0672 | -- | --|
+|djb2 | dataset_20k | 3 | 20000 | 17293 | 2707 | 0.0634 | -- | --|
+
+In order to consistently test the hash algorithms, each hash method was
+ran three times for each dataset file along with 1000 utilized as
+the seed/modulo value in order to maintain consistency with the
+outputs, as well as each function.
+
+## Analysis
+
+The four currently implemented hash algorithms utilize different approaches
+when finding distinct hash values, which results in different amounts of time
+taken for them to run along with different amounts of collisions (with some
+hash algorithms returning with no collisions whatsoever). These include the
+builtin algorithms (which returns no collisions at all) and the djb2 hash function,
+which returns 174 collisions when ran using the dataset_5k.json file.
+
+By far the fastest hash algorithm is the builtin hash function, which overall
+runs at twice the speed of the next fastest algorithm (modulo) and three times
+as fast as the next fastest hash algorithm (djb2). This means that when
+prioritizing efficiency, users would likely prefer to opt for the builtin algorithm,
+while users searching for collisions would be more likely to run murmur, which has
+the most collisions out of any algorithm.
+
+## Conclusion
+
+Our investigation into the collision frequency and runtime efficiency of various hashing algorithms has yielded several key insights relevant to dictionary-based data storage.
+
+The **Python built-in `hash()` function** demonstrated exceptional performance in terms of runtime, consistently exhibiting the fastest hashing times across all dataset sizes. Furthermore, it produced zero collisions in our tests, indicating a highly effective distribution for the generated random string keys. This makes it a strong candidate when speed is paramount and a low collision rate is essential.
+
+The **Modulo Hash** function, while exhibiting a linear time complexity similar to other algorithms, suffered from a significantly higher collision rate. With a modulo value of 1000, the number of unique hash values was drastically lower than the total number of keys, leading to a large number of collisions. While simple to implement, its poor collision characteristics make it less suitable for applications where minimizing collisions is crucial.
+
+**MurmurHash**, when used with a consistent seed value of 1000, resulted in the extreme case of mapping all keys to the same hash value, leading to the maximum possible number of collisions. While the algorithm itself is known for its speed and good distribution with varying seeds, our specific test configuration highlighted its sensitivity to the seed value and its potential for severe collisions if not chosen carefully. Its runtime performance was generally slower than the built-in hash and modulo hash but comparable to DJB2.
+
+The **DJB2 hash function**, even with a 10-bit truncation designed to increase collisions for analysis, presented a reasonable balance between runtime and collision frequency. It was slower than the built-in hash and modulo hash but faster than MurmurHash in our tests. The number of collisions was significantly lower than the modulo hash, suggesting a better distribution even within the limited hash space. This makes DJB2 a potential compromise when some collision resistance is needed without a significant performance penalty.
+
+In summary, the choice of hashing algorithm involves trade-offs between runtime efficiency and collision frequency. Python's built-in `hash()` appears to be the most performant and collision-resistant for our tested datasets. However, it's important to note that its behavior might vary depending on the data types and distribution of keys. Modulo hashing, in its simple form, is fast but prone to high collision rates. MurmurHash's performance is highly dependent on the seed value, and DJB2 offers a middle ground.
+
+Further research could explore the performance of these algorithms with different types of datasets (e.g., numerical keys, more structured string patterns), the impact of varying seed and modulo values, and a more in-depth analysis of the more advanced SHA-256 and CityHash algorithms, as initially intended. Understanding these nuances is crucial for making informed decisions when designing efficient and reliable dictionary-based data storage solutions.
