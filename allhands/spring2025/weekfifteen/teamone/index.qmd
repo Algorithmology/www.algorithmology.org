@@ -63,17 +63,17 @@ This design makes it easy to add, remove, and look up nodes quickly.
 
 The `Graph` class supports the following key features:
 
-- Edge Insertion (insert_edge): Adds a two-way connection between nodes by
+- Edge Insertion (`insert_edge`): Adds a two-way connection between nodes by
 updating each node’s neighbor set.
-- Node Deletion (delete_node): Removes a node and also cleans up any edges in
+- Node Deletion (`delete_node`): Removes a node and also cleans up any edges in
 which it participated by removing it from its neighbors' sets.
-- Edge Updating (update_edge): Allows dynamically adding or removing an edge
+- Edge Updating (`update_edge`): Allows dynamically adding or removing an edge
 between two existing nodes.
-- Node and Edge Lookup: Methods like lookup_node and lookup_edge check for node
-existence and whether two nodes are connected.
-- Neighbor Access and Graph Size: get_neighbors retrieves a node’s adjacent
-nodes, and get_graph_size returns the total number of nodes in the graph.
-- Graph Structure: get_graph_structure provides a full copy of the current
+- Node and Edge Lookup: Methods like `lookup_node` and `lookup_edge` check for
+node existence and whether two nodes are connected.
+- Neighbor Access and Graph Size: `get_neighbors` retrieves a node’s adjacent
+nodes, and `get_graph_size` returns the total number of nodes in the graph.
+- Graph Structure: `get_graph_structure` provides a full copy of the current
 graph, useful for visualization or further processing.
 
 This implementation avoids cycles and handles all connections through set
@@ -222,9 +222,11 @@ Note: The Code arrow is interactive and will display relevant code snippets.
 
 ### Run a Benchmark
 
-The main.py implements a performance benchmarking system that compares two different tree data structure implementations which
-are  a set-based (SetGraph) and a list-based (ListProcessor) implementation. It measures and visualizes execution times for
-common tree operations using the Rich library for formatted output. The operation are:
+The main.py implements a performance benchmarking system that compares two
+different tree data structure implementations which are  a set-based (`SetGraph`)
+and a list-based (`ListProcessor`) implementation. It measures and visualizes
+execution times for common tree operations using the Rich library for formatted
+output. The operation are:
 
 - Insertion (adding parent-child relationships)
 - Lookup (checking if relationships exist) 
@@ -232,7 +234,6 @@ common tree operations using the Rich library for formatted output. The operatio
 - Verification (confirming deletions)
 
 ```{python}
-
 def run_demo(num_vertices=20, quiet=False):
     console = Console()
 
