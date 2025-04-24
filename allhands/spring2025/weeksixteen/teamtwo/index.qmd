@@ -445,19 +445,32 @@ considered in scenarios where data frequently changes.
 
 Several areas for future investigation could provide additional insights:
 
-- **Floating-point comparison overhead might affect the relative performance advantages**
-    - Decimal comparisons introduce additional computational overhead and potential precision issues that could affect performance differently across algorithms. This would be particularly relevant for scientific computing and financial applications where decimal data is common.
+- **Floating-point comparison overhead might affect the relative performance
+advantages**
+    - Decimal comparisons introduce additional computational overhead and
+    potential precision issues that could affect performance differently across
+    algorithms. This would be particularly relevant for scientific computing and
+    financial applications where decimal data is common.
 
 - **Hybrid Approaches**
-    - Evaluate potential performance benefits of algorithms that switch strategies based on dataset size (e.g., linear search for small segments, binary search for larger ones)
-    - Determine specific thresholds at which switching between algorithms becomes beneficial, possibly using metrics like dataset size, expected search frequency, and data volatility
+    - Evaluate potential performance benefits of algorithms that switch
+    strategies based on dataset size (e.g., linear search for small segments,
+    binary search for larger ones)
+    - Determine specific thresholds at which switching between algorithms
+    becomes beneficial, possibly using metrics like dataset size, expected
+    search frequency, and data volatility
 
 - **Unbalanced BST Performance**
-    -  Examine how performance degrades when BSTs become unbalanced, and compare with tree-balancing algorithms such as AVL trees and Red-Black trees
-    -  Measure the overhead cost of maintaining balance in self-balancing trees and compare against the search performance benefits
+    -  Examine how performance degrades when BSTs become unbalanced, and compare
+    with tree-balancing algorithms such as AVL trees and Red-Black trees
+    -  Measure the overhead cost of maintaining balance in self-balancing trees
+    and compare against the search performance benefits
 
 # References
 
-- [Linear vs Binary Search](https://www.geeksforgeeks.org/linear-search-vs-binary-search/)
-- [Intro to Binary Search Tree](https://www.geeksforgeeks.org/introduction-to-binary-search-tree/)
-- [Searching in Binary Search Tree](https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/)
+- [Linear vs Binary
+Search](https://www.geeksforgeeks.org/linear-search-vs-binary-search/)
+- [Intro to Binary Search
+Tree](https://www.geeksforgeeks.org/introduction-to-binary-search-tree/)
+- [Searching in Binary Search
+Tree](https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/)
