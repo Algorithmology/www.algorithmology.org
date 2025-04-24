@@ -8,8 +8,6 @@ date-format: long
 toc: true
 ---
 
-## Introduction
-
 ## Motivation
 
 Hash tables are fundamental data structures used in countless applications, from
