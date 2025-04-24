@@ -1,6 +1,6 @@
 ---
 author: [Hemani Alaparthi, Duru Akbas, Williem Bennet, Faaris Cheema, Vivian Potts]
-title: How do linear search, binary search, balanced BSTs compare in runtime efficiency across varying dataset sizes and target positions?
+title: How do linear search, binary search, and balanced BSTs compare in runtime efficiency across varying dataset sizes and target positions?
 page-layout: full
 categories: [post, linear search, binary search, binary search tree, search]
 date: "2025-04-24"
@@ -46,7 +46,7 @@ For this experiment, we developed a benchmarking tool called [lvb](https://githu
 
 ## Linear Search
 
-```cmd
+```python
 def linear_search(dataset: List[Any], target: Any) -> Optional[int]:
     """Perform a linear search on the dataset.
 
@@ -70,7 +70,7 @@ Linear search sequentially checks each element until finding the target or reach
 
 ## Binary Search
 
-```cmd
+```python
 def binary_search_iterative(dataset: List[Any], target: Any) -> Optional[int]:
     """Perform an iterative binary search on the dataset.
 
@@ -95,9 +95,12 @@ def binary_search_iterative(dataset: List[Any], target: Any) -> Optional[int]:
     return None
 ```
 
-Binary search iteratively divides a sorted dataset in half, comparing the middle element to the target. If the target is smaller, it searches the left half; if larger, it searches the right. This process continues until the target is found or the search space is empty.
+Binary search iteratively divides a sorted dataset in half, comparing the middle
+element to the target. If the target is smaller, it searches the left half; if
+larger, it searches the right. This process continues until the target is found
+or the search space is empty.
 
-```cmd
+```python
 def binary_search_recursive(
     dataset: List[Any], target: Any, left: int = 0, right: Optional[int] = None
 ) -> Optional[int]:
@@ -128,11 +131,14 @@ def binary_search_recursive(
         return binary_search_recursive(dataset, target, left, mid - 1)
 ```
 
-Recursive binary search repeatedly divides a sorted dataset in half by calling itself with updated boundaries (left and right). It compares the middle element to the target, narrowing the search to the left or right half until the target is found or the search space is empty.
+Recursive binary search repeatedly divides a sorted dataset in half by calling
+itself with updated boundaries (left and right). It compares the middle element
+to the target, narrowing the search to the left or right half until the target
+is found or the search space is empty.
 
 ## Binary Search Tree
 
-```cmd
+```python
 class Node:
     """Creates the Node class for the BST."""
 
@@ -184,15 +190,27 @@ class BinarySearchTree:
             return self.search_recursive(node.r_child, target)
 ```
 
-The Binary Search Tree, is such an efficient approach for searching projects, with a balanced BST the time complexity is O(logn). The logic behind the BST is that the function, starts with a root node (starting node) and from there comparing the inputs to the target value, the smaller values go to the left as a child and the bigger values go to the right as a child. The BST uses recursion when adding the "children" therefore, the data is always sorted and balanced as it is being implemented to the tree. When searching for a target value, it constantly compares the current node's value and the target value to get to the target. Here is what a balanced BST looks like: 
+The Binary Search Tree, is such an efficient approach for searching projects,
+with a balanced BST the time complexity is $O(log_2n)$. The logic behind
+the BST is that the function, starts with a root node (starting node) and from
+there comparing the inputs to the target value, the smaller values go to the
+left as a child and the bigger values go to the right as a child. The BST uses
+recursion when adding the "children" therefore, the data is always sorted and
+balanced as it is being implemented to the tree. When searching for a target
+value, it constantly compares the current node's value and the target value to
+get to the target. Here is what a balanced BST looks like: 
 
+```text
         10
        /  \
       5    15
      / \   / \
     3   7 12 18
+```
 
-The smaller numbers go to the left, and the bigger numbers go to the right. It is very efficient because you do not necessarily go through the majority of the values, depending on the value.
+The smaller numbers go to the left, and the bigger numbers go to the right. It
+is very efficient because you do not necessarily go through the majority of the
+values, depending on the value.
 
 # Data
 
