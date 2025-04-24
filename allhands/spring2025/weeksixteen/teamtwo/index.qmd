@@ -315,7 +315,7 @@ both sorted and unsorted arrays. For each algorithm, we measured:
 | 5,000        | sorted_list    | binary_search_recursive  | end              | 500      | 0.000532     | 5        |
 | 5,000        | sorted_list    | binary_search_recursive  | nonexistent      | 500      | 0.000613     | 5        |
 
-##### Binary Sesrch Tree - BST search
+##### Binary Search Tree - BST search
 
 | Dataset Size | Data Structure      | Search Algorithm | Target Position | Searches | Avg Time (s) | Doubling |
 |--------------|---------------------|------------------|------------------|----------|--------------|----------|
@@ -357,7 +357,7 @@ both sorted and unsorted arrays. For each algorithm, we measured:
 | 1,000        | sorted_list    | binary_search_recursive  | random           | 500      | 0.000937     | 5        |
 | 5,000        | sorted_list    | binary_search_recursive  | random           | 100      | 0.000214     | 5        |
 
-##### Binary Sesrch Tree - bst search 
+##### Binary Search Tree - BST search 
 | Dataset Size | Data Structure      | Search Algorithm | Target Position | Searches | Avg Time (s) | Doubling |
 |--------------|---------------------|------------------|------------------|----------|--------------|----------|
 | 1,000        | binary_search_tree  | bst_search       | random           | 100      | 0.000123     | 5        |
@@ -398,7 +398,7 @@ both sorted and unsorted arrays. For each algorithm, we measured:
 | 5,000        | sorted_list    | binary_search_recursive  | end              | 500      | 0.001515     | 5        |
 | 5,000        | sorted_list    | binary_search_recursive  | nonexistent      | 500      | 0.002112     | 5        |
 
-##### Binary Sesrch Tree - bst search
+##### Binary Search Tree - BST search
 | Dataset Size | Data Structure      | Search Algorithm | Target Position | Searches | Avg Time (s) | Doubling |
 |--------------|---------------------|------------------|------------------|----------|--------------|----------|
 | 5,000        | binary_search_tree  | bst_search       | beginning        | 500      | 0.001381     | 5        |
