@@ -14,35 +14,46 @@ format:
 
 # Introduction
 
-This investigation seeks to answer a fundamental question in data structure implementation: How does implementing a tree with
-Python's set and list structures impact performance in terms of insertion, deletion, and lookup speed?
+This investigation seeks to answer a fundamental question in data structure
+implementation: How does implementing a tree with Python's set and list
+structures impact performance in terms of insertion, deletion, and lookup speed?
 
-To evaluate the two different implementations, we compare their performance across three operations: insertion, lookup and
-deletion. Using precise timing measurements and controlled experiments with varying tree sizes, we analyze how each data
-structure handles these operations. This comprehensive performance testing reveals differences in efficiency and scalability,
-enabling us to determine which implementation delivers optimal performance for different tree operation scenarios.
+To evaluate the two different implementations, we compare their performance
+across three operations: insertion, lookup and deletion. Using precise timing
+measurements and controlled experiments with varying tree sizes, we analyze how
+each data structure handles these operations. This comprehensive performance
+evaluation reveals differences in efficiency and scalability, thereby enabling
+us to determine which implementation delivers optimal performance for different
+tree operation scenarios.
 
 ## Approach
 
 ### Generate Trees for Analysis
 
-I have two separate generation algorithms to handle the different data types used for this experiment, lists and sets.
-Regardless, both generate unordered integer pairs within the container specified in the function name. Both functions also
-handle the case where there is not enough nodes present to make a tree. To generate a tree, there needs to be at least two
-nodes, a parent or root node, and a child node. If there are not enough nodes, an error is raised explaining why a tree will
-not be generated.
+We present two separate generation algorithms to handle the different data types
+used for this experiment, lists and sets. Regardless, both generate unordered
+integer pairs within the container specified in the function name. Both
+functions also handle the case where there is not enough nodes present to make a
+tree. To generate a tree, there needs to be at least two nodes, a parent or root
+node, and a child node. If there are not enough nodes, an error is raised
+explaining why a tree will not be generated.
 
-The node pairs are generated using the random library and it's function, `randint`. The values generated are random integers
-between `0` and `1000`. Nodes are generated until the number of nodes generated is the equal to the value of the parameter
-`num_nodes`. The root or parent node is then assigned as the first node inside the container with the utilization of the `pop`
-function and the value `0` or the first index in the list specified. The available parents list is started with the root node
-as the first entry.
+The node pairs are generated using the random library and it's function,
+`randint`. The values generated are random integers between `0` and `1000`.
+Nodes are generated until the number of nodes generated is the equal to the
+value of the parameter `num_nodes`. The root or parent node is then assigned as
+the first node inside the container with the utilization of the `pop` function
+and the value `0` or the first index in the list specified. The available
+parents list is started with the root node as the first entry.
 
-For each value in the randomly generated list of values for the nodes, the parents are randomly selected and a pair consisting
-of the parent value and the child's value are added to the tree. For sets, the `add` function is used and for lists, the
-`append` function is used. Then the available parent list is updated with the value of the child node.
+For each value in the randomly generated list of values for the nodes, the
+parents are randomly selected and a pair consisting of the parent value and the
+child's value are added to the tree. For sets, the `add` function is used and
+for lists, the `append` function is used. Then the available parent list is
+updated with the value of the child node.
 
-At the end of both functions, the tree is returned either as a set or a list that contains pairs of unordered integers.
+At the end of both functions, the tree is returned either as a set or a list
+that contains pairs of unordered integers.
 
 ### Process Tree Created Using `Set` Container
 
