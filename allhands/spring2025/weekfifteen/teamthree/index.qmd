@@ -192,16 +192,15 @@ self.table[index].append((key, value))
 
 ### Experiment and Benchmarking
 
-To evaluate the performance of our hash table configurations (chaining, 
-open addressing, and hybrid), we implemented a benchmarking structure 
-that compares how each algorithm handles insertion and lookup in a doubling 
-experiment. Our primary goal was to measure collision frequency during 
-insertion and runtime during lookups. For the lookup experiment, we were 
-concerned for both keys that existed in the table and those that did not. 
-By doubling the number of key-value pairs with each test, from 1000 to 
-512,000 pairs, we can observe each implementation's worst-case time 
-complexity and how well they maintain performance as the table becomes 
-more populated.
+To evaluate the performance of our hash table configurations (i.e., chaining,
+open addressing, and hybrid), we implemented a benchmarking structure that
+compares how each algorithm handles insertion and lookup in a doubling
+experiment. Our primary goal was to measure collision frequency during insertion
+and runtime during lookups. For the lookup experiment, we were concerned for
+both keys that existed in the table and those that did not. By doubling the
+number of key-value pairs with each test, from 1000 to 512,000 pairs, we can
+observe each implementation's worst-case time complexity and how well they
+maintain performance as the table becomes more populated.
 
 To simulate realistic and diverse inputs, we used randomly generated strings 
 as keys and integers as values. The random keys were created using combinations 
