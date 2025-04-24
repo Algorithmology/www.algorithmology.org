@@ -12,13 +12,11 @@ toc: true
 
 ## Motivation
 
-Hash tables are fundamental data structures used in countless 
-applications, from database indexing to caching systems. The 
-efficiency of these operations heavily depends on how the hash 
-table handles collisions - when two different keys map to the 
-same index. Our project investigates three prominent collision 
-resolution strategies: chaining, open addressing, and a hybrid 
-approach that combines both.
+Hash tables are fundamental data structures used in countless applications, from
+database indexing to caching systems. The efficiency of these operations heavily
+depends on how the hash table handles collisions --- when two different keys map
+to the same index. Our project investigates three prominent collision resolution
+strategies: chaining, open addressing, and a hybrid approach that combines both.
 
 The motivation for this comparison stems from several key 
 considerations:
