@@ -170,7 +170,7 @@ the algorithm will check the next available slot, continuing this process
 up until `probe_threshold` times. For the `put` operation, this means 
 inserting the key-value pair into the next available slot if the initial 
 one is taken. For the `get` operation, this means looking at the next 
-slot to continue searching for the desired key if it isn’t found at 
+slot to continue searching for the desired key if it isn't found at 
 the current index.
 
 ```python
