@@ -69,13 +69,12 @@ running, and analysis of data.
 
 ### Chaining
 
-What chaining is, is a collision resolution strategy that is used in 
-hash tables. Hash tables have an index or bucket in the table that 
-stores a list of key value pairs instead of single values. What chaining
-works todo is have multiple keys hash to the same index, then store them 
-together in the buckets list which is why the method is called chaining. 
-This allows the hash table to handle collisions easier without needing 
-to probe other slots.
+Chaining is a collision resolution strategy that is used in hash tables. Hash
+tables have an index or bucket in the table that stores a list of key value
+pairs instead of single values. What chaining works to do is have multiple keys
+hash to the same index, then store them together in the buckets list which is
+why the method is called chaining. This allows the hash table to handle
+collisions easier without needing to probe other slots.
 
 My algorithm uses separate chaining to handle collisions with lists(chains) 
 at index or buckets. Then it stores keys that are mapped together. Working 
