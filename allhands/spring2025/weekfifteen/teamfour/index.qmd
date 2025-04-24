@@ -77,7 +77,7 @@ What it does:
 
 Then I wrote this code to analyze a dataset and report how `hash()` performed:
 
-```{python}
+```python
 def process_dataset(file_path):
     """
     Load a dataset from a file, hash its keys using Python's built-in hash function,
