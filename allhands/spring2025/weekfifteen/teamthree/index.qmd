@@ -218,16 +218,15 @@ def generate_random_pairs(k: int) -> List[Tuple[str, int]]:
     return [(random_string(), random.randint(1, 100)) for _ in range(k)]
 ```
 
-Our benchmarking implementation is split into two main tests, insertion 
-benchmarking and lookup benchmarking. For insertion, we measure the 
-total time it takes to populate the table and count how many collisions 
-occur. This benchmarking design gives us insight into how each method 
-handles collisions in the hash space. Lookup benchmarking is performed 
-by timing look-up for both existing keys and non-existing keys. This 
-approach allows us to see not only how efficient each hash table is 
-under successful look-up, but also how well each algorithm handles 
-lookup failures. This is an important consideration because failed 
-lookups may be common in real-world scenarios like caching or spell 
+Our benchmarking implementation is split into two main tasks: insertion
+benchmarking and lookup benchmarking. For insertion, we measure the total time
+it takes to populate the table and count how many collisions occur. This
+benchmarking design gives us insight into how each method handles collisions in
+the hash space. Lookup benchmarking is performed by timing look-up for both
+existing keys and non-existing keys. This approach allows us to see not only how
+efficient each hash table is under successful look-up, but also how well each
+algorithm handles lookup failures. This is an important consideration because
+failed lookups may be common in real-world scenarios like caching or spell
 checking.
 
 Overall, both approaches use a similar benchmarking technique by using 
