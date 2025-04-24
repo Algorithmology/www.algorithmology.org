@@ -141,18 +141,22 @@ class Graph:
 
 ### Process Tree Created Using `List` Container
 
-The ListProcessor class implements a tree data structure using Python's list to store parent-child relationships. Each
-relationship is stored as a tuple pair (parent, child) within the list, allowing for efficient storage and traversal of the
-tree structure.
-The class provides a set of operations to manage these relationships:
+The `ListProcessor` class implements a tree data structure using Python's `list`
+to store parent-child relationships. Each relationship is stored as a `tuple`
+pair (parent, child) within the `list`, allowing for efficient storage and
+traversal of the tree structure. The class provides a set of operations to
+manage these relationships:
 
-- `insert_tree_pair(parent, child)`Creates a new parent-child relationship, returning True if successful or False if the relationship already exists
-- `delete_tree_pair(parent, child)`Removes a specific relationship, returning True if successful or False if the relationship didn't exist
-- `lookup_tree_pair(parent, child)` Checks if a specific relationship exists in the tree
-- `get_tree_size()` Returns the total number of relationships in the tree
-- `get_tree()` Returns a copy of all relationships in the tree
-- `get_children(parent)` Retrieves all children connected to a specific parent
-- `get_parents(child)` Retrieves all parents connected to a specific child
+- `insert_tree_pair(parent, child)`: Creates a new parent-child relationship,
+returning True if successful or False if the relationship already exists
+- `delete_tree_pair(parent, child)`: Removes a specific relationship, returning
+True if successful or False if the relationship didn't exist
+- `lookup_tree_pair(parent, child)`: Checks if a specific relationship exists in
+the tree
+- `get_tree_size()`: Returns the total number of relationships in the tree
+- `get_tree()`: Returns a copy of all relationships in the tree
+- `get_children(parent)`: Retrieves all children connected to a specific parent
+- `get_parents(child)`: Retrieves all parents connected to a specific child
 
 ```{python}
 from typing import TypeVar, List, Tuple
