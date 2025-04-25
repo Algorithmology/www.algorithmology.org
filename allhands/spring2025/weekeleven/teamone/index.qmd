@@ -510,17 +510,16 @@ ARRAY Queue Implementation
 
 #### Summary of the results
 
-1. Array Queue is the Best for Enqueue and Dequeue Operations.
-Enqueue is add an element to the back of the queue), dequeue is remove an element from the front of the queue.
+1. **`Array Queue`** is the best for `enqueue` and `dequeue` operations.  
+   `Enqueue` adds an element to the back of the queue, and `dequeue` removes an element from the front of the queue.
 
-Array Queue is the fastest → ~4.5x faster than SLL and ~6x faster than DLL. The Array Queue enqueues 1,000 elements in 0.0437 ms and dequeueing in 0.029 ms
+   `Array Queue` is the fastest → ~4.5x faster than `SLL` and ~6x faster than `DLL`. The `Array Queue` enqueues 1,000 elements in `0.0437 ms` and dequeues in `0.029 ms`.
 
-2. When it comes to concatenation Linked Lists (DLL/SLL) are much better.
+2. When it comes to concatenation, **`Linked Lists`** (`DLL`/`SLL`) are much better.
 
-Linked Lists (SLL/DLL) excellents when it comes to concatenation because they can simply link two lists together in O(1) time but the array need to make a whole new row (array) and move everything into it
+   `Linked Lists` (`SLL`/`DLL`) excel in concatenation because they can simply link two lists together in `O(1)` time, whereas the `Array Queue` needs to create a new array and copy all elements into it.
 
-
-And if you want a balance between memory and performance: SLL
+3. If you want a balance between memory and performance, choose **`SLL`**.ions.
 
 ---
 
