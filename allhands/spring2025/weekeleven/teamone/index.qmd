@@ -14,10 +14,9 @@ Efficient data structures are crucial for software performance, scalability, and
 
 Our research question is: **What are the performance differences between SLL queue, DLL queue, and Array-based queue implementations when performing basic operations (e.g., `addfirst`, `addlast`, `removefirst`, `removelast`, `add (+)`, and `iadd (+=)`)?** 
 
-We conducted benchmarking experiments using **SystemSense** to analyze these implementations. Key aspects considered include:
+We conducted benchmarking experiments using `SystemSense` to analyze these implementations. Key aspects considered include:
 
 - **Algorithmic Complexity**: Evaluating time and space complexity to identify trade-offs.
-- **Memory Management**: Comparing memory allocation and deallocation in linked lists versus array-based implementations.
 - **Concurrency Considerations**: Assessing behavior in multi-threaded environments.
 - **Use Case Optimization**: Identifying scenarios where each implementation excels.
 - **Benchmarking Methodology**: Designing experiments to measure execution times and scaling behavior.
@@ -62,11 +61,11 @@ This project explores three queue implementations:
 
 All implementations support the following core operations:
 
-- **`enqueue`**: Add an element to the rear (O(1) in all implementations).
-- **`dequeue`**: Remove an element from the front (O(1) in all implementations).
-- **`peek`**: View the front element without removing it (O(1) in all implementations).
-- **`__add__`**: Concatenate two queues (O(1) in linked lists, O(n) in array-based).
-- **`__iadd__`**: In-place concatenation (O(1) in linked lists, O(n) in array-based).
+- **`enqueue`**: Add an element to the rear.
+- **`dequeue`**: Remove an element from the front.
+- **`peek`**: View the front element without removing it.
+- **`__add__`**: Concatenate two queues.
+- **`__iadd__`**: In-place concatenation. 
 
 ### Example Implementations
 
@@ -104,7 +103,7 @@ def dequeue(self) -> Any:
 #### Queue Concatenation (Array-based)
 
 ```python
-def __add__(self, other: "ListQueueDisplay") -> "ListQueueDisplay":
+def __add__(self, other: Any) -> Any:
     """Concatenate two queues. O(n) operation."""
     result = ListQueueDisplay()
     result.items = deque(self.items)  # Copy first queue
@@ -419,94 +418,7 @@ for more details and detailed apporach
 
 #### Run of Doubling Experiment
 
-```bash
-DLL Queue Implementation
-╭───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│                DLL Queue Doubling Experiment Results                                                                                              │
-│ ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮                                                                               │
-│ │ Size (n) │  enqueue │  dequeue │     peek │   concat │  iconcat │                                                                               │
-│ ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                                                                               │
-│ │      100 │ 0.023667 │ 0.006667 │ 0.001916 │ 0.000333 │ 0.000417 │                                                                               │
-│ │      200 │ 0.073833 │ 0.013459 │ 0.003500 │ 0.000208 │ 0.000167 │                                                                               │
-│ │      400 │ 0.115250 │ 0.024208 │ 0.006083 │ 0.000125 │ 0.000125 │                                                                               │
-│ │      800 │ 0.200166 │ 0.048375 │ 0.011542 │ 0.000167 │ 0.000166 │                                                                               │
-│ ╰──────────┴──────────┴──────────┴──────────┴──────────┴──────────╯                                                                               │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-
-SLL Queue Implementation
-╭───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│                SLL Queue Doubling Experiment Results                                                                                              │
-│ ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮                                                                               │
-│ │ Size (n) │  enqueue │  dequeue │     peek │   concat │  iconcat │                                                                               │
-│ ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                                                                               │
-│ │      100 │ 0.022000 │ 0.005958 │ 0.002292 │ 0.000958 │ 0.000500 │                                                                               │
-│ │      200 │ 0.040667 │ 0.011459 │ 0.003500 │ 0.000417 │ 0.000209 │                                                                               │
-│ │      400 │ 0.099958 │ 0.020958 │ 0.006125 │ 0.000333 │ 0.000208 │                                                                               │
-│ │      800 │ 0.169250 │ 0.041334 │ 0.011708 │ 0.000333 │ 0.000209 │                                                                               │
-│ ╰──────────┴──────────┴──────────┴──────────┴──────────┴──────────╯                                                                               │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-
-ARRAY Queue Implementation
-╭───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│               ARRAY Queue Doubling Experiment Results                                                                                             │
-│ ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮                                                                               │
-│ │ Size (n) │  enqueue │  dequeue │     peek │   concat │  iconcat │                                                                               │
-│ ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                                                                               │
-│ │      100 │ 0.003791 │ 0.003334 │ 0.002459 │ 0.001833 │ 0.000250 │                                                                               │
-│ │      200 │ 0.007083 │ 0.006166 │ 0.004667 │ 0.001917 │ 0.000208 │                                                                               │
-│ │      400 │ 0.014125 │ 0.013125 │ 0.009208 │ 0.003375 │ 0.000292 │                                                                               │
-│ │      800 │ 0.027542 │ 0.026292 │ 0.017792 │ 0.006417 │ 0.000375 │                                                                               │
-│ ╰──────────┴──────────┴──────────┴──────────┴──────────┴──────────╯                                                                               │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-```
-
 #### Run of Performance Analysis
-
-```bash
-oetry run analyze analyze                                     
-
-DLL Queue Implementation
-╭───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│              DLL Queue Performance Analysis                                                                                                       │
-│ ╭───────────┬───────────┬──────────┬───────────────────╮                                                                                          │
-│ │ Operation │ Time (ms) │ Elements │ Time/Element (ms) │                                                                                          │
-│ ├───────────┼───────────┼──────────┼───────────────────┤                                                                                          │
-│ │ enqueue   │  0.258167 │    1,000 │          0.000258 │                                                                                          │
-│ │ dequeue   │  0.060583 │      500 │          0.000121 │                                                                                          │
-│ │ peek      │  0.015292 │      333 │          0.000046 │                                                                                          │
-│ │ concat    │  0.000334 │      100 │          0.000003 │                                                                                          │
-│ │ iconcat   │  0.000417 │      100 │          0.000004 │                                                                                          │
-│ ╰───────────┴───────────┴──────────┴───────────────────╯                                                                                          │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-
-SLL Queue Implementation
-╭───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│              SLL Queue Performance Analysis                                                                                                       │
-│ ╭───────────┬───────────┬──────────┬───────────────────╮                                                                                          │
-│ │ Operation │ Time (ms) │ Elements │ Time/Element (ms) │                                                                                          │
-│ ├───────────┼───────────┼──────────┼───────────────────┤                                                                                          │
-│ │ enqueue   │  0.196000 │    1,000 │          0.000196 │                                                                                          │
-│ │ dequeue   │  0.050458 │      500 │          0.000101 │                                                                                          │
-│ │ peek      │  0.014625 │      333 │          0.000044 │                                                                                          │
-│ │ concat    │  0.000791 │      100 │          0.000008 │                                                                                          │
-│ │ iconcat   │  0.000500 │      100 │          0.000005 │                                                                                          │
-│ ╰───────────┴───────────┴──────────┴───────────────────╯                                                                                          │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-
-ARRAY Queue Implementation
-╭───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│             ARRAY Queue Performance Analysis                                                                                                      │
-│ ╭───────────┬───────────┬──────────┬───────────────────╮                                                                                          │
-│ │ Operation │ Time (ms) │ Elements │ Time/Element (ms) │                                                                                          │
-│ ├───────────┼───────────┼──────────┼───────────────────┤                                                                                          │
-│ │ enqueue   │  0.043708 │    1,000 │          0.000044 │                                                                                          │
-│ │ dequeue   │  0.029083 │      500 │          0.000058 │                                                                                          │
-│ │ peek      │  0.019541 │      333 │          0.000059 │                                                                                          │
-│ │ concat    │  0.007208 │      100 │          0.000072 │                                                                                          │
-│ │ iconcat   │  0.000625 │      100 │          0.000006 │                                                                                          │
-│ ╰───────────┴───────────┴──────────┴───────────────────╯                                                                                          │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-```
 
 #### Summary of the results
 
