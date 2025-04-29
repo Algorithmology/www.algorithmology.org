@@ -6,6 +6,14 @@ categories: [post, queues, linked lists, doubling experiment]
 date: "2025-03-28"
 date-format: long
 toc: true
+format:
+  html:
+    code-links:    
+      - text: Github Repository
+        icon: github
+        href: https://github.com/josephoforkansi/Algorithm-Analysis-All-Hands-Project-Module-2
+    code-fold: true
+    code-summary: "Show the code"
 ---
 
 # Introduction
@@ -74,7 +82,7 @@ All implementations support the following core operations:
 ```python
 def enqueue(self, value: Any) -> None:
     """Add an element to the end of the queue. O(1) operation using tail pointer."""
-    new_node = Node(value)
+    new_node: Node = Node(value)
     if self.is_empty():
         self.head = new_node
     else:
@@ -90,7 +98,7 @@ def dequeue(self) -> Any:
     """Remove and return the first element from the queue. O(1) operation."""
     if self.is_empty():
         raise IndexError("Queue is empty")
-    value = self.head.value
+    value: Any = self.head.value
     self.head = self.head.next
     if self.head is None:
         self.tail = None
@@ -100,155 +108,58 @@ def dequeue(self) -> Any:
     return value
 ```
 
-#### Queue Concatenation (Array-based)
+#### Removelast Operation (Array-based)
 
 ```python
-def __add__(self, other: Any) -> Any:
-    """Concatenate two queues. O(n) operation."""
-    result = ListQueueDisplay()
-    result.items = deque(self.items)  # Copy first queue
-    result.items.extend(other.items)  # Append second queue
-    return result
+def removelast(self) -> Any:
+    """Remove and return the last element from the queue. O(1) operation."""
+    if self.is_empty():
+        raise IndexError("Queue is empty")
+    return self.items.pop()  # O(1) operation for deque
 ```
 
----
-
-## Implementation Considerations
-
-### SLL Queue
-- **Advantages**:
-  - Simpler structure with less memory overhead per node.
-  - Efficient concatenation due to the tail pointer.
-- **Limitations**:
-  - Forward-only traversal limits some operations.
-
-### DLL Queue
-- **Advantages**:
-  - Bidirectional links enable more flexible operations.
-  - Easy traversal in both directions.
-- **Limitations**:
-  - Higher memory usage due to extra pointers per node.
-
-### Array-based Queue
-- **Advantages**:
-  - No manual pointer management required.
-  - Leverages Python's efficient `deque` implementation.
-- **Limitations**:
-  - Internal array may require occasional reallocation.
-
----
-
-# Benchmarking
-
-We designed two main benchmarking experiments: **Basic Analysis** and **Doubling Experiment**.
-
-## Basic Analysis
-
-This function evaluates the performance of core operations (`enqueue`, `dequeue`, `peek`, `concat`, and `iconcat`) for a fixed queue size.
+#### Timing Mechanism
 
 ```python
-def analyze_queue(queue_class, size=1000):
-    """Analyze a queue implementation."""
-    approach = next(
-        (k for k, v in QUEUE_IMPLEMENTATIONS.items() if v == queue_class), None
-    )
-    if approach is None:
-        console.print("[red]Unknown queue implementation[/red]")
-        return
-
-    console.print(f"\n{approach.value.upper()} Queue Implementation")
-
+def time_operation(func: Callable[[], Any]) -> float:
+    """Time an operation using high-precision counter."""
     try:
-        queue = queue_class()
-        operations = []
+        # Warm up
+        func()
 
-        # Test enqueue
-        enqueue_time = time_operation(lambda: [queue.enqueue(i) for i in range(size)])
-        operations.append(("enqueue", enqueue_time, size))
-
-        # Test dequeue
-        dequeue_count = size // 2
-        dequeue_time = time_operation(
-            lambda: [queue.dequeue() for _ in range(dequeue_count)]
-        )
-        operations.append(("dequeue", dequeue_time, dequeue_count))
-
-        # Refill queue
-        for i in range(dequeue_count):
-            queue.enqueue(i)
-
-        # Test peek
-        peek_count = size // 3
-        peek_time = time_operation(lambda: [queue.peek() for _ in range(peek_count)])
-        operations.append(("peek", peek_time, peek_count))
-
-        # Test concat
-        other = queue_class()
-        for i in range(size // 10):
-            other.enqueue(i)
-        concat_time = time_operation(lambda: queue + other)
-        operations.append(("concat", concat_time, size // 10))
-
-        # Test iconcat
-        iconcat_time = time_operation(lambda: queue.__iadd__(other))
-        operations.append(("iconcat", iconcat_time, size // 10))
-
-        # Display results in table
-        table = Table(
-            title=f"{approach.value.upper()} Queue Performance Analysis",
-            box=box.ROUNDED,
-            show_header=True,
-            header_style="bold magenta",
-        )
-        table.add_column("Operation", style="cyan")
-        table.add_column("Time (ms)", justify="right")
-        table.add_column("Elements", justify="right")
-        table.add_column("Time/Element (ms)", justify="right")
-
-        for operation, time_taken, elements in operations:
-            time_per_element = time_taken / elements if elements > 0 else 0
-            table.add_row(
-                operation,
-                f"{time_taken * 1000:.6f}",  # Convert to milliseconds
-                f"{elements:,}",
-                f"{time_per_element * 1000:.6f}",  # Convert to milliseconds
-            )
-
-        console.print(Panel(table))
-
+        # Actual timing
+        start_time: float = perf_counter()
+        func()
+        elapsed: float = perf_counter() - start_time
+        return elapsed
     except Exception as e:
-        console.print(f"[red]Error testing {approach.value}: {str(e)}[/red]")
-        import traceback
-
-        console.print(traceback.format_exc())
+        console.print(f"[red]Error during operation: {str(e)}[/red]")
+        return float("nan")
 ```
 
-#### Doubling experiment
-
-This experiment measures how performance scales as the input size doubles.
+#### Doubling Experiment
 
 ```python
-
 def doubling(
-    initial_size: int = typer.Option(100, help="Initial size for doubling experiment"),
-    max_size: int = typer.Option(1000, help="Maximum size for doubling experiment"),
+    initial_size: int = typer.Option(10000, help="Initial size for doubling experiment"),
+    max_size: int = typer.Option(1000000, help="Maximum size for doubling experiment"),
     dll: bool = typer.Option(True, help="Test DLL implementation"),
     sll: bool = typer.Option(True, help="Test SLL implementation"),
     array: bool = typer.Option(True, help="Test Array implementation"),
-):
+) -> None:
     """Run doubling experiment on queue implementations."""
     # Create results directory if it doesn't exist
-    results_dir = Path("results")
+    results_dir: Path = Path("results")
     results_dir.mkdir(exist_ok=True)
 
-    sizes = []
-    current_size = initial_size
+    sizes: List[int] = []
+    current_size: int = initial_size
     while current_size <= max_size:
         sizes.append(current_size)
         current_size *= 2
 
     # Dictionary to store all results for plotting
-    all_results = {}
+    all_results: Dict[str, Dict[str, List[float]]] = {}
 
     for approach, queue_class in QUEUE_IMPLEMENTATIONS.items():
         if not (
@@ -260,25 +171,27 @@ def doubling(
 
         try:
             console.print(f"\n{approach.value.upper()} Queue Implementation")
-            results = {
+            results: Dict[str, List[float]] = {
                 "enqueue": [],
                 "dequeue": [],
                 "peek": [],
                 "concat": [],
                 "iconcat": [],
+                "removelast": [],
             }
 
             for size in sizes:
-                queue = queue_class()
+                queue: Any = queue_class()
+                other: Any = queue_class()
 
                 # Enqueue
-                enqueue_time = time_operation(
+                enqueue_time: float = time_operation(
                     lambda: [queue.enqueue(i) for i in range(size)]
                 )
                 results["enqueue"].append(enqueue_time)
 
                 # Dequeue
-                dequeue_time = time_operation(
+                dequeue_time: float = time_operation(
                     lambda: [queue.dequeue() for _ in range(size // 2)]
                 )
                 results["dequeue"].append(dequeue_time)
@@ -288,45 +201,56 @@ def doubling(
                     queue.enqueue(i)
 
                 # Peek
-                peek_time = time_operation(
+                peek_time: float = time_operation(
                     lambda: [queue.peek() for _ in range(size // 3)]
                 )
                 results["peek"].append(peek_time)
 
-                # Concat
-                other = queue_class()
+                # Prepare other queue for concat
                 for i in range(size // 10):
                     other.enqueue(i)
 
-                concat_time = time_operation(lambda: queue + other)
+                # Concat
+                concat_time: float = time_operation(lambda: queue + other)
                 results["concat"].append(concat_time)
 
                 # Iconcat
-                iconcat_time = time_operation(lambda: queue.__iadd__(other))
+                iconcat_time: float = time_operation(lambda: queue.__iadd__(other))
                 results["iconcat"].append(iconcat_time)
+
+                # Removelast - test with fixed number of operations (100)
+                removelast_time: float = time_operation(
+                    lambda: [queue.removelast() for _ in range(100)]
+                )
+                results["removelast"].append(removelast_time)
 
             # Store results for plotting
             all_results[approach.value] = results
 
             # Display results in table
-            table = Table(
+            table: Table = Table(
                 title=f"{approach.value.upper()} Queue Doubling Experiment Results",
                 box=box.ROUNDED,
                 show_header=True,
                 header_style="bold magenta",
+                width=250
             )
-            table.add_column("Size (n)", justify="right")
-            for operation in results.keys():
-                table.add_column(operation, justify="right")
+            table.add_column("Size (n)", justify="right", width=12)
+            table.add_column("enq (ms)", justify="right", width=15)
+            table.add_column("deq (ms)", justify="right", width=15)
+            table.add_column("peek (ms)", justify="right", width=15)
+            table.add_column("cat (ms)", justify="right", width=15)
+            table.add_column("icat (ms)", justify="right", width=15)
+            table.add_column("rml (ms)", justify="right", width=15)
 
             for i, size in enumerate(sizes):
-                row = [f"{size:,}"]
+                row: List[str] = [f"{size:,}"]
                 for operation in results.keys():
-                    value = results[operation][i]
+                    value: float = results[operation][i]
                     if np.isnan(value):  # Check for NaN
                         row.append("N/A")
                     else:
-                        row.append(f"{value * 1000:.6f}")  # Convert to milliseconds
+                        row.append(f"{value * 1000:.5f}")  # Show 5 decimal places
                 table.add_row(*row)
 
             console.print(Panel(table))
@@ -334,44 +258,14 @@ def doubling(
         except Exception as e:
             console.print(f"[red]Error testing {approach.value}: {str(e)}[/red]")
             import traceback
-
             console.print(traceback.format_exc())
-
-    # Generate and save plots
-    plot_results(sizes, all_results, results_dir)
-    console.print(f"[green]Plots saved to [bold]{results_dir}[/bold] directory[/green]")
-
 ```
-
-#### Key benchmarking feature
-
-##### Timing Mechanism
-
-```python
-
-def time_operation(func):
-    """Time an operation using high-precision counter."""
-    try:
-        # Warm up
-        func()
-
-        # Actual timing
-        start_time = perf_counter()
-        func()
-        elapsed = perf_counter() - start_time
-        return elapsed
-    except Exception as e:
-        console.print(f"[red]Error during operation: {str(e)}[/red]")
-        return float("nan")
-```
-
-- Uses perf_counter() for high-precision timing
-- Includes a warm-up run to avoid cold-start penalties
-- Returns elapsed time in seconds
 
 ---
 
 ## Running and Using the Tool
+
+Note: Link to the GitHub repository can be found on the right hand side.
 
 The benchmarking supports three queue implementations:
 - DLL (Doubly Linked List)
@@ -418,6 +312,52 @@ for more details and detailed apporach
 
 #### Run of Doubling Experiment
 
+##### MacOS
+
+- Run of `systemsense`
+
+```cmd
+Displaying System Information
+
+╭───────────────────────────────────────────────────────── System Information ─────────────────────────────────────────────────────────╮
+│ ╭──────────────────┬────────────────────────────────────────────────────────────────────────────────────────╮                        │
+│ │ System Parameter │ Parameter Value                                                                        │                        │
+│ ├──────────────────┼────────────────────────────────────────────────────────────────────────────────────────┤                        │
+│ │ battery          │ 73.00% battery life remaining, 7:20:00 seconds remaining                               │                        │
+│ │ cpu              │ arm                                                                                    │                        │
+│ │ cpucores         │ 11 cores                                                                               │                        │
+│ │ cpufrequencies   │ Min: Unknown Mhz, Max: Unknown Mhz                                                     │                        │
+│ │ datetime         │ 2025-04-28 21:09:46.967008                                                             │                        │
+│ │ disk             │ Using 14.74 GB of 460.43 GB                                                            │                        │
+│ │ hostname         │ MacBook-Pro-Anton.local                                                                │                        │
+│ │ memory           │ Using 7.55 GB of 18.00 GB                                                              │                        │
+│ │ platform         │ macOS-15.3.2-arm64-arm-64bit                                                           │                        │
+│ │ pythonversion    │ 3.12.8                                                                                 │                        │
+│ │ runningprocesses │ 669 running processes                                                                  │                        │
+│ │ swap             │ Using 1.10 GB of 2.00 GB                                                               │                        │
+│ │ system           │ Darwin                                                                                 │                        │
+│ │ systemload       │ Average Load: 3.11, CPU Utilization: 29.70%                                            │                        │
+│ │ virtualenv       │ /Users/antonhedlund/Library/Caches/pypoetry/virtualenvs/queue-analysis-2LJggUpT-py3.12 │                        │
+│ ╰──────────────────┴────────────────────────────────────────────────────────────────────────────────────────╯                        │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Displaying Benchmark Results
+
+╭───────────────────────────────────────────────────────── Benchmark Results ──────────────────────────────────────────────────────────╮
+│ ╭────────────────┬───────────────────────────────────────────────────────────────╮                                                   │
+│ │ Benchmark Name │ Benchmark Results (sec)                                       │                                                   │
+│ ├────────────────┼───────────────────────────────────────────────────────────────┤                                                   │
+│ │ addition       │ [0.315758167009335, 0.3145883330143988, 0.31581891601672396]  │                                                   │
+│ │ concatenation  │ [1.7665895420359448, 1.76266020903131, 1.7622904580202885]    │                                                   │
+│ │ exponentiation │ [2.23918766702991, 2.237772374995984, 2.2365284170373343]     │                                                   │
+│ │ multiplication │ [0.3268889999599196, 0.3260872920509428, 0.324562625028193]   │                                                   │
+│ │ rangelist      │ [0.08542008401127532, 0.0833578750025481, 0.0837147919810377] │                                                   │
+│ ╰────────────────┴───────────────────────────────────────────────────────────────╯                                                   │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+```
+
+##### Windows
+
 #### Run of Performance Analysis
 
 #### Summary of the results
@@ -430,8 +370,6 @@ for more details and detailed apporach
 2. When it comes to concatenation, **`Linked Lists`** (`DLL`/`SLL`) are much better.
 
    `Linked Lists` (`SLL`/`DLL`) excel in concatenation because they can simply link two lists together in `O(1)` time, whereas the `Array Queue` needs to create a new array and copy all elements into it.
-
-3. If you want a balance between memory and performance, choose **`SLL`**.ions.
 
 ---
 
@@ -465,6 +403,40 @@ The choice of queue implementation depends on the specific requirements of the a
 
 # Future Work
 
-- Analyze performance under varying workloads and larger data sizes.
-- Measure memory usage across different implementations.
-- Explore hybrid implementations that combine the strengths of different approaches.
+## Memory Analysis
+- Implement memory profiling using Scalene to analyze:
+  - Memory allocation patterns and fragmentation
+  - Garbage collection impact
+  - Memory overhead per operation
+- Develop memory-optimized implementations with:
+  - Memory pooling for linked list nodes
+  - Custom memory allocators
+  - Python-specific optimizations
+
+## Performance Analysis
+- Create advanced benchmarking framework for:
+  - Automated regression testing
+  - Real-world workload simulation
+  - Statistical analysis tools
+- Study performance under:
+  - Concurrent access patterns
+  - Distributed systems scenarios
+  - Different hardware architectures
+
+## Implementation Innovations
+- Design hybrid data structures combining:
+  - Array-based segments with linked lists
+  - Adaptive implementations
+  - Cache-optimized versions
+- Extend operation set with:
+  - Bulk operations
+  - Priority queue features
+  - Time-based operations
+
+## Research Infrastructure
+- Develop comprehensive analysis tools
+- Create interactive visualization dashboards
+- Build automated reporting systems
+- Design educational resources
+
+These future directions would deepen our understanding of queue implementations and their performance characteristics in various scenarios.
