@@ -6,71 +6,83 @@ categories: [post, queues, linked lists, doubling experiment]
 date: "2025-03-28"
 date-format: long
 toc: true
+format:
+  html:
+    code-links:    
+      - text: Github Repository
+        icon: github
+        href: https://github.com/josephoforkansi/Algorithm-Analysis-All-Hands-Project-Module-2
+    code-fold: true
+    code-summary: "Show the code"
 ---
 
 # Introduction
 
-Data structures play a critical role in efficient software development, influencing performance, scalability, and system responsiveness. Among them, queues are fundamental, powering applications such as task scheduling, messaging systems, and real-time data processing. In this project, our team explored three key queue implementations—Singly Linked List (SLL), Doubly Linked List (DLL), and Array-based Queue. This project seeks to answer our research question: What are the performance differences between SLL queue, DLL queue, and array-based queue implementations when executing basic operations (addfirst, addlast, removefirst, removelast, add (+), and iadd (+=)?. We analyzed their performance through benchmarking experiments using SystemSense.
+Efficient data structures are crucial for software performance, scalability, and responsiveness. Among these, queues are fundamental, supporting applications such as task scheduling, messaging systems, and real-time data processing. This project investigates the performance differences between three queue implementations: Singly Linked List (SLL), Doubly Linked List (DLL), and Array-based Queue. 
 
-As algorithm engineers tackling this project we considered multiple aspects, including:
+Our research question is: **What are the performance differences between SLL queue, DLL queue, and Array-based queue implementations when performing basic operations (e.g., `addfirst`, `addlast`, `removefirst`, `removelast`, `add (+)`, and `iadd (+=)`)?** 
 
-Algorithmic Complexity: Understanding the time and space complexity of queue operations to determine trade-offs between different implementations.
+We conducted benchmarking experiments using `SystemSense` to analyze these implementations. Key aspects considered include:
 
-Memory Management: Evaluating how memory allocation and deallocation affect performance, particularly in linked list-based vs. array-based implementations.
+- **Algorithmic Complexity**: Evaluating time and space complexity to identify trade-offs.
+- **Concurrency Considerations**: Assessing behavior in multi-threaded environments.
+- **Use Case Optimization**: Identifying scenarios where each implementation excels.
+- **Benchmarking Methodology**: Designing experiments to measure execution times and scaling behavior.
 
-Concurrency Considerations: Investigating how these data structures behave in multi-threaded environments where multiple processes access and modify queues simultaneously.
+This project aims to provide insights into the efficiency of these queue implementations and guide the selection of an optimal data structure based on application requirements.
 
-Use Case Optimization: Identifying practical applications where each queue implementation excels, such as high-throughput systems, real-time event processing, and low-latency applications.
-
-Benchmarking Methodology: Designing experiments to measure execution times, analyze scaling behavior, and compare performance under different workloads.
-
-Through this project, we aim to provide insights into the efficiency of these queue implementations and guide the selection of an optimal data structure based on application requirements. By profiling and analyzing queue operations, we not only enhance our understanding of core data structures but also develop practical skills in performance analysis, a crucial skill in algorithm engineering and systems design.
+---
 
 ## Motivation
 
-Efficient data structures are essential in software development, especially when dealing with queues in real-world applications such as scheduling systems, task management, and networking. Different queue implementations like Singly Linked List (SLL), Doubly Linked List (DLL), and Array-based Queue offer trade-offs in terms of performance. Our project aims to benchmark these tradeoffs and analyze the data by comparing the execution times of the queue operations.
+Efficient data structures are critical in real-world applications such as scheduling systems, task management, and networking. Different queue implementations offer trade-offs in performance. This project benchmarks these trade-offs to analyze execution times for various queue operations.
+
+---
 
 # Queue Implementations Analysis
 
 ## Queue Structure and FIFO Principle
 
-Queues follow the First-In-First-Out (FIFO) principle where elements are added at the rear and removed from the front, ensuring sequential processing order.
+Queues adhere to the **First-In-First-Out (FIFO)** principle, where elements are added at the rear and removed from the front, ensuring sequential processing.
 
 ## Implementations Overview
 
 This project explores three queue implementations:
 
-1. **Singly Linked List (SLL) Queue**
-   - Uses one-directional nodes with `next` references
-   - Maintains both head and tail pointers for efficient operations
-   - Each node stores only the value and next reference
+1. **Singly Linked List (SLL) Queue**:
+   - Uses one-directional nodes with `next` references.
+   - Maintains both head and tail pointers for efficient operations.
+   - Each node stores only the value and a `next` reference.
 
-2. **Doubly Linked List (DLL) Queue**
-   - Uses bidirectional nodes with both `prev` and `next` references
-   - Maintains both head and tail pointers
-   - Each node stores value, previous, and next references
+2. **Doubly Linked List (DLL) Queue**:
+   - Uses bidirectional nodes with both `prev` and `next` references.
+   - Maintains both head and tail pointers.
+   - Each node stores value, `prev`, and `next` references.
 
-3. **Array-based Queue**
-   - No explicit node structure, just a container of elements
-   - Optimized for operations at both ends
+3. **Array-based Queue**:
+   - No explicit node structure; uses a container of elements.
+   - Optimized for operations at both ends.
+
+---
 
 ## Key Operations
 
-All implementations support these core operations:
-- `enqueue`: Add element to the rear (O(1) in all implementations)
-- `dequeue`: Remove element from the front (O(1) in all implementations)
-- `peek`: View front element without removing (O(1) in all implementations)
-- `__add__`: Concatenate queues (O(1) in linked lists, O(n) in array-based)
-- `__iadd__`: In-place concatenation (O(1) in linked lists, O(n) in array-based)
+All implementations support the following core operations:
 
-### Key Implementation Examples
+- **`enqueue`**: Add an element to the rear.
+- **`dequeue`**: Remove an element from the front.
+- **`peek`**: View the front element without removing it.
+- **`__add__`**: Concatenate two queues.
+- **`__iadd__`**: In-place concatenation. 
+
+### Example Implementations
 
 #### Enqueue Operation (SLL)
 
 ```python
 def enqueue(self, value: Any) -> None:
     """Add an element to the end of the queue. O(1) operation using tail pointer."""
-    new_node = Node(value)
+    new_node: Node = Node(value)
     if self.is_empty():
         self.head = new_node
     else:
@@ -86,7 +98,7 @@ def dequeue(self) -> Any:
     """Remove and return the first element from the queue. O(1) operation."""
     if self.is_empty():
         raise IndexError("Queue is empty")
-    value = self.head.value
+    value: Any = self.head.value
     self.head = self.head.next
     if self.head is None:
         self.tail = None
@@ -96,148 +108,58 @@ def dequeue(self) -> Any:
     return value
 ```
 
-#### Queue Concatenation (Array-based)
+#### Removelast Operation (Array-based)
 
 ```python
-def __add__(self, other: "ListQueueDisplay") -> "ListQueueDisplay":
-    """Concatenate two queues. O(n) operation."""
-    result = ListQueueDisplay()
-    result.items = deque(self.items)  # Copy first queue
-    result.items.extend(other.items)  # Append second queue
-    return result
+def removelast(self) -> Any:
+    """Remove and return the last element from the queue. O(1) operation."""
+    if self.is_empty():
+        raise IndexError("Queue is empty")
+    return self.items.pop()  # O(1) operation for deque
 ```
 
-## Implementation Considerations
-
-### SLL Queue Considerations
-- Simpler structure with less memory overhead per node
-- Forward-only traversal limits some operations
-- Efficient concatenation due to tail pointer
-
-### DLL Queue Considerations
-- Bidirectional links enable more flexible operations
-- Higher memory usage due to extra pointer per node
-- Supports easy traversal in both directions
-
-### Array-based Queue Considerations
-- No manual pointer management needed
-- Leverages efficient implementation of Python's `deque`
-- Internal array may require occasional reallocation
-
-### Benchmarking
-
-There are two main benchmarking function in our project.
-
-#### Basic analysis
+#### Timing Mechanism
 
 ```python
-def analyze_queue(queue_class, size=1000):
-    """Analyze a queue implementation."""
-    approach = next(
-        (k for k, v in QUEUE_IMPLEMENTATIONS.items() if v == queue_class), None
-    )
-    if approach is None:
-        console.print("[red]Unknown queue implementation[/red]")
-        return
-
-    console.print(f"\n{approach.value.upper()} Queue Implementation")
-
+def time_operation(func: Callable[[], Any]) -> float:
+    """Time an operation using high-precision counter."""
     try:
-        queue = queue_class()
-        operations = []
+        # Warm up
+        func()
 
-        # Test enqueue
-        enqueue_time = time_operation(lambda: [queue.enqueue(i) for i in range(size)])
-        operations.append(("enqueue", enqueue_time, size))
-
-        # Test dequeue
-        dequeue_count = size // 2
-        dequeue_time = time_operation(
-            lambda: [queue.dequeue() for _ in range(dequeue_count)]
-        )
-        operations.append(("dequeue", dequeue_time, dequeue_count))
-
-        # Refill queue
-        for i in range(dequeue_count):
-            queue.enqueue(i)
-
-        # Test peek
-        peek_count = size // 3
-        peek_time = time_operation(lambda: [queue.peek() for _ in range(peek_count)])
-        operations.append(("peek", peek_time, peek_count))
-
-        # Test concat
-        other = queue_class()
-        for i in range(size // 10):
-            other.enqueue(i)
-        concat_time = time_operation(lambda: queue + other)
-        operations.append(("concat", concat_time, size // 10))
-
-        # Test iconcat
-        iconcat_time = time_operation(lambda: queue.__iadd__(other))
-        operations.append(("iconcat", iconcat_time, size // 10))
-
-        # Display results in table
-        table = Table(
-            title=f"{approach.value.upper()} Queue Performance Analysis",
-            box=box.ROUNDED,
-            show_header=True,
-            header_style="bold magenta",
-        )
-        table.add_column("Operation", style="cyan")
-        table.add_column("Time (ms)", justify="right")
-        table.add_column("Elements", justify="right")
-        table.add_column("Time/Element (ms)", justify="right")
-
-        for operation, time_taken, elements in operations:
-            time_per_element = time_taken / elements if elements > 0 else 0
-            table.add_row(
-                operation,
-                f"{time_taken * 1000:.6f}",  # Convert to milliseconds
-                f"{elements:,}",
-                f"{time_per_element * 1000:.6f}",  # Convert to milliseconds
-            )
-
-        console.print(Panel(table))
-
+        # Actual timing
+        start_time: float = perf_counter()
+        func()
+        elapsed: float = perf_counter() - start_time
+        return elapsed
     except Exception as e:
-        console.print(f"[red]Error testing {approach.value}: {str(e)}[/red]")
-        import traceback
-
-        console.print(traceback.format_exc())
+        console.print(f"[red]Error during operation: {str(e)}[/red]")
+        return float("nan")
 ```
 
-This function performs a basic performance analysis with the following operations:
-- Enqueue: Adds size elements to the queue
-- Dequeue: Removes size/2 elements
-- Peek: Looks at size/3 elements without removing them
-- Concat: Concatenates with another queue of size size/10
-- Iconcat: In-place concatenation with another queue of size size/10
-
-#### Doubling experiment
+#### Doubling Experiment
 
 ```python
-
 def doubling(
-    initial_size: int = typer.Option(100, help="Initial size for doubling experiment"),
-    max_size: int = typer.Option(1000, help="Maximum size for doubling experiment"),
+    initial_size: int = typer.Option(10000, help="Initial size for doubling experiment"),
+    max_size: int = typer.Option(1000000, help="Maximum size for doubling experiment"),
     dll: bool = typer.Option(True, help="Test DLL implementation"),
     sll: bool = typer.Option(True, help="Test SLL implementation"),
     array: bool = typer.Option(True, help="Test Array implementation"),
-):
+) -> None:
     """Run doubling experiment on queue implementations."""
     # Create results directory if it doesn't exist
-    results_dir = Path("results")
+    results_dir: Path = Path("results")
     results_dir.mkdir(exist_ok=True)
 
-    sizes = []
-    current_size = initial_size
+    sizes: List[int] = []
+    current_size: int = initial_size
     while current_size <= max_size:
         sizes.append(current_size)
         current_size *= 2
 
     # Dictionary to store all results for plotting
-    all_results = {}
+    all_results: Dict[str, Dict[str, List[float]]] = {}
 
     for approach, queue_class in QUEUE_IMPLEMENTATIONS.items():
         if not (
@@ -249,25 +171,27 @@ def doubling(
 
         try:
             console.print(f"\n{approach.value.upper()} Queue Implementation")
-            results = {
+            results: Dict[str, List[float]] = {
                 "enqueue": [],
                 "dequeue": [],
                 "peek": [],
                 "concat": [],
                 "iconcat": [],
+                "removelast": [],
             }
 
             for size in sizes:
-                queue = queue_class()
+                queue: Any = queue_class()
+                other: Any = queue_class()
 
                 # Enqueue
-                enqueue_time = time_operation(
+                enqueue_time: float = time_operation(
                     lambda: [queue.enqueue(i) for i in range(size)]
                 )
                 results["enqueue"].append(enqueue_time)
 
                 # Dequeue
-                dequeue_time = time_operation(
+                dequeue_time: float = time_operation(
                     lambda: [queue.dequeue() for _ in range(size // 2)]
                 )
                 results["dequeue"].append(dequeue_time)
@@ -277,45 +201,56 @@ def doubling(
                     queue.enqueue(i)
 
                 # Peek
-                peek_time = time_operation(
+                peek_time: float = time_operation(
                     lambda: [queue.peek() for _ in range(size // 3)]
                 )
                 results["peek"].append(peek_time)
 
-                # Concat
-                other = queue_class()
+                # Prepare other queue for concat
                 for i in range(size // 10):
                     other.enqueue(i)
 
-                concat_time = time_operation(lambda: queue + other)
+                # Concat
+                concat_time: float = time_operation(lambda: queue + other)
                 results["concat"].append(concat_time)
 
                 # Iconcat
-                iconcat_time = time_operation(lambda: queue.__iadd__(other))
+                iconcat_time: float = time_operation(lambda: queue.__iadd__(other))
                 results["iconcat"].append(iconcat_time)
+
+                # Removelast - test with fixed number of operations (100)
+                removelast_time: float = time_operation(
+                    lambda: [queue.removelast() for _ in range(100)]
+                )
+                results["removelast"].append(removelast_time)
 
             # Store results for plotting
             all_results[approach.value] = results
 
             # Display results in table
-            table = Table(
+            table: Table = Table(
                 title=f"{approach.value.upper()} Queue Doubling Experiment Results",
                 box=box.ROUNDED,
                 show_header=True,
                 header_style="bold magenta",
+                width=250
             )
-            table.add_column("Size (n)", justify="right")
-            for operation in results.keys():
-                table.add_column(operation, justify="right")
+            table.add_column("Size (n)", justify="right", width=12)
+            table.add_column("enq (ms)", justify="right", width=15)
+            table.add_column("deq (ms)", justify="right", width=15)
+            table.add_column("peek (ms)", justify="right", width=15)
+            table.add_column("cat (ms)", justify="right", width=15)
+            table.add_column("icat (ms)", justify="right", width=15)
+            table.add_column("rml (ms)", justify="right", width=15)
 
             for i, size in enumerate(sizes):
-                row = [f"{size:,}"]
+                row: List[str] = [f"{size:,}"]
                 for operation in results.keys():
-                    value = results[operation][i]
+                    value: float = results[operation][i]
                     if np.isnan(value):  # Check for NaN
                         row.append("N/A")
                     else:
-                        row.append(f"{value * 1000:.6f}")  # Convert to milliseconds
+                        row.append(f"{value * 1000:.5f}")  # Show 5 decimal places
                 table.add_row(*row)
 
             console.print(Panel(table))
@@ -323,154 +258,14 @@ def doubling(
         except Exception as e:
             console.print(f"[red]Error testing {approach.value}: {str(e)}[/red]")
             import traceback
-
             console.print(traceback.format_exc())
-
-    # Generate and save plots
-    plot_results(sizes, all_results, results_dir)
-    console.print(f"[green]Plots saved to [bold]{results_dir}[/bold] directory[/green]")
-
 ```
 
-This doubling experiment does the following
-- Starts with initial_size and doubles the size until reaching max_size
-- For each size, measures the same operations as the basic analysis
-- Generates plots to visualize the results
-
-#### Key benchmarking feature
-
-##### Timing Mechanism
-
-```python
-
-def time_operation(func):
-    """Time an operation using high-precision counter."""
-    try:
-        # Warm up
-        func()
-
-        # Actual timing
-        start_time = perf_counter()
-        func()
-        elapsed = perf_counter() - start_time
-        return elapsed
-    except Exception as e:
-        console.print(f"[red]Error during operation: {str(e)}[/red]")
-        return float("nan")
-```
-
-- Uses perf_counter() for high-precision timing
-- Includes a warm-up run to avoid cold-start penalties
-- Returns elapsed time in seconds
-
-##### Result Visualization
-
-```python
-def plot_results(sizes, all_results, results_dir):
-    """Generate and save plots for doubling experiment results."""
-    operations = ["enqueue", "dequeue", "peek", "concat", "iconcat"]
-
-    # Create log-log plots for each operation (keeping only these, removing regular operation plots)
-    for operation in operations:
-        # Skip regular plots for operations - only create log-log plots
-        if len(sizes) > 2:  # Only create log plots if we have enough data points
-            plt.figure(figsize=(10, 6))
-
-            for impl, results in all_results.items():
-                times = np.array(results[operation]) * 1000  # Convert to milliseconds
-                if np.all(times > 0):  # Avoid log(0)
-                    plt.loglog(
-                        sizes, times, marker="o", label=f"{impl.upper()}", linewidth=2
-                    )
-
-            # Add reference lines for O(1), O(n), O(n²)
-            x_range = np.array(sizes)
-            # Add O(1) reference
-            plt.loglog(
-                x_range, np.ones_like(x_range) * times[0], "--", label="O(1)", alpha=0.5
-            )
-            # Add O(n) reference - scale to fit
-            plt.loglog(
-                x_range,
-                x_range * (times[0] / x_range[0]),
-                "--",
-                label="O(n)",
-                alpha=0.5,
-            )
-            # Add O(n²) reference - scale to fit
-            plt.loglog(
-                x_range,
-                np.power(x_range, 2) * (times[0] / np.power(x_range[0], 2)),
-                "--",
-                label="O(n²)",
-                alpha=0.5,
-            )
-
-            plt.title(
-                f"Log-Log Plot for {operation.capitalize()} Operation", fontsize=16
-            )
-            plt.xlabel("Log Queue Size", fontsize=14)
-            plt.ylabel("Log Time (ms)", fontsize=14)
-            plt.grid(True, which="both", linestyle="--", alpha=0.5)
-            plt.legend(fontsize=12)
-            plt.tight_layout()
-
-            # Save log-log plot
-            log_plot_path = results_dir / f"{operation}_loglog_plot.png"
-            plt.savefig(log_plot_path)
-            plt.close()
-
-    # Create regular performance plots for each implementation (keeping these, removing log-scale implementation plots)
-    for impl, results in all_results.items():
-        plt.figure(figsize=(10, 6))
-
-        for operation in operations:
-            times = np.array(results[operation]) * 1000  # Convert to milliseconds
-            plt.plot(sizes, times, marker="o", label=operation, linewidth=2)
-
-        plt.title(f"{impl.upper()} Queue Implementation Performance", fontsize=16)
-        plt.xlabel("Queue Size (n)", fontsize=14)
-        plt.ylabel("Time (ms)", fontsize=14)
-        plt.grid(True, linestyle="--", alpha=0.7)
-        plt.legend(fontsize=12)
-        plt.tight_layout()
-
-        # Save plot
-        plot_path = results_dir / f"{impl}_performance.png"
-        plt.savefig(plot_path)
-        plt.close()
-```
-- Creates log-log plots for each operation to show algorithmic complexity
-- Generates regular performance plots for each implementation
-- Saves all plots to a results directory
-
-##### Error Handling
-
-- Gracefully handles exceptions during benchmarking
-- Report errors with detailed tracebacks
-- Continues testing other implementations if one fails
-
-##### Output Format:
-
-- Uses Rich library for formatted console output
-- Displays results in tables with:
-   - Operation name
-   - Time taken (in milliseconds)
-   - Number of elements
-   - Time per element
-
-#### References
-
-- AI agent of Cursor AI (Claude sonnet 3.7) was heavily used for the information, generation, debugging  and implementaion of various code specifically main.py
-- https://algorithmology.org/
-- https://algorithmology.org/schedule/weekseven/
-- https://www.geeksforgeeks.org/queue-in-python/
-- https://stackoverflow.com/questions/45688871/implementing-an-efficient-queue-in-python
-- Chatgpt for information
-- Deepseek for information
-- Qwen for information
+---
 
 ## Running and Using the Tool
+
+Note: Link to the GitHub repository can be found on the right hand side.
 
 The benchmarking supports three queue implementations:
 - DLL (Doubly Linked List)
@@ -515,464 +310,212 @@ for more details and detailed apporach
 
 ## Output Analysis
 
-### Anton Hedlund
+#### Run of Doubling Experiment
 
-#### Run of systemsense
+##### MacOS
+
+- Run of `systemsense`
 
 ```cmd
-poetry run systemsense completeinfo
 Displaying System Information
 
-╭─────────────────────────────────────────────────────── System Information ───────────────────────────────────────────────────────╮
-│ ╭──────────────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────────╮ │
-│ │ System Parameter │ Parameter Value                                                                                           │ │
-│ ├──────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────┤ │
-│ │ battery          │ 79.00% battery life remaining, 6:15:00 seconds remaining                                                  │ │
-│ │ cpu              │ arm                                                                                                       │ │
-│ │ cpucores         │ 11 cores                                                                                                  │ │
-│ │ cpufrequencies   │ Min: Unknown Mhz, Max: Unknown Mhz                                                                        │ │
-│ │ datetime         │ 2025-03-26 22:32:34.509801                                                                                │ │
-│ │ disk             │ Using 10.39 GB of 460.43 GB                                                                               │ │
-│ │ hostname         │ MacBook-Pro-Anton.local                                                                                   │ │
-│ │ memory           │ Using 6.58 GB of 18.00 GB                                                                                 │ │
-│ │ platform         │ macOS-15.3.2-arm64-arm-64bit                                                                              │ │
-│ │ pythonversion    │ 3.12.8                                                                                                    │ │
-│ │ runningprocesses │ 594 running processes                                                                                     │ │
-│ │ swap             │ Using 0.49 GB of 2.00 GB                                                                                  │ │
-│ │ system           │ Darwin                                                                                                    │ │
-│ │ systemload       │ Average Load: 2.82, CPU Utilization: 20.50%                                                               │ │
-│ │ virtualenv       │ /Users/antonhedlund/Compsci/algorhytms_202/computer-science-202-algorithm-engineering-project-1-ahedlund… │ │
-│ ╰──────────────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
-╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭───────────────────────────────────────────────────────── System Information ─────────────────────────────────────────────────────────╮
+│ ╭──────────────────┬────────────────────────────────────────────────────────────────────────────────────────╮                        │
+│ │ System Parameter │ Parameter Value                                                                        │                        │
+│ ├──────────────────┼────────────────────────────────────────────────────────────────────────────────────────┤                        │
+│ │ battery          │ 73.00% battery life remaining, 7:20:00 seconds remaining                               │                        │
+│ │ cpu              │ arm                                                                                    │                        │
+│ │ cpucores         │ 11 cores                                                                               │                        │
+│ │ cpufrequencies   │ Min: Unknown Mhz, Max: Unknown Mhz                                                     │                        │
+│ │ datetime         │ 2025-04-28 21:09:46.967008                                                             │                        │
+│ │ disk             │ Using 14.74 GB of 460.43 GB                                                            │                        │
+│ │ hostname         │ MacBook-Pro-Anton.local                                                                │                        │
+│ │ memory           │ Using 7.55 GB of 18.00 GB                                                              │                        │
+│ │ platform         │ macOS-15.3.2-arm64-arm-64bit                                                           │                        │
+│ │ pythonversion    │ 3.12.8                                                                                 │                        │
+│ │ runningprocesses │ 669 running processes                                                                  │                        │
+│ │ swap             │ Using 1.10 GB of 2.00 GB                                                               │                        │
+│ │ system           │ Darwin                                                                                 │                        │
+│ │ systemload       │ Average Load: 3.11, CPU Utilization: 29.70%                                            │                        │
+│ │ virtualenv       │ /Users/antonhedlund/Library/Caches/pypoetry/virtualenvs/queue-analysis-2LJggUpT-py3.12 │                        │
+│ ╰──────────────────┴────────────────────────────────────────────────────────────────────────────────────────╯                        │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 
 Displaying Benchmark Results
 
-╭────────────────────────────────────────────────────────────────────────── Benchmark Results ──────────────────────────────────────────────────────────────────────────╮
-│ ╭────────────────┬─────────────────────────────────────────────────────────────────╮                                                                                  │
-│ │ Benchmark Name │ Benchmark Results (sec)                                         │                                                                                  │
-│ ├────────────────┼─────────────────────────────────────────────────────────────────┤                                                                                  │
-│ │ addition       │ [0.37942662500427105, 0.38371645798906684, 0.39661604099092074] │                                                                                  │
-│ │ concatenation  │ [1.831420500006061, 1.8045542500040028, 1.8012452079856303]     │                                                                                  │
-│ │ exponentiation │ [2.1522245419910178, 2.1751532499911264, 2.2064731669961475]    │                                                                                  │
-│ │ multiplication │ [0.4023984170053154, 0.45870250000734814, 0.5052193750161678]   │                                                                                  │
-│ │ rangelist      │ [0.10194725001929328, 0.09878037497401237, 0.10006220897776075] │                                                                                  │
-│ ╰────────────────┴─────────────────────────────────────────────────────────────────╯                                                                                  │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭───────────────────────────────────────────────────────── Benchmark Results ──────────────────────────────────────────────────────────╮
+│ ╭────────────────┬───────────────────────────────────────────────────────────────╮                                                   │
+│ │ Benchmark Name │ Benchmark Results (sec)                                       │                                                   │
+│ ├────────────────┼───────────────────────────────────────────────────────────────┤                                                   │
+│ │ addition       │ [0.315758167009335, 0.3145883330143988, 0.31581891601672396]  │                                                   │
+│ │ concatenation  │ [1.7665895420359448, 1.76266020903131, 1.7622904580202885]    │                                                   │
+│ │ exponentiation │ [2.23918766702991, 2.237772374995984, 2.2365284170373343]     │                                                   │
+│ │ multiplication │ [0.3268889999599196, 0.3260872920509428, 0.324562625028193]   │                                                   │
+│ │ rangelist      │ [0.08542008401127532, 0.0833578750025481, 0.0837147919810377] │                                                   │
+│ ╰────────────────┴───────────────────────────────────────────────────────────────╯                                                   │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
+#### Run of Performance Analysis
 
-#### Run of Doubling Experiment
-
-```bash
+```cmd
 DLL Queue Implementation
-╭───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│                DLL Queue Doubling Experiment Results                                                                                              │
-│ ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮                                                                               │
-│ │ Size (n) │  enqueue │  dequeue │     peek │   concat │  iconcat │                                                                               │
-│ ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                                                                               │
-│ │      100 │ 0.023667 │ 0.006667 │ 0.001916 │ 0.000333 │ 0.000417 │                                                                               │
-│ │      200 │ 0.073833 │ 0.013459 │ 0.003500 │ 0.000208 │ 0.000167 │                                                                               │
-│ │      400 │ 0.115250 │ 0.024208 │ 0.006083 │ 0.000125 │ 0.000125 │                                                                               │
-│ │      800 │ 0.200166 │ 0.048375 │ 0.011542 │ 0.000167 │ 0.000166 │                                                                               │
-│ ╰──────────┴──────────┴──────────┴──────────┴──────────┴──────────╯                                                                               │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                DLL Queue Doubling Experiment Results                                                                    │
+│ ╭───────────┬─────────────┬──────────────┬─────────────┬──────────────┬─────────────┬──────────────╮                                    │
+│ │           │     enqueue │              │             │              │     iconcat │   removelast │                                    │
+│ │  Size (n) │        (ms) │ dequeue (ms) │   peek (ms) │  concat (ms) │        (ms) │         (ms) │                                    │
+│ ├───────────┼─────────────┼──────────────┼─────────────┼──────────────┼─────────────┼──────────────┤                                    │
+│ │    10,000 │     3.00479 │      0.62908 │     0.16100 │      0.00033 │     0.00050 │      0.02567 │                                    │
+│ │    20,000 │     6.26862 │      1.27562 │     0.33054 │      0.00025 │     0.00021 │      0.02504 │                                    │
+│ │    40,000 │    12.13475 │      2.70033 │     0.66917 │      0.00025 │     0.00017 │      0.02558 │                                    │
+│ │    80,000 │    23.64992 │      5.18425 │     1.34025 │      0.00054 │     0.00025 │      0.02633 │                                    │
+│ │   160,000 │    67.48408 │     10.37083 │     2.63287 │      0.00025 │     0.00017 │      0.02479 │                                    │
+│ │   320,000 │   155.20483 │     20.91542 │     5.27550 │      0.00050 │     0.00021 │      0.02546 │                                    │
+│ │   640,000 │   358.11471 │     42.31600 │    10.22225 │      0.00021 │     0.00021 │      0.02521 │                                    │
+│ ╰───────────┴─────────────┴──────────────┴─────────────┴──────────────┴─────────────┴──────────────╯                                    │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 
 SLL Queue Implementation
-╭───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│                SLL Queue Doubling Experiment Results                                                                                              │
-│ ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮                                                                               │
-│ │ Size (n) │  enqueue │  dequeue │     peek │   concat │  iconcat │                                                                               │
-│ ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                                                                               │
-│ │      100 │ 0.022000 │ 0.005958 │ 0.002292 │ 0.000958 │ 0.000500 │                                                                               │
-│ │      200 │ 0.040667 │ 0.011459 │ 0.003500 │ 0.000417 │ 0.000209 │                                                                               │
-│ │      400 │ 0.099958 │ 0.020958 │ 0.006125 │ 0.000333 │ 0.000208 │                                                                               │
-│ │      800 │ 0.169250 │ 0.041334 │ 0.011708 │ 0.000333 │ 0.000209 │                                                                               │
-│ ╰──────────┴──────────┴──────────┴──────────┴──────────┴──────────╯                                                                               │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                SLL Queue Doubling Experiment Results                                                                    │
+│ ╭───────────┬─────────────┬──────────────┬─────────────┬──────────────┬─────────────┬──────────────╮                                    │
+│ │           │     enqueue │              │             │              │     iconcat │   removelast │                                    │
+│ │  Size (n) │        (ms) │ dequeue (ms) │   peek (ms) │  concat (ms) │        (ms) │         (ms) │                                    │
+│ ├───────────┼─────────────┼──────────────┼─────────────┼──────────────┼─────────────┼──────────────┤                                    │
+│ │    10,000 │     2.46979 │      0.56900 │     0.16150 │      0.00108 │     0.00058 │    266.68550 │                                    │
+│ │    20,000 │     5.25317 │      1.16842 │     0.34067 │      0.00067 │     0.00033 │    580.73588 │                                    │
+│ │    40,000 │    10.06442 │      2.31929 │     0.68179 │      0.00046 │     0.00029 │   1077.14658 │                                    │
+│ │    80,000 │    31.50517 │      4.36875 │     1.32504 │      0.00050 │     0.00025 │   2213.80775 │                                    │
+│ │   160,000 │    80.26325 │      9.28350 │     2.65400 │      0.00088 │     0.00025 │   4390.96813 │                                    │
+│ │   320,000 │   141.32433 │     17.87117 │     5.12517 │      0.00079 │     0.00033 │   8931.29375 │                                    │
+│ │   640,000 │   309.70492 │     36.47579 │    10.34012 │      0.00079 │     0.00029 │  17550.36383 │                                    │
+│ ╰───────────┴─────────────┴──────────────┴─────────────┴──────────────┴─────────────┴──────────────╯                                    │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 
 ARRAY Queue Implementation
-╭───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│               ARRAY Queue Doubling Experiment Results                                                                                             │
-│ ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮                                                                               │
-│ │ Size (n) │  enqueue │  dequeue │     peek │   concat │  iconcat │                                                                               │
-│ ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                                                                               │
-│ │      100 │ 0.003791 │ 0.003334 │ 0.002459 │ 0.001833 │ 0.000250 │                                                                               │
-│ │      200 │ 0.007083 │ 0.006166 │ 0.004667 │ 0.001917 │ 0.000208 │                                                                               │
-│ │      400 │ 0.014125 │ 0.013125 │ 0.009208 │ 0.003375 │ 0.000292 │                                                                               │
-│ │      800 │ 0.027542 │ 0.026292 │ 0.017792 │ 0.006417 │ 0.000375 │                                                                               │
-│ ╰──────────┴──────────┴──────────┴──────────┴──────────┴──────────╯                                                                               │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                               ARRAY Queue Doubling Experiment Results                                                                   │
+│ ╭───────────┬─────────────┬──────────────┬─────────────┬──────────────┬─────────────┬──────────────╮                                    │
+│ │           │     enqueue │              │             │              │     iconcat │   removelast │                                    │
+│ │  Size (n) │        (ms) │ dequeue (ms) │   peek (ms) │  concat (ms) │        (ms) │         (ms) │                                    │
+│ ├───────────┼─────────────┼──────────────┼─────────────┼──────────────┼─────────────┼──────────────┤                                    │
+│ │    10,000 │     0.35696 │      0.31883 │     0.21058 │      0.06917 │     0.00342 │      0.00629 │                                    │
+│ │    20,000 │     0.69412 │      0.63629 │     0.43558 │      0.13508 │     0.00658 │      0.00625 │                                    │
+│ │    40,000 │     1.42304 │      1.36442 │     0.89637 │      0.27796 │     0.01267 │      0.00646 │                                    │
+│ │    80,000 │     2.79046 │      2.57592 │     1.79254 │      0.59154 │     0.02442 │      0.00621 │                                    │
+│ │   160,000 │     5.40737 │      5.20296 │     3.49921 │      1.29850 │     0.04887 │      0.00629 │                                    │
+│ │   320,000 │    10.85558 │     10.42008 │     6.71183 │      3.00858 │     0.11717 │      0.00613 │                                    │
+│ │   640,000 │    22.92450 │     20.83850 │    13.62146 │      6.87604 │     0.21942 │      0.00625 │                                    │
+│ ╰───────────┴─────────────┴──────────────┴─────────────┴──────────────┴─────────────┴──────────────╯                                    │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
+
+##### Windows
 
 #### Run of Performance Analysis
 
-```bash
-oetry run analyze analyze                                     
 
-DLL Queue Implementation
-╭───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│              DLL Queue Performance Analysis                                                                                                       │
-│ ╭───────────┬───────────┬──────────┬───────────────────╮                                                                                          │
-│ │ Operation │ Time (ms) │ Elements │ Time/Element (ms) │                                                                                          │
-│ ├───────────┼───────────┼──────────┼───────────────────┤                                                                                          │
-│ │ enqueue   │  0.258167 │    1,000 │          0.000258 │                                                                                          │
-│ │ dequeue   │  0.060583 │      500 │          0.000121 │                                                                                          │
-│ │ peek      │  0.015292 │      333 │          0.000046 │                                                                                          │
-│ │ concat    │  0.000334 │      100 │          0.000003 │                                                                                          │
-│ │ iconcat   │  0.000417 │      100 │          0.000004 │                                                                                          │
-│ ╰───────────┴───────────┴──────────┴───────────────────╯                                                                                          │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+#### Summary of the results
 
-SLL Queue Implementation
-╭───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│              SLL Queue Performance Analysis                                                                                                       │
-│ ╭───────────┬───────────┬──────────┬───────────────────╮                                                                                          │
-│ │ Operation │ Time (ms) │ Elements │ Time/Element (ms) │                                                                                          │
-│ ├───────────┼───────────┼──────────┼───────────────────┤                                                                                          │
-│ │ enqueue   │  0.196000 │    1,000 │          0.000196 │                                                                                          │
-│ │ dequeue   │  0.050458 │      500 │          0.000101 │                                                                                          │
-│ │ peek      │  0.014625 │      333 │          0.000044 │                                                                                          │
-│ │ concat    │  0.000791 │      100 │          0.000008 │                                                                                          │
-│ │ iconcat   │  0.000500 │      100 │          0.000005 │                                                                                          │
-│ ╰───────────┴───────────┴──────────┴───────────────────╯                                                                                          │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+1. **`Array Queue`** is the best for `enqueue` and `dequeue` operations.  
+   `Enqueue` adds an element to the back of the queue, and `dequeue` removes an element from the front of the queue.
 
-ARRAY Queue Implementation
-╭───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│             ARRAY Queue Performance Analysis                                                                                                      │
-│ ╭───────────┬───────────┬──────────┬───────────────────╮                                                                                          │
-│ │ Operation │ Time (ms) │ Elements │ Time/Element (ms) │                                                                                          │
-│ ├───────────┼───────────┼──────────┼───────────────────┤                                                                                          │
-│ │ enqueue   │  0.043708 │    1,000 │          0.000044 │                                                                                          │
-│ │ dequeue   │  0.029083 │      500 │          0.000058 │                                                                                          │
-│ │ peek      │  0.019541 │      333 │          0.000059 │                                                                                          │
-│ │ concat    │  0.007208 │      100 │          0.000072 │                                                                                          │
-│ │ iconcat   │  0.000625 │      100 │          0.000006 │                                                                                          │
-│ ╰───────────┴───────────┴──────────┴───────────────────╯                                                                                          │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-```
+   `Array Queue` is the fastest → ~4.5x faster than `SLL` and ~6x faster than `DLL`. The `Array Queue` enqueues 1,000 elements in `0.0437 ms` and dequeues in `0.029 ms`.
 
-### Anupraj Guragain
+2. When it comes to concatenation, **`Linked Lists`** (`DLL`/`SLL`) are much better.
 
-#### Run of systemsense
+   `Linked Lists` (`SLL`/`DLL`) excel in concatenation because they can simply link two lists together in `O(1)` time, whereas the `Array Queue` needs to create a new array and copy all elements into it.
 
-```bash
+---
 
-✨ Displaying System Information
+## Recommendations
 
-╭─────────────────────────────────────────────────────────────────────────── System Information Panel ───────────────────────────────────────────────────────────────────────────╮
-│ ╭──────────────────┬───────────────────────────────────────────────────────────────────────╮                                                                                   │
-│ │ System Parameter │ Parameter Value                                                       │                                                                                   │
-│ ├──────────────────┼───────────────────────────────────────────────────────────────────────┤                                                                                   │
-│ │ battery          │ 77.25% battery life remaining, unknown seconds remaining              │                                                                                   │
-│ │ cpu              │ x86_64                                                                │                                                                                   │
-│ │ cpucores         │ Physical cores: 4, Logical cores: 8                                   │                                                                                   │
-│ │ cpufrequencies   │ Min: 400.0 Mhz, Max: 4400.0 Mhz                                       │                                                                                   │
-│ │ datetime         │ 27/03/2025 17:41:34                                                   │                                                                                   │
-│ │ disk             │ Using 43.44 GB of 97.87 GB                                            │                                                                                   │
-│ │ hostname         │ cislaptop                                                             │                                                                                   │
-│ │ memory           │ Using 8.05 GB of 15.35 GB                                             │                                                                                   │
-│ │ platform         │ Linux 6.11.0-21-generic                                               │                                                                                   │
-│ │ pythonversion    │ 3.12.3                                                                │                                                                                   │
-│ │ runningprocesses │ 362                                                                   │                                                                                   │
-│ │ swap             │ Total: 4095 MB, Used: 0 MB, Free: 4095 MB                             │                                                                                   │
-│ │ system           │ Linux                                                                 │                                                                                   │
-│ │ systemload       │ Average Load: 3.07, CPU Utilization: 3.90%                            │                                                                                   │
-│ │ virtualenv       │ /home/student/.cache/pypoetry/virtualenvs/systemsense-DC4abhLn-py3.12 │                                                                                   │
-│ ╰──────────────────┴───────────────────────────────────────────────────────────────────────╯                                                                                   │
-╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+### Use **Array-based Queue**:
+- When basic operations (`enqueue`, `dequeue`, `peek`) are the primary focus.
+- When memory efficiency is crucial.
+- When concatenation operations are rare.
 
-🏁 Displaying Benchmark Results
+### Use **DLL Queue**:
+- When frequent concatenation is required.
+- When bidirectional traversal is needed.
+- When dynamic size changes are common.
 
-╭───────────────────────────────────────────────────────────────────────── Benchmark Information Panel ──────────────────────────────────────────────────────────────────────────╮
-│ ╭────────────────┬─────────────────────────────────────────────────────────────────╮                                                                                           │
-│ │ Benchmark Name │ Benchmark Results (sec)                                         │                                                                                           │
-│ ├────────────────┼─────────────────────────────────────────────────────────────────┤                                                                                           │
-│ │ addition       │ [0.39699050600029295, 0.39876872999593616, 0.40132377600093605] │                                                                                           │
-│ │ concatenation  │ [1.9879290609969757, 1.9158207119980943, 1.9231829279960948]    │                                                                                           │
-│ │ exponentiation │ [1.9385030220000772, 1.9133422640006756, 2.0385779130010633]    │                                                                                           │
-│ │ multiplication │ [0.3794930040021427, 0.3551806879986543, 0.35516838500188896]   │                                                                                           │
-│ │ rangelist      │ [0.10307988400018075, 0.0976890980018652, 0.0977334429990151]   │                                                                                           │
-│ ╰────────────────┴─────────────────────────────────────────────────────────────────╯                                                                                           │
-╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+### Use **SLL Queue**:
+- When memory efficiency is important.
+- When unidirectional traversal suffices.
+- When concatenation operations are frequent.
 
-```
+---
 
-#### Run of Doubling Experiment
+# Conclusion
 
-```bash
+The choice of queue implementation depends on the specific requirements of the application:
+- **Array-based Queue** is ideal for basic operations and memory efficiency.
+- **DLL** is suitable for applications requiring flexibility and frequent concatenation.
+- **SLL** strikes a balance between memory efficiency and functionality.
 
-DLL Queue Implementation
-╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│                DLL Queue Doubling Experiment Results                                                                        │
-│ ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮                                                         │
-│ │ Size (n) │  enqueue │  dequeue │     peek │   concat │  iconcat │                                                         │
-│ ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                                                         │
-│ │      100 │ 0.039566 │ 0.011458 │ 0.003488 │ 0.000625 │ 0.000858 │                                                         │
-│ │      200 │ 0.113858 │ 0.022507 │ 0.006425 │ 0.000403 │ 0.000311 │                                                         │
-│ │      400 │ 0.202240 │ 0.047851 │ 0.012279 │ 0.000379 │ 0.000280 │                                                         │
-│ │      800 │ 0.361492 │ 0.094825 │ 0.022960 │ 0.000330 │ 0.000355 │                                                         │
-│ ╰──────────┴──────────┴──────────┴──────────┴──────────┴──────────╯                                                         │
-╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+---
 
-SLL Queue Implementation
-╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│                SLL Queue Doubling Experiment Results                                                                        │
-│ ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮                                                         │
-│ │ Size (n) │  enqueue │  dequeue │     peek │   concat │  iconcat │                                                         │
-│ ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                                                         │
-│ │      100 │ 0.078195 │ 0.014763 │ 0.003961 │ 0.001582 │ 0.000946 │                                                         │
-│ │      200 │ 0.070928 │ 0.019607 │ 0.006181 │ 0.000761 │ 0.000489 │                                                         │
-│ │      400 │ 0.176146 │ 0.049838 │ 0.012285 │ 0.000710 │ 0.000490 │                                                         │
-│ │      800 │ 0.309921 │ 0.083965 │ 0.024419 │ 0.000687 │ 0.000442 │                                                         │
-│ ╰──────────┴──────────┴──────────┴──────────┴──────────┴──────────╯                                                         │
-╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+# Future Work
 
-ARRAY Queue Implementation
-╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│               ARRAY Queue Doubling Experiment Results                                                                       │
-│ ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮                                                         │
-│ │ Size (n) │  enqueue │  dequeue │     peek │   concat │  iconcat │                                                         │
-│ ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                                                         │
-│ │      100 │ 0.007520 │ 0.006178 │ 0.004555 │ 0.002887 │ 0.000509 │                                                         │
-│ │      200 │ 0.013283 │ 0.012204 │ 0.008401 │ 0.002614 │ 0.000355 │                                                         │
-│ │      400 │ 0.026229 │ 0.025153 │ 0.016454 │ 0.007943 │ 0.000658 │                                                         │
-│ │      800 │ 0.110293 │ 0.075074 │ 0.031935 │ 0.009347 │ 0.000694 │                                                         │
-│ ╰──────────┴──────────┴──────────┴──────────┴──────────┴──────────╯                                                         │
-╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-Plots saved to results directory
+## Memory Analysis
+- Implement memory profiling using Scalene to analyze:
+  - Memory allocation patterns and fragmentation
+  - Garbage collection impact
+  - Memory overhead per operation
+- Develop memory-optimized implementations with:
+  - Memory pooling for linked list nodes
+  - Custom memory allocators
+  - Python-specific optimizations
 
-```
+## Performance Analysis
+- Create advanced benchmarking framework for:
+  - Automated regression testing
+  - Real-world workload simulation
+  - Statistical analysis tools
+- Study performance under:
+  - Concurrent access patterns
+  - Distributed systems scenarios
+  - Different hardware architectures
 
-#### Run of Performance Analysis
+## Implementation Innovations
+- Design hybrid data structures combining:
+  - Array-based segments with linked lists
+  - Adaptive implementations
+  - Cache-optimized versions
+- Extend operation set with:
+  - Bulk operations
+  - Priority queue features
+  - Time-based operations
 
-```bash
+## Research Infrastructure
+- Develop comprehensive analysis tools
+- Create interactive visualization dashboards
+- Build automated reporting systems
+- Design educational resources
 
+These future directions would deepen our understanding of queue implementations and their performance characteristics in various scenarios.
 
-DLL Queue Implementation
-╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│              DLL Queue Performance Analysis                                                                                 │
-│ ╭───────────┬───────────┬──────────┬───────────────────╮                                                                    │
-│ │ Operation │ Time (ms) │ Elements │ Time/Element (ms) │                                                                    │
-│ ├───────────┼───────────┼──────────┼───────────────────┤                                                                    │
-│ │ enqueue   │  0.477277 │    1,000 │          0.000477 │                                                                    │
-│ │ dequeue   │  0.117047 │      500 │          0.000234 │                                                                    │
-│ │ peek      │  0.032079 │      333 │          0.000096 │                                                                    │
-│ │ concat    │  0.000720 │      100 │          0.000007 │                                                                    │
-│ │ iconcat   │  0.000936 │      100 │          0.000009 │                                                                    │
-│ ╰───────────┴───────────┴──────────┴───────────────────╯                                                                    │
-╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+# References
 
-SLL Queue Implementation
-╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│              SLL Queue Performance Analysis                                                                                 │
-│ ╭───────────┬───────────┬──────────┬───────────────────╮                                                                    │
-│ │ Operation │ Time (ms) │ Elements │ Time/Element (ms) │                                                                    │
-│ ├───────────┼───────────┼──────────┼───────────────────┤                                                                    │
-│ │ enqueue   │  0.411052 │    1,000 │          0.000411 │                                                                    │
-│ │ dequeue   │  0.106158 │      500 │          0.000212 │                                                                    │
-│ │ peek      │  0.031625 │      333 │          0.000095 │                                                                    │
-│ │ concat    │  0.002308 │      100 │          0.000023 │                                                                    │
-│ │ iconcat   │  0.001400 │      100 │          0.000014 │                                                                    │
-│ ╰───────────┴───────────┴──────────┴───────────────────╯                                                                    │
-╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+1. Documentation
+    - [Python deque](https://docs.python.org/3/library/collections.html#collections.deque)
+    - [SLL and DLL](https://www.geeksforgeeks.org/difference-between-singly-linked-list-and-doubly-linked-list/)
+    - [Python's collections](https://realpython.com/python-collections-module/)
+    - [Linked Lists](https://cs50.harvard.edu/x/2023/notes/5/)
 
-ARRAY Queue Implementation
-╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│             ARRAY Queue Performance Analysis                                                                                │
-│ ╭───────────┬───────────┬──────────┬───────────────────╮                                                                    │
-│ │ Operation │ Time (ms) │ Elements │ Time/Element (ms) │                                                                    │
-│ ├───────────┼───────────┼──────────┼───────────────────┤                                                                    │
-│ │ enqueue   │  0.115217 │    1,000 │          0.000115 │                                                                    │
-│ │ dequeue   │  0.069180 │      500 │          0.000138 │                                                                    │
-│ │ peek      │  0.044262 │      333 │          0.000133 │                                                                    │
-│ │ concat    │  0.012812 │      100 │          0.000128 │                                                                    │
-│ │ iconcat   │  0.001020 │      100 │          0.000010 │                                                                    │
-│ ╰───────────┴───────────┴──────────┴───────────────────╯                                                                    │
-╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-```
+2. Books
+    - "A First Course on Data Structures in Python"
+    - "Data Structures and Algorithm Analysis in C++" by Mark Allen Weiss
+    - "Introduction to Computation and Programming Using Python"
 
-### Joseph Oforkansi
+3. Course Slides
+    - [Implementing Linked-Based Data Structures](https://algorithmology.org/slides/weeknine/#/title-slide)
 
-#### Run of systemsense
+## AI
 
-```wsl
+- **Queue Implementation Design**: AI assisted in designing and refining the implementations of Singly Linked List (SLL), Doubly Linked List (DLL), and Array-based queues. It provided suggestions for optimizing the `enqueue`, `dequeue`, and concatenation operations.
+- **Code Optimization and Refactoring**: AI provided recommendations to improve the performance and readability of the codebase. For example, it helped optimize the `time_operation` function for precise benchmarking and reduced redundant computations in queue operations.
+- **Benchmarking Experiment Design**: AI helped me to the design of the doubling experiment and basic analysis, ensuring that the experiments effectively measured performance differences across queue implementations.
 
-╭──────────────────────────────────── Displaying System Panel Information ────────────────────────────────────╮
-│ ┏━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓              │
-│ ┃ System Parameter ┃ Parameter Value                                                         ┃              │
-│ ┣━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫              │
-│ ┃ battery          ┃ 49.48% battery life remaining, 3:34:11 seconds remaining                ┃              │
-│ ┃ cpu              ┃ x86_64                                                                  ┃              │
-│ ┃ cpucores         ┃ Physical cores: 6, Logical cores: 12                                    ┃              │
-│ ┃ cpufrequencies   ┃ Min: 0.0 Mhz, Max: 0.0 Mhz                                              ┃              │
-│ ┃ datetime         ┃ 2025-03-28 00:07:56                                                     ┃              │
-│ ┃ disk             ┃ Total: 1006.85 GB, Used: 4.94 GB, Free: 950.70 GB                       ┃              │
-│ ┃ hostname         ┃ Ubasinachi                                                              ┃              │
-│ ┃ memory           ┃ Total: 3.55 GB, Available: 2.97 GB, Used: 0.42 GB                       ┃              │
-│ ┃ platform         ┃ Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.39          ┃              │
-│ ┃ pythonversion    ┃ 3.12.3                                                                  ┃              │
-│ ┃ runningprocesses ┃ 30                                                                      ┃              │
-│ ┃ swap             ┃ Total: 1.00 GB, Used: 0.00 GB, Free: 1.00 GB                            ┃              │
-│ ┃ system           ┃ Linux                                                                   ┃              │
-│ ┃ systemload       ┃ (0.09033203125, 0.02294921875, 0.00537109375)                           ┃              │
-│ ┃ virtualenv       ┃ /home/oforkansi/.cache/pypoetry/virtualenvs/systemsense-Rt5TvRuf-py3.12 ┃              │
-│ ┗━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛              │
-╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-
-
-Displaying Benchmark Results
-
-╭────────────────────────────────── Displaying Benchmark Panel Information ───────────────────────────────────╮
-│ ┏━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓                         │
-│ ┃ Benchmark Name ┃ Benchmark Results (sec)                                        ┃                         │
-│ ┣━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫                         │
-│ ┃ addition       ┃ [0.31629270799749065, 0.3047017440003401, 0.30586198799937847] ┃                         │
-│ ┃ concatenation  ┃ [1.252448921000905, 1.2106726849997358, 1.196216729000298]     ┃                         │
-│ ┃ exponentiation ┃ [3.4946560460011824, 2.8278707829995255, 2.6028115440021793]   ┃                         │
-│ ┃ multiplication ┃ [0.46731175999957486, 0.47331768200092483, 0.4569921219990647] ┃                         │
-│ ┃ rangelist      ┃ [0.18792873100028373, 0.1763109790008457, 0.17144616799851065] ┃                         │
-│ ┗━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛                         │
-╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-```
-
-#### Run of Doubling Experiment
-
-```wsl
-DLL Queue Implementation
-╭───────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│                DLL Queue Doubling Experiment Results                                                          │
-│ ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮                                           │
-│ │ Size (n) │  enqueue │  dequeue │     peek │   concat │  iconcat │                                           │
-│ ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                                           │
-│ │      100 │ 0.078146 │ 0.021706 │ 0.005929 │ 0.001395 │ 0.001344 │                                           │
-│ │      200 │ 0.204515 │ 0.048069 │ 0.011960 │ 0.000667 │ 0.000349 │                                           │
-│ │      400 │ 0.248051 │ 0.056235 │ 0.015726 │ 0.000554 │ 0.000380 │                                           │
-│ │      800 │ 0.438154 │ 0.106643 │ 0.029851 │ 0.000493 │ 0.000328 │                                           │
-│ ╰──────────┴──────────┴──────────┴──────────┴──────────┴──────────╯                                           │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-
-SLL Queue Implementation
-╭───────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│                SLL Queue Doubling Experiment Results                                                          │
-│ ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮                                           │
-│ │ Size (n) │  enqueue │  dequeue │     peek │   concat │  iconcat │                                           │
-│ ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                                           │
-│ │      100 │ 0.064944 │ 0.017890 │ 0.007950 │ 0.003057 │ 0.001652 │                                           │
-│ │      200 │ 0.216928 │ 0.023132 │ 0.008165 │ 0.001077 │ 0.000482 │                                           │
-│ │      400 │ 0.203469 │ 0.047208 │ 0.015469 │ 0.000790 │ 0.000452 │                                           │
-│ │      800 │ 0.389417 │ 0.094077 │ 0.078423 │ 0.001128 │ 0.000595 │                                           │
-│ ╰──────────┴──────────┴──────────┴──────────┴──────────┴──────────╯                                           │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-
-ARRAY Queue Implementation
-╭───────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│               ARRAY Queue Doubling Experiment Results                                                         │
-│ ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮                                           │
-│ │ Size (n) │  enqueue │  dequeue │     peek │   concat │  iconcat │                                           │
-│ ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                                           │
-│ │      100 │ 0.014208 │ 0.011386 │ 0.009879 │ 0.006011 │ 0.000964 │                                           │
-│ │      200 │ 0.024209 │ 0.053722 │ 0.016782 │ 0.005693 │ 0.000687 │                                           │
-│ │      400 │ 0.031636 │ 0.028630 │ 0.063159 │ 0.008494 │ 0.000677 │                                           │
-│ │      800 │ 0.102058 │ 0.097903 │ 0.088619 │ 0.022486 │ 0.001354 │                                           │
-│ ╰──────────┴──────────┴──────────┴──────────┴──────────┴──────────╯                                           │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-```
-
-#### Run of Performance Analysis
-
-```wsl
-DLL Queue Implementation
-╭───────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│              DLL Queue Performance Analysis                                                                   │
-│ ╭───────────┬───────────┬──────────┬───────────────────╮                                                      │
-│ │ Operation │ Time (ms) │ Elements │ Time/Element (ms) │                                                      │
-│ ├───────────┼───────────┼──────────┼───────────────────┤                                                      │
-│ │ enqueue   │  1.033531 │    1,000 │          0.001034 │                                                      │
-│ │ dequeue   │  0.136059 │      500 │          0.000272 │                                                      │
-│ │ peek      │  0.036996 │      333 │          0.000111 │                                                      │
-│ │ concat    │  0.000893 │      100 │          0.000009 │                                                      │
-│ │ iconcat   │  0.000914 │      100 │          0.000009 │                                                      │
-│ ╰───────────┴───────────┴──────────┴───────────────────╯                                                      │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-
-SLL Queue Implementation
-╭───────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│              SLL Queue Performance Analysis                                                                   │
-│ ╭───────────┬───────────┬──────────┬───────────────────╮                                                      │
-│ │ Operation │ Time (ms) │ Elements │ Time/Element (ms) │                                                      │
-│ ├───────────┼───────────┼──────────┼───────────────────┤                                                      │
-│ │ enqueue   │  1.117241 │    1,000 │          0.001117 │                                                      │
-│ │ dequeue   │  0.232174 │      500 │          0.000464 │                                                      │
-│ │ peek      │  0.051571 │      333 │          0.000155 │                                                      │
-│ │ concat    │  0.002783 │      100 │          0.000028 │                                                      │
-│ │ iconcat   │  0.001448 │      100 │          0.000014 │                                                      │
-│ ╰───────────┴───────────┴──────────┴───────────────────╯                                                      │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-
-ARRAY Queue Implementation
-╭───────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│             ARRAY Queue Performance Analysis                                                                  │
-│ ╭───────────┬───────────┬──────────┬───────────────────╮                                                      │
-│ │ Operation │ Time (ms) │ Elements │ Time/Element (ms) │                                                      │
-│ ├───────────┼───────────┼──────────┼───────────────────┤                                                      │
-│ │ enqueue   │  0.121895 │    1,000 │          0.000122 │                                                      │
-│ │ dequeue   │  0.121803 │      500 │          0.000244 │                                                      │
-│ │ peek      │  0.071548 │      333 │          0.000215 │                                                      │
-│ │ concat    │  0.085331 │      100 │          0.000853 │                                                      │
-│ │ iconcat   │  0.001982 │      100 │          0.000020 │                                                      │
-│ ╰───────────┴───────────┴──────────┴───────────────────╯                                                      │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-```
-
-
-#### Run of Performance Analysis
-
-##### Key Finding
-
-- The Array implementation maintains its O(1) behavior for basic operations even with large data sizes
-- The DLL and SLL implementations show clear O(n) behavior for enqueue operations with large data
-- All implementations show O(1) behavior for peek operations, even with large data
-- The Array implementation's concatenation operation shows clear O(n) behavior with large data
-- The linked list implementations (DLL and SLL) maintain O(1) behavior for concatenation operations
-
-##### Final Recommendations:
-
-###### Use Array Queue
-
-When:
-- Basic operations (enqueue, dequeue, peek) are the primary operations
-- Memory efficiency is crucial
-- Concatenation operations are rare
-- Fixed or predictable size is expected
-
-###### Use DLL Queue 
-
-When:
-- Concatenation operations are frequent
-- Bidirectional traversal is needed
-- Dynamic size changes are common
-- Memory overhead is not a concern
-
-###### Use SLL Queue 
-
-When:
-- Concatenation operations are frequent
-- Memory efficiency is important
-- Unidirectional traversal is sufficient
-- Dynamic size changes are common
-- Example: Task queue in a scheduler
-
-#### Conclusion
-
-The choice of queue implementation should be based on the specific requirements of the application:
-- For applications prioritizing basic operations and memory efficiency, the Array implementation is the best choice
-- For applications requiring frequent concatenation and dynamic size changes, either DLL or SLL implementation would be more suitable
-- SLL provides a good balance between memory efficiency and functionality, while DLL offers the most flexibility at the cost of higher memory overhead
-The performance analysis shows that there is no "one-size-fits-all" solution, and the optimal choice depends on the specific use case and requirements of the application.
-
-
-#### Future Works
-
-- Analyzing performance under varying workloads and larger data sizes
-- Measuring memory usage across different implementations
-- Develops and experiment with hybrid implementations that combine strengths of different approaches 
+All AI-generated content was reviewed and validated by team members.
