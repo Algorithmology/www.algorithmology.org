@@ -403,6 +403,7 @@ The choice of queue implementation depends on the specific requirements of the a
 
 # Future Work
 
+<<<<<<< HEAD
 ## Memory Analysis
 - Implement memory profiling using Scalene to analyze:
   - Memory allocation patterns and fragmentation
@@ -440,3 +441,32 @@ The choice of queue implementation depends on the specific requirements of the a
 - Design educational resources
 
 These future directions would deepen our understanding of queue implementations and their performance characteristics in various scenarios.
+=======
+- Analyze performance under varying workloads and larger data sizes.
+- Measure memory usage across different implementations.
+- Explore hybrid implementations that combine the strengths of different approaches.
+
+# References
+
+1. Documentation
+    - [Python deque](https://docs.python.org/3/library/collections.html#collections.deque)
+    - [SLL and DLL](https://www.geeksforgeeks.org/difference-between-singly-linked-list-and-doubly-linked-list/)
+    - [Python's collections](https://realpython.com/python-collections-module/)
+    - [Linked Lists](https://cs50.harvard.edu/x/2023/notes/5/)
+
+2. Books
+    - "A First Course on Data Structures in Python"
+    - "Data Structures and Algorithm Analysis in C++" by Mark Allen Weiss
+    - "Introduction to Computation and Programming Using Python"
+
+3. Course Slides
+    - [Implementing Linked-Based Data Structures](https://algorithmology.org/slides/weeknine/#/title-slide)
+
+## AI
+
+- **Queue Implementation Design**: AI assisted in designing and refining the implementations of Singly Linked List (SLL), Doubly Linked List (DLL), and Array-based queues. It provided suggestions for optimizing the `enqueue`, `dequeue`, and concatenation operations.
+- **Code Optimization and Refactoring**: AI provided recommendations to improve the performance and readability of the codebase. For example, it helped optimize the `time_operation` function for precise benchmarking and reduced redundant computations in queue operations.
+- **Benchmarking Experiment Design**: AI helped me to the design of the doubling experiment and basic analysis, ensuring that the experiments effectively measured performance differences across queue implementations.
+
+All AI-generated content was reviewed and validated by team members.
+>>>>>>> 8ec3586d88127780657947ca99abdb62aadfb3a5
