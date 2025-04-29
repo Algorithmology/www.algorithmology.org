@@ -57,16 +57,6 @@ This project explores three queue implementations:
 
 ---
 
-## Key Operations
-
-All implementations support the following core operations:
-
-- **`enqueue`**: Add an element to the rear.
-- **`dequeue`**: Remove an element from the front.
-- **`peek`**: View the front element without removing it.
-- **`__add__`**: Concatenate two queues.
-- **`__iadd__`**: In-place concatenation. 
-
 ### Example Implementations
 
 #### Enqueue Operation (SLL)
@@ -138,9 +128,19 @@ def __add__(self, other: Any) -> Any:
 
 ---
 
-# Benchmarking
+## Key Operations
 
-We designed two main benchmarking experiments: **Basic Analysis** and **Doubling Experiment**.
+All implementations support the following core operations:
+
+- **`enqueue`**: Add an element to the rear.
+- **`dequeue`**: Remove an element from the front.
+- **`peek`**: View the front element without removing it.
+- **`__add__`**: Concatenate two queues.
+- **`__iadd__`**: In-place concatenation. 
+
+# Analysis
+
+We designed two main experiments: **Basic Analysis** and **Doubling Experiment**.
 
 ## Basic Analysis
 
